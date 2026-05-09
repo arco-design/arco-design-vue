@@ -7,40 +7,50 @@ exports[`<transfer> demo: > render [basic] correctly 1`] = `
     <!--v-if-->
     <div class="sd-transfer-view-body">
       <div class="sd-scrollbar sd-scrollbar-type-embed">
-        <div class="sd-scrollbar-container">
-          <div class="sd-list-wrapper sd-transfer-view-list">
-            <div class="sd-spin sd-list-spin">
-              <div class="sd-list sd-list-medium sd-list-split">
-                <div class="sd-list-content-wrapper">
-                  <!---->
-                  <div role="list" class="sd-list-content">
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option2"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 2</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option4"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 4</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option6"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 6</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option7"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 7</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option8"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 8</span></label>
+        <div class="sd-scrollbar-container" data-overlayscrollbars="host">
+          <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+            <div class="sd-list-wrapper sd-transfer-view-list">
+              <div class="sd-spin sd-list-spin">
+                <div class="sd-list sd-list-medium sd-list-split">
+                  <div class="sd-list-content-wrapper">
+                    <!---->
+                    <div role="list" class="sd-list-content">
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option2"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 2</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option4"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 4</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option6"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 6</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option7"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 7</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option8"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 8</span></label>
+                        <!---->
+                      </div>
                       <!---->
                     </div>
                     <!---->
                   </div>
-                  <!---->
                 </div>
+                <!---->
+                <!---->
               </div>
-              <!---->
-              <!---->
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
             </div>
           </div>
         </div>
-        <!--v-if-->
-        <!--v-if-->
       </div>
     </div>
   </div>
@@ -50,34 +60,44 @@ exports[`<transfer> demo: > render [basic] correctly 1`] = `
     <!--v-if-->
     <div class="sd-transfer-view-body">
       <div class="sd-scrollbar sd-scrollbar-type-embed">
-        <div class="sd-scrollbar-container">
-          <div class="sd-list-wrapper sd-transfer-view-list">
-            <div class="sd-spin sd-list-spin">
-              <div class="sd-list sd-list-medium sd-list-split">
-                <div class="sd-list-content-wrapper">
-                  <!---->
-                  <div role="list" class="sd-list-content">
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option1"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 1</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option3"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 3</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option5"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 5</span></label>
+        <div class="sd-scrollbar-container" data-overlayscrollbars="host">
+          <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+            <div class="sd-list-wrapper sd-transfer-view-list">
+              <div class="sd-spin sd-list-spin">
+                <div class="sd-list sd-list-medium sd-list-split">
+                  <div class="sd-list-content-wrapper">
+                    <!---->
+                    <div role="list" class="sd-list-content">
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option1"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 1</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option3"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 3</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option5"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 5</span></label>
+                        <!---->
+                      </div>
                       <!---->
                     </div>
                     <!---->
                   </div>
-                  <!---->
                 </div>
+                <!---->
+                <!---->
               </div>
-              <!---->
-              <!---->
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
             </div>
           </div>
         </div>
-        <!--v-if-->
-        <!--v-if-->
       </div>
     </div>
   </div>
@@ -91,40 +111,50 @@ exports[`<transfer> demo: > render [custom] correctly 1`] = `
     <!--v-if-->
     <div class="sd-transfer-view-body">
       <div class="sd-scrollbar sd-scrollbar-type-embed">
-        <div class="sd-scrollbar-container">
-          <div class="sd-list-wrapper sd-transfer-view-list">
-            <div class="sd-spin sd-list-spin">
-              <div class="sd-list sd-list-medium sd-list-split">
-                <div class="sd-list-content-wrapper">
-                  <!---->
-                  <div role="list" class="sd-list-content">
-                    <div class="sd-transfer-list-item sd-transfer-list-item-disabled"><label aria-disabled="true" class="sd-checkbox sd-checkbox-disabled sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" disabled="" value="option2"><span class="sd-icon-hover sd-icon-hover-disabled sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-up" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 30.557 24.043 15 8.487 30.557"></path></svg> Option 2</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option4"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-up" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 30.557 24.043 15 8.487 30.557"></path></svg> Option 4</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option6"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-up" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 30.557 24.043 15 8.487 30.557"></path></svg> Option 6</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option7"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-up" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 30.557 24.043 15 8.487 30.557"></path></svg> Option 7</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option8"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-up" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 30.557 24.043 15 8.487 30.557"></path></svg> Option 8</span></label>
+        <div class="sd-scrollbar-container" data-overlayscrollbars="host">
+          <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+            <div class="sd-list-wrapper sd-transfer-view-list">
+              <div class="sd-spin sd-list-spin">
+                <div class="sd-list sd-list-medium sd-list-split">
+                  <div class="sd-list-content-wrapper">
+                    <!---->
+                    <div role="list" class="sd-list-content">
+                      <div class="sd-transfer-list-item sd-transfer-list-item-disabled"><label aria-disabled="true" class="sd-checkbox sd-checkbox-disabled sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" disabled="" value="option2"><span class="sd-icon-hover sd-icon-hover-disabled sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-up" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 30.557 24.043 15 8.487 30.557"></path></svg> Option 2</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option4"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-up" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 30.557 24.043 15 8.487 30.557"></path></svg> Option 4</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option6"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-up" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 30.557 24.043 15 8.487 30.557"></path></svg> Option 6</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option7"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-up" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 30.557 24.043 15 8.487 30.557"></path></svg> Option 7</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option8"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-up" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 30.557 24.043 15 8.487 30.557"></path></svg> Option 8</span></label>
+                        <!---->
+                      </div>
                       <!---->
                     </div>
                     <!---->
                   </div>
-                  <!---->
                 </div>
+                <!---->
+                <!---->
               </div>
-              <!---->
-              <!---->
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
             </div>
           </div>
         </div>
-        <!--v-if-->
-        <!--v-if-->
       </div>
     </div>
   </div>
@@ -134,34 +164,44 @@ exports[`<transfer> demo: > render [custom] correctly 1`] = `
     <!--v-if-->
     <div class="sd-transfer-view-body">
       <div class="sd-scrollbar sd-scrollbar-type-embed">
-        <div class="sd-scrollbar-container">
-          <div class="sd-list-wrapper sd-transfer-view-list">
-            <div class="sd-spin sd-list-spin">
-              <div class="sd-list sd-list-medium sd-list-split">
-                <div class="sd-list-content-wrapper">
-                  <!---->
-                  <div role="list" class="sd-list-content">
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option1"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-up" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 30.557 24.043 15 8.487 30.557"></path></svg> Option 1</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option3"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-up" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 30.557 24.043 15 8.487 30.557"></path></svg> Option 3</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option5"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-up" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 30.557 24.043 15 8.487 30.557"></path></svg> Option 5</span></label>
+        <div class="sd-scrollbar-container" data-overlayscrollbars="host">
+          <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+            <div class="sd-list-wrapper sd-transfer-view-list">
+              <div class="sd-spin sd-list-spin">
+                <div class="sd-list sd-list-medium sd-list-split">
+                  <div class="sd-list-content-wrapper">
+                    <!---->
+                    <div role="list" class="sd-list-content">
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option1"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-up" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 30.557 24.043 15 8.487 30.557"></path></svg> Option 1</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option3"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-up" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 30.557 24.043 15 8.487 30.557"></path></svg> Option 3</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option5"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-up" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 30.557 24.043 15 8.487 30.557"></path></svg> Option 5</span></label>
+                        <!---->
+                      </div>
                       <!---->
                     </div>
                     <!---->
                   </div>
-                  <!---->
                 </div>
+                <!---->
+                <!---->
               </div>
-              <!---->
-              <!---->
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
             </div>
           </div>
         </div>
-        <!--v-if-->
-        <!--v-if-->
       </div>
     </div>
   </div>
@@ -179,40 +219,50 @@ exports[`<transfer> demo: > render [custom-header] correctly 1`] = `
     <!--v-if-->
     <div class="sd-transfer-view-body">
       <div class="sd-scrollbar sd-scrollbar-type-embed">
-        <div class="sd-scrollbar-container">
-          <div class="sd-list-wrapper sd-transfer-view-list">
-            <div class="sd-spin sd-list-spin">
-              <div class="sd-list sd-list-medium sd-list-split">
-                <div class="sd-list-content-wrapper">
-                  <!---->
-                  <div role="list" class="sd-list-content">
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option2"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 2</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option4"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 4</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option6"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 6</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option7"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 7</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option8"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 8</span></label>
+        <div class="sd-scrollbar-container" data-overlayscrollbars="host">
+          <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+            <div class="sd-list-wrapper sd-transfer-view-list">
+              <div class="sd-spin sd-list-spin">
+                <div class="sd-list sd-list-medium sd-list-split">
+                  <div class="sd-list-content-wrapper">
+                    <!---->
+                    <div role="list" class="sd-list-content">
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option2"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 2</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option4"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 4</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option6"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 6</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option7"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 7</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option8"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 8</span></label>
+                        <!---->
+                      </div>
                       <!---->
                     </div>
                     <!---->
                   </div>
-                  <!---->
                 </div>
+                <!---->
+                <!---->
               </div>
-              <!---->
-              <!---->
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
             </div>
           </div>
         </div>
-        <!--v-if-->
-        <!--v-if-->
       </div>
     </div>
   </div>
@@ -226,34 +276,44 @@ exports[`<transfer> demo: > render [custom-header] correctly 1`] = `
     <!--v-if-->
     <div class="sd-transfer-view-body">
       <div class="sd-scrollbar sd-scrollbar-type-embed">
-        <div class="sd-scrollbar-container">
-          <div class="sd-list-wrapper sd-transfer-view-list">
-            <div class="sd-spin sd-list-spin">
-              <div class="sd-list sd-list-medium sd-list-split">
-                <div class="sd-list-content-wrapper">
-                  <!---->
-                  <div role="list" class="sd-list-content">
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option1"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 1</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option3"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 3</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option5"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 5</span></label>
+        <div class="sd-scrollbar-container" data-overlayscrollbars="host">
+          <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+            <div class="sd-list-wrapper sd-transfer-view-list">
+              <div class="sd-spin sd-list-spin">
+                <div class="sd-list sd-list-medium sd-list-split">
+                  <div class="sd-list-content-wrapper">
+                    <!---->
+                    <div role="list" class="sd-list-content">
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option1"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 1</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option3"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 3</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option5"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 5</span></label>
+                        <!---->
+                      </div>
                       <!---->
                     </div>
                     <!---->
                   </div>
-                  <!---->
                 </div>
+                <!---->
+                <!---->
               </div>
-              <!---->
-              <!---->
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
             </div>
           </div>
         </div>
-        <!--v-if-->
-        <!--v-if-->
       </div>
     </div>
   </div>
@@ -267,40 +327,50 @@ exports[`<transfer> demo: > render [one-way] correctly 1`] = `
     <!--v-if-->
     <div class="sd-transfer-view-body">
       <div class="sd-scrollbar sd-scrollbar-type-embed">
-        <div class="sd-scrollbar-container">
-          <div class="sd-list-wrapper sd-transfer-view-list">
-            <div class="sd-spin sd-list-spin">
-              <div class="sd-list sd-list-medium sd-list-split">
-                <div class="sd-list-content-wrapper">
-                  <!---->
-                  <div role="list" class="sd-list-content">
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option2"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 2</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option4"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 4</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option6"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 6</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option7"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 7</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option8"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 8</span></label>
+        <div class="sd-scrollbar-container" data-overlayscrollbars="host">
+          <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+            <div class="sd-list-wrapper sd-transfer-view-list">
+              <div class="sd-spin sd-list-spin">
+                <div class="sd-list sd-list-medium sd-list-split">
+                  <div class="sd-list-content-wrapper">
+                    <!---->
+                    <div role="list" class="sd-list-content">
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option2"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 2</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option4"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 4</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option6"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 6</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option7"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 7</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option8"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 8</span></label>
+                        <!---->
+                      </div>
                       <!---->
                     </div>
                     <!---->
                   </div>
-                  <!---->
                 </div>
+                <!---->
+                <!---->
               </div>
-              <!---->
-              <!---->
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
             </div>
           </div>
         </div>
-        <!--v-if-->
-        <!--v-if-->
       </div>
     </div>
   </div>
@@ -312,28 +382,38 @@ exports[`<transfer> demo: > render [one-way] correctly 1`] = `
     <!--v-if-->
     <div class="sd-transfer-view-body">
       <div class="sd-scrollbar sd-scrollbar-type-embed">
-        <div class="sd-scrollbar-container">
-          <div class="sd-list-wrapper sd-transfer-view-list">
-            <div class="sd-spin sd-list-spin">
-              <div class="sd-list sd-list-medium sd-list-split">
-                <div class="sd-list-content-wrapper">
-                  <!---->
-                  <div role="list" class="sd-list-content">
-                    <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 1</span><span class="sd-icon-hover sd-transfer-list-item-remove-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span></div>
-                    <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 3</span><span class="sd-icon-hover sd-transfer-list-item-remove-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span></div>
-                    <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 5</span><span class="sd-icon-hover sd-transfer-list-item-remove-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span></div>
+        <div class="sd-scrollbar-container" data-overlayscrollbars="host">
+          <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+            <div class="sd-list-wrapper sd-transfer-view-list">
+              <div class="sd-spin sd-list-spin">
+                <div class="sd-list sd-list-medium sd-list-split">
+                  <div class="sd-list-content-wrapper">
+                    <!---->
+                    <div role="list" class="sd-list-content">
+                      <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 1</span><span class="sd-icon-hover sd-transfer-list-item-remove-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span></div>
+                      <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 3</span><span class="sd-icon-hover sd-transfer-list-item-remove-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span></div>
+                      <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 5</span><span class="sd-icon-hover sd-transfer-list-item-remove-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span></div>
+                      <!---->
+                    </div>
                     <!---->
                   </div>
-                  <!---->
                 </div>
+                <!---->
+                <!---->
               </div>
-              <!---->
-              <!---->
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
             </div>
           </div>
         </div>
-        <!--v-if-->
-        <!--v-if-->
       </div>
     </div>
   </div>
@@ -352,40 +432,50 @@ exports[`<transfer> demo: > render [search] correctly 1`] = `
     </div>
     <div class="sd-transfer-view-body">
       <div class="sd-scrollbar sd-scrollbar-type-embed">
-        <div class="sd-scrollbar-container">
-          <div class="sd-list-wrapper sd-transfer-view-list">
-            <div class="sd-spin sd-list-spin">
-              <div class="sd-list sd-list-medium sd-list-split">
-                <div class="sd-list-content-wrapper">
-                  <!---->
-                  <div role="list" class="sd-list-content">
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option2"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 2</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option4"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 4</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option6"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 6</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option7"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 7</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option8"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 8</span></label>
+        <div class="sd-scrollbar-container" data-overlayscrollbars="host">
+          <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+            <div class="sd-list-wrapper sd-transfer-view-list">
+              <div class="sd-spin sd-list-spin">
+                <div class="sd-list sd-list-medium sd-list-split">
+                  <div class="sd-list-content-wrapper">
+                    <!---->
+                    <div role="list" class="sd-list-content">
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option2"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 2</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option4"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 4</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option6"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 6</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option7"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 7</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option8"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 8</span></label>
+                        <!---->
+                      </div>
                       <!---->
                     </div>
                     <!---->
                   </div>
-                  <!---->
                 </div>
+                <!---->
+                <!---->
               </div>
-              <!---->
-              <!---->
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
             </div>
           </div>
         </div>
-        <!--v-if-->
-        <!--v-if-->
       </div>
     </div>
   </div>
@@ -398,34 +488,44 @@ exports[`<transfer> demo: > render [search] correctly 1`] = `
     </div>
     <div class="sd-transfer-view-body">
       <div class="sd-scrollbar sd-scrollbar-type-embed">
-        <div class="sd-scrollbar-container">
-          <div class="sd-list-wrapper sd-transfer-view-list">
-            <div class="sd-spin sd-list-spin">
-              <div class="sd-list sd-list-medium sd-list-split">
-                <div class="sd-list-content-wrapper">
-                  <!---->
-                  <div role="list" class="sd-list-content">
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option1"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 1</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option3"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 3</span></label>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option5"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 5</span></label>
+        <div class="sd-scrollbar-container" data-overlayscrollbars="host">
+          <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+            <div class="sd-list-wrapper sd-transfer-view-list">
+              <div class="sd-spin sd-list-spin">
+                <div class="sd-list sd-list-medium sd-list-split">
+                  <div class="sd-list-content-wrapper">
+                    <!---->
+                    <div role="list" class="sd-list-content">
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option1"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 1</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option3"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 3</span></label>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="option5"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Option 5</span></label>
+                        <!---->
+                      </div>
                       <!---->
                     </div>
                     <!---->
                   </div>
-                  <!---->
                 </div>
+                <!---->
+                <!---->
               </div>
-              <!---->
-              <!---->
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
             </div>
           </div>
         </div>
-        <!--v-if-->
-        <!--v-if-->
       </div>
     </div>
   </div>
@@ -441,40 +541,50 @@ exports[`<transfer> demo: > render [simple] correctly 1`] = `
     <!--v-if-->
     <div class="sd-transfer-view-body">
       <div class="sd-scrollbar sd-scrollbar-type-embed">
-        <div class="sd-scrollbar-container">
-          <div class="sd-list-wrapper sd-transfer-view-list">
-            <div class="sd-spin sd-list-spin">
-              <div class="sd-list sd-list-medium sd-list-split">
-                <div class="sd-list-content-wrapper">
-                  <!---->
-                  <div role="list" class="sd-list-content">
-                    <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 2</span>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 4</span>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 6</span>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 7</span>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 8</span>
+        <div class="sd-scrollbar-container" data-overlayscrollbars="host">
+          <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+            <div class="sd-list-wrapper sd-transfer-view-list">
+              <div class="sd-spin sd-list-spin">
+                <div class="sd-list sd-list-medium sd-list-split">
+                  <div class="sd-list-content-wrapper">
+                    <!---->
+                    <div role="list" class="sd-list-content">
+                      <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 2</span>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 4</span>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 6</span>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 7</span>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 8</span>
+                        <!---->
+                      </div>
                       <!---->
                     </div>
                     <!---->
                   </div>
-                  <!---->
                 </div>
+                <!---->
+                <!---->
               </div>
-              <!---->
-              <!---->
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
             </div>
           </div>
         </div>
-        <!--v-if-->
-        <!--v-if-->
       </div>
     </div>
   </div>
@@ -486,34 +596,44 @@ exports[`<transfer> demo: > render [simple] correctly 1`] = `
     <!--v-if-->
     <div class="sd-transfer-view-body">
       <div class="sd-scrollbar sd-scrollbar-type-embed">
-        <div class="sd-scrollbar-container">
-          <div class="sd-list-wrapper sd-transfer-view-list">
-            <div class="sd-spin sd-list-spin">
-              <div class="sd-list sd-list-medium sd-list-split">
-                <div class="sd-list-content-wrapper">
-                  <!---->
-                  <div role="list" class="sd-list-content">
-                    <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 1</span>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 3</span>
-                      <!---->
-                    </div>
-                    <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 5</span>
+        <div class="sd-scrollbar-container" data-overlayscrollbars="host">
+          <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+            <div class="sd-list-wrapper sd-transfer-view-list">
+              <div class="sd-spin sd-list-spin">
+                <div class="sd-list sd-list-medium sd-list-split">
+                  <div class="sd-list-content-wrapper">
+                    <!---->
+                    <div role="list" class="sd-list-content">
+                      <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 1</span>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 3</span>
+                        <!---->
+                      </div>
+                      <div class="sd-transfer-list-item"><span class="sd-transfer-list-item-content">Option 5</span>
+                        <!---->
+                      </div>
                       <!---->
                     </div>
                     <!---->
                   </div>
-                  <!---->
                 </div>
+                <!---->
+                <!---->
               </div>
-              <!---->
-              <!---->
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
             </div>
           </div>
         </div>
-        <!--v-if-->
-        <!--v-if-->
       </div>
     </div>
   </div>
@@ -527,75 +647,85 @@ exports[`<transfer> demo: > render [tree] correctly 1`] = `
     <!--v-if-->
     <div class="sd-transfer-view-body">
       <div class="sd-scrollbar sd-scrollbar-type-embed">
-        <div class="sd-scrollbar-container">
-          <div class="sd-tree sd-tree-checkable sd-tree-size-medium">
-            <div class="sd-tree-node sd-tree-node-expanded" data-level="0" data-key="0-0">
-              <!-- 缩进 --><span class="sd-tree-node-indent"></span><!-- switcher --><span class="sd-tree-node-switcher sd-tree-node-switcher-expanded"><span class="sd-icon-hover sd-tree-node-icon-hover"><span class="sd-tree-node-switcher-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95z"></path></svg></span></span></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
-                <!---->
-              </label><!-- 内容 --><span class="sd-tree-node-title" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Trunk 0-0<!--v-if--></span></span><!-- 额外 -->
-              <!--v-if-->
+        <div class="sd-scrollbar-container" data-overlayscrollbars="host">
+          <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+            <div class="sd-tree sd-tree-checkable sd-tree-size-medium">
+              <div class="sd-tree-node sd-tree-node-expanded" data-level="0" data-key="0-0">
+                <!-- 缩进 --><span class="sd-tree-node-indent"></span><!-- switcher --><span class="sd-tree-node-switcher sd-tree-node-switcher-expanded"><span class="sd-icon-hover sd-tree-node-icon-hover"><span class="sd-tree-node-switcher-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95z"></path></svg></span></span></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                  <!---->
+                </label><!-- 内容 --><span class="sd-tree-node-title" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Trunk 0-0<!--v-if--></span></span><!-- 额外 -->
+                <!--v-if-->
+              </div>
+              <transition-stub appear="false" persisted="false" css="true"></transition-stub>
+              <div class="sd-tree-node sd-tree-node-is-leaf" data-level="1" data-key="0-0-1">
+                <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block"></span></span><!-- switcher --><span class="sd-tree-node-switcher"><!----></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                  <!---->
+                </label><!-- 内容 --><span class="sd-tree-node-title" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf 0-0-1<!--v-if--></span></span><!-- 额外 -->
+                <!--v-if-->
+              </div>
+              <transition-stub appear="false" persisted="false" css="true"></transition-stub>
+              <div class="sd-tree-node sd-tree-node-is-tail sd-tree-node-expanded" data-level="1" data-key="0-0-2">
+                <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block"></span></span><!-- switcher --><span class="sd-tree-node-switcher sd-tree-node-switcher-expanded"><span class="sd-icon-hover sd-tree-node-icon-hover"><span class="sd-tree-node-switcher-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95z"></path></svg></span></span></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                  <!---->
+                </label><!-- 内容 --><span class="sd-tree-node-title" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Branch 0-0-2<!--v-if--></span></span><!-- 额外 -->
+                <!--v-if-->
+              </div>
+              <transition-stub appear="false" persisted="false" css="true"></transition-stub>
+              <div class="sd-tree-node sd-tree-node-is-leaf sd-tree-node-is-tail" data-level="2" data-key="0-0-2-2">
+                <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block"></span><span class="sd-tree-node-indent-block sd-tree-node-indent-block-lineless"></span></span><!-- switcher --><span class="sd-tree-node-switcher"><!----></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                  <!---->
+                </label><!-- 内容 --><span class="sd-tree-node-title" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf 0-0-2-2<!--v-if--></span></span><!-- 额外 -->
+                <!--v-if-->
+              </div>
+              <transition-stub appear="false" persisted="false" css="true"></transition-stub>
+              <div class="sd-tree-node sd-tree-node-is-tail sd-tree-node-expanded" data-level="0" data-key="0-1">
+                <!-- 缩进 --><span class="sd-tree-node-indent"></span><!-- switcher --><span class="sd-tree-node-switcher sd-tree-node-switcher-expanded"><span class="sd-icon-hover sd-tree-node-icon-hover"><span class="sd-tree-node-switcher-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95z"></path></svg></span></span></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                  <!---->
+                </label><!-- 内容 --><span class="sd-tree-node-title" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Trunk 0-1<!--v-if--></span></span><!-- 额外 -->
+                <!--v-if-->
+              </div>
+              <transition-stub appear="false" persisted="false" css="true"></transition-stub>
+              <div class="sd-tree-node sd-tree-node-expanded" data-level="1" data-key="0-1-1">
+                <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block sd-tree-node-indent-block-lineless"></span></span><!-- switcher --><span class="sd-tree-node-switcher sd-tree-node-switcher-expanded"><span class="sd-icon-hover sd-tree-node-icon-hover"><span class="sd-tree-node-switcher-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95z"></path></svg></span></span></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                  <!---->
+                </label><!-- 内容 --><span class="sd-tree-node-title" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Branch 0-1-1<!--v-if--></span></span><!-- 额外 -->
+                <!--v-if-->
+              </div>
+              <transition-stub appear="false" persisted="false" css="true"></transition-stub>
+              <div class="sd-tree-node sd-tree-node-is-leaf" data-level="2" data-key="0-1-1-1">
+                <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block sd-tree-node-indent-block-lineless"></span><span class="sd-tree-node-indent-block"></span></span><!-- switcher --><span class="sd-tree-node-switcher"><!----></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                  <!---->
+                </label><!-- 内容 --><span class="sd-tree-node-title" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf 0-1-1-1<!--v-if--></span></span><!-- 额外 -->
+                <!--v-if-->
+              </div>
+              <transition-stub appear="false" persisted="false" css="true"></transition-stub>
+              <div class="sd-tree-node sd-tree-node-is-leaf sd-tree-node-is-tail" data-level="2" data-key="0-1-1-2">
+                <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block sd-tree-node-indent-block-lineless"></span><span class="sd-tree-node-indent-block"></span></span><!-- switcher --><span class="sd-tree-node-switcher"><!----></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                  <!---->
+                </label><!-- 内容 --><span class="sd-tree-node-title" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf 0-1-1-2<!--v-if--></span></span><!-- 额外 -->
+                <!--v-if-->
+              </div>
+              <transition-stub appear="false" persisted="false" css="true"></transition-stub>
+              <div class="sd-tree-node sd-tree-node-is-leaf sd-tree-node-is-tail" data-level="1" data-key="0-1-2">
+                <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block sd-tree-node-indent-block-lineless"></span></span><!-- switcher --><span class="sd-tree-node-switcher"><!----></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                  <!---->
+                </label><!-- 内容 --><span class="sd-tree-node-title" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf 0-1-2<!--v-if--></span></span><!-- 额外 -->
+                <!--v-if-->
+              </div>
+              <transition-stub appear="false" persisted="false" css="true"></transition-stub>
             </div>
-            <transition-stub appear="false" persisted="false" css="true"></transition-stub>
-            <div class="sd-tree-node sd-tree-node-is-leaf" data-level="1" data-key="0-0-1">
-              <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block"></span></span><!-- switcher --><span class="sd-tree-node-switcher"><!----></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
-                <!---->
-              </label><!-- 内容 --><span class="sd-tree-node-title" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf 0-0-1<!--v-if--></span></span><!-- 额外 -->
-              <!--v-if-->
+          </div>
+          <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
             </div>
-            <transition-stub appear="false" persisted="false" css="true"></transition-stub>
-            <div class="sd-tree-node sd-tree-node-is-tail sd-tree-node-expanded" data-level="1" data-key="0-0-2">
-              <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block"></span></span><!-- switcher --><span class="sd-tree-node-switcher sd-tree-node-switcher-expanded"><span class="sd-icon-hover sd-tree-node-icon-hover"><span class="sd-tree-node-switcher-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95z"></path></svg></span></span></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
-                <!---->
-              </label><!-- 内容 --><span class="sd-tree-node-title" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Branch 0-0-2<!--v-if--></span></span><!-- 额外 -->
-              <!--v-if-->
+          </div>
+          <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
             </div>
-            <transition-stub appear="false" persisted="false" css="true"></transition-stub>
-            <div class="sd-tree-node sd-tree-node-is-leaf sd-tree-node-is-tail" data-level="2" data-key="0-0-2-2">
-              <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block"></span><span class="sd-tree-node-indent-block sd-tree-node-indent-block-lineless"></span></span><!-- switcher --><span class="sd-tree-node-switcher"><!----></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
-                <!---->
-              </label><!-- 内容 --><span class="sd-tree-node-title" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf 0-0-2-2<!--v-if--></span></span><!-- 额外 -->
-              <!--v-if-->
-            </div>
-            <transition-stub appear="false" persisted="false" css="true"></transition-stub>
-            <div class="sd-tree-node sd-tree-node-is-tail sd-tree-node-expanded" data-level="0" data-key="0-1">
-              <!-- 缩进 --><span class="sd-tree-node-indent"></span><!-- switcher --><span class="sd-tree-node-switcher sd-tree-node-switcher-expanded"><span class="sd-icon-hover sd-tree-node-icon-hover"><span class="sd-tree-node-switcher-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95z"></path></svg></span></span></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
-                <!---->
-              </label><!-- 内容 --><span class="sd-tree-node-title" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Trunk 0-1<!--v-if--></span></span><!-- 额外 -->
-              <!--v-if-->
-            </div>
-            <transition-stub appear="false" persisted="false" css="true"></transition-stub>
-            <div class="sd-tree-node sd-tree-node-expanded" data-level="1" data-key="0-1-1">
-              <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block sd-tree-node-indent-block-lineless"></span></span><!-- switcher --><span class="sd-tree-node-switcher sd-tree-node-switcher-expanded"><span class="sd-icon-hover sd-tree-node-icon-hover"><span class="sd-tree-node-switcher-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95z"></path></svg></span></span></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
-                <!---->
-              </label><!-- 内容 --><span class="sd-tree-node-title" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Branch 0-1-1<!--v-if--></span></span><!-- 额外 -->
-              <!--v-if-->
-            </div>
-            <transition-stub appear="false" persisted="false" css="true"></transition-stub>
-            <div class="sd-tree-node sd-tree-node-is-leaf" data-level="2" data-key="0-1-1-1">
-              <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block sd-tree-node-indent-block-lineless"></span><span class="sd-tree-node-indent-block"></span></span><!-- switcher --><span class="sd-tree-node-switcher"><!----></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
-                <!---->
-              </label><!-- 内容 --><span class="sd-tree-node-title" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf 0-1-1-1<!--v-if--></span></span><!-- 额外 -->
-              <!--v-if-->
-            </div>
-            <transition-stub appear="false" persisted="false" css="true"></transition-stub>
-            <div class="sd-tree-node sd-tree-node-is-leaf sd-tree-node-is-tail" data-level="2" data-key="0-1-1-2">
-              <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block sd-tree-node-indent-block-lineless"></span><span class="sd-tree-node-indent-block"></span></span><!-- switcher --><span class="sd-tree-node-switcher"><!----></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
-                <!---->
-              </label><!-- 内容 --><span class="sd-tree-node-title" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf 0-1-1-2<!--v-if--></span></span><!-- 额外 -->
-              <!--v-if-->
-            </div>
-            <transition-stub appear="false" persisted="false" css="true"></transition-stub>
-            <div class="sd-tree-node sd-tree-node-is-leaf sd-tree-node-is-tail" data-level="1" data-key="0-1-2">
-              <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block sd-tree-node-indent-block-lineless"></span></span><!-- switcher --><span class="sd-tree-node-switcher"><!----></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
-                <!---->
-              </label><!-- 内容 --><span class="sd-tree-node-title" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf 0-1-2<!--v-if--></span></span><!-- 额外 -->
-              <!--v-if-->
-            </div>
-            <transition-stub appear="false" persisted="false" css="true"></transition-stub>
           </div>
         </div>
-        <!--v-if-->
-        <!--v-if-->
       </div>
     </div>
   </div>
@@ -605,28 +735,38 @@ exports[`<transfer> demo: > render [tree] correctly 1`] = `
     <!--v-if-->
     <div class="sd-transfer-view-body">
       <div class="sd-scrollbar sd-scrollbar-type-embed">
-        <div class="sd-scrollbar-container">
-          <div class="sd-list-wrapper sd-transfer-view-list">
-            <div class="sd-spin sd-list-spin">
-              <div class="sd-list sd-list-medium sd-list-split">
-                <div class="sd-list-content-wrapper">
-                  <!---->
-                  <div role="list" class="sd-list-content">
-                    <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="0-0-2-1"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Leaf 0-0-2-1</span></label>
+        <div class="sd-scrollbar-container" data-overlayscrollbars="host">
+          <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+            <div class="sd-list-wrapper sd-transfer-view-list">
+              <div class="sd-spin sd-list-spin">
+                <div class="sd-list sd-list-medium sd-list-split">
+                  <div class="sd-list-content-wrapper">
+                    <!---->
+                    <div role="list" class="sd-list-content">
+                      <div class="sd-transfer-list-item"><label class="sd-checkbox sd-transfer-list-item-content sd-transfer-list-item-checkbox"><input type="checkbox" class="sd-checkbox-target" value="0-0-2-1"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">Leaf 0-0-2-1</span></label>
+                        <!---->
+                      </div>
                       <!---->
                     </div>
                     <!---->
                   </div>
-                  <!---->
                 </div>
+                <!---->
+                <!---->
               </div>
-              <!---->
-              <!---->
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
+            </div>
+          </div>
+          <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+            <div class="os-scrollbar-track">
+              <div class="os-scrollbar-handle"></div>
             </div>
           </div>
         </div>
-        <!--v-if-->
-        <!--v-if-->
       </div>
     </div>
   </div>

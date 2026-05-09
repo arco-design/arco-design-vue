@@ -6,7 +6,7 @@
 @use 'sass:string';
 @use '@style/theme/index.scss' as *;
 
-$scrollbar-track-size: 15px;
+$scrollbar-track-size: 6px;
 
 $scrollbar-track-border_size: global.$border-1;
 
@@ -14,12 +14,16 @@ $scrollbar-track-border_color: var(string.unquote('#{global.$sd-cssvars-prefix}-
 
 $scrollbar-track-bg_color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-1'));
 
-$scrollbar-thumb-bar-size: 9px;
+$scrollbar-thumb-bar-size: 6px;
 
 $scrollbar-thumb-bar-border_radius: 6px;
 
 $scrollbar-thumb-bar-bg_color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-4'));
 
 $scrollbar-thumb-bar-bg_color_hover: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-5')
+);
+
+$scrollbar-thumb-bar-bg_color_active: var(
   string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-6')
 );

@@ -7,14 +7,26 @@ exports[`Select > show dropdown correctly 1`] = `
         <div class="sd-trigger-content">
           <div class="sd-select-dropdown"><!--v-if--><!--v-if--><!--v-if-->
             <div class="sd-scrollbar sd-scrollbar-type-embed">
-              <div class="sd-scrollbar-container sd-select-dropdown-list-wrapper">
-                <ul class="sd-select-dropdown-list">
-                  <li class="sd-select-option sd-select-option-active"><!--v-if--><span class="sd-select-option-content">Beijing</span><!--v-if--></li>
-                  <li class="sd-select-option"><!--v-if--><span class="sd-select-option-content">Shanghai</span><!--v-if--></li>
-                  <li class="sd-select-option"><!--v-if--><span class="sd-select-option-content">Guangzhou</span><!--v-if--></li>
-                  <li class="sd-select-option"><!--v-if--><span class="sd-select-option-content">Chengdu</span><!--v-if--></li>
-                </ul>
-              </div><!--v-if--><!--v-if-->
+              <div class="sd-scrollbar-container sd-select-dropdown-list-wrapper" data-overlayscrollbars="host">
+                <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+                  <ul class="sd-select-dropdown-list">
+                    <li class="sd-select-option sd-select-option-active"><!--v-if--><span class="sd-select-option-content">Beijing</span><!--v-if--></li>
+                    <li class="sd-select-option"><!--v-if--><span class="sd-select-option-content">Shanghai</span><!--v-if--></li>
+                    <li class="sd-select-option"><!--v-if--><span class="sd-select-option-content">Guangzhou</span><!--v-if--></li>
+                    <li class="sd-select-option"><!--v-if--><span class="sd-select-option-content">Chengdu</span><!--v-if--></li>
+                  </ul>
+                </div>
+                <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+                  <div class="os-scrollbar-track">
+                    <div class="os-scrollbar-handle"></div>
+                  </div>
+                </div>
+                <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+                  <div class="os-scrollbar-track">
+                    <div class="os-scrollbar-handle"></div>
+                  </div>
+                </div>
+              </div>
             </div><!--v-if-->
           </div>
         </div><!---->

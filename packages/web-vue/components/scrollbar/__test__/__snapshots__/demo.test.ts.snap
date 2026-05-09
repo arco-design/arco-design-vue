@@ -1,0 +1,107 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<scrollbar> demo: > render [basic] correctly 1`] = `
+<div class="sd-scrollbar sd-scrollbar-type-embed">
+  <div class="sd-scrollbar-container" style="height: 200px; overflow: auto;" data-overlayscrollbars="host">
+    <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+      <div style="width: 2000px; height: 2000px; background-color: var(--color-primary-light-4);">Content</div>
+    </div>
+    <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+      <div class="os-scrollbar-track">
+        <div class="os-scrollbar-handle"></div>
+      </div>
+    </div>
+    <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+      <div class="os-scrollbar-track">
+        <div class="os-scrollbar-handle"></div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<scrollbar> demo: > render [methods] correctly 1`] = `
+<div class="sd-space sd-space-vertical sd-space-fill" style="column-gap: 8px; row-gap: 8px;">
+  <!---->
+  <div class="sd-space-item">
+    <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
+      <!---->
+      <div class="sd-space-item"><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-small sd-btn-status-normal" type="button">
+          <!--v-if-->scrollTo
+        </button></div>
+      <!---->
+      <div class="sd-space-item"><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-small sd-btn-status-normal" type="button">
+          <!--v-if-->state
+        </button></div>
+      <!---->
+      <div class="sd-space-item"><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-small sd-btn-status-normal" type="button">
+          <!--v-if-->update
+        </button></div>
+    </div>
+  </div>
+  <!---->
+  <div class="sd-space-item">
+    <div style="color: var(--color-text-3);">status: ready</div>
+  </div>
+  <!---->
+  <div class="sd-space-item">
+    <div class="sd-scrollbar sd-scrollbar-type-embed">
+      <div class="sd-scrollbar-container" style="height: 220px; overflow: auto;" data-overlayscrollbars="host">
+        <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+          <div style="width: 900px; height: 540px; padding: 20px; background: linear-gradient(180deg, var(--color-fill-2), var(--color-secondary-light-1));"> 通过 ref 调用底层 OverlayScrollbars 方法。 </div>
+        </div>
+        <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+          <div class="os-scrollbar-track">
+            <div class="os-scrollbar-handle"></div>
+          </div>
+        </div>
+        <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+          <div class="os-scrollbar-track">
+            <div class="os-scrollbar-handle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<scrollbar> demo: > render [overlay-options] correctly 1`] = `
+<div class="sd-scrollbar sd-scrollbar-type-embed">
+  <div class="sd-scrollbar-container" style="height: 220px; overflow: auto;" data-overlayscrollbars="host">
+    <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: 0px; left: 0px; padding: 0px;">
+      <div style="width: 1200px; height: 520px; padding: 20px; background: linear-gradient(135deg, var(--color-fill-2), var(--color-primary-light-1));">通过组件 props 直接配置 OverlayScrollbars。</div>
+    </div>
+    <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+      <div class="os-scrollbar-track">
+        <div class="os-scrollbar-handle"></div>
+      </div>
+    </div>
+    <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+      <div class="os-scrollbar-track">
+        <div class="os-scrollbar-handle"></div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<scrollbar> demo: > render [type] correctly 1`] = `
+<div class="sd-scrollbar sd-scrollbar-type-track">
+  <div class="sd-scrollbar-container" style="height: 200px; overflow: auto;" data-overlayscrollbars="host">
+    <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+      <div style="width: 2000px; height: 2000px; background-color: var(--color-primary-light-4);"> Content </div>
+    </div>
+    <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-track os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-visible os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+      <div class="os-scrollbar-track">
+        <div class="os-scrollbar-handle"></div>
+      </div>
+    </div>
+    <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-track os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-visible os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+      <div class="os-scrollbar-track">
+        <div class="os-scrollbar-handle"></div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

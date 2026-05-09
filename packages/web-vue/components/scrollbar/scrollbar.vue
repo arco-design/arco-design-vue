@@ -1,62 +1,38 @@
 <template>
-  <div :class="cls" :style="style">
-    <ResizeObserver @resize="handleResize">
-      <div
-        ref="containerRef"
-        :class="`${prefixCls}-container`"
-        v-bind="$attrs"
-        @scroll="handleScroll"
-      >
-        <ResizeObserver @resize="handleResize">
-          <slot />
-        </ResizeObserver>
-      </div>
-    </ResizeObserver>
-    <thumb
-      v-if="!hide && hasHorizontalScrollbar"
-      ref="horizontalThumbRef"
-      :data="horizontalData"
-      direction="horizontal"
-      :both="isBoth"
-      @scroll="handleHorizontalScroll"
-    />
-    <thumb
-      v-if="!hide && hasVerticalScrollbar"
-      ref="verticalThumbRef"
-      :data="verticalData"
-      direction="vertical"
-      :both="isBoth"
-      @scroll="handleVerticalScroll"
-    />
+  <div :class="cls" :style="outerStyle">
+    <div ref="containerRef" :class="`${prefixCls}-container`" v-bind="$attrs">
+      <slot />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
+  import type {
+    EventListenerArgs,
+    EventListeners,
+    OverlayScrollbars as OverlayScrollbarsInstance,
+  } from 'overlayscrollbars';
+
   import {
     computed,
-    CSSProperties,
     defineComponent,
+    onBeforeUnmount,
     onMounted,
     PropType,
     ref,
     StyleValue,
+    watch,
   } from 'vue';
 
-  import ResizeObserver from '../_components/resize-observer-v2';
-  import { getPrefixCls } from '../_utils/global-config';
-  import { isNumber, isObject } from '../_utils/is';
-  import { ThumbData } from './interface';
-  import Thumb from './thumb.vue';
+  import { OverlayScrollbars } from 'overlayscrollbars';
 
-  const THUMB_MIN_SIZE = 20;
-  const TRACK_SIZE = 15;
+  import type { ScrollbarEventListener, ScrollbarPlugin, ScrollbarProps } from './interface';
+
+  import { getPrefixCls } from '../_utils/global-config';
+  import { isObject } from '../_utils/is';
 
   export default defineComponent({
     name: 'Scrollbar',
-    components: {
-      ResizeObserver,
-      Thumb,
-    },
     inheritAttrs: false,
     props: {
       /**
@@ -78,6 +54,57 @@
        */
       outerStyle: {
         type: [String, Object, Array] as PropType<StyleValue>,
+      },
+      /**
+       * @zh 是否使用绝对 padding。
+       * @en Whether padding should be absolute.
+       */
+      paddingAbsolute: {
+        type: Boolean as PropType<ScrollbarProps['paddingAbsolute']>,
+        default: undefined,
+      },
+      /**
+       * @zh 是否展示原生 overlay 滚动条。
+       * @en Whether to show native overlaid scrollbars.
+       */
+      showNativeOverlaidScrollbars: {
+        type: Boolean as PropType<ScrollbarProps['showNativeOverlaidScrollbars']>,
+        default: undefined,
+      },
+      /**
+       * @zh OverlayScrollbars 的 update 配置。
+       * @en OverlayScrollbars update options.
+       */
+      updateOptions: {
+        type: Object as PropType<ScrollbarProps['updateOptions']>,
+      },
+      /**
+       * @zh OverlayScrollbars 的 overflow 配置。
+       * @en OverlayScrollbars overflow options.
+       */
+      overflow: {
+        type: Object as PropType<ScrollbarProps['overflow']>,
+      },
+      /**
+       * @zh OverlayScrollbars 的 scrollbars 配置。
+       * @en OverlayScrollbars scrollbar options.
+       */
+      scrollbars: {
+        type: Object as PropType<ScrollbarProps['scrollbars']>,
+      },
+      /**
+       * @zh 完整的 OverlayScrollbars options，会与组件级 props 合并。
+       * @en Complete OverlayScrollbars options merged with component props.
+       */
+      overlayOptions: {
+        type: Object as PropType<ScrollbarProps['overlayOptions']>,
+      },
+      /**
+       * @zh 直接透传给 OverlayScrollbars 的事件监听。
+       * @en Event listeners forwarded to OverlayScrollbars.
+       */
+      events: {
+        type: Object as PropType<ScrollbarProps['events']>,
       },
       // private
       hide: {
@@ -102,159 +129,268 @@
     },
     setup(props, { emit }) {
       const prefixCls = getPrefixCls('scrollbar');
-
       const containerRef = ref<HTMLElement>();
-      const horizontalData = ref<ThumbData>();
-      const verticalData = ref<ThumbData>();
-      const horizontalThumbRef = ref();
-      const verticalThumbRef = ref();
-      const _hasHorizontalScrollbar = ref(false);
-      const _hasVerticalScrollbar = ref(false);
-      const hasHorizontalScrollbar = computed(
-        () => _hasHorizontalScrollbar.value && !props.disableHorizontal,
-      );
-      const hasVerticalScrollbar = computed(
-        () => _hasVerticalScrollbar.value && !props.disableVertical,
-      );
-      const isBoth = ref(false);
+      const osInstanceRef = ref<OverlayScrollbarsInstance | null>(null);
+      const removeExternalListenersRef = ref<(() => void) | null>(null);
 
-      const getContainerSize = () => {
-        if (containerRef.value) {
-          const {
-            clientWidth,
-            clientHeight,
-            offsetWidth,
-            offsetHeight,
-            scrollWidth,
-            scrollHeight,
-            scrollTop,
-            scrollLeft,
-          } = containerRef.value;
-          _hasHorizontalScrollbar.value = scrollWidth > clientWidth;
-          _hasVerticalScrollbar.value = scrollHeight > clientHeight;
-          isBoth.value = hasHorizontalScrollbar.value && hasVerticalScrollbar.value;
-          const horizontalTrackWidth =
-            props.type === 'embed' && isBoth.value ? offsetWidth - TRACK_SIZE : offsetWidth;
-          const verticalTrackHeight =
-            props.type === 'embed' && isBoth.value ? offsetHeight - TRACK_SIZE : offsetHeight;
-
-          const horizontalThumbWidth = Math.round(
-            horizontalTrackWidth /
-              Math.min(scrollWidth / clientWidth, horizontalTrackWidth / THUMB_MIN_SIZE),
-          );
-          const maxHorizontalOffset = horizontalTrackWidth - horizontalThumbWidth;
-          const horizontalRatio = (scrollWidth - clientWidth) / maxHorizontalOffset;
-          const verticalThumbHeight = Math.round(
-            verticalTrackHeight /
-              Math.min(scrollHeight / clientHeight, verticalTrackHeight / THUMB_MIN_SIZE),
-          );
-          const maxVerticalOffset = verticalTrackHeight - verticalThumbHeight;
-          const verticalRatio = (scrollHeight - clientHeight) / maxVerticalOffset;
-
-          horizontalData.value = {
-            ratio: horizontalRatio,
-            thumbSize: horizontalThumbWidth,
-            max: maxHorizontalOffset,
-          };
-          verticalData.value = {
-            ratio: verticalRatio,
-            thumbSize: verticalThumbHeight,
-            max: maxVerticalOffset,
-          };
-          if (scrollTop > 0) {
-            const verticalOffset = Math.round(scrollTop / (verticalData.value?.ratio ?? 1));
-            verticalThumbRef.value?.setOffset(verticalOffset);
-          }
-          if (scrollLeft > 0) {
-            const horizontalOffset = Math.round(scrollLeft / (verticalData.value?.ratio ?? 1));
-            horizontalThumbRef.value?.setOffset(horizontalOffset);
-          }
+      const resolveOSInstance = () => {
+        const osInstance = osInstanceRef.value;
+        if (!osInstance || osInstance.state().destroyed) {
+          return null;
         }
+        return osInstance;
       };
 
-      onMounted(() => {
-        getContainerSize();
+      const getScrollOffsetElement = () => {
+        const osInstance = resolveOSInstance();
+        if (!osInstance) {
+          return null;
+        }
+        return osInstance.elements().scrollOffsetElement ?? null;
+      };
+
+      const mergedOptions = computed(() => {
+        const optionProps = props.overlayOptions ?? {};
+        const isTrackType = props.type === 'track';
+        let visibility: 'hidden' | 'visible' | 'auto' = 'auto';
+        if (props.hide) {
+          visibility = 'hidden';
+        } else if (isTrackType) {
+          visibility = 'visible';
+        }
+        const autoHide = props.hide || isTrackType ? 'never' : 'leave';
+
+        const mergedOverflow = {
+          x: 'scroll',
+          y: 'scroll',
+          ...optionProps.overflow,
+          ...props.overflow,
+        };
+
+        if (props.disableHorizontal) {
+          mergedOverflow.x = 'hidden';
+        }
+        if (props.disableVertical) {
+          mergedOverflow.y = 'hidden';
+        }
+
+        return {
+          ...optionProps,
+          paddingAbsolute: props.paddingAbsolute ?? optionProps.paddingAbsolute,
+          showNativeOverlaidScrollbars:
+            props.showNativeOverlaidScrollbars ?? optionProps.showNativeOverlaidScrollbars,
+          update: props.updateOptions ?? optionProps.update,
+          overflow: mergedOverflow,
+          scrollbars: {
+            theme: props.type === 'track' ? `${prefixCls}-theme-track` : `${prefixCls}-theme-embed`,
+            visibility,
+            autoHide,
+            autoHideSuspend: true,
+            clickScroll: 'instant',
+            ...optionProps.scrollbars,
+            ...props.scrollbars,
+          },
+        };
       });
 
-      const handleResize = () => {
-        getContainerSize();
+      const bindExternalListeners = (eventListeners?: EventListeners) => {
+        removeExternalListenersRef.value?.();
+        removeExternalListenersRef.value = null;
+
+        const osInstance = resolveOSInstance();
+        if (!osInstance || !eventListeners) {
+          return;
+        }
+
+        removeExternalListenersRef.value = osInstance.on(eventListeners);
       };
 
-      const handleScroll = (ev: Event) => {
-        if (containerRef.value) {
-          if (hasHorizontalScrollbar.value && !props.disableHorizontal) {
-            const horizontalOffset = Math.round(
-              containerRef.value.scrollLeft / (horizontalData.value?.ratio ?? 1),
-            );
-            horizontalThumbRef.value?.setOffset(horizontalOffset);
-          }
-          if (hasVerticalScrollbar.value && !props.disableVertical) {
-            const verticalOffset = Math.round(
-              containerRef.value.scrollTop / (verticalData.value?.ratio ?? 1),
-            );
-            verticalThumbRef.value?.setOffset(verticalOffset);
-          }
-        }
-        emit('scroll', ev);
-      };
-
-      const handleHorizontalScroll = (offset: number) => {
-        if (containerRef.value) {
-          containerRef.value.scrollTo({
-            left: offset * (horizontalData.value?.ratio ?? 1),
-          });
-        }
-      };
-
-      const handleVerticalScroll = (offset: number) => {
-        if (containerRef.value) {
-          containerRef.value.scrollTo({
-            top: offset * (verticalData.value?.ratio ?? 1),
-          });
-        }
-      };
-
-      const style = computed(() => {
-        const style: CSSProperties = {};
-        if (props.type === 'track') {
-          if (hasHorizontalScrollbar.value) {
-            style.paddingBottom = `${TRACK_SIZE}px`;
-          }
-          if (hasVerticalScrollbar.value) {
-            style.paddingRight = `${TRACK_SIZE}px`;
-          }
-        }
-        return [style, props.outerStyle];
-      });
+      const outerStyle = computed(() => props.outerStyle);
 
       const cls = computed(() => [
         `${prefixCls}`,
         `${prefixCls}-type-${props.type}`,
-        {
-          [`${prefixCls}-both`]: isBoth.value,
-        },
         props.outerClass,
       ]);
+
+      const initScrollbar = () => {
+        if (!containerRef.value) {
+          return;
+        }
+
+        osInstanceRef.value = OverlayScrollbars(containerRef.value, mergedOptions.value, {
+          scroll: (_instance, event) => {
+            emit('scroll', event);
+          },
+        });
+
+        bindExternalListeners(props.events);
+      };
+
+      onMounted(() => {
+        initScrollbar();
+      });
+
+      watch(
+        mergedOptions,
+        (options) => {
+          const osInstance = resolveOSInstance();
+          if (!osInstance) {
+            return;
+          }
+          osInstance.options(options);
+        },
+        { deep: true },
+      );
+
+      watch(
+        () => props.events,
+        (eventListeners) => {
+          bindExternalListeners(eventListeners);
+        },
+        { deep: true },
+      );
+
+      onBeforeUnmount(() => {
+        removeExternalListenersRef.value?.();
+        removeExternalListenersRef.value = null;
+        osInstanceRef.value?.destroy();
+        osInstanceRef.value = null;
+      });
 
       return {
         prefixCls,
         cls,
-        style,
+        outerStyle,
         containerRef,
-        horizontalThumbRef,
-        verticalThumbRef,
-        horizontalData,
-        verticalData,
-        isBoth,
-        hasHorizontalScrollbar,
-        hasVerticalScrollbar,
-        handleResize,
-        handleScroll,
-        handleHorizontalScroll,
-        handleVerticalScroll,
+        mergedOptions,
+        resolveOSInstance,
+        getScrollOffsetElement,
       };
     },
     methods: {
+      /**
+       * @zh 获取底层 OverlayScrollbars 实例。
+       * @en Get underlying OverlayScrollbars instance.
+       */
+      getOSInstance() {
+        return this.resolveOSInstance();
+      },
+      /**
+       * @zh 获取或更新底层 options。
+       * @en Get or set OverlayScrollbars options.
+       */
+      options(newOptions?: ScrollbarProps['overlayOptions'], pure?: boolean) {
+        const osInstance = this.getOSInstance();
+        if (!osInstance) {
+          return undefined;
+        }
+
+        if (typeof newOptions === 'undefined') {
+          return osInstance.options();
+        }
+
+        return osInstance.options(newOptions, pure);
+      },
+      /**
+       * @zh 绑定底层 OverlayScrollbars 事件。
+       * @en Bind OverlayScrollbars listeners.
+       */
+      on(
+        nameOrListeners: keyof EventListenerArgs | EventListeners,
+        listenerOrPure?:
+          | ScrollbarEventListener<keyof EventListenerArgs>
+          | ScrollbarEventListener<keyof EventListenerArgs>[]
+          | boolean,
+      ) {
+        const osInstance = this.getOSInstance();
+        if (!osInstance) {
+          return undefined;
+        }
+
+        if (isObject(nameOrListeners)) {
+          return osInstance.on(
+            nameOrListeners as EventListeners,
+            listenerOrPure as boolean | undefined,
+          );
+        }
+
+        return osInstance.on(
+          nameOrListeners,
+          listenerOrPure as
+            | ScrollbarEventListener<keyof EventListenerArgs>
+            | ScrollbarEventListener<keyof EventListenerArgs>[],
+        );
+      },
+      /**
+       * @zh 解绑底层 OverlayScrollbars 事件。
+       * @en Remove OverlayScrollbars listeners.
+       */
+      off(
+        name: keyof EventListenerArgs,
+        listener:
+          | ScrollbarEventListener<keyof EventListenerArgs>
+          | ScrollbarEventListener<keyof EventListenerArgs>[],
+      ) {
+        const osInstance = this.getOSInstance();
+        if (!osInstance) {
+          return;
+        }
+
+        osInstance.off(
+          name,
+          listener as
+            | ScrollbarEventListener<keyof EventListenerArgs>
+            | ScrollbarEventListener<keyof EventListenerArgs>[],
+        );
+      },
+      /**
+       * @zh 强制更新底层实例。
+       * @en Force instance update.
+       */
+      update(force?: boolean) {
+        return this.getOSInstance()?.update(force) ?? false;
+      },
+      /**
+       * @zh 设置底层实例休眠状态。
+       * @en Toggle sleeping state.
+       */
+      sleep(sleeping: boolean) {
+        this.getOSInstance()?.sleep(sleeping);
+      },
+      /**
+       * @zh 获取底层状态。
+       * @en Get underlying state.
+       */
+      state() {
+        return this.getOSInstance()?.state();
+      },
+      /**
+       * @zh 获取底层生成的元素引用。
+       * @en Get generated elements.
+       */
+      elements() {
+        return this.getOSInstance()?.elements();
+      },
+      /**
+       * @zh 获取底层插件实例。
+       * @en Get plugin instance.
+       */
+      plugin(osPlugin: ScrollbarPlugin) {
+        return this.getOSInstance()?.plugin(osPlugin);
+      },
+      /**
+       * @zh 销毁底层实例。
+       * @en Destroy underlying instance.
+       */
+      destroy() {
+        const osInstance = this.getOSInstance();
+        if (!osInstance) {
+          return;
+        }
+
+        osInstance.destroy();
+      },
       /**
        * @zh 滚动
        * @en scrollTo
@@ -271,10 +407,43 @@
             },
         y?: number,
       ) {
+        const scrollOffsetElement = this.getScrollOffsetElement();
+        if (!scrollOffsetElement || !('scrollTop' in scrollOffsetElement)) {
+          return;
+        }
+
+        const canUseNativeScrollTo = typeof scrollOffsetElement.scrollTo === 'function';
+
         if (isObject(options)) {
-          (this.$refs.containerRef as HTMLElement)?.scrollTo(options);
-        } else if (options || y) {
-          (this.$refs.containerRef as HTMLElement)?.scrollTo(options as number, y as number);
+          if (canUseNativeScrollTo) {
+            scrollOffsetElement.scrollTo(options);
+            return;
+          }
+
+          if (typeof options.top === 'number') {
+            scrollOffsetElement.scrollTop = options.top;
+          }
+          if (typeof options.left === 'number') {
+            scrollOffsetElement.scrollLeft = options.left;
+          }
+
+          return;
+        }
+
+        if (typeof options !== 'number' && typeof y !== 'number') {
+          return;
+        }
+
+        if (canUseNativeScrollTo) {
+          scrollOffsetElement.scrollTo(options as number | undefined, y as number | undefined);
+          return;
+        }
+
+        if (typeof options === 'number') {
+          scrollOffsetElement.scrollLeft = options;
+        }
+        if (typeof y === 'number') {
+          scrollOffsetElement.scrollTop = y;
         }
       },
       /**
@@ -285,9 +454,18 @@
        * @version 2.40.0
        */
       scrollTop(top: number) {
-        (this.$refs.containerRef as HTMLElement)?.scrollTo({
-          top,
-        });
+        const scrollOffsetElement = this.getScrollOffsetElement();
+        if (!scrollOffsetElement || !('scrollTop' in scrollOffsetElement)) {
+          return;
+        }
+
+        if (typeof scrollOffsetElement.scrollTo === 'function') {
+          scrollOffsetElement.scrollTo({
+            top,
+          });
+        } else {
+          scrollOffsetElement.scrollTop = top;
+        }
       },
       /**
        * @zh 横向滚动
@@ -297,9 +475,18 @@
        * @version 2.40.0
        */
       scrollLeft(left: number) {
-        (this.$refs.containerRef as HTMLElement)?.scrollTo({
-          left,
-        });
+        const scrollOffsetElement = this.getScrollOffsetElement();
+        if (!scrollOffsetElement || !('scrollLeft' in scrollOffsetElement)) {
+          return;
+        }
+
+        if (typeof scrollOffsetElement.scrollTo === 'function') {
+          scrollOffsetElement.scrollTo({
+            left,
+          });
+        } else {
+          scrollOffsetElement.scrollLeft = left;
+        }
       },
     },
   });

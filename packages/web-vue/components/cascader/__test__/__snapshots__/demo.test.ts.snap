@@ -128,26 +128,36 @@ exports[`<cascader> demo: > render [panel] correctly 1`] = `
 <transition-group-stub tag="div" name="cascader-slide" appear="false" persisted="false" css="true" class="sd-cascader-panel">
   <div class="sd-cascader-panel-column" style="z-index: 3;">
     <div class="sd-scrollbar sd-scrollbar-type-embed">
-      <div class="sd-scrollbar-container sd-cascader-column-content">
-        <ul role="menu" class="sd-cascader-list">
-          <li tabindex="0" role="menuitem" aria-disabled="false" aria-haspopup="true" aria-expanded="false" title="Beijing" class="sd-cascader-option">
-            <!---->
-            <!---->
-            <div class="sd-cascader-option-label">Beijing<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-                <path d="m16 39.513 15.556-15.557L16 8.4"></path>
-              </svg></div>
-          </li>
-          <li tabindex="0" role="menuitem" aria-disabled="false" aria-haspopup="true" aria-expanded="false" title="Shanghai" class="sd-cascader-option">
-            <!---->
-            <!---->
-            <div class="sd-cascader-option-label">Shanghai<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-                <path d="m16 39.513 15.556-15.557L16 8.4"></path>
-              </svg></div>
-          </li>
-        </ul>
+      <div class="sd-scrollbar-container sd-cascader-column-content" data-overlayscrollbars="host">
+        <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+          <ul role="menu" class="sd-cascader-list">
+            <li tabindex="0" role="menuitem" aria-disabled="false" aria-haspopup="true" aria-expanded="false" title="Beijing" class="sd-cascader-option">
+              <!---->
+              <!---->
+              <div class="sd-cascader-option-label">Beijing<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                  <path d="m16 39.513 15.556-15.557L16 8.4"></path>
+                </svg></div>
+            </li>
+            <li tabindex="0" role="menuitem" aria-disabled="false" aria-haspopup="true" aria-expanded="false" title="Shanghai" class="sd-cascader-option">
+              <!---->
+              <!---->
+              <div class="sd-cascader-option-label">Shanghai<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                  <path d="m16 39.513 15.556-15.557L16 8.4"></path>
+                </svg></div>
+            </li>
+          </ul>
+        </div>
+        <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+          <div class="os-scrollbar-track">
+            <div class="os-scrollbar-handle"></div>
+          </div>
+        </div>
+        <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+          <div class="os-scrollbar-track">
+            <div class="os-scrollbar-handle"></div>
+          </div>
+        </div>
       </div>
-      <!--v-if-->
-      <!--v-if-->
     </div>
   </div>
 </transition-group-stub>

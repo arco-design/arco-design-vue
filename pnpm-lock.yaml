@@ -17,7 +17,7 @@ catalogs:
       specifier: ^5.1.5
       version: 5.1.5
     '@vueuse/core':
-      specifier: ^14.2.1
+      specifier: ^14.3.0
       version: 14.3.0
     typescript:
       specifier: ^6.0.3
@@ -33,6 +33,8 @@ overrides:
   axios@>=1.0.0 <1.15.1: '>=1.15.1'
   axios@>=1.0.0 <1.15.2: '>=1.15.2'
   braces@<3.0.3: '>=3.0.3'
+  fast-uri@<=3.1.0: '>=3.1.1'
+  fast-uri@<=3.1.1: '>=3.1.2'
   flatted@<3.4.0: '>=3.4.0'
   flatted@<=3.4.1: '>=3.4.2'
   micromatch@<4.0.8: '>=4.0.8'
@@ -186,6 +188,9 @@ importers:
       number-precision:
         specifier: ^1.6.0
         version: 1.6.0
+      overlayscrollbars:
+        specifier: ^2.15.1
+        version: 2.15.1
       resize-observer-polyfill:
         specifier: ^1.5.1
         version: 1.5.1
@@ -3571,8 +3576,8 @@ packages:
   fast-string-width@1.1.0:
     resolution: {integrity: sha512-O3fwIVIH5gKB38QNbdg+3760ZmGz0SZMgvwJbA1b2TGXceKE6A2cOlfogh1iw8lr049zPyd7YADHy+B7U4W9bQ==}
 
-  fast-uri@3.1.0:
-    resolution: {integrity: sha512-iPeeDKJSWf4IEOasVVrknXpaBV0IApz/gp7S2bb7Z4Lljbl2MGJRqInZiUrQwV16cpzw/D3S5j5Julj/gT52AA==}
+  fast-uri@3.1.2:
+    resolution: {integrity: sha512-rVjf7ArG3LTk+FS6Yw81V1DLuZl1bRbNrev6Tmd/9RaroeeRRJhAt7jg/6YFxbvAQXUCavSoZhPPj6oOx+5KjQ==}
 
   fast-wrap-ansi@0.1.6:
     resolution: {integrity: sha512-HlUwET7a5gqjURj70D5jl7aC3Zmy4weA1SHUfM0JFI0Ptq987NH2TwbBFLoERhfwk+E+eaq4EK3jXoT+R3yp3w==}
@@ -5055,6 +5060,9 @@ packages:
   open@10.2.0:
     resolution: {integrity: sha512-YgBpdJHPyQ2UE5x+hlSXcnejzAvD0b22U2OuAP+8OnlJT+PjWPxtgmGqKKc+RgTM63U9gN0YzrYc71R2WT/hTA==}
     engines: {node: '>=18'}
+
+  overlayscrollbars@2.15.1:
+    resolution: {integrity: sha512-glX26JwjL+Tkzv0JNOWdW4VozP5dGXO+Wx8+TPrdTEJTSYT/8eJS8yXM+fewjU0nFq/JeCa+X+BqABNjC4YZSA==}
 
   oxfmt@0.45.0:
     resolution: {integrity: sha512-0o/COoN9fY50bjVeM7PQsNgbhndKurBIeTIcspW033OumksjJJmIVDKjAk5HMwU/GHTxSOdGDdhJ6BRzGPmsHg==}
@@ -9008,7 +9016,7 @@ snapshots:
   ajv@8.18.0:
     dependencies:
       fast-deep-equal: 3.1.3
-      fast-uri: 3.1.0
+      fast-uri: 3.1.2
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
@@ -9981,7 +9989,7 @@ snapshots:
     dependencies:
       fast-string-truncated-width: 1.2.1
 
-  fast-uri@3.1.0: {}
+  fast-uri@3.1.2: {}
 
   fast-wrap-ansi@0.1.6:
     dependencies:
@@ -11736,6 +11744,8 @@ snapshots:
       define-lazy-prop: 3.0.0
       is-inside-container: 1.0.0
       wsl-utils: 0.1.0
+
+  overlayscrollbars@2.15.1: {}
 
   oxfmt@0.45.0:
     dependencies:

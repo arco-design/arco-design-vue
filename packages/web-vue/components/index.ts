@@ -182,7 +182,22 @@ export type { ResizeBoxInstance } from './resize-box';
 export { default as Result } from './result';
 export type { ResultInstance } from './result';
 export { default as Scrollbar } from './scrollbar';
-export type { ScrollbarInstance, ScrollbarProps } from './scrollbar';
+export type {
+  ScrollbarElements,
+  ScrollbarEventListener,
+  ScrollbarEventListenerArgs,
+  ScrollbarEventListeners,
+  ScrollbarExpose,
+  ScrollbarInstance,
+  ScrollbarOptions,
+  ScrollbarOptionsResolved,
+  ScrollbarPlugin,
+  ScrollbarProps,
+  ScrollbarReadonlyOptions,
+  ScrollbarState,
+  ScrollbarType,
+  ScrollbarUpdatedEvent,
+} from './scrollbar';
 export { default as Select, Optgroup, Option } from './select';
 export type {
   FilterOption,

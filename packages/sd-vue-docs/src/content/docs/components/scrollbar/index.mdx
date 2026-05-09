@@ -5,15 +5,33 @@ description: 用于替换浏览器默认滚动条样式。
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import ScrollbarBasicDemo from '../../../../components/generated/scrollbar/basic.vue';
-export const scrollbarBasicSource =
-  '<template>\n  <sd-scrollbar style="height:200px;overflow: auto;">\n    <div style="height: 2000px;width: 2000px; background-color: var(--color-primary-light-4);"\n      >Content</div\n    >\n  </sd-scrollbar>\n</template>';
+import scrollbarBasicSource from '../../../../components/generated/scrollbar/basic.vue?raw';
+import ScrollbarMethodsDemo from '../../../../components/generated/scrollbar/methods.vue';
+import scrollbarMethodsSource from '../../../../components/generated/scrollbar/methods.vue?raw';
+import ScrollbarOverlayOptionsDemo from '../../../../components/generated/scrollbar/overlay-options.vue';
+import scrollbarOverlayOptionsSource from '../../../../components/generated/scrollbar/overlay-options.vue?raw';
 import ScrollbarTypeDemo from '../../../../components/generated/scrollbar/type.vue';
-export const scrollbarTypeSource =
-  '<template>\n  <sd-scrollbar type="track" style="height:200px;overflow: auto;">\n    <div style="height: 2000px;width: 2000px; background-color: var(--color-primary-light-4);"\n      >Content</div\n    >\n  </sd-scrollbar>\n</template>\n\n<script>\n  export default {};\n</script>';
+import scrollbarTypeSource from '../../../../components/generated/scrollbar/type.vue?raw';
+
+## 介绍
+
+`Scrollbar` 基于 <a href="https://kingsora.github.io/OverlayScrollbars" target="_blank">`OverlayScrollbars`</a> 实现，用来替换宿主元素的原生滚动条表现，同时保留原生滚动能力、滚动事件和滚动定位能力。
+
+这个组件处理了 `target` 元素的创建与销毁，外部只需要关心两类能力：
+
+- 组件级兼容 props，例如 `type`、`outerClass`、`outerStyle`
+- 底层 `OverlayScrollbars` 的配置与实例方法
+
+如果你已经熟悉 `OverlayScrollbars` 原始文档，可以把 `Scrollbar` 看成一个 Vue 组件壳：
+
+- `target` 由组件内部容器托管
+- `options` 拆成了组件 props
+- `eventListeners` 通过 `events` prop 透传
+- 实例方法通过组件 `ref` 直接暴露
 
 ### 基本用法
 
-滚动条组件基本用法。scrollbar 的默认插槽需要唯一的子元素。
+基于 OverlayScrollbars 的滚动条组件基础用法。
 
 <DemoBlock source={scrollbarBasicSource} mainFile="src/scrollbar-basic.vue">
 
@@ -23,7 +41,7 @@ export const scrollbarTypeSource =
 
 ### 滚动条类型
 
-设置 `type` 属性改变滚动条类型，`track` 类型会显示滚动条轨道。
+设置 `type` 属性改变滚动条类型，`track` 类型会持续展示滚动条轨道。
 
 <DemoBlock source={scrollbarTypeSource} mainFile="src/scrollbar-type.vue">
 
@@ -31,24 +49,170 @@ export const scrollbarTypeSource =
 
 </DemoBlock>
 
+### 底层参数透传
+
+`Scrollbar` 把 `OverlayScrollbars` 常用配置拆成了独立 props，并额外保留了 `overlayOptions` 用于一次性传递完整底层配置对象。
+
+<DemoBlock source={scrollbarOverlayOptionsSource} mainFile="src/scrollbar-overlay-options.vue">
+
+<ScrollbarOverlayOptionsDemo client:only="vue" />
+
+</DemoBlock>
+
+### 暴露的方法
+
+组件 `ref` 会暴露滚动快捷方法和 `OverlayScrollbars` 实例方法，适合命令式滚动、主动更新以及读取底层状态。
+
+<DemoBlock source={scrollbarMethodsSource} mainFile="src/scrollbar-methods.vue">
+
+<ScrollbarMethodsDemo client:only="vue" />
+
+</DemoBlock>
+
+## API
+
 ### `<scrollbar>` Props
 
-| 参数名      | 描述       | 类型                    |  默认值   |
-| ----------- | ---------- | ----------------------- | :-------: |
-| type        | 类型       | `'track' \| 'embed'`    | `'embed'` |
-| outer-class | 外层的类名 | `string\|object\|array` |    `-`    |
-| outer-style | 外层的样式 | `StyleValue`            |    `-`    |
+| 参数名 | 描述 | 类型 | 默认值 |
+| --- | --- | --- | :-: |
+| type | 组件视觉类型。`embed` 使用嵌入式悬浮滚动条，`track` 始终展示轨道。 | `'track' \| 'embed'` | `'embed'` |
+| outer-class | 外层根节点类名。 | `string \| Record<string, any> \| unknown[]` | `-` |
+| outer-style | 外层根节点样式。 | `CSSProperties \| CSSProperties[]` | `-` |
+| padding-absolute | 对应 `OverlayScrollbars` 的 `paddingAbsolute`。 | `boolean` | `-` |
+| show-native-overlaid-scrollbars | 对应 `OverlayScrollbars` 的 `showNativeOverlaidScrollbars`。 | `boolean` | `-` |
+| update-options | 对应底层 `update` 配置。 | `ScrollbarOptions['update']` | `-` |
+| overflow | 对应底层 `overflow` 配置。 | `ScrollbarOptions['overflow']` | `-` |
+| scrollbars | 对应底层 `scrollbars` 配置。 | `ScrollbarOptions['scrollbars']` | `-` |
+| overlay-options | 完整底层 options，会与上述 props 合并。 | `ScrollbarOptions` | `-` |
+| events | 初始化时注册到底层实例的事件监听集合。 | `ScrollbarEventListeners` | `-` |
+| hide | 强制隐藏滚动条，主要用于组件内部兼容。 | `boolean` | `false` |
+| disable-horizontal | 禁用横向滚动。 | `boolean` | `false` |
+| disable-vertical | 禁用纵向滚动。 | `boolean` | `false` |
+
+### Props 合并规则
+
+- `overlayOptions` 作为完整底层配置的基础对象。
+- `paddingAbsolute`、`showNativeOverlaidScrollbars`、`updateOptions`、`overflow`、`scrollbars` 会覆盖 `overlayOptions` 中对应字段。
+- `disableHorizontal` 和 `disableVertical` 最终会强制对应轴的 `overflow` 为 `hidden`。
+- `type` 会提供默认主题类，`hide` 会提供默认的可见性策略；如果你显式传入 `scrollbars.theme`、`scrollbars.visibility`、`scrollbars.autoHide`，则以显式配置为准。
 
 ### `<scrollbar>` Events
 
-| 事件名 | 描述       | 参数 |
-| ------ | ---------- | ---- |
-| scroll | 滚动时触发 | -    |
+| 事件名 | 描述                                               | 参数        |
+| ------ | -------------------------------------------------- | ----------- |
+| scroll | 组件级滚动事件，底层触发 `scroll` 时同步向上抛出。 | `ev: Event` |
+
+### `events` Prop 支持的底层事件
+
+`events` prop 与底层 `OverlayScrollbars` 的事件名保持一致。
+
+| 事件名 | 描述 | 参数 |
+| --- | --- | --- |
+| initialized | 初始化完成后触发。 | `instance: OverlayScrollbars` |
+| updated | 底层实例更新且实际发生变化后触发。 | `instance: OverlayScrollbars`<br />`args: ScrollbarUpdatedEvent` |
+| destroyed | 实例销毁后触发。 | `instance: OverlayScrollbars`<br />`canceled: boolean` |
+| scroll | 视口滚动时触发。 | `instance: OverlayScrollbars`<br />`ev: Event` |
 
 ### `<scrollbar>` Methods
 
 | 方法名 | 描述 | 参数 | 返回值 | 版本 |
 | --- | --- | --- | --- | :-- |
-| scrollTo | 滚动 | options: `number \| {left?: number;top?: number}`<br />y: `number` | - |  |
-| scrollTop | 纵向滚动 | top: `number` | - | 2.40.0 |
-| scrollLeft | 横向滚动 | left: `number` | - | 2.40.0 |
+| getOSInstance | 获取底层 `OverlayScrollbars` 实例。 | - | `OverlayScrollbars \| null` |  |
+| options | 获取或更新底层 options。 | `newOptions?: ScrollbarOptions`<br />`pure?: boolean` | `ScrollbarOptionsResolved \| undefined` |  |
+| on | 绑定底层事件监听。 | `eventListeners: ScrollbarEventListeners`<br />或 `name` / `listener` | `() => void \| undefined` |  |
+| off | 解绑底层事件监听。 | `name`<br />`listener` | `void` |  |
+| update | 主动触发一次底层更新。 | `force?: boolean` | `boolean` |  |
+| sleep | 设置底层实例是否进入休眠。 | `sleeping: boolean` | `void` |  |
+| state | 读取底层状态。 | - | `ScrollbarState \| undefined` |  |
+| elements | 读取底层生成的元素引用。 | - | `ScrollbarElements \| undefined` |  |
+| plugin | 获取底层插件实例。 | `osPlugin: ScrollbarPlugin` | `unknown` |  |
+| destroy | 销毁底层实例。 | - | `void` |  |
+| scrollTo | 滚动到指定位置。 | `options: number \| { left?: number; top?: number }`<br />`y?: number` | `void` |  |
+| scrollTop | 纵向滚动。 | `top: number` | `void` | 2.40.0 |
+| scrollLeft | 横向滚动。 | `left: number` | `void` | 2.40.0 |
+
+## OverlayScrollbars Options 详解
+
+### `paddingAbsolute`
+
+| 参数             | 说明                              | 类型      | 默认值  |
+| ---------------- | --------------------------------- | --------- | :-----: |
+| padding-absolute | 内容 padding 是否按绝对布局处理。 | `boolean` | `false` |
+
+### `showNativeOverlaidScrollbars`
+
+| 参数                            | 说明                                   | 类型      | 默认值  |
+| ------------------------------- | -------------------------------------- | --------- | :-----: |
+| show-native-overlaid-scrollbars | 原生 overlay scrollbars 是否仍然可见。 | `boolean` | `false` |
+
+### `updateOptions`
+
+`updateOptions` 对应底层 `update` 配置对象，用于调节更新检测行为。
+
+| 字段 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | :-: |
+| elementEvents | 指定哪些元素事件触发更新。 | `Array<[string, string]> \| null` | `[['img', 'load']]` |
+| debounce.mutation | `MutationObserver` 更新节流。 | `[timeout?, maxWait?, leading?] \| number \| null` | `[0, 33]` |
+| debounce.resize | `ResizeObserver` 更新节流。 | `[timeout?, maxWait?, leading?] \| number \| null` | `null` |
+| debounce.event | 事件更新节流。 | `[timeout?, maxWait?, leading?] \| number \| null` | `[33, 99]` |
+| debounce.env | 环境变化更新节流。 | `[timeout?, maxWait?, leading?] \| number \| null` | `[222, 666, true]` |
+| attributes | 额外监听的属性名。 | `string[] \| null` | `null` |
+| ignoreMutation | 过滤某些 mutation。 | `(mutation: MutationRecord) => boolean` | `null` |
+| flowDirectionStyles | 自定义流向检测。 | `(viewport: HTMLElement) => Record<string, unknown>` | `null` |
+
+### `overflow`
+
+| 字段 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | :-: |
+| overflow.x | 横向滚动策略。 | `'hidden' \| 'scroll' \| 'visible' \| 'visible-hidden' \| 'visible-scroll'` | `'scroll'` |
+| overflow.y | 纵向滚动策略。 | `'hidden' \| 'scroll' \| 'visible' \| 'visible-hidden' \| 'visible-scroll'` | `'scroll'` |
+
+### `scrollbars`
+
+| 字段 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | :-: |
+| scrollbars.theme | 滚动条主题类名。 | `string \| null` | 由 `type` 推导 |
+| scrollbars.visibility | 可见性策略。 | `'visible' \| 'hidden' \| 'auto'` | embed 为 `'auto'`，track 为 `'visible'` |
+| scrollbars.autoHide | 自动隐藏策略。 | `'never' \| 'scroll' \| 'move' \| 'leave'` | embed 为 `'leave'`，track 为 `'never'` |
+| scrollbars.autoHideDelay | 自动隐藏延迟。 | `number` | `1300` |
+| scrollbars.autoHideSuspend | 首次交互前是否挂起自动隐藏。 | `boolean` | `true` |
+| scrollbars.dragScroll | 是否允许拖拽 handle。 | `boolean` | `true` |
+| scrollbars.clickScroll | 是否允许点击轨道滚动。 | `boolean \| 'instant' \| ((isHorizontal) => options)` | `'instant'` |
+| scrollbars.pointers | 响应的 pointer 类型。 | `string[] \| null` | `['mouse', 'touch', 'pen']` |
+
+## TypeScript
+
+组件已经把底层常用类型从包入口抛出，可以直接从 `@sdata/web-vue` 导入。
+
+```ts
+import type {
+  ScrollbarElements,
+  ScrollbarEventListeners,
+  ScrollbarExpose,
+  ScrollbarInstance,
+  ScrollbarOptions,
+  ScrollbarOptionsResolved,
+  ScrollbarProps,
+  ScrollbarState,
+  ScrollbarUpdatedEvent,
+} from '@sdata/web-vue';
+```
+
+### 常用类型说明
+
+| 类型名                     | 说明                                             |
+| -------------------------- | ------------------------------------------------ |
+| `ScrollbarProps`           | 组件完整 props 类型。                            |
+| `ScrollbarInstance`        | 组件实例类型，包含 expose 的所有方法。           |
+| `ScrollbarExpose`          | 仅包含对外暴露方法的类型。                       |
+| `ScrollbarOptions`         | 底层 `PartialOptions` 的别名，适合用作传入配置。 |
+| `ScrollbarOptionsResolved` | 底层 `Options` 的别名，表示完整解析后的配置。    |
+| `ScrollbarEventListeners`  | 底层事件监听集合类型。                           |
+| `ScrollbarUpdatedEvent`    | `updated` 事件第二个参数类型。                   |
+| `ScrollbarState`           | `state()` 返回值类型。                           |
+| `ScrollbarElements`        | `elements()` 返回值类型。                        |
+
+## 参考
+
+- 底层行为、事件语义和字段定义与 `OverlayScrollbars` 文档保持一致。
+- 组件额外提供 `scrollTo`、`scrollTop`、`scrollLeft` 三个快捷方法，以兼容现有 `web-vue` 组件调用方式。
