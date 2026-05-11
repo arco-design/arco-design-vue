@@ -1,4 +1,5 @@
 {
   "stylelint.configFile": "${workspaceFolder}/.stylelintrc.mjs",
-  "stylelint.configBasedir": "${workspaceFolder}"
+  "stylelint.configBasedir": "${workspaceFolder}",
+  "js/ts.experimental.useTsgo": true
 }
