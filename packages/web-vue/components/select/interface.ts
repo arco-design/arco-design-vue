@@ -1,4 +1,4 @@
-import type { VirtualListProps } from '../_components/virtual-list-v2/interface';
+import type { VirtualListProps } from '../_components/virtual-list/interface';
 import type { Size } from '../_utils/constant';
 import type { ScrollbarProps } from '../scrollbar';
 import type { TriggerProps } from '../trigger';

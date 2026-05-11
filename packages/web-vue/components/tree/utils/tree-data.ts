@@ -1,17 +1,10 @@
 import { isFunction, isUndefined } from '../../_utils/is';
 import { omit } from '../../_utils/omit';
-import {
-  TreeNodeData,
-  Node,
-  TreeFieldNames,
-  TreeNodeKey,
-  SelectableType,
-  CheckableType,
-} from '../interface';
+import { TreeNodeData, Node, TreeFieldNames, CheckableType } from '../interface';
 
 interface TreeProps {
   fieldNames?: TreeFieldNames;
-  selectable: SelectableType;
+  selectable: CheckableType;
   checkable: CheckableType;
   blockNode: boolean;
   showLine: boolean;
@@ -39,7 +32,10 @@ function getBoolean(val1: boolean | undefined, val2: boolean | undefined) {
   return !!(isUndefined(val1) ? val2 : val1);
 }
 
-function mapObject<K, T = any>(obj: T, nameMap?: Partial<Record<keyof K, string>>): K {
+function mapObject<K, T extends Record<string, any>>(
+  obj: T,
+  nameMap?: Partial<Record<keyof K, string>>,
+): K {
   const _obj: Record<string, any> = { ...obj };
 
   if (nameMap) {
@@ -81,7 +77,7 @@ function generateNode(options: NodeOptions): Node {
   const { treeNodeData, parentNode, isTail = true, treeProps } = options;
   const { fieldNames } = treeProps || {};
 
-  const mapTreeNodeData = mapObject<TreeNodeData>(treeNodeData, fieldNames);
+  const mapTreeNodeData = mapObject<TreeNodeData, TreeNodeData>(treeNodeData, fieldNames);
   const isLeaf = treeProps.loadMore ? !!mapTreeNodeData.isLeaf : !mapTreeNodeData.children?.length;
   const level = parentNode ? parentNode.level + 1 : 0;
 
@@ -121,7 +117,7 @@ function generateNode(options: NodeOptions): Node {
     treeNodeData,
     parent: parentNode,
     parentKey: parentNode?.key,
-    pathParentKeys: parentNode ? [...parentNode.pathParentKeys, parentNode.key as TreeNodeKey] : [],
+    pathParentKeys: parentNode ? [...parentNode.pathParentKeys, parentNode.key] : [],
   };
 
   return node;

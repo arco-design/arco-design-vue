@@ -9,12 +9,13 @@ import {
   watch,
 } from 'vue';
 
-import VirtualList from '../_components/virtual-list-v2';
-import { VirtualListProps } from '../_components/virtual-list-v2/interface';
+import VirtualList from '../_components/virtual-list';
+import { VirtualListProps } from '../_components/virtual-list/interface';
 import { useAllowClear } from '../_hooks/use-allow-clear';
 import { useFormItem } from '../_hooks/use-form-item';
 import { getPrefixCls } from '../_utils/global-config';
 import { isFunction, isNull, isUndefined } from '../_utils/is';
+import { resolveDropdownVirtualListProps } from '../_utils/virtual-dropdown';
 import SDInput from '../input';
 import { useSelect } from '../select/hooks/use-select';
 import {
@@ -27,6 +28,8 @@ import Option from '../select/option.vue';
 import SelectDropdown from '../select/select-dropdown.vue';
 import { getKeyFromValue } from '../select/utils';
 import Trigger, { TriggerProps } from '../trigger';
+
+const DEFAULT_AUTOCOMPLETE_VIRTUAL_ITEM_SIZE = 36;
 
 export default defineComponent({
   name: 'AutoComplete',
@@ -202,6 +205,13 @@ export default defineComponent({
     // VirtualList
     const virtualListRef = ref();
     const component = computed(() => (props.virtualListProps ? 'div' : 'li'));
+    const resolvedVirtualListProps = computed(() => {
+      return resolveDropdownVirtualListProps(
+        props.virtualListProps,
+        props.triggerProps,
+        DEFAULT_AUTOCOMPLETE_VIRTUAL_ITEM_SIZE,
+      );
+    });
 
     const handlePopupVisibleChange = (popupVisible: boolean) => {
       _popupVisible.value = popupVisible;
@@ -310,9 +320,9 @@ export default defineComponent({
               validOptions.value.map((info) => renderOption(info as SelectOptionInfo)),
             'virtual-list': () => (
               <VirtualList
-                {...props.virtualListProps}
+                {...resolvedVirtualListProps.value}
                 ref={virtualListRef}
-                data={validOptions.value}
+                items={validOptions.value}
                 v-slots={{
                   item: ({ item }: { item: SelectOptionInfo }) => renderOption(item),
                 }}

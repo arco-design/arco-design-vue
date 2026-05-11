@@ -1,0 +1,269 @@
+---
+title: 虚拟列表迁移
+description: 虚拟列表能力迁移到 vue-virtual-scroller 后的参数、方法与兼容说明。
+---
+
+## 背景
+
+当前组件库中除 `Table` 以外的虚拟列表能力，已经统一切换到 `vue-virtual-scroller`，并继续复用组件库内置的 `Scrollbar`，不再依赖系统滚动条。
+
+这次迁移的目标是：
+
+- 对齐 `vue-virtual-scroller` 的核心 props 语义
+- 继续通过组件库内置 `Scrollbar` 提供滚动容器
+- 同时暴露底层 scroller 的常用方法
+- 支持固定高度 `RecycleScroller`
+- 支持动态高度 `DynamicScroller`
+- `Table` 暂时跳过，本次不纳入新语义改造
+
+## 适用组件
+
+当前文档中涉及的新语义主要适用于：
+
+- `List`
+- `Select`
+- `AutoComplete`
+- `Tree`
+- `TreeSelect`
+- `Cascader`
+
+`Table` 仍走旧实现兼容路径，后续重写时再单独处理。
+
+## 新的 VirtualListProps
+
+下面是当前对外可用、且应当优先使用的核心参数。
+
+| 参数名              | 描述                                                                               | 类型                                            |    默认值    |
+| ------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------- | :----------: |
+| `items`             | 列表数据。消费组件通常会在内部注入，业务侧一般不需要手动传                         | `unknown[]`                                     |     `[]`     |
+| `keyField`          | 用于提取每项唯一键，支持字段名或函数                                               | `string \| ((item, index) => string \| number)` |   `'key'`    |
+| `direction`         | 滚动方向                                                                           | `'vertical' \| 'horizontal'`                    | `'vertical'` |
+| `listTag`           | 列表容器标签                                                                       | `string`                                        |   `'div'`    |
+| `itemTag`           | item 容器标签                                                                      | `string`                                        |   `'div'`    |
+| `height`            | 可视区域高度；下拉组件未显式传入时会优先取 `trigger-props.popupStyle` 中的高度配置 | `number \| string`                              |     `-`      |
+| `itemSize`          | 固定高度模式的 item 高度。传入后会使用 `RecycleScroller`                           | `number \| string \| ((item, index) => number)` |     `-`      |
+| `minItemSize`       | 动态高度模式下的最小 item 高度。未传 `itemSize` 时会使用 `DynamicScroller`         | `number \| string`                              |     `32`     |
+| `gridItems`         | 网格模式每行 item 数量                                                             | `number`                                        |     `-`      |
+| `itemSecondarySize` | 网格模式交叉轴尺寸                                                                 | `number`                                        |     `-`      |
+| `sizeField`         | 自定义尺寸字段名                                                                   | `string`                                        |     `-`      |
+| `typeField`         | 自定义类型字段名                                                                   | `string`                                        |     `-`      |
+| `buffer`            | 额外渲染缓冲区，单位与底层 scroller 保持一致                                       | `number`                                        |    `200`     |
+| `prerender`         | 首屏预渲染数量                                                                     | `number`                                        |     `-`      |
+| `emitUpdate`        | 是否启用 update 事件                                                               | `boolean`                                       |   `false`    |
+| `updateInterval`    | 更新节流间隔                                                                       | `number`                                        |     `-`      |
+| `skipHover`         | 是否跳过 hover 监听                                                                | `boolean`                                       |   `false`    |
+| `listClass`         | 列表容器 class                                                                     | `ClassValue`                                    |     `-`      |
+| `itemClass`         | item 容器 class                                                                    | `ClassValue`                                    |     `-`      |
+| `scrollbar`         | 是否启用组件库内置滚动条，或传入滚动条配置                                         | `boolean \| ScrollbarProps`                     |    `true`    |
+
+## 模式选择
+
+### 固定高度
+
+当所有 item 高度一致时，请传 `itemSize`：
+
+```vue
+<sd-select :virtual-list-props="{ itemSize: 32, buffer: 200 }" />
+```
+
+这会走 `RecycleScroller`。
+
+### 动态高度
+
+当 item 高度可能变化时，不要传旧版固定高度参数，改为提供 `minItemSize`：
+
+```vue
+<sd-list :virtual-list-props="{ minItemSize: 48, buffer: 200 }" />
+```
+
+这会走 `DynamicScroller`。
+
+## 组件级默认行为
+
+本次迁移不是所有组件都在“未显式配置”时走同一套模式。为了让常见下拉和树场景开箱即用，当前组件库会按组件类型补默认值：
+
+| 组件           | 仅传 `height` / 仅传空对象时的默认行为         | 说明                                                                 |
+| -------------- | ---------------------------------------------- | -------------------------------------------------------------------- |
+| `List`         | 动态高度，默认 `minItemSize: 32`               | 列表项经常承载多行文本、头像、操作区，默认保留动态高度能力           |
+| `Select`       | 固定高度，默认 `itemSize: 36`                  | 下拉选项当前视觉高度固定为 `36px`                                    |
+| `AutoComplete` | 固定高度，默认 `itemSize: 36`                  | 自动补全面板选项当前视觉高度固定为 `36px`                            |
+| `Cascader`     | 固定高度，默认 `itemSize: 36`                  | 级联面板项当前视觉高度固定为 `36px`                                  |
+| `Tree`         | 固定高度，默认 `itemSize` 跟随 `size`          | `mini / small / medium / large` 分别为 `24 / 28 / 32 / 36`           |
+| `TreeSelect`   | 固定高度，默认 `itemSize` 跟随内部 `Tree size` | 默认跟随树节点高度；如果你需要动态树节点高度，请显式传 `minItemSize` |
+
+也就是说：
+
+- 固定高度下拉组件通常只需要开启虚拟列表并给出面板高度，`itemSize` 会自动补齐。
+- `Tree` / `TreeSelect` 默认会按尺寸走固定高度模式，以避免小数据集和展开收起时出现错误的首项偏移。
+- 如果你需要树节点在虚拟模式下保留动态高度与展开动画，请显式改传 `minItemSize`。
+
+## 推荐写法示例
+
+### 固定高度下拉
+
+```vue
+<sd-select
+  :options="options"
+  :trigger-props="{ popupStyle: { maxHeight: '200px' } }"
+  :virtual-list-props="{ itemSize: 36 }"
+/>
+```
+
+### 固定高度树
+
+```vue
+<sd-tree size="medium" :data="treeData" :virtual-list-props="{ height: 240 }" />
+```
+
+上面的写法会使用固定高度模式，`medium` 默认按 `32px` 行高处理。
+
+### 动态高度树
+
+```vue
+<sd-tree
+  :data="treeData"
+  :virtual-list-props="{ height: 240, minItemSize: 32 }"
+/>
+```
+
+当你明确需要动态节点高度时，再显式切到 `DynamicScroller`。
+
+### 动态内容列表
+
+```vue
+<sd-list :data="rows" :virtual-list-props="{ height: 560, minItemSize: 72 }" />
+```
+
+## 废弃与替换映射
+
+旧版虚拟列表 props 不再继续沿用，统一记录在这里，业务代码请迁移到新语义。
+
+| 旧 props             | 状态 | 新写法                                        |
+| -------------------- | ---- | --------------------------------------------- |
+| `fixedSize`          | 废弃 | 使用 `itemSize` 表达固定高度模式              |
+| `estimatedSize`      | 废弃 | 使用 `minItemSize` 表达动态高度模式的最小尺寸 |
+| `isStaticItemHeight` | 废弃 | 固定高度改为直接传 `itemSize`                 |
+| `threshold`          | 废弃 | 不再提供基于数量阈值的切换逻辑                |
+| 旧内部 `data` 语义   | 废弃 | 统一为 `items`，由消费组件在内部适配          |
+
+如果旧代码还依赖这些参数，应该在迁移时直接改写，不再继续透传旧命名。
+
+## 暴露方法
+
+统一封装后，虚拟列表实例会对外暴露以下常用方法：
+
+| 方法名                                 | 描述                                             |
+| -------------------------------------- | ------------------------------------------------ |
+| `scrollToItem(index, options?)`        | 滚动到指定索引                                   |
+| `scrollToPosition(position, options?)` | 滚动到指定滚动位置                               |
+| `findItemIndex(offset)`                | 根据偏移量查找 item 索引                         |
+| `getItemOffset(index)`                 | 获取指定 item 偏移                               |
+| `getItemSize(index)`                   | 获取指定 item 尺寸                               |
+| `cacheSnapshot()`                      | 获取缓存快照                                     |
+| `restoreCache(snapshot)`               | 恢复缓存快照                                     |
+| `scrollTo(options)`                    | 兼容方法，支持 `index`、`key`、`align`、`offset` |
+
+部分底层方法会在对应模式下按需透出，例如 `DynamicScroller` 的动态尺寸相关能力。
+
+## 兼容说明
+
+### Tree 的 `scrollIntoView`
+
+`Tree` 目前仍通过封装层的兼容 `scrollTo` 方法来驱动节点滚动，因此老的调用方式可以继续工作。
+
+### Scrollbar
+
+虽然底层渲染已经切换到 `vue-virtual-scroller`，但滚动容器仍然统一走组件库内置 `Scrollbar`。这意味着视觉样式、滚动条行为和主题能力仍然与组件库保持一致。
+
+### Table
+
+`Table` 本次明确跳过，不切到新语义。相关旧 props 仍保留在旧实现兼容路径里，等后续重写 `Table` 时再重新定义。
+
+## 迁移建议
+
+1. 先删除旧的 `fixedSize`、`estimatedSize`、`threshold` 等旧语义写法。
+2. 固定高度场景改成 `itemSize`，动态高度场景改成 `minItemSize`。
+3. 需要控制可视区域高度时继续使用 `height`，下拉组件也可以通过 `trigger-props.popupStyle.maxHeight` 提供默认高度。
+4. 如果有自定义 key 提取逻辑，显式补上 `keyField`。
+5. 回归验证滚动、定位、滚动到底、搜索面板、树展开和多选标签等高频交互。
+
+## 从 Arco Design 迁移
+
+Arco Design Vue 使用者迁移到当前组件库时，虚拟列表相关写法建议直接对齐到本次 `vue-virtual-scroller` 语义，而不是继续沿用旧的阈值或估算尺寸写法。
+
+### 常见迁移映射
+
+| Arco / 旧封装习惯                                   | 当前推荐写法                           | 说明                                                    |
+| --------------------------------------------------- | -------------------------------------- | ------------------------------------------------------- |
+| `virtual-list-props="{ height: 200 }"` 用于下拉面板 | 保持 `height`，必要时补 `itemSize: 36` | `Select` / `AutoComplete` / `Cascader` 会默认走固定高度 |
+| `fixedSize`                                         | `itemSize`                             | 固定高度统一改成 `itemSize`                             |
+| `estimatedSize`                                     | `minItemSize`                          | 动态高度统一改成 `minItemSize`                          |
+| `threshold`                                         | 删除                                   | 新实现不再基于数量阈值切换普通列表和虚拟列表            |
+| `Tree` 只传 `height`                                | `Tree` 仍可只传 `height`               | 当前默认按组件 `size` 自动补固定高度                    |
+| `Tree` 需要动态展开高度                             | 显式传 `minItemSize`                   | 只有显式传 `minItemSize` 才进入动态高度模式             |
+
+### Arco 风格迁移示例
+
+```vue
+<template>
+  <sd-tree-select
+    :data="treeData"
+    :trigger-props="{ popupStyle: { maxHeight: '200px' } }"
+    :virtual-list-props="{ itemSize: 32 }"
+  />
+</template>
+```
+
+如果你原来依赖树节点动态高度或展开动画，请改成：
+
+```vue
+<template>
+  <sd-tree-select
+    :data="treeData"
+    :trigger-props="{ popupStyle: { maxHeight: '200px' } }"
+    :virtual-list-props="{ minItemSize: 32 }"
+  />
+</template>
+```
+
+## 从 Naive UI 迁移
+
+Naive UI 的迁移重点不在“阈值参数”，而在“开关 + 当前组件库的虚拟列表配置对象”。对于当前组件库来说，详细虚拟滚动配置统一进入 `virtual-list-props`，而不是分散在各组件的私有 props 上。
+
+### 常见迁移映射
+
+| Naive UI / 兼容写法         | 当前推荐写法                            | 说明                                                               |
+| --------------------------- | --------------------------------------- | ------------------------------------------------------------------ |
+| `virtual-scroll` 布尔开关   | `virtual-list-props`                    | 详细高度、缓冲区、动态模式都走 `virtual-list-props`                |
+| `TreeSelect virtual-scroll` | `virtual-scroll` + `virtual-list-props` | `virtual-scroll` 只保留开关语义，详细配置仍走 `virtual-list-props` |
+| 固定高度选项面板            | `itemSize`                              | 下拉项固定高度统一用 `itemSize`                                    |
+| 动态树节点高度              | `minItemSize`                           | 树类组件只有显式传 `minItemSize` 才进入动态模式                    |
+| 旧数量阈值思路              | 删除                                    | 新实现不会因为数量少就切回普通 DOM 列表                            |
+
+### Naive 风格迁移示例
+
+```vue
+<template>
+  <sd-tree-select
+    v-model="value"
+    :data="options"
+    virtual-scroll
+    :virtual-list-props="{ itemSize: 32 }"
+  />
+</template>
+```
+
+如果只是固定高度下拉，不需要手写动态模式：
+
+```vue
+<template>
+  <sd-select
+    v-model="value"
+    :options="options"
+    :trigger-props="{ popupStyle: { maxHeight: '200px' } }"
+    :virtual-list-props="{}"
+  />
+</template>
+```
+
+这种写法会使用当前组件库的默认固定高度配置。

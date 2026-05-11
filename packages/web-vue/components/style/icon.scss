@@ -32,7 +32,7 @@
 
 .#{$prefix}-icon-hover {
   position: relative;
-  display: inline-block;
+  display: block;
   cursor: pointer;
 
   .#{$prefix}-icon {

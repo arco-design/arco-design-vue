@@ -1,5 +1,6 @@
 import { CSSProperties } from 'vue';
 
+import { VirtualListProps } from '../_components/virtual-list/interface';
 import { Size } from '../_utils/constant';
 import {
   TreeFieldNames,
@@ -59,6 +60,7 @@ export interface TreeSelectProps {
   showPath: boolean;
   separator: string;
   treeProps: Partial<TreeProps> | undefined;
+  virtualListProps: VirtualListProps | undefined;
   triggerProps: Partial<TriggerProps> | undefined;
   virtualScroll: boolean | undefined;
   popupVisible: boolean | undefined;

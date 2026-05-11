@@ -24,6 +24,12 @@ $tree-select-prefix-cls: string.unquote('#{theme.$prefix}-tree-select');
       padding-right: $tree-select-padding-popup-right;
       padding-left: $tree-select-padding-popup-left;
       overflow: auto;
+
+      &.#{$tree-select-prefix-cls}-tree-wrapper-virtual {
+        height: auto;
+        max-height: none;
+        overflow: hidden;
+      }
     }
 
     .#{$tree-prefix-cls}-node {

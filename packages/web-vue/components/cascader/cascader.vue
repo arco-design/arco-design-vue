@@ -75,7 +75,7 @@
         :total-level="totalLevel"
         :check-strictly="checkStrictly"
         :loading="loading"
-        :virtual-list-props="virtualListProps"
+        :virtual-list-props="resolvedVirtualListProps"
         dropdown
       >
         <template v-if="$slots.empty" #empty>
@@ -100,7 +100,7 @@
   } from 'vue';
 
   import SelectView from '../_components/select-view/select-view';
-  import { VirtualListProps } from '../_components/virtual-list-v2/interface';
+  import { VirtualListProps } from '../_components/virtual-list/interface';
   import { useAllowClear } from '../_hooks/use-allow-clear';
   import { useFormItem } from '../_hooks/use-form-item';
   import { useTrigger } from '../_hooks/use-trigger';
@@ -109,6 +109,7 @@
   import { isArray, isFunction, isNull, isUndefined } from '../_utils/is';
   import { KEYBOARD_KEY, getKeyDownHandler } from '../_utils/keyboard';
   import { BaseType } from '../_utils/types';
+  import { resolveDropdownVirtualListProps } from '../_utils/virtual-dropdown';
   import Trigger, { TriggerProps } from '../trigger';
   import BaseCascaderPanel from './base-cascader-panel';
   import CascaderSearchPanel from './cascader-search-panel';
@@ -121,6 +122,8 @@
     CascaderOptionInfo,
     CascaderSingleValue,
   } from './interface';
+
+  const DEFAULT_CASCADER_VIRTUAL_ITEM_SIZE = 36;
   import {
     getCheckedStatus,
     getLeafOptionInfos,
@@ -717,6 +720,14 @@
 
       const computedInputValue = computed(() => props.inputValue ?? _inputValue.value);
 
+      const resolvedVirtualListProps = computed(() => {
+        return resolveDropdownVirtualListProps(
+          props.virtualListProps,
+          props.triggerProps,
+          DEFAULT_CASCADER_VIRTUAL_ITEM_SIZE,
+        );
+      });
+
       const getFilteredStatus = (label: string) => {
         return label?.toLocaleLowerCase().includes(computedInputValue.value?.toLocaleLowerCase());
       };
@@ -1053,6 +1064,7 @@
         mergedAllowSearch,
         handleKeyDown,
         totalLevel,
+        resolvedVirtualListProps,
       };
     },
   });

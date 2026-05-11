@@ -209,6 +209,8 @@ $cascader-prefix-cls: string.unquote('#{theme.$prefix}-cascader');
   }
 
   &-option {
+    width: 100%;
+
     &-active {
       color: $cascader-color-item-text_active;
       background-color: $cascader-color-item-bg_active;

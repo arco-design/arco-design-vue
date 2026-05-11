@@ -31,38 +31,41 @@
             : {}
         "
       >
-        <VirtualListItem
+        <TableVirtualListItem
           v-for="(item, index) of currentList"
           :key="getItemKey(item, start + index)"
           :has-item-size="hasItemSize"
           :set-item-size="setItemSize"
         >
           <slot name="item" :item="item" :index="start + index" />
-        </VirtualListItem>
+        </TableVirtualListItem>
       </Component>
     </Component>
   </Component>
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent, nextTick, ref, toRefs, PropType } from 'vue';
+  import { computed, defineComponent, nextTick, ref, toRefs, type PropType } from 'vue';
 
-  import { getPrefixCls } from '../../_utils/global-config';
-  import { isNumber, isObject } from '../../_utils/is';
-  import { useSize } from './hooks/use-size';
-  import { ScrollOptions, VirtualItemKey } from './interface';
-  import VirtualListItem from './virtual-list-item';
+  import type { ScrollOptions, VirtualItemKey } from '../_components/virtual-list/interface';
+
+  import { getPrefixCls } from '../_utils/global-config';
+  import { isNumber, isObject } from '../_utils/is';
+  import { useTableVirtualSize } from './hooks/use-table-virtual-size';
+  import TableVirtualListItem from './table-virtual-list-item';
 
   export default defineComponent({
-    name: 'VirtualList',
-    components: { VirtualListItem },
+    name: 'TableLegacyVirtualList',
+    components: {
+      TableVirtualListItem,
+    },
     props: {
       height: {
         type: [Number, String],
         default: 200,
       },
       data: {
-        type: Array as PropType<Record<string, any>[]>,
+        type: Array as PropType<unknown[]>,
         default: () => [],
       },
       threshold: {
@@ -71,7 +74,7 @@
       },
       itemKey: {
         type: [String, Function] as PropType<
-          string | ((item: Record<string, any>) => VirtualItemKey)
+          string | ((item: unknown, index: number) => VirtualItemKey)
         >,
         default: 'key',
       },
@@ -92,13 +95,15 @@
         default: 'div',
       },
       listAttrs: {
-        type: Object,
+        type: Object as PropType<Record<string, unknown> | undefined>,
+        default: undefined,
       },
       contentAttrs: {
-        type: Object,
+        type: Object as PropType<Record<string, unknown> | undefined>,
+        default: undefined,
       },
       paddingPosition: {
-        type: String,
+        type: String as PropType<'content' | 'list'>,
         default: 'content',
       },
     },
@@ -106,15 +111,20 @@
       scroll: (_ev: Event) => true,
       reachBottom: (_ev: Event) => true,
     },
-    setup(props, { emit }) {
+    setup(props, { emit, expose }) {
       const { data, itemKey, fixedSize, estimatedSize, buffer, height } = toRefs(props);
       const prefixCls = getPrefixCls('virtual-list');
-      const getItemKey = (item: Record<string, any>, index: number) => {
+
+      const getItemKey = (item: unknown, index: number) => {
         if (typeof itemKey.value === 'function') {
-          return itemKey.value(item);
+          return itemKey.value(item, index);
         }
 
-        return (item[itemKey.value] ?? index) as VirtualItemKey;
+        if (item && typeof item === 'object') {
+          return ((item as Record<string, unknown>)[itemKey.value] ?? index) as VirtualItemKey;
+        }
+
+        return index;
       };
 
       const mergedComponent = computed(() => {
@@ -126,6 +136,7 @@
             ...props.component,
           };
         }
+
         return {
           container: props.component,
           list: 'div',
@@ -136,16 +147,12 @@
       const containerRef = ref<HTMLElement>();
       const contentRef = ref<HTMLElement>();
 
-      const style = computed(() => {
-        return {
-          height: isNumber(height.value) ? `${height.value}px` : height.value,
-          overflow: 'auto',
-        };
-      });
+      const style = computed(() => ({
+        height: isNumber(height.value) ? `${height.value}px` : height.value,
+        overflow: 'auto',
+      }));
 
-      const dataKeys = computed(() =>
-        data.value.map((item: any, index) => getItemKey(item, index)),
-      );
+      const dataKeys = computed(() => data.value.map((item, index) => getItemKey(item, index)));
 
       const {
         frontPadding,
@@ -157,9 +164,8 @@
         hasItemSize,
         setStart,
         getScrollOffset,
-      } = useSize({
+      } = useTableVirtualSize({
         dataKeys,
-        contentRef,
         fixedSize,
         estimatedSize,
         buffer,
@@ -173,15 +179,42 @@
         return data.value.slice(start.value, end.value);
       });
 
+      const scrollTo = (options: ScrollOptions) => {
+        if (!containerRef.value) {
+          return;
+        }
+
+        if (isNumber(options)) {
+          containerRef.value.scrollTop = options;
+          return;
+        }
+
+        const index = options.index ?? dataKeys.value.indexOf(options.key ?? '');
+        setStart(index - buffer.value);
+        containerRef.value.scrollTop = getScrollOffset(index);
+
+        nextTick(() => {
+          if (!containerRef.value) {
+            return;
+          }
+
+          const scrollTop = getScrollOffset(index);
+          if (scrollTop !== containerRef.value.scrollTop) {
+            containerRef.value.scrollTop = scrollTop;
+          }
+        });
+      };
+
       const onScroll = (ev: Event) => {
         const { scrollTop, scrollHeight, offsetHeight } = ev.target as HTMLElement;
-        const _start = getStartByScroll(scrollTop);
-        if (_start !== start.value) {
-          setStart(_start);
+        const nextStart = getStartByScroll(scrollTop);
+        if (nextStart !== start.value) {
+          setStart(nextStart);
           nextTick(() => {
             scrollTo(scrollTop);
           });
         }
+
         emit('scroll', ev);
         const bottom = Math.floor(scrollHeight - (scrollTop + offsetHeight));
         if (bottom <= 0) {
@@ -189,26 +222,9 @@
         }
       };
 
-      const scrollTo = (options: ScrollOptions) => {
-        if (containerRef.value) {
-          if (isNumber(options)) {
-            containerRef.value.scrollTop = options;
-          } else {
-            const { align = 'top' } = options;
-            const _index = options.index ?? dataKeys.value.indexOf(options.key ?? '');
-            setStart(_index - buffer.value);
-            containerRef.value.scrollTop = getScrollOffset(_index);
-            nextTick(() => {
-              if (containerRef.value) {
-                const _scrollTop = getScrollOffset(_index);
-                if (_scrollTop !== containerRef.value.scrollTop) {
-                  containerRef.value.scrollTop = _scrollTop;
-                }
-              }
-            });
-          }
-        }
-      };
+      expose({
+        scrollTo,
+      });
 
       return {
         prefixCls,
@@ -222,7 +238,6 @@
         setItemSize,
         hasItemSize,
         start,
-        scrollTo,
         style,
         mergedComponent,
       };

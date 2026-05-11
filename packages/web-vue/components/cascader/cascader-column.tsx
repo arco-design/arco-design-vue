@@ -1,7 +1,7 @@
 import { defineComponent, inject, PropType, ref } from 'vue';
 
-import VirtualList from '../_components/virtual-list-v2';
-import { VirtualListProps } from '../_components/virtual-list-v2/interface';
+import VirtualList from '../_components/virtual-list';
+import { VirtualListProps } from '../_components/virtual-list/interface';
 import { getPrefixCls } from '../_utils/global-config';
 import { configProviderInjectionKey } from '../config-provider/context';
 import Empty from '../empty';
@@ -57,7 +57,7 @@ export default defineComponent({
               key={props.column?.length}
               {...props.virtualListProps}
               ref={virtualListRef}
-              data={props.column}
+              items={props.column}
               v-slots={{
                 item: ({ item }: { item: CascaderOptionInfo }) => {
                   return (

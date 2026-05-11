@@ -1,6 +1,6 @@
 import { defineComponent, inject, PropType, TransitionGroup } from 'vue';
 
-import { VirtualListProps } from '../_components/virtual-list-v2/interface';
+import { VirtualListProps } from '../_components/virtual-list/interface';
 import { getPrefixCls } from '../_utils/global-config';
 import { configProviderInjectionKey } from '../config-provider/context';
 import Empty from '../empty';

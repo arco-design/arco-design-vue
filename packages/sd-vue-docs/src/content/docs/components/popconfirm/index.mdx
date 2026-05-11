@@ -3,22 +3,17 @@ title: 气泡确认框 Popconfirm
 description: 点击元素，弹出气泡式的确认框。
 ---
 
-import DemoBlock from '../../../../components/docs/DemoBlock.astro';
-import PopconfirmAsyncDemo from '../../../../components/generated/popconfirm/async.vue';
-export const popconfirmAsyncSource =
-  '<template>\n  <sd-popconfirm @before-ok="handleBeforeOk">\n    <sd-button>Click To Show</sd-button>\n    <template #content>\n      <sd-form>\n        <sd-form-item label="Name">\n          <sd-input />\n        </sd-form-item>\n        <sd-form-item label="Post">\n          <sd-input />\n        </sd-form-item>\n      </sd-form>\n    </template>\n  </sd-popconfirm>\n</template>\n\n<script setup>\n  import { ref } from \'vue\';\n\n  const visible = ref(false);\n\n  const handleClick = () => {\n    visible.value = true;\n  };\n\n  const handleBeforeOk = (done) => {\n    window.setTimeout(() => {\n      done();\n    }, 3000);\n  };\n\n  const handleCancel = () => {\n    visible.value = false;\n  };\n</script>';
-import PopconfirmBasicDemo from '../../../../components/generated/popconfirm/basic.vue';
-export const popconfirmBasicSource =
-  '<template>\n  <sd-popconfirm content="Are you sure you want to delete?">\n    <sd-button>Click To Delete</sd-button>\n  </sd-popconfirm>\n</template>';
-import PopconfirmCustomDemo from '../../../../components/generated/popconfirm/custom.vue';
-export const popconfirmCustomSource =
-  '<template>\n  <sd-popconfirm content="Do you want to discard the draft?" okText="Discard" cancelText="No">\n    <sd-button>Discard</sd-button>\n  </sd-popconfirm>\n</template>';
-import PopconfirmPositionDemo from '../../../../components/generated/popconfirm/position.vue';
-export const popconfirmPositionSource =
-  '<template>\n  <div :style="{ position: \'relative\', width: \'440px\', height: \'280px\' }">\n    <sd-popconfirm content="This is a Popconfirm" position="tl">\n      <sd-button class="button" :style="{ position: \'absolute\', top: \'0\', left: \'70px\' }"\n        >TL</sd-button\n      >\n    </sd-popconfirm>\n    <sd-popconfirm content="This is a Popconfirm" position="top">\n      <sd-button class="button" :style="{ position: \'absolute\', top: \'0\', left: \'180px\' }"\n        >TOP</sd-button\n      >\n    </sd-popconfirm>\n    <sd-popconfirm content="This is a Popconfirm" position="tr">\n      <sd-button class="button" :style="{ position: \'absolute\', top: \'0\', left: \'290px\' }"\n        >TR</sd-button\n      >\n    </sd-popconfirm>\n    <sd-popconfirm content="This is a Popconfirm" position="bl">\n      <sd-button class="button" :style="{ position: \'absolute\', top: \'240px\', left: \'70px\' }"\n        >BL</sd-button\n      >\n    </sd-popconfirm>\n    <sd-popconfirm content="This is a Popconfirm" position="bottom">\n      <sd-button class="button" :style="{ position: \'absolute\', top: \'240px\', left: \'180px\' }"\n        >BOTTOM</sd-button\n      >\n    </sd-popconfirm>\n    <sd-popconfirm content="This is a Popconfirm" position="br">\n      <sd-button class="button" :style="{ position: \'absolute\', top: \'240px\', left: \'290px\' }"\n        >BR</sd-button\n      >\n    </sd-popconfirm>\n    <sd-popconfirm content="This is a Popconfirm" position="lt">\n      <sd-button class="button" :style="{ position: \'absolute\', top: \'60px\', left: \'10px\' }"\n        >LT</sd-button\n      >\n    </sd-popconfirm>\n    <sd-popconfirm content="This is a Popconfirm" position="left">\n      <sd-button class="button" :style="{ position: \'absolute\', top: \'120px\', left: \'10px\' }"\n        >LEFT</sd-button\n      >\n    </sd-popconfirm>\n    <sd-popconfirm content="This is a Popconfirm" position="lb">\n      <sd-button class="button" :style="{ position: \'absolute\', top: \'180px\', left: \'10px\' }"\n        >LB</sd-button\n      >\n    </sd-popconfirm>\n    <sd-popconfirm content="This is a Popconfirm" position="rt">\n      <sd-button class="button" :style="{ position: \'absolute\', top: \'60px\', left: \'350px\' }"\n        >RT</sd-button\n      >\n    </sd-popconfirm>\n    <sd-popconfirm content="This is a Popconfirm" position="right">\n      <sd-button class="button" :style="{ position: \'absolute\', top: \'120px\', left: \'350px\' }"\n        >RIGHT</sd-button\n      >\n    </sd-popconfirm>\n    <sd-popconfirm content="This is a Popconfirm" position="rb">\n      <sd-button class="button" :style="{ position: \'absolute\', top: \'180px\', left: \'350px\' }"\n        >RB</sd-button\n      >\n    </sd-popconfirm>\n  </div>\n</template>\n\n<style scoped lang="less">\n  .button {\n    width: 100px;\n  }\n</style>';
-import PopconfirmTypeDemo from '../../../../components/generated/popconfirm/type.vue';
-export const popconfirmTypeSource =
-  '<template>\n  <sd-space>\n    <sd-popconfirm content="Are you sure you want to delete?" type="info">\n      <sd-button>Click To Delete</sd-button>\n    </sd-popconfirm>\n    <sd-popconfirm content="Are you sure you want to delete?" type="success">\n      <sd-button>Click To Delete</sd-button>\n    </sd-popconfirm>\n    <sd-popconfirm content="Are you sure you want to delete?" type="warning">\n      <sd-button>Click To Delete</sd-button>\n    </sd-popconfirm>\n    <sd-popconfirm content="Are you sure you want to delete?" type="error">\n      <sd-button>Click To Delete</sd-button>\n    </sd-popconfirm>\n  </sd-space>\n</template>';
+import DemoBlock from "../../../../components/docs/DemoBlock.astro";
+import PopconfirmAsyncDemo from "../../../../components/generated/popconfirm/async.vue";
+import popconfirmAsyncSource from "../../../../components/generated/popconfirm/async.vue?raw";
+import PopconfirmBasicDemo from "../../../../components/generated/popconfirm/basic.vue";
+import popconfirmBasicSource from "../../../../components/generated/popconfirm/basic.vue?raw";
+import PopconfirmCustomDemo from "../../../../components/generated/popconfirm/custom.vue";
+import popconfirmCustomSource from "../../../../components/generated/popconfirm/custom.vue?raw";
+import PopconfirmPositionDemo from "../../../../components/generated/popconfirm/position.vue";
+import popconfirmPositionSource from "../../../../components/generated/popconfirm/position.vue?raw";
+import PopconfirmTypeDemo from "../../../../components/generated/popconfirm/type.vue";
+import popconfirmTypeSource from "../../../../components/generated/popconfirm/type.vue?raw";
 
 ### 异步关闭
 
@@ -76,25 +71,25 @@ export const popconfirmTypeSource =
 
 ### `<popconfirm>` Props
 
-| 参数名 | 描述 | 类型 | 默认值 |
-| --- | --- | --- | :-: |
-| content | 内容 | `string` | `-` |
-| position | 弹出位置 | `'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br' \| 'left' \| 'lt' \| 'lb' \| 'right' \| 'rt' \| 'rb'` | `'top'` |
-| popup-visible **(v-model)** | 气泡确认框是否可见 | `boolean` | `-` |
-| default-popup-visible | 气泡确认框默认是否可见（非受控模式） | `boolean` | `false` |
-| type | 气泡确认框的类型 | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'` |
-| ok-text | 确认按钮的内容 | `string` | `-` |
-| cancel-text | 取消按钮的内容 | `string` | `-` |
-| ok-loading | 确认按钮是否为加载中状态 | `boolean` | `false` |
-| ok-button-props | 确认按钮的Props | `ButtonProps` | `-` |
-| cancel-button-props | 取消按钮的Props | `ButtonProps` | `-` |
-| content-class | 弹出框内容的类名 | `ClassName` | `-` |
-| content-style | 弹出框内容的样式 | `CSSProperties` | `-` |
-| arrow-class | 弹出框箭头的类名 | `ClassName` | `-` |
-| arrow-style | 弹出框箭头的样式 | `CSSProperties` | `-` |
-| popup-container | 弹出框的挂载点 | `string \| HTMLElement` | `-` |
-| on-before-ok | 触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。 | `(  done: (closed: boolean) => void) => void \| boolean \| Promise<void \| boolean>` | `-` |
-| on-before-cancel | 触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。 | `() => boolean` | `-` |
+| 参数名                      | 描述                                                                                      | 类型                                                                                                     |  默认值  |
+| --------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | :------: |
+| content                     | 内容                                                                                      | `string`                                                                                                 |   `-`    |
+| position                    | 弹出位置                                                                                  | `'top' \| 'tl' \| 'tr' \| 'bottom' \| 'bl' \| 'br' \| 'left' \| 'lt' \| 'lb' \| 'right' \| 'rt' \| 'rb'` | `'top'`  |
+| popup-visible **(v-model)** | 气泡确认框是否可见                                                                        | `boolean`                                                                                                |   `-`    |
+| default-popup-visible       | 气泡确认框默认是否可见（非受控模式）                                                      | `boolean`                                                                                                | `false`  |
+| type                        | 气泡确认框的类型                                                                          | `'info' \| 'success' \| 'warning' \| 'error'`                                                            | `'info'` |
+| ok-text                     | 确认按钮的内容                                                                            | `string`                                                                                                 |   `-`    |
+| cancel-text                 | 取消按钮的内容                                                                            | `string`                                                                                                 |   `-`    |
+| ok-loading                  | 确认按钮是否为加载中状态                                                                  | `boolean`                                                                                                | `false`  |
+| ok-button-props             | 确认按钮的Props                                                                           | `ButtonProps`                                                                                            |   `-`    |
+| cancel-button-props         | 取消按钮的Props                                                                           | `ButtonProps`                                                                                            |   `-`    |
+| content-class               | 弹出框内容的类名                                                                          | `ClassName`                                                                                              |   `-`    |
+| content-style               | 弹出框内容的样式                                                                          | `CSSProperties`                                                                                          |   `-`    |
+| arrow-class                 | 弹出框箭头的类名                                                                          | `ClassName`                                                                                              |   `-`    |
+| arrow-style                 | 弹出框箭头的样式                                                                          | `CSSProperties`                                                                                          |   `-`    |
+| popup-container             | 弹出框的挂载点                                                                            | `string \| HTMLElement`                                                                                  |   `-`    |
+| on-before-ok                | 触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。 | `(  done: (closed: boolean) => void) => void \| boolean \| Promise<void \| boolean>`                     |   `-`    |
+| on-before-cancel            | 触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。                         | `() => boolean`                                                                                          |   `-`    |
 
 ### `<popconfirm>` Events
 

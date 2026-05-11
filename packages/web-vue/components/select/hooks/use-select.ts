@@ -1,7 +1,7 @@
 import type { ComponentPublicInstance, Ref } from 'vue';
 import { nextTick, provide, reactive, ref, watch } from 'vue';
 
-import { VirtualListRef } from '../../_components/virtual-list-v2/interface';
+import { VirtualListRef } from '../../_components/virtual-list/interface';
 import { getRelativeRect } from '../../_utils/dom';
 import { KEYBOARD_KEY, getKeyDownHandler } from '../../_utils/keyboard';
 import { selectInjectionKey } from '../context';

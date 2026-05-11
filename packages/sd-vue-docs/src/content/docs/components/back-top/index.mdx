@@ -3,13 +3,11 @@ title: 返回顶部 BackTop
 description: 可一键返回顶部的按钮。
 ---
 
-import DemoBlock from '../../../../components/docs/DemoBlock.astro';
-import BackTopBasicDemo from '../../../../components/generated/back-top/basic.vue';
-export const backTopBasicSource =
-  '<template>\n  <div class="wrapper">\n    <ul id="basic-demo">\n      <li v-for="(_, index) of Array(40)" :key="index">This is the content</li>\n    </ul>\n    <sd-back-top target-container="#basic-demo" :style="{ position: \'absolute\' }" />\n  </div>\n</template>\n\n<style scoped lang="less">\n  .wrapper {\n    position: relative;\n\n    ul {\n      height: 200px;\n      overflow-y: auto;\n\n      li {\n        line-height: 30px;\n      }\n    }\n  }\n</style>';
-import BackTopCustomDemo from '../../../../components/generated/back-top/custom.vue';
-export const backTopCustomSource =
-  '<template>\n  <div class="wrapper">\n    <ul id="custom-demo">\n      <li v-for="(_, index) of Array(40)" :key="index">This is the content</li>\n    </ul>\n    <sd-back-top target-container="#custom-demo" :style="{ position: \'absolute\' }">\n      <sd-button>UP</sd-button>\n    </sd-back-top>\n  </div>\n</template>\n\n<style scoped lang="less">\n  .wrapper {\n    position: relative;\n\n    ul {\n      height: 200px;\n      overflow-y: auto;\n\n      li {\n        line-height: 30px;\n      }\n    }\n  }\n</style>';
+import DemoBlock from "../../../../components/docs/DemoBlock.astro";
+import BackTopBasicDemo from "../../../../components/generated/back-top/basic.vue";
+import backTopBasicSource from "../../../../components/generated/back-top/basic.vue?raw";
+import BackTopCustomDemo from "../../../../components/generated/back-top/custom.vue";
+import backTopCustomSource from "../../../../components/generated/back-top/custom.vue?raw";
 
 ### 基本用法
 
@@ -35,9 +33,9 @@ export const backTopCustomSource =
 
 ### `<back-top>` Props
 
-| 参数名 | 描述 | 类型 | 默认值 |
-| --- | --- | --- | :-: |
-| visible-height | 显示回到顶部按钮的触发滚动高度 | `number` | `200` |
-| target-container | 滚动事件的监听容器 | `string \| HTMLElement` | `-` |
-| easing | 滚动动画的缓动方式，可选值参考 [BTween](https://github.com/PengJiyuan/b-tween) | `string` | `'quartOut'` |
-| duration | 滚动动画的持续时间 | `number` | `200` |
+| 参数名           | 描述                                                                           | 类型                    |    默认值    |
+| ---------------- | ------------------------------------------------------------------------------ | ----------------------- | :----------: |
+| visible-height   | 显示回到顶部按钮的触发滚动高度                                                 | `number`                |    `200`     |
+| target-container | 滚动事件的监听容器                                                             | `string \| HTMLElement` |     `-`      |
+| easing           | 滚动动画的缓动方式，可选值参考 [BTween](https://github.com/PengJiyuan/b-tween) | `string`                | `'quartOut'` |
+| duration         | 滚动动画的持续时间                                                             | `number`                |    `200`     |

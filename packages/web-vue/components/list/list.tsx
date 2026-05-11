@@ -3,9 +3,9 @@ import { computed, defineComponent, inject, isVNode, onMounted, PropType, ref, t
 import type {
   ScrollIntoViewOptions,
   VirtualListProps,
-} from '../_components/virtual-list-v2/interface';
+} from '../_components/virtual-list/interface';
 
-import VirtualList from '../_components/virtual-list-v2';
+import VirtualList from '../_components/virtual-list';
 import { useComponentRef } from '../_hooks/use-component-ref';
 import { useScrollbar } from '../_hooks/use-scrollbar';
 import { getPrefixCls } from '../_utils/global-config';
@@ -313,6 +313,11 @@ export default defineComponent({
         const maxHeight = isNumber(props.maxHeight) ? `${props.maxHeight}px` : props.maxHeight;
         return { maxHeight, overflowY: 'auto' };
       }
+
+      if (isVirtualList.value && !props.gridProps) {
+        return { height: '100%', overflow: 'hidden' };
+      }
+
       return undefined;
     });
 
@@ -324,6 +329,43 @@ export default defineComponent({
     ]);
 
     const virtualListRef = ref();
+    const resolvedVirtualListProps = computed<VirtualListProps | undefined>(() => {
+      if (!props.virtualListProps) {
+        return undefined;
+      }
+
+      if (props.virtualListProps.height !== undefined) {
+        return props.virtualListProps;
+      }
+
+      return {
+        ...props.virtualListProps,
+        height: '100%',
+      };
+    });
+    const contentWrapperStyle = computed(() => {
+      if (!isVirtualList.value || props.gridProps) {
+        return undefined;
+      }
+
+      return {
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        minHeight: 0,
+      };
+    });
+    const wrapperStyle = computed(() => {
+      if (!isVirtualList.value || props.gridProps) {
+        return undefined;
+      }
+
+      return {
+        height: '100%',
+        minHeight: 0,
+      };
+    });
+
     const renderVirtualList = () => {
       const currentPageItems = getCurrentPageItems(props.data ?? []);
 
@@ -335,8 +377,8 @@ export default defineComponent({
               slots.item?.({ item, index }),
           }}
           class={contentCls.value}
-          data={currentPageItems}
-          {...props.virtualListProps}
+          items={currentPageItems}
+          {...resolvedVirtualListProps.value}
           onScroll={handleScroll}
         />
       ) : (
@@ -364,10 +406,10 @@ export default defineComponent({
     };
 
     const render = () => {
-      const Component = displayScrollbar.value ? Scrollbar : 'div';
+      const Component = displayScrollbar.value && !isVirtualList.value ? Scrollbar : 'div';
 
       return (
-        <div class={`${prefixCls}-wrapper`}>
+        <div class={`${prefixCls}-wrapper`} style={wrapperStyle.value}>
           <Spin class={`${prefixCls}-spin`} loading={props.loading}>
             <Component
               ref={componentRef}
@@ -376,7 +418,7 @@ export default defineComponent({
               {...scrollbarProps.value}
               onScroll={handleScroll}
             >
-              <div class={`${prefixCls}-content-wrapper`}>
+              <div class={`${prefixCls}-content-wrapper`} style={contentWrapperStyle.value}>
                 {slots.header && <div class={`${prefixCls}-header`}>{slots.header()}</div>}
                 {isVirtualList.value && !props.gridProps ? (
                   <>

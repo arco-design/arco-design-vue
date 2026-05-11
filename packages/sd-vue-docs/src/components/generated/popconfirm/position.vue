@@ -63,7 +63,7 @@
   </div>
 </template>
 
-<style scoped lang="less">
+<style scoped lang="scss">
   .button {
     width: 100px;
   }

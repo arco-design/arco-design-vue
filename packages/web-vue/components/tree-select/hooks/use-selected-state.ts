@@ -53,7 +53,7 @@ export default function useSelectedState(props: {
     separator,
   } = toRefs(props);
 
-  function getPathLabel(key: TreeNodeKey, node: ReturnType<Key2TreeNode['value']['get']>) {
+  function getPathLabel(key: TreeNodeKey, node: ReturnType<Key2TreeNode['get']>) {
     if (!showPath?.value || !node) {
       return undefined;
     }

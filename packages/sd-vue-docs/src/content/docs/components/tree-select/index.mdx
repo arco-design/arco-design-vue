@@ -3,39 +3,39 @@ title: 树选择 TreeSelect
 description: 可以对树形结构数据进行选择。
 ---
 
-import DemoBlock from '../../../../components/docs/DemoBlock.astro';
-import TreeSelectBasicDemo from '../../../../components/generated/tree-select/basic.vue';
-import treeSelectBasicSource from '../../../../components/generated/tree-select/basic.vue?raw';
-import TreeSelectCheckableDemo from '../../../../components/generated/tree-select/checkable.vue';
-import treeSelectCheckableSource from '../../../../components/generated/tree-select/checkable.vue?raw';
-import TreeSelectCheckedStrategyDemo from '../../../../components/generated/tree-select/checked-strategy.vue';
-import treeSelectCheckedStrategySource from '../../../../components/generated/tree-select/checked-strategy.vue?raw';
-import TreeSelectControlDemo from '../../../../components/generated/tree-select/control.vue';
-import treeSelectControlSource from '../../../../components/generated/tree-select/control.vue?raw';
-import TreeSelectDropdownSlotsDemo from '../../../../components/generated/tree-select/dropdown-slots.vue';
-import treeSelectDropdownSlotsSource from '../../../../components/generated/tree-select/dropdown-slots.vue?raw';
-import TreeSelectFallbackDemo from '../../../../components/generated/tree-select/fallback.vue';
-import treeSelectFallbackSource from '../../../../components/generated/tree-select/fallback.vue?raw';
-import TreeSelectFieldNamesDemo from '../../../../components/generated/tree-select/field-names.vue';
-import treeSelectFieldNamesSource from '../../../../components/generated/tree-select/field-names.vue?raw';
-import TreeSelectLabelInValueDemo from '../../../../components/generated/tree-select/label-in-value.vue';
-import treeSelectLabelInValueSource from '../../../../components/generated/tree-select/label-in-value.vue?raw';
-import TreeSelectLoadMoreDemo from '../../../../components/generated/tree-select/load-more.vue';
-import treeSelectLoadMoreSource from '../../../../components/generated/tree-select/load-more.vue?raw';
-import TreeSelectMultipleDemo from '../../../../components/generated/tree-select/multiple.vue';
-import treeSelectMultipleSource from '../../../../components/generated/tree-select/multiple.vue?raw';
-import TreeSelectPopupVisibleDemo from '../../../../components/generated/tree-select/popup-visible.vue';
-import treeSelectPopupVisibleSource from '../../../../components/generated/tree-select/popup-visible.vue?raw';
-import TreeSelectSearchRemoteDemo from '../../../../components/generated/tree-select/search-remote.vue';
-import treeSelectSearchRemoteSource from '../../../../components/generated/tree-select/search-remote.vue?raw';
-import TreeSelectSearchDemo from '../../../../components/generated/tree-select/search.vue';
-import treeSelectSearchSource from '../../../../components/generated/tree-select/search.vue?raw';
-import TreeSelectSizeDemo from '../../../../components/generated/tree-select/size.vue';
-import treeSelectSizeSource from '../../../../components/generated/tree-select/size.vue?raw';
-import TreeSelectTriggerElementDemo from '../../../../components/generated/tree-select/trigger-element.vue';
-import treeSelectTriggerElementSource from '../../../../components/generated/tree-select/trigger-element.vue?raw';
-import TreeSelectVirtualDemo from '../../../../components/generated/tree-select/virtual.vue';
-import treeSelectVirtualSource from '../../../../components/generated/tree-select/virtual.vue?raw';
+import DemoBlock from "../../../../components/docs/DemoBlock.astro";
+import TreeSelectBasicDemo from "../../../../components/generated/tree-select/basic.vue";
+import treeSelectBasicSource from "../../../../components/generated/tree-select/basic.vue?raw";
+import TreeSelectCheckableDemo from "../../../../components/generated/tree-select/checkable.vue";
+import treeSelectCheckableSource from "../../../../components/generated/tree-select/checkable.vue?raw";
+import TreeSelectCheckedStrategyDemo from "../../../../components/generated/tree-select/checked-strategy.vue";
+import treeSelectCheckedStrategySource from "../../../../components/generated/tree-select/checked-strategy.vue?raw";
+import TreeSelectControlDemo from "../../../../components/generated/tree-select/control.vue";
+import treeSelectControlSource from "../../../../components/generated/tree-select/control.vue?raw";
+import TreeSelectDropdownSlotsDemo from "../../../../components/generated/tree-select/dropdown-slots.vue";
+import treeSelectDropdownSlotsSource from "../../../../components/generated/tree-select/dropdown-slots.vue?raw";
+import TreeSelectFallbackDemo from "../../../../components/generated/tree-select/fallback.vue";
+import treeSelectFallbackSource from "../../../../components/generated/tree-select/fallback.vue?raw";
+import TreeSelectFieldNamesDemo from "../../../../components/generated/tree-select/field-names.vue";
+import treeSelectFieldNamesSource from "../../../../components/generated/tree-select/field-names.vue?raw";
+import TreeSelectLabelInValueDemo from "../../../../components/generated/tree-select/label-in-value.vue";
+import treeSelectLabelInValueSource from "../../../../components/generated/tree-select/label-in-value.vue?raw";
+import TreeSelectLoadMoreDemo from "../../../../components/generated/tree-select/load-more.vue";
+import treeSelectLoadMoreSource from "../../../../components/generated/tree-select/load-more.vue?raw";
+import TreeSelectMultipleDemo from "../../../../components/generated/tree-select/multiple.vue";
+import treeSelectMultipleSource from "../../../../components/generated/tree-select/multiple.vue?raw";
+import TreeSelectPopupVisibleDemo from "../../../../components/generated/tree-select/popup-visible.vue";
+import treeSelectPopupVisibleSource from "../../../../components/generated/tree-select/popup-visible.vue?raw";
+import TreeSelectSearchRemoteDemo from "../../../../components/generated/tree-select/search-remote.vue";
+import treeSelectSearchRemoteSource from "../../../../components/generated/tree-select/search-remote.vue?raw";
+import TreeSelectSearchDemo from "../../../../components/generated/tree-select/search.vue";
+import treeSelectSearchSource from "../../../../components/generated/tree-select/search.vue?raw";
+import TreeSelectSizeDemo from "../../../../components/generated/tree-select/size.vue";
+import treeSelectSizeSource from "../../../../components/generated/tree-select/size.vue?raw";
+import TreeSelectTriggerElementDemo from "../../../../components/generated/tree-select/trigger-element.vue";
+import treeSelectTriggerElementSource from "../../../../components/generated/tree-select/trigger-element.vue?raw";
+import TreeSelectVirtualDemo from "../../../../components/generated/tree-select/virtual.vue";
+import treeSelectVirtualSource from "../../../../components/generated/tree-select/virtual.vue?raw";
 
 ### 基本用法
 
@@ -189,7 +189,9 @@ import treeSelectVirtualSource from '../../../../components/generated/tree-selec
 
 ### 虚拟列表
 
-通过指定 `treeProps.virtualListProps` 来开启虚拟列表，在大量数据时获得高性能表现。
+当前示例会同时展示三种常见写法：直接传空对象使用默认固定高度、显式传 `itemSize` 固定模式、显式传 `minItemSize` 动态模式。这样可以直接验证 `TreeSelect` 现在已经支持顶层 `virtual-list-props`，而不需要再通过旧的内部透传路径开启虚拟列表。
+
+通过指定 `virtual-list-props` 来开启虚拟列表，在大量数据时获得高性能表现。`TreeSelect` 内部树节点默认按尺寸走固定高度模式：`mini / small / medium / large` 分别对应 `24 / 28 / 32 / 36`。如果你没有显式传 `itemSize` 或 `minItemSize`，组件会按内部 `Tree size` 自动补齐固定高度；如果你需要动态树节点高度或虚拟模式下的展开动画，请显式改传 `minItemSize`。完整参数与迁移映射见 [虚拟列表迁移指南](/guides/virtual-list-migration/)。
 
 <DemoBlock source={treeSelectVirtualSource} mainFile="src/tree-select-virtual.vue">
 
@@ -203,18 +205,18 @@ import treeSelectVirtualSource from '../../../../components/generated/tree-selec
 
 ### 对应关系
 
-| Arco Design Vue | SD Design Vue | 说明 |
-| --- | --- | --- |
-| `a-tree-select` | `sd-tree-select` | 树选择器主体 |
-| `data` | `data` | 树数据主属性保持一致 |
-| `v-model` / `model-value` | `v-model` / `model-value` | 受控写法保持一致 |
-| `field-names` | `field-names` | 字段映射保持一致 |
-| `multiple` | `multiple` | 多选模式写法保持一致 |
-| `tree-checkable` | `tree-checkable` | 复选框模式写法保持一致 |
-| `tree-checked-strategy` | `tree-checked-strategy` | 回填策略写法保持一致 |
-| `load-more` | `load-more` | 动态加载写法保持一致 |
-| `popup-visible` | `popup-visible` | 弹层显隐控制保持一致 |
-| `#label` / `#tag` / `#header` / `#footer` | 同名插槽 | 选择框与下拉层插槽基本可直接迁移 |
+| Arco Design Vue                           | SD Design Vue             | 说明                             |
+| ----------------------------------------- | ------------------------- | -------------------------------- |
+| `a-tree-select`                           | `sd-tree-select`          | 树选择器主体                     |
+| `data`                                    | `data`                    | 树数据主属性保持一致             |
+| `v-model` / `model-value`                 | `v-model` / `model-value` | 受控写法保持一致                 |
+| `field-names`                             | `field-names`             | 字段映射保持一致                 |
+| `multiple`                                | `multiple`                | 多选模式写法保持一致             |
+| `tree-checkable`                          | `tree-checkable`          | 复选框模式写法保持一致           |
+| `tree-checked-strategy`                   | `tree-checked-strategy`   | 回填策略写法保持一致             |
+| `load-more`                               | `load-more`               | 动态加载写法保持一致             |
+| `popup-visible`                           | `popup-visible`           | 弹层显隐控制保持一致             |
+| `#label` / `#tag` / `#header` / `#footer` | 同名插槽                  | 选择框与下拉层插槽基本可直接迁移 |
 
 ### 主要差异
 
@@ -229,13 +231,21 @@ import treeSelectVirtualSource from '../../../../components/generated/tree-selec
 
 ```vue
 <template>
-  <a-tree-select v-model="value" :data="treeData" placeholder="Please select ..." />
+  <a-tree-select
+    v-model="value"
+    :data="treeData"
+    placeholder="Please select ..."
+  />
 </template>
 ```
 
 ```vue
 <template>
-  <sd-tree-select v-model="value" :data="treeData" placeholder="Please select ..." />
+  <sd-tree-select
+    v-model="value"
+    :data="treeData"
+    placeholder="Please select ..."
+  />
 </template>
 ```
 
@@ -243,13 +253,23 @@ import treeSelectVirtualSource from '../../../../components/generated/tree-selec
 
 ```vue
 <template>
-  <a-tree-select v-model="value" :data="treeData" tree-checkable tree-checked-strategy="child" />
+  <a-tree-select
+    v-model="value"
+    :data="treeData"
+    tree-checkable
+    tree-checked-strategy="child"
+  />
 </template>
 ```
 
 ```vue
 <template>
-  <sd-tree-select v-model="value" :data="treeData" tree-checkable tree-checked-strategy="child" />
+  <sd-tree-select
+    v-model="value"
+    :data="treeData"
+    tree-checkable
+    tree-checked-strategy="child"
+  />
 </template>
 ```
 
@@ -278,18 +298,18 @@ import treeSelectVirtualSource from '../../../../components/generated/tree-selec
 
 ### 对应关系
 
-| Naive UI | SD Design Vue | 说明 |
-| --- | --- | --- |
-| `n-tree-select` | `sd-tree-select` | 树选择器主体 |
-| `:options` | `:data` / `:options` | 当前组件库主属性是 `data`，但保留 `options` 兼容别名 |
-| `v-model:value` | `v-model` / `v-model:value` | 两种受控写法都支持 |
-| `filterable` | `allow-search` / `filterable` | 本地推荐使用 `allow-search` |
-| `clearable` | `allow-clear` / `clearable` | 本地推荐使用 `allow-clear` |
-| `checkable` | `tree-checkable` / `checkable` | 本地推荐使用 `tree-checkable` |
-| `check-strategy` | `tree-checked-strategy` / `checkStrategy` | 本地推荐使用 `tree-checked-strategy` |
-| `show` / `default-show` | `popup-visible` / `default-popup-visible`，同时兼容 `show` / `defaultShow` | 显隐控制可逐步迁回本地命名 |
-| `render-tag` | `#tag` | 对外渲染函数已移除，统一改用插槽 |
-| 节点标题自定义 | `tree-slot-title` | 树节点内容通过 Tree 子插槽定制 |
+| Naive UI                | SD Design Vue                                                              | 说明                                                 |
+| ----------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `n-tree-select`         | `sd-tree-select`                                                           | 树选择器主体                                         |
+| `:options`              | `:data` / `:options`                                                       | 当前组件库主属性是 `data`，但保留 `options` 兼容别名 |
+| `v-model:value`         | `v-model` / `v-model:value`                                                | 两种受控写法都支持                                   |
+| `filterable`            | `allow-search` / `filterable`                                              | 本地推荐使用 `allow-search`                          |
+| `clearable`             | `allow-clear` / `clearable`                                                | 本地推荐使用 `allow-clear`                           |
+| `checkable`             | `tree-checkable` / `checkable`                                             | 本地推荐使用 `tree-checkable`                        |
+| `check-strategy`        | `tree-checked-strategy` / `checkStrategy`                                  | 本地推荐使用 `tree-checked-strategy`                 |
+| `show` / `default-show` | `popup-visible` / `default-popup-visible`，同时兼容 `show` / `defaultShow` | 显隐控制可逐步迁回本地命名                           |
+| `render-tag`            | `#tag`                                                                     | 对外渲染函数已移除，统一改用插槽                     |
+| 节点标题自定义          | `tree-slot-title`                                                          | 树节点内容通过 Tree 子插槽定制                       |
 
 ### 主要差异
 
@@ -330,13 +350,23 @@ import treeSelectVirtualSource from '../../../../components/generated/tree-selec
 
 ```vue
 <template>
-  <n-tree-select v-model:value="value" :options="options" checkable :check-strategy="'child'" />
+  <n-tree-select
+    v-model:value="value"
+    :options="options"
+    checkable
+    :check-strategy="'child'"
+  />
 </template>
 ```
 
 ```vue
 <template>
-  <sd-tree-select v-model="value" :data="options" tree-checkable tree-checked-strategy="child" />
+  <sd-tree-select
+    v-model="value"
+    :data="options"
+    tree-checkable
+    tree-checked-strategy="child"
+  />
 </template>
 ```
 
@@ -344,7 +374,12 @@ import treeSelectVirtualSource from '../../../../components/generated/tree-selec
 
 ```vue
 <template>
-  <n-tree-select v-model:value="value" :options="options" multiple :render-tag="renderTag" />
+  <n-tree-select
+    v-model:value="value"
+    :options="options"
+    multiple
+    :render-tag="renderTag"
+  />
 </template>
 ```
 
@@ -381,62 +416,62 @@ import treeSelectVirtualSource from '../../../../components/generated/tree-selec
 
 ### `<tree-select>` Props
 
-| 参数名 | 描述 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | :-: | :-- |
-| disabled | 是否禁用 | `boolean` | `false` |  |
-| loading | 是否为加载中状态 | `boolean` | `false` |  |
-| error | 是否为错误状态 | `boolean` | `false` |  |
-| size | 选择框的大小 | `'mini' \| 'small' \| 'medium' \| 'large'` | `'medium'` |  |
-| border | 是否显示边框 | `boolean` | `true` |  |
-| allow-search | 是否允许搜索，兼容 `filterable` 别名 | `boolean \| { retainInputValue?: boolean }` | `false (single) \| true (multiple)` |  |
-| filterable | `allow-search` 的兼容别名 | `boolean` | `-` |  |
-| allow-clear | 是否允许清除，兼容 `clearable` 别名 | `boolean` | `false` |  |
-| clearable | `allow-clear` 的兼容别名 | `boolean` | `-` |  |
-| placeholder | 提示文案 | `string` | `-` |  |
-| max-tag-count | 最多显示的标签数量，仅在多选模式有效，支持响应式折叠 | `number \| 'responsive'` | `-` |  |
-| multiple | 是否支持多选 | `boolean` | `false` |  |
-| default-value | 默认值 | `string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]` | `-` |  |
-| model-value **(v-model)** | 绑定值 | `string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]` | `-` |  |
-| value **(v-model:value)** | `model-value` 的兼容别名 | `string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]` | `-` |  |
-| field-names | 指定节点数据中的字段名 | `TreeFieldNames` | `-` |  |
-| data | 数据，兼容 `options` 别名 | `TreeNodeData[]` | `[]` |  |
-| options | `data` 的兼容别名 | `TreeNodeData[]` | `-` |  |
-| label-in-value | 设置value格式。默认是string，设置为true时候，value格式为： &#123; label: string, value: string &#125; | `boolean` | `false` |  |
-| tree-checkable | 是否展示复选框，兼容 `checkable` 别名 | `boolean` | `false` |  |
-| checkable | `tree-checkable` 的兼容别名 | `boolean` | `-` |  |
-| tree-check-strictly | 父子节点是否关联 | `boolean` | `false` |  |
-| tree-checked-strategy | 定制回显方式，兼容 `checkStrategy` 别名 | `'all' \| 'parent' \| 'child'` | `'all'` |  |
-| checkStrategy | `tree-checked-strategy` 的兼容别名 | `'all' \| 'parent' \| 'child'` | `-` |  |
-| show-path | 单选时展示从根节点到当前节点的完整路径 | `boolean` | `false` |  |
-| separator | `show-path` 开启时的路径分隔符 | `string` | `' / '` |  |
-| tree-props | 可以接受所有 [Tree](/components/tree/) 组件的Props | `Partial<TreeProps>` | `-` |  |
-| trigger-props | 可以接受所有 [Trigger](/components/trigger/) 组件的Props | `Partial<TriggerProps>` | `-` |  |
-| virtual-scroll | Naive 兼容开关。设为 `false` 时会关闭通过 `treeProps.virtualListProps` 注入的虚拟列表配置 | `boolean` | `-` |  |
-| popup-visible **(v-model)** | 弹出框是否可见 | `boolean` | `-` |  |
-| default-popup-visible | 默认弹出框是否可见 | `boolean` | `false` |  |
-| dropdown-style | 下拉框样式 | `CSSProperties` | `-` |  |
-| dropdown-class-name | 下拉框样式 class | `string \| string[]` | `-` |  |
-| filter-tree-node | 自定义节点过滤函数 | `(searchKey: string, nodeData: TreeNodeData) => boolean` | `-` |  |
-| load-more | 动态加载数据 | `(nodeData: TreeNodeData) => Promise<void>` | `-` |  |
-| disable-filter | 禁用内部过滤逻辑 | `boolean` | `false` |  |
-| popup-container | 弹出框的挂载容器 | `string \| HTMLElement` | `-` |  |
-| fallback-option | 为 value 中找不到匹配项的 key 定义节点数据 | `boolean \| ((key: number \| string) => TreeNodeData \| boolean)` | `true` | 2.22.0 |
-| selectable | 设置可选择的节点，默认全部可选 | `boolean\| 'leaf'\| ((    node: TreeNodeData,    info: { isLeaf: boolean; level: number }  ) => boolean)` | `true` | 2.27.0 |
-| scrollbar | 是否开启虚拟滚动条 | `boolean \| ScrollbarProps` | `true` | 2.39.0 |
-| show-header-on-empty | 空状态时是否显示header | `boolean` | `false` |  |
-| show-footer-on-empty | 空状态时是否显示footer | `boolean` | `false` |  |
-| input-value **(v-model)** | 输入框的值 | `string` | `-` | 2.55.0 |
-| default-input-value | 输入框的默认值（非受控模式） | `string` | `''` | 2.55.0 |
+| 参数名                      | 描述                                                                                                              | 类型                                                                                                      |               默认值                | 版本   |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | :---------------------------------: | :----- |
+| disabled                    | 是否禁用                                                                                                          | `boolean`                                                                                                 |               `false`               |        |
+| loading                     | 是否为加载中状态                                                                                                  | `boolean`                                                                                                 |               `false`               |        |
+| error                       | 是否为错误状态                                                                                                    | `boolean`                                                                                                 |               `false`               |        |
+| size                        | 选择框的大小                                                                                                      | `'mini' \| 'small' \| 'medium' \| 'large'`                                                                |             `'medium'`              |        |
+| border                      | 是否显示边框                                                                                                      | `boolean`                                                                                                 |               `true`                |        |
+| allow-search                | 是否允许搜索，兼容 `filterable` 别名                                                                              | `boolean \| { retainInputValue?: boolean }`                                                               | `false (single) \| true (multiple)` |        |
+| filterable                  | `allow-search` 的兼容别名                                                                                         | `boolean`                                                                                                 |                 `-`                 |        |
+| allow-clear                 | 是否允许清除，兼容 `clearable` 别名                                                                               | `boolean`                                                                                                 |               `false`               |        |
+| clearable                   | `allow-clear` 的兼容别名                                                                                          | `boolean`                                                                                                 |                 `-`                 |        |
+| placeholder                 | 提示文案                                                                                                          | `string`                                                                                                  |                 `-`                 |        |
+| max-tag-count               | 最多显示的标签数量，仅在多选模式有效，支持响应式折叠                                                              | `number \| 'responsive'`                                                                                  |                 `-`                 |        |
+| multiple                    | 是否支持多选                                                                                                      | `boolean`                                                                                                 |               `false`               |        |
+| default-value               | 默认值                                                                                                            | `string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]`                               |                 `-`                 |        |
+| model-value **(v-model)**   | 绑定值                                                                                                            | `string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]`                               |                 `-`                 |        |
+| value **(v-model:value)**   | `model-value` 的兼容别名                                                                                          | `string \| number \| Array<string \| number> \| LabelValue \| LabelValue[]`                               |                 `-`                 |        |
+| field-names                 | 指定节点数据中的字段名                                                                                            | `TreeFieldNames`                                                                                          |                 `-`                 |        |
+| data                        | 数据，兼容 `options` 别名                                                                                         | `TreeNodeData[]`                                                                                          |                `[]`                 |        |
+| options                     | `data` 的兼容别名                                                                                                 | `TreeNodeData[]`                                                                                          |                 `-`                 |        |
+| label-in-value              | 设置value格式。默认是string，设置为true时候，value格式为： &#123; label: string, value: string &#125;             | `boolean`                                                                                                 |               `false`               |        |
+| tree-checkable              | 是否展示复选框，兼容 `checkable` 别名                                                                             | `boolean`                                                                                                 |               `false`               |        |
+| checkable                   | `tree-checkable` 的兼容别名                                                                                       | `boolean`                                                                                                 |                 `-`                 |        |
+| tree-check-strictly         | 父子节点是否关联                                                                                                  | `boolean`                                                                                                 |               `false`               |        |
+| tree-checked-strategy       | 定制回显方式，兼容 `checkStrategy` 别名                                                                           | `'all' \| 'parent' \| 'child'`                                                                            |               `'all'`               |        |
+| checkStrategy               | `tree-checked-strategy` 的兼容别名                                                                                | `'all' \| 'parent' \| 'child'`                                                                            |                 `-`                 |        |
+| show-path                   | 单选时展示从根节点到当前节点的完整路径                                                                            | `boolean`                                                                                                 |               `false`               |        |
+| separator                   | `show-path` 开启时的路径分隔符                                                                                    | `string`                                                                                                  |               `' / '`               |        |
+| tree-props                  | 可以接受所有 [Tree](/components/tree/) 组件的Props                                                                | `Partial<TreeProps>`                                                                                      |                 `-`                 |        |
+| trigger-props               | 可以接受所有 [Trigger](/components/trigger/) 组件的Props                                                          | `Partial<TriggerProps>`                                                                                   |                 `-`                 |        |
+| virtual-scroll              | Naive 兼容开关。设为 `false` 时会关闭通过 `virtual-list-props` 或 `treeProps.virtualListProps` 注入的虚拟列表配置 | `boolean`                                                                                                 |                 `-`                 |        |
+| popup-visible **(v-model)** | 弹出框是否可见                                                                                                    | `boolean`                                                                                                 |                 `-`                 |        |
+| default-popup-visible       | 默认弹出框是否可见                                                                                                | `boolean`                                                                                                 |               `false`               |        |
+| dropdown-style              | 下拉框样式                                                                                                        | `CSSProperties`                                                                                           |                 `-`                 |        |
+| dropdown-class-name         | 下拉框样式 class                                                                                                  | `string \| string[]`                                                                                      |                 `-`                 |        |
+| filter-tree-node            | 自定义节点过滤函数                                                                                                | `(searchKey: string, nodeData: TreeNodeData) => boolean`                                                  |                 `-`                 |        |
+| load-more                   | 动态加载数据                                                                                                      | `(nodeData: TreeNodeData) => Promise<void>`                                                               |                 `-`                 |        |
+| disable-filter              | 禁用内部过滤逻辑                                                                                                  | `boolean`                                                                                                 |               `false`               |        |
+| popup-container             | 弹出框的挂载容器                                                                                                  | `string \| HTMLElement`                                                                                   |                 `-`                 |        |
+| fallback-option             | 为 value 中找不到匹配项的 key 定义节点数据                                                                        | `boolean \| ((key: number \| string) => TreeNodeData \| boolean)`                                         |               `true`                | 2.22.0 |
+| selectable                  | 设置可选择的节点，默认全部可选                                                                                    | `boolean\| 'leaf'\| ((    node: TreeNodeData,    info: { isLeaf: boolean; level: number }  ) => boolean)` |               `true`                | 2.27.0 |
+| scrollbar                   | 是否开启虚拟滚动条                                                                                                | `boolean \| ScrollbarProps`                                                                               |               `true`                | 2.39.0 |
+| show-header-on-empty        | 空状态时是否显示header                                                                                            | `boolean`                                                                                                 |               `false`               |        |
+| show-footer-on-empty        | 空状态时是否显示footer                                                                                            | `boolean`                                                                                                 |               `false`               |        |
+| input-value **(v-model)**   | 输入框的值                                                                                                        | `string`                                                                                                  |                 `-`                 | 2.55.0 |
+| default-input-value         | 输入框的默认值（非受控模式）                                                                                      | `string`                                                                                                  |                `''`                 | 2.55.0 |
 
 ### `<tree-select>` Events
 
-| 事件名 | 描述 | 参数 | 版本 |
-| --- | --- | --- | :-- |
-| change | 值改变时触发 | value: `string \| number \| LabelValue \| Array<string \| number> \| LabelValue[] \| undefined` |  |
-| popup-visible-change | 下拉框显示状态改变时触发 | visible: `boolean` |  |
-| search | 搜索值变化时触发 | searchKey: `string` |  |
-| clear | 点击清除时触发 | - |  |
-| input-value-change | 输入框的值发生改变时触发 | inputValue: `string` | 2.55.0 |
+| 事件名               | 描述                     | 参数                                                                                            | 版本   |
+| -------------------- | ------------------------ | ----------------------------------------------------------------------------------------------- | :----- |
+| change               | 值改变时触发             | value: `string \| number \| LabelValue \| Array<string \| number> \| LabelValue[] \| undefined` |        |
+| popup-visible-change | 下拉框显示状态改变时触发 | visible: `boolean`                                                                              |        |
+| search               | 搜索值变化时触发         | searchKey: `string`                                                                             |        |
+| clear                | 点击清除时触发           | -                                                                                               |        |
+| input-value-change   | 输入框的值发生改变时触发 | inputValue: `string`                                                                            | 2.55.0 |
 
 ### `<tree-select>` Slots
 

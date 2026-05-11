@@ -2,8 +2,7 @@ import { computed, defineComponent, PropType, ref, toRefs, Slots } from 'vue';
 
 import { useScrollbar } from '../_hooks/use-scrollbar';
 import { getPrefixCls } from '../_utils/global-config';
-import { Scrollbar } from '../index';
-import { ScrollbarProps } from '../scrollbar';
+import Scrollbar, { ScrollbarProps } from '../scrollbar';
 import Tree from '../tree';
 import { TreeProps, TreeNodeKey } from '../tree/interface';
 
@@ -48,6 +47,11 @@ export default defineComponent({
       };
     });
 
+    const treeWrapperClassName = computed(() => [
+      `${prefixCls}-tree-wrapper`,
+      computedTreeProps.value.virtualListProps && `${prefixCls}-tree-wrapper-virtual`,
+    ]);
+
     const onSelect = (newVal: TreeNodeKey[], e: Event) => {
       if (showCheckable.value) {
         refTree.value?.toggleCheck?.(newVal[0], e);
@@ -76,12 +80,12 @@ export default defineComponent({
     return () => {
       if (displayScrollbar.value) {
         return (
-          <Scrollbar class={`${prefixCls}-tree-wrapper`} {...scrollbarProps.value}>
+          <Scrollbar class={treeWrapperClassName.value} {...scrollbarProps.value}>
             {renderTree()}
           </Scrollbar>
         );
       }
-      return <div class={`${prefixCls}-tree-wrapper`}>{renderTree()}</div>;
+      return <div class={treeWrapperClassName.value}>{renderTree()}</div>;
     };
   },
 });

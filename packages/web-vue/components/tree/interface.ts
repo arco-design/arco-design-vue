@@ -1,6 +1,6 @@
 import { Slot, VNode } from 'vue';
 
-import { VirtualListProps } from '../_components/virtual-list-v2/interface';
+import { VirtualListProps } from '../_components/virtual-list/interface';
 import { Size } from '../_utils/constant';
 
 export type TreeNodeKey = number | string;
@@ -162,8 +162,6 @@ export type CheckableType =
         isLeaf: boolean;
       },
     ) => boolean);
-export type SelectableType = CheckableType;
-
 export interface TreeProps {
   size: Size;
   blockNode: boolean;
@@ -172,7 +170,7 @@ export interface TreeProps {
   checkable: CheckableType;
   draggable: boolean;
   allowDrop?: (options: { dropNode: TreeNodeData; dropPosition: DropPosition }) => boolean;
-  selectable: SelectableType;
+  selectable: CheckableType;
   checkStrictly: boolean;
   checkedStrategy: CheckedStrategy;
   defaultSelectedKeys?: TreeNodeKey[];
@@ -187,6 +185,7 @@ export interface TreeProps {
   virtualListProps?: VirtualListProps;
   showLine: boolean;
   loadMore?: LoadMore;
+  searchValue?: string;
   defaultExpandSelected?: boolean;
   defaultExpandChecked?: boolean;
   autoExpandParent?: boolean;

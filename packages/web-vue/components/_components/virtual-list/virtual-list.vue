@@ -1,357 +1,765 @@
 <template>
-  <ResizeObserver @resize="handleResize">
+  <div ref="scrollbarHostRef" :class="hostClassNames" :style="containerOuterStyle">
     <component
-      :is="component"
-      v-bind="$attrs"
-      ref="viewportRef"
-      :style="{
-        overflowY: 'auto',
-        overflowAnchor: 'none',
-        maxHeight: `${viewportHeight}px`,
-      }"
-      @scroll="handleScroll"
+      :is="currentScroller"
+      ref="scrollerRef"
+      :class="`${prefixCls}-scroller`"
+      :style="scrollerStyle"
+      v-bind="scrollerProps"
+      v-on="scrollerListeners"
     >
-      <Filler
-        :height="isVirtual ? totalHeight : viewportHeight"
-        :offset="isVirtual ? startOffset : undefined"
-        :type="type"
-        :outer-attrs="outerAttrs"
-        :inner-attrs="innerAttrs"
-      >
-        <RenderFunction :render-func="renderChildren" />
-      </Filler>
+      <template #before>
+        <slot name="before" />
+      </template>
+      <template #default="slotProps">
+        <DynamicScrollerItem
+          v-if="isDynamicScroller"
+          :item="slotProps.item"
+          :active="slotProps.active"
+          :index="slotProps.index"
+          :size-dependencies="null"
+        >
+          <slot
+            name="item"
+            :item="slotProps.item"
+            :index="slotProps.index"
+            :active="slotProps.active"
+            :item-with-size="getSlotItemWithSize(slotProps)"
+          >
+            <slot
+              :item="slotProps.item"
+              :index="slotProps.index"
+              :active="slotProps.active"
+              :item-with-size="getSlotItemWithSize(slotProps)"
+            />
+          </slot>
+        </DynamicScrollerItem>
+        <slot
+          v-else
+          name="item"
+          :item="slotProps.item"
+          :index="slotProps.index"
+          :active="slotProps.active"
+          :item-with-size="getSlotItemWithSize(slotProps)"
+        >
+          <slot
+            :item="slotProps.item"
+            :index="slotProps.index"
+            :active="slotProps.active"
+            :item-with-size="getSlotItemWithSize(slotProps)"
+          />
+        </slot>
+      </template>
+      <template #empty>
+        <slot name="empty" />
+      </template>
+      <template #after>
+        <slot name="after" />
+      </template>
     </component>
-  </ResizeObserver>
+  </div>
 </template>
 
-<script lang="tsx">
+<script lang="ts">
   import {
-    defineComponent,
-    PropType,
-    toRefs,
-    reactive,
-    nextTick,
+    type CSSProperties,
+    type Component,
     computed,
+    defineComponent,
+    nextTick,
+    onBeforeUnmount,
+    onMounted,
     ref,
+    PropType,
     watch,
-    Ref,
-    onUnmounted,
   } from 'vue';
 
-  import usePickSlots from '../../_hooks/use-pick-slots';
-  import { isFunction, isString, isUndefined } from '../../_utils/is';
-  import { raf, caf } from '../../_utils/raf';
-  import RenderFunction from '../render-function';
-  import ResizeObserver from '../resize-observer';
-  import Filler from './filler.vue';
-  import { useItemHeight } from './hooks/use-item-height';
-  import { useRangeState } from './hooks/use-range-state';
-  import { useRenderChildren } from './hooks/use-render-children';
-  import { useScrollTo } from './hooks/use-scroll-to';
-  import { useViewportHeight } from './hooks/use-viewport-height';
-  import { ItemSlot, ScrollOptions, VirtualListProps, VirtualItemKey } from './interface';
-  import { getScrollPercentage, getValidScrollTop, getItemAbsoluteTop } from './utils';
+  import {
+    OverlayScrollbars,
+    type OverlayScrollbars as OverlayScrollbarsInstance,
+    type PartialOptions as OverlayScrollbarsPartialOptions,
+  } from 'overlayscrollbars';
+  import {
+    DynamicScroller,
+    DynamicScrollerItem,
+    RecycleScroller,
+    type CacheSnapshot,
+    type ClassValue,
+    type DynamicScrollerExposed,
+    type ItemSizeValue,
+    type KeyFieldValue,
+    type KeyValue,
+    type RecycleScrollerExposed,
+    type ScrollAlign,
+    type ScrollDirection,
+    type ScrollToOptions,
+  } from 'vue-virtual-scroller';
+
+  import type { ScrollbarProps } from '../../scrollbar';
+  import type { ScrollIntoViewOptions, ScrollOptions, VirtualListRef } from './interface';
+
+  import { getPrefixCls } from '../../_utils/global-config';
+  import { isString } from '../../_utils/is';
+
+  type ScrollerExpose = RecycleScrollerExposed<any, KeyValue> | DynamicScrollerExposed<any>;
+  type ScrollerSlotProps = {
+    item: unknown;
+    index: number;
+    active: boolean;
+    itemWithSize?: Record<string, unknown>;
+  };
 
   export default defineComponent({
     name: 'VirtualList',
     components: {
-      ResizeObserver,
-      Filler,
-      RenderFunction,
+      RecycleScroller,
+      DynamicScroller,
+      DynamicScrollerItem,
     },
-    inheritAttrs: false,
     props: {
-      /**
-       * 可视区域高度
-       */
-      height: {
-        type: [Number, String] as PropType<VirtualListProps['height']>,
-        default: 200,
-      },
-      /**
-       * 自动开启虚拟滚动的元素数量阈值，传入 null 表示禁止虚拟滚动
-       */
-      threshold: {
-        type: [Number, Object] as PropType<VirtualListProps['threshold']>,
-      },
-      /**
-       * 元素高度是否是固定的
-       */
-      isStaticItemHeight: {
-        type: Boolean,
-      },
-      /**
-       * 预估的元素高度
-       */
-      estimatedItemHeight: {
-        type: Number,
-      },
-      /**
-       * 数据源
-       */
-      data: {
-        type: Array as PropType<VirtualListProps['data']>,
+      items: {
+        type: Array as PropType<unknown[]>,
         default: () => [],
       },
-      /**
-       * 元素的 key，或者获取 key 的函数
-       */
-      itemKey: {
-        type: [String, Function] as PropType<VirtualListProps['itemKey']>,
+      height: {
+        type: [Number, String] as PropType<number | string>,
+        default: undefined,
+      },
+      keyField: {
+        type: [String, Function] as PropType<KeyFieldValue<any>>,
         default: 'key',
       },
-      /**
-       * 用于包裹的 HTML 标签
-       * @type string
-       */
-      component: {
-        type: String as PropType<VirtualListProps['component']>,
+      direction: {
+        type: String as PropType<ScrollDirection>,
+        default: 'vertical',
+      },
+      listTag: {
+        type: String,
         default: 'div',
       },
-      type: String,
-      outerAttrs: Object,
-      innerAttrs: Object,
+      itemTag: {
+        type: String,
+        default: 'div',
+      },
+      itemSize: {
+        type: [Number, Function, Object] as PropType<ItemSizeValue<any>>,
+        default: undefined,
+      },
+      gridItems: Number,
+      itemSecondarySize: Number,
+      minItemSize: {
+        type: [Number, String] as PropType<number | string | null>,
+        default: undefined,
+      },
+      sizeField: String,
+      typeField: String,
+      buffer: Number,
+      shift: Boolean,
+      cache: Object as PropType<CacheSnapshot>,
+      prerender: Number,
+      emitUpdate: Boolean,
+      disableTransform: Boolean,
+      flowMode: Boolean,
+      hiddenPosition: Number,
+      updateInterval: Number,
+      skipHover: Boolean,
+      enabled: {
+        type: Boolean,
+        default: true,
+      },
+      listClass: {
+        type: [String, Object, Array] as PropType<ClassValue>,
+      },
+      itemClass: {
+        type: [String, Object, Array] as PropType<ClassValue>,
+      },
+      scrollbar: {
+        type: [Boolean, Object] as PropType<boolean | ScrollbarProps>,
+        default: true,
+      },
     },
-    emits: ['scroll', 'resize'],
-    setup(props, { slots, emit }) {
-      const {
-        height,
-        itemKey,
-        data,
-        estimatedItemHeight: propEstimatedItemHeight,
-        isStaticItemHeight,
-        threshold,
-      } = toRefs(props);
+    emits: {
+      scroll: (_ev: Event) => true,
+      reachBottom: (_ev: Event) => true,
+      resize: () => true,
+      visible: () => true,
+      hidden: () => true,
+      update: (
+        _startIndex: number,
+        _endIndex: number,
+        _visibleStartIndex: number,
+        _visibleEndIndex: number,
+      ) => true,
+      scrollStart: () => true,
+      scrollEnd: () => true,
+    },
+    setup(props, { emit, expose }) {
+      const prefixCls = getPrefixCls('virtual-list');
+      const scrollbarHostRef = ref<HTMLElement>();
+      const scrollerRef = ref<ScrollerExpose>();
+      const osInstanceRef = ref<OverlayScrollbarsInstance | null>(null);
+      const overlayViewportReadyRef = ref(false);
+      const resolvedItems = computed(() => props.items ?? []);
 
-      function getItemKey(item: any, index: number) {
-        let result: VirtualItemKey | undefined;
-        if (isString(itemKey.value)) {
-          result = item[itemKey.value];
-        } else if (isFunction(itemKey.value)) {
-          result = itemKey.value(item);
+      const resolvedScrollbarProps = computed<ScrollbarProps | undefined>(() => {
+        if (!props.scrollbar) {
+          return undefined;
         }
-        return result ?? index;
-      }
 
-      // Convert data to internal format: {key, index, item}
-      const internalData = computed(() =>
-        (data.value || []).map((item, index) => ({
-          key: getItemKey(item, index),
-          index,
-          item,
-        })),
-      );
-
-      const viewportRef = ref<HTMLElement>();
-
-      const { viewportHeight, setViewportHeight, needMeasureViewportHeight } = useViewportHeight(
-        reactive({
-          height,
-        }),
-      );
-
-      const {
-        itemHeight,
-        minItemHeight,
-        totalHeight,
-        setItemHeight,
-        getItemHeight,
-        getItemHeightOrDefault,
-        getItemHeightOrDefaultByIndex,
-      } = useItemHeight(
-        reactive({
-          estimatedItemHeight: propEstimatedItemHeight,
-          data: internalData,
-        }),
-      );
-
-      const itemCount = computed(() => internalData.value.length);
-      const visibleCount = computed(() => Math.ceil(viewportHeight.value / minItemHeight.value));
-
-      const scrollTop = ref(0);
-      const startOffset = ref(0);
-
-      const { rangeState, updateRangeState } = useRangeState(
-        reactive({
-          viewportRef,
-          itemCount,
-          visibleCount,
-        }),
-      );
-
-      const visibleData = computed(() => {
-        const start = rangeState.startIndex;
-        const end = Math.min(rangeState.endIndex + 1, itemCount.value);
-        return internalData.value.slice(start, end);
-      });
-
-      const isVirtual = computed(
-        () =>
-          threshold?.value !== null &&
-          (threshold?.value === undefined || itemCount.value >= threshold.value) &&
-          totalHeight.value > viewportHeight.value,
-      );
-
-      // 记录滚动列表的 paddingTop 用于校正滚动距离
-      const scrollListPadding = computed(() => {
-        if (!isUndefined(viewportRef.value)) {
-          const viewport = viewportRef.value;
-          const getPadding = (property: keyof CSSStyleDeclaration) =>
-            +(window.getComputedStyle(viewport)[property] as string).replace(/\D/g, '');
+        if (typeof props.scrollbar === 'boolean') {
           return {
-            top: getPadding('paddingTop'),
-            bottom: getPadding('paddingBottom'),
+            type: 'embed',
           };
         }
 
-        return { top: 0, bottom: 0 };
+        return {
+          type: 'embed',
+          ...props.scrollbar,
+        };
       });
 
-      const itemRender = usePickSlots(slots, 'item') as Ref<ItemSlot>;
-      const renderChildren = useRenderChildren(
-        reactive({
-          internalData,
-          visibleData,
-          itemRender,
-        }),
-        {
-          onItemResize(el, key) {
-            if (el && isUndefined(getItemHeight(key))) {
-              if (isStaticItemHeight.value) {
-                setItemHeight(key, itemHeight.value);
-              } else {
-                const height = el.offsetHeight;
-                if (height) {
-                  setItemHeight(key, height);
-                }
-              }
-            }
+      const hostClassNames = computed(() => [
+        prefixCls,
+        resolvedScrollbarProps.value && 'sd-scrollbar',
+        resolvedScrollbarProps.value &&
+          `sd-scrollbar-type-${resolvedScrollbarProps.value.type ?? 'embed'}`,
+        resolvedScrollbarProps.value && `${prefixCls}-scrollbar`,
+      ]);
+
+      const containerOuterStyle = computed(() => {
+        if (props.height === undefined) {
+          return undefined;
+        }
+        const value = typeof props.height === 'number' ? `${props.height}px` : props.height;
+        return {
+          height: value,
+        };
+      });
+
+      const resolvedHeightValue = computed(() => {
+        if (props.height === undefined) {
+          return undefined;
+        }
+
+        return typeof props.height === 'number' ? `${props.height}px` : props.height;
+      });
+
+      const isDynamicScroller = computed(() => {
+        return props.itemSize === undefined;
+      });
+
+      const currentScroller = computed<Component>(() => {
+        return isDynamicScroller.value ? DynamicScroller : RecycleScroller;
+      });
+
+      const scrollerStyle = computed<CSSProperties>(() => {
+        const style: CSSProperties = {
+          minHeight: 0,
+        };
+
+        if (resolvedHeightValue.value !== undefined) {
+          style.height = resolvedScrollbarProps.value ? '100%' : resolvedHeightValue.value;
+        }
+
+        const shouldUseNativeViewport =
+          !resolvedScrollbarProps.value || !overlayViewportReadyRef.value;
+
+        if (shouldUseNativeViewport) {
+          if (props.direction === 'horizontal') {
+            style.overflowX = 'auto';
+            style.overflowY = 'hidden';
+          } else {
+            style.overflowY = 'auto';
+            style.overflowX = 'hidden';
+          }
+        }
+
+        return style;
+      });
+
+      const resolvedOverlayOptions = computed<OverlayScrollbarsPartialOptions | null>(() => {
+        const scrollbarProps = resolvedScrollbarProps.value;
+        if (!scrollbarProps) {
+          return null;
+        }
+
+        const overlayOptions = scrollbarProps.overlayOptions ?? {};
+        const isTrackType = scrollbarProps.type === 'track';
+
+        return {
+          ...overlayOptions,
+          paddingAbsolute: scrollbarProps.paddingAbsolute ?? overlayOptions.paddingAbsolute,
+          showNativeOverlaidScrollbars:
+            scrollbarProps.showNativeOverlaidScrollbars ??
+            overlayOptions.showNativeOverlaidScrollbars,
+          update: (scrollbarProps.updateOptions ??
+            overlayOptions.update) as OverlayScrollbarsPartialOptions['update'],
+          overflow: {
+            x: 'scroll',
+            y: 'scroll',
+            ...overlayOptions.overflow,
+            ...scrollbarProps.overflow,
           },
-        },
-      );
-
-      const updateScrollOffset = () => {
-        if (!viewportRef.value || !isVirtual.value) return;
-
-        const { scrollTop, clientHeight, scrollHeight } = viewportRef.value;
-
-        const scrollPtg = getScrollPercentage({
-          scrollTop,
-          clientHeight,
-          scrollHeight,
-        });
-
-        let newStartOffset = getItemAbsoluteTop({
-          scrollPtg,
-          clientHeight,
-          scrollTop:
-            scrollTop - (scrollListPadding.value.top + scrollListPadding.value.bottom) * scrollPtg,
-          itemHeight: getItemHeightOrDefaultByIndex(rangeState.itemIndex),
-          itemOffsetPtg: rangeState.itemOffsetPtg,
-        });
-
-        for (let index = rangeState.itemIndex - 1; index >= rangeState.startIndex; index--) {
-          newStartOffset -= getItemHeightOrDefaultByIndex(index);
-        }
-
-        startOffset.value = newStartOffset;
-      };
-
-      // scrollTo
-      const rafIdRef = ref();
-      onUnmounted(() => {
-        rafIdRef.value && caf(rafIdRef.value);
+          scrollbars: {
+            theme: isTrackType ? 'sd-scrollbar-theme-track' : 'sd-scrollbar-theme-embed',
+            visibility: isTrackType ? 'visible' : 'auto',
+            autoHide: isTrackType ? 'never' : 'leave',
+            autoHideSuspend: true,
+            clickScroll: 'instant',
+            ...overlayOptions.scrollbars,
+            ...scrollbarProps.scrollbars,
+          },
+        };
       });
 
-      const lockScrollRef = ref(false);
-      const { fixScrollTo, prepareScrollTo } = useScrollTo(
-        reactive({
-          isVirtual,
-          isStaticItemHeight,
-          rangeState,
-          data: internalData,
-          viewportRef,
-          scrollTop,
-          visibleCount,
-          getItemHeightOrDefault,
-          getItemHeightOrDefaultByIndex,
-        }),
-      );
-
-      const handleResize = (entry: HTMLElement) => {
-        handleWrapperResize(entry);
-        emit('resize', entry);
+      const resolveOSInstance = () => {
+        const instance = osInstanceRef.value;
+        if (!instance || instance.state().destroyed) {
+          return null;
+        }
+        return instance;
       };
 
-      const handleWrapperResize = (entry: HTMLElement) => {
-        if (needMeasureViewportHeight.value) {
-          setViewportHeight(entry.clientHeight);
+      const getScrollerElement = () => {
+        const scroller = scrollerRef.value as { $el?: unknown } | undefined;
+        return scroller?.$el instanceof HTMLElement ? scroller.$el : null;
+      };
+
+      const getEstimatedItemSize = () => {
+        if (typeof props.itemSize === 'number' && props.itemSize > 0) {
+          return props.itemSize;
+        }
+
+        if (typeof props.minItemSize === 'number' && props.minItemSize > 0) {
+          return props.minItemSize;
+        }
+
+        return 32;
+      };
+
+      const shouldResetScrollForSmallList = (
+        nextItems: unknown[],
+        previousItems: unknown[] | undefined,
+      ) => {
+        const viewport = getScrollerElement();
+        if (!viewport || viewport.scrollTop <= 0 || !previousItems?.length) {
+          return false;
+        }
+
+        if (!nextItems.length) {
+          return true;
+        }
+
+        if (nextItems.length >= previousItems.length || props.shift) {
+          return false;
+        }
+
+        const estimatedItemSize = getEstimatedItemSize();
+        const visibleCount = Math.max(1, Math.ceil(viewport.clientHeight / estimatedItemSize));
+        return nextItems.length <= visibleCount * 2;
+      };
+
+      const clampScrollPosition = () => {
+        const viewport = getScrollerElement();
+        if (!viewport) {
+          return;
+        }
+
+        const maxScrollTop = Math.max(viewport.scrollHeight - viewport.clientHeight, 0);
+        if (viewport.scrollTop > maxScrollTop) {
+          scrollToPosition(maxScrollTop);
         }
       };
 
-      const handleScroll = (e: UIEvent) => {
-        if (!viewportRef.value) return;
+      const refreshVisibleWindow = (itemsChanged = true) => {
+        if (isDynamicScroller.value) {
+          forceUpdate(true);
+          return;
+        }
 
-        const { scrollTop: rawScrollTop, clientHeight, scrollHeight } = viewportRef.value;
+        updateVisibleItems(itemsChanged, true);
+      };
 
-        scrollTop.value = getValidScrollTop(rawScrollTop, scrollHeight - clientHeight);
-        emit('scroll', e);
+      const waitForLayoutFrame = async () => {
+        await new Promise<void>((resolve) => {
+          if (typeof requestAnimationFrame === 'function') {
+            requestAnimationFrame(() => resolve());
+            return;
+          }
+
+          resolve();
+        });
+      };
+
+      const destroyOverlayScrollbar = () => {
+        overlayViewportReadyRef.value = false;
+        osInstanceRef.value?.destroy();
+        osInstanceRef.value = null;
+      };
+
+      const initOverlayScrollbar = async (waitForDom = true) => {
+        destroyOverlayScrollbar();
+
+        if (!resolvedOverlayOptions.value) {
+          return;
+        }
+
+        if (waitForDom) {
+          await nextTick();
+        }
+
+        const host = scrollbarHostRef.value;
+        const viewport = getScrollerElement();
+        if (!host || !viewport) {
+          return;
+        }
+
+        osInstanceRef.value = OverlayScrollbars(
+          {
+            target: host,
+            elements: {
+              viewport,
+              padding: false,
+              content: false,
+            },
+          },
+          resolvedOverlayOptions.value,
+          {
+            scroll: (_instance, event) => {
+              onScroll(event);
+            },
+          },
+        );
+
+        overlayViewportReadyRef.value = true;
+      };
+
+      onMounted(() => {
+        void initOverlayScrollbar(false);
+      });
+
+      watch(
+        [currentScroller, resolvedOverlayOptions],
+        async () => {
+          if (!resolvedOverlayOptions.value) {
+            destroyOverlayScrollbar();
+            return;
+          }
+
+          await nextTick();
+
+          const viewport = getScrollerElement();
+          const osInstance = resolveOSInstance();
+
+          if (!viewport || !scrollbarHostRef.value) {
+            return;
+          }
+
+          if (!osInstance || osInstance.elements().viewport !== viewport) {
+            await initOverlayScrollbar(true);
+            return;
+          }
+
+          osInstance.options(resolvedOverlayOptions.value);
+          osInstance.update(true);
+        },
+        { deep: true },
+      );
+
+      watch(
+        () => resolvedItems.value,
+        async (nextItems, previousItems) => {
+          await nextTick();
+
+          resolveOSInstance()?.update(true);
+          await waitForLayoutFrame();
+
+          if (shouldResetScrollForSmallList(nextItems, previousItems)) {
+            scrollToPosition(0);
+            await waitForLayoutFrame();
+          }
+
+          refreshVisibleWindow(true);
+
+          await nextTick();
+          await waitForLayoutFrame();
+          clampScrollPosition();
+          resolveOSInstance()?.update(true);
+
+          await nextTick();
+          await waitForLayoutFrame();
+          refreshVisibleWindow(true);
+        },
+        { deep: true },
+      );
+
+      onBeforeUnmount(() => {
+        destroyOverlayScrollbar();
+      });
+
+      const scrollerProps = computed<Record<string, unknown>>(() => {
+        const commonProps = {
+          items: resolvedItems.value,
+          height: props.height,
+          keyField: props.keyField,
+          direction: props.direction,
+          listTag: props.listTag,
+          itemTag: props.itemTag,
+          shift: props.shift,
+          cache: props.cache,
+          disableTransform: props.disableTransform,
+          flowMode: props.flowMode,
+          hiddenPosition: props.hiddenPosition,
+          enabled: props.enabled,
+        };
+
+        if (isDynamicScroller.value) {
+          return {
+            ...commonProps,
+            minItemSize: (props.minItemSize ?? 32) as number | string,
+          };
+        }
+
+        return {
+          ...commonProps,
+          itemSize: props.itemSize,
+          gridItems: props.gridItems,
+          itemSecondarySize: props.itemSecondarySize,
+          minItemSize: props.minItemSize,
+          sizeField: props.sizeField,
+          typeField: props.typeField,
+          buffer: props.buffer,
+          prerender: props.prerender,
+          emitUpdate: props.emitUpdate,
+          updateInterval: props.updateInterval,
+          skipHover: props.skipHover,
+          listClass: props.listClass,
+          itemClass: props.itemClass,
+        };
+      });
+
+      const onScroll = (ev: Event) => {
+        emit('scroll', ev);
+        const target = ev.target as HTMLElement | undefined;
+        if (!target) {
+          return;
+        }
+        const bottom = Math.floor(target.scrollHeight - (target.scrollTop + target.clientHeight));
+        if (bottom <= 0) {
+          emit('reachBottom', ev);
+        }
+      };
+
+      const onScrollEnd = () => {
+        emit('scrollEnd');
+        const osInstance = resolveOSInstance();
+        const target = osInstance
+          ? ((osInstance.elements().scrollOffsetElement ??
+              osInstance.elements().viewport) as HTMLElement)
+          : getScrollerElement();
+        if (!target) {
+          return;
+        }
+        const event = new Event('scroll');
+        emit('reachBottom', event);
+      };
+
+      const scrollerListeners = computed(() => {
+        if (isDynamicScroller.value) {
+          return {
+            resize: () => emit('resize'),
+            visible: () => emit('visible'),
+          };
+        }
+
+        return {
+          resize: () => emit('resize'),
+          visible: () => emit('visible'),
+          hidden: () => emit('hidden'),
+          update: (
+            startIndex: number,
+            endIndex: number,
+            visibleStartIndex: number,
+            visibleEndIndex: number,
+          ) => emit('update', startIndex, endIndex, visibleStartIndex, visibleEndIndex),
+          scrollStart: () => emit('scrollStart'),
+          scrollEnd: onScrollEnd,
+        };
+      });
+
+      const normalizeAlign = (align?: ScrollIntoViewOptions['align']): ScrollAlign | undefined => {
+        if (!align || align === 'auto') {
+          return 'nearest';
+        }
+        if (align === 'top') {
+          return 'start';
+        }
+        if (align === 'bottom') {
+          return 'end';
+        }
+        return align;
+      };
+
+      const getSlotItemWithSize = (slotProps: ScrollerSlotProps) => {
+        return ('itemWithSize' in slotProps ? slotProps.itemWithSize : undefined) as
+          | Record<string, unknown>
+          | undefined;
+      };
+
+      const getScroller = () => scrollerRef.value;
+
+      const scrollToItem = (index: number, options?: ScrollToOptions) => {
+        getScroller()?.scrollToItem(index, options);
+      };
+
+      const scrollToPosition = (position: number, options?: ScrollToOptions) => {
+        getScroller()?.scrollToPosition(position, options);
+      };
+
+      const findItemIndex = (offset: number) => {
+        return getScroller()?.findItemIndex(offset) ?? -1;
+      };
+
+      const getItemOffset = (index: number) => {
+        return getScroller()?.getItemOffset(index) ?? 0;
+      };
+
+      const getItemSize = (index: number) => {
+        if (isDynamicScroller.value) {
+          const dynamicScroller = getScroller() as DynamicScrollerExposed<unknown> | undefined;
+          if (!dynamicScroller) {
+            return 0;
+          }
+          return dynamicScroller.getItemSize(resolvedItems.value[index], index);
+        }
+        return (
+          (getScroller() as RecycleScrollerExposed<unknown, KeyValue> | undefined)?.getItemSize(
+            index,
+          ) ?? 0
+        );
+      };
+
+      const cacheSnapshot = () => {
+        const scroller = getScroller() as
+          | { cacheSnapshot?: CacheSnapshot | { value: CacheSnapshot } }
+          | undefined;
+        if (!scroller?.cacheSnapshot) {
+          return undefined;
+        }
+        if ('value' in scroller.cacheSnapshot) {
+          return scroller.cacheSnapshot.value;
+        }
+        return scroller.cacheSnapshot;
+      };
+
+      const restoreCache = (snapshot: CacheSnapshot | null | undefined) => {
+        return getScroller()?.restoreCache(snapshot) ?? false;
+      };
+
+      const updateVisibleItems = (itemsChanged: boolean, checkPositionDiff?: boolean) => {
+        const scroller = getScroller() as RecycleScrollerExposed<unknown, KeyValue> | undefined;
+        scroller?.updateVisibleItems(itemsChanged, checkPositionDiff);
+      };
+
+      const scrollToBottom = () => {
+        const scroller = getScroller() as DynamicScrollerExposed<unknown> | undefined;
+        scroller?.scrollToBottom();
+      };
+
+      const forceUpdate = (clear?: boolean) => {
+        const scroller = getScroller() as DynamicScrollerExposed<unknown> | undefined;
+        scroller?.forceUpdate(clear);
+      };
+
+      const getDynamicItemSize = (item: unknown, index?: number) => {
+        const scroller = getScroller() as DynamicScrollerExposed<unknown> | undefined;
+        return scroller?.getItemSize(item, index) ?? 0;
       };
 
       const scrollTo = (options: ScrollOptions) => {
-        rafIdRef.value && caf(rafIdRef.value);
-        rafIdRef.value = raf(() => {
-          const prepareScrollResult = prepareScrollTo(options);
-          if (prepareScrollResult) {
-            rangeState.startIndex = prepareScrollResult.startIndex;
-            rangeState.endIndex = prepareScrollResult.endIndex;
-            nextTick(() => {
-              if (!viewportRef.value) return;
+        if (typeof options === 'number') {
+          scrollToPosition(options);
+          return;
+        }
 
-              const fixScrollResult = fixScrollTo({
-                itemIndex: prepareScrollResult.itemIndex,
-                relativeTop: prepareScrollResult.relativeTop,
-              });
+        let index = options.index;
+        if (typeof index !== 'number' && options.key !== undefined) {
+          const keyField = props.keyField;
+          index = resolvedItems.value.findIndex((item, currentIndex) => {
+            if (typeof keyField === 'function') {
+              return keyField(item, currentIndex) === options.key;
+            }
 
-              if (fixScrollResult) {
-                lockScrollRef.value = true;
-                viewportRef.value.scrollTop = fixScrollResult.scrollTop;
-                rangeState.itemIndex = fixScrollResult.itemIndex;
-                rangeState.itemOffsetPtg = fixScrollResult.itemOffsetPtg;
-                rangeState.startIndex = fixScrollResult.startIndex;
-                rangeState.endIndex = fixScrollResult.endIndex;
-              }
+            if (item && typeof item === 'object' && isString(keyField)) {
+              return (item as Record<string, unknown>)[keyField] === options.key;
+            }
 
-              rafIdRef.value = raf(() => {
-                lockScrollRef.value = false;
-              });
-            });
-          }
+            return currentIndex === options.key;
+          });
+        }
+
+        if (typeof index !== 'number' || index < 0) {
+          return;
+        }
+
+        scrollToItem(index, {
+          align: normalizeAlign(options.align),
+          smooth: options.smooth,
+          offset: options.offset,
         });
       };
 
-      // Element size changes, viewport changes size changes, scroll position changes need to recalculate the start and end elements
-      watch([itemHeight, visibleCount, scrollTop, data], () => {
-        if (lockScrollRef.value) return;
-        updateRangeState();
-      });
-
-      // 开始和结束元素变化后需要更新偏移
-      watch(rangeState, () => {
-        updateScrollOffset();
-      });
+      expose({
+        scrollToItem,
+        scrollToPosition,
+        findItemIndex,
+        getItemOffset,
+        getItemSize,
+        cacheSnapshot,
+        restoreCache,
+        updateVisibleItems,
+        scrollToBottom,
+        forceUpdate,
+        getDynamicItemSize,
+        scrollTo,
+      } satisfies VirtualListRef);
 
       return {
-        viewportRef,
-        viewportHeight,
-        totalHeight,
-        startOffset,
-        isVirtual,
-        renderChildren,
-        handleResize,
-        handleScroll,
-        scrollTo,
+        prefixCls,
+        hostClassNames,
+        scrollbarHostRef,
+        scrollerRef,
+        currentScroller,
+        isDynamicScroller,
+        containerOuterStyle,
+        scrollerStyle,
+        scrollerProps,
+        scrollerListeners,
+        getSlotItemWithSize,
+        onScroll,
       };
     },
   });
 </script>
+
+<style lang="scss">
+  .sd-virtual-list {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+
+    &-scrollbar {
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    &-scroller {
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+    }
+  }
+</style>

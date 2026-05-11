@@ -20,6 +20,19 @@ const options = [
   },
 ];
 
+const virtualTreeOptions = Array.from({ length: 10 }, (_, parentIndex) => ({
+  label: `parent-${parentIndex}`,
+  key: `parent-${parentIndex}`,
+  value: `parent-${parentIndex}`,
+  children: Array.from({ length: 10 }, (_, optionIndex) => ({
+    label: `Option ${optionIndex}`,
+    key: `option-${parentIndex}-${optionIndex}`,
+    value: `option-${parentIndex}-${optionIndex}`,
+  })),
+}));
+
+const translateYPattern = /translateY\(([-\d.]+)px\)/;
+
 function mockElementSize(
   element: HTMLElement,
   size: Partial<Record<'offsetWidth' | 'clientWidth', number>>,
@@ -30,6 +43,11 @@ function mockElementSize(
       value,
     });
   }
+}
+
+function getTranslateY(style: string) {
+  const match = translateYPattern.exec(style);
+  return match ? Number(match[1]) : 0;
 }
 
 describe('TreeSelect', () => {
@@ -244,5 +262,82 @@ describe('TreeSelect', () => {
 
     expect(wrapper.emitted('update:modelValue')?.[0]).toEqual([['leaf-2']]);
     expect(wrapper.emitted('change')?.[0]).toEqual([['leaf-2']]);
+  });
+
+  test('should render leading child options in order for small virtual tree data', async () => {
+    const wrapper = mount(TreeSelect, {
+      attachTo: document.body,
+      props: {
+        data: virtualTreeOptions,
+        virtualListProps: {},
+      },
+    });
+
+    await wrapper.find('.sd-select-view').trigger('click');
+    await nextTick();
+
+    const switcher = document.body.querySelector(
+      '.sd-tree-node[data-key="parent-0"] .sd-tree-node-switcher',
+    ) as HTMLElement | null;
+
+    expect(switcher).not.toBeNull();
+    switcher?.click();
+    await nextTick();
+    await nextTick();
+
+    const visibleTitles = Array.from(
+      document.body.querySelectorAll('.vue-recycle-scroller__item-view'),
+    )
+      .map((view) => {
+        const label = view.querySelector('.sd-tree-node')?.getAttribute('label');
+        const top = getTranslateY((view as HTMLElement).style.transform);
+
+        return {
+          label,
+          top,
+        };
+      })
+      .filter((item): item is { label: string; top: number } => Boolean(item.label))
+      .sort((left, right) => left.top - right.top)
+      .map((item) => item.label);
+
+    expect(visibleTitles.slice(0, 5)).toEqual([
+      'parent-0',
+      'Option 0',
+      'Option 1',
+      'Option 2',
+      'Option 3',
+    ]);
+  });
+
+  test('should not keep trigger maxHeight on outer popup when virtual tree list is enabled', async () => {
+    const wrapper = mount(TreeSelect, {
+      attachTo: document.body,
+      props: {
+        data: virtualTreeOptions,
+        virtualListProps: {
+          height: 240,
+        },
+        triggerProps: {
+          popupStyle: {
+            maxHeight: '240px',
+          },
+        },
+      },
+    });
+
+    await wrapper.find('.sd-select-view').trigger('click');
+    await nextTick();
+    await nextTick();
+
+    const popup = document.body.querySelector('.sd-trigger-popup') as HTMLElement | null;
+    const treeWrapper = document.body.querySelector(
+      '.sd-tree-select-tree-wrapper',
+    ) as HTMLElement | null;
+
+    expect(popup).not.toBeNull();
+    expect(treeWrapper).not.toBeNull();
+    expect(popup?.style.maxHeight).toBe('');
+    expect(treeWrapper?.className).toContain('sd-tree-select-tree-wrapper-virtual');
   });
 });

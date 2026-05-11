@@ -65,7 +65,7 @@ exports[`<cascader> demo: > render [display] correctly 1`] = `
     <!---->
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-disabled-input sd-select-view-responsive sd-select-view-has-tag sd-select-view-has-suffix sd-select-view-multiple" style="width: 220px;"><span class="sd-select-view-resize-observer" aria-hidden="true"></span><span class="sd-select-view-mirror"></span><span class="sd-select-view-measure" aria-hidden="true"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-select-view-tag"><!--v-if--><span class="sd-tag-text">chaoyang</span>
+  <div class="sd-space-item"><span class="sd-select-view sd-select-view-size-medium sd-select-view-disabled-input sd-select-view-responsive sd-select-view-has-tag sd-select-view-has-suffix sd-select-view-multiple" style="width: 320px;"><span class="sd-select-view-resize-observer" aria-hidden="true"></span><span class="sd-select-view-mirror"></span><span class="sd-select-view-measure" aria-hidden="true"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-select-view-tag"><!--v-if--><span class="sd-tag-text">chaoyang</span>
     <!--v-if-->
     <!--v-if--></span><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-select-view-tag"><!--v-if--><span class="sd-tag-text">Beijing / Haidian</span>
     <!--v-if-->

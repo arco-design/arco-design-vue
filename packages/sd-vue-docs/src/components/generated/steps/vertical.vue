@@ -49,7 +49,7 @@
   };
 </script>
 
-<style scoped lang="less">
+<style scoped lang="scss">
   .frame-bg {
     max-width: 780px;
     padding: 40px;

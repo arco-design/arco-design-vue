@@ -3,32 +3,32 @@ title: 列表 List
 description: 最基础的列表展示，可承载文字、列表、图片、段落，常用于后台数据展示页面。
 ---
 
-import DemoBlock from '../../../../components/docs/DemoBlock.astro';
-import ListActionsLayoutDemo from '../../../../components/generated/list/actions-layout.vue';
+import DemoBlock from "../../../../components/docs/DemoBlock.astro";
+import ListActionsLayoutDemo from "../../../../components/generated/list/actions-layout.vue";
 export const listActionsLayoutSource =
   '<template>\n  <sd-list\n    class="list-demo-action-layout"\n    :bordered="false"\n    :data="dataSource"\n    :pagination-props="paginationProps"\n  >\n    <template #item="{ item }">\n      <sd-list-item class="list-demo-item" action-layout="vertical">\n        <template #actions>\n          <span><icon-heart />83</span>\n          <span><icon-star />{{ item.index }}</span>\n          <span><icon-message />Reply</span>\n        </template>\n        <template #extra>\n          <div className="image-area">\n            <img alt="sd-design" :src="item.imageSrc" />\n          </div>\n        </template>\n        <sd-list-item-meta :title="item.title" :description="item.description">\n          <template #avatar>\n            <sd-avatar shape="square">\n              <img alt="avatar" :src="item.avatar" />\n            </sd-avatar>\n          </template>\n        </sd-list-item-meta>\n      </sd-list-item>\n    </template>\n  </sd-list>\n</template>\n\n<script>\n  import { reactive } from \'vue\';\n\n  const names = [\'Socrates\', \'Balzac\', \'Plato\'];\n  const avatarSrc = [\n    \'//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp\',\n    \'//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/e278888093bef8910e829486fb45dd69.png~tplv-uwbnlip3yd-webp.webp\',\n    \'//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/9eeb1800d9b78349b24682c3518ac4a3.png~tplv-uwbnlip3yd-webp.webp\',\n  ];\n  const imageSrc = [\n    \'//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/29c1f9d7d17c503c5d7bf4e538cb7c4f.png~tplv-uwbnlip3yd-webp.webp\',\n    \'//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/04d7bc31dd67dcdf380bc3f6aa07599f.png~tplv-uwbnlip3yd-webp.webp\',\n    \'//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/1f61854a849a076318ed527c8fca1bbf.png~tplv-uwbnlip3yd-webp.webp\',\n  ];\n  const dataSource = new Array(15).fill(null).map((_, index) => {\n    return {\n      index: index,\n      avatar: avatarSrc[index % avatarSrc.length],\n      title: names[index % names.length],\n      description:\n        \'Beijing ByteDance Technology Co., Ltd. is an enterprise located in China. ByteDance has products such as TikTok, Toutiao, volcano video and Douyin (the Chinese version of TikTok).\',\n      imageSrc: imageSrc[index % imageSrc.length],\n    };\n  });\n\n  export default {\n    setup() {\n      return {\n        dataSource,\n        paginationProps: reactive({\n          defaultPageSize: 3,\n          total: dataSource.length,\n        }),\n      };\n    },\n  };\n</script>\n\n<style scoped>\n  .list-demo-action-layout .image-area {\n    width: 183px;\n    height: 119px;\n    border-radius: 2px;\n    overflow: hidden;\n  }\n\n  .list-demo-action-layout .list-demo-item {\n    padding: 20px 0;\n    border-bottom: 1px solid var(--color-fill-3);\n  }\n\n  .list-demo-action-layout .image-area img {\n    width: 100%;\n  }\n\n  .list-demo-action-layout .sd-list-item-action .sd-icon {\n    margin: 0 4px;\n  }\n</style>';
-import ListActionsDemo from '../../../../components/generated/list/actions.vue';
+import ListActionsDemo from "../../../../components/generated/list/actions.vue";
 export const listActionsSource =
   '<template>\n  <sd-list>\n    <sd-list-item v-for="idx in 4" :key="idx">\n      <sd-list-item-meta\n        title="Beijing Bytedance Technology Co., Ltd."\n        description="Beijing ByteDance Technology Co., Ltd. is an enterprise located in China."\n      >\n        <template #avatar>\n          <sd-avatar shape="square">\n            <img\n              alt="avatar"\n              src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"\n            />\n          </sd-avatar>\n        </template>\n      </sd-list-item-meta>\n      <template #actions>\n        <icon-edit />\n        <icon-delete />\n      </template>\n    </sd-list-item>\n  </sd-list>\n</template>';
-import ListBasicDemo from '../../../../components/generated/list/basic.vue';
+import ListBasicDemo from "../../../../components/generated/list/basic.vue";
 export const listBasicSource =
-  '<template>\n  <sd-list>\n    <template #header> List title </template>\n    <sd-list-item>Beijing Bytedance Technology Co., Ltd.</sd-list-item>\n    <sd-list-item>Bytedance Technology Co., Ltd.</sd-list-item>\n    <sd-list-item>Beijing Toutiao Technology Co., Ltd.</sd-list-item>\n    <sd-list-item>Beijing Volcengine Technology Co., Ltd.</sd-list-item>\n    <sd-list-item>China Beijing Bytedance Technology Co., Ltd.</sd-list-item>\n  </sd-list>\n</template>';
-import ListGridDemo from '../../../../components/generated/list/grid.vue';
+  "<template>\n  <sd-list>\n    <template #header> List title </template>\n    <sd-list-item>Beijing Bytedance Technology Co., Ltd.</sd-list-item>\n    <sd-list-item>Bytedance Technology Co., Ltd.</sd-list-item>\n    <sd-list-item>Beijing Toutiao Technology Co., Ltd.</sd-list-item>\n    <sd-list-item>Beijing Volcengine Technology Co., Ltd.</sd-list-item>\n    <sd-list-item>China Beijing Bytedance Technology Co., Ltd.</sd-list-item>\n  </sd-list>\n</template>";
+import ListGridDemo from "../../../../components/generated/list/grid.vue";
 export const listGridSource =
   '<template>\n  <sd-list :gridProps="{ gutter: 0, span: 6 }" :bordered="false">\n    <sd-list-item>\n      <sd-list>\n        <template #header>Platform</template>\n        <sd-list-item>iOS</sd-list-item>\n        <sd-list-item>Android</sd-list-item>\n        <sd-list-item>Web</sd-list-item>\n      </sd-list>\n    </sd-list-item>\n    <sd-list-item>\n      <sd-list>\n        <template #header>Framework</template>\n        <sd-list-item>Angular</sd-list-item>\n        <sd-list-item>Vue</sd-list-item>\n        <sd-list-item>React</sd-list-item>\n      </sd-list>\n    </sd-list-item>\n    <sd-list-item>\n      <sd-list>\n        <template #header>Language</template>\n        <sd-list-item>C++</sd-list-item>\n        <sd-list-item>JavaScript</sd-list-item>\n        <sd-list-item>Python</sd-list-item>\n      </sd-list>\n    </sd-list-item>\n    <sd-list-item>\n      <sd-list>\n        <template #header>Component</template>\n        <sd-list-item>Button</sd-list-item>\n        <sd-list-item>Breadcrumb</sd-list-item>\n        <sd-list-item>Transfer</sd-list-item>\n      </sd-list>\n    </sd-list-item>\n  </sd-list>\n</template>';
-import ListMetaDemo from '../../../../components/generated/list/meta.vue';
+import ListMetaDemo from "../../../../components/generated/list/meta.vue";
 export const listMetaSource =
   '<template>\n  <sd-list>\n    <sd-list-item v-for="idx in 4" :key="idx">\n      <sd-list-item-meta\n        title="Beijing Bytedance Technology Co., Ltd."\n        description="Beijing ByteDance Technology Co., Ltd. is an enterprise located in China."\n      >\n        <template #avatar>\n          <sd-avatar shape="square">\n            <img\n              alt="avatar"\n              src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"\n            />\n          </sd-avatar>\n        </template>\n      </sd-list-item-meta>\n    </sd-list-item>\n  </sd-list>\n</template>';
-import ListResponsiveGridDemo from '../../../../components/generated/list/responsive-grid.vue';
+import ListResponsiveGridDemo from "../../../../components/generated/list/responsive-grid.vue";
 export const listResponsiveGridSource =
   "<template>\n  <sd-list\n    :grid-props=\"{ gutter: [20, 20], sm: 24, md: 12, lg: 8, xl: 6 }\"\n    :data=\"dataSource\"\n    :bordered=\"false\"\n  >\n    <template #item=\"{ item }\">\n      <sd-list :data=\"item.data\">\n        <template #header>{{ item.title }}</template>\n        <template #item=\"{ item: subItem }\">\n          <sd-list-item>{{ subItem }}</sd-list-item>\n        </template>\n      </sd-list>\n    </template>\n  </sd-list>\n</template>\n\n<script>\n  const dataSource = [\n    {\n      title: 'Platform',\n      data: ['iOS', 'Android', 'Web'],\n    },\n    {\n      title: 'Framework',\n      data: ['Angular', 'Vue', 'React'],\n    },\n    {\n      title: 'Language',\n      data: ['C++', 'JavaScript', 'Python'],\n    },\n    {\n      title: 'Component',\n      data: ['Button', 'Breadcrumb', 'Transfer'],\n    },\n    {\n      title: 'Design',\n      data: ['Figma', 'Sketch', 'Adobe XD'],\n    },\n    {\n      title: 'Plugin',\n      data: ['Edu Tools', 'BashSupport', 'GitToolBox'],\n    },\n    {\n      title: 'Platform',\n      data: ['iOS', 'Android', 'Web'],\n    },\n    {\n      title: 'Framework',\n      data: ['Angular', 'Vue', 'React'],\n    },\n    {\n      title: 'Language',\n      data: ['C++', 'JavaScript', 'Python'],\n    },\n  ];\n\n  export default {\n    setup() {\n      return {\n        dataSource,\n      };\n    },\n  };\n</script>";
-import ListScrollDemo from '../../../../components/generated/list/scroll.vue';
+import ListScrollDemo from "../../../../components/generated/list/scroll.vue";
 export const listScrollSource =
   '<template>\n  <div style="margin-bottom: 10px">\n    <sd-switch v-model="scrollbar" />\n    Virtual Scrollbar\n  </div>\n  <sd-list :max-height="240" @reach-bottom="fetchData" :scrollbar="scrollbar">\n    <template #header> List title </template>\n    <template #scroll-loading>\n      <div v-if="bottom">No more data</div>\n      <sd-spin v-else />\n    </template>\n    <sd-list-item v-for="item of data">{{ item }}</sd-list-item>\n  </sd-list>\n</template>\n\n<script>\n  import { reactive, ref } from \'vue\';\n\n  export default {\n    setup() {\n      const current = ref(1);\n      const bottom = ref(false);\n      const data = reactive([]);\n      const scrollbar = ref(true);\n\n      const fetchData = () => {\n        console.log(\'reach bottom!\');\n        if (current.value <= 5) {\n          window.setTimeout(() => {\n            const index = data.length;\n            data.push(\n              `Beijing Bytedance Technology Co., Ltd. ${index + 1}`,\n              `Bytedance Technology Co., Ltd. ${index + 2}`,\n              `Beijing Toutiao Technology Co., Ltd. ${index + 3}`,\n              `Beijing Volcengine Technology Co., Ltd. ${index + 4}`,\n              `China Beijing Bytedance Technology Co., Ltd. ${index + 5}`,\n            );\n            current.value += 1;\n          }, 2000);\n        } else {\n          bottom.value = true;\n        }\n      };\n\n      return {\n        current,\n        bottom,\n        data,\n        fetchData,\n        scrollbar,\n      };\n    },\n  };\n</script>';
-import ListSizeDemo from '../../../../components/generated/list/size.vue';
+import ListSizeDemo from "../../../../components/generated/list/size.vue";
 export const listSizeSource =
   '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-radio-group v-model="size" type="button">\n      <sd-radio value="small">Small</sd-radio>\n      <sd-radio value="medium">Medium</sd-radio>\n      <sd-radio value="large">Large</sd-radio>\n    </sd-radio-group>\n    <sd-list :size="size">\n      <template #header> List title </template>\n      <sd-list-item>Beijing Bytedance Technology Co., Ltd.</sd-list-item>\n      <sd-list-item>Bytedance Technology Co., Ltd.</sd-list-item>\n      <sd-list-item>Beijing Toutiao Technology Co., Ltd.</sd-list-item>\n      <sd-list-item>Beijing Volcengine Technology Co., Ltd.</sd-list-item>\n      <sd-list-item>China Beijing Bytedance Technology Co., Ltd.</sd-list-item>\n    </sd-list>\n  </sd-space>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const size = ref(\'medium\');\n\n      return {\n        size,\n      };\n    },\n  };\n</script>';
-import ListVirtualListDemo from '../../../../components/generated/list/virtual-list.vue';
+import ListVirtualListDemo from "../../../../components/generated/list/virtual-list.vue";
 export const listVirtualListSource =
   '<template>\n  <h3 :style="{ color: \'var(--color-text-2)\' }">10000 items</h3>\n  <sd-list\n    :style="{ width: `600px` }"\n    :virtualListProps="{\n      height: 560,\n    }"\n    :data="list"\n  >\n    <template #item="{ item, index }">\n      <sd-list-item :key="index">\n        <sd-list-item-meta :title="item.title" :description="item.description">\n          <template #avatar>\n            <sd-avatar shape="square"> A </sd-avatar>\n          </template>\n        </sd-list-item-meta>\n      </sd-list-item>\n    </template>\n  </sd-list>\n</template>\n\n<script>\n  import { reactive } from \'vue\';\n\n  export default {\n    setup() {\n      const list = reactive(\n        Array(10000)\n          .fill(null)\n          .map((_, index) => {\n            const prefix = `0000${index}`.slice(-5);\n            return {\n              title: \'Beijing Bytedance Technology Co., Ltd.\',\n              description: `(${prefix}) Beijing ByteDance Technology Co., Ltd. is an enterprise located in China.`,\n            };\n          }),\n      );\n\n      return {\n        list,\n      };\n    },\n  };\n</script>';
 
@@ -114,7 +114,9 @@ export const listVirtualListSource =
 
 ### 无限长列表
 
-通过指定 `virtualListProps` 来开启虚拟列表，在大量数据时获得高性能表现。在使用虚拟列表时，如果列表元素之间高度变化较大可能导致滚动时视口出现空白区域，可通过调整 `virtualListProps.buffer` 属性解决，[使用方式](/vue/docs/faq#%E8%99%9A%E6%8B%9F%E5%88%97%E8%A1%A8%E7%9A%84%E4%BD%BF%E7%94%A8)。
+当前示例可以直接切换动态行高和固定行高两种模式：动态模式更适合承载长文案、头像和操作区，固定模式则适合卡片高度完全一致的内容流。建议优先按内容特征选模式，而不是只按数据量决定。
+
+通过指定 `virtualListProps` 来开启虚拟列表，在大量数据时获得高性能表现。`List` 默认更偏向动态内容容器：如果你只传 `height`，组件会按动态高度模式处理；当每一行高度稳定一致时，建议显式传 `itemSize`，避免不必要的动态测量。完整参数与迁移映射见 [虚拟列表迁移指南](/guides/virtual-list-migration/)。
 
 <DemoBlock source={listVirtualListSource} mainFile="src/list-virtual-list.vue">
 
@@ -126,20 +128,20 @@ export const listVirtualListSource =
 
 ### `<list>` Props
 
-| 参数名 | 描述 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | :-: | :-- |
-| data | 列表数据，需要和 `item` 插槽同时使用 | `any[]` | `-` |  |
-| size | 列表大小 | `'small' \| 'medium' \| 'large'` | `'medium'` |  |
-| bordered | 是否显示边框 | `boolean` | `true` |  |
-| split | 是否显示分割线 | `boolean` | `true` |  |
-| loading | 是否为加载中状态 | `boolean` | `false` |  |
-| hoverable | 是否显示选中样式 | `boolean` | `false` |  |
-| pagination-props | 列表分页配置 | `PaginationProps` | `-` |  |
-| grid-props | 列表栅格配置 | `object` | `-` |  |
-| max-height | 列表的最大高度 | `string \| number` | `0` |  |
-| bottom-offset | 触发到达底部的距离阈值 | `number` | `0` |  |
-| virtual-list-props | 传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#VirtualListProps) | `VirtualListProps` | `-` |  |
-| scrollbar | 是否开启虚拟滚动条 | `boolean \| ScrollbarProps` | `true` | 2.38.0 |
+| 参数名             | 描述                                                                                              | 类型                             |   默认值   | 版本   |
+| ------------------ | ------------------------------------------------------------------------------------------------- | -------------------------------- | :--------: | :----- |
+| data               | 列表数据，需要和 `item` 插槽同时使用                                                              | `any[]`                          |    `-`     |        |
+| size               | 列表大小                                                                                          | `'small' \| 'medium' \| 'large'` | `'medium'` |        |
+| bordered           | 是否显示边框                                                                                      | `boolean`                        |   `true`   |        |
+| split              | 是否显示分割线                                                                                    | `boolean`                        |   `true`   |        |
+| loading            | 是否为加载中状态                                                                                  | `boolean`                        |  `false`   |        |
+| hoverable          | 是否显示选中样式                                                                                  | `boolean`                        |  `false`   |        |
+| pagination-props   | 列表分页配置                                                                                      | `PaginationProps`                |    `-`     |        |
+| grid-props         | 列表栅格配置                                                                                      | `object`                         |    `-`     |        |
+| max-height         | 列表的最大高度                                                                                    | `string \| number`               |    `0`     |        |
+| bottom-offset      | 触发到达底部的距离阈值                                                                            | `number`                         |    `0`     |        |
+| virtual-list-props | 传递虚拟列表属性，传入此参数以开启虚拟滚动。[迁移说明与完整参数](/guides/virtual-list-migration/) | `VirtualListProps`               |    `-`     |        |
+| scrollbar          | 是否开启虚拟滚动条                                                                                | `boolean \| ScrollbarProps`      |   `true`   | 2.38.0 |
 
 ### `<list>` Events
 
@@ -152,9 +154,9 @@ export const listVirtualListSource =
 
 ### `<list>` Methods
 
-| 方法名 | 描述 | 参数 | 返回值 |
-| --- | --- | --- | --- |
-| scrollIntoView | 虚拟滚动到某个元素 | options: `{ index?: number; key?: number \| string; align: 'auto' \| 'top' \| 'bottom'}` | - |
+| 方法名         | 描述               | 参数                                                                                     | 返回值 |
+| -------------- | ------------------ | ---------------------------------------------------------------------------------------- | ------ |
+| scrollIntoView | 虚拟滚动到某个元素 | options: `{ index?: number; key?: number \| string; align: 'auto' \| 'top' \| 'bottom'}` | -      |
 
 ### `<list>` Slots
 
@@ -197,11 +199,13 @@ export const listVirtualListSource =
 
 ### VirtualListProps
 
-| 参数名 | 描述 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | :-: | :-- |
-| height | 可视区域高度 | `number \| string` | `-` |  |
-| threshold | 开启虚拟滚动的元素数量阈值，当数据数量小于阈值时不会开启虚拟滚动。 | `number` | `-` |  |
-| isStaticItemHeight | （已废除）元素高度是否是固定的。2.34.1 版本废除，请使用 `fixedSize` | `boolean` | `false` |  |
-| fixedSize | 元素高度是否是固定的。 | `boolean` | `false` | 2.34.1 |
-| estimatedSize | 元素高度不固定时的预估高度。 | `number` | `-` | 2.34.1 |
-| buffer | 视口边界外提前挂载的元素数量。 | `number` | `10` | 2.34.1 |
+| 参数名      | 描述                                                                   | 类型                                            | 默认值  | 版本 |
+| ----------- | ---------------------------------------------------------------------- | ----------------------------------------------- | :-----: | :--- |
+| items       | 列表数据                                                               | `unknown[]`                                     |  `[]`   |      |
+| keyField    | 用于提取每项唯一键，支持字段名或函数                                   | `string \| ((item, index) => string \| number)` | `'key'` |      |
+| height      | 可视区域高度                                                           | `number \| string`                              |   `-`   |      |
+| itemSize    | 固定高度模式的 item 高度，传入后使用 `RecycleScroller`                 | `number \| string \| ((item, index) => number)` |   `-`   |      |
+| minItemSize | 动态高度模式的最小 item 高度；未传 `itemSize` 时使用 `DynamicScroller` | `number \| string`                              |  `32`   |      |
+| buffer      | 额外渲染缓冲区（像素）                                                 | `number`                                        |  `200`  |      |
+
+其余参数与暴露方法请查看 [虚拟列表迁移指南](/guides/virtual-list-migration/)。

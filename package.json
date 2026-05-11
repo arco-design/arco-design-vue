@@ -54,7 +54,8 @@
     "clone:vendor": "node scripts/cloneVendor.mjs"
   },
   "dependencies": {
-    "es-toolkit": "^1.46.1"
+    "es-toolkit": "catalog:",
+    "type-fest": "catalog:"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.5.3",
@@ -79,7 +80,6 @@
     "stylelint-config-standard": "^40.0.0",
     "stylelint-order": "^8.1.1",
     "stylelint-scss": "^7.0.0",
-    "type-fest": "^5.6.0",
     "typescript": "catalog:",
     "vite-plus": "^0.1.20"
   },

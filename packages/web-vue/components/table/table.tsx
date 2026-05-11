@@ -29,8 +29,7 @@ import type {
 } from './interface';
 
 import ResizeObserver from '../_components/resize-observer';
-import VirtualList from '../_components/virtual-list-v2';
-import { VirtualListProps } from '../_components/virtual-list-v2/interface';
+import { VirtualListProps } from '../_components/virtual-list/interface';
 import { useChildrenComponents } from '../_hooks/use-children-components';
 import { useComponentRef } from '../_hooks/use-component-ref';
 import { useScrollbar } from '../_hooks/use-scrollbar';
@@ -64,6 +63,7 @@ import { useRowSelection } from './hooks/use-row-selection';
 import { useSorter } from './hooks/use-sorter';
 import { useSpan } from './hooks/use-span';
 import ColGroup from './table-col-group.vue';
+import TableLegacyVirtualList from './table-legacy-virtual-list.vue';
 import OperationTd from './table-operation-td';
 import OperationTh from './table-operation-th';
 import Tbody from './table-tbody';
@@ -71,6 +71,17 @@ import Td from './table-td';
 import Th from './table-th';
 import Thead from './table-thead';
 import Tr from './table-tr';
+
+type TableVirtualListProps = VirtualListProps & {
+  threshold?: number;
+  fixedSize?: boolean;
+  estimatedSize?: number;
+  itemKey?: string | ((item: unknown, index: number) => string | number);
+  component?: keyof HTMLElementTagNameMap | Record<string, unknown>;
+  listAttrs?: Record<string, unknown>;
+  contentAttrs?: Record<string, unknown>;
+  paddingPosition?: 'content' | 'list';
+};
 import { getGroupColumns, mapArrayWithChildren, mapRawTableData } from './utils';
 
 const DEFAULT_BORDERED = {
@@ -222,7 +233,7 @@ export default defineComponent({
      * @type VirtualListProps
      */
     virtualListProps: {
-      type: Object as PropType<VirtualListProps>,
+      type: Object as PropType<TableVirtualListProps>,
     },
     /**
      * @zh 单元格合并方法（索引从数据项开始计数）
@@ -1946,7 +1957,7 @@ export default defineComponent({
             )}
             <ResizeObserver onResize={handleTbodyResize}>
               {isVirtualList.value && flattenData.value.length ? (
-                <VirtualList
+                <TableLegacyVirtualList
                   v-slots={{
                     item: ({ item, index }: { item: TableDataWithRaw; index: number }) =>
                       renderRecord(item, index),

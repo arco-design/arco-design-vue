@@ -3,49 +3,35 @@ title: 步骤条 Steps
 description: 明示任务流程和当前完成程度，引导用户按照步骤完成任务。
 ---
 
-import DemoBlock from '../../../../components/docs/DemoBlock.astro';
-import StepsArrowDemo from '../../../../components/generated/steps/arrow.vue';
-export const stepsArrowSource =
-  '<template>\n  <sd-steps type="arrow" :current="2">\n    <sd-step description="This is a description">Succeeded</sd-step>\n    <sd-step description="This is a description">Processing</sd-step>\n    <sd-step description="This is a description">Pending</sd-step>\n  </sd-steps>\n</template>';
-import StepsBasicDemo from '../../../../components/generated/steps/basic.vue';
-export const stepsBasicSource =
-  '<template>\n  <div>\n    <sd-steps :current="2">\n      <sd-step>Succeeded</sd-step>\n      <sd-step>Processing</sd-step>\n      <sd-step>Pending</sd-step>\n    </sd-steps>\n    <sd-divider />\n    <div style="line-height: 140px; text-align: center; color: #C9CDD4; "> Step 2 Content </div>\n  </div>\n</template>';
-import StepsChangeableDemo from '../../../../components/generated/steps/changeable.vue';
-export const stepsChangeableSource =
-  '<template>\n  <div>\n    <sd-steps changeable :current="current" @change="setCurrent">\n      <sd-step description="This is a description">Succeeded</sd-step>\n      <sd-step description="This is a description">Processing</sd-step>\n      <sd-step description="This is a description">Pending</sd-step>\n    </sd-steps>\n    <div\n      :style="{\n        width: \'100%\',\n        height: \'200px\',\n        textAlign: \'center\',\n        background: \'var(--color-bg-2)\',\n        color: \'#C2C7CC\',\n      }"\n    >\n      <div style="line-height: 160px;">Step{{ current }} Content</div>\n      <sd-space size="large">\n        <sd-button type="secondary" :disabled="current <= 1" @click="onPrev">\n          <IconLeft /> Back\n        </sd-button>\n        <sd-button type="primary" :disabled="current >= 3" @click="onNext">\n          Next <IconRight />\n        </sd-button>\n      </sd-space>\n    </div>\n  </div>\n</template>\n<script>\n  export default {\n    data() {\n      return {\n        current: 1,\n      };\n    },\n    methods: {\n      onPrev() {\n        this.current = Math.max(1, this.current - 1);\n      },\n\n      onNext() {\n        this.current = Math.min(3, this.current + 1);\n      },\n\n      setCurrent(current) {\n        this.current = current;\n      },\n    },\n  };\n</script>';
-import StepsCustomNodeDemo from '../../../../components/generated/steps/custom-node.vue';
-export const stepsCustomNodeSource =
-  '<template>\n  <div>\n    <sd-steps changeable label-placement="vertical" :current="current" @change="setCurrent">\n      <sd-step description="This is a description">\n        Succeeded\n        <template v-slot:node="slotProps">\n          <sd-popover content="step tip" :popup-visible="current === 1">\n            <span>{{ slotProps.step }}</span>\n          </sd-popover>\n        </template>\n      </sd-step>\n      <sd-step description="This is a description">\n        Processing Succeeded\n        <template v-slot:node="slotProps">\n          <sd-popover content="step tip" :popup-visible="current === 2">\n            <span>{{ slotProps.step }}</span>\n          </sd-popover>\n        </template>\n      </sd-step>\n      <sd-step description="This is a description"\n        >Pending\n        <template v-slot:node="slotProps">\n          <sd-popover content="step tip" :popup-visible="current === 3">\n            <span>{{ slotProps.step }}</span>\n          </sd-popover>\n        </template>\n      </sd-step>\n    </sd-steps>\n    <div style="margin-top: 20px; text-align: center;">\n      <sd-space size="large">\n        <sd-button type="secondary" :disabled="current <= 1" @click="onPrev">\n          <IconLeft />\n          Back\n        </sd-button>\n        <sd-button type="primary" :disabled="current >= 3" @click="onNext">\n          Next\n          <IconRight />\n        </sd-button>\n      </sd-space>\n    </div>\n  </div>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const current = ref(1);\n\n      const onPrev = () => {\n        current.value = Math.max(1, current.value - 1);\n      };\n\n      const onNext = () => {\n        current.value = Math.min(3, current.value + 1);\n      };\n\n      const setCurrent = (current) => {\n        current.value = current;\n      };\n\n      return {\n        current,\n        onPrev,\n        onNext,\n        setCurrent,\n      };\n    },\n  };\n</script>';
-import StepsDescriptionDemo from '../../../../components/generated/steps/description.vue';
-export const stepsDescriptionSource =
-  '<template>\n  <sd-steps>\n    <sd-step description="This is a description">Succeeded</sd-step>\n    <sd-step description="This is a description">Processing</sd-step>\n    <sd-step description="This is a description">Pending</sd-step>\n  </sd-steps>\n</template>';
-import StepsDotDemo from '../../../../components/generated/steps/dot.vue';
-export const stepsDotSource =
-  '<template>\n  <sd-steps type="dot">\n    <sd-step>Succeeded</sd-step>\n    <sd-step>Processing</sd-step>\n    <sd-step>Pending</sd-step>\n  </sd-steps>\n</template>';
-import StepsErrorDemo from '../../../../components/generated/steps/error.vue';
-export const stepsErrorSource =
-  '<template>\n  <sd-steps :current="2" status="error">\n    <sd-step description="This is a description">Succeeded</sd-step>\n    <sd-step description="This is a description">Error</sd-step>\n    <sd-step description="This is a description">Pending</sd-step>\n  </sd-steps>\n</template>';
-import StepsIconDemo from '../../../../components/generated/steps/icon.vue';
-export const stepsIconSource =
-  '<template>\n  <sd-steps>\n    <sd-step description="This is a description">\n      Succeeded\n      <template #icon>\n        <icon-home />\n      </template>\n    </sd-step>\n    <sd-step description="This is a description">\n      Processing\n      <template #icon>\n        <icon-loading />\n      </template>\n    </sd-step>\n    <sd-step description="This is a description">\n      Pending\n      <template #icon>\n        <icon-thumb-up />\n      </template>\n    </sd-step>\n  </sd-steps>\n</template>';
-import StepsLabelPlacementDemo from '../../../../components/generated/steps/label-placement.vue';
-export const stepsLabelPlacementSource =
-  '<template>\n  <sd-steps label-placement="vertical">\n    <sd-step description="This is a description">Succeeded</sd-step>\n    <sd-step description="This is a description">Processing</sd-step>\n    <sd-step description="This is a description">Pending</sd-step>\n  </sd-steps>\n</template>';
-import StepsLineLessDemo from '../../../../components/generated/steps/line-less.vue';
-export const stepsLineLessSource =
-  '<template>\n  <sd-steps :current="2" line-less>\n    <sd-step description="This is a description">Succeeded</sd-step>\n    <sd-step description="This is a description">Processing</sd-step>\n    <sd-step description="This is a description">Pending</sd-step>\n  </sd-steps>\n</template>';
-import StepsNavigationDemo from '../../../../components/generated/steps/navigation.vue';
-export const stepsNavigationSource =
-  '<template>\n  <sd-steps type="navigation">\n    <sd-step>Succeeded</sd-step>\n    <sd-step>Processing</sd-step>\n    <sd-step>Pending</sd-step>\n  </sd-steps>\n</template>';
-import StepsSmallArrowDemo from '../../../../components/generated/steps/small-arrow.vue';
-export const stepsSmallArrowSource =
-  '<template>\n  <div>\n    <sd-steps type="arrow" :current="2" small style="margin-bottom: 20px;">\n      <sd-step description="This is a description">Succeeded</sd-step>\n      <sd-step description="This is a description">Processing</sd-step>\n      <sd-step description="This is a description">Pending</sd-step>\n    </sd-steps>\n    <sd-steps type="arrow" :current="2" small status="error">\n      <sd-step description="This is a description">Succeeded</sd-step>\n      <sd-step description="This is a description">Processing</sd-step>\n      <sd-step description="This is a description">Pending</sd-step>\n    </sd-steps>\n  </div>\n</template>';
-import StepsSmallDemo from '../../../../components/generated/steps/small.vue';
-export const stepsSmallSource =
-  '<template>\n  <div>\n    <sd-steps :current="2" small>\n      <sd-step>Succeeded</sd-step>\n      <sd-step>Processing</sd-step>\n      <sd-step>Pending</sd-step>\n    </sd-steps>\n    <sd-divider />\n    <div style="line-height: 140px; text-align: center; color: #C9CDD4; "> Step 2 Content </div>\n  </div>\n</template>';
-import StepsVerticalDemo from '../../../../components/generated/steps/vertical.vue';
-export const stepsVerticalSource =
-  '<template>\n  <div class="frame-bg">\n    <div class="frame-body">\n      <div class="frame-aside">\n        <sd-steps :current="current" direction="vertical">\n          <sd-step>Succeeded</sd-step>\n          <sd-step>Processing</sd-step>\n          <sd-step>Pending</sd-step>\n        </sd-steps>\n      </div>\n      <div class="frame-main">\n        <div class="main-content">The content of this step.</div>\n        <div class="main-bottom">\n          <sd-button :disabled="current === 1" @click="onPrev">\n            <icon-left />\n            Back\n          </sd-button>\n          <sd-button :disabled="current === 3" @click="onNext">\n            Next\n            <icon-right />\n          </sd-button>\n        </div>\n      </div>\n    </div>\n  </div>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const current = ref(1);\n\n      const onPrev = () => {\n        current.value = Math.max(1, current.value - 1);\n      };\n\n      const onNext = () => {\n        current.value = Math.min(3, current.value + 1);\n      };\n\n      return {\n        current,\n        onPrev,\n        onNext,\n      };\n    },\n  };\n</script>\n\n<style scoped lang="less">\n  .frame-bg {\n    max-width: 780px;\n    padding: 40px;\n    background: var(--color-fill-2);\n  }\n\n  .frame-body {\n    display: flex;\n    background: var(--color-bg-2);\n  }\n\n  .frame-aside {\n    padding: 24px;\n    height: 272px;\n    border-right: 1px solid var(--color-border);\n  }\n\n  .frame-main {\n    width: 100%;\n  }\n\n  .main-content {\n    text-align: center;\n    line-height: 200px;\n  }\n\n  .main-bottom {\n    display: flex;\n    justify-content: center;\n\n    button {\n      margin: 0 20px;\n    }\n  }\n</style>';
+import DemoBlock from "../../../../components/docs/DemoBlock.astro";
+import StepsArrowDemo from "../../../../components/generated/steps/arrow.vue";
+import stepsArrowSource from "../../../../components/generated/steps/arrow.vue?raw";
+import StepsBasicDemo from "../../../../components/generated/steps/basic.vue";
+import stepsBasicSource from "../../../../components/generated/steps/basic.vue?raw";
+import StepsChangeableDemo from "../../../../components/generated/steps/changeable.vue";
+import stepsChangeableSource from "../../../../components/generated/steps/changeable.vue?raw";
+import StepsCustomNodeDemo from "../../../../components/generated/steps/custom-node.vue";
+import stepsCustomNodeSource from "../../../../components/generated/steps/custom-node.vue?raw";
+import StepsDescriptionDemo from "../../../../components/generated/steps/description.vue";
+import stepsDescriptionSource from "../../../../components/generated/steps/description.vue?raw";
+import StepsDotDemo from "../../../../components/generated/steps/dot.vue";
+import stepsDotSource from "../../../../components/generated/steps/dot.vue?raw";
+import StepsErrorDemo from "../../../../components/generated/steps/error.vue";
+import stepsErrorSource from "../../../../components/generated/steps/error.vue?raw";
+import StepsIconDemo from "../../../../components/generated/steps/icon.vue";
+import stepsIconSource from "../../../../components/generated/steps/icon.vue?raw";
+import StepsLabelPlacementDemo from "../../../../components/generated/steps/label-placement.vue";
+import stepsLabelPlacementSource from "../../../../components/generated/steps/label-placement.vue?raw";
+import StepsLineLessDemo from "../../../../components/generated/steps/line-less.vue";
+import stepsLineLessSource from "../../../../components/generated/steps/line-less.vue?raw";
+import StepsNavigationDemo from "../../../../components/generated/steps/navigation.vue";
+import stepsNavigationSource from "../../../../components/generated/steps/navigation.vue?raw";
+import StepsSmallArrowDemo from "../../../../components/generated/steps/small-arrow.vue";
+import stepsSmallArrowSource from "../../../../components/generated/steps/small-arrow.vue?raw";
+import StepsSmallDemo from "../../../../components/generated/steps/small.vue";
+import stepsSmallSource from "../../../../components/generated/steps/small.vue?raw";
+import StepsVerticalDemo from "../../../../components/generated/steps/vertical.vue";
+import stepsVerticalSource from "../../../../components/generated/steps/vertical.vue?raw";
 
 ### 箭头步骤条
 
@@ -191,17 +177,17 @@ export const stepsVerticalSource =
 
 ### `<steps>` Props
 
-| 参数名 | 描述 | 类型 | 默认值 |
-| --- | --- | --- | :-: |
-| type | 步骤条的类型 | `'default' \| 'arrow' \| 'dot' \| 'navigation'` | `'default'` |
-| direction | 步骤条的显示方向 | `'horizontal' \| 'vertical'` | `'horizontal'` |
-| label-placement | 标签描述文字放置的位置 | `'horizontal' \| 'vertical'` | `'horizontal'` |
-| current **(v-model)** | 当前步骤数 | `number` | `-` |
-| default-current | 默认的步骤数（非受控状态） | `number` | `1` |
-| status | 当前步骤的状态 | `'wait' \| 'process' \| 'finish' \| 'error'` | `'process'` |
-| line-less | 是否使用无连接线样式 | `boolean` | `false` |
-| small | 是否使用小型步骤条 | `boolean` | `false` |
-| changeable | 是否可以点击切换 | `boolean` | `false` |
+| 参数名                | 描述                       | 类型                                            |     默认值     |
+| --------------------- | -------------------------- | ----------------------------------------------- | :------------: |
+| type                  | 步骤条的类型               | `'default' \| 'arrow' \| 'dot' \| 'navigation'` |  `'default'`   |
+| direction             | 步骤条的显示方向           | `'horizontal' \| 'vertical'`                    | `'horizontal'` |
+| label-placement       | 标签描述文字放置的位置     | `'horizontal' \| 'vertical'`                    | `'horizontal'` |
+| current **(v-model)** | 当前步骤数                 | `number`                                        |      `-`       |
+| default-current       | 默认的步骤数（非受控状态） | `number`                                        |      `1`       |
+| status                | 当前步骤的状态             | `'wait' \| 'process' \| 'finish' \| 'error'`    |  `'process'`   |
+| line-less             | 是否使用无连接线样式       | `boolean`                                       |    `false`     |
+| small                 | 是否使用小型步骤条         | `boolean`                                       |    `false`     |
+| changeable            | 是否可以点击切换           | `boolean`                                       |    `false`     |
 
 ### `<steps>` Events
 

@@ -3,34 +3,25 @@ title: 按钮 Button
 description: 按钮是一种命令组件，可发起一个即时操作。
 ---
 
-import DemoBlock from '../../../../components/docs/DemoBlock.astro';
-import ButtonBasicDemo from '../../../../components/generated/button/basic.vue';
-export const buttonBasicSource =
-  '<template>\n  <sd-space>\n    <sd-button type="primary">Primary</sd-button>\n    <sd-button>Secondary</sd-button>\n    <sd-button type="dashed">Dashed</sd-button>\n    <sd-button type="outline">Outline</sd-button>\n    <sd-button type="text">Text</sd-button>\n  </sd-space>\n</template>';
-import ButtonDisabledDemo from '../../../../components/generated/button/disabled.vue';
-export const buttonDisabledSource =
-  '<template>\n  <sd-space direction="vertical">\n    <sd-space>\n      <sd-button type="primary" disabled>Primary</sd-button>\n      <sd-button disabled>Default</sd-button>\n      <sd-button type="dashed" disabled>Dashed</sd-button>\n      <sd-button type="outline" disabled>Outline</sd-button>\n      <sd-button type="text" disabled>Text</sd-button>\n    </sd-space>\n    <sd-space>\n      <sd-button type="primary" status="success" disabled>Primary</sd-button>\n      <sd-button status="success" disabled>Default</sd-button>\n      <sd-button type="dashed" status="success" disabled>Dashed</sd-button>\n      <sd-button type="outline" status="success" disabled>Outline</sd-button>\n      <sd-button type="text" status="success" disabled>Text</sd-button>\n    </sd-space>\n    <sd-space>\n      <sd-button type="primary" status="warning" disabled>Primary</sd-button>\n      <sd-button status="warning" disabled>Default</sd-button>\n      <sd-button type="dashed" status="warning" disabled>Dashed</sd-button>\n      <sd-button type="outline" status="warning" disabled>Outline</sd-button>\n      <sd-button type="text" status="warning" disabled>Text</sd-button>\n    </sd-space>\n    <sd-space>\n      <sd-button type="primary" status="danger" disabled>Primary</sd-button>\n      <sd-button status="danger" disabled>Default</sd-button>\n      <sd-button type="dashed" status="danger" disabled>Dashed</sd-button>\n      <sd-button type="outline" status="danger" disabled>Outline</sd-button>\n      <sd-button type="text" status="danger" disabled>Text</sd-button>\n    </sd-space>\n  </sd-space>\n</template>';
-import ButtonGroupDemo from '../../../../components/generated/button/group.vue';
-export const buttonGroupSource =
-  '<template>\n  <sd-space direction="vertical">\n    <sd-button-group>\n      <sd-button>Publish</sd-button>\n      <sd-button>\n        <template #icon>\n          <icon-down />\n        </template>\n      </sd-button>\n    </sd-button-group>\n    <sd-button-group>\n      <sd-button>Publish</sd-button>\n      <sd-button>\n        <template #icon>\n          <icon-more />\n        </template>\n      </sd-button>\n    </sd-button-group>\n    <sd-button-group>\n      <sd-button type="primary">\n        <icon-left />\n        Prev\n      </sd-button>\n      <sd-button type="primary">\n        Next\n        <icon-right />\n      </sd-button>\n    </sd-button-group>\n    <sd-space size="large">\n      <sd-button-group type="primary">\n        <sd-button> copy </sd-button>\n        <sd-button> cut </sd-button>\n        <sd-button> find </sd-button>\n      </sd-button-group>\n      <sd-button-group type="primary" status="warning">\n        <sd-button>\n          <template #icon><icon-heart-fill /></template>\n        </sd-button>\n        <sd-button>\n          <template #icon><icon-star-fill /></template>\n        </sd-button>\n        <sd-button>\n          <template #icon><icon-thumb-up-fill /></template>\n        </sd-button>\n      </sd-button-group>\n      <sd-button-group size="small" disabled>\n        <sd-button> prev </sd-button>\n        <sd-button> next </sd-button>\n      </sd-button-group>\n    </sd-space>\n  </sd-space>\n</template>';
-import ButtonIconDemo from '../../../../components/generated/button/icon.vue';
-export const buttonIconSource =
-  '<template>\n  <sd-space>\n    <sd-button type="primary">\n      <template #icon>\n        <icon-plus />\n      </template>\n    </sd-button>\n    <sd-button type="primary">\n      <template #icon>\n        <icon-delete />\n      </template>\n      <!-- Use the default slot to avoid extra spaces -->\n      <template #default>Delete</template>\n    </sd-button>\n  </sd-space>\n</template>\n\n<script>\n  import { IconPlus, IconDelete } from \'@sdata/web-vue/es/icon/index.js\';\n\n  export default {\n    components: { IconPlus, IconDelete },\n  };\n</script>';
-import ButtonLoadingDemo from '../../../../components/generated/button/loading.vue';
-export const buttonLoadingSource =
-  '<template>\n  <sd-space>\n    <sd-button type="primary" loading>Primary</sd-button>\n    <sd-button loading>Default</sd-button>\n    <sd-button type="dashed" loading>Dashed</sd-button>\n    <sd-button type="primary" :loading="loading1" @click="handleClick1">Click Me</sd-button>\n    <sd-button type="primary" :loading="loading2" @click="handleClick2">\n      <template #icon>\n        <icon-plus />\n      </template>\n      Click Me\n    </sd-button>\n  </sd-space>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n  import { IconPlus } from \'@sdata/web-vue/es/icon/index.js\';\n\n  export default {\n    components: {\n      IconPlus,\n    },\n    setup() {\n      const loading1 = ref(false);\n      const loading2 = ref(false);\n\n      const handleClick1 = () => {\n        loading1.value = !loading1.value;\n      };\n      const handleClick2 = () => {\n        loading2.value = !loading2.value;\n      };\n\n      return {\n        loading1,\n        loading2,\n        handleClick1,\n        handleClick2,\n      };\n    },\n  };\n</script>';
-import ButtonLongDemo from '../../../../components/generated/button/long.vue';
-export const buttonLongSource =
-  '<template>\n  <sd-space class="wrapper" direction="vertical">\n    <sd-button type="primary" long>Primary</sd-button>\n    <sd-button long>Default</sd-button>\n    <sd-button type="dashed" long>Dashed</sd-button>\n    <sd-button type="outline" long>Outline</sd-button>\n    <sd-button type="text" long>Text</sd-button>\n  </sd-space>\n</template>\n\n<style scoped lang="less">\n  .wrapper {\n    width: 400px;\n    padding: 20px;\n    border: 1px solid var(~\'--color-border\');\n    border-radius: 4px;\n  }\n</style>';
-import ButtonShapeDemo from '../../../../components/generated/button/shape.vue';
-export const buttonShapeSource =
-  '<template>\n  <sd-space>\n    <sd-button type="primary">Square</sd-button>\n    <sd-button type="primary" shape="round">Round</sd-button>\n    <sd-button type="primary">\n      <template #icon>\n        <icon-plus />\n      </template>\n    </sd-button>\n    <sd-button type="primary" shape="circle">\n      <icon-plus />\n    </sd-button>\n  </sd-space>\n</template>\n<script>\n  import { IconPlus } from \'@sdata/web-vue/es/icon/index.js\';\n\n  export default {\n    components: { IconPlus },\n  };\n</script>';
-import ButtonSizeDemo from '../../../../components/generated/button/size.vue';
-export const buttonSizeSource =
-  '<template>\n  <sd-space>\n    <sd-button type="primary" size="mini">Mini</sd-button>\n    <sd-button type="primary" size="small">Small</sd-button>\n    <sd-button type="primary">Medium</sd-button>\n    <sd-button type="primary" size="large">Large</sd-button>\n  </sd-space>\n</template>';
-import ButtonStatusDemo from '../../../../components/generated/button/status.vue';
-export const buttonStatusSource =
-  '<template>\n  <sd-space direction="vertical">\n    <sd-space>\n      <sd-button type="primary" status="success">Primary</sd-button>\n      <sd-button status="success">Default</sd-button>\n      <sd-button type="dashed" status="success">Dashed</sd-button>\n      <sd-button type="outline" status="success">Outline</sd-button>\n      <sd-button type="text" status="success">Text</sd-button>\n    </sd-space>\n    <sd-space>\n      <sd-button type="primary" status="warning">Primary</sd-button>\n      <sd-button status="warning">Default</sd-button>\n      <sd-button type="dashed" status="warning">Dashed</sd-button>\n      <sd-button type="outline" status="warning">Outline</sd-button>\n      <sd-button type="text" status="warning">Text</sd-button>\n    </sd-space>\n    <sd-space>\n      <sd-button type="primary" status="danger">Primary</sd-button>\n      <sd-button status="danger">Default</sd-button>\n      <sd-button type="dashed" status="danger">Dashed</sd-button>\n      <sd-button type="outline" status="danger">Outline</sd-button>\n      <sd-button type="text" status="danger">Text</sd-button>\n    </sd-space>\n  </sd-space>\n</template>';
+import DemoBlock from "../../../../components/docs/DemoBlock.astro";
+import ButtonBasicDemo from "../../../../components/generated/button/basic.vue";
+import buttonBasicSource from "../../../../components/generated/button/basic.vue?raw";
+import ButtonDisabledDemo from "../../../../components/generated/button/disabled.vue";
+import buttonDisabledSource from "../../../../components/generated/button/disabled.vue?raw";
+import ButtonGroupDemo from "../../../../components/generated/button/group.vue";
+import buttonGroupSource from "../../../../components/generated/button/group.vue?raw";
+import ButtonIconDemo from "../../../../components/generated/button/icon.vue";
+import buttonIconSource from "../../../../components/generated/button/icon.vue?raw";
+import ButtonLoadingDemo from "../../../../components/generated/button/loading.vue";
+import buttonLoadingSource from "../../../../components/generated/button/loading.vue?raw";
+import ButtonLongDemo from "../../../../components/generated/button/long.vue";
+import buttonLongSource from "../../../../components/generated/button/long.vue?raw";
+import ButtonShapeDemo from "../../../../components/generated/button/shape.vue";
+import buttonShapeSource from "../../../../components/generated/button/shape.vue?raw";
+import ButtonSizeDemo from "../../../../components/generated/button/size.vue";
+import buttonSizeSource from "../../../../components/generated/button/size.vue?raw";
+import ButtonStatusDemo from "../../../../components/generated/button/status.vue";
+import buttonStatusSource from "../../../../components/generated/button/status.vue?raw";
 
 ### 基本用法
 
@@ -126,18 +117,18 @@ export const buttonStatusSource =
 
 ### `<button>` Props
 
-| 参数名 | 描述 | 类型 | 默认值 |
-| --- | --- | --- | :-: |
-| type | 按钮的类型，分为五种：次要按钮、主要按钮、虚框按钮、线性按钮、文字按钮。 | `ButtonTypes` | `'secondary'` |
-| shape | 按钮的形状 | `BorderShape` | `-` |
-| status | 按钮的状态 | `'normal' \| 'warning' \| 'success' \| 'danger'` | `'normal'` |
-| size | 按钮的尺寸 | `'mini' \| 'small' \| 'medium' \| 'large'` | `'medium'` |
-| long | 按钮的宽度是否随容器自适应。 | `boolean` | `false` |
-| loading | 按钮是否为加载中状态 | `boolean` | `false` |
-| disabled | 按钮是否禁用 | `boolean` | `false` |
-| html-type | 设置 `button` 的原生 `type` 属性，可选值参考 [HTML标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type '_blank') | `HTMLButtonElement['type']` | `'button'` |
-| autofocus | 设置 `button` 的原生 `autofocus` 属性，可选值参考 [HTML标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type '_blank') | `boolean` | `false` |
-| href | 设置跳转链接。设置此属性时，按钮渲染为a标签。 | `string` | `-` |
+| 参数名    | 描述                                                                                                                                              | 类型                                             |    默认值     |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | :-----------: |
+| type      | 按钮的类型，分为五种：次要按钮、主要按钮、虚框按钮、线性按钮、文字按钮。                                                                          | `ButtonTypes`                                    | `'secondary'` |
+| shape     | 按钮的形状                                                                                                                                        | `BorderShape`                                    |      `-`      |
+| status    | 按钮的状态                                                                                                                                        | `'normal' \| 'warning' \| 'success' \| 'danger'` |  `'normal'`   |
+| size      | 按钮的尺寸                                                                                                                                        | `'mini' \| 'small' \| 'medium' \| 'large'`       |  `'medium'`   |
+| long      | 按钮的宽度是否随容器自适应。                                                                                                                      | `boolean`                                        |    `false`    |
+| loading   | 按钮是否为加载中状态                                                                                                                              | `boolean`                                        |    `false`    |
+| disabled  | 按钮是否禁用                                                                                                                                      | `boolean`                                        |    `false`    |
+| html-type | 设置 `button` 的原生 `type` 属性，可选值参考 [HTML标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")      | `HTMLButtonElement['type']`                      |  `'button'`   |
+| autofocus | 设置 `button` 的原生 `autofocus` 属性，可选值参考 [HTML标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank") | `boolean`                                        |    `false`    |
+| href      | 设置跳转链接。设置此属性时，按钮渲染为a标签。                                                                                                     | `string`                                         |      `-`      |
 
 ### `<button>` Events
 
@@ -153,10 +144,10 @@ export const buttonStatusSource =
 
 ### `<button-group>` Props
 
-| 参数名 | 描述 | 类型 | 默认值 |
-| --- | --- | --- | :-: |
-| type | 按钮的类型，分为五种：次要按钮、主要按钮、虚框按钮、线性按钮、文字按钮。 | `ButtonTypes` | `-` |
-| status | 按钮的状态 | `'normal' \| 'warning' \| 'success' \| 'danger'` | `-` |
-| shape | 按钮的形状 | `BorderShape` | `-` |
-| size | 按钮的尺寸 | `'mini' \| 'small' \| 'medium' \| 'large'` | `-` |
-| disabled | 全部子按钮是否禁用 | `boolean` | `false` |
+| 参数名   | 描述                                                                     | 类型                                             | 默认值  |
+| -------- | ------------------------------------------------------------------------ | ------------------------------------------------ | :-----: |
+| type     | 按钮的类型，分为五种：次要按钮、主要按钮、虚框按钮、线性按钮、文字按钮。 | `ButtonTypes`                                    |   `-`   |
+| status   | 按钮的状态                                                               | `'normal' \| 'warning' \| 'success' \| 'danger'` |   `-`   |
+| shape    | 按钮的形状                                                               | `BorderShape`                                    |   `-`   |
+| size     | 按钮的尺寸                                                               | `'mini' \| 'small' \| 'medium' \| 'large'`       |   `-`   |
+| disabled | 全部子按钮是否禁用                                                       | `boolean`                                        | `false` |

@@ -1,6 +1,6 @@
 import {
   cloneVNode,
-  ComponentPublicInstance,
+  type ComponentPublicInstance,
   defineComponent,
   getCurrentInstance,
   onBeforeUnmount,
@@ -8,10 +8,10 @@ import {
   ref,
 } from 'vue';
 
-import { getFirstComponent } from '../../_utils/vue-utils';
+import { getFirstComponent } from '../_utils/vue-utils';
 
 export default defineComponent({
-  name: 'VirtualListItem',
+  name: 'TableVirtualListItem',
   props: {
     hasItemSize: {
       type: Function,
@@ -26,31 +26,33 @@ export default defineComponent({
     const key = getCurrentInstance()?.vnode.key as string | number;
     const itemRef = ref<HTMLElement | ComponentPublicInstance>();
 
-    const setItemSize = () => {
-      // @ts-ignore
-      const ele = (itemRef.value?.$el ?? itemRef.value) as HTMLElement;
-      const height = ele?.getBoundingClientRect?.().height ?? ele?.offsetHeight;
+    const updateItemSize = () => {
+      const element = (itemRef.value as { $el?: unknown } | undefined)?.$el ?? itemRef.value;
+      const height =
+        (element as HTMLElement | undefined)?.getBoundingClientRect?.().height ??
+        (element as HTMLElement | undefined)?.offsetHeight;
+
       if (height) {
         props.setItemSize(key, height);
       }
     };
 
-    onMounted(() => setItemSize());
-    onBeforeUnmount(() => setItemSize());
+    onMounted(() => updateItemSize());
+    onBeforeUnmount(() => updateItemSize());
 
     return () => {
       const child = getFirstComponent(slots.default?.());
-      if (child) {
-        return cloneVNode(
-          child,
-          {
-            ref: itemRef,
-          },
-          true,
-        );
+      if (!child) {
+        return null;
       }
 
-      return null;
+      return cloneVNode(
+        child,
+        {
+          ref: itemRef,
+        },
+        true,
+      );
     };
   },
 });

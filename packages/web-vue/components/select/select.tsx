@@ -2,7 +2,7 @@ import type { ComponentPublicInstance, PropType } from 'vue';
 import { computed, defineComponent, nextTick, ref, toRefs, watch, watchEffect } from 'vue';
 
 import type { SelectViewValue } from '../_components/select-view/interface';
-import type { VirtualListProps } from '../_components/virtual-list-v2/interface';
+import type { VirtualListProps } from '../_components/virtual-list/interface';
 import type { Size } from '../_utils/constant';
 import type { ScrollbarProps } from '../scrollbar';
 import type {
@@ -17,7 +17,7 @@ import type {
 } from './interface';
 
 import SelectView from '../_components/select-view/select-view';
-import VirtualList from '../_components/virtual-list-v2';
+import VirtualList from '../_components/virtual-list';
 import { useAllowClear } from '../_hooks/use-allow-clear';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useTrigger } from '../_hooks/use-trigger';
@@ -34,6 +34,7 @@ import {
   isBoolean,
   isUndefined,
 } from '../_utils/is';
+import { resolveDropdownVirtualListProps } from '../_utils/virtual-dropdown';
 import Trigger, { type TriggerProps } from '../trigger';
 import { useSelect } from './hooks/use-select';
 import OptGroup from './optgroup.vue';
@@ -48,6 +49,8 @@ const DEFAULT_FIELD_NAMES: Required<SelectFieldNames> = {
   disabled: 'disabled',
   tagProps: 'tagProps',
 };
+
+const DEFAULT_SELECT_VIRTUAL_ITEM_SIZE = 36;
 
 interface SelectViewInstance {
   focus?: () => void;
@@ -265,6 +268,13 @@ export default defineComponent({
     const dropdownRef = ref<ComponentPublicInstance>();
     const optionRefs = ref<Record<string, HTMLElement>>({});
     const virtualListRef = ref();
+    const resolvedVirtualListProps = computed<VirtualListProps | undefined>(() => {
+      return resolveDropdownVirtualListProps(
+        props.virtualListProps,
+        props.triggerProps,
+        DEFAULT_SELECT_VIRTUAL_ITEM_SIZE,
+      );
+    });
 
     const { computedPopupVisible, handlePopupVisibleChange } = useTrigger({
       popupVisible,
@@ -638,9 +648,9 @@ export default defineComponent({
           'default': () => [...(slots.default?.() ?? []), ...validOptions.value.map(renderOption)],
           'virtual-list': () => (
             <VirtualList
-              {...props.virtualListProps}
+              {...resolvedVirtualListProps.value}
               ref={virtualListRef}
-              data={validOptions.value}
+              items={validOptions.value}
               v-slots={{
                 item: ({ item }: { item: SelectOptionInfo | SelectOptionGroupInfo }) =>
                   renderOption(item),

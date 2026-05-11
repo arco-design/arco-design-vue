@@ -3,11 +3,13 @@ packages:
 
 catalog:
   '@vitejs/plugin-vue': ^6.0.6
-  '@vitejs/plugin-vue-jsx': '^5.1.5'
+  '@vitejs/plugin-vue-jsx': ^5.1.5
   '@vueuse/core': ^14.3.0
   typescript: ^6.0.3
   vite: ^8.0.8
   vue: ^3.5.32
+  'es-toolkit': ^1.46.1
+  'type-fest': ^5.6.0
 
 catalogs:
   astro:

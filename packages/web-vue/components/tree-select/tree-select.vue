@@ -7,7 +7,7 @@
     :popup-offset="4"
     animation-name="slide-dynamic-origin"
     :prevent-focus="true"
-    v-bind="triggerProps"
+    v-bind="resolvedTriggerProps"
     :disabled="mergedDisabled"
     :popup-visible="panelVisible"
     :popup-container="popupContainer"
@@ -118,6 +118,7 @@
 
   import { SelectViewValue } from '../_components/select-view/interface';
   import SelectView from '../_components/select-view/select-view';
+  import { VirtualListProps } from '../_components/virtual-list/interface';
   import { useAllowClear } from '../_hooks/use-allow-clear';
   import { useFormItem } from '../_hooks/use-form-item';
   import useMergeState from '../_hooks/use-merge-state';
@@ -126,6 +127,7 @@
   import { isUndefined, isFunction, isObject } from '../_utils/is';
   import pickSubCompSlots from '../_utils/pick-sub-comp-slots';
   import { Data } from '../_utils/types';
+  import { resolveDropdownVirtualListProps } from '../_utils/virtual-dropdown';
   import { configProviderInjectionKey } from '../config-provider/context';
   import Empty from '../empty';
   import { ScrollbarProps } from '../scrollbar';
@@ -356,6 +358,13 @@
        * */
       treeProps: {
         type: Object as PropType<Partial<TreeProps>>,
+      },
+      /**
+       * @zh 传递树虚拟列表属性，传入此参数以开启虚拟滚动
+       * @en Pass tree virtual list properties to enable virtual scrolling
+       */
+      virtualListProps: {
+        type: Object as PropType<VirtualListProps>,
       },
       /**
        * @zh 可以接受所有 [Trigger](/vue/component/trigger) 组件的Props
@@ -667,8 +676,16 @@
         () => checkStrategy.value ?? props.treeCheckedStrategy,
       );
       const mergedTreeProps = computed(() => {
+        const resolvedVirtualListProps = resolveDropdownVirtualListProps(
+          props.virtualListProps ?? treeProps.value?.virtualListProps,
+          props.triggerProps,
+        );
+
         if (virtualScroll.value !== false) {
-          return treeProps.value || {};
+          return {
+            ...treeProps.value,
+            ...(resolvedVirtualListProps ? { virtualListProps: resolvedVirtualListProps } : {}),
+          };
         }
 
         const nextTreeProps = {
@@ -820,6 +837,35 @@
         mergedTreeProps.value.virtualListProps ? { 'max-height': 'unset' } : {},
       ]);
 
+      const resolvedTriggerProps = computed<Partial<TriggerProps> | undefined>(() => {
+        if (!props.triggerProps) {
+          return undefined;
+        }
+
+        const nextTriggerProps: Partial<TriggerProps> = {
+          ...props.triggerProps,
+        };
+
+        if (!mergedTreeProps.value.virtualListProps) {
+          return nextTriggerProps;
+        }
+
+        const popupStyle = {
+          ...props.triggerProps.popupStyle,
+        };
+
+        delete popupStyle.maxHeight;
+        delete popupStyle.height;
+
+        if (Object.keys(popupStyle).length > 0) {
+          nextTriggerProps.popupStyle = popupStyle;
+        } else {
+          delete nextTriggerProps.popupStyle;
+        }
+
+        return nextTriggerProps;
+      });
+
       const onBlur = () => {
         if (!retainInputValue.value && computedInputValue.value) {
           updateInputValue('');
@@ -844,6 +890,7 @@
         mergedTreeCheckable,
         mergedTreeCheckedStrategy,
         mergedTreeProps,
+        resolvedTriggerProps,
         selectViewValue,
         computedDropdownStyle,
         onSearchValueChange: handleInputValueChange,

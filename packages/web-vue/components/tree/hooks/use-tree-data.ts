@@ -1,20 +1,13 @@
 import { computed, ref, toRefs, watchEffect } from 'vue';
 
-import {
-  TreeFieldNames,
-  TreeNodeData,
-  Node,
-  LoadMore,
-  CheckableType,
-  SelectableType,
-} from '../interface';
+import { TreeFieldNames, TreeNodeData, Node, LoadMore, CheckableType } from '../interface';
 import { getFlattenTreeData, getKey2TreeNode } from '../utils';
 import { generateTreeData } from '../utils/tree-data';
 
 export default function useTreeData(props: {
   treeData: TreeNodeData[];
   fieldNames?: TreeFieldNames;
-  selectable?: SelectableType;
+  selectable?: CheckableType;
   showLine?: boolean;
   blockNode?: boolean;
   checkable?: CheckableType;

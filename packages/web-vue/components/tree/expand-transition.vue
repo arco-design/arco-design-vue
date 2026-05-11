@@ -14,20 +14,24 @@
     },
     emits: ['end'],
     setup(props, { emit }) {
+      const getElement = (el: Element) => el as HTMLDivElement;
+
       return {
-        onEnter(el: HTMLDivElement) {
-          const endHeight = `${el.scrollHeight}px`;
-          el.style.height = props.expanded ? '0' : endHeight;
+        onEnter(el: Element) {
+          const target = getElement(el);
+          const endHeight = `${target.scrollHeight}px`;
+          target.style.height = props.expanded ? '0' : endHeight;
           // oxlint-disable-next-line no-unused-expressions
-          el.offsetHeight;
-          el.style.height = props.expanded ? endHeight : '0';
+          target.getBoundingClientRect();
+          target.style.height = props.expanded ? endHeight : '0';
         },
-        onAfterEnter(el: HTMLDivElement) {
-          el.style.height = props.expanded ? '' : '0';
+        onAfterEnter(el: Element) {
+          const target = getElement(el);
+          target.style.height = props.expanded ? '' : '0';
           emit('end');
         },
-        onBeforeLeave(el: HTMLDivElement) {
-          el.style.display = 'none';
+        onBeforeLeave(el: Element) {
+          getElement(el).style.display = 'none';
         },
       };
     },

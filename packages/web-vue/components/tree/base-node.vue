@@ -268,16 +268,24 @@
         isLeaf,
       });
 
-      const treeTitle = computed(() =>
-        treeContext.nodeTitle
-          ? () => treeContext.nodeTitle?.(treeNodeData.value, nodeStatus)
-          : undefined,
-      );
-      const extra = computed(() =>
-        treeContext.nodeExtra
-          ? () => treeContext.nodeExtra?.(treeNodeData.value, nodeStatus)
-          : undefined,
-      );
+      const treeTitle = computed(() => {
+        if (!treeContext.nodeTitle) {
+          return undefined;
+        }
+
+        return (_attrs: Record<string, unknown>) => {
+          return treeContext.nodeTitle?.(treeNodeData.value, nodeStatus) ?? [];
+        };
+      });
+      const extra = computed(() => {
+        if (!treeContext.nodeExtra) {
+          return undefined;
+        }
+
+        return (_attrs: Record<string, unknown>) => {
+          return treeContext.nodeExtra?.(treeNodeData.value, nodeStatus) ?? [];
+        };
+      });
 
       return {
         nodekey: key,
@@ -296,11 +304,16 @@
         treeNodeIcon,
         extra,
         nodeStatus,
-        onCheckboxChange(checked: boolean, e: Event) {
+        onCheckboxChange(value: boolean | (string | number | boolean)[], e: Event) {
           if (disableCheckbox.value || disabled.value) {
             return;
           }
-          treeContext.onCheck?.(checked, key.value, e);
+
+          if (Array.isArray(value)) {
+            return;
+          }
+
+          treeContext.onCheck?.(value, key.value, e);
         },
         onTitleClick(e: Event) {
           if (actionOnNodeClick.value.includes('expand')) {
@@ -322,7 +335,9 @@
             // firefox-need-it
             e.dataTransfer?.setData('text/plain', '');
           } catch (error) {
-            // empty
+            if (!(error instanceof DOMException)) {
+              throw error;
+            }
           }
         },
         onDragEnd(e: DragEvent) {

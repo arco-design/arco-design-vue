@@ -8,11 +8,11 @@
   </sd-space>
 </template>
 
-<style scoped lang="less">
+<style scoped lang="scss">
   .wrapper {
     width: 400px;
     padding: 20px;
-    border: 1px solid var(~'--color-border');
+    border: 1px solid var(--color-border);
     border-radius: 4px;
   }
 </style>
