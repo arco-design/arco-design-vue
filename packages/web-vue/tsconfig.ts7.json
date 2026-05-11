@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "outDir": "es",
+    "target": "ES2015",
+    "module": "ES2020",
+    "moduleResolution": "bundler",
+    "removeComments": true,
+    "strict": true,
+    "allowJs": true,
+    "allowArbitraryExtensions": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "rootDir": ".",
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "types": ["node", "vite/client"]
+  },
+  "files": ["global.d.ts", "components/shims.d.ts", "vite.config.ts"],
+  "exclude": ["node_modules", "dist", "lib", "es", "json", "**/*.vue"]
+}

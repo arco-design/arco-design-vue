@@ -22,7 +22,7 @@
     name: 'SliderTicks',
     props: {
       value: {
-        type: Array as PropType<[number, number]>,
+        type: Array as unknown as PropType<[number, number]>,
         required: true,
       },
       step: {

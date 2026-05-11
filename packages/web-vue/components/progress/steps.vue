@@ -16,9 +16,7 @@
             [`${prefixCls}-item-active`]: active,
           },
         ]"
-        :style="{
-          backgroundColor: active ? color : trackColor,
-        }"
+        :style="getStepStyle(active)"
       />
     </div>
     <div v-if="showText" :class="`${prefixCls}-text`">
@@ -31,7 +29,7 @@
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent, PropType } from 'vue';
+  import { computed, defineComponent, PropType, type CSSProperties } from 'vue';
 
   import NP from 'number-precision';
 
@@ -74,6 +72,9 @@
     },
     setup(props) {
       const prefixCls = getPrefixCls('progress-steps');
+      const activeColor = computed(() =>
+        typeof props.color === 'string' ? props.color : undefined,
+      );
 
       const mergedStrokeWidth = computed(() =>
         (props.strokeWidth ?? props.size === 'small') ? 8 : 4,
@@ -86,8 +87,12 @@
       );
 
       const text = computed(() => `${NP.times(props.percent, 100)}%`);
+      const getStepStyle = (active: boolean): CSSProperties => ({
+        backgroundColor: active ? activeColor.value : props.trackColor,
+      });
 
       return {
+        getStepStyle,
         prefixCls,
         stepList,
         mergedStrokeWidth,

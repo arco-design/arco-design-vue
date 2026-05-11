@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { nextTick } from 'vue';
+import { defineComponent, getCurrentInstance, nextTick } from 'vue';
 
 import Modal from '../index';
 import ModalComponent from '../modal.vue';
@@ -30,23 +30,35 @@ describe('Modal', () => {
     const onOk = vi.fn();
     const onCancel = vi.fn();
 
-    const wrapper = mount({
-      template: `
-        <button @click="handleClick">Click</button>`,
-      methods: {
-        handleClick() {
-          Modal.open(
-            {
-              title: 'title',
-              content: 'content',
-              onOk,
-              onCancel,
-            },
-            this.$.appContext,
-          );
+    const wrapper = mount(
+      defineComponent({
+        setup() {
+          const instance = getCurrentInstance();
+
+          const handleClick = () => {
+            if (!instance) {
+              throw new Error('Missing component instance');
+            }
+
+            Modal.open(
+              {
+                title: 'title',
+                content: 'content',
+                onOk,
+                onCancel,
+              },
+              instance.appContext,
+            );
+          };
+
+          return {
+            handleClick,
+          };
         },
-      },
-    });
+        template: `
+          <button @click="handleClick">Click</button>`,
+      }),
+    );
 
     await wrapper.find('button').trigger('click');
     expect(document.body.outerHTML).toMatchSnapshot();

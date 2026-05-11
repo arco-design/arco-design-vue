@@ -147,7 +147,8 @@
           props.dataInfo.selected.length < props.dataInfo.allValidValues.length,
       );
 
-      const handleSelectAllChange = (checked: boolean) => {
+      const handleSelectAllChange = (value: boolean | (string | number | boolean)[]) => {
+        const checked = Boolean(value);
         if (checked) {
           transferCtx?.onSelect([...props.selected, ...props.dataInfo.allValidValues]);
         } else {

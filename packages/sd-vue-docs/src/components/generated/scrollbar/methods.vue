@@ -1,7 +1,11 @@
 <script setup lang="ts">
-  import type { ScrollbarInstance } from '@sdata/web-vue';
-
   import { ref, shallowRef } from 'vue';
+
+  interface ScrollbarInstance {
+    scrollTo: (options?: number | { left?: number; top?: number }, y?: number) => void;
+    state: () => { hasOverflow: { x: boolean; y: boolean } } | undefined;
+    update: (force?: boolean) => boolean;
+  }
 
   const statusStyle = {
     color: 'var(--color-text-3)',

@@ -3,43 +3,43 @@ title: 选择器 Select
 description: 当用户需要从一组同类数据中选择一个或多个时，可以使用下拉选择器，点击后选择对应项。
 ---
 
-import DemoBlock from "../../../../components/docs/DemoBlock.astro";
-import SelectBasicDemo from "../../../../components/generated/select/basic.vue";
-import selectBasicSource from "../../../../components/generated/select/basic.vue?raw";
-import SelectBorderDemo from "../../../../components/generated/select/border.vue";
-import selectBorderSource from "../../../../components/generated/select/border.vue?raw";
-import SelectClearDemo from "../../../../components/generated/select/clear.vue";
-import selectClearSource from "../../../../components/generated/select/clear.vue?raw";
-import SelectCreateDemo from "../../../../components/generated/select/create.vue";
-import selectCreateSource from "../../../../components/generated/select/create.vue?raw";
-import SelectFallbackDemo from "../../../../components/generated/select/fallback.vue";
-import selectFallbackSource from "../../../../components/generated/select/fallback.vue?raw";
-import SelectFieldNamesDemo from "../../../../components/generated/select/field-names.vue";
-import selectFieldNamesSource from "../../../../components/generated/select/field-names.vue?raw";
-import SelectFooterDemo from "../../../../components/generated/select/footer.vue";
-import selectFooterSource from "../../../../components/generated/select/footer.vue?raw";
-import SelectGroupDemo from "../../../../components/generated/select/group.vue";
-import selectGroupSource from "../../../../components/generated/select/group.vue?raw";
-import SelectHeaderDemo from "../../../../components/generated/select/header.vue";
-import selectHeaderSource from "../../../../components/generated/select/header.vue?raw";
-import SelectLabelDemo from "../../../../components/generated/select/label.vue";
-import selectLabelSource from "../../../../components/generated/select/label.vue?raw";
-import SelectLinkageDemo from "../../../../components/generated/select/linkage.vue";
-import selectLinkageSource from "../../../../components/generated/select/linkage.vue?raw";
-import SelectLoadingDemo from "../../../../components/generated/select/loading.vue";
-import selectLoadingSource from "../../../../components/generated/select/loading.vue?raw";
-import SelectMultipleDemo from "../../../../components/generated/select/multiple.vue";
-import selectMultipleSource from "../../../../components/generated/select/multiple.vue?raw";
-import SelectRemoteDemo from "../../../../components/generated/select/remote.vue";
-import selectRemoteSource from "../../../../components/generated/select/remote.vue?raw";
-import SelectScrollDemo from "../../../../components/generated/select/scroll.vue";
-import selectScrollSource from "../../../../components/generated/select/scroll.vue?raw";
-import SelectSearchDemo from "../../../../components/generated/select/search.vue";
-import selectSearchSource from "../../../../components/generated/select/search.vue?raw";
-import SelectSizeDemo from "../../../../components/generated/select/size.vue";
-import selectSizeSource from "../../../../components/generated/select/size.vue?raw";
-import SelectVirtualListDemo from "../../../../components/generated/select/virtual-list.vue";
-import selectVirtualListSource from "../../../../components/generated/select/virtual-list.vue?raw";
+import DemoBlock from '../../../../components/docs/DemoBlock.astro';
+import SelectBasicDemo from '../../../../components/generated/select/basic.vue';
+import selectBasicSource from '../../../../components/generated/select/basic.vue?raw';
+import SelectBorderDemo from '../../../../components/generated/select/border.vue';
+import selectBorderSource from '../../../../components/generated/select/border.vue?raw';
+import SelectClearDemo from '../../../../components/generated/select/clear.vue';
+import selectClearSource from '../../../../components/generated/select/clear.vue?raw';
+import SelectCreateDemo from '../../../../components/generated/select/create.vue';
+import selectCreateSource from '../../../../components/generated/select/create.vue?raw';
+import SelectFallbackDemo from '../../../../components/generated/select/fallback.vue';
+import selectFallbackSource from '../../../../components/generated/select/fallback.vue?raw';
+import SelectFieldNamesDemo from '../../../../components/generated/select/field-names.vue';
+import selectFieldNamesSource from '../../../../components/generated/select/field-names.vue?raw';
+import SelectFooterDemo from '../../../../components/generated/select/footer.vue';
+import selectFooterSource from '../../../../components/generated/select/footer.vue?raw';
+import SelectGroupDemo from '../../../../components/generated/select/group.vue';
+import selectGroupSource from '../../../../components/generated/select/group.vue?raw';
+import SelectHeaderDemo from '../../../../components/generated/select/header.vue';
+import selectHeaderSource from '../../../../components/generated/select/header.vue?raw';
+import SelectLabelDemo from '../../../../components/generated/select/label.vue';
+import selectLabelSource from '../../../../components/generated/select/label.vue?raw';
+import SelectLinkageDemo from '../../../../components/generated/select/linkage.vue';
+import selectLinkageSource from '../../../../components/generated/select/linkage.vue?raw';
+import SelectLoadingDemo from '../../../../components/generated/select/loading.vue';
+import selectLoadingSource from '../../../../components/generated/select/loading.vue?raw';
+import SelectMultipleDemo from '../../../../components/generated/select/multiple.vue';
+import selectMultipleSource from '../../../../components/generated/select/multiple.vue?raw';
+import SelectRemoteDemo from '../../../../components/generated/select/remote.vue';
+import selectRemoteSource from '../../../../components/generated/select/remote.vue?raw';
+import SelectScrollDemo from '../../../../components/generated/select/scroll.vue';
+import selectScrollSource from '../../../../components/generated/select/scroll.vue?raw';
+import SelectSearchDemo from '../../../../components/generated/select/search.vue';
+import selectSearchSource from '../../../../components/generated/select/search.vue?raw';
+import SelectSizeDemo from '../../../../components/generated/select/size.vue';
+import selectSizeSource from '../../../../components/generated/select/size.vue?raw';
+import SelectVirtualListDemo from '../../../../components/generated/select/virtual-list.vue';
+import selectVirtualListSource from '../../../../components/generated/select/virtual-list.vue?raw';
 
 ### 基本用法
 
@@ -229,16 +229,16 @@ import selectVirtualListSource from "../../../../components/generated/select/vir
 
 ### 对应关系
 
-| Arco Design Vue                              | SD Design Vue             | 说明                                      |
-| -------------------------------------------- | ------------------------- | ----------------------------------------- |
-| `a-select`                                   | `sd-select`               | 选择器主体                                |
-| `a-option`                                   | `sd-option`               | 选项组件                                  |
-| `a-optgroup`                                 | `sd-optgroup`             | 选项分组                                  |
-| `v-model` / `model-value`                    | `v-model` / `model-value` | 受控写法保持一致                          |
-| `popup-visible`                              | `popup-visible`           | 下拉框显隐控制保持一致                    |
-| `:options`                                   | `:options`                | 仍支持对象数组数据源                      |
-| `field-names`                                | `field-names`             | 仍支持映射 `value` / `label` / `children` |
-| `#label` / `#option` / `#header` / `#footer` | 同名插槽                  | 常见模板插槽可以直接迁移                  |
+| Arco Design Vue | SD Design Vue | 说明 |
+| --- | --- | --- |
+| `a-select` | `sd-select` | 选择器主体 |
+| `a-option` | `sd-option` | 选项组件 |
+| `a-optgroup` | `sd-optgroup` | 选项分组 |
+| `v-model` / `model-value` | `v-model` / `model-value` | 受控写法保持一致 |
+| `popup-visible` | `popup-visible` | 下拉框显隐控制保持一致 |
+| `:options` | `:options` | 仍支持对象数组数据源 |
+| `field-names` | `field-names` | 仍支持映射 `value` / `label` / `children` |
+| `#label` / `#option` / `#header` / `#footer` | 同名插槽 | 常见模板插槽可以直接迁移 |
 
 ### 主要差异
 
@@ -253,11 +253,7 @@ import selectVirtualListSource from "../../../../components/generated/select/vir
 
 ```vue
 <template>
-  <a-select
-    v-model="city"
-    :style="{ width: '320px' }"
-    placeholder="Please select ..."
-  >
+  <a-select v-model="city" :style="{ width: '320px' }" placeholder="Please select ...">
     <a-option value="beijing">Beijing</a-option>
     <a-option value="shanghai">Shanghai</a-option>
   </a-select>
@@ -266,11 +262,7 @@ import selectVirtualListSource from "../../../../components/generated/select/vir
 
 ```vue
 <template>
-  <sd-select
-    v-model="city"
-    :style="{ width: '320px' }"
-    placeholder="Please select ..."
-  >
+  <sd-select v-model="city" :style="{ width: '320px' }" placeholder="Please select ...">
     <sd-option value="beijing">Beijing</sd-option>
     <sd-option value="shanghai">Shanghai</sd-option>
   </sd-select>
@@ -340,18 +332,18 @@ import selectVirtualListSource from "../../../../components/generated/select/vir
 
 ### 对应关系
 
-| Naive UI                      | SD Design Vue                                                              | 说明                                      |
-| ----------------------------- | -------------------------------------------------------------------------- | ----------------------------------------- |
-| `n-select`                    | `sd-select`                                                                | 选择器主体                                |
-| `v-model:value`               | `v-model:value` / `v-model`                                                | 当前同时支持 Naive 风格和本地默认写法     |
-| `show` / `default-show`       | `popup-visible` / `default-popup-visible`，同时兼容 `show` / `defaultShow` | 建议逐步迁回本地命名                      |
-| `options`                     | `options`                                                                  | 对象数组数据源可直接保留                  |
-| `field-names`                 | `field-names`                                                              | 仍支持字段映射                            |
-| `multiple`                    | `multiple`                                                                 | 多选模式写法保持一致                      |
-| `max-tag-count`               | `max-tag-count`                                                            | 仍支持数字和 `responsive`                 |
-| `clearable`                   | `allow-clear`                                                              | 需要改为本地命名                          |
-| `filterable`                  | `allow-search`                                                             | 需要改为本地命名                          |
-| `render-tag` / `render-label` | `#tag` / `#label`                                                          | 对外 render function 已移除，统一改用插槽 |
+| Naive UI | SD Design Vue | 说明 |
+| --- | --- | --- |
+| `n-select` | `sd-select` | 选择器主体 |
+| `v-model:value` | `v-model:value` / `v-model` | 当前同时支持 Naive 风格和本地默认写法 |
+| `show` / `default-show` | `popup-visible` / `default-popup-visible`，同时兼容 `show` / `defaultShow` | 建议逐步迁回本地命名 |
+| `options` | `options` | 对象数组数据源可直接保留 |
+| `field-names` | `field-names` | 仍支持字段映射 |
+| `multiple` | `multiple` | 多选模式写法保持一致 |
+| `max-tag-count` | `max-tag-count` | 仍支持数字和 `responsive` |
+| `clearable` | `allow-clear` | 需要改为本地命名 |
+| `filterable` | `allow-search` | 需要改为本地命名 |
+| `render-tag` / `render-label` | `#tag` / `#label` | 对外 render function 已移除，统一改用插槽 |
 
 ### 主要差异
 
@@ -394,12 +386,7 @@ import selectVirtualListSource from "../../../../components/generated/select/vir
 
 ```vue
 <template>
-  <n-select
-    v-model:value="value"
-    multiple
-    :options="options"
-    :render-tag="renderTag"
-  />
+  <n-select v-model:value="value" multiple :options="options" :render-tag="renderTag" />
 </template>
 ```
 
@@ -424,57 +411,57 @@ import selectVirtualListSource from "../../../../components/generated/select/vir
 
 ### `<select>` Props
 
-| 参数名                      | 描述                                                                                              | 类型                                                                                                                       |     默认值     | 版本   |
-| --------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | :------------: | :----- |
-| multiple                    | 是否开启多选模式（多选模式默认开启搜索）                                                          | `boolean`                                                                                                                  |    `false`     |        |
-| value **(v-model:value)**   | 绑定值，兼容 Naive 风格双向绑定                                                                   | `string\| number\| boolean\| Record<string, unknown>\| (string \| number \| boolean \| Record<string, unknown>)[] \| null` |      `-`       |        |
-| model-value **(v-model)**   | 绑定值                                                                                            | `string\| number\| boolean\| Record<string, unknown>\| (string \| number \| boolean \| Record<string, unknown>)[] \| null` |      `-`       |        |
-| default-value               | 默认值（非受控模式）                                                                              | `string\| number\| boolean\| Record<string, unknown>\| (string \| number \| boolean \| Record<string, unknown>)[]`         |   `'' \| []`   |        |
-| input-value **(v-model)**   | 输入框的值                                                                                        | `string`                                                                                                                   |      `-`       |        |
-| default-input-value         | 输入框的默认值（非受控模式）                                                                      | `string`                                                                                                                   |      `''`      |        |
-| size                        | 选择框的大小                                                                                      | `'mini' \| 'small' \| 'medium' \| 'large'`                                                                                 |   `'medium'`   |        |
-| placeholder                 | 占位符                                                                                            | `string`                                                                                                                   |      `-`       |        |
-| loading                     | 是否为加载中状态                                                                                  | `boolean`                                                                                                                  |    `false`     |        |
-| disabled                    | 是否禁用                                                                                          | `boolean`                                                                                                                  |    `false`     |        |
-| error                       | 是否为错误状态                                                                                    | `boolean`                                                                                                                  |    `false`     |        |
-| allow-clear                 | 是否允许清空                                                                                      | `boolean`                                                                                                                  |     `true`     |        |
-| allow-search                | 是否允许搜索                                                                                      | `boolean \| { retainInputValue?: boolean }`                                                                                |     `true`     |        |
-| allow-create                | 是否允许创建                                                                                      | `boolean`                                                                                                                  |    `false`     |        |
-| max-tag-count               | 多选模式下，最多显示的标签数量。`responsive` 会自动收敛为组件当前支持的展示模式                   | `number \| 'responsive'`                                                                                                   | `'responsive'` |        |
-| popup-container             | 弹出框的挂载容器                                                                                  | `string \| HTMLElement`                                                                                                    |      `-`       |        |
-| bordered                    | 是否显示输入框的边框                                                                              | `boolean`                                                                                                                  |     `true`     |        |
-| default-active-first-option | 是否在无值时默认选择第一个选项                                                                    | `boolean`                                                                                                                  |     `true`     | 2.43.0 |
-| popup-visible **(v-model)** | 是否显示下拉菜单                                                                                  | `boolean`                                                                                                                  |      `-`       |        |
-| default-popup-visible       | 弹出框默认是否可见（非受控模式）                                                                  | `boolean`                                                                                                                  |    `false`     |        |
-| unmount-on-close            | 是否在下拉菜单关闭时销毁元素                                                                      | `boolean`                                                                                                                  |    `false`     |        |
-| filter-option               | 是否过滤选项                                                                                      | `boolean \| ((inputValue: string, option: SelectOptionData) => boolean)`                                                   |     `true`     |        |
-| options                     | 选项数据                                                                                          | `(string \| number \| boolean \| SelectOptionData \| SelectOptionGroup)[]`                                                 |      `[]`      |        |
-| virtual-list-props          | 传递虚拟列表属性，传入此参数以开启虚拟滚动。[迁移说明与完整参数](/guides/virtual-list-migration/) | `VirtualListProps`                                                                                                         |      `-`       |        |
-| trigger-props               | 下拉菜单的触发器属性                                                                              | `TriggerProps`                                                                                                             |      `-`       |        |
-| fallback-option             | 自定义值中不存在的选项                                                                            | `boolean\| ((    value: string \| number \| boolean \| Record<string, unknown>  ) => SelectOptionData)`                    |     `true`     | 2.10.0 |
-| show-extra-options          | 是否在下拉菜单中显示额外选项                                                                      | `boolean`                                                                                                                  |     `true`     | 2.10.0 |
-| value-key                   | 用于确定选项键值的属性名                                                                          | `string`                                                                                                                   |   `'value'`    | 2.18.0 |
-| search-delay                | 触发搜索事件的延迟时间                                                                            | `number`                                                                                                                   |     `500`      | 2.18.0 |
-| limit                       | 多选时最多的选择个数                                                                              | `number`                                                                                                                   |      `0`       | 2.18.0 |
-| field-names                 | 自定义 `SelectOptionData` 中的字段                                                                | `SelectFieldNames`                                                                                                         |      `-`       | 2.22.0 |
-| scrollbar                   | 是否开启虚拟滚动条                                                                                | `boolean \| ScrollbarProps`                                                                                                |     `true`     | 2.38.0 |
-| show-header-on-empty        | 空状态时是否显示header                                                                            | `boolean`                                                                                                                  |    `false`     |        |
-| show-footer-on-empty        | 空状态时是否显示footer                                                                            | `boolean`                                                                                                                  |    `false`     |        |
-| tag-nowrap                  | 标签内容不换行                                                                                    | `boolean`                                                                                                                  |    `false`     | 2.56.1 |
+| 参数名 | 描述 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | :-: | :-- |
+| multiple | 是否开启多选模式（多选模式默认开启搜索） | `boolean` | `false` |  |
+| value **(v-model:value)** | 绑定值，兼容 Naive 风格双向绑定 | `string\| number\| boolean\| Record<string, unknown>\| (string \| number \| boolean \| Record<string, unknown>)[] \| null` | `-` |  |
+| model-value **(v-model)** | 绑定值 | `string\| number\| boolean\| Record<string, unknown>\| (string \| number \| boolean \| Record<string, unknown>)[] \| null` | `-` |  |
+| default-value | 默认值（非受控模式） | `string\| number\| boolean\| Record<string, unknown>\| (string \| number \| boolean \| Record<string, unknown>)[]` | `'' \| []` |  |
+| input-value **(v-model)** | 输入框的值 | `string` | `-` |  |
+| default-input-value | 输入框的默认值（非受控模式） | `string` | `''` |  |
+| size | 选择框的大小 | `'mini' \| 'small' \| 'medium' \| 'large'` | `'medium'` |  |
+| placeholder | 占位符 | `string` | `-` |  |
+| loading | 是否为加载中状态 | `boolean` | `false` |  |
+| disabled | 是否禁用 | `boolean` | `false` |  |
+| error | 是否为错误状态 | `boolean` | `false` |  |
+| allow-clear | 是否允许清空 | `boolean` | `true` |  |
+| allow-search | 是否允许搜索 | `boolean \| { retainInputValue?: boolean }` | `true` |  |
+| allow-create | 是否允许创建 | `boolean` | `false` |  |
+| max-tag-count | 多选模式下，最多显示的标签数量。`responsive` 会自动收敛为组件当前支持的展示模式 | `number \| 'responsive'` | `'responsive'` |  |
+| popup-container | 弹出框的挂载容器 | `string \| HTMLElement` | `-` |  |
+| bordered | 是否显示输入框的边框 | `boolean` | `true` |  |
+| default-active-first-option | 是否在无值时默认选择第一个选项 | `boolean` | `true` | 2.43.0 |
+| popup-visible **(v-model)** | 是否显示下拉菜单 | `boolean` | `-` |  |
+| default-popup-visible | 弹出框默认是否可见（非受控模式） | `boolean` | `false` |  |
+| unmount-on-close | 是否在下拉菜单关闭时销毁元素 | `boolean` | `false` |  |
+| filter-option | 是否过滤选项 | `boolean \| ((inputValue: string, option: SelectOptionData) => boolean)` | `true` |  |
+| options | 选项数据 | `(string \| number \| boolean \| SelectOptionData \| SelectOptionGroup)[]` | `[]` |  |
+| virtual-list-props | 传递虚拟列表属性，传入此参数以开启虚拟滚动。[迁移说明与完整参数](/guides/virtual-list-migration/) | `VirtualListProps` | `-` |  |
+| trigger-props | 下拉菜单的触发器属性 | `TriggerProps` | `-` |  |
+| fallback-option | 自定义值中不存在的选项 | `boolean\| ((    value: string \| number \| boolean \| Record<string, unknown>  ) => SelectOptionData)` | `true` | 2.10.0 |
+| show-extra-options | 是否在下拉菜单中显示额外选项 | `boolean` | `true` | 2.10.0 |
+| value-key | 用于确定选项键值的属性名 | `string` | `'value'` | 2.18.0 |
+| search-delay | 触发搜索事件的延迟时间 | `number` | `500` | 2.18.0 |
+| limit | 多选时最多的选择个数 | `number` | `0` | 2.18.0 |
+| field-names | 自定义 `SelectOptionData` 中的字段 | `SelectFieldNames` | `-` | 2.22.0 |
+| scrollbar | 是否开启虚拟滚动条 | `boolean \| ScrollbarProps` | `true` | 2.38.0 |
+| show-header-on-empty | 空状态时是否显示header | `boolean` | `false` |  |
+| show-footer-on-empty | 空状态时是否显示footer | `boolean` | `false` |  |
+| tag-nowrap | 标签内容不换行 | `boolean` | `false` | 2.56.1 |
 
 ### `<select>` Events
 
-| 事件名                | 描述                       | 参数                                                                                                                                  | 版本   |
-| --------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | :----- |
-| change                | 值发生改变时触发           | value: `string \| number \| boolean \| Record<string, unknown> \| (string \| number \| boolean \| Record<string, unknown>)[] \| null` |        |
-| input-value-change    | 输入框的值发生改变时触发   | inputValue: `string`                                                                                                                  |        |
-| popup-visible-change  | 下拉框的显示状态改变时触发 | visible: `boolean`                                                                                                                    |        |
-| clear                 | 点击清除按钮时触发         | -                                                                                                                                     |        |
-| remove                | 点击标签的删除按钮时触发   | removed: `string \| number \| boolean \| Record<string, unknown> \| undefined`                                                        |        |
-| search                | 用户搜索时触发             | inputValue: `string`                                                                                                                  |        |
-| dropdown-scroll       | 下拉菜单发生滚动时触发     | -                                                                                                                                     |        |
-| dropdown-reach-bottom | 下拉菜单滚动到底部时触发   | -                                                                                                                                     |        |
-| exceed-limit          | 多选超出限制时触发         | value: `string \| number \| boolean \| Record<string, unknown> \| undefined`<br />ev: `Event`                                         | 2.18.0 |
+| 事件名 | 描述 | 参数 | 版本 |
+| --- | --- | --- | :-- |
+| change | 值发生改变时触发 | value: `string \| number \| boolean \| Record<string, unknown> \| (string \| number \| boolean \| Record<string, unknown>)[] \| null` |  |
+| input-value-change | 输入框的值发生改变时触发 | inputValue: `string` |  |
+| popup-visible-change | 下拉框的显示状态改变时触发 | visible: `boolean` |  |
+| clear | 点击清除按钮时触发 | - |  |
+| remove | 点击标签的删除按钮时触发 | removed: `string \| number \| boolean \| Record<string, unknown> \| undefined` |  |
+| search | 用户搜索时触发 | inputValue: `string` |  |
+| dropdown-scroll | 下拉菜单发生滚动时触发 | - |  |
+| dropdown-reach-bottom | 下拉菜单滚动到底部时触发 | - |  |
+| exceed-limit | 多选超出限制时触发 | value: `string \| number \| boolean \| Record<string, unknown> \| undefined`<br />ev: `Event` | 2.18.0 |
 
 ### `<select>` Slots
 
@@ -494,14 +481,14 @@ import selectVirtualListSource from "../../../../components/generated/select/vir
 
 ### `<option>` Props
 
-| 参数名    | 描述                                                       | 类型                              | 默认值  | 版本   |
-| --------- | ---------------------------------------------------------- | --------------------------------- | :-----: | :----- |
-| value     | 选项值（如不填，会从内容中获取）                           | `string\|number\|boolean\|object` |   `-`   |        |
-| label     | 选项标签（如不填，会从内容中获取）                         | `string`                          |   `-`   |        |
-| disabled  | 是否禁用                                                   | `boolean`                         | `false` |        |
-| tag-props | 展示的标签属性                                             | `TagProps`                        |   `-`   | 2.8.0  |
-| extra     | 额外数据。2.18.0 版本废弃，可使用对象形式的 value 扩展数据 | `object`                          |   `-`   | 2.10.0 |
-| index     | 用于手动指定选项的 index                                   | `number`                          |   `-`   | 2.20.0 |
+| 参数名 | 描述 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | :-: | :-- |
+| value | 选项值（如不填，会从内容中获取） | `string\|number\|boolean\|object` | `-` |  |
+| label | 选项标签（如不填，会从内容中获取） | `string` | `-` |  |
+| disabled | 是否禁用 | `boolean` | `false` |  |
+| tag-props | 展示的标签属性 | `TagProps` | `-` | 2.8.0 |
+| extra | 额外数据。2.18.0 版本废弃，可使用对象形式的 value 扩展数据 | `object` | `-` | 2.10.0 |
+| index | 用于手动指定选项的 index | `number` | `-` | 2.20.0 |
 
 ### `<optgroup>` Props
 
@@ -528,19 +515,17 @@ type Option = string | number | SelectOptionData | SelectOptionGroup;
  * @zh 筛选
  * @en Filter
  */
-type FilterOption =
-  | boolean
-  | ((inputValue: string, option: SelectOptionData) => boolean);
+type FilterOption = boolean | ((inputValue: string, option: SelectOptionData) => boolean);
 ```
 
 ### SelectOptionData
 
-| 参数名   | 描述                     | 类型                                                     | 默认值  |
-| -------- | ------------------------ | -------------------------------------------------------- | :-----: |
-| value    | 选项值                   | `string \| number \| boolean \| Record<string, unknown>` |   `-`   |
-| label    | 选项内容                 | `string`                                                 |   `-`   |
-| disabled | 是否禁用                 | `boolean`                                                | `false` |
-| tagProps | 选项对应的多选标签的属性 | `Record<string, unknown>`                                |   `-`   |
+| 参数名 | 描述 | 类型 | 默认值 |
+| --- | --- | --- | :-: |
+| value | 选项值 | `string \| number \| boolean \| Record<string, unknown>` | `-` |
+| label | 选项内容 | `string` | `-` |
+| disabled | 是否禁用 | `boolean` | `false` |
+| tagProps | 选项对应的多选标签的属性 | `Record<string, unknown>` | `-` |
 
 ### SelectOptionGroup
 
@@ -552,13 +537,13 @@ type FilterOption =
 
 ### VirtualListProps
 
-| 参数名      | 描述                                                                   | 类型                                            | 默认值  | 版本 |
-| ----------- | ---------------------------------------------------------------------- | ----------------------------------------------- | :-----: | :--- |
-| items       | 列表数据                                                               | `unknown[]`                                     |  `[]`   |      |
-| keyField    | 用于提取每项唯一键，支持字段名或函数                                   | `string \| ((item, index) => string \| number)` | `'key'` |      |
-| itemSize    | 固定高度模式的 item 高度，传入后使用 `RecycleScroller`                 | `number \| string \| ((item, index) => number)` |   `-`   |      |
-| minItemSize | 动态高度模式的最小 item 高度；未传 `itemSize` 时使用 `DynamicScroller` | `number \| string`                              |  `32`   |      |
-| buffer      | 额外渲染缓冲区（像素）                                                 | `number`                                        |  `200`  |      |
+| 参数名 | 描述 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | :-: | :-- |
+| items | 列表数据 | `unknown[]` | `[]` |  |
+| keyField | 用于提取每项唯一键，支持字段名或函数 | `string \| ((item, index) => string \| number)` | `'key'` |  |
+| itemSize | 固定高度模式的 item 高度，传入后使用 `RecycleScroller` | `number \| string \| ((item, index) => number)` | `-` |  |
+| minItemSize | 动态高度模式的最小 item 高度；未传 `itemSize` 时使用 `DynamicScroller` | `number \| string` | `32` |  |
+| buffer | 额外渲染缓冲区（像素） | `number` | `200` |  |
 
 其余参数与暴露方法请查看 [虚拟列表迁移指南](/guides/virtual-list-migration/)。
 
@@ -583,40 +568,40 @@ type FilterOption =
 </template>
 
 <script>
-import { ref } from "vue";
+  import { ref } from 'vue';
 
-export default {
-  setup() {
-    const value = ref();
-    const data = [
-      {
-        value: "beijing",
-        label: "Beijing",
-        key: "extra1",
-      },
-      {
-        value: "shanghai",
-        label: "Shanghai",
-        key: "extra2",
-      },
-      {
-        value: "guangzhou",
-        label: "Guangzhou",
-        key: "extra3",
-      },
-      {
-        value: "chengdu",
-        label: "Chengdu",
-        key: "extra4",
-      },
-    ];
+  export default {
+    setup() {
+      const value = ref();
+      const data = [
+        {
+          value: 'beijing',
+          label: 'Beijing',
+          key: 'extra1',
+        },
+        {
+          value: 'shanghai',
+          label: 'Shanghai',
+          key: 'extra2',
+        },
+        {
+          value: 'guangzhou',
+          label: 'Guangzhou',
+          key: 'extra3',
+        },
+        {
+          value: 'chengdu',
+          label: 'Chengdu',
+          key: 'extra4',
+        },
+      ];
 
-    return {
-      value,
-      data,
-    };
-  },
-};
+      return {
+        value,
+        data,
+      };
+    },
+  };
 </script>
 ```
 

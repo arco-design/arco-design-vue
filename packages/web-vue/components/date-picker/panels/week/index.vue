@@ -3,6 +3,9 @@
     v-bind="$attrs"
     mode="week"
     is-week
+    :header-value="headerValue"
+    :header-operations="headerOperations"
+    :header-icons="headerIcons"
     :day-start-of-week="dayStartOfWeek"
     :is-same-time="isSameTime"
     @select="onSelect"
@@ -17,7 +20,7 @@
 
   import { methods } from '../../../_utils/date';
   import { useI18n } from '../../../locale';
-  import { IsSameTime, WeekStart } from '../../interface';
+  import { HeaderIcons, HeaderOperations, IsSameTime, WeekStart } from '../../interface';
   import DatePanel from '../date/index.vue';
 
   export default defineComponent({
@@ -29,6 +32,18 @@
       dayStartOfWeek: {
         type: Number as PropType<WeekStart>,
         default: 0,
+      },
+      headerValue: {
+        type: Object as PropType<Dayjs>,
+        required: true,
+      },
+      headerOperations: {
+        type: Object as PropType<HeaderOperations>,
+        default: () => ({}),
+      },
+      headerIcons: {
+        type: Object as PropType<HeaderIcons>,
+        default: () => ({}),
       },
     },
     emits: ['select', 'cell-mouse-enter'],

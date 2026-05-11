@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "allowJs": true,
+    "allowImportingTsExtensions": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "rootDir": "packages/sd-vue-docs",
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "types": ["node", "vite/client"]
+  },
+  "files": [
+    "packages/sd-vue-docs/.astro/types.d.ts",
+    "packages/sd-vue-docs/src/content.config.ts",
+    "packages/sd-vue-docs/src/types/astrojs-starlight.d.ts",
+    "packages/sd-vue-docs/src/types/intl-locale.d.ts"
+  ],
+  "include": [
+    "packages/sd-vue-docs/src/**/*.ts",
+    "packages/sd-vue-docs/src/**/*.tsx",
+    "packages/sd-vue-docs/src/**/*.d.ts"
+  ],
+  "exclude": [
+    "packages/sd-vue-docs/dist",
+    "packages/sd-vue-docs/**/*.vue",
+    "packages/sd-vue-docs/**/*.astro"
+  ]
+}

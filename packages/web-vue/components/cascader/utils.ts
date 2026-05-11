@@ -62,7 +62,7 @@ export const getOptionInfos = (
   ) => {
     if (item[fieldNames.children]) {
       data.isLeaf = false;
-      data.children = travelOptions(item[fieldNames.children], data, level + 1);
+      data.children = travelOptions(item[fieldNames.children] as CascaderOption[], data, level + 1);
       return;
     }
 
@@ -98,8 +98,8 @@ export const getOptionInfos = (
         label: (item[fieldNames.label] as string | undefined) ?? fallbackLabel,
         disabled: Boolean(item[fieldNames.disabled]),
         selectionDisabled: false,
-        tagProps: item[fieldNames.tagProps],
-        isLeaf: item[fieldNames.isLeaf],
+        tagProps: item[fieldNames.tagProps] as CascaderOptionInfo['tagProps'],
+        isLeaf: Boolean(item[fieldNames.isLeaf]),
         // other
         level: parentPath.length,
         index,

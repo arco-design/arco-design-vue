@@ -80,3 +80,7 @@ graph. Only read source files when (a) modifying/debugging specific code, (b) th
 the needed detail, or (c) the graph is missing or stale.
 
 Type `/graphify` in Copilot Chat to build or update the graph.
+
+## typescript
+
+Use `ts7` by default, and use `type-fest` whenever possible for type combinations.

@@ -1,5 +1,5 @@
-import type { PropType } from 'vue';
-import { defineComponent, TransitionGroup } from 'vue';
+import type { CSSProperties, PropType } from 'vue';
+import { defineComponent, h, TransitionGroup } from 'vue';
 
 import usePopupManager from '../_hooks/use-popup-manager';
 import { toKebabCase } from '../_utils/convert-case';
@@ -31,39 +31,42 @@ export default defineComponent({
 
     const isRight = props.position.includes('Right');
 
-    return () => (
-      <TransitionGroup
-        class={[prefixCls, `${prefixCls}-${kebabPosition}`]}
-        style={{ zIndex: zIndex.value }}
-        name={`slide-${isRight ? 'right' : 'left'}-notification`}
-        onAfterLeave={() => context.emit('afterClose')}
-        tag="ul"
-      >
-        {props.notifications.map((item) => {
-          const slots = {
-            default: getSlotFunction(item.title),
-            content: getSlotFunction(item.content),
-            icon: getSlotFunction(item.icon),
-            footer: getSlotFunction(item.footer),
-            closeIcon: getSlotFunction(item.closeIcon),
-            closeIconElement: getSlotFunction(item.closeIconElement),
-          };
-          return (
-            <Notification
-              key={item.id}
-              type={item.type}
-              style={item.style}
-              class={item.class}
-              duration={item.duration}
-              closable={item.closable}
-              showIcon={item.showIcon}
-              resetOnUpdate={item.resetOnUpdate}
-              v-slots={slots}
-              onClose={() => context.emit('close', item.id)}
-            />
-          );
-        })}
-      </TransitionGroup>
-    );
+    return () =>
+      h(
+        TransitionGroup,
+        {
+          class: [prefixCls, `${prefixCls}-${kebabPosition}`],
+          style: { zIndex: zIndex.value } as CSSProperties,
+          name: `slide-${isRight ? 'right' : 'left'}-notification`,
+          onAfterLeave: () => context.emit('afterClose'),
+          tag: 'ul',
+        },
+        () =>
+          props.notifications.map((item) => {
+            const slots = {
+              default: getSlotFunction(item.title),
+              content: getSlotFunction(item.content),
+              icon: getSlotFunction(item.icon),
+              footer: getSlotFunction(item.footer),
+              closeIcon: getSlotFunction(item.closeIcon),
+              closeIconElement: getSlotFunction(item.closeIconElement),
+            };
+            return h(
+              Notification,
+              {
+                key: item.id,
+                type: item.type,
+                style: item.style,
+                class: item.class,
+                duration: item.duration,
+                closable: item.closable,
+                showIcon: item.showIcon,
+                resetOnUpdate: item.resetOnUpdate,
+                onClose: () => context.emit('close', item.id),
+              },
+              slots,
+            );
+          }),
+      );
   },
 });

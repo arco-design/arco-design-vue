@@ -1,5 +1,4 @@
 import { computed, defineComponent, PropType, toRef, toRefs } from 'vue';
-import type { DefineComponent } from 'vue';
 
 import IconDown from '../icon/icon-down';
 import IconRight from '../icon/icon-right';
@@ -10,7 +9,7 @@ import useMenuDataCollector from './hooks/use-menu-data-collector';
 import SubMenuInline from './sub-menu-inline.vue';
 import SubMenuPop from './sub-menu-pop.vue';
 
-const SubMenu: DefineComponent = defineComponent({
+export default defineComponent({
   name: 'SubMenu',
   props: {
     /**
@@ -88,8 +87,7 @@ const SubMenu: DefineComponent = defineComponent({
     const isChildrenSelected = computed(() => {
       const selectedKeys = menuContext.selectedKeys || [];
       const checkSelected = (menuKeys: string[]) => {
-        for (let i = 0; i < selectedKeys.length; i++) {
-          const selectedKey = selectedKeys[i];
+        for (const selectedKey of selectedKeys) {
           if (menuKeys.includes(selectedKey)) {
             return true;
           }
@@ -150,5 +148,3 @@ const SubMenu: DefineComponent = defineComponent({
     );
   },
 });
-
-export default SubMenu;

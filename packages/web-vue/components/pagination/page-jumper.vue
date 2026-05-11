@@ -27,6 +27,8 @@
 <script lang="ts">
   import { computed, defineComponent, nextTick, PropType, ref, watch } from 'vue';
 
+  import type { Size } from '../_utils/constant';
+
   import { getPrefixCls } from '../_utils/global-config';
   import InputNumber from '../input-number';
   import { useI18n } from '../locale';
@@ -54,7 +56,7 @@
         required: true,
       },
       size: {
-        type: String,
+        type: String as PropType<Size>,
       },
       onChange: {
         type: Function as PropType<(value: number) => void>,
@@ -71,8 +73,12 @@
         return Number.isNaN(parseIntVal) ? undefined : String(parseIntVal);
       };
 
-      const handleChange = (value: number) => {
-        emit('change', inputValue.value);
+      const handleChange = (value: number | undefined) => {
+        if (typeof value !== 'number') {
+          return;
+        }
+
+        emit('change', value);
         nextTick(() => {
           if (!props.simple) {
             inputValue.value = undefined;

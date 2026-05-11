@@ -3,25 +3,25 @@ title: 按钮 Button
 description: 按钮是一种命令组件，可发起一个即时操作。
 ---
 
-import DemoBlock from "../../../../components/docs/DemoBlock.astro";
-import ButtonBasicDemo from "../../../../components/generated/button/basic.vue";
-import buttonBasicSource from "../../../../components/generated/button/basic.vue?raw";
-import ButtonDisabledDemo from "../../../../components/generated/button/disabled.vue";
-import buttonDisabledSource from "../../../../components/generated/button/disabled.vue?raw";
-import ButtonGroupDemo from "../../../../components/generated/button/group.vue";
-import buttonGroupSource from "../../../../components/generated/button/group.vue?raw";
-import ButtonIconDemo from "../../../../components/generated/button/icon.vue";
-import buttonIconSource from "../../../../components/generated/button/icon.vue?raw";
-import ButtonLoadingDemo from "../../../../components/generated/button/loading.vue";
-import buttonLoadingSource from "../../../../components/generated/button/loading.vue?raw";
-import ButtonLongDemo from "../../../../components/generated/button/long.vue";
-import buttonLongSource from "../../../../components/generated/button/long.vue?raw";
-import ButtonShapeDemo from "../../../../components/generated/button/shape.vue";
-import buttonShapeSource from "../../../../components/generated/button/shape.vue?raw";
-import ButtonSizeDemo from "../../../../components/generated/button/size.vue";
-import buttonSizeSource from "../../../../components/generated/button/size.vue?raw";
-import ButtonStatusDemo from "../../../../components/generated/button/status.vue";
-import buttonStatusSource from "../../../../components/generated/button/status.vue?raw";
+import DemoBlock from '../../../../components/docs/DemoBlock.astro';
+import ButtonBasicDemo from '../../../../components/generated/button/basic.vue';
+import buttonBasicSource from '../../../../components/generated/button/basic.vue?raw';
+import ButtonDisabledDemo from '../../../../components/generated/button/disabled.vue';
+import buttonDisabledSource from '../../../../components/generated/button/disabled.vue?raw';
+import ButtonGroupDemo from '../../../../components/generated/button/group.vue';
+import buttonGroupSource from '../../../../components/generated/button/group.vue?raw';
+import ButtonIconDemo from '../../../../components/generated/button/icon.vue';
+import buttonIconSource from '../../../../components/generated/button/icon.vue?raw';
+import ButtonLoadingDemo from '../../../../components/generated/button/loading.vue';
+import buttonLoadingSource from '../../../../components/generated/button/loading.vue?raw';
+import ButtonLongDemo from '../../../../components/generated/button/long.vue';
+import buttonLongSource from '../../../../components/generated/button/long.vue?raw';
+import ButtonShapeDemo from '../../../../components/generated/button/shape.vue';
+import buttonShapeSource from '../../../../components/generated/button/shape.vue?raw';
+import ButtonSizeDemo from '../../../../components/generated/button/size.vue';
+import buttonSizeSource from '../../../../components/generated/button/size.vue?raw';
+import ButtonStatusDemo from '../../../../components/generated/button/status.vue';
+import buttonStatusSource from '../../../../components/generated/button/status.vue?raw';
 
 ### 基本用法
 
@@ -117,18 +117,18 @@ import buttonStatusSource from "../../../../components/generated/button/status.v
 
 ### `<button>` Props
 
-| 参数名    | 描述                                                                                                                                              | 类型                                             |    默认值     |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | :-----------: |
-| type      | 按钮的类型，分为五种：次要按钮、主要按钮、虚框按钮、线性按钮、文字按钮。                                                                          | `ButtonTypes`                                    | `'secondary'` |
-| shape     | 按钮的形状                                                                                                                                        | `BorderShape`                                    |      `-`      |
-| status    | 按钮的状态                                                                                                                                        | `'normal' \| 'warning' \| 'success' \| 'danger'` |  `'normal'`   |
-| size      | 按钮的尺寸                                                                                                                                        | `'mini' \| 'small' \| 'medium' \| 'large'`       |  `'medium'`   |
-| long      | 按钮的宽度是否随容器自适应。                                                                                                                      | `boolean`                                        |    `false`    |
-| loading   | 按钮是否为加载中状态                                                                                                                              | `boolean`                                        |    `false`    |
-| disabled  | 按钮是否禁用                                                                                                                                      | `boolean`                                        |    `false`    |
-| html-type | 设置 `button` 的原生 `type` 属性，可选值参考 [HTML标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")      | `HTMLButtonElement['type']`                      |  `'button'`   |
-| autofocus | 设置 `button` 的原生 `autofocus` 属性，可选值参考 [HTML标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank") | `boolean`                                        |    `false`    |
-| href      | 设置跳转链接。设置此属性时，按钮渲染为a标签。                                                                                                     | `string`                                         |      `-`      |
+| 参数名 | 描述 | 类型 | 默认值 |
+| --- | --- | --- | :-: |
+| type | 按钮的类型，分为五种：次要按钮、主要按钮、虚框按钮、线性按钮、文字按钮。 | `ButtonTypes` | `'secondary'` |
+| shape | 按钮的形状 | `BorderShape` | `-` |
+| status | 按钮的状态 | `'normal' \| 'warning' \| 'success' \| 'danger'` | `'normal'` |
+| size | 按钮的尺寸 | `'mini' \| 'small' \| 'medium' \| 'large'` | `'medium'` |
+| long | 按钮的宽度是否随容器自适应。 | `boolean` | `false` |
+| loading | 按钮是否为加载中状态 | `boolean` | `false` |
+| disabled | 按钮是否禁用 | `boolean` | `false` |
+| html-type | 设置 `button` 的原生 `type` 属性，可选值参考 [HTML标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type '_blank') | `HTMLButtonElement['type']` | `'button'` |
+| autofocus | 设置 `button` 的原生 `autofocus` 属性，可选值参考 [HTML标准](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type '_blank') | `boolean` | `false` |
+| href | 设置跳转链接。设置此属性时，按钮渲染为a标签。 | `string` | `-` |
 
 ### `<button>` Events
 
@@ -144,10 +144,10 @@ import buttonStatusSource from "../../../../components/generated/button/status.v
 
 ### `<button-group>` Props
 
-| 参数名   | 描述                                                                     | 类型                                             | 默认值  |
-| -------- | ------------------------------------------------------------------------ | ------------------------------------------------ | :-----: |
-| type     | 按钮的类型，分为五种：次要按钮、主要按钮、虚框按钮、线性按钮、文字按钮。 | `ButtonTypes`                                    |   `-`   |
-| status   | 按钮的状态                                                               | `'normal' \| 'warning' \| 'success' \| 'danger'` |   `-`   |
-| shape    | 按钮的形状                                                               | `BorderShape`                                    |   `-`   |
-| size     | 按钮的尺寸                                                               | `'mini' \| 'small' \| 'medium' \| 'large'`       |   `-`   |
-| disabled | 全部子按钮是否禁用                                                       | `boolean`                                        | `false` |
+| 参数名 | 描述 | 类型 | 默认值 |
+| --- | --- | --- | :-: |
+| type | 按钮的类型，分为五种：次要按钮、主要按钮、虚框按钮、线性按钮、文字按钮。 | `ButtonTypes` | `-` |
+| status | 按钮的状态 | `'normal' \| 'warning' \| 'success' \| 'danger'` | `-` |
+| shape | 按钮的形状 | `BorderShape` | `-` |
+| size | 按钮的尺寸 | `'mini' \| 'small' \| 'medium' \| 'large'` | `-` |
+| disabled | 全部子按钮是否禁用 | `boolean` | `false` |

@@ -1,4 +1,14 @@
-import { computed, defineComponent, inject, isVNode, onMounted, PropType, ref, toRefs } from 'vue';
+import {
+  computed,
+  defineComponent,
+  inject,
+  isVNode,
+  onMounted,
+  PropType,
+  ref,
+  toRefs,
+  type CSSProperties,
+} from 'vue';
 
 import type {
   ScrollIntoViewOptions,
@@ -290,6 +300,7 @@ export default defineComponent({
         <Pagination
           class={`${prefixCls}-pagination`}
           {...paginationProps}
+          total={props.paginationProps.total ?? props.data?.length ?? 0}
           current={current.value}
           pageSize={pageSize.value}
           onChange={handlePageChange}
@@ -308,7 +319,7 @@ export default defineComponent({
       },
     ]);
 
-    const contentStyle = computed(() => {
+    const contentStyle = computed<CSSProperties | undefined>(() => {
       if (props.maxHeight) {
         const maxHeight = isNumber(props.maxHeight) ? `${props.maxHeight}px` : props.maxHeight;
         return { maxHeight, overflowY: 'auto' };
@@ -343,7 +354,7 @@ export default defineComponent({
         height: '100%',
       };
     });
-    const contentWrapperStyle = computed(() => {
+    const contentWrapperStyle = computed<CSSProperties | undefined>(() => {
       if (!isVirtualList.value || props.gridProps) {
         return undefined;
       }

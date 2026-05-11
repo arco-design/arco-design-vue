@@ -108,14 +108,14 @@
        * @en Button type
        */
       type: {
-        type: String,
+        type: String as PropType<ButtonProps['type']>,
       },
       /**
        * @zh 按钮大小
        * @en Button size
        */
       size: {
-        type: String,
+        type: String as PropType<ButtonProps['size']>,
       },
       /**
        * @zh 按钮属性
@@ -170,10 +170,21 @@
       const { defaultPopupVisible, popupVisible } = toRefs(props);
       const prefixCls = getPrefixCls('dropdown');
 
+      const emitVisibleChange = (
+        event: 'update:popupVisible' | 'popupVisibleChange' | 'update:show' | 'showChange',
+        visible: boolean,
+      ) => {
+        if (event === 'update:popupVisible') {
+          emit('update:popupVisible', visible);
+        } else if (event === 'popupVisibleChange') {
+          emit('popupVisibleChange', visible);
+        }
+      };
+
       const { computedPopupVisible, handlePopupVisibleChange } = useTrigger({
         defaultPopupVisible,
         popupVisible,
-        emit,
+        emit: emitVisibleChange,
       });
 
       const handleClick = (ev: MouseEvent) => {

@@ -104,8 +104,8 @@ export const useSelect = ({
     }
     const optionInfo = optionInfoMap.get(key);
     // @ts-ignore
-    const wrapperEle = dropdownRef?.value?.wrapperRef as HTMLElement;
-    const optionEle = optionRefs?.value[key] ?? optionInfo?.ref;
+    const wrapperEle = dropdownRef?.value?.wrapperRef as HTMLElement | undefined;
+    const optionEle = (optionRefs?.value[key] ?? optionInfo?.ref) as HTMLElement | undefined;
 
     if (!wrapperEle || !optionEle) {
       return;

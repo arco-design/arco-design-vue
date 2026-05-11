@@ -260,7 +260,7 @@
           const key = Number(index);
           return {
             key,
-            content: props.marks?.[key],
+            content: props.marks?.[key] ?? '',
             isActive: key >= computedValue.value[0] && key <= computedValue.value[1],
           };
         }),

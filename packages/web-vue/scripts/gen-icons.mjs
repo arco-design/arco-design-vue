@@ -36,9 +36,7 @@ const svgoConfig = {
         attributes: [
           { ':class': 'cls' },
           { ':style': 'innerStyle' },
-          { ':stroke-width': 'strokeWidth' },
-          { ':stroke-linecap': 'strokeLinecap' },
-          { ':stroke-linejoin': 'strokeLinejoin' },
+          { 'v-bind': 'svgAttrs' },
           { '@click': 'onClick' },
         ],
       },
@@ -92,6 +90,11 @@ export default defineComponent({
       \`${'${prefixCls}'}-${name.replace('icon-', '')}\`,
       { [\`${'${prefixCls}'}-spin\`]: props.spin },
     ]);
+    const svgAttrs = computed<Record<string, string | number>>(() => ({
+      'stroke-width': props.strokeWidth,
+      'stroke-linecap': props.strokeLinecap,
+      'stroke-linejoin': props.strokeLinejoin,
+    }));
     const innerStyle = computed(() => {
       const styles: CSSProperties = {};
       if (props.size) {
@@ -109,6 +112,7 @@ export default defineComponent({
     return {
       cls,
       innerStyle,
+      svgAttrs,
       onClick,
     };
   }

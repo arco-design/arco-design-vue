@@ -61,10 +61,13 @@ describe('Scrollbar', () => {
     await nextTick();
 
     const options = wrapper.vm.options();
+    const debounce = options?.update.debounce;
 
     expect(options?.paddingAbsolute).toBe(true);
     expect(options?.overflow.y).toBe('hidden');
-    expect(options?.update.debounce.event).toEqual([10, 20]);
+    expect(
+      typeof debounce === 'object' && debounce && !Array.isArray(debounce) && debounce.event,
+    ).toEqual([10, 20]);
     expect(options?.scrollbars.autoHide).toBe('scroll');
     expect(options?.scrollbars.dragScroll).toBe(false);
     expect(options?.scrollbars.autoHideDelay).toBe(400);

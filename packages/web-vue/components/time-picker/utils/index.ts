@@ -60,6 +60,10 @@ export function getFormattedValue(
 export function getFormattedValue(
   time: Dayjs | Array<Dayjs | undefined> | undefined,
   format: string,
+): string | Array<string | undefined> | undefined;
+export function getFormattedValue(
+  time: Dayjs | Array<Dayjs | undefined> | undefined,
+  format: string,
 ): string | Array<string | undefined> | undefined {
   const formatValue = (time: any): any => {
     if (isArray(time)) {

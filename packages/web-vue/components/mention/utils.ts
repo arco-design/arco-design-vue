@@ -1,6 +1,6 @@
 export const getTextBeforeSelection = (element: HTMLInputElement) => {
   const { value, selectionStart } = element;
-  return value.slice(0, selectionStart);
+  return value.slice(0, selectionStart ?? value.length);
 };
 
 export const getLastMeasureIndex = (text: string, prefix: string | string[]) => {

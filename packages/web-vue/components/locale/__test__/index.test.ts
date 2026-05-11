@@ -1,8 +1,14 @@
 import zhCN from '../lang/zh-cn';
 
-const languageModules = import.meta.glob('../lang/*.ts');
+const languageModules = import.meta.glob<{ default: typeof zhCN }>('../lang/*.ts');
 
-function hasEqualStructure(obj1: Record<string, unknown>, obj2: Record<string, unknown>) {
+declare module 'vitest' {
+  interface Assertion<T = any> {
+    toMatchStructure(expected: typeof zhCN): T;
+  }
+}
+
+function hasEqualStructure(obj1: Record<string, unknown>, obj2: Record<string, unknown>): boolean {
   return Object.keys(obj1).every((key) => {
     const v = obj1[key];
 
@@ -11,15 +17,18 @@ function hasEqualStructure(obj1: Record<string, unknown>, obj2: Record<string, u
         return false;
       }
 
-      return hasEqualStructure(v, obj2[key]);
+      return hasEqualStructure(v as Record<string, unknown>, obj2[key] as Record<string, unknown>);
     }
 
-    return obj2.hasOwnProperty(key);
+    return Object.prototype.hasOwnProperty.call(obj2, key);
   });
 }
 
-export default function toMatchStructure(actual, expected) {
-  const pass = hasEqualStructure(actual, expected);
+export default function toMatchStructure(actual: typeof zhCN, expected: typeof zhCN) {
+  const pass = hasEqualStructure(
+    actual as unknown as Record<string, unknown>,
+    expected as unknown as Record<string, unknown>,
+  );
 
   return {
     message: () => `expected ${expected} to match structure ${actual}`,

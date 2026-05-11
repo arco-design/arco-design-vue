@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [".astro/types.d.ts", "src/**/*.ts", "src/**/*.tsx", "src/content.config.ts"],
+  "exclude": ["dist", "**/*.vue", "**/*.astro"]
+}

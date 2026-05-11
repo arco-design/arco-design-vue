@@ -69,7 +69,7 @@ export const createOptionInfo = (
   },
 ): SelectOptionInfo => {
   if (isObject(option)) {
-    const value = option[fieldNames.value];
+    const value = (option[fieldNames.value] ?? option.value ?? '') as SelectOptionValue;
 
     return {
       raw: option,
@@ -77,9 +77,9 @@ export const createOptionInfo = (
       key: getKeyFromValue(value, valueKey),
       origin,
       value,
-      label: option[fieldNames.label] ?? getValueString(value, valueKey),
+      label: String(option[fieldNames.label] ?? getValueString(value, valueKey)),
       disabled: Boolean(option[fieldNames.disabled]),
-      tagProps: option[fieldNames.tagProps],
+      tagProps: option[fieldNames.tagProps] as SelectOptionInfo['tagProps'],
     };
   }
   const raw = {
@@ -162,7 +162,7 @@ export const getOptionInfos = (
         infos.push(groupInfo);
       }
     } else {
-      const optionInfo = createOptionInfo(item, {
+      const optionInfo = createOptionInfo(item as string | number | SelectOptionData, {
         valueKey,
         fieldNames,
         origin,

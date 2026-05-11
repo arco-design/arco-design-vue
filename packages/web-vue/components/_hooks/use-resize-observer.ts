@@ -9,7 +9,7 @@ export const useResizeObserver = ({
   onResize,
 }: {
   elementRef: Ref<HTMLElement | undefined>;
-  onResize: () => void;
+  onResize: (entry: ResizeObserverEntry) => void;
 }) => {
   let resizeObserver: ResizeObserver | null;
 

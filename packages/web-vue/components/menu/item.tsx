@@ -135,10 +135,9 @@ export default defineComponent({
     );
 
     if (needTooltip) {
-      const tooltipClassNames = [`${prefixCls}-item-tooltip`, tooltipProps?.class];
+      const tooltipClassNames = [`${prefixCls}-item-tooltip`, tooltipProps?.class].filter(Boolean);
       return (
         <Tooltip
-          trigger="hover"
           position="right"
           class={tooltipClassNames}
           {...omit(tooltipProps || {}, ['class'])}

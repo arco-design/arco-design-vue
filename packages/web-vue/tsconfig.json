@@ -7,13 +7,16 @@
     "removeComments": true,
     "strict": true,
     "allowJs": true,
+    "allowArbitraryExtensions": true,
     "isolatedModules": true,
     "esModuleInterop": true,
     "jsx": "preserve",
     "jsxImportSource": "vue",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "rootDir": ".",
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "types": ["vitest/globals", "node", "vite/client"]
   },
   "include": ["components/**/*", "icon/**/*", "*.d.ts", "vitest.setup.ts"],
   "exclude": ["node_modules", "dist", "lib", "es", "json", "**/__tests__/**/*"]

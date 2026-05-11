@@ -2,7 +2,7 @@ import type { InjectionKey, Slots } from 'vue';
 
 export interface CheckboxGroupContext {
   name: 'SDCheckboxGroup';
-  computedValue: Array<string | number>;
+  computedValue: Array<string | number | boolean>;
   disabled: boolean;
   isMaxed: boolean;
   slots: Slots;

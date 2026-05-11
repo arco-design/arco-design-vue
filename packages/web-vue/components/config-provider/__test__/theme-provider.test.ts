@@ -40,7 +40,9 @@ describe('theme-provider standalone', () => {
     const themeRoot = wrapper.find('.sd-theme-provider');
     expect(themeRoot.exists()).toBe(true);
     expect(themeRoot.attributes('sd-theme')).toBe('dark');
-    expect(themeRoot.element.style.getPropertyValue('--primary-6')).toBe('12,34,56');
+    expect((themeRoot.element as HTMLElement).style.getPropertyValue('--primary-6')).toBe(
+      '12,34,56',
+    );
     expect(document.body.style.getPropertyValue('--primary-6')).toBe('');
 
     wrapper.unmount();

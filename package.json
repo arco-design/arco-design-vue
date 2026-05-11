@@ -30,10 +30,18 @@
     "lint:code": "oxlint .",
     "lint:ci": "pnpm run lint:all",
     "lint:fix": "oxlint . --fix",
+    "typecheck": "run-s typecheck:ts7 typecheck:vue",
+    "typecheck:ts7": "run-s typecheck:ts7:web-vue typecheck:ts7:web-vue-debug typecheck:ts7:docs",
+    "typecheck:ts7:web-vue": "pnpm --filter @sdata/web-vue exec tsgo --project ../../tsconfig.ts7.web-vue.json --noEmit",
+    "typecheck:ts7:web-vue-debug": "pnpm --filter @sd-design/web-vue-debug exec tsgo --project ../../tsconfig.ts7.web-vue-debug.json --noEmit",
+    "typecheck:ts7:docs": "pnpm --filter @sd-design/sd-vue-docs exec tsgo --project ../../tsconfig.ts7.docs.json --noEmit",
+    "typecheck:vue": "run-s typecheck:vue:web-vue typecheck:vue:docs",
+    "typecheck:vue:web-vue": "pnpm --filter @sdata/web-vue run typecheck",
+    "typecheck:vue:docs": "pnpm --filter @sd-design/sd-vue-docs run typecheck",
     "stylelint:fix": "pnpm stylelint --fix \"packages/**/*.{css,scss,sass,less,vue}\"",
     "check": "vp run check:local",
-    "check:local": "vp run lint && vp run test",
-    "check:ci": "vp run format:check && vp run lint:ci && vp run test:ci && vp run build:ci",
+    "check:local": "vp run lint && pnpm run typecheck && vp run test",
+    "check:ci": "vp run format:check && vp run lint:ci && pnpm run typecheck && vp run test:ci && vp run build:ci",
     "test": "vp run test:component",
     "test:component": "vp run --filter @sdata/web-vue test",
     "test:ci": "vp run test:component",
@@ -60,6 +68,8 @@
   "devDependencies": {
     "@commitlint/cli": "^20.5.3",
     "@commitlint/config-conventional": "^20.5.3",
+    "@types/node": "^24.10.0",
+    "@typescript/native-preview": "beta",
     "axios": "^1.15.0",
     "confbox": "^0.2.4",
     "fast-glob": "^3.3.3",
@@ -90,5 +100,10 @@
   "engines": {
     "node": "~24.15.0"
   },
-  "packageManager": "pnpm@11.0.9"
+  "packageManager": "pnpm@11.0.9",
+  "pnpm": {
+    "patchedDependencies": {
+      "@astrojs/starlight@0.38.3": "patches/@astrojs__starlight@0.38.3.patch"
+    }
+  }
 }

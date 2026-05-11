@@ -3,35 +3,35 @@ title: 步骤条 Steps
 description: 明示任务流程和当前完成程度，引导用户按照步骤完成任务。
 ---
 
-import DemoBlock from "../../../../components/docs/DemoBlock.astro";
-import StepsArrowDemo from "../../../../components/generated/steps/arrow.vue";
-import stepsArrowSource from "../../../../components/generated/steps/arrow.vue?raw";
-import StepsBasicDemo from "../../../../components/generated/steps/basic.vue";
-import stepsBasicSource from "../../../../components/generated/steps/basic.vue?raw";
-import StepsChangeableDemo from "../../../../components/generated/steps/changeable.vue";
-import stepsChangeableSource from "../../../../components/generated/steps/changeable.vue?raw";
-import StepsCustomNodeDemo from "../../../../components/generated/steps/custom-node.vue";
-import stepsCustomNodeSource from "../../../../components/generated/steps/custom-node.vue?raw";
-import StepsDescriptionDemo from "../../../../components/generated/steps/description.vue";
-import stepsDescriptionSource from "../../../../components/generated/steps/description.vue?raw";
-import StepsDotDemo from "../../../../components/generated/steps/dot.vue";
-import stepsDotSource from "../../../../components/generated/steps/dot.vue?raw";
-import StepsErrorDemo from "../../../../components/generated/steps/error.vue";
-import stepsErrorSource from "../../../../components/generated/steps/error.vue?raw";
-import StepsIconDemo from "../../../../components/generated/steps/icon.vue";
-import stepsIconSource from "../../../../components/generated/steps/icon.vue?raw";
-import StepsLabelPlacementDemo from "../../../../components/generated/steps/label-placement.vue";
-import stepsLabelPlacementSource from "../../../../components/generated/steps/label-placement.vue?raw";
-import StepsLineLessDemo from "../../../../components/generated/steps/line-less.vue";
-import stepsLineLessSource from "../../../../components/generated/steps/line-less.vue?raw";
-import StepsNavigationDemo from "../../../../components/generated/steps/navigation.vue";
-import stepsNavigationSource from "../../../../components/generated/steps/navigation.vue?raw";
-import StepsSmallArrowDemo from "../../../../components/generated/steps/small-arrow.vue";
-import stepsSmallArrowSource from "../../../../components/generated/steps/small-arrow.vue?raw";
-import StepsSmallDemo from "../../../../components/generated/steps/small.vue";
-import stepsSmallSource from "../../../../components/generated/steps/small.vue?raw";
-import StepsVerticalDemo from "../../../../components/generated/steps/vertical.vue";
-import stepsVerticalSource from "../../../../components/generated/steps/vertical.vue?raw";
+import DemoBlock from '../../../../components/docs/DemoBlock.astro';
+import StepsArrowDemo from '../../../../components/generated/steps/arrow.vue';
+import stepsArrowSource from '../../../../components/generated/steps/arrow.vue?raw';
+import StepsBasicDemo from '../../../../components/generated/steps/basic.vue';
+import stepsBasicSource from '../../../../components/generated/steps/basic.vue?raw';
+import StepsChangeableDemo from '../../../../components/generated/steps/changeable.vue';
+import stepsChangeableSource from '../../../../components/generated/steps/changeable.vue?raw';
+import StepsCustomNodeDemo from '../../../../components/generated/steps/custom-node.vue';
+import stepsCustomNodeSource from '../../../../components/generated/steps/custom-node.vue?raw';
+import StepsDescriptionDemo from '../../../../components/generated/steps/description.vue';
+import stepsDescriptionSource from '../../../../components/generated/steps/description.vue?raw';
+import StepsDotDemo from '../../../../components/generated/steps/dot.vue';
+import stepsDotSource from '../../../../components/generated/steps/dot.vue?raw';
+import StepsErrorDemo from '../../../../components/generated/steps/error.vue';
+import stepsErrorSource from '../../../../components/generated/steps/error.vue?raw';
+import StepsIconDemo from '../../../../components/generated/steps/icon.vue';
+import stepsIconSource from '../../../../components/generated/steps/icon.vue?raw';
+import StepsLabelPlacementDemo from '../../../../components/generated/steps/label-placement.vue';
+import stepsLabelPlacementSource from '../../../../components/generated/steps/label-placement.vue?raw';
+import StepsLineLessDemo from '../../../../components/generated/steps/line-less.vue';
+import stepsLineLessSource from '../../../../components/generated/steps/line-less.vue?raw';
+import StepsNavigationDemo from '../../../../components/generated/steps/navigation.vue';
+import stepsNavigationSource from '../../../../components/generated/steps/navigation.vue?raw';
+import StepsSmallArrowDemo from '../../../../components/generated/steps/small-arrow.vue';
+import stepsSmallArrowSource from '../../../../components/generated/steps/small-arrow.vue?raw';
+import StepsSmallDemo from '../../../../components/generated/steps/small.vue';
+import stepsSmallSource from '../../../../components/generated/steps/small.vue?raw';
+import StepsVerticalDemo from '../../../../components/generated/steps/vertical.vue';
+import stepsVerticalSource from '../../../../components/generated/steps/vertical.vue?raw';
 
 ### 箭头步骤条
 
@@ -177,17 +177,17 @@ import stepsVerticalSource from "../../../../components/generated/steps/vertical
 
 ### `<steps>` Props
 
-| 参数名                | 描述                       | 类型                                            |     默认值     |
-| --------------------- | -------------------------- | ----------------------------------------------- | :------------: |
-| type                  | 步骤条的类型               | `'default' \| 'arrow' \| 'dot' \| 'navigation'` |  `'default'`   |
-| direction             | 步骤条的显示方向           | `'horizontal' \| 'vertical'`                    | `'horizontal'` |
-| label-placement       | 标签描述文字放置的位置     | `'horizontal' \| 'vertical'`                    | `'horizontal'` |
-| current **(v-model)** | 当前步骤数                 | `number`                                        |      `-`       |
-| default-current       | 默认的步骤数（非受控状态） | `number`                                        |      `1`       |
-| status                | 当前步骤的状态             | `'wait' \| 'process' \| 'finish' \| 'error'`    |  `'process'`   |
-| line-less             | 是否使用无连接线样式       | `boolean`                                       |    `false`     |
-| small                 | 是否使用小型步骤条         | `boolean`                                       |    `false`     |
-| changeable            | 是否可以点击切换           | `boolean`                                       |    `false`     |
+| 参数名 | 描述 | 类型 | 默认值 |
+| --- | --- | --- | :-: |
+| type | 步骤条的类型 | `'default' \| 'arrow' \| 'dot' \| 'navigation'` | `'default'` |
+| direction | 步骤条的显示方向 | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| label-placement | 标签描述文字放置的位置 | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| current **(v-model)** | 当前步骤数 | `number` | `-` |
+| default-current | 默认的步骤数（非受控状态） | `number` | `1` |
+| status | 当前步骤的状态 | `'wait' \| 'process' \| 'finish' \| 'error'` | `'process'` |
+| line-less | 是否使用无连接线样式 | `boolean` | `false` |
+| small | 是否使用小型步骤条 | `boolean` | `false` |
+| changeable | 是否可以点击切换 | `boolean` | `false` |
 
 ### `<steps>` Events
 

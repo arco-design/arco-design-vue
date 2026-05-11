@@ -9,7 +9,7 @@ export interface ButtonProps {
   long?: boolean;
   loading?: boolean;
   disabled?: boolean;
-  htmlType?: string;
+  htmlType?: 'button' | 'submit' | 'reset';
   autofocus?: boolean;
   href?: string;
 }

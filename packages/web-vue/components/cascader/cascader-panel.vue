@@ -341,7 +341,7 @@
           addLazyLoadOptions,
           slots,
           valueMap: computedValueMap,
-          expandTrigger,
+          expandTrigger: expandTrigger.value as 'click' | 'hover',
         }),
       );
 

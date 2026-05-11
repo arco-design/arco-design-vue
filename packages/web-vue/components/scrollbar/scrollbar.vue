@@ -149,6 +149,22 @@
         return osInstance.elements().scrollOffsetElement ?? null;
       };
 
+      const normalizeUpdateOptions = (update: ScrollbarProps['updateOptions']) => {
+        if (!update?.debounce || !isObject(update.debounce) || Array.isArray(update.debounce)) {
+          return update;
+        }
+
+        return {
+          ...update,
+          debounce: {
+            mutation: update.debounce.mutation ?? 0,
+            resize: update.debounce.resize ?? 0,
+            event: update.debounce.event ?? 0,
+            env: update.debounce.env ?? 0,
+          },
+        };
+      };
+
       const mergedOptions = computed(() => {
         const optionProps = props.overlayOptions ?? {};
         const isTrackType = props.type === 'track';
@@ -179,7 +195,7 @@
           paddingAbsolute: props.paddingAbsolute ?? optionProps.paddingAbsolute,
           showNativeOverlaidScrollbars:
             props.showNativeOverlaidScrollbars ?? optionProps.showNativeOverlaidScrollbars,
-          update: props.updateOptions ?? optionProps.update,
+          update: normalizeUpdateOptions(props.updateOptions ?? optionProps.update),
           overflow: mergedOverflow,
           scrollbars: {
             theme: props.type === 'track' ? `${prefixCls}-theme-track` : `${prefixCls}-theme-embed`,
@@ -218,11 +234,15 @@
           return;
         }
 
-        osInstanceRef.value = OverlayScrollbars(containerRef.value, mergedOptions.value, {
-          scroll: (_instance, event) => {
-            emit('scroll', event);
+        osInstanceRef.value = OverlayScrollbars(
+          containerRef.value,
+          mergedOptions.value as Parameters<typeof OverlayScrollbars>[1],
+          {
+            scroll: (_instance, event) => {
+              emit('scroll', event);
+            },
           },
-        });
+        );
 
         bindExternalListeners(props.events);
       };
@@ -238,7 +258,7 @@
           if (!osInstance) {
             return;
           }
-          osInstance.options(options);
+          osInstance.options(options as Parameters<typeof osInstance.options>[0]);
         },
         { deep: true },
       );
@@ -290,7 +310,7 @@
           return osInstance.options();
         }
 
-        return osInstance.options(newOptions, pure);
+        return osInstance.options(newOptions as Parameters<typeof osInstance.options>[0], pure);
       },
       /**
        * @zh 绑定底层 OverlayScrollbars 事件。
@@ -315,11 +335,13 @@
           );
         }
 
+        if (Array.isArray(listenerOrPure)) {
+          return osInstance.on(nameOrListeners, listenerOrPure);
+        }
+
         return osInstance.on(
           nameOrListeners,
-          listenerOrPure as
-            | ScrollbarEventListener<keyof EventListenerArgs>
-            | ScrollbarEventListener<keyof EventListenerArgs>[],
+          listenerOrPure as ScrollbarEventListener<keyof EventListenerArgs>,
         );
       },
       /**
@@ -337,12 +359,12 @@
           return;
         }
 
-        osInstance.off(
-          name,
-          listener as
-            | ScrollbarEventListener<keyof EventListenerArgs>
-            | ScrollbarEventListener<keyof EventListenerArgs>[],
-        );
+        if (Array.isArray(listener)) {
+          osInstance.off(name, listener);
+          return;
+        }
+
+        osInstance.off(name, listener);
       },
       /**
        * @zh 强制更新底层实例。
@@ -435,7 +457,10 @@
         }
 
         if (canUseNativeScrollTo) {
-          scrollOffsetElement.scrollTo(options as number | undefined, y as number | undefined);
+          scrollOffsetElement.scrollTo(
+            typeof options === 'number' ? options : scrollOffsetElement.scrollLeft,
+            typeof y === 'number' ? y : scrollOffsetElement.scrollTop,
+          );
           return;
         }
 

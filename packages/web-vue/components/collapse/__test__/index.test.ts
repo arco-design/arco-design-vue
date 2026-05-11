@@ -23,9 +23,9 @@ describe('Collapse', () => {
     await headers[1].trigger('click');
     expect(wrapper.emitted('change')).toBeUndefined();
     await headers[2].trigger('click');
-    expect(wrapper.emitted('change')[0][0]).toEqual(['3']);
+    expect(wrapper.emitted('change')?.[0]?.[0]).toEqual(['3']);
     await wrapper.setProps({ accordion: true });
     await headers[0].trigger('click');
-    expect(wrapper.emitted('change')[1][0]).toEqual(['1']);
+    expect(wrapper.emitted('change')?.[1]?.[0]).toEqual(['1']);
   });
 });

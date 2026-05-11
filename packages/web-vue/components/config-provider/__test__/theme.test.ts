@@ -102,10 +102,14 @@ describe('config-provider theme', () => {
     const themeProvider = wrapper.find('.sd-theme-provider');
     expect(themeProvider.exists()).toBe(true);
     expect(themeProvider.attributes('sd-theme')).toBe('dark');
-    expect(themeProvider.element.style.getPropertyValue('--primary-6')).toBe('0,100,200');
-    expect(themeProvider.element.style.getPropertyValue('--component-button-border-radius')).toBe(
-      '10px',
+    expect((themeProvider.element as HTMLElement).style.getPropertyValue('--primary-6')).toBe(
+      '0,100,200',
     );
+    expect(
+      (themeProvider.element as HTMLElement).style.getPropertyValue(
+        '--component-button-border-radius',
+      ),
+    ).toBe('10px');
     expect(document.body.style.getPropertyValue('--primary-6')).toBe('');
 
     themeRef.value = {
@@ -115,10 +119,14 @@ describe('config-provider theme', () => {
     };
     await nextTick();
 
-    expect(themeProvider.element.style.getPropertyValue('--primary-6')).toBe('200,100,0');
-    expect(themeProvider.element.style.getPropertyValue('--component-button-border-radius')).toBe(
-      '',
+    expect((themeProvider.element as HTMLElement).style.getPropertyValue('--primary-6')).toBe(
+      '200,100,0',
     );
+    expect(
+      (themeProvider.element as HTMLElement).style.getPropertyValue(
+        '--component-button-border-radius',
+      ),
+    ).toBe('');
 
     wrapper.unmount();
     expect(document.body.style.getPropertyValue('--primary-6')).toBe('');
@@ -205,7 +213,9 @@ describe('config-provider theme', () => {
 
     expect(parentProvider.attributes('sd-theme')).toBe('dark');
     expect(childProvider.attributes('sd-theme')).toBeUndefined();
-    expect(childProvider.element.style.getPropertyValue('--success-6')).toBe('22,33,44');
+    expect((childProvider.element as HTMLElement).style.getPropertyValue('--success-6')).toBe(
+      '22,33,44',
+    );
 
     wrapper.unmount();
   });

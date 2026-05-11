@@ -1,4 +1,5 @@
 /// <reference types="vitest/globals" />
+/// <reference types="vite/client" />
 
 import type { NativeElements, ReservedProps, VNode } from '@vue/runtime-dom';
 
@@ -28,6 +29,11 @@ declare global {
 }
 
 declare module '*.scss' {
+  const content: string;
+  export default content;
+}
+
+declare module '*.css' {
   const content: string;
   export default content;
 }

@@ -41,11 +41,12 @@
   import { isNumber, isString } from '../_utils/is';
   import { SplitProps } from './interface';
 
-  function getSizeConfig(size: number | string) {
-    const numberSize = isString(size) ? parseFloat(size) : size;
+  function getSizeConfig(size: number | string | undefined) {
+    const normalizedSize = size ?? 0;
+    const numberSize = isString(normalizedSize) ? parseFloat(normalizedSize) : normalizedSize;
     let unit = '';
 
-    if (isNumber(size) || String(numberSize) === size) {
+    if (isNumber(normalizedSize) || String(numberSize) === normalizedSize) {
       unit = numberSize > 1 ? 'px' : '%';
     } else {
       unit = 'px';
@@ -326,7 +327,7 @@
 
         record.startPageX = e.pageX;
         record.startPageY = e.pageY;
-        record.startContainerSize = await getContainerSize();
+        record.startContainerSize = (await getContainerSize()) ?? 0;
         record.startSize = size.value;
 
         on(window, 'mousemove', onMoving);
@@ -342,7 +343,7 @@
       }
 
       onMounted(async () => {
-        const containerSize = await getContainerSize();
+        const containerSize = (await getContainerSize()) ?? 0;
         const fixedPxSize = getLegalPxSize(size.value, containerSize);
         updateSize(fixedPxSize, containerSize);
       });

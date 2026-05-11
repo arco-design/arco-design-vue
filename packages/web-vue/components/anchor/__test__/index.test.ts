@@ -13,7 +13,7 @@ describe('Anchor', () => {
     });
     const link = wrapper.find('a');
     await link.trigger('click');
-    expect(wrapper.emitted('change')[0]).toEqual(['#anchor1']);
-    expect(wrapper.emitted('select')[0]).toEqual(['#anchor1', '#anchor1']);
+    expect(wrapper.emitted('change')?.[0]).toEqual(['#anchor1']);
+    expect(wrapper.emitted('select')?.[0]).toEqual(['#anchor1', '#anchor1']);
   });
 });

@@ -28,7 +28,16 @@
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, nextTick, onMounted, PropType, ref, toRefs, watch } from 'vue';
+  import {
+    defineComponent,
+    nextTick,
+    onMounted,
+    PropType,
+    ref,
+    toRefs,
+    watch,
+    type ComponentPublicInstance,
+  } from 'vue';
 
   import { isUndefined } from '../_utils/is';
   import { TimeList, TimeListItem } from './interface';
@@ -87,8 +96,17 @@
       return {
         refWrapper,
         refMap,
-        onItemRef(el: HTMLElement, item: TimeListItem) {
-          refMap.value.set(item.value, el);
+        onItemRef(el: Element | ComponentPublicInstance | null, item: TimeListItem) {
+          const element =
+            el instanceof HTMLElement
+              ? el
+              : el && '$el' in el && el.$el instanceof HTMLElement
+                ? el.$el
+                : null;
+
+          if (element) {
+            refMap.value.set(item.value, element);
+          }
         },
         onItemClick(item: TimeListItem) {
           if (!item.disabled) {

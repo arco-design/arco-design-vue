@@ -1,40 +1,37 @@
 <template>
   <sd-space>
-    <sd-button type="primary" @click="() => this.$notification.info('This is an info message!')">
-      Info
-    </sd-button>
-    <sd-button
-      type="primary"
-      status="success"
-      @click="() => this.$notification.success('This is a success message!')"
-    >
-      Success
-    </sd-button>
-    <sd-button
-      type="primary"
-      status="warning"
-      @click="() => this.$notification.warning('This is a warning message!')"
-    >
-      Warning
-    </sd-button>
-    <sd-button
-      type="primary"
-      status="danger"
-      @click="() => this.$notification.error('This is an error message!')"
-    >
-      Error
-    </sd-button>
-    <sd-button
-      type="secondary"
-      @click="
-        () =>
-          this.$notification.info({
-            content: 'This is an error message!',
-            showIcon: false,
-          })
-      "
-    >
-      Normal
-    </sd-button>
+    <sd-button type="primary" @click="showInfo"> Info </sd-button>
+    <sd-button type="primary" status="success" @click="showSuccess"> Success </sd-button>
+    <sd-button type="primary" status="warning" @click="showWarning"> Warning </sd-button>
+    <sd-button type="primary" status="danger" @click="showError"> Error </sd-button>
+    <sd-button type="secondary" @click="showNormal"> Normal </sd-button>
   </sd-space>
 </template>
+
+<script setup lang="ts">
+  import { getCurrentInstance } from 'vue';
+
+  interface NotificationApi {
+    info: (config: string | { content: string; showIcon?: boolean }) => void;
+    success: (content: string) => void;
+    warning: (content: string) => void;
+    error: (content: string) => void;
+  }
+
+  type NotificationProxy = {
+    $notification?: NotificationApi;
+  };
+
+  const instance = getCurrentInstance();
+  const proxy = instance?.proxy as NotificationProxy | undefined;
+
+  const showInfo = () => proxy?.$notification?.info('This is an info message!');
+  const showSuccess = () => proxy?.$notification?.success('This is a success message!');
+  const showWarning = () => proxy?.$notification?.warning('This is a warning message!');
+  const showError = () => proxy?.$notification?.error('This is an error message!');
+  const showNormal = () =>
+    proxy?.$notification?.info({
+      content: 'This is an error message!',
+      showIcon: false,
+    });
+</script>

@@ -4,13 +4,29 @@ import { getNow } from '../../_utils/date';
 import { isArray } from '../../_utils/is';
 
 function getDateValue(date?: Dayjs[], index?: number) {
-  if (!date) {
+  if (!date || index === undefined) {
     return undefined;
   }
   if (isArray(date)) {
     return date[index];
   }
   return undefined;
+}
+
+interface CalendarCellDate {
+  time: Dayjs;
+  isPrev?: boolean;
+  isNext?: boolean;
+}
+
+interface UseCellClassNameOptions {
+  prefixCls: string;
+  mergedValue?: Dayjs;
+  rangeValues?: Dayjs[];
+  hoverRangeValues?: Dayjs[];
+  panel?: boolean;
+  isSameTime: (current: Dayjs, target: Dayjs) => boolean;
+  innerMode?: 'month' | 'week' | 'day' | 'year';
 }
 
 export default function useClassName({
@@ -21,8 +37,8 @@ export default function useClassName({
   panel,
   isSameTime,
   innerMode,
-}) {
-  function isInRange(current, startDate, endDate) {
+}: UseCellClassNameOptions) {
+  function isInRange(current: Dayjs, startDate?: Dayjs, endDate?: Dayjs) {
     if (!startDate || !endDate) {
       return false;
     }
@@ -33,7 +49,7 @@ export default function useClassName({
     );
   }
 
-  return function getCellClassName(cellDateObj, disabled) {
+  return function getCellClassName(cellDateObj: CalendarCellDate, disabled: boolean) {
     const rangeStart = getDateValue(rangeValues, 0);
     const rangeEnd = getDateValue(rangeValues, 1);
 

@@ -10,6 +10,7 @@
     "start": "pnpm run docs:vendor && astro dev",
     "build": "pnpm run docs:vendor && astro build",
     "build:site": "astro build",
+    "typecheck": "vue-tsc --noEmit -p tsconfig.json",
     "verify:theme-runtime": "node ./scripts/verify-theme-runtime-paths.mjs",
     "preview": "pnpm run docs:vendor && astro preview",
     "astro": "astro",
@@ -31,6 +32,7 @@
     "vue": "catalog:"
   },
   "devDependencies": {
-    "rolldown": "1.0.0-rc.15"
+    "rolldown": "^1.0.0",
+    "vue-tsc": "^3.2.6"
   }
 }

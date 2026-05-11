@@ -37,7 +37,7 @@
       :type="type"
       :stroke-width="type === 'line' ? strokeWidth || 4 : strokeWidth"
       :path-stroke-width="type === 'line' ? strokeWidth || 4 : strokeWidth"
-      :width="width"
+      :width="circleWidth"
       :percent="percent"
       :color="color"
       :track-color="trackColor"
@@ -170,6 +170,9 @@
     setup(props) {
       const prefixCls = getPrefixCls('progress');
       const { size } = toRefs(props);
+      const circleWidth = computed(() =>
+        typeof props.width === 'number' ? props.width : undefined,
+      );
       const type = computed(() => (props.steps > 0 ? 'steps' : props.type));
       const computedStatus = computed(() => {
         return props.status || (props.percent >= 1 ? 'success' : 'normal');
@@ -184,6 +187,7 @@
       ]);
 
       return {
+        circleWidth,
         cls,
         computedStatus,
         mergedSize,

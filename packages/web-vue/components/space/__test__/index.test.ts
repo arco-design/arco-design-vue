@@ -4,7 +4,7 @@ import Space from '../index';
 
 describe('Space', () => {
   test('Size should work', () => {
-    const sizes = ['mini', 'small', 'medium', 'large'];
+    const sizes = ['mini', 'small', 'medium', 'large'] as const;
     sizes.forEach((size) => {
       const wrapper = mount(Space, {
         props: { size },

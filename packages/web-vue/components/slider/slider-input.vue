@@ -37,7 +37,7 @@
     },
     props: {
       modelValue: {
-        type: Array,
+        type: Array as unknown as PropType<[number, number]>,
         required: true,
       },
       min: {

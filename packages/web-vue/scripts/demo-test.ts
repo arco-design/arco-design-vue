@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils';
+import type { Component } from 'vue';
 
 import { globSync } from 'glob';
 import { fileURLToPath } from 'node:url';
@@ -6,7 +7,9 @@ import path from 'path';
 
 const packageRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const docsRoot = path.resolve(packageRoot, '..', 'sd-vue-docs');
-const demoModules = import.meta.glob('../../sd-vue-docs/src/components/generated/**/*.vue');
+const demoModules = import.meta.glob<{ default: Component }>(
+  '../../sd-vue-docs/src/components/generated/**/*.vue',
+);
 
 function getSnapshotName(component: string, demoName: string) {
   if (component === 'notification') {

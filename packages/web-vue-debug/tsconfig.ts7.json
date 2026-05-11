@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "paths": {
+      "@sdata/web-vue": ["../web-vue/components/index.ts"],
+      "@sdata/web-vue/es/icon": ["../web-vue/components/icon/index.ts"],
+      "@web-vue-src/*": ["../web-vue/components/*"],
+      "@style/*": ["../web-vue/components/style/*"],
+      "@components/*": ["../web-vue/components/*"]
+    },
+    "strict": true,
+    "jsx": "preserve",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "allowImportingTsExtensions": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["node", "vite/client"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts", "vite.config.ts"],
+  "exclude": ["node_modules", "dist", "**/*.vue"]
+}

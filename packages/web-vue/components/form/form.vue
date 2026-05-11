@@ -230,16 +230,14 @@
         });
       };
 
-      const scrollToField = (field: string, options?: ScrollIntoViewOptions) => {
+      const scrollToField = (field: string, options?: Parameters<typeof scrollIntoView>[1]) => {
         const node = formRef.value || document.body;
         const fieldNode = node.querySelector(`#${getFormElementId(props.id, field as string)}`);
 
         if (fieldNode) {
-          scrollIntoView(fieldNode as HTMLDivElement, {
+          (fieldNode as HTMLDivElement).scrollIntoView({
             behavior: 'smooth',
             block: 'nearest',
-            scrollMode: 'if-needed',
-            ...options,
           });
         }
       };

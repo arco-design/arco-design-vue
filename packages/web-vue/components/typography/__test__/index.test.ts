@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils';
+import { defineComponent, h } from 'vue';
 
 import Typography from '../index';
 
@@ -91,17 +92,24 @@ describe('Typography', () => {
 
   test('Paragraph should support ellipsis', async () => {
     const text = 'A design is a plan or specification for the construction'.repeat(10);
-    const wrapper = mount(Paragraph, {
-      slots: {
-        default: text,
-      },
-    });
-    await wrapper.setProps({
-      ellipsis: {
-        rows: 2,
-        expandable: true,
-      },
-    });
+    const wrapper = mount(
+      defineComponent({
+        render() {
+          return h(
+            Paragraph,
+            {
+              ellipsis: {
+                rows: 2,
+                expandable: true,
+              },
+            },
+            {
+              default: () => text,
+            },
+          );
+        },
+      }),
+    );
     await sleep(200);
     const moreElement = wrapper.find('.sd-typography-operation-expand');
     expect(moreElement.exists()).toBe(true);

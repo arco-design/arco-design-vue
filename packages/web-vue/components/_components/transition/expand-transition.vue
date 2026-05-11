@@ -14,27 +14,35 @@
 <script lang="ts">
   import { defineComponent } from 'vue';
 
+  const toHTMLElement = (element: Element) => element as HTMLElement;
+
   export default defineComponent({
     name: 'ExpandTransition',
     setup() {
       return {
-        onBeforeEnter(el: HTMLDivElement) {
-          el.style.height = '0';
+        onBeforeEnter(el: Element) {
+          const element = toHTMLElement(el);
+          element.style.height = '0';
         },
-        onEnter(el: HTMLDivElement) {
-          el.style.height = `${el.scrollHeight}px`;
+        onEnter(el: Element) {
+          const element = toHTMLElement(el);
+          element.style.height = `${element.scrollHeight}px`;
         },
-        onAfterEnter(el: HTMLDivElement) {
-          el.style.height = '';
+        onAfterEnter(el: Element) {
+          const element = toHTMLElement(el);
+          element.style.height = '';
         },
-        onBeforeLeave(el: HTMLDivElement) {
-          el.style.height = `${el.scrollHeight}px`;
+        onBeforeLeave(el: Element) {
+          const element = toHTMLElement(el);
+          element.style.height = `${element.scrollHeight}px`;
         },
-        onLeave(el: HTMLDivElement) {
-          el.style.height = `0`;
+        onLeave(el: Element) {
+          const element = toHTMLElement(el);
+          element.style.height = `0`;
         },
-        onAfterLeave(el: HTMLElement) {
-          el.style.height = ``;
+        onAfterLeave(el: Element) {
+          const element = toHTMLElement(el);
+          element.style.height = ``;
         },
       };
     },

@@ -18,22 +18,22 @@
 </template>
 
 <script lang="ts">
-  import { h, reactive, ref } from 'vue';
+  import { defineComponent, h, reactive, ref, type SetupContext } from 'vue';
 
   import { Form, FormItem, useFormItem } from '@sdata/web-vue';
 
-  const MyInput = {
+  const MyInput = defineComponent({
     emits: ['update:modelValue'],
-    setup(_, { emit }) {
+    setup(_props, { emit }: SetupContext<['update:modelValue']>) {
       const { mergedDisabled, eventHandlers } = useFormItem();
-      const handleInput = (ev) => {
-        const { value } = ev.target;
+      const handleInput = (ev: Event) => {
+        const value = (ev.target as HTMLInputElement | null)?.value ?? '';
         emit('update:modelValue', value);
-        eventHandlers.value?.onChange?.(ev);
+        (eventHandlers as { value?: { onChange?: (ev: Event) => void } }).value?.onChange?.(ev);
       };
       return () => h('input', { disabled: mergedDisabled.value, onInput: handleInput });
     },
-  };
+  });
 
   export default {
     components: {

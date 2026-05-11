@@ -9,6 +9,7 @@ describe('Transfer', () => {
         data: Array(4)
           .fill(undefined)
           .map((_, index) => ({
+            disabled: false,
             value: `option${index + 1}`,
             label: `Option ${index + 1}`,
           })),
@@ -20,7 +21,7 @@ describe('Transfer', () => {
     await wrapper.vm.$nextTick();
     const moveButton = wrapper.find('.sd-transfer-operations button');
     await moveButton.trigger('click');
-    expect(wrapper.emitted('change')[0]).toEqual([['option1']]);
+    expect(wrapper.emitted('change')?.[0]).toEqual([['option1']]);
   });
 
   test('should emit select event', async () => {
@@ -29,6 +30,7 @@ describe('Transfer', () => {
         data: Array(4)
           .fill(undefined)
           .map((_, index) => ({
+            disabled: false,
             value: `option${index + 1}`,
             label: `Option ${index + 1}`,
           })),
@@ -37,6 +39,6 @@ describe('Transfer', () => {
 
     const checkAll = wrapper.find('.sd-transfer-view-header .sd-checkbox-target');
     await checkAll.setValue();
-    expect(wrapper.emitted('select')[0]).toEqual([['option1', 'option2', 'option3', 'option4']]);
+    expect(wrapper.emitted('select')?.[0]).toEqual([['option1', 'option2', 'option3', 'option4']]);
   });
 });

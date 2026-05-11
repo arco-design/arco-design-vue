@@ -1,17 +1,17 @@
 import { computed, Slots } from 'vue';
 
-export default function usePropOrSlot<T = { [key: string]: any }>(
+export default function usePropOrSlot<T extends Record<string, unknown>>(
   props: T,
   slots: Slots,
-  propName: string,
+  propName: keyof T & string,
 ) {
   return computed(() => props[propName] || (slots[propName] && slots[propName]!()));
 }
 
-export function hasPropOrSlot<T = { [key: string]: any }>(
+export function hasPropOrSlot<T extends Record<string, unknown>>(
   props: T,
   slots: Slots,
-  propName: string,
+  propName: keyof T & string,
 ) {
   return computed(() => Boolean(props[propName] || slots[propName]));
 }

@@ -3,20 +3,20 @@ title: 自动补全 AutoComplete
 description: 输入框的自动补全功能。
 ---
 
-import DemoBlock from "../../../../components/docs/DemoBlock.astro";
-import AutoCompleteBasicDemo from "../../../../components/generated/auto-complete/basic.vue";
+import DemoBlock from '../../../../components/docs/DemoBlock.astro';
+import AutoCompleteBasicDemo from '../../../../components/generated/auto-complete/basic.vue';
 export const autoCompleteBasicSource =
   '<template>\n  <sd-auto-complete\n    :data="data"\n    @search="handleSearch"\n    :style="{ width: \'360px\' }"\n    placeholder="please enter something"\n  />\n</template>\n\n<script>\n  export default {\n    data() {\n      return {\n        data: [],\n      };\n    },\n    methods: {\n      handleSearch(value) {\n        if (value) {\n          this.data = [...Array(5)].map((_, index) => `${value}-${index}`);\n          console.log(this.data);\n        } else {\n          this.data = [];\n        }\n      },\n    },\n  };\n</script>';
-import AutoCompleteFooterDemo from "../../../../components/generated/auto-complete/footer.vue";
+import AutoCompleteFooterDemo from '../../../../components/generated/auto-complete/footer.vue';
 export const autoCompleteFooterSource =
   '<template>\n  <sd-auto-complete\n    :data="data"\n    @search="handleSearch"\n    :style="{ width: \'360px\' }"\n    placeholder="please enter something"\n  >\n    <template #footer>\n      <div style="padding: 6px 0; text-align: center;">\n        <sd-button>Click Me</sd-button>\n      </div>\n    </template>\n  </sd-auto-complete>\n</template>\n\n<script>\n  export default {\n    data() {\n      return {\n        data: [],\n      };\n    },\n    methods: {\n      handleSearch(value) {\n        if (value) {\n          this.data = [...Array(5)].map((_, index) => `${value}-${index}`);\n          console.log(this.data);\n        } else {\n          this.data = [];\n        }\n      },\n    },\n  };\n</script>';
-import AutoCompleteScrollDemo from "../../../../components/generated/auto-complete/scroll.vue";
+import AutoCompleteScrollDemo from '../../../../components/generated/auto-complete/scroll.vue';
 export const autoCompleteScrollSource =
   '<template>\n  <sd-auto-complete\n    :data="data"\n    :style="{ width: \'360px\' }"\n    placeholder="please enter something"\n    @dropdown-scroll="handleScroll"\n    @dropdown-reach-bottom="handleReachBottom"\n  />\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const data = ref([...Array(100)].map((_, index) => `option-${index}`));\n\n      const handleScroll = (ev) => {\n        console.log(\'scroll\', ev);\n      };\n      const handleReachBottom = (ev) => {\n        console.log(\'reach the bottom\', ev);\n      };\n\n      return {\n        data,\n        handleScroll,\n        handleReachBottom,\n      };\n    },\n  };\n</script>';
-import AutoCompleteStrictDemo from "../../../../components/generated/auto-complete/strict.vue";
+import AutoCompleteStrictDemo from '../../../../components/generated/auto-complete/strict.vue';
 export const autoCompleteStrictSource =
   "<template>\n  <sd-auto-complete\n    :data=\"data\"\n    :style=\"{ width: '360px' }\"\n    placeholder=\"please enter something\"\n    strict\n  />\n</template>\n\n<script>\n  export default {\n    data() {\n      return {\n        data: ['Beijing', 'Shanghai', 'Chengdu', 'WuHan'],\n      };\n    },\n  };\n</script>";
-import AutoCompleteVirtualListDemo from "../../../../components/generated/auto-complete/virtual-list.vue";
+import AutoCompleteVirtualListDemo from '../../../../components/generated/auto-complete/virtual-list.vue';
 export const autoCompleteVirtualListSource =
   '<template>\n  <sd-auto-complete\n    :data="data"\n    @search="handleSearch"\n    :style="{ width: \'360px\' }"\n    placeholder="please enter something"\n    :virtual-list-props="{ height: 200, threshold: 20 }"\n  />\n</template>\n\n<script>\n  export default {\n    data() {\n      return {\n        data: [],\n      };\n    },\n    methods: {\n      handleSearch(value) {\n        if (value) {\n          this.data = [...Array(5000)].map((_, index) => `${value}-${index}`);\n        } else {\n          this.data = [];\n        }\n      },\n    },\n  };\n</script>';
 
@@ -76,18 +76,18 @@ export const autoCompleteVirtualListSource =
 
 ### `<auto-complete>` Props
 
-| 参数名                    | 描述                                                                                              | 类型                                                            | 默认值  | 版本   |
-| ------------------------- | ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | :-----: | :----- |
-| model-value **(v-model)** | 绑定值                                                                                            | `string`                                                        |   `-`   |        |
-| default-value             | 默认值（非受控模式）                                                                              | `string`                                                        |  `''`   |        |
-| disabled                  | 是否禁用                                                                                          | `boolean`                                                       | `false` |        |
-| data                      | 用于自动提示的数据                                                                                | `(string \| number \| SelectOptionData \| SelectOptionGroup)[]` |  `[]`   |        |
-| popup-container           | 弹出框的挂载容器                                                                                  | `string \| HTMLElement \| null \| undefined`                    |   `-`   |        |
-| strict                    | 是否为严格校验模式                                                                                | `boolean`                                                       | `false` |        |
-| filter-option             | 自定义选项过滤方法                                                                                | `FilterOption`                                                  | `true`  |        |
-| trigger-props             | trigger 组件属性                                                                                  | `TriggerProps`                                                  |   `-`   | 2.14.0 |
-| allow-clear               | 是否允许清空输入框                                                                                | `boolean`                                                       | `false` | 2.23.0 |
-| virtual-list-props        | 传递虚拟列表属性，传入此参数以开启虚拟滚动。[迁移说明与完整参数](/guides/virtual-list-migration/) | `VirtualListProps`                                              |   `-`   | 2.50.0 |
+| 参数名 | 描述 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | :-: | :-- |
+| model-value **(v-model)** | 绑定值 | `string` | `-` |  |
+| default-value | 默认值（非受控模式） | `string` | `''` |  |
+| disabled | 是否禁用 | `boolean` | `false` |  |
+| data | 用于自动提示的数据 | `(string \| number \| SelectOptionData \| SelectOptionGroup)[]` | `[]` |  |
+| popup-container | 弹出框的挂载容器 | `string \| HTMLElement \| null \| undefined` | `-` |  |
+| strict | 是否为严格校验模式 | `boolean` | `false` |  |
+| filter-option | 自定义选项过滤方法 | `FilterOption` | `true` |  |
+| trigger-props | trigger 组件属性 | `TriggerProps` | `-` | 2.14.0 |
+| allow-clear | 是否允许清空输入框 | `boolean` | `false` | 2.23.0 |
+| virtual-list-props | 传递虚拟列表属性，传入此参数以开启虚拟滚动。[迁移说明与完整参数](/guides/virtual-list-migration/) | `VirtualListProps` | `-` | 2.50.0 |
 
 ### `<auto-complete>` Events
 

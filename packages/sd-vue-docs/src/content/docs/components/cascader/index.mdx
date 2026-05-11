@@ -3,41 +3,41 @@ title: 级联选择 Cascader
 description: 使用多级路径组织选项，适合层级化数据的单选、多选与搜索场景。
 ---
 
-import DemoBlock from "../../../../components/docs/DemoBlock.astro";
-import CascaderBasicDemo from "../../../../components/generated/cascader/basic.vue";
-import cascaderBasicSource from "../../../../components/generated/cascader/basic.vue?raw";
-import CascaderCheckStrictlyDemo from "../../../../components/generated/cascader/check-strictly.vue";
-import cascaderCheckStrictlySource from "../../../../components/generated/cascader/check-strictly.vue?raw";
-import CascaderClearDemo from "../../../../components/generated/cascader/clear.vue";
-import cascaderClearSource from "../../../../components/generated/cascader/clear.vue?raw";
-import CascaderDisabledDemo from "../../../../components/generated/cascader/disabled.vue";
-import cascaderDisabledSource from "../../../../components/generated/cascader/disabled.vue?raw";
-import CascaderDisplayDemo from "../../../../components/generated/cascader/display.vue";
-import cascaderDisplaySource from "../../../../components/generated/cascader/display.vue?raw";
-import CascaderExpandDemo from "../../../../components/generated/cascader/expand.vue";
-import cascaderExpandSource from "../../../../components/generated/cascader/expand.vue?raw";
-import CascaderFallbackDemo from "../../../../components/generated/cascader/fallback.vue";
-import cascaderFallbackSource from "../../../../components/generated/cascader/fallback.vue?raw";
-import CascaderFieldNamesDemo from "../../../../components/generated/cascader/field-names.vue";
-import cascaderFieldNamesSource from "../../../../components/generated/cascader/field-names.vue?raw";
-import CascaderFormatDemo from "../../../../components/generated/cascader/format.vue";
-import cascaderFormatSource from "../../../../components/generated/cascader/format.vue?raw";
-import CascaderLazyLoadDemo from "../../../../components/generated/cascader/lazy-load.vue";
-import cascaderLazyLoadSource from "../../../../components/generated/cascader/lazy-load.vue?raw";
-import CascaderLoadingDemo from "../../../../components/generated/cascader/loading.vue";
-import cascaderLoadingSource from "../../../../components/generated/cascader/loading.vue?raw";
-import CascaderMultipleDemo from "../../../../components/generated/cascader/multiple.vue";
-import cascaderMultipleSource from "../../../../components/generated/cascader/multiple.vue?raw";
-import CascaderMigrationDemo from "../../../../components/generated/cascader/migration.vue";
-import cascaderMigrationSource from "../../../../components/generated/cascader/migration.vue?raw";
-import CascaderPanelDemo from "../../../../components/generated/cascader/panel.vue";
-import cascaderPanelSource from "../../../../components/generated/cascader/panel.vue?raw";
-import CascaderPathDemo from "../../../../components/generated/cascader/path.vue";
-import cascaderPathSource from "../../../../components/generated/cascader/path.vue?raw";
-import CascaderSearchDemo from "../../../../components/generated/cascader/search.vue";
-import cascaderSearchSource from "../../../../components/generated/cascader/search.vue?raw";
-import CascaderVirtualDemo from "../../../../components/generated/cascader/virtual.vue";
-import cascaderVirtualSource from "../../../../components/generated/cascader/virtual.vue?raw";
+import DemoBlock from '../../../../components/docs/DemoBlock.astro';
+import CascaderBasicDemo from '../../../../components/generated/cascader/basic.vue';
+import cascaderBasicSource from '../../../../components/generated/cascader/basic.vue?raw';
+import CascaderCheckStrictlyDemo from '../../../../components/generated/cascader/check-strictly.vue';
+import cascaderCheckStrictlySource from '../../../../components/generated/cascader/check-strictly.vue?raw';
+import CascaderClearDemo from '../../../../components/generated/cascader/clear.vue';
+import cascaderClearSource from '../../../../components/generated/cascader/clear.vue?raw';
+import CascaderDisabledDemo from '../../../../components/generated/cascader/disabled.vue';
+import cascaderDisabledSource from '../../../../components/generated/cascader/disabled.vue?raw';
+import CascaderDisplayDemo from '../../../../components/generated/cascader/display.vue';
+import cascaderDisplaySource from '../../../../components/generated/cascader/display.vue?raw';
+import CascaderExpandDemo from '../../../../components/generated/cascader/expand.vue';
+import cascaderExpandSource from '../../../../components/generated/cascader/expand.vue?raw';
+import CascaderFallbackDemo from '../../../../components/generated/cascader/fallback.vue';
+import cascaderFallbackSource from '../../../../components/generated/cascader/fallback.vue?raw';
+import CascaderFieldNamesDemo from '../../../../components/generated/cascader/field-names.vue';
+import cascaderFieldNamesSource from '../../../../components/generated/cascader/field-names.vue?raw';
+import CascaderFormatDemo from '../../../../components/generated/cascader/format.vue';
+import cascaderFormatSource from '../../../../components/generated/cascader/format.vue?raw';
+import CascaderLazyLoadDemo from '../../../../components/generated/cascader/lazy-load.vue';
+import cascaderLazyLoadSource from '../../../../components/generated/cascader/lazy-load.vue?raw';
+import CascaderLoadingDemo from '../../../../components/generated/cascader/loading.vue';
+import cascaderLoadingSource from '../../../../components/generated/cascader/loading.vue?raw';
+import CascaderMultipleDemo from '../../../../components/generated/cascader/multiple.vue';
+import cascaderMultipleSource from '../../../../components/generated/cascader/multiple.vue?raw';
+import CascaderMigrationDemo from '../../../../components/generated/cascader/migration.vue';
+import cascaderMigrationSource from '../../../../components/generated/cascader/migration.vue?raw';
+import CascaderPanelDemo from '../../../../components/generated/cascader/panel.vue';
+import cascaderPanelSource from '../../../../components/generated/cascader/panel.vue?raw';
+import CascaderPathDemo from '../../../../components/generated/cascader/path.vue';
+import cascaderPathSource from '../../../../components/generated/cascader/path.vue?raw';
+import CascaderSearchDemo from '../../../../components/generated/cascader/search.vue';
+import cascaderSearchSource from '../../../../components/generated/cascader/search.vue?raw';
+import CascaderVirtualDemo from '../../../../components/generated/cascader/virtual.vue';
+import cascaderVirtualSource from '../../../../components/generated/cascader/virtual.vue?raw';
 
 ### 基本使用
 
@@ -207,21 +207,21 @@ import cascaderVirtualSource from "../../../../components/generated/cascader/vir
 
 ### 对应关系
 
-| Naive UI                          | SD Design Vue                                                               | 说明                                           |
-| --------------------------------- | --------------------------------------------------------------------------- | ---------------------------------------------- |
-| `n-cascader`                      | `sd-cascader`                                                               | 级联选择器主体                                 |
-| `n-cascader-panel`                | `sd-cascader-panel`                                                         | 面板组件                                       |
-| `:options`                        | `:options`                                                                  | 选项主属性保持一致                             |
-| `v-model:value`                   | `v-model` / `v-model:value`                                                 | 当前同时支持 `model-value` 和 `value` 兼容别名 |
-| `show` / `default-show`           | `popup-visible` / `default-popup-visible`，同时兼容 `show` / `default-show` | 新代码建议回到本地命名                         |
-| `filterable`                      | `allow-search` / `filterable`                                               | 新代码建议使用 `allow-search`                  |
-| `clearable`                       | `allow-clear` / `clearable`                                                 | 新代码建议使用 `allow-clear`                   |
-| `show-path`                       | `show-path`                                                                 | 控制已选标签是否展示完整路径                   |
-| `separator`                       | `separator`                                                                 | 路径展示分隔符                                 |
-| `max-tag-count="responsive"`      | `max-tag-count="responsive"`                                                | 多选标签会按当前容器宽度自动折叠               |
-| `render-label`                    | `format-label` / `#label` / `#option`                                       | 路径展示与选项展示改为本地格式化函数和插槽     |
-| `render-prefix` / `render-suffix` | `#prefix`、`#arrow-icon`、`#loading-icon`、`#search-icon`                   | 对外渲染入口统一收敛到插槽                     |
-| `fallback-option` 风格回填        | `fallback`                                                                  | 不存在的值仍可回显，但回调签名以当前组件库为准 |
+| Naive UI | SD Design Vue | 说明 |
+| --- | --- | --- |
+| `n-cascader` | `sd-cascader` | 级联选择器主体 |
+| `n-cascader-panel` | `sd-cascader-panel` | 面板组件 |
+| `:options` | `:options` | 选项主属性保持一致 |
+| `v-model:value` | `v-model` / `v-model:value` | 当前同时支持 `model-value` 和 `value` 兼容别名 |
+| `show` / `default-show` | `popup-visible` / `default-popup-visible`，同时兼容 `show` / `default-show` | 新代码建议回到本地命名 |
+| `filterable` | `allow-search` / `filterable` | 新代码建议使用 `allow-search` |
+| `clearable` | `allow-clear` / `clearable` | 新代码建议使用 `allow-clear` |
+| `show-path` | `show-path` | 控制已选标签是否展示完整路径 |
+| `separator` | `separator` | 路径展示分隔符 |
+| `max-tag-count="responsive"` | `max-tag-count="responsive"` | 多选标签会按当前容器宽度自动折叠 |
+| `render-label` | `format-label` / `#label` / `#option` | 路径展示与选项展示改为本地格式化函数和插槽 |
+| `render-prefix` / `render-suffix` | `#prefix`、`#arrow-icon`、`#loading-icon`、`#search-icon` | 对外渲染入口统一收敛到插槽 |
+| `fallback-option` 风格回填 | `fallback` | 不存在的值仍可回显，但回调签名以当前组件库为准 |
 
 ### 主要差异
 
@@ -252,47 +252,47 @@ import cascaderVirtualSource from "../../../../components/generated/cascader/vir
 
 ### `<cascader>` Props
 
-| 参数名                      | 描述                                                                                   | 类型                                                                            |               默认值                | 版本   |
-| --------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | :---------------------------------: | :----- |
-| path-mode                   | 绑定值是否为路径                                                                       | `boolean`                                                                       |               `false`               |        |
-| multiple                    | 是否为多选状态                                                                         | `boolean`                                                                       |               `false`               |        |
-| model-value **(v-model)**   | 绑定值                                                                                 | `CascaderModelValue`                                                            |                 `-`                 |        |
-| value **(v-model:value)**   | `model-value` 的兼容别名                                                               | `CascaderModelValue`                                                            |                 `-`                 |        |
-| default-value               | 默认值（非受控状态）                                                                   | `CascaderModelValue`                                                            |       `'' \| undefined \| []`       |        |
-| options                     | 级联选择器的选项                                                                       | `CascaderOption[]`                                                              |                `[]`                 |        |
-| disabled                    | 是否禁用                                                                               | `boolean`                                                                       |               `false`               |        |
-| error                       | 是否为错误状态                                                                         | `boolean`                                                                       |               `false`               |        |
-| size                        | 选择框的大小                                                                           | `'mini' \| 'small' \| 'medium' \| 'large'`                                      |             `'medium'`              |        |
-| allow-search                | 是否允许搜索，兼容 `filterable` 别名                                                   | `boolean`                                                                       | `false (single) \| true (multiple)` |        |
-| filterable                  | `allow-search` 的兼容别名                                                              | `boolean`                                                                       |                 `-`                 |        |
-| allow-clear                 | 是否允许清除，兼容 `clearable` 别名                                                    | `boolean`                                                                       |               `false`               |        |
-| clearable                   | `allow-clear` 的兼容别名                                                               | `boolean`                                                                       |                 `-`                 |        |
-| input-value **(v-model)**   | 输入框的值                                                                             | `string`                                                                        |                 `-`                 |        |
-| default-input-value         | 输入框默认值                                                                           | `string`                                                                        |                `''`                 |        |
-| popup-visible **(v-model)** | 是否显示下拉框                                                                         | `boolean`                                                                       |                 `-`                 |        |
-| show **(v-model:show)**     | `popup-visible` 的兼容别名                                                             | `boolean`                                                                       |                 `-`                 |        |
-| default-popup-visible       | 默认是否显示下拉框                                                                     | `boolean`                                                                       |               `false`               |        |
-| default-show                | `default-popup-visible` 的兼容别名                                                     | `boolean`                                                                       |                 `-`                 |        |
-| expand-trigger              | 展开下一级的触发方式                                                                   | `'click' \| 'hover'`                                                            |              `'click'`              |        |
-| placeholder                 | 占位符                                                                                 | `string`                                                                        |                 `-`                 |        |
-| filter-option               | 自定义选项过滤方法                                                                     | `(inputValue: string, option: CascaderOption) => boolean`                       |                 `-`                 |        |
-| popup-container             | 弹出框挂载容器                                                                         | `string \| HTMLElement`                                                         |                 `-`                 |        |
-| max-tag-count               | 多选模式最多显示的标签数量，`0` 表示不限制，`responsive` 表示按容器宽度自动折叠        | `number \| 'responsive'`                                                        |                 `0`                 |        |
-| show-path                   | 回填时是否展示完整路径                                                                 | `boolean`                                                                       |               `true`                |        |
-| separator                   | 回填路径使用的分隔符                                                                   | `string`                                                                        |               `' / '`               |        |
-| format-label                | 自定义已选路径的展示内容                                                               | `(options: CascaderOption[]) => string`                                         |                 `-`                 |        |
-| trigger-props               | 下拉菜单触发器属性                                                                     | `TriggerProps`                                                                  |                 `-`                 |        |
-| check-strictly              | 是否开启严格选择模式                                                                   | `boolean`                                                                       |               `false`               |        |
-| load-more                   | 数据懒加载函数                                                                         | `(option: CascaderOption, done: (children?: CascaderOption[]) => void) => void` |                 `-`                 | 2.13.0 |
-| loading                     | 是否为加载中状态                                                                       | `boolean`                                                                       |               `false`               | 2.15.0 |
-| search-option-only-label    | 搜索面板是否只展示末级标签                                                             | `boolean`                                                                       |               `false`               | 2.18.0 |
-| search-delay                | 触发搜索事件的延迟时间                                                                 | `number`                                                                        |                `500`                | 2.18.0 |
-| field-names                 | 自定义字段映射                                                                         | `CascaderFieldNames`                                                            |                 `-`                 | 2.22.0 |
-| value-key                   | 对象值用于确定 key 的字段                                                              | `string`                                                                        |              `'value'`              | 2.29.0 |
-| fallback                    | 自定义不存在选项值的展示                                                               | `boolean \| ((value: CascaderOptionValue \| CascaderOptionValue[]) => string)`  |               `true`                | 2.29.0 |
-| expand-child                | 是否展开子菜单                                                                         | `boolean`                                                                       |               `false`               | 2.29.0 |
-| virtual-list-props          | 虚拟列表配置。完整参数与迁移说明见 [虚拟列表迁移指南](/guides/virtual-list-migration/) | `VirtualListProps`                                                              |                 `-`                 | 2.49.0 |
-| tag-nowrap                  | 标签内容不换行                                                                         | `boolean`                                                                       |               `false`               | 2.56.1 |
+| 参数名 | 描述 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | :-: | :-- |
+| path-mode | 绑定值是否为路径 | `boolean` | `false` |  |
+| multiple | 是否为多选状态 | `boolean` | `false` |  |
+| model-value **(v-model)** | 绑定值 | `CascaderModelValue` | `-` |  |
+| value **(v-model:value)** | `model-value` 的兼容别名 | `CascaderModelValue` | `-` |  |
+| default-value | 默认值（非受控状态） | `CascaderModelValue` | `'' \| undefined \| []` |  |
+| options | 级联选择器的选项 | `CascaderOption[]` | `[]` |  |
+| disabled | 是否禁用 | `boolean` | `false` |  |
+| error | 是否为错误状态 | `boolean` | `false` |  |
+| size | 选择框的大小 | `'mini' \| 'small' \| 'medium' \| 'large'` | `'medium'` |  |
+| allow-search | 是否允许搜索，兼容 `filterable` 别名 | `boolean` | `false (single) \| true (multiple)` |  |
+| filterable | `allow-search` 的兼容别名 | `boolean` | `-` |  |
+| allow-clear | 是否允许清除，兼容 `clearable` 别名 | `boolean` | `false` |  |
+| clearable | `allow-clear` 的兼容别名 | `boolean` | `-` |  |
+| input-value **(v-model)** | 输入框的值 | `string` | `-` |  |
+| default-input-value | 输入框默认值 | `string` | `''` |  |
+| popup-visible **(v-model)** | 是否显示下拉框 | `boolean` | `-` |  |
+| show **(v-model:show)** | `popup-visible` 的兼容别名 | `boolean` | `-` |  |
+| default-popup-visible | 默认是否显示下拉框 | `boolean` | `false` |  |
+| default-show | `default-popup-visible` 的兼容别名 | `boolean` | `-` |  |
+| expand-trigger | 展开下一级的触发方式 | `'click' \| 'hover'` | `'click'` |  |
+| placeholder | 占位符 | `string` | `-` |  |
+| filter-option | 自定义选项过滤方法 | `(inputValue: string, option: CascaderOption) => boolean` | `-` |  |
+| popup-container | 弹出框挂载容器 | `string \| HTMLElement` | `-` |  |
+| max-tag-count | 多选模式最多显示的标签数量，`0` 表示不限制，`responsive` 表示按容器宽度自动折叠 | `number \| 'responsive'` | `0` |  |
+| show-path | 回填时是否展示完整路径 | `boolean` | `true` |  |
+| separator | 回填路径使用的分隔符 | `string` | `' / '` |  |
+| format-label | 自定义已选路径的展示内容 | `(options: CascaderOption[]) => string` | `-` |  |
+| trigger-props | 下拉菜单触发器属性 | `TriggerProps` | `-` |  |
+| check-strictly | 是否开启严格选择模式 | `boolean` | `false` |  |
+| load-more | 数据懒加载函数 | `(option: CascaderOption, done: (children?: CascaderOption[]) => void) => void` | `-` | 2.13.0 |
+| loading | 是否为加载中状态 | `boolean` | `false` | 2.15.0 |
+| search-option-only-label | 搜索面板是否只展示末级标签 | `boolean` | `false` | 2.18.0 |
+| search-delay | 触发搜索事件的延迟时间 | `number` | `500` | 2.18.0 |
+| field-names | 自定义字段映射 | `CascaderFieldNames` | `-` | 2.22.0 |
+| value-key | 对象值用于确定 key 的字段 | `string` | `'value'` | 2.29.0 |
+| fallback | 自定义不存在选项值的展示 | `boolean \| ((value: CascaderOptionValue \| CascaderOptionValue[]) => string)` | `true` | 2.29.0 |
+| expand-child | 是否展开子菜单 | `boolean` | `false` | 2.29.0 |
+| virtual-list-props | 虚拟列表配置。完整参数与迁移说明见 [虚拟列表迁移指南](/guides/virtual-list-migration/) | `VirtualListProps` | `-` | 2.49.0 |
+| tag-nowrap | 标签内容不换行 | `boolean` | `false` | 2.56.1 |
 
 ### `<cascader>` Events
 
@@ -325,20 +325,20 @@ import cascaderVirtualSource from "../../../../components/generated/cascader/vir
 
 ### `<cascader-panel>` Props
 
-| 参数名                    | 描述                      | 类型                                                                            |         默认值          | 版本   |
-| ------------------------- | ------------------------- | ------------------------------------------------------------------------------- | :---------------------: | :----- |
-| path-mode                 | 绑定值是否为路径          | `boolean`                                                                       |         `false`         |        |
-| multiple                  | 是否为多选状态            | `boolean`                                                                       |         `false`         |        |
-| model-value **(v-model)** | 绑定值                    | `CascaderModelValue`                                                            |           `-`           |        |
-| value **(v-model:value)** | `model-value` 的兼容别名  | `CascaderModelValue`                                                            |           `-`           |        |
-| default-value             | 默认值（非受控状态）      | `CascaderModelValue`                                                            | `'' \| undefined \| []` |        |
-| options                   | 级联选择器的选项          | `CascaderOption[]`                                                              |          `[]`           |        |
-| expand-trigger            | 展开下一级的触发方式      | `'click' \| 'hover'`                                                            |        `'click'`        |        |
-| check-strictly            | 是否开启严格选择模式      | `boolean`                                                                       |         `false`         |        |
-| load-more                 | 数据懒加载函数            | `(option: CascaderOption, done: (children?: CascaderOption[]) => void) => void` |           `-`           | 2.13.0 |
-| field-names               | 自定义字段映射            | `CascaderFieldNames`                                                            |           `-`           | 2.22.0 |
-| value-key                 | 对象值用于确定 key 的字段 | `string`                                                                        |        `'value'`        | 2.29.0 |
-| expand-child              | 是否展开子菜单            | `boolean`                                                                       |         `false`         | 2.29.0 |
+| 参数名 | 描述 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | :-: | :-- |
+| path-mode | 绑定值是否为路径 | `boolean` | `false` |  |
+| multiple | 是否为多选状态 | `boolean` | `false` |  |
+| model-value **(v-model)** | 绑定值 | `CascaderModelValue` | `-` |  |
+| value **(v-model:value)** | `model-value` 的兼容别名 | `CascaderModelValue` | `-` |  |
+| default-value | 默认值（非受控状态） | `CascaderModelValue` | `'' \| undefined \| []` |  |
+| options | 级联选择器的选项 | `CascaderOption[]` | `[]` |  |
+| expand-trigger | 展开下一级的触发方式 | `'click' \| 'hover'` | `'click'` |  |
+| check-strictly | 是否开启严格选择模式 | `boolean` | `false` |  |
+| load-more | 数据懒加载函数 | `(option: CascaderOption, done: (children?: CascaderOption[]) => void) => void` | `-` | 2.13.0 |
+| field-names | 自定义字段映射 | `CascaderFieldNames` | `-` | 2.22.0 |
+| value-key | 对象值用于确定 key 的字段 | `string` | `'value'` | 2.29.0 |
+| expand-child | 是否展开子菜单 | `boolean` | `false` | 2.29.0 |
 
 ### `<cascader-panel>` Events
 

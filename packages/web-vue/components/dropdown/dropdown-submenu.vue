@@ -140,10 +140,21 @@
       const { defaultPopupVisible, popupVisible } = toRefs(props);
       const prefixCls = getPrefixCls('dropdown');
 
+      const emitVisibleChange = (
+        event: 'update:popupVisible' | 'popupVisibleChange' | 'update:show' | 'showChange',
+        visible: boolean,
+      ) => {
+        if (event === 'update:popupVisible') {
+          emit('update:popupVisible', visible);
+        } else if (event === 'popupVisibleChange') {
+          emit('popupVisibleChange', visible);
+        }
+      };
+
       const { computedPopupVisible, handlePopupVisibleChange } = useTrigger({
         defaultPopupVisible,
         popupVisible,
-        emit,
+        emit: emitVisibleChange,
       });
 
       return {

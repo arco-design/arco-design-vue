@@ -114,7 +114,7 @@ export default defineComponent({
       });
     });
 
-    const handleChange = (value: Array<string | number>, e: Event) => {
+    const handleChange = (value: Array<string | number | boolean>, e: Event) => {
       _value.value = value;
       emit('update:modelValue', value);
       emit('change', value, e);

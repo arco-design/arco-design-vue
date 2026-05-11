@@ -1,0 +1,7 @@
+diff --git a/utils/i18n.ts b/utils/i18n.ts
+index 8fe2f2f..baacc42 100644
+--- a/utils/i18n.ts
++++ b/utils/i18n.ts
+@@
+-	return wellKnownRTL.includes(locale.language) ? 'rtl' : 'ltr';
++	return wellKnownRTL.includes(String(locale).split('-')[0] ?? String(locale)) ? 'rtl' : 'ltr';

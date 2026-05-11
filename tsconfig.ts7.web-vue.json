@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "outDir": "packages/web-vue/es",
+    "target": "ES2015",
+    "module": "ES2020",
+    "moduleResolution": "bundler",
+    "paths": {
+      "@vitejs/plugin-vue-jsx": ["./types/ts7/vite-plugin-vue-jsx-shim.d.ts"]
+    },
+    "removeComments": true,
+    "strict": true,
+    "allowJs": true,
+    "allowArbitraryExtensions": true,
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "rootDir": "packages/web-vue",
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "types": ["node", "vite/client"]
+  },
+  "files": [
+    "packages/web-vue/global.d.ts",
+    "packages/web-vue/components/shims.d.ts",
+    "packages/web-vue/vite.config.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "packages/web-vue/dist",
+    "packages/web-vue/lib",
+    "packages/web-vue/es",
+    "packages/web-vue/json",
+    "**/*.vue"
+  ]
+}

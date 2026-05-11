@@ -31,6 +31,6 @@
     "vue": "^3.5.32"
   },
   "devDependencies": {
-    "rolldown": "1.0.0-rc.15"
+    "rolldown": "^1.0.0"
   }
 }

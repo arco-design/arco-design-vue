@@ -84,7 +84,7 @@
       >
         <template v-if="extra || $slots.extra" #extra>
           <slot v-if="$slots.extra" name="extra" />
-          <RenderFunction v-else :render-func="extra" />
+          <RenderFunction v-else :render-func="resolvedExtra" />
         </template>
         <template v-if="showShortcuts && shortcutsPosition === 'bottom'" #btn>
           <PanelShortcuts v-bind="shortcutsProps" />
@@ -96,6 +96,7 @@
 </template>
 <script lang="ts">
   import { computed, defineComponent, PropType, reactive, ref, toRefs, watch } from 'vue';
+  import type { VNodeTypes } from 'vue';
 
   import { Dayjs } from 'dayjs';
 
@@ -199,7 +200,7 @@
         default: () => ({}),
       },
       endHeaderProps: {
-        type: Object as PropType<Record<string, any>>,
+        type: Object as PropType<StartHeaderProps>,
         default: () => ({}),
       },
       confirmBtnDisabled: {
@@ -247,6 +248,7 @@
         disabledTime,
         startHeaderProps,
         endHeaderProps,
+        extra,
         dateRender,
         visible,
         startHeaderMode,
@@ -266,7 +268,7 @@
         },
       ]);
 
-      const currentDateView = ref('date');
+      const currentDateView = ref<'date' | 'time'>('date');
 
       watch(visible, (newVal, oldVal) => {
         if (newVal && !oldVal) {
@@ -338,22 +340,23 @@
 
       function getDisabledTimeFunc(index: 0 | 1) {
         return isFunction(disabledTime?.value)
-          ? (current: Date) =>
-              disabledTime?.value?.(current, index === 0 ? 'start' : 'end') || false
+          ? (current: Date) => disabledTime?.value?.(current, index === 0 ? 'start' : 'end') ?? {}
           : undefined;
       }
 
       function getDateRenderFunc(index: 0 | 1) {
         return isFunction(dateRender?.value)
-          ? (props: any) => {
+          ? (props: Record<string, unknown>): VNodeTypes => {
               const mergeProps = {
                 ...props,
                 type: index === 0 ? 'start' : 'end',
               };
-              return dateRender?.value?.(mergeProps);
+              return dateRender.value!(mergeProps);
             }
           : undefined;
       }
+
+      const resolvedExtra: RenderFunc = (slotProps) => extra.value?.(slotProps) ?? '';
 
       const shortcutsProps = reactive({
         prefixCls,
@@ -388,6 +391,7 @@
         classNames,
         showShortcuts,
         shortcutsProps,
+        resolvedExtra,
         startPanelProps,
         endPanelProps,
         getDisabledTimeFunc,

@@ -205,19 +205,19 @@ export function initializeDateLocale(localeName: string, weekStart: number) {
   dayjs.locale({ ...dayjs.Ls[localeName.toLocaleLowerCase()], weekStart });
 }
 
-export function pickDataAttributes<T extends Record<string, any>, K extends keyof T>(
+export function pickDataAttributes<T extends Record<string, unknown>>(
   obj: T,
-): { [key in K]: any } {
-  const clone = {} as { [key in K]: any };
+): Record<`data-${string}` | `aria-${string}`, unknown> {
+  const clone = {} as Record<`data-${string}` | `aria-${string}`, unknown>;
 
   obj &&
     Object.keys(obj).forEach((key) => {
-      const k = String(key);
+      const k = key as Extract<keyof T, string>;
       if (k.indexOf('data-') === 0) {
-        clone[k] = obj[k];
+        clone[k as `data-${string}`] = obj[k];
       }
       if (k.indexOf('aria-') === 0) {
-        clone[k] = obj[k];
+        clone[k as `aria-${string}`] = obj[k];
       }
     });
 

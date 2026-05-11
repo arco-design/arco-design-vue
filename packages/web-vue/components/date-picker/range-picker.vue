@@ -27,7 +27,7 @@
         :readonly="readonly || disabledInput"
         :allow-clear="mergedAllowClear && !readonly"
         :placeholder="computedPlaceholder"
-        :input-value="inputValue"
+        :input-value="displayInputValue"
         :value="panelValue"
         :format="computedFormat"
         @clear="onInputClear"
@@ -447,19 +447,31 @@
       );
 
       const prefixCls = getPrefixCls('picker');
+      const emitRangeEvent = emit as {
+        (event: 'ok', value: CalendarValue[], date: Date[], dateString: string[]): void;
+        (
+          event: 'select',
+          value: (CalendarValue | undefined)[],
+          date: (Date | undefined)[],
+          dateString: (string | undefined)[],
+        ): void;
+      };
 
-      const computedPlaceholder = computed(
-        () =>
-          placeholder?.value ||
-          ({
-            date: datePickerT('datePicker.rangePlaceholder.date'),
-            month: datePickerT('datePicker.rangePlaceholder.month'),
-            year: datePickerT('datePicker.rangePlaceholder.year'),
-            week: datePickerT('datePicker.rangePlaceholder.week'),
-            quarter: datePickerT('datePicker.rangePlaceholder.quarter'),
-          }[mode.value] as unknown as string[]) ||
-          (datePickerT('datePicker.rangePlaceholder.date') as unknown as string[]),
-      );
+      const computedPlaceholder = computed<string[] | undefined>(() => {
+        if (placeholder?.value) {
+          return placeholder.value.filter((item): item is string => typeof item === 'string');
+        }
+
+        const fallback = {
+          date: datePickerT('datePicker.rangePlaceholder.date'),
+          month: datePickerT('datePicker.rangePlaceholder.month'),
+          year: datePickerT('datePicker.rangePlaceholder.year'),
+          week: datePickerT('datePicker.rangePlaceholder.week'),
+          quarter: datePickerT('datePicker.rangePlaceholder.quarter'),
+        }[mode.value];
+
+        return (fallback ?? datePickerT('datePicker.rangePlaceholder.date')) as unknown as string[];
+      });
 
       const {
         format: computedFormat,
@@ -521,6 +533,7 @@
 
       // input 操作的值
       const [inputValue, setInputValue] = useState<Array<string | undefined> | undefined>();
+      const displayInputValue = computed(() => inputValue.value?.map((item) => item ?? ''));
 
       const startHeaderMode = ref<'year' | 'month' | undefined>();
 
@@ -666,7 +679,16 @@
           eventHandlers.value?.onChange?.();
         }
         if (emitOk) {
-          emit('ok', returnValue, dateValue, formattedValue);
+          if (
+            Array.isArray(returnValue) &&
+            returnValue.every((item): item is CalendarValue => item !== undefined) &&
+            Array.isArray(dateValue) &&
+            dateValue.every((item): item is Date => item !== undefined) &&
+            Array.isArray(formattedValue) &&
+            formattedValue.every((item): item is string => item !== undefined)
+          ) {
+            emitRangeEvent('ok', returnValue, dateValue, formattedValue);
+          }
         }
       }
 
@@ -713,7 +735,7 @@
         const returnValue = getReturnRangeValue(value, returnValueFormat.value);
         const formattedValue = getFormattedValue(value, parseValueFormat.value);
         const dateValue = getDateValue(value);
-        emit('select', returnValue, dateValue, formattedValue);
+        emitRangeEvent('select', returnValue ?? [], dateValue ?? [], formattedValue ?? []);
       }
 
       function select(
@@ -979,6 +1001,7 @@
         computedPlaceholder,
         panelVisible,
         panelValue,
+        displayInputValue,
         inputValue,
         focusedIndex,
         mergedAllowClear,

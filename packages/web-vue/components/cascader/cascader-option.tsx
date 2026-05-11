@@ -30,7 +30,11 @@ export default defineComponent({
     const cascaderCtx = inject<Partial<CascaderContext>>(cascaderInjectionKey, {});
 
     const isLoading = ref(false);
-    const events: Record<string, unknown> = {};
+    const events: {
+      onMouseenter?: (ev: MouseEvent) => void;
+      onMouseleave?: () => void;
+      onClick?: (ev: MouseEvent) => void;
+    } = {};
 
     const handlePathChange = (_ev: Event) => {
       if (isFunction(cascaderCtx.loadMore) && !props.option.isLeaf) {
@@ -51,20 +55,21 @@ export default defineComponent({
     };
 
     if (!props.option.disabled) {
-      events.onMouseenter = [() => cascaderCtx.setActiveKey?.(props.option.key)];
-      events.onMouseleave = () => cascaderCtx.setActiveKey?.();
-      events.onClick = [];
-      if (cascaderCtx.expandTrigger === 'hover') {
-        events.onMouseenter.push((ev: Event) => handlePathChange(ev));
-      } else {
-        events.onClick.push((ev: Event) => handlePathChange(ev));
-      }
-      if (props.option.isLeaf && !props.multiple) {
-        events.onClick.push((ev: Event) => {
+      events.onMouseenter = (ev: MouseEvent) => {
+        cascaderCtx.setActiveKey?.(props.option.key);
+        if (cascaderCtx.expandTrigger === 'hover') {
           handlePathChange(ev);
+        }
+      };
+      events.onMouseleave = () => cascaderCtx.setActiveKey?.();
+      events.onClick = (ev: MouseEvent) => {
+        if (cascaderCtx.expandTrigger !== 'hover') {
+          handlePathChange(ev);
+        }
+        if (props.option.isLeaf && !props.multiple) {
           cascaderCtx.onClickOption?.(props.option);
-        });
-      }
+        }
+      };
     }
 
     const cls = computed(() => [

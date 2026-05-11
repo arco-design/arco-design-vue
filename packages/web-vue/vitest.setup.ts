@@ -1,4 +1,5 @@
 import { config } from '@vue/test-utils';
+import type { AppConfig } from 'vue';
 
 import { afterEach, vi } from 'vitest';
 
@@ -24,14 +25,17 @@ const mockCanvasContext = {
 
 config.global.plugins = [SDVue, SDVueIcon];
 
+const globalProperties =
+  config.global.config?.globalProperties ?? ({} as AppConfig['globalProperties']);
+Object.assign(globalProperties, {
+  $sd: {
+    classPrefix: 'sd',
+  },
+});
+
 config.global.config = {
   ...config.global.config,
-  globalProperties: {
-    ...config.global.config?.globalProperties,
-    $sd: {
-      classPrefix: 'sd',
-    },
-  },
+  globalProperties,
 };
 Object.defineProperty(window, 'matchMedia', {
   writable: true,

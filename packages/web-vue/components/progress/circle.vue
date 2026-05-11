@@ -9,16 +9,16 @@
   >
     <icon-check
       v-if="type === 'circle' && size === 'mini' && status === 'success'"
-      :style="{ fontSize: mergedWidth - 2, color }"
+      :style="iconStyle"
     />
     <svg v-else :viewBox="`0 0 ${mergedWidth} ${mergedWidth}`" :class="`${prefixCls}-svg`">
       <defs v-if="isLinearGradient">
         <linearGradient :id="linearGradientId" x1="0" y1="1" x2="0" y2="0">
           <stop
-            v-for="key of Object.keys(color)"
-            :key="key"
-            :offset="key"
-            :stop-color="color[key]"
+            v-for="[offset, stopColor] of gradientStops"
+            :key="offset"
+            :offset="offset"
+            :stop-color="stopColor"
           />
         </linearGradient>
       </defs>
@@ -29,9 +29,7 @@
         :cy="center"
         :r="radius"
         :stroke-width="mergedPathStrokeWidth"
-        :style="{
-          stroke: trackColor,
-        }"
+        :style="trackStyle"
       />
       <circle
         :class="`${prefixCls}-bar`"
@@ -40,11 +38,7 @@
         :cy="center"
         :r="radius"
         :stroke-width="mergedStrokeWidth"
-        :style="{
-          stroke: isLinearGradient ? `url(#${linearGradientId})` : color,
-          strokeDasharray: perimeter,
-          strokeDashoffset: (percent >= 1 ? 0 : 1 - percent) * perimeter,
-        }"
+        :style="circleStyle"
       />
     </svg>
     <div v-if="showText && size !== 'mini'" :class="`${prefixCls}-text`">
@@ -60,7 +54,7 @@
 </template>
 
 <script lang="ts">
-  import { computed, defineComponent, PropType } from 'vue';
+  import { computed, defineComponent, PropType, type CSSProperties } from 'vue';
 
   import NP from 'number-precision';
 
@@ -132,6 +126,19 @@
       const prefixCls = getPrefixCls('progress-circle');
 
       const isLinearGradient = isObject(props.color);
+      const gradientStops = computed<[string, string][]>(() => {
+        if (!isObject(props.color)) {
+          return [];
+        }
+
+        return Object.entries(props.color).map(([offset, stopColor]) => [
+          offset,
+          String(stopColor),
+        ]);
+      });
+      const solidColor = computed(() =>
+        typeof props.color === 'string' ? props.color : undefined,
+      );
 
       const mergedWidth = computed(() => {
         return props.width ?? DEFAULT_WIDTH[props.size];
@@ -161,12 +168,29 @@
       });
 
       const text = computed(() => `${NP.times(props.percent, 100)}%`);
+      const iconStyle = computed<CSSProperties>(() => ({
+        fontSize: mergedWidth.value - 2,
+        color: solidColor.value,
+      }));
+      const trackStyle = computed<CSSProperties>(() => ({
+        stroke: props.trackColor,
+      }));
+      const circleStyle = computed<CSSProperties>(() => ({
+        stroke: isLinearGradient ? `url(#${linearGradientId.value})` : solidColor.value,
+        strokeDasharray: perimeter.value,
+        strokeDashoffset: (props.percent >= 1 ? 0 : 1 - props.percent) * perimeter.value,
+      }));
 
       return {
+        circleStyle,
+        gradientStops,
+        iconStyle,
         prefixCls,
         isLinearGradient,
         radius,
+        solidColor,
         text,
+        trackStyle,
         perimeter,
         center,
         mergedWidth,

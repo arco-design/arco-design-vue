@@ -66,6 +66,7 @@
     "prebuild:dts": "pnpm run icongen",
     "build:dts": "node ./scripts/build-dts.mjs",
     "dtsgen": "pnpm run build:dts",
+    "typecheck": "vue-tsc --noEmit -p tsconfig.json",
     "test": "vp test run",
     "test:update": "vp test run -u"
   },

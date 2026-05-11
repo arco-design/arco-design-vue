@@ -31,10 +31,7 @@
         datePickerT('datePicker.selectTime')
       }}</header>
       <TimePanel
-        v-bind="{
-          ...timePickerProps,
-          ...disabledTimeProps,
-        }"
+        v-bind="mergedTimePanelProps"
         hide-footer
         :value="value || isRange ? timePickerValue : undefined"
         :disabled="disabled"
@@ -77,6 +74,7 @@
 
   import { Dayjs } from 'dayjs';
 
+  import type { PanelProps, TimePickerProps } from '../../../time-picker/interface';
   import type {
     Cell,
     DisabledDate,
@@ -94,7 +92,6 @@
   import { getPrefixCls } from '../../../_utils/global-config';
   import IconCalendar from '../../../icon/icon-calendar';
   import IconClockCircle from '../../../icon/icon-clock-circle';
-  import { TimePickerProps } from '../../../time-picker/interface';
   import TimePanel from '../../../time-picker/panel.vue';
   import useDatePickerTransform from '../../hooks/use-inject-datepicker-transform';
   import { newArray } from '../../utils';
@@ -205,6 +202,7 @@
         showTime,
         currentView,
         disabledTime,
+        timePickerProps,
       } = toRefs(props);
 
       const datePickerT = useDatePickerTransform();
@@ -244,6 +242,16 @@
           (showTime.value && disabledTime?.value?.(getDateValue(footerValue?.value || getNow()))) ||
           {},
       );
+      const mergedTimePanelProps = computed<Partial<PanelProps>>(() => ({
+        format: timePickerProps?.value?.format,
+        use12Hours: timePickerProps?.value?.use12Hours,
+        step: timePickerProps?.value?.step,
+        hideDisabledOptions: timePickerProps?.value?.hideDisabledOptions,
+        disabledHours: timePickerProps?.value?.disabledHours,
+        disabledMinutes: timePickerProps?.value?.disabledMinutes,
+        disabledSeconds: timePickerProps?.value?.disabledSeconds,
+        ...disabledTimeProps.value,
+      }));
 
       const weekList = computed(() => {
         const list = [0, 1, 2, 3, 4, 5, 6];
@@ -311,6 +319,7 @@
         weekList: computed(() => (isWeek.value ? [-1, ...weekList.value] : weekList.value)),
         mergedIsSameTime,
         disabledTimeProps,
+        mergedTimePanelProps,
         onCellClick,
         onCellMouseEnter,
         onTimePanelSelect,
