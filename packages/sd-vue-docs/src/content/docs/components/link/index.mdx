@@ -5,20 +5,15 @@ description: 链接的基本样式。
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import LinkBasicDemo from '../../../../components/generated/link/basic.vue';
-export const linkBasicSource =
-  '<template>\n  <sd-space>\n    <sd-link href="link">Link</sd-link>\n    <sd-link href="link" disabled>Link</sd-link>\n  </sd-space>\n</template>';
+import linkBasicSource from '../../../../components/generated/link/basic.vue?raw';
 import LinkHoverableDemo from '../../../../components/generated/link/hoverable.vue';
-export const linkHoverableSource =
-  '<template>\n  <sd-space>\n    <sd-link href="link" :hoverable="false">Link</sd-link>\n    <sd-link href="link" status="danger" :hoverable="false">Link</sd-link>\n  </sd-space>\n</template>';
+import linkHoverableSource from '../../../../components/generated/link/hoverable.vue?raw';
 import LinkIconDemo from '../../../../components/generated/link/icon.vue';
-export const linkIconSource =
-  '<template>\n  <div>\n    <sd-space>\n      <sd-link href="link" icon>Link</sd-link>\n      <sd-link href="link" disabled icon>Link</sd-link>\n    </sd-space>\n  </div>\n  <div>\n    <sd-space>\n      <sd-link href="link">\n        <template #icon>\n          <icon-edit />\n        </template>\n        Link\n      </sd-link>\n      <sd-link href="link" disabled>\n        <template #icon>\n          <icon-edit />\n        </template>\n        Link\n      </sd-link>\n    </sd-space>\n  </div>\n</template>\n\n<script>\n  import { IconEdit } from \'@sdata/web-vue/es/icon/index.js\';\n\n  export default {\n    components: { IconEdit },\n  };\n</script>';
+import linkIconSource from '../../../../components/generated/link/icon.vue?raw';
 import LinkLoadingDemo from '../../../../components/generated/link/loading.vue';
-export const linkLoadingSource =
-  '<template>\n  <sd-space>\n    <sd-link loading>Link</sd-link>\n    <sd-link :loading="loading1" @click="handleClick1">Link</sd-link>\n    <sd-link :loading="loading2" @click="handleClick2">\n      <template #icon>\n        <icon-edit />\n      </template>\n      Link\n    </sd-link>\n  </sd-space>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n  import { IconEdit } from \'@sdata/web-vue/es/icon/index.js\';\n\n  export default {\n    components: {\n      IconEdit,\n    },\n    setup() {\n      const loading1 = ref(false);\n      const loading2 = ref(false);\n\n      const handleClick1 = () => {\n        loading1.value = true;\n        setTimeout(() => {\n          loading1.value = false;\n        }, 3000);\n      };\n      const handleClick2 = () => {\n        loading2.value = true;\n        setTimeout(() => {\n          loading2.value = false;\n        }, 3000);\n      };\n\n      return {\n        loading1,\n        loading2,\n        handleClick1,\n        handleClick2,\n      };\n    },\n  };\n</script>';
+import linkLoadingSource from '../../../../components/generated/link/loading.vue?raw';
 import LinkStatusDemo from '../../../../components/generated/link/status.vue';
-export const linkStatusSource =
-  '<template>\n  <sd-space direction="vertical">\n    <sd-space>\n      <sd-link href="link">Normal Link</sd-link>\n      <sd-link href="link" disabled>Normal Link</sd-link>\n    </sd-space>\n    <sd-space>\n      <sd-link href="link" status="success">Success Link</sd-link>\n      <sd-link href="link" status="success" disabled>Success Link</sd-link>\n    </sd-space>\n    <sd-space>\n      <sd-link href="link" status="warning">Warning Link</sd-link>\n      <sd-link href="link" status="warning" disabled>Warning Link</sd-link>\n    </sd-space>\n    <sd-space>\n      <sd-link href="link" status="danger">Danger Link</sd-link>\n      <sd-link href="link" status="danger" disabled>Danger Link</sd-link>\n    </sd-space>\n  </sd-space>\n</template>';
+import linkStatusSource from '../../../../components/generated/link/status.vue?raw';
 
 ### 基本用法
 

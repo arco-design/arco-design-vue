@@ -5,29 +5,21 @@ description: 仅允许输入数字格式的输入框。
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import InputNumberBasicDemo from '../../../../components/generated/input-number/basic.vue';
-export const inputNumberBasicSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-input-number\n      v-model="value"\n      :style="{ width: \'320px\' }"\n      placeholder="Please Enter"\n      class="input-demo"\n      :min="10"\n      :max="100"\n    />\n    <sd-input-number\n      :style="{ width: \'320px\' }"\n      placeholder="Please Enter"\n      class="input-demo"\n      :min="10"\n      :max="100"\n    />\n    <sd-input-number\n      :style="{ width: \'320px\' }"\n      placeholder="Please Enter"\n      :default-value="500"\n      class="input-demo"\n      disabled\n    />\n  </sd-space>\n</template>\n\n<script>\n  export default {\n    data() {\n      return {\n        value: 15,\n      };\n    },\n  };\n</script>';
+import inputNumberBasicSource from '../../../../components/generated/input-number/basic.vue?raw';
 import InputNumberFormatDemo from '../../../../components/generated/input-number/format.vue';
-export const inputNumberFormatSource =
-  '<template>\n  <sd-input-number\n    :style="{ width: \'320px\' }"\n    placeholder="Please Enter"\n    class="input-demo"\n    :default-value="12000"\n    :min="0"\n    :formatter="formatter"\n    :parser="parser"\n  />\n</template>\n\n<script>\n  export default {\n    setup() {\n      const formatter = (value) => {\n        const values = value.split(\'.\');\n        values[0] = values[0].replace(/\\B(?=(\\d{3})+(?!\\d))/g, \',\');\n\n        return values.join(\'.\');\n      };\n\n      const parser = (value) => {\n        return value.replace(/,/g, \'\');\n      };\n\n      return {\n        formatter,\n        parser,\n      };\n    },\n  };\n</script>';
+import inputNumberFormatSource from '../../../../components/generated/input-number/format.vue?raw';
 import InputNumberModeDemo from '../../../../components/generated/input-number/mode.vue';
-export const inputNumberModeSource =
-  '<template>\n  <sd-input-number\n    :style="{ width: \'320px\' }"\n    placeholder="Please Enter"\n    :default-value="500"\n    mode="button"\n    class="input-demo"\n  />\n</template>';
+import inputNumberModeSource from '../../../../components/generated/input-number/mode.vue?raw';
 import InputNumberModelDemo from '../../../../components/generated/input-number/model.vue';
-export const inputNumberModelSource =
-  '<template>\n  <sd-input-number\n    v-model="value"\n    :style="{ width: \'320px\' }"\n    placeholder="Please Enter"\n    class="input-demo"\n    :min="10"\n    :max="100"\n    model-event="input"\n  />\n  <div>value: {{ value }}</div>\n</template>\n\n<script>\n  export default {\n    data() {\n      return {\n        value: 15,\n      };\n    },\n  };\n</script>';
+import inputNumberModelSource from '../../../../components/generated/input-number/model.vue?raw';
 import InputNumberPrecisionDemo from '../../../../components/generated/input-number/precision.vue';
-export const inputNumberPrecisionSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-input-number\n      :style="{ width: \'320px\' }"\n      placeholder="Please Enter"\n      :default-value="3.6"\n      :step="1.2"\n      :precision="2"\n      class="input-demo"\n    />\n    <sd-input-number\n      :style="{ width: \'320px\' }"\n      placeholder="Please Enter"\n      :default-value="1.22"\n      :step="1.22"\n      :precision="1"\n      class="input-demo"\n    />\n  </sd-space>\n</template>';
+import inputNumberPrecisionSource from '../../../../components/generated/input-number/precision.vue?raw';
 import InputNumberPrefixDemo from '../../../../components/generated/input-number/prefix.vue';
-export const inputNumberPrefixSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-input-number :style="{ width: \'320px\' }" placeholder="Please enter something" allow-clear>\n      <template #prefix>\n        <icon-user />\n      </template>\n    </sd-input-number>\n    <sd-input-number\n      :style="{ width: \'320px\' }"\n      placeholder="Please enter something"\n      allow-clear\n      hide-button\n    >\n      <template #suffix>\n        <icon-info-circle />\n      </template>\n    </sd-input-number>\n  </sd-space>\n</template>';
+import inputNumberPrefixSource from '../../../../components/generated/input-number/prefix.vue?raw';
 import InputNumberSizeDemo from '../../../../components/generated/input-number/size.vue';
-export const inputNumberSizeSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-input-number\n      :style="{ width: \'320px\' }"\n      placeholder="Please Enter"\n      size="large"\n      class="input-demo"\n    />\n    <sd-input-number\n      :style="{ width: \'320px\' }"\n      placeholder="Please Enter"\n      mode="button"\n      size="large"\n      class="input-demo"\n    />\n  </sd-space>\n</template>';
+import inputNumberSizeSource from '../../../../components/generated/input-number/size.vue?raw';
 import InputNumberStepIconDemo from '../../../../components/generated/input-number/step-icon.vue';
-export const inputNumberStepIconSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-input-number :style="{ width: \'320px\' }" placeholder="Please enter something" allow-clear>\n      <template #plus>\n        <icon-plus />\n      </template>\n      <template #minus>\n        <icon-minus />\n      </template>\n    </sd-input-number>\n  </sd-space>\n</template>';
+import inputNumberStepIconSource from '../../../../components/generated/input-number/step-icon.vue?raw';
 
 ### 基本用法
 

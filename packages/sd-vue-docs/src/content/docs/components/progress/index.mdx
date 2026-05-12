@@ -5,29 +5,21 @@ description: 给予用户当前系统执行中任务运行状态的反馈，多�
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import ProgressBasicDemo from '../../../../components/generated/progress/basic.vue';
-export const progressBasicSource =
-  '<template>\n  <sd-progress :percent="0.2" :style="{ width: \'50%\' }" />\n  <br />\n  <br />\n  <sd-progress :percent="0.3" :style="{ width: \'50%\' }">\n    <template v-slot:text="scope"> 进度 {{ scope.percent * 100 }}% </template>\n  </sd-progress>\n</template>';
+import progressBasicSource from '../../../../components/generated/progress/basic.vue?raw';
 import ProgressCircleDemo from '../../../../components/generated/progress/circle.vue';
-export const progressCircleSource =
-  '<template>\n  <sd-space size="large">\n    <sd-progress type="circle" :percent="percent" />\n    <sd-progress type="circle" status="warning" :percent="percent" />\n    <sd-progress type="circle" status="danger" :percent="percent" />\n    <sd-progress type="circle" status="success" :percent="percent" />\n  </sd-space>\n  <div :style="{ marginTop: \'20px\' }">\n    <sd-slider v-model="percent" :max="1" :step="0.1" :style="{ width: \'150px\' }" />\n  </div>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const percent = ref(0.2);\n\n      return {\n        percent,\n      };\n    },\n  };\n</script>';
+import progressCircleSource from '../../../../components/generated/progress/circle.vue?raw';
 import ProgressLinearDemo from '../../../../components/generated/progress/linear.vue';
-export const progressLinearSource =
-  "<template>\n  <div>\n    <sd-progress\n      :percent=\"0.8\"\n      :style=\"{ width: '50%' }\"\n      :color=\"{\n        '0%': 'rgb(var(--primary-6))',\n        '100%': 'rgb(var(--success-6))',\n      }\"\n    />\n    <br />\n    <br />\n\n    <sd-progress\n      :percent=\"1\"\n      :style=\"{ width: '50%' }\"\n      :color=\"{\n        '0%': 'rgb(var(--primary-6))',\n        '100%': 'rgb(var(--success-6))',\n      }\"\n    />\n    <br />\n    <br />\n    <sd-space size=\"large\">\n      <sd-progress\n        type=\"circle\"\n        :percent=\"0.8\"\n        :style=\"{ width: '50%' }\"\n        :color=\"{\n          '0%': 'rgb(var(--primary-6))',\n          '100%': 'rgb(var(--success-6))',\n        }\"\n      />\n\n      <sd-progress\n        type=\"circle\"\n        :percent=\"1\"\n        :style=\"{ width: '50%' }\"\n        :color=\"{\n          '0%': 'rgb(var(--primary-6))',\n          '100%': 'rgb(var(--success-6))',\n        }\"\n      />\n    </sd-space>\n  </div>\n</template>";
+import progressLinearSource from '../../../../components/generated/progress/linear.vue?raw';
 import ProgressMiniDemo from '../../../../components/generated/progress/mini.vue';
-export const progressMiniSource =
-  '<template>\n  <sd-space size="large" :style="{ width: \'100%\' }">\n    <sd-progress size="mini" :percent="percent" />\n    <sd-progress size="mini" status="warning" :percent="percent" />\n    <sd-progress size="mini" status="danger" :percent="percent" />\n    <sd-progress size="mini" status="success" :percent="percent" />\n  </sd-space>\n  <sd-space size="large" :style="{ width: \'100%\', marginTop: \'20px\' }">\n    <sd-progress type="circle" size="mini" :percent="percent" />\n    <sd-progress type="circle" size="mini" status="warning" :percent="percent" />\n    <sd-progress type="circle" size="mini" status="danger" :percent="percent" />\n    <sd-progress type="circle" size="mini" status="success" :percent="percent" />\n  </sd-space>\n  <div :style="{ marginTop: \'20px\' }">\n    <sd-slider v-model="percent" :max="1" :step="0.1" :style="{ width: \'150px\' }" />\n  </div>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const percent = ref(0.2);\n\n      return {\n        percent,\n      };\n    },\n  };\n</script>';
+import progressMiniSource from '../../../../components/generated/progress/mini.vue?raw';
 import ProgressSizeDemo from '../../../../components/generated/progress/size.vue';
-export const progressSizeSource =
-  '<template>\n  <sd-space direction="vertical" size="large" :style="{ width: \'50%\' }">\n    <sd-radio-group v-model="size" type="button">\n      <sd-radio value="small">Small</sd-radio>\n      <sd-radio value="medium">Medium</sd-radio>\n      <sd-radio value="large">Large</sd-radio>\n    </sd-radio-group>\n    <sd-progress :size="size" :percent="0.2" />\n    <sd-progress status="warning" :size="size" :percent="0.2" />\n    <sd-progress status="danger" :size="size" :percent="0.2" />\n    <sd-space>\n      <sd-progress type="circle" :size="size" :percent="0.2" />\n      <sd-progress type="circle" status="warning" :size="size" :percent="0.2" />\n      <sd-progress type="circle" status="danger" :size="size" :percent="0.2" />\n    </sd-space>\n  </sd-space>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      return {\n        size: ref(\'medium\'),\n      };\n    },\n  };\n</script>';
+import progressSizeSource from '../../../../components/generated/progress/size.vue?raw';
 import ProgressStatusDemo from '../../../../components/generated/progress/status.vue';
-export const progressStatusSource =
-  '<template>\n  <sd-space direction="vertical" :style="{ width: \'50%\' }">\n    <sd-progress :percent="percent" />\n    <sd-progress status="warning" :percent="percent" />\n    <sd-progress status="danger" :percent="percent" />\n  </sd-space>\n  <div :style="{ marginTop: \'20px\' }">\n    <sd-slider v-model="percent" :max="1" :step="0.1" :style="{ width: \'150px\' }" />\n  </div>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const percent = ref(0.2);\n\n      return {\n        percent,\n      };\n    },\n  };\n</script>';
+import progressStatusSource from '../../../../components/generated/progress/status.vue?raw';
 import ProgressStepsDemo from '../../../../components/generated/progress/steps.vue';
-export const progressStepsSource =
-  '<template>\n  <div :style="{ width: \'50%\' }">\n    <sd-progress :steps="3" :percent="0.3" />\n    <sd-progress :steps="5" status="warning" :percent="1" />\n    <sd-progress :steps="3" size="small" :percent="0.3" />\n  </div>\n</template>';
+import progressStepsSource from '../../../../components/generated/progress/steps.vue?raw';
 import ProgressTrackcolorDemo from '../../../../components/generated/progress/trackcolor.vue';
-export const progressTrackcolorSource =
-  '<template>\n  <div :style="{ width: \'50%\' }">\n    <sd-progress\n      :percent="0.4"\n      trackColor="var(--color-primary-light-1)"\n      style="margin-bottom: 20px;"\n    />\n    <sd-progress\n      :percent="0.4"\n      :steps="4"\n      trackColor="var(--color-primary-light-1)"\n      style="margin-bottom: 20px;"\n    />\n    <sd-progress\n      :percent="0.4"\n      type="circle"\n      trackColor="var(--color-primary-light-1)"\n      style="margin-bottom: 20px;"\n    />\n  </div>\n</template>';
+import progressTrackcolorSource from '../../../../components/generated/progress/trackcolor.vue?raw';
 
 ### 基本用法
 

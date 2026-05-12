@@ -5,20 +5,15 @@ description: 通过锚点可快速找到信息内容在当前页面的位置。
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import AnchorAffixDemo from '../../../../components/generated/anchor/affix.vue';
-export const anchorAffixSource =
-  '<template>\n  <sd-affix :offsetTop="80">\n    <sd-anchor :style="{ backgroundColor: \'var(--color-bg-1)\' }">\n      <sd-anchor-link href="#basic">Basic</sd-anchor-link>\n      <sd-anchor-link href="#line-less">LineLess Mode</sd-anchor-link>\n      <sd-anchor-link href="#affix">\n        Affix\n        <template #sublist>\n          <sd-anchor-link href="#boundary">Scroll Boundary</sd-anchor-link>\n          <sd-anchor-link href="#hash">Hash mode</sd-anchor-link>\n        </template>\n      </sd-anchor-link>\n    </sd-anchor>\n  </sd-affix>\n</template>';
+import anchorAffixSource from '../../../../components/generated/anchor/affix.vue?raw';
 import AnchorBasicDemo from '../../../../components/generated/anchor/basic.vue';
-export const anchorBasicSource =
-  '<template>\n  <sd-anchor>\n    <sd-anchor-link href="#basic">Basic</sd-anchor-link>\n    <sd-anchor-link href="#line-less">LineLess Mode</sd-anchor-link>\n    <sd-anchor-link href="#affix">\n      Affix\n      <template #sublist>\n        <sd-anchor-link href="#boundary">Scroll Boundary</sd-anchor-link>\n        <sd-anchor-link href="#hash">Hash mode</sd-anchor-link>\n      </template>\n    </sd-anchor-link>\n  </sd-anchor>\n</template>';
+import anchorBasicSource from '../../../../components/generated/anchor/basic.vue?raw';
 import AnchorBoundaryDemo from '../../../../components/generated/anchor/boundary.vue';
-export const anchorBoundarySource =
-  '<template>\n  <sd-anchor boundary="center">\n    <sd-anchor-link href="#basic">Basic</sd-anchor-link>\n    <sd-anchor-link href="#line-less">LineLess Mode</sd-anchor-link>\n    <sd-anchor-link href="#affix">\n      Affix\n      <template #sublist>\n        <sd-anchor-link href="#boundary">Scroll Boundary</sd-anchor-link>\n        <sd-anchor-link href="#hash">Hash mode</sd-anchor-link>\n      </template>\n    </sd-anchor-link>\n  </sd-anchor>\n</template>';
+import anchorBoundarySource from '../../../../components/generated/anchor/boundary.vue?raw';
 import AnchorHashDemo from '../../../../components/generated/anchor/hash.vue';
-export const anchorHashSource =
-  '<template>\n  <sd-anchor :change-hash="false">\n    <sd-anchor-link href="#basic">Basic</sd-anchor-link>\n    <sd-anchor-link href="#line-less">LineLess Mode</sd-anchor-link>\n    <sd-anchor-link href="#affix">\n      Affix\n      <template #sublist>\n        <sd-anchor-link href="#boundary">Scroll Boundary</sd-anchor-link>\n        <sd-anchor-link href="#hash">Hash mode</sd-anchor-link>\n      </template>\n    </sd-anchor-link>\n  </sd-anchor>\n</template>';
+import anchorHashSource from '../../../../components/generated/anchor/hash.vue?raw';
 import AnchorLineLessDemo from '../../../../components/generated/anchor/line-less.vue';
-export const anchorLineLessSource =
-  '<template>\n  <sd-anchor line-less>\n    <sd-anchor-link href="#basic">Basic</sd-anchor-link>\n    <sd-anchor-link href="#line-less">LineLess Mode</sd-anchor-link>\n    <sd-anchor-link href="#affix">\n      Affix\n      <template #sublist>\n        <sd-anchor-link href="#boundary">Scroll Boundary</sd-anchor-link>\n        <sd-anchor-link href="#hash">Hash mode</sd-anchor-link>\n      </template>\n    </sd-anchor-link>\n  </sd-anchor>\n</template>';
+import anchorLineLessSource from '../../../../components/generated/anchor/line-less.vue?raw';
 
 ### 固钉位置
 

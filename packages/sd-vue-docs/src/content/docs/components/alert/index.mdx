@@ -5,29 +5,21 @@ description: 向用户显示警告的信息时，通过警告提示，展现需�
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import AlertActionDemo from '../../../../components/generated/alert/action.vue';
-export const alertActionSource =
-  '<template>\n  <sd-space direction="vertical" size="large" style="width: 100%;">\n    <sd-alert closable>\n      This is an info alert.\n      <template #action>\n        <sd-button size="small" type="primary">Detail</sd-button>\n      </template>\n    </sd-alert>\n    <sd-alert title="Example" closable>\n      This is an info alert.\n      <template #action>\n        <sd-button size="small" type="primary">Detail</sd-button>\n      </template>\n    </sd-alert>\n  </sd-space>\n</template>';
+import alertActionSource from '../../../../components/generated/alert/action.vue?raw';
 import AlertBannerDemo from '../../../../components/generated/alert/banner.vue';
-export const alertBannerSource =
-  '<template>\n  <sd-alert banner center>This is an info alert.</sd-alert>\n</template>';
+import alertBannerSource from '../../../../components/generated/alert/banner.vue?raw';
 import AlertBasicDemo from '../../../../components/generated/alert/basic.vue';
-export const alertBasicSource =
-  '<template>\n  <sd-alert>This is an info alert.</sd-alert>\n</template>';
+import alertBasicSource from '../../../../components/generated/alert/basic.vue?raw';
 import AlertClosableDemo from '../../../../components/generated/alert/closable.vue';
-export const alertClosableSource =
-  '<template>\n  <sd-row :gutter="[40, 20]">\n    <sd-col :span="12">\n      <sd-alert closable>This is an info alert.</sd-alert>\n    </sd-col>\n    <sd-col :span="12">\n      <sd-alert type="success" closable>This is an success alert.</sd-alert>\n    </sd-col>\n    <sd-col :span="12">\n      <sd-alert type="warning" closable>\n        <template #title> Warning </template>\n        This is an warning alert.\n      </sd-alert>\n    </sd-col>\n    <sd-col :span="12">\n      <sd-alert type="error" closable>\n        <template #title> Error </template>\n        This is an error alert.\n      </sd-alert>\n    </sd-col>\n  </sd-row>\n</template>';
+import alertClosableSource from '../../../../components/generated/alert/closable.vue?raw';
 import AlertCloseElementDemo from '../../../../components/generated/alert/close-element.vue';
-export const alertCloseElementSource =
-  '<template>\n  <sd-row :gutter="[40, 20]">\n    <sd-col :span="12">\n      <sd-alert closable>\n        <template #close-element>\n          <icon-close-circle />\n        </template>\n        This is an info alert.\n      </sd-alert>\n    </sd-col>\n    <sd-col :span="12">\n      <sd-alert closable>\n        <template #close-element> Close </template>\n        This is an info alert.\n      </sd-alert>\n    </sd-col>\n  </sd-row>\n</template>';
+import alertCloseElementSource from '../../../../components/generated/alert/close-element.vue?raw';
 import AlertIconDemo from '../../../../components/generated/alert/icon.vue';
-export const alertIconSource =
-  '<template>\n  <sd-row :gutter="[40, 20]">\n    <sd-col :span="12">\n      <sd-alert :show-icon="false">This is an info alert.</sd-alert>\n    </sd-col>\n    <sd-col :span="12">\n      <sd-alert type="success" :show-icon="false">This is an success alert.</sd-alert>\n    </sd-col>\n    <sd-col :span="12">\n      <sd-alert type="warning" :show-icon="false">\n        <template #title> Warning </template>\n        This is an warning alert.\n      </sd-alert>\n    </sd-col>\n    <sd-col :span="12">\n      <sd-alert type="error" :show-icon="false">\n        <template #title> Error </template>\n        This is an error alert.\n      </sd-alert>\n    </sd-col>\n  </sd-row>\n</template>';
+import alertIconSource from '../../../../components/generated/alert/icon.vue?raw';
 import AlertTitleDemo from '../../../../components/generated/alert/title.vue';
-export const alertTitleSource =
-  '<template>\n  <sd-row :gutter="[40, 20]">\n    <sd-col :span="12">\n      <sd-alert title="Info">This is an info alert.</sd-alert>\n    </sd-col>\n    <sd-col :span="12">\n      <sd-alert title="Success" type="success">This is an success alert.</sd-alert>\n    </sd-col>\n    <sd-col :span="12">\n      <sd-alert type="warning">\n        <template #title> Warning </template>\n        This is an warning alert.\n      </sd-alert>\n    </sd-col>\n    <sd-col :span="12">\n      <sd-alert type="error">\n        <template #title> Error </template>\n        This is an error alert.\n      </sd-alert>\n    </sd-col>\n  </sd-row>\n</template>';
+import alertTitleSource from '../../../../components/generated/alert/title.vue?raw';
 import AlertTypeDemo from '../../../../components/generated/alert/type.vue';
-export const alertTypeSource =
-  '<template>\n  <sd-row :gutter="[40, 20]">\n    <sd-col :span="12">\n      <sd-alert>This is an info alert.</sd-alert>\n    </sd-col>\n    <sd-col :span="12">\n      <sd-alert type="success">This is an success alert.</sd-alert>\n    </sd-col>\n    <sd-col :span="12">\n      <sd-alert type="warning">This is an warning alert.</sd-alert>\n    </sd-col>\n    <sd-col :span="12">\n      <sd-alert type="error">This is an error alert.</sd-alert>\n    </sd-col>\n    <sd-col :span="12">\n      <sd-alert type="normal">\n        <template #icon>\n          <icon-exclamation-circle-fill />\n        </template>\n        This is an normal alert.\n      </sd-alert>\n    </sd-col>\n  </sd-row>\n</template>\n\n<script>\n  import { IconExclamationCircleFill } from \'@sdata/web-vue/es/icon/index.js\';\n\n  export default {\n    components: { IconExclamationCircleFill },\n  };\n</script>';
+import alertTypeSource from '../../../../components/generated/alert/type.vue?raw';
 
 ### 操作项
 

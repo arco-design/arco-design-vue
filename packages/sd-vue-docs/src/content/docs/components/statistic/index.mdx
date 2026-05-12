@@ -5,17 +5,13 @@ description: 突出展示某个或某组数字、带描述的统计类数据。
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import StatisticAnimationDemo from '../../../../components/generated/statistic/animation.vue';
-export const statisticAnimationSource =
-  '<template>\n  <sd-statistic\n    title="User Growth Rate"\n    :value="50.52"\n    :precision="2"\n    :value-from="0"\n    :start="start"\n    animation\n  >\n    <template #prefix>\n      <icon-arrow-rise />\n    </template>\n    <template #suffix>%</template>\n  </sd-statistic>\n  <sd-button @click="start = true">Start</sd-button>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const start = ref(false);\n\n      return {\n        start,\n      };\n    },\n  };\n</script>';
+import statisticAnimationSource from '../../../../components/generated/statistic/animation.vue?raw';
 import StatisticBasicDemo from '../../../../components/generated/statistic/basic.vue';
-export const statisticBasicSource =
-  '<template>\n  <sd-space size="large">\n    <sd-statistic title="Downloads" :value="125670" show-group-separator />\n    <sd-statistic extra="Comments" :value="40509" :precision="2" />\n  </sd-space>\n</template>';
+import statisticBasicSource from '../../../../components/generated/statistic/basic.vue?raw';
 import StatisticCountdownDemo from '../../../../components/generated/statistic/countdown.vue';
-export const statisticCountdownSource =
-  '<template>\n  <sd-row>\n    <sd-col :flex="1">\n      <sd-countdown title="Countdown" :value="now + 1000 * 60 * 60 * 2" :now="now" />\n    </sd-col>\n    <sd-col :flex="1">\n      <sd-countdown\n        title="Milliseconds"\n        :value="now + 1000 * 60 * 60 * 2"\n        :now="now"\n        format="HH:mm:ss.SSS"\n      />\n    </sd-col>\n    <sd-col :flex="1">\n      <sd-countdown\n        title="Days"\n        :value="now + 1000 * 60 * 60 * 24 * 4"\n        :now="now"\n        format="D 天 H 时 m 分 s 秒"\n      />\n    </sd-col>\n  </sd-row>\n  <sd-space direction="vertical" style="margin-top: 10px">\n    <sd-countdown\n      title="Trigger on finish"\n      :value="Date.now() + 5 * 1000"\n      format="mm:ss.SSS"\n      :now="Date.now()"\n      :start="start"\n      @finish="handleFinish"\n    />\n    <sd-button @click="start = true" type="primary">Start</sd-button>\n  </sd-space>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n  import { Message } from \'@sdata/web-vue\';\n\n  export default {\n    setup() {\n      const now = Date.now();\n      const start = ref(false);\n\n      const handleFinish = () => {\n        Message.info(\'Finish\');\n      };\n\n      return {\n        now,\n        start,\n        handleFinish,\n      };\n    },\n  };\n</script>';
+import statisticCountdownSource from '../../../../components/generated/statistic/countdown.vue?raw';
 import StatisticPrefixDemo from '../../../../components/generated/statistic/prefix.vue';
-export const statisticPrefixSource =
-  '<template>\n  <sd-space size="large">\n    <sd-statistic title="New Users" :value="125670" show-group-separator>\n      <template #suffix>\n        <icon-arrow-rise />\n      </template>\n    </sd-statistic>\n    <sd-statistic\n      title="User Growth Rate"\n      :value="50.52"\n      :precision="2"\n      :value-style="{ color: \'#0fbf60\' }"\n    >\n      <template #prefix>\n        <icon-arrow-rise />\n      </template>\n      <template #suffix>%</template>\n    </sd-statistic>\n  </sd-space>\n</template>';
+import statisticPrefixSource from '../../../../components/generated/statistic/prefix.vue?raw';
 
 ### 数值动画
 

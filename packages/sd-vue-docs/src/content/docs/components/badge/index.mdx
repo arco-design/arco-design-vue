@@ -5,26 +5,19 @@ description: 一般出现在图标或文字的右上角。提供及时、重要�
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import BadgeAloneDemo from '../../../../components/generated/badge/alone.vue';
-export const badgeAloneSource =
-  '<template>\n  <sd-space :size="40">\n    <sd-badge :count="2" />\n    <sd-badge :count="2" :dotStyle="{ background: \'#E5E6EB\', color: \'#86909C\' }" />\n    <sd-badge :count="16" />\n    <sd-badge :count="1000" :max-count="99" />\n  </sd-space>\n</template>';
+import badgeAloneSource from '../../../../components/generated/badge/alone.vue?raw';
 import BadgeBasicDemo from '../../../../components/generated/badge/basic.vue';
-export const badgeBasicSource =
-  '<template>\n  <sd-space :size="40">\n    <sd-badge :count="9">\n      <sd-avatar shape="square" />\n    </sd-badge>\n    <sd-badge :count="9" dot :dotStyle="{ width: \'10px\', height: \'10px\' }">\n      <sd-avatar shape="square" />\n    </sd-badge>\n    <sd-badge :dotStyle="{ height: \'16px\', width: \'16px\', fontSize: \'14px\' }">\n      <template #content>\n        <IconClockCircle :style="{ verticalAlign: \'middle\', color: \'var(--color-text-2)\' }" />\n      </template>\n      <sd-avatar shape="square" />\n    </sd-badge>\n  </sd-space>\n</template>\n\n<script>\n  import { IconClockCircle } from \'@sdata/web-vue/es/icon/index.js\';\n\n  export default {\n    components: { IconClockCircle },\n  };\n</script>';
+import badgeBasicSource from '../../../../components/generated/badge/basic.vue?raw';
 import BadgeColorDemo from '../../../../components/generated/badge/color.vue';
-export const badgeColorSource =
-  "<template>\n  <div>\n    <sd-badge\n      v-for=\"color in colors\"\n      :key=\"color\"\n      :color=\"color\"\n      :text=\"color\"\n      :style=\"{ marginRight: '24px' }\"\n    />\n  </div>\n  <br />\n  <div>\n    <sd-badge\n      v-for=\"color in customColors\"\n      :key=\"color\"\n      :color=\"color\"\n      :text=\"color\"\n      :style=\"{ marginRight: '24px' }\"\n    />\n  </div>\n</template>\n\n<script>\n  const COLORS = [\n    'red',\n    'orangered',\n    'orange',\n    'gold',\n    'lime',\n    'green',\n    'cyan',\n    'sdblue',\n    'purple',\n    'pinkpurple',\n    'magenta',\n    'gray',\n  ];\n\n  const COLORS_CUSTOM = [\n    '#F53F3F',\n    '#7816FF',\n    '#00B42A',\n    '#165DFF',\n    '#FF7D00',\n    '#EB0AA4',\n    '#7BC616',\n    '#86909C',\n    '#B71DE8',\n    '#0FC6C2',\n    '#FFB400',\n    '#168CFF',\n    '#FF5722',\n  ];\n  export default {\n    data() {\n      return {\n        colors: COLORS,\n        customColors: COLORS_CUSTOM,\n      };\n    },\n  };\n</script>";
+import badgeColorSource from '../../../../components/generated/badge/color.vue?raw';
 import BadgeDotDemo from '../../../../components/generated/badge/dot.vue';
-export const badgeDotSource =
-  '<template>\n  <sd-space :size="40">\n    <sd-badge :count="9" dot :offset="[6, -2]">\n      <a href="#">Link</a>\n    </sd-badge>\n    <sd-badge :count="9" dot :offset="[2, -2]">\n      <IconNotification :style="{ color: \'#888\', fontSize: \'18px\', verticalAlign: \'-3px\' }" />\n    </sd-badge>\n  </sd-space>\n</template>\n\n<script>\n  import { IconNotification } from \'@sdata/web-vue/es/icon/index.js\';\n\n  export default {\n    components: { IconNotification },\n  };\n</script>';
+import badgeDotSource from '../../../../components/generated/badge/dot.vue?raw';
 import BadgeMaxDemo from '../../../../components/generated/badge/max.vue';
-export const badgeMaxSource =
-  '<template>\n  <sd-space :size="40">\n    <sd-badge :max-count="10" :count="0">\n      <sd-avatar shape="square">\n        <span>\n          <IconUser />\n        </span>\n      </sd-avatar>\n    </sd-badge>\n    <sd-badge :max-count="10" :count="100">\n      <sd-avatar shape="square">\n        <span>\n          <IconUser />\n        </span>\n      </sd-avatar>\n    </sd-badge>\n    <sd-badge :count="100">\n      <sd-avatar shape="square">\n        <span>\n          <IconUser />\n        </span>\n      </sd-avatar>\n    </sd-badge>\n    <sd-badge :max-count="999" :count="1000">\n      <sd-avatar shape="square">\n        <span>\n          <IconUser />\n        </span>\n      </sd-avatar>\n    </sd-badge>\n  </sd-space>\n</template>\n\n<script>\n  import { IconUser } from \'@sdata/web-vue/es/icon/index.js\';\n\n  export default {\n    components: { IconUser },\n  };\n</script>';
+import badgeMaxSource from '../../../../components/generated/badge/max.vue?raw';
 import BadgeStatusDemo from '../../../../components/generated/badge/status.vue';
-export const badgeStatusSource =
-  '<template>\n  <sd-space size="large" direction="vertical">\n    <sd-space size="large">\n      <sd-badge status="normal" />\n      <sd-badge status="processing" />\n      <sd-badge status="success" />\n      <sd-badge status="warning" />\n      <sd-badge status="danger" />\n    </sd-space>\n    <sd-space size="large">\n      <sd-badge status="normal" text="Normal" />\n      <sd-badge status="processing" text="Processing" />\n      <sd-badge status="success" text="Success" />\n      <sd-badge status="warning" text="Warning" />\n      <sd-badge status="danger" text="Danger" />\n    </sd-space>\n  </sd-space>\n</template>';
+import badgeStatusSource from '../../../../components/generated/badge/status.vue?raw';
 import BadgeTextDemo from '../../../../components/generated/badge/text.vue';
-export const badgeTextSource =
-  '<template>\n  <sd-space :size="40">\n    <sd-badge text="NEW">\n      <sd-avatar shape="square">\n        <span>\n          <IconUser />\n        </span>\n      </sd-avatar>\n    </sd-badge>\n    <sd-badge text="HOT">\n      <sd-avatar shape="square">\n        <span>\n          <IconUser />\n        </span>\n      </sd-avatar>\n    </sd-badge>\n  </sd-space>\n</template>\n\n<script>\n  import { IconUser } from \'@sdata/web-vue/es/icon/index.js\';\n\n  export default {\n    components: { IconUser },\n  };\n</script>';
+import badgeTextSource from '../../../../components/generated/badge/text.vue?raw';
 
 ### 独立使用
 

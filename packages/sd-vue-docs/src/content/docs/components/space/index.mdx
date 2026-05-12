@@ -5,23 +5,17 @@ description: 设置组件之间的间距
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import SpaceAlignDemo from '../../../../components/generated/space/align.vue';
-export const spaceAlignSource =
-  '<template>\n  <div>\n    <div style="marginBottom: 20px">\n      <sd-radio-group v-model="align" type="button">\n        <sd-radio value="start">start</sd-radio>\n        <sd-radio value="center">center</sd-radio>\n        <sd-radio value="end">end</sd-radio>\n        <sd-radio value="baseline">baseline</sd-radio>\n      </sd-radio-group>\n    </div>\n    <sd-space :align="align" style="backgroundColor: var(--color-fill-2);padding: 10px;">\n      <sd-typography-text>Space:</sd-typography-text>\n      <sd-button type="primary">Item2</sd-button>\n      <sd-card title="Card"> Card content </sd-card>\n    </sd-space>\n  </div>\n</template>\n<script>\n  export default {\n    data() {\n      return {\n        align: \'center\',\n      };\n    },\n  };\n</script>';
+import spaceAlignSource from '../../../../components/generated/space/align.vue?raw';
 import SpaceBasicDemo from '../../../../components/generated/space/basic.vue';
-export const spaceBasicSource =
-  '<template>\n  <sd-space>\n    <sd-typography-text>Space:</sd-typography-text>\n    <sd-tag v-if="false" color="sdblue">Tag</sd-tag>\n    <sd-button type="primary">Item1</sd-button>\n    <sd-button type="primary">Item2</sd-button>\n    <sd-switch defaultChecked />\n  </sd-space>\n</template>';
+import spaceBasicSource from '../../../../components/generated/space/basic.vue?raw';
 import SpaceSizeDemo from '../../../../components/generated/space/size.vue';
-export const spaceSizeSource =
-  '<template>\n  <div>\n    <div style="marginBottom: 20px">\n      <sd-radio-group v-model="size" type="button">\n        <sd-radio value="mini">mini</sd-radio>\n        <sd-radio value="small">small</sd-radio>\n        <sd-radio value="medium">medium</sd-radio>\n        <sd-radio value="large">large</sd-radio>\n      </sd-radio-group>\n    </div>\n    <sd-space :size="size">\n      <sd-button type="primary">Item1</sd-button>\n      <sd-button type="primary">Item2</sd-button>\n      <sd-button type="primary">Item3</sd-button>\n    </sd-space>\n  </div>\n</template>\n<script>\n  export default {\n    data() {\n      return {\n        size: \'medium\',\n      };\n    },\n  };\n</script>';
+import spaceSizeSource from '../../../../components/generated/space/size.vue?raw';
 import SpaceSplitDemo from '../../../../components/generated/space/split.vue';
-export const spaceSplitSource =
-  '<template>\n  <sd-space>\n    <template #split>\n      <sd-divider direction="vertical" :margin="0" />\n    </template>\n    <sd-button type="primary">Item1</sd-button>\n    <sd-tag v-if="show" color="sdblue">Tag</sd-tag>\n    <sd-button type="primary">Item2</sd-button>\n    <sd-button type="primary">Item3</sd-button>\n    <sd-switch v-model="show" />\n  </sd-space>\n  <sd-divider />\n  <sd-space>\n    <template #split>\n      <sd-divider direction="vertical" :margin="0" />\n    </template>\n    <sd-link type="primary">Link1</sd-link>\n    <sd-link type="primary">Link2</sd-link>\n    <sd-link type="primary">Link3</sd-link>\n  </sd-space>\n</template>\n\n<script setup>\n  import { ref } from \'vue\';\n\n  const show = ref(false);\n</script>';
+import spaceSplitSource from '../../../../components/generated/space/split.vue?raw';
 import SpaceVerticalDemo from '../../../../components/generated/space/vertical.vue';
-export const spaceVerticalSource =
-  '<template>\n  <sd-space direction="vertical" fill>\n    <sd-button type="primary" long>Item1</sd-button>\n    <sd-button type="primary" long>Item2</sd-button>\n    <sd-button type="primary" long>Item3</sd-button>\n  </sd-space>\n</template>';
+import spaceVerticalSource from '../../../../components/generated/space/vertical.vue?raw';
 import SpaceWrapDemo from '../../../../components/generated/space/wrap.vue';
-export const spaceWrapSource =
-  '<template>\n  <sd-space wrap>\n    <sd-button type="primary">Item1</sd-button>\n    <sd-button type="primary">Item2</sd-button>\n    <sd-button type="primary">Item3</sd-button>\n    <sd-button type="primary">Item4</sd-button>\n    <sd-button type="primary">Item5</sd-button>\n    <sd-button type="primary">Item6</sd-button>\n    <sd-button type="primary">Item7</sd-button>\n    <sd-button type="primary">Item8</sd-button>\n    <sd-button type="primary">Item9</sd-button>\n    <sd-button type="primary">Item10</sd-button>\n    <sd-button type="primary">Item11</sd-button>\n    <sd-button type="primary">Item12</sd-button>\n    <sd-button type="primary">Item13</sd-button>\n    <sd-button type="primary">Item14</sd-button>\n    <sd-button type="primary">Item15</sd-button>\n    <sd-button type="primary">Item16</sd-button>\n    <sd-button type="primary">Item17</sd-button>\n    <sd-button type="primary">Item18</sd-button>\n    <sd-button type="primary">Item19</sd-button>\n    <sd-button type="primary">Item20</sd-button>\n  </sd-space>\n</template>';
+import spaceWrapSource from '../../../../components/generated/space/wrap.vue?raw';
 
 ### 对齐
 

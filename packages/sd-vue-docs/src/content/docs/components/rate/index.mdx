@@ -5,26 +5,21 @@ description: 用于评分或打星的组件。
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import RateBasicDemo from '../../../../components/generated/rate/basic.vue';
-export const rateBasicSource = '<template>\n  <sd-rate />\n</template>';
+import rateBasicSource from '../../../../components/generated/rate/basic.vue?raw';
 import RateCharacterDemo from '../../../../components/generated/rate/character.vue';
-export const rateCharacterSource =
-  '<template>\n  <sd-rate :default-value="2">\n    <template #character="{ index }">\n      <icon-check v-if="index < 3" />\n      <icon-close v-else />\n    </template>\n  </sd-rate>\n</template>';
+import rateCharacterSource from '../../../../components/generated/rate/character.vue?raw';
 import RateClearDemo from '../../../../components/generated/rate/clear.vue';
-export const rateClearSource =
-  '<template>\n  <sd-rate :default-value="3" allow-clear />\n</template>';
+import rateClearSource from '../../../../components/generated/rate/clear.vue?raw';
 import RateColorDemo from '../../../../components/generated/rate/color.vue';
-export const rateColorSource =
-  '<template>\n  <sd-space direction="vertical">\n    <sd-rate color="red" />\n    <sd-rate :color="color" />\n  </sd-space>\n</template>\n\n<script>\n  export default {\n    setup() {\n      const color = {\n        2: \'red\',\n        4: \'green\',\n        5: \'blue\',\n      };\n      return {\n        color,\n      };\n    },\n  };\n</script>';
+import rateColorSource from '../../../../components/generated/rate/color.vue?raw';
 import RateCountDemo from '../../../../components/generated/rate/count.vue';
-export const rateCountSource = '<template>\n  <sd-rate :count="10" />\n</template>';
+import rateCountSource from '../../../../components/generated/rate/count.vue?raw';
 import RateGradingDemo from '../../../../components/generated/rate/grading.vue';
-export const rateGradingSource = '<template>\n  <sd-rate grading />\n</template>';
+import rateGradingSource from '../../../../components/generated/rate/grading.vue?raw';
 import RateHalfDemo from '../../../../components/generated/rate/half.vue';
-export const rateHalfSource =
-  '<template>\n  <sd-rate :default-value="2.5" allow-half />\n</template>';
+import rateHalfSource from '../../../../components/generated/rate/half.vue?raw';
 import RateReadonlyDemo from '../../../../components/generated/rate/readonly.vue';
-export const rateReadonlySource =
-  '<template>\n  <sd-rate :default-value="4" readonly />\n</template>';
+import rateReadonlySource from '../../../../components/generated/rate/readonly.vue?raw';
 
 ### 基本用法
 

@@ -5,29 +5,21 @@ description: 滑动型输入器，展示当前值和可选范围。
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import SliderBasicDemo from '../../../../components/generated/slider/basic.vue';
-export const sliderBasicSource =
-  '<template>\n  <sd-slider :default-value="50" :style="{ width: \'200px\' }" />\n</template>';
+import sliderBasicSource from '../../../../components/generated/slider/basic.vue?raw';
 import SliderDisabledDemo from '../../../../components/generated/slider/disabled.vue';
-export const sliderDisabledSource =
-  '<template>\n  <sd-slider :default-value="50" :style="{ width: \'200px\' }" disabled />\n</template>';
+import sliderDisabledSource from '../../../../components/generated/slider/disabled.vue?raw';
 import SliderInputDemo from '../../../../components/generated/slider/input.vue';
-export const sliderInputSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-slider :default-value="10" :style="{ width: \'300px\' }" show-input />\n    <sd-slider :default-value="[10, 20]" :style="{ width: \'380px\' }" range show-input />\n  </sd-space>\n</template>';
+import sliderInputSource from '../../../../components/generated/slider/input.vue?raw';
 import SliderMarksDemo from '../../../../components/generated/slider/marks.vue';
-export const sliderMarksSource =
-  "<template>\n  <sd-slider :default-value=\"5\" :style=\"{ width: '300px' }\" :max=\"15\" :marks=\"marks\" />\n</template>\n\n<script>\n  export default {\n    setup() {\n      const marks = {\n        0: '0km',\n        5: '5km',\n        10: '10km',\n        15: '15km',\n      };\n      return {\n        marks,\n      };\n    },\n  };\n</script>";
+import sliderMarksSource from '../../../../components/generated/slider/marks.vue?raw';
 import SliderRangeDemo from '../../../../components/generated/slider/range.vue';
-export const sliderRangeSource =
-  '<template>\n  <sd-slider v-model="value" :style="{ width: \'300px\' }" range />\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const value = ref([5, 10]);\n\n      return {\n        value,\n      };\n    },\n  };\n</script>';
+import sliderRangeSource from '../../../../components/generated/slider/range.vue?raw';
 import SliderStepDemo from '../../../../components/generated/slider/step.vue';
-export const sliderStepSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-form :model="data" layout="inline">\n      <sd-form-item label="Step" field="step">\n        <sd-input-number :style="{ width: \'100px\' }" v-model="data.step" />\n      </sd-form-item>\n      <sd-form-item label="Show steps" field="showTicks">\n        <sd-switch v-model="data.showTicks" />\n      </sd-form-item>\n    </sd-form>\n    <sd-slider\n      :default-value="20"\n      :style="{ width: \'300px\' }"\n      :step="data.step"\n      :show-ticks="data.showTicks"\n    />\n  </sd-space>\n</template>\n\n<script>\n  import { reactive } from \'vue\';\n\n  export default {\n    setup() {\n      const data = reactive({\n        step: 5,\n        showTicks: true,\n      });\n\n      return {\n        data,\n      };\n    },\n  };\n</script>';
+import sliderStepSource from '../../../../components/generated/slider/step.vue?raw';
 import SliderTooltipDemo from '../../../../components/generated/slider/tooltip.vue';
-export const sliderTooltipSource =
-  '<template>\n  <sd-slider :min="0" :max="50" :style="{ width: \'200px\' }" :format-tooltip="formatter" />\n</template>\n\n<script>\n  export default {\n    setup() {\n      const formatter = (value) => {\n        return `${Math.round((value / 50) * 100)}%`;\n      };\n\n      return {\n        formatter,\n      };\n    },\n  };\n</script>';
+import sliderTooltipSource from '../../../../components/generated/slider/tooltip.vue?raw';
 import SliderVerticalDemo from '../../../../components/generated/slider/vertical.vue';
-export const sliderVerticalSource =
-  '<template>\n  <sd-space align="start">\n    <sd-slider :default-value="50" direction="vertical" />\n\n    <sd-slider\n      direction="vertical"\n      :default-value="5"\n      :style="{ width: \'300px\' }"\n      :max="15"\n      :marks="{\n        5: \'5km\',\n        10: \'10km\',\n      }"\n    />\n  </sd-space>\n</template>';
+import sliderVerticalSource from '../../../../components/generated/slider/vertical.vue?raw';
 
 ### 基本用法
 

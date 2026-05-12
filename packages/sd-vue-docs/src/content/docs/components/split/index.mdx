@@ -5,11 +5,9 @@ description: 将面板分割成两部分。
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import SplitBasicDemo from '../../../../components/generated/split/basic.vue';
-export const splitBasicSource =
-  "<template>\n  <div>\n    <sd-split\n      :style=\"{\n        height: '200px',\n        width: '100%',\n        minWidth: '500px',\n        border: '1px solid var(--color-border)',\n      }\"\n      v-model:size=\"size\"\n      min=\"80px\"\n    >\n      <template #first>\n        <sd-typography-paragraph>Left</sd-typography-paragraph>\n      </template>\n      <template #second>\n        <sd-typography-paragraph>Right</sd-typography-paragraph>\n      </template>\n    </sd-split>\n  </div>\n</template>\n<script>\n  export default {\n    data() {\n      return {\n        size: 0.5,\n      };\n    },\n  };\n</script>";
+import splitBasicSource from '../../../../components/generated/split/basic.vue?raw';
 import SplitNestedDemo from '../../../../components/generated/split/nested.vue';
-export const splitNestedSource =
-  "<template>\n  <div>\n    <sd-split\n      :style=\"{\n        height: '200px',\n        width: '100%',\n        minWidth: '500px',\n        border: '1px solid var(--color-border)',\n      }\"\n    >\n      <template #first>\n        <sd-typography-paragraph>Left</sd-typography-paragraph>\n      </template>\n      <template #second>\n        <div>\n          <sd-split direction=\"vertical\" :style=\"{ height: '200px' }\">\n            <template #first><sd-typography-paragraph>Top</sd-typography-paragraph></template>\n            <template #second><sd-typography-paragraph>Bottom</sd-typography-paragraph></template>\n          </sd-split>\n        </div>\n      </template>\n    </sd-split>\n  </div>\n</template>";
+import splitNestedSource from '../../../../components/generated/split/nested.vue?raw';
 
 ### 基本用法
 

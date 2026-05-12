@@ -5,38 +5,27 @@ description: 基本表单组件，并在原生控件基础上进行了功能扩�
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import InputBasicDemo from '../../../../components/generated/input/basic.vue';
-export const inputBasicSource =
-  '<template>\n  <sd-space>\n    <sd-input :style="{ width: \'320px\' }" placeholder="Please enter something" allow-clear />\n    <sd-input\n      :style="{ width: \'320px\' }"\n      default-value="content"\n      placeholder="Please enter something"\n      allow-clear\n    />\n  </sd-space>\n</template>';
+import inputBasicSource from '../../../../components/generated/input/basic.vue?raw';
 import InputGroupDemo from '../../../../components/generated/input/group.vue';
-export const inputGroupSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-input-group>\n      <sd-input :style="{ width: \'160px\' }" placeholder="first" />\n      <sd-input :style="{ width: \'160px\' }" placeholder="second" />\n    </sd-input-group>\n    <sd-input-group>\n      <sd-select\n        :options="[\'Option1\', \'Option2\', \'Option3\']"\n        :style="{ width: \'160px\' }"\n        placeholder="first"\n      />\n      <sd-input :style="{ width: \'160px\' }" placeholder="second" />\n    </sd-input-group>\n  </sd-space>\n</template>';
+import inputGroupSource from '../../../../components/generated/input/group.vue?raw';
 import InputPasswordDemo from '../../../../components/generated/input/password.vue';
-export const inputPasswordSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-switch v-model="visibility" />\n    <sd-input-password\n      v-model:visibility="visibility"\n      placeholder="Please enter something"\n      :style="{ width: \'320px\' }"\n      :defaultVisibility="false"\n      allow-clear\n    />\n  </sd-space>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const visibility = ref(true);\n\n      return {\n        visibility,\n      };\n    },\n  };\n</script>';
+import inputPasswordSource from '../../../../components/generated/input/password.vue?raw';
 import InputPrefixDemo from '../../../../components/generated/input/prefix.vue';
-export const inputPrefixSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-input :style="{ width: \'320px\' }" placeholder="Please enter something" allow-clear>\n      <template #prefix>\n        <icon-user />\n      </template>\n    </sd-input>\n    <sd-input :style="{ width: \'320px\' }" placeholder="Please enter something" allow-clear>\n      <template #suffix>\n        <icon-info-circle />\n      </template>\n    </sd-input>\n  </sd-space>\n</template>';
+import inputPrefixSource from '../../../../components/generated/input/prefix.vue?raw';
 import InputPrependDemo from '../../../../components/generated/input/prepend.vue';
-export const inputPrependSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-input :style="{ width: \'320px\' }" placeholder="Please enter something" allow-clear>\n      <template #prepend> +86 </template>\n    </sd-input>\n    <sd-input :style="{ width: \'320px\' }" placeholder="Please enter something" allow-clear>\n      <template #append> RMB </template>\n    </sd-input>\n\n    <sd-input\n      :style="{ width: \'320px\' }"\n      placeholder="Please enter something"\n      allow-clear\n      prepend="+86"\n    >\n    </sd-input>\n    <sd-input\n      :style="{ width: \'320px\' }"\n      placeholder="Please enter something"\n      allow-clear\n      append="RMB"\n    >\n    </sd-input>\n  </sd-space>\n</template>';
+import inputPrependSource from '../../../../components/generated/input/prepend.vue?raw';
 import InputSearchButtonDemo from '../../../../components/generated/input/search-button.vue';
-export const inputSearchButtonSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-input-search\n      :style="{ width: \'320px\' }"\n      placeholder="Please enter something"\n      button-text="Search"\n      search-button\n    />\n    <sd-input-search :style="{ width: \'320px\' }" placeholder="Please enter something" search-button>\n      <template #button-icon>\n        <icon-search />\n      </template>\n      <template #button-default> Search </template>\n    </sd-input-search>\n  </sd-space>\n</template>';
+import inputSearchButtonSource from '../../../../components/generated/input/search-button.vue?raw';
 import InputSearchLoadingDemo from '../../../../components/generated/input/search-loading.vue';
-export const inputSearchLoadingSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-input-search :style="{ width: \'320px\' }" placeholder="Please enter something" loading />\n    <sd-input-search\n      :style="{ width: \'320px\' }"\n      placeholder="Please enter something"\n      search-button\n      loading\n    />\n  </sd-space>\n</template>';
+import inputSearchLoadingSource from '../../../../components/generated/input/search-loading.vue?raw';
 import InputSearchDemo from '../../../../components/generated/input/search.vue';
-export const inputSearchSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-input-search :style="{ width: \'320px\' }" placeholder="Please enter something" />\n    <sd-input-search\n      :style="{ width: \'320px\' }"\n      placeholder="Please enter something"\n      search-button\n    />\n  </sd-space>\n</template>';
+import inputSearchSource from '../../../../components/generated/input/search.vue?raw';
 import InputSizeDemo from '../../../../components/generated/input/size.vue';
-export const inputSizeSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-radio-group type="button" v-model="size">\n      <sd-radio value="mini">mini</sd-radio>\n      <sd-radio value="small">small</sd-radio>\n      <sd-radio value="medium">medium</sd-radio>\n      <sd-radio value="large">large</sd-radio>\n    </sd-radio-group>\n    <sd-input\n      :style="{ width: \'320px\' }"\n      placeholder="Please enter something"\n      :size="size"\n      allow-clear\n    />\n  </sd-space>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const size = ref(\'medium\');\n\n      return {\n        size,\n      };\n    },\n  };\n</script>';
+import inputSizeSource from '../../../../components/generated/input/size.vue?raw';
 import InputStatusDemo from '../../../../components/generated/input/status.vue';
-export const inputStatusSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-input :style="{ width: \'320px\' }" placeholder="Disabled status" disabled />\n    <sd-input\n      :style="{ width: \'320px\' }"\n      default-value="Disabled"\n      placeholder="Disabled status"\n      disabled\n    />\n    <sd-input :style="{ width: \'320px\' }" placeholder="Error status" error />\n  </sd-space>\n</template>';
+import inputStatusSource from '../../../../components/generated/input/status.vue?raw';
 import InputWordLimitDemo from '../../../../components/generated/input/word-limit.vue';
-export const inputWordLimitSource =
-  '<template>\n  <sd-space direction="vertical" size="large" fill>\n    <sd-input\n      :style="{ width: \'320px\' }"\n      placeholder="Please enter something"\n      :max-length="10"\n      allow-clear\n      show-word-limit\n    />\n    <sd-input\n      :style="{ width: \'320px\' }"\n      placeholder="Please enter something"\n      :max-length="{ length: 10, errorOnly: true }"\n      allow-clear\n      show-word-limit\n    />\n  </sd-space>\n</template>';
+import inputWordLimitSource from '../../../../components/generated/input/word-limit.vue?raw';
 
 ### 基本用法
 

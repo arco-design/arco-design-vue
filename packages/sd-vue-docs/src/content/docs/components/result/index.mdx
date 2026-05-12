@@ -5,32 +5,23 @@ description: 用于反馈一系列操作任务的处理结果，当有重要操�
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import Result403Demo from '../../../../components/generated/result/403.vue';
-export const result403Source =
-  '<template>\n  <sd-result status="403" subtitle="Access to this resource on the server is denied.">\n    <template #extra>\n      <sd-space>\n        <sd-button type="primary">Back</sd-button>\n      </sd-space>\n    </template>\n  </sd-result>\n</template>';
+import result403Source from '../../../../components/generated/result/403.vue?raw';
 import Result404Demo from '../../../../components/generated/result/404.vue';
-export const result404Source =
-  '<template>\n  <sd-result status="404" subtitle="Whoops, that page is gone.">\n    <template #extra>\n      <sd-space>\n        <sd-button type="primary">Back</sd-button>\n      </sd-space>\n    </template>\n  </sd-result>\n</template>';
+import result404Source from '../../../../components/generated/result/404.vue?raw';
 import Result500Demo from '../../../../components/generated/result/500.vue';
-export const result500Source =
-  '<template>\n  <sd-result status="500" subtitle="This page isn’t working.">\n    <template #extra>\n      <sd-space>\n        <sd-button type="primary">Back</sd-button>\n      </sd-space>\n    </template>\n  </sd-result>\n</template>';
+import result500Source from '../../../../components/generated/result/500.vue?raw';
 import ResultAllDemo from '../../../../components/generated/result/all.vue';
-export const resultAllSource =
-  '<template>\n  <sd-result status="error" title="No internet ">\n    <template #icon>\n      <IconFaceFrownFill />\n    </template>\n    <template #subtitle> DNS_PROBE_FINISHED_NO_INTERNET </template>\n\n    <template #extra>\n      <sd-button type="primary">Refresh</sd-button>\n    </template>\n    <sd-typography style="background: var(--color-fill-2); padding: 24px;">\n      <sd-typography-paragraph>Try:</sd-typography-paragraph>\n      <ul>\n        <li> Checking the network cables, modem, and router </li>\n        <li> Reconnecting to Wi-Fi </li>\n      </ul>\n    </sd-typography>\n  </sd-result>\n</template>\n\n<script>\n  import { IconFaceFrownFill } from \'@sdata/web-vue/es/icon/index.js\';\n\n  export default {\n    components: {\n      IconFaceFrownFill,\n    },\n  };\n</script>';
+import resultAllSource from '../../../../components/generated/result/all.vue?raw';
 import ResultBasicDemo from '../../../../components/generated/result/basic.vue';
-export const resultBasicSource =
-  '<template>\n  <sd-result title="This is title content" subtitle="This is subtitle content">\n    <template #extra>\n      <sd-space>\n        <sd-button type="secondary">Again</sd-button>\n        <sd-button type="primary">Back</sd-button>\n      </sd-space>\n    </template>\n  </sd-result>\n</template>';
+import resultBasicSource from '../../../../components/generated/result/basic.vue?raw';
 import ResultCustomDemo from '../../../../components/generated/result/custom.vue';
-export const resultCustomSource =
-  '<template>\n  <sd-result :status="null" title="This is title content" subtitle="This is subtitle content">\n    <template #icon>\n      <IconFaceSmileFill />\n    </template>\n    <template #extra>\n      <sd-space>\n        <sd-button type="secondary">Again</sd-button>\n        <sd-button type="primary">Back</sd-button>\n      </sd-space>\n    </template>\n  </sd-result>\n</template>\n<script>\n  import { IconFaceSmileFill } from \'@sdata/web-vue/es/icon/index.js\';\n\n  export default {\n    components: {\n      IconFaceSmileFill,\n    },\n  };\n</script>';
+import resultCustomSource from '../../../../components/generated/result/custom.vue?raw';
 import ResultErrorDemo from '../../../../components/generated/result/error.vue';
-export const resultErrorSource =
-  '<template>\n  <sd-result status="error" title="This is title content">\n    <template #subtitle> This is subtitle content </template>\n\n    <template #extra>\n      <sd-space>\n        <sd-button type="primary">Back</sd-button>\n      </sd-space>\n    </template>\n  </sd-result>\n</template>';
+import resultErrorSource from '../../../../components/generated/result/error.vue?raw';
 import ResultSuccessDemo from '../../../../components/generated/result/success.vue';
-export const resultSuccessSource =
-  '<template>\n  <sd-result status="success" title="This is title content">\n    <template #subtitle> This is subtitle content </template>\n    <template #extra>\n      <sd-space>\n        <sd-button type="primary">Back</sd-button>\n      </sd-space>\n    </template>\n  </sd-result>\n</template>';
+import resultSuccessSource from '../../../../components/generated/result/success.vue?raw';
 import ResultWarningDemo from '../../../../components/generated/result/warning.vue';
-export const resultWarningSource =
-  '<template>\n  <sd-result status="warning" title="This is title content">\n    <template #subtitle> This is subtitle content </template>\n\n    <template #extra>\n      <sd-space>\n        <sd-button type="primary">Back</sd-button>\n      </sd-space>\n    </template>\n  </sd-result>\n</template>';
+import resultWarningSource from '../../../../components/generated/result/warning.vue?raw';
 
 ### HTTP状态码 403
 

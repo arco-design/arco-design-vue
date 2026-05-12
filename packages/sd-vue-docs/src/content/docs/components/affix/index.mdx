@@ -5,20 +5,15 @@ description: 将页面元素钉在可视范围。当内容区域比较长，需�
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import AffixBasicDemo from '../../../../components/generated/affix/basic.vue';
-export const affixBasicSource =
-  '<template>\n  <sd-affix>\n    <sd-button type="primary">Affix Top</sd-button>\n  </sd-affix>\n</template>';
+import affixBasicSource from '../../../../components/generated/affix/basic.vue?raw';
 import AffixBottomDemo from '../../../../components/generated/affix/bottom.vue';
-export const affixBottomSource =
-  '<template>\n  <sd-affix :offsetBottom="120">\n    <sd-button type="primary">120px to affix bottom</sd-button>\n  </sd-affix>\n</template>';
+import affixBottomSource from '../../../../components/generated/affix/bottom.vue?raw';
 import AffixContainerDemo from '../../../../components/generated/affix/container.vue';
-export const affixContainerSource =
-  '<template>\n  <div style="height: 200px; overflow: auto" ref="containerRef">\n    <div style="height: 400px; background: #cccccc; overflow: hidden">\n      <sd-affix :offsetTop="20" :target="containerRef" style="margin: 40px">\n        <sd-button type="primary">Affix in scrolling container</sd-button>\n      </sd-affix>\n    </div>\n  </div>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const containerRef = ref();\n\n      return {\n        containerRef,\n      };\n    },\n  };\n</script>';
+import affixContainerSource from '../../../../components/generated/affix/container.vue?raw';
 import AffixFixChangeDemo from '../../../../components/generated/affix/fix-change.vue';
-export const affixFixChangeSource =
-  '<template>\n  <sd-affix :offsetBottom="80" @change="onChange">\n    <sd-button type="primary">80px to affix bottom</sd-button>\n  </sd-affix>\n</template>\n<script>\n  import { defineComponent } from \'vue\';\n\n  export default defineComponent({\n    setup() {\n      const onChange = (fixed) => {\n        console.log(`${fixed}`);\n      };\n      return {\n        onChange,\n      };\n    },\n  });\n</script>';
+import affixFixChangeSource from '../../../../components/generated/affix/fix-change.vue?raw';
 import AffixTopDemo from '../../../../components/generated/affix/top.vue';
-export const affixTopSource =
-  '<template>\n  <sd-affix :offsetTop="80">\n    <sd-button type="primary">80px to affix top</sd-button>\n  </sd-affix>\n</template>';
+import affixTopSource from '../../../../components/generated/affix/top.vue?raw';
 
 ### 基本用法
 

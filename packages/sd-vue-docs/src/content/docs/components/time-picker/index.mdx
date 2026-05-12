@@ -5,44 +5,31 @@ description: 在弹出面板上选择时间，以便捷完成时间输入的控�
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import TimePickerBasicDemo from '../../../../components/generated/time-picker/basic.vue';
-export const timePickerBasicSource =
-  '<template>\n  <sd-time-picker style="width: 194px;" />\n</template>';
+import timePickerBasicSource from '../../../../components/generated/time-picker/basic.vue?raw';
 import TimePickerControlDemo from '../../../../components/generated/time-picker/control.vue';
-export const timePickerControlSource =
-  '<template>\n  <sd-time-picker style="width: 194px" v-model="value" />\n</template>\n<script>\n  export default {\n    data() {\n      return {\n        value: null,\n      };\n    },\n  };\n</script>';
+import timePickerControlSource from '../../../../components/generated/time-picker/control.vue?raw';
 import TimePickerDefaultValueDemo from '../../../../components/generated/time-picker/default-value.vue';
-export const timePickerDefaultValueSource =
-  '<template>\n  <sd-time-picker\n    defaultValue="18:24:23"\n    style="width: 194px; marginRight: 24px; marginBottom: 24px"\n  />\n  <sd-time-picker\n    type="time-range"\n    :defaultValue="[\'09:24:53\', \'18:44:33\']"\n    style="width: 252px; marginBottom: 24px"\n  />\n</template>';
+import timePickerDefaultValueSource from '../../../../components/generated/time-picker/default-value.vue?raw';
 import TimePickerDisableConfirmDemo from '../../../../components/generated/time-picker/disable-confirm.vue';
-export const timePickerDisableConfirmSource =
-  '<template>\n  <sd-time-picker disableConfirm style="width: 194px; margin: 0 24px 24px 0;" />\n  <sd-time-picker type="time-range" disableConfirm style="width: 252px; margin: 0 24px 24px 0;" />\n</template>';
+import timePickerDisableConfirmSource from '../../../../components/generated/time-picker/disable-confirm.vue?raw';
 import TimePickerDisabledTimeDemo from '../../../../components/generated/time-picker/disabled-time.vue';
-export const timePickerDisabledTimeSource =
-  '<template>\n  <sd-time-picker\n    style="width: 194px; margin: 0 24px 24px 0;"\n    :disabledHours="() => [1, 2, 4, 14]"\n    :disabledMinutes="() => [1, 2, 3, 4, 14, 15, 16, 20, 50]"\n    :disabledSeconds="() => [1, 2, 3, 4, 5, 6, 7, 10, 14, 60]"\n  />\n  <sd-time-picker\n    type="time-range"\n    style="width: 252px; margin: 0 24px 24px 0;"\n    :disabledHours="() => [1, 2, 4, 14]"\n    :disabledMinutes="() => [1, 2, 3, 4, 14, 15, 16, 20, 50]"\n    :disabledSeconds="() => [1, 2, 3, 4, 5, 6, 7, 10, 14, 60]"\n  />\n</template>';
+import timePickerDisabledTimeSource from '../../../../components/generated/time-picker/disabled-time.vue?raw';
 import TimePickerDisabledDemo from '../../../../components/generated/time-picker/disabled.vue';
-export const timePickerDisabledSource =
-  '<template>\n  <sd-time-picker disabled style="margin: 0 24px 24px 0;" />\n  <sd-time-picker type="time-range" disabled style="width: 252px; margin: 0 24px 24px 0;" />\n</template>';
+import timePickerDisabledSource from '../../../../components/generated/time-picker/disabled.vue?raw';
 import TimePickerExtraDemo from '../../../../components/generated/time-picker/extra.vue';
-export const timePickerExtraSource =
-  '<template>\n  <sd-time-picker style="width: 194px;">\n    <template #extra> Extra Footer </template>\n  </sd-time-picker>\n</template>';
+import timePickerExtraSource from '../../../../components/generated/time-picker/extra.vue?raw';
 import TimePickerFormatDemo from '../../../../components/generated/time-picker/format.vue';
-export const timePickerFormatSource =
-  '<template>\n  <sd-time-picker format="HH:mm" :defaultValue="defaultValue" style="width: 130px;" />\n</template>\n<script>\n  export default {\n    data() {\n      return {\n        defaultValue: \'09:24\',\n      };\n    },\n  };\n</script>';
+import timePickerFormatSource from '../../../../components/generated/time-picker/format.vue?raw';
 import TimePickerPrefixDemo from '../../../../components/generated/time-picker/prefix.vue';
-export const timePickerPrefixSource =
-  '<template>\n  <div>\n    <div>\n      <sd-time-picker style="width: 194px;">\n        <template #prefix>\n          <IconInfoCircle />\n        </template> </sd-time-picker\n    ></div>\n    <div>\n      <sd-time-picker type="time-range" style="width: 252px; margin-top: 20px">\n        <template #prefix>\n          <IconInfoCircle />\n        </template>\n      </sd-time-picker>\n    </div>\n  </div>\n</template>\n\n<script>\n  import { IconInfoCircle } from \'@sdata/web-vue/es/icon/index.js\';\n\n  export default {\n    components: { IconInfoCircle },\n  };\n</script>';
+import timePickerPrefixSource from '../../../../components/generated/time-picker/prefix.vue?raw';
 import TimePickerRangepickerDemo from '../../../../components/generated/time-picker/rangepicker.vue';
-export const timePickerRangepickerSource =
-  '<template>\n  <sd-time-picker\n    type="time-range"\n    @select="(valueString, value) => print(\'onSelect:\', valueString, value)"\n    @change="(valueString, value) => print(\'onChange:\', valueString, value)"\n    style="width: 252px;"\n  />\n</template>\n<script>\n  export default {\n    methods: {\n      print(...arg) {\n        console.log(...arg);\n      },\n    },\n  };\n</script>';
+import timePickerRangepickerSource from '../../../../components/generated/time-picker/rangepicker.vue?raw';
 import TimePickerSizeDemo from '../../../../components/generated/time-picker/size.vue';
-export const timePickerSizeSource =
-  '<template>\n  <div style="marginBottom: 20px">\n    <sd-radio-group v-model="size" type="button">\n      <sd-radio value="mini">mini</sd-radio>\n      <sd-radio value="small">small</sd-radio>\n      <sd-radio value="medium">medium</sd-radio>\n      <sd-radio value="large">large</sd-radio>\n    </sd-radio-group>\n  </div>\n  <sd-time-picker style="width: 194px;" :size="size" />\n</template>\n<script>\n  export default {\n    data() {\n      return {\n        size: \'small\',\n      };\n    },\n  };\n</script>';
+import timePickerSizeSource from '../../../../components/generated/time-picker/size.vue?raw';
 import TimePickerStepDemo from '../../../../components/generated/time-picker/step.vue';
-export const timePickerStepSource =
-  '<template>\n  <sd-time-picker\n    defaultValue="10:25:30"\n    :step="{\n      hour: 2,\n      minute: 5,\n      second: 10,\n    }"\n    style="width: 194px;"\n  />\n</template>';
+import timePickerStepSource from '../../../../components/generated/time-picker/step.vue?raw';
 import TimePickerUse12HoursDemo from '../../../../components/generated/time-picker/use-12-hours.vue';
-export const timePickerUse12HoursSource =
-  '<template>\n  <sd-time-picker\n    use12Hours\n    defaultValue="12:20:20 AM"\n    format="hh:mm:ss A"\n    style="width: 194px; margin: 0 24px 24px 0;"\n  />\n  <sd-time-picker\n    use12Hours\n    defaultValue="09:20:20 pm"\n    format="hh:mm:ss a"\n    style="width: 194px; margin: 0 24px 24px 0;"\n  />\n  <sd-time-picker\n    use12Hours\n    defaultValue="2:20 AM"\n    format="h:mm A"\n    style="width: 194px; margin: 0 24px 24px 0;"\n  />\n  <sd-time-picker\n    type="time-range"\n    use12Hours\n    :defaultValue="[\'12:20:20 AM\', \'08:30:30 PM\']"\n    format="hh:mm:ss A"\n    style="width: 300px; margin: 0 24px 24px 0;"\n  />\n</template>';
+import timePickerUse12HoursSource from '../../../../components/generated/time-picker/use-12-hours.vue?raw';
 
 ### 基本用法
 

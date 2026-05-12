@@ -5,31 +5,23 @@ description: 用于信息的选择、筛选、分类。用户通过标签进行�
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import TagBasicDemo from '../../../../components/generated/tag/basic.vue';
-export const tagBasicSource =
-  '<template>\n  <sd-space>\n    <sd-tag>Default</sd-tag>\n    <sd-tag>Tag 1</sd-tag>\n    <sd-tag>Tag 2</sd-tag>\n    <sd-tag>\n      <template #icon>\n        <icon-check-circle-fill />\n      </template>\n      Complete\n    </sd-tag>\n  </sd-space>\n</template>';
+import tagBasicSource from '../../../../components/generated/tag/basic.vue?raw';
 import TagBorderedDemo from '../../../../components/generated/tag/bordered.vue';
-export const tagBorderedSource =
-  "<template>\n  <sd-space wrap>\n    <sd-tag bordered>default</sd-tag>\n    <sd-tag v-for=\"(color, index) of colors\" :key=\"index\" :color=\"color\" bordered>{{ color }}</sd-tag>\n  </sd-space>\n</template>\n\n<script>\n  export default {\n    setup() {\n      const colors = [\n        'orangered',\n        'orange',\n        'gold',\n        'lime',\n        'green',\n        'cyan',\n        'blue',\n        'sdblue',\n        'purple',\n        'pinkpurple',\n        'magenta',\n        'gray',\n      ];\n      return {\n        colors,\n      };\n    },\n  };\n</script>";
+import tagBorderedSource from '../../../../components/generated/tag/bordered.vue?raw';
 import TagCheckableDemo from '../../../../components/generated/tag/checkable.vue';
-export const tagCheckableSource =
-  '<template>\n  <sd-space>\n    <sd-tag checkable>Awesome</sd-tag>\n    <sd-tag checkable color="red" :default-checked="true">Toutiao</sd-tag>\n    <sd-tag checkable color="sdblue" :default-checked="true">Lark</sd-tag>\n  </sd-space>\n</template>';
+import tagCheckableSource from '../../../../components/generated/tag/checkable.vue?raw';
 import TagCloseableDemo from '../../../../components/generated/tag/closeable.vue';
-export const tagCloseableSource =
-  '<template>\n  <sd-space>\n    <sd-tag closable>Tag</sd-tag>\n    <sd-tag closable>\n      <template #icon>\n        <icon-star />\n      </template>\n      Tag\n    </sd-tag>\n  </sd-space>\n</template>';
+import tagCloseableSource from '../../../../components/generated/tag/closeable.vue?raw';
 import TagColorDemo from '../../../../components/generated/tag/color.vue';
-export const tagColorSource =
-  "<template>\n  <sd-space wrap>\n    <sd-tag v-for=\"(color, index) of colors\" :key=\"index\" :color=\"color\" closable>{{ color }}</sd-tag>\n  </sd-space>\n  <h3>Custom Color:</h3>\n  <sd-space wrap>\n    <sd-tag v-for=\"(color, index) of custom\" :key=\"index\" :color=\"color\" closable>{{ color }}</sd-tag>\n  </sd-space>\n</template>\n\n<script>\n  export default {\n    setup() {\n      const colors = [\n        'red',\n        'orangered',\n        'orange',\n        'gold',\n        'lime',\n        'green',\n        'cyan',\n        'blue',\n        'sdblue',\n        'purple',\n        'pinkpurple',\n        'magenta',\n        'gray',\n      ];\n      const custom = [\n        '#f53f3f',\n        '#7816ff',\n        '#00b42a',\n        '#165dff',\n        '#ff7d00',\n        '#eb0aa4',\n        '#7bc616',\n        '#86909c',\n        '#b71de8',\n        '#0fc6c2',\n        '#ffb400',\n        '#168cff',\n        '#ff5722',\n      ];\n\n      return {\n        colors,\n        custom,\n      };\n    },\n  };\n</script>";
+import tagColorSource from '../../../../components/generated/tag/color.vue?raw';
 import TagDynamicallyDemo from '../../../../components/generated/tag/dynamically.vue';
-export const tagDynamicallySource =
-  '<template>\n  <sd-space wrap>\n    <sd-tag\n      v-for="(tag, index) of tags"\n      :key="tag"\n      :closable="index !== 0"\n      @close="handleRemove(tag)"\n    >\n      {{ tag }}\n    </sd-tag>\n\n    <sd-input\n      v-if="showInput"\n      ref="inputRef"\n      :style="{ width: \'90px\' }"\n      size="mini"\n      v-model.trim="inputVal"\n      @keyup.enter="handleAdd"\n      @blur="handleAdd"\n    />\n    <sd-tag\n      v-else\n      :style="{\n        width: \'90px\',\n        backgroundColor: \'var(--color-fill-2)\',\n        border: \'1px dashed var(--color-fill-3)\',\n        cursor: \'pointer\',\n      }"\n      @click="handleEdit"\n    >\n      <template #icon>\n        <icon-plus />\n      </template>\n      Add Tag\n    </sd-tag>\n  </sd-space>\n</template>\n\n<script>\n  import { ref, nextTick } from \'vue\';\n\n  export default {\n    setup() {\n      const tags = ref([\'Tag 1\', \'Tag 2\', \'Tag 3\']);\n      const inputRef = ref(null);\n      const showInput = ref(false);\n      const inputVal = ref(\'\');\n\n      const handleEdit = () => {\n        showInput.value = true;\n\n        nextTick(() => {\n          if (inputRef.value) {\n            inputRef.value.focus();\n          }\n        });\n      };\n\n      const handleAdd = () => {\n        if (inputVal.value) {\n          tags.value.push(inputVal.value);\n          inputVal.value = \'\';\n        }\n        showInput.value = false;\n      };\n\n      const handleRemove = (key) => {\n        tags.value = tags.value.filter((tag) => tag !== key);\n      };\n\n      return {\n        tags,\n        inputRef,\n        showInput,\n        inputVal,\n        handleEdit,\n        handleAdd,\n        handleRemove,\n      };\n    },\n  };\n</script>';
+import tagDynamicallySource from '../../../../components/generated/tag/dynamically.vue?raw';
 import TagIconDemo from '../../../../components/generated/tag/icon.vue';
-export const tagIconSource =
-  '<template>\n  <sd-space>\n    <sd-tag color="gray">\n      <template #icon>\n        <icon-github />\n      </template>\n      Github\n    </sd-tag>\n    <sd-tag color="orangered">\n      <template #icon>\n        <icon-gitlab />\n      </template>\n      Gitlab\n    </sd-tag>\n    <sd-tag color="blue">\n      <template #icon>\n        <icon-twitter />\n      </template>\n      Twitter\n    </sd-tag>\n    <sd-tag color="sdblue">\n      <template #icon>\n        <icon-facebook />\n      </template>\n      Facebook\n    </sd-tag>\n  </sd-space>\n</template>';
+import tagIconSource from '../../../../components/generated/tag/icon.vue?raw';
 import TagLoadingDemo from '../../../../components/generated/tag/loading.vue';
-export const tagLoadingSource = '<template>\n  <sd-tag loading>Loading</sd-tag>\n</template>';
+import tagLoadingSource from '../../../../components/generated/tag/loading.vue?raw';
 import TagSizeDemo from '../../../../components/generated/tag/size.vue';
-export const tagSizeSource =
-  '<template>\n  <sd-space>\n    <sd-tag size="large">Large</sd-tag>\n    <sd-tag>Medium</sd-tag>\n    <sd-tag size="small">Small</sd-tag>\n  </sd-space>\n</template>';
+import tagSizeSource from '../../../../components/generated/tag/size.vue?raw';
 
 ### 基本用法
 

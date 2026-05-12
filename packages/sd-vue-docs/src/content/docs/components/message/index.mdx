@@ -5,23 +5,17 @@ description: 由用户的操作触发的轻量级全局反馈。
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import MessageBasicDemo from '../../../../components/generated/message/basic.vue';
-export const messageBasicSource =
-  '<template>\n  <sd-button @click="handleClick">Info Message</sd-button>\n</template>\n\n<script>\n  export default {\n    methods: {\n      handleClick() {\n        this.$message.info(\'This is an info message\');\n      },\n    },\n  };\n</script>';
+import messageBasicSource from '../../../../components/generated/message/basic.vue?raw';
 import MessageCloseableDemo from '../../../../components/generated/message/closeable.vue';
-export const messageCloseableSource =
-  '<template>\n  <sd-button @click="handleClick">Closeable Message</sd-button>\n</template>\n\n<script>\n  export default {\n    methods: {\n      handleClick() {\n        this.$message.info({\n          content: \'This is an info message!\',\n          closable: true,\n        });\n      },\n    },\n  };\n</script>';
+import messageCloseableSource from '../../../../components/generated/message/closeable.vue?raw';
 import MessageIconDemo from '../../../../components/generated/message/icon.vue';
-export const messageIconSource =
-  "<template>\n  <sd-button @click=\"handleClick\">Info Message</sd-button>\n</template>\n\n<script>\n  import { h } from 'vue';\n  import { IconFaceSmileFill } from '@sdata/web-vue/es/icon/index.js';\n\n  export default {\n    methods: {\n      handleClick() {\n        this.$message.info({\n          content: 'This is an info message!',\n          icon: () => h(IconFaceSmileFill),\n        });\n      },\n    },\n  };\n</script>";
+import messageIconSource from '../../../../components/generated/message/icon.vue?raw';
 import MessagePositionDemo from '../../../../components/generated/message/position.vue';
-export const messagePositionSource =
-  "<template>\n  <sd-space>\n    <sd-button @click=\"() => this.$message.info({ content: 'This is an info message!' })\"\n      >Top Message</sd-button\n    >\n    <sd-button\n      @click=\"() => this.$message.info({ content: 'This is an info message!', position: 'bottom' })\"\n      >Bottom Message</sd-button\n    >\n  </sd-space>\n</template>";
+import messagePositionSource from '../../../../components/generated/message/position.vue?raw';
 import MessageTypeDemo from '../../../../components/generated/message/type.vue';
-export const messageTypeSource =
-  '<template>\n  <div>\n    <sd-space>\n      <sd-button @click="() => this.$message.info(\'This is an info message!\')"\n        >Info Message</sd-button\n      >\n      <sd-button @click="() => this.$message.success(\'This is a success message!\')" status="success"\n        >Success Message\n      </sd-button>\n      <sd-button @click="() => this.$message.warning(\'This is a warning message!\')" status="warning"\n        >Warning Message\n      </sd-button>\n      <sd-button @click="() => this.$message.error(\'This is an error message!\')" status="danger"\n        >Error Message</sd-button\n      >\n    </sd-space>\n  </div>\n  <div style="margin-top: 20px">\n    <sd-space>\n      <sd-button @click="() => this.$message.normal(\'This is a normal message!\')"\n        >Normal Message</sd-button\n      >\n      <sd-button\n        @click="\n          () =>\n            this.$message.normal({\n              content: \'This is a normal message!\',\n              icon: renderIcon,\n            })\n        "\n        >Normal Message With Icon\n      </sd-button>\n      <sd-button @click="() => this.$message.loading(\'This is a loading message!\')" status="primary"\n        >Loading Message\n      </sd-button>\n    </sd-space>\n  </div>\n</template>\n\n<script>\n  import { h } from \'vue\';\n  import { IconExclamationCircleFill } from \'@sdata/web-vue/es/icon/index.js\';\n\n  export default {\n    setup() {\n      const renderIcon = () => h(IconExclamationCircleFill);\n      return {\n        renderIcon,\n      };\n    },\n  };\n</script>';
+import messageTypeSource from '../../../../components/generated/message/type.vue?raw';
 import MessageUpdateDemo from '../../../../components/generated/message/update.vue';
-export const messageUpdateSource =
-  '<template>\n  <sd-button @click="handleClick">Update Info Message</sd-button>\n</template>\n\n<script>\n  export default {\n    data() {\n      return {\n        index: 0,\n      };\n    },\n    methods: {\n      handleClick() {\n        this.$message.info({\n          id: \'myInfo\',\n          content: `This is an info message ${this.$data.index++}`,\n          duration: 2000,\n        });\n      },\n    },\n  };\n</script>';
+import messageUpdateSource from '../../../../components/generated/message/update.vue?raw';
 
 ### 基本用法
 

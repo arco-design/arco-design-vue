@@ -5,17 +5,13 @@ description: 用来输入标签。
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import InputTagBasicDemo from '../../../../components/generated/input-tag/basic.vue';
-export const inputTagBasicSource =
-  '<template>\n  <sd-input-tag\n    :default-value="[\'test\']"\n    :style="{ width: \'320px\' }"\n    placeholder="Please Enter"\n    allow-clear\n  />\n</template>';
+import inputTagBasicSource from '../../../../components/generated/input-tag/basic.vue?raw';
 import InputTagMaxDemo from '../../../../components/generated/input-tag/max.vue';
-export const inputTagMaxSource =
-  "<template>\n  <sd-input-tag\n    :default-value=\"['one', 'two', 'three', 'four']\"\n    :style=\"{ width: '380px' }\"\n    placeholder=\"Please Enter\"\n    :max-tag-count=\"3\"\n    allow-clear\n  />\n</template>";
+import inputTagMaxSource from '../../../../components/generated/input-tag/max.vue?raw';
 import InputTagSizeDemo from '../../../../components/generated/input-tag/size.vue';
-export const inputTagSizeSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-radio-group type="button" v-model="size">\n      <sd-radio value="mini">mini</sd-radio>\n      <sd-radio value="small">small</sd-radio>\n      <sd-radio value="medium">medium</sd-radio>\n      <sd-radio value="large">large</sd-radio>\n    </sd-radio-group>\n    <sd-input-tag\n      :default-value="[\'one\']"\n      :style="{ width: \'320px\' }"\n      placeholder="Please enter something"\n      :size="size"\n      allow-clear\n    />\n  </sd-space>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const size = ref(\'medium\');\n\n      return {\n        size,\n      };\n    },\n  };\n</script>';
+import inputTagSizeSource from '../../../../components/generated/input-tag/size.vue?raw';
 import InputTagStatusDemo from '../../../../components/generated/input-tag/status.vue';
-export const inputTagStatusSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-input-tag\n      :default-value="[\'test\']"\n      :style="{ width: \'320px\' }"\n      placeholder="Please Enter"\n      disabled\n    />\n    <sd-input-tag\n      :default-value="[\'test\']"\n      :style="{ width: \'320px\' }"\n      placeholder="Please Enter"\n      readonly\n    />\n    <sd-input-tag\n      :default-value="[\'test\']"\n      :style="{ width: \'320px\' }"\n      placeholder="Please Enter"\n      error\n    />\n  </sd-space>\n</template>';
+import inputTagStatusSource from '../../../../components/generated/input-tag/status.vue?raw';
 
 ### 基本用法
 

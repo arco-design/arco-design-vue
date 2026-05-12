@@ -5,8 +5,7 @@ description: 日历组件。
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import CalendarBasicDemo from '../../../../components/generated/calendar/basic.vue';
-export const calendarBasicSource =
-  "<template>\n  <sd-calendar v-model=\"value\" />\n  select: {{ value }}\n</template>\n\n<script>\n  import { ref } from 'vue';\n\n  export default {\n    setup() {\n      const value = ref(new Date('2023-01-01'));\n\n      return {\n        value,\n      };\n    },\n  };\n</script>";
+import calendarBasicSource from '../../../../components/generated/calendar/basic.vue?raw';
 
 ### 基本用法
 

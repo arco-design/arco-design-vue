@@ -5,14 +5,11 @@ description: 将加载中的数据用灰色占位。
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import SkeletonAnimationDemo from '../../../../components/generated/skeleton/animation.vue';
-export const skeletonAnimationSource =
-  '<template>\n  <sd-space direction="vertical" size="large" :style="{ width: \'100%\' }">\n    <sd-space>\n      <span>Animation</span>\n      <sd-switch v-model="animation" />\n    </sd-space>\n    <sd-skeleton :animation="animation">\n      <sd-space direction="vertical" :style="{ width: \'100%\' }" size="large">\n        <sd-skeleton-line :rows="3" />\n        <sd-skeleton-shape />\n      </sd-space>\n    </sd-skeleton>\n  </sd-space>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const animation = ref(true);\n\n      return {\n        animation,\n      };\n    },\n  };\n</script>';
+import skeletonAnimationSource from '../../../../components/generated/skeleton/animation.vue?raw';
 import SkeletonBasicDemo from '../../../../components/generated/skeleton/basic.vue';
-export const skeletonBasicSource =
-  '<template>\n  <sd-skeleton>\n    <sd-space direction="vertical" :style="{ width: \'100%\' }" size="large">\n      <sd-skeleton-line :rows="3" />\n      <sd-skeleton-shape />\n    </sd-space>\n  </sd-skeleton>\n</template>';
+import skeletonBasicSource from '../../../../components/generated/skeleton/basic.vue?raw';
 import SkeletonTypeDemo from '../../../../components/generated/skeleton/type.vue';
-export const skeletonTypeSource =
-  '<template>\n  <sd-skeleton>\n    <sd-space size="large">\n      <sd-skeleton-shape size="small" />\n      <sd-skeleton-shape />\n      <sd-skeleton-shape size="large" />\n      <sd-skeleton-shape shape="circle" size="small" />\n      <sd-skeleton-shape shape="circle" />\n      <sd-skeleton-shape shape="circle" size="large" />\n    </sd-space>\n  </sd-skeleton>\n</template>';
+import skeletonTypeSource from '../../../../components/generated/skeleton/type.vue?raw';
 
 ### 动画
 

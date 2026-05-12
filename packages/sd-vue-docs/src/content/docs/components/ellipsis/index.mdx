@@ -5,20 +5,15 @@ description: 在有限空间内展示较长文本，并在内容被截断时提�
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import EllipsisBasicDemo from '../../../../components/generated/ellipsis/basic.vue';
-export const ellipsisBasicSource =
-  '<template>\n  <sd-ellipsis style="max-width: 240px;">\n    A design is a plan or specification for the construction of an object or system.\n  </sd-ellipsis>\n</template>';
+import ellipsisBasicSource from '../../../../components/generated/ellipsis/basic.vue?raw';
 import EllipsisLineClampDemo from '../../../../components/generated/ellipsis/line-clamp.vue';
-export const ellipsisLineClampSource =
-  '<template>\n  <sd-ellipsis :line-clamp="2" style="max-width: 320px;">\n    A design is a plan or specification for the construction of an object or system or for the implementation of an activity or process, or the result of that plan or specification in the form of a prototype, product or process.\n  </sd-ellipsis>\n</template>';
+import ellipsisLineClampSource from '../../../../components/generated/ellipsis/line-clamp.vue?raw';
 import EllipsisExpandTriggerDemo from '../../../../components/generated/ellipsis/expand-trigger.vue';
-export const ellipsisExpandTriggerSource =
-  '<template>\n  <sd-ellipsis expand-trigger="click" :tooltip="false" style="max-width: 280px;">\n    Click the truncated content to expand it and click again to collapse it. This interaction is useful when the layout space is limited but the full copy still needs to remain accessible.\n  </sd-ellipsis>\n</template>';
+import ellipsisExpandTriggerSource from '../../../../components/generated/ellipsis/expand-trigger.vue?raw';
 import EllipsisCustomTooltipDemo from '../../../../components/generated/ellipsis/custom-tooltip.vue';
-export const ellipsisCustomTooltipSource =
-  '<template>\n  <sd-ellipsis :tooltip="{ position: \'bottom\', mini: true }" style="display: block; max-width: 260px;">\n    Hover the truncated content to show a custom tooltip body rendered by the tooltip slot.\n    <template #tooltip>\n      <div>\n        <strong>Full content</strong>\n        <div style="margin-top: 4px;">Hover the truncated content to show a custom tooltip body rendered by the tooltip slot.</div>\n      </div>\n    </template>\n  </sd-ellipsis>\n</template>';
+import ellipsisCustomTooltipSource from '../../../../components/generated/ellipsis/custom-tooltip.vue?raw';
 import PerformantEllipsisDemo from '../../../../components/generated/ellipsis/performant-ellipsis.vue';
-export const performantEllipsisSource =
-  '<template>\n  <sd-performant-ellipsis style="max-width: 240px;">\n    In large lists, performant ellipsis avoids eagerly wiring tooltip and resize logic until the user actually interacts with the truncated content.\n  </sd-performant-ellipsis>\n</template>';
+import performantEllipsisSource from '../../../../components/generated/ellipsis/performant-ellipsis.vue?raw';
 
 ### 基本用法
 

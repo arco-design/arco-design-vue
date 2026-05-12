@@ -5,30 +5,23 @@ description: 采用分页控制单页内的信息数量，也可进行页面跳�
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import PaginationAllDemo from '../../../../components/generated/pagination/all.vue';
-export const paginationAllSource =
-  '<template>\n  <sd-pagination :total="50" show-total show-jumper show-page-size />\n</template>';
+import paginationAllSource from '../../../../components/generated/pagination/all.vue?raw';
 import PaginationBasicDemo from '../../../../components/generated/pagination/basic.vue';
-export const paginationBasicSource = '<template>\n  <sd-pagination :total="50" />\n</template>';
+import paginationBasicSource from '../../../../components/generated/pagination/basic.vue?raw';
 import PaginationCustomDemo from '../../../../components/generated/pagination/custom.vue';
-export const paginationCustomSource =
-  '<template>\n  <sd-pagination :total="200">\n    <template #page-item="{ page }"> - {{ page }} - </template>\n    <template #page-item-step="{ type }">\n      <icon-send :style="type === \'previous\' ? { transform: `rotate(180deg)` } : undefined" />\n    </template>\n    <template #page-item-ellipsis>\n      <icon-sun-fill />\n    </template>\n  </sd-pagination>\n</template>';
+import paginationCustomSource from '../../../../components/generated/pagination/custom.vue?raw';
 import PaginationEllipsisDemo from '../../../../components/generated/pagination/ellipsis.vue';
-export const paginationEllipsisSource = '<template>\n  <sd-pagination :total="200" />\n</template>';
+import paginationEllipsisSource from '../../../../components/generated/pagination/ellipsis.vue?raw';
 import PaginationJumperDemo from '../../../../components/generated/pagination/jumper.vue';
-export const paginationJumperSource =
-  '<template>\n  <sd-pagination :total="50" show-jumper />\n</template>';
+import paginationJumperSource from '../../../../components/generated/pagination/jumper.vue?raw';
 import PaginationPageSizeDemo from '../../../../components/generated/pagination/page-size.vue';
-export const paginationPageSizeSource =
-  '<template>\n  <sd-pagination :total="200" show-page-size />\n</template>';
+import paginationPageSizeSource from '../../../../components/generated/pagination/page-size.vue?raw';
 import PaginationSimpleDemo from '../../../../components/generated/pagination/simple.vue';
-export const paginationSimpleSource =
-  '<template>\n  <sd-pagination :total="200" simple />\n</template>';
+import paginationSimpleSource from '../../../../components/generated/pagination/simple.vue?raw';
 import PaginationSizeDemo from '../../../../components/generated/pagination/size.vue';
-export const paginationSizeSource =
-  '<template>\n  <sd-space direction="vertical" size="large">\n    <sd-radio-group type="button" v-model="size">\n      <sd-radio value="mini">Mini</sd-radio>\n      <sd-radio value="small">Small</sd-radio>\n      <sd-radio value="medium">Medium</sd-radio>\n      <sd-radio value="large">Large</sd-radio>\n    </sd-radio-group>\n    <sd-pagination :total="50" :size="size" show-total show-jumper show-page-size />\n  </sd-space>\n</template>\n\n<script>\n  import { ref } from \'vue\';\n\n  export default {\n    setup() {\n      const size = ref(\'medium\');\n\n      return {\n        size,\n      };\n    },\n  };\n</script>';
+import paginationSizeSource from '../../../../components/generated/pagination/size.vue?raw';
 import PaginationTotalDemo from '../../../../components/generated/pagination/total.vue';
-export const paginationTotalSource =
-  '<template>\n  <sd-pagination :total="200" show-total />\n</template>';
+import paginationTotalSource from '../../../../components/generated/pagination/total.vue?raw';
 
 ### 全部展示
 

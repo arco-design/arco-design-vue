@@ -5,23 +5,17 @@ description: 验证码输入组件
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import VerificationCodeBasicDemo from '../../../../components/generated/verification-code/basic.vue';
-export const verificationCodeBasicSource =
-  '<template>\n  <sd-verification-code v-model="value" style="width: 300px" @finish="onFinish" />\n</template>\n\n<script setup>\n  import { ref } from \'vue\';\n  import { Message } from \'@sdata/web-vue\';\n\n  const value = ref(\'654321\');\n  const onFinish = (value) => Message.info(`Verification code: ${value}`);\n</script>';
+import verificationCodeBasicSource from '../../../../components/generated/verification-code/basic.vue?raw';
 import VerificationCodeFormDemo from '../../../../components/generated/verification-code/form.vue';
-export const verificationCodeFormSource =
-  '<template>\n  <sd-form ref="formRef" :model="form" style="width: 300px">\n    <sd-form-item\n      field="code"\n      label="code"\n      :rules="[\n        { required: true, message: \'Verification code is required\' },\n        { minLength: 6, message: \'Verification code is incomplete\' },\n        { match: /^\\d+$/, message: \'Must be numeric\' },\n      ]"\n    >\n      <sd-verification-code v-model="form.code" style="width: 300px" @finish="onFinish" />\n    </sd-form-item>\n    <sd-form-item>\n      <sd-button style="width: 60px" type="primary" size="large" htmlType="submit">Submit</sd-button>\n    </sd-form-item>\n  </sd-form>\n</template>\n\n<script setup>\n  import { ref } from \'vue\';\n  import { Message } from \'@sdata/web-vue\';\n\n  const value = ref(\'654321\');\n  const formRef = ref(null);\n  const form = ref({\n    code: \'\',\n  });\n  const onFinish = (value) => Message.info(`Verification code: ${value}`);\n</script>';
+import verificationCodeFormSource from '../../../../components/generated/verification-code/form.vue?raw';
 import VerificationCodeFormatterDemo from '../../../../components/generated/verification-code/formatter.vue';
-export const verificationCodeFormatterSource =
-  '<template>\n  <sd-space direction="vertical">\n    <sd-verification-code\n      defaultValue="123456"\n      style="width: 300px"\n      :formatter="(inputValue) => (/^\\d*$/.test(inputValue) ? inputValue : false)"\n    />\n    <sd-verification-code\n      defaultValue="abcdef"\n      style="width: 300px"\n      :formatter="(inputValue) => (/^[a-zA-Z]*$/.test(inputValue) ? inputValue.toUpperCase() : \'\')"\n    />\n  </sd-space>\n</template>';
+import verificationCodeFormatterSource from '../../../../components/generated/verification-code/formatter.vue?raw';
 import VerificationCodeMaskedDemo from '../../../../components/generated/verification-code/masked.vue';
-export const verificationCodeMaskedSource =
-  '<template>\n  <sd-verification-code defaultValue="123" style="width: 300px" masked @finish="onFinish" />\n</template>\n\n<script setup>\n  import { Message } from \'@sdata/web-vue\';\n\n  const onFinish = (value) => Message.info(`Verification code: ${value}`);\n</script>';
+import verificationCodeMaskedSource from '../../../../components/generated/verification-code/masked.vue?raw';
 import VerificationCodeSeparatorDemo from '../../../../components/generated/verification-code/separator.vue';
-export const verificationCodeSeparatorSource =
-  '<template>\n  <sd-verification-code\n    style="width: 400px"\n    :length="9"\n    :separator="(index) => ((index + 1) % 3 || index > 7 ? null : \'-\')"\n    @finish="(value) => Message.info(`Verification code: ${value}`)"\n  />\n</template>\n\n<script setup>\n  import { Message } from \'@sdata/web-vue\';\n</script>';
+import verificationCodeSeparatorSource from '../../../../components/generated/verification-code/separator.vue?raw';
 import VerificationCodeStatusDemo from '../../../../components/generated/verification-code/status.vue';
-export const verificationCodeStatusSource =
-  '<template>\n  <sd-space direction="vertical">\n    <sd-space>\n      <sd-typography-text style="width: 80px">Disabled:</sd-typography-text>\n      <sd-verification-code defaultValue="123456" style="width: 300px" disabled />\n    </sd-space>\n    <sd-space>\n      <sd-typography-text style="width: 80px">Readonly:</sd-typography-text>\n      <sd-verification-code defaultValue="123456" style="width: 300px" readonly />\n    </sd-space>\n    <sd-space>\n      <sd-typography-text style="width: 80px">Error:</sd-typography-text>\n      <sd-verification-code defaultValue="123456" style="width: 300px" error />\n    </sd-space>\n  </sd-space>\n</template>';
+import verificationCodeStatusSource from '../../../../components/generated/verification-code/status.vue?raw';
 
 ### 基本使用
 
