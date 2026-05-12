@@ -1,3 +1,16 @@
+# [1.10.0](https://github.com/liunnn1994/sd-design/compare/v1.9.0...v1.10.0) (2026-05-12)
+
+### Bug Fixes
+
+- 🐛 修复打包报错 ([d16773c](https://github.com/liunnn1994/sd-design/commit/d16773cf404004aba1030822fa74bbed74bde69f))
+
+### Features
+
+- 🆕 使用 ts7 并修复 ts 报错 ([667fb96](https://github.com/liunnn1994/sd-design/commit/667fb96b73d17cc2e098bf960cf826db06a8ad67))
+- 🆕 迁移 cascader ([3242fdb](https://github.com/liunnn1994/sd-design/commit/3242fdbe3ca558d7b6e5392bf5c5df2c9c92a73b))
+- 🆕 迁移 scrollbar ([563830b](https://github.com/liunnn1994/sd-design/commit/563830bf9d49228c85d4f0f042e87dff99b349c0))
+- 🆕 迁移虚拟列表 ([098b1c9](https://github.com/liunnn1994/sd-design/commit/098b1c9e8cefe2f7dd3d18d339e712d259652224))
+
 # [1.9.0](https://github.com/liunnn1994/sd-design/compare/v1.8.0...v1.9.0) (2026-05-08)
 
 ### Features
