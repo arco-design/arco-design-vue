@@ -106,6 +106,7 @@
     computed,
     CSSProperties,
     defineComponent,
+    DefineComponent,
     getCurrentInstance,
     nextTick,
     PropType,
@@ -141,6 +142,8 @@
   import useSelectedState from './hooks/use-selected-state';
   import { LabelValue, TreeSelectValue } from './interface';
   import Panel from './panel';
+
+  type TreeSelectComponent = DefineComponent<import('./interface').TreeSelectProps>;
 
   export default defineComponent({
     name: 'TreeSelect',
@@ -934,5 +937,5 @@
         },
       };
     },
-  });
+  }) as TreeSelectComponent;
 </script>

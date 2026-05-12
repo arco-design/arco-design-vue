@@ -6,6 +6,7 @@
     "noEmit": false,
     "noCheck": true,
     "declarationMap": false,
+    "preserveSymlinks": true,
     "allowArbitraryExtensions": true,
     "paths": {
       "@sdata/web-vue": ["./components/index.ts"],

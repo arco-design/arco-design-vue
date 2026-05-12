@@ -41,6 +41,7 @@ const themeBridgeScript = String.raw`
 `;
 
 export default defineConfig({
+  site: 'https://sd-design.js.org/',
   vite: {
     resolve: {
       noExternal: ['@vue/repl'],
@@ -89,6 +90,7 @@ export default defineConfig({
       sidebar: docsSidebar,
       customCss: ['./src/styles/site.css'],
       head: [{ tag: 'script', content: themeBridgeScript }],
+      disable404Route: true,
       lastUpdated: true,
       tableOfContents: {
         minHeadingLevel: 2,

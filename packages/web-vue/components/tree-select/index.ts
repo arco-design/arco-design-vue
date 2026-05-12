@@ -1,10 +1,11 @@
-import { App } from 'vue';
+import type { App } from 'vue';
+
+import type { SDOptions, SFCWithInstall } from '../_utils/types';
 
 import { getComponentPrefix, setGlobalConfig } from '../_utils/global-config';
-import { SDOptions } from '../_utils/types';
 import _TreeSelect from './tree-select.vue';
 
-const TreeSelect = Object.assign(_TreeSelect, {
+const TreeSelect: SFCWithInstall<typeof _TreeSelect> = Object.assign(_TreeSelect, {
   install: (app: App, options?: SDOptions) => {
     setGlobalConfig(app, options);
     const componentPrefix = getComponentPrefix(options);

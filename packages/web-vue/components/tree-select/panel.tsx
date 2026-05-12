@@ -1,10 +1,19 @@
 import { computed, defineComponent, PropType, ref, toRefs, Slots } from 'vue';
+import type { DefineComponent } from 'vue';
 
 import { useScrollbar } from '../_hooks/use-scrollbar';
 import { getPrefixCls } from '../_utils/global-config';
 import Scrollbar, { ScrollbarProps } from '../scrollbar';
 import Tree from '../tree';
 import { TreeProps, TreeNodeKey } from '../tree/interface';
+
+type TreeSelectPanelComponent = DefineComponent<{
+  treeProps: Partial<TreeProps> | undefined;
+  selectedKeys: TreeNodeKey[] | undefined;
+  showCheckable: boolean;
+  treeSlots: Slots;
+  scrollbar: boolean | ScrollbarProps;
+}>;
 
 export default defineComponent({
   name: 'TreeSelectPanel',
@@ -88,4 +97,4 @@ export default defineComponent({
       return <div class={treeWrapperClassName.value}>{renderTree()}</div>;
     };
   },
-});
+}) as TreeSelectPanelComponent;
