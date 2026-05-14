@@ -59,7 +59,11 @@ export default defineComponent({
   setup(props, { slots }) {
     const prefixCls = getPrefixCls('table');
     const tableCtx = inject<Partial<TableContext>>(tableInjectionKey, {});
-    const style = computed(() => getOperationStyle(props.operationColumn, props.operations));
+    const style = computed(() => ({
+      ...getOperationStyle(props.operationColumn, props.operations),
+      ...(props.colSpan > 1 ? { gridColumn: `span ${props.colSpan}` } : undefined),
+      ...(props.rowSpan > 1 ? { gridRow: `span ${props.rowSpan}` } : undefined),
+    }));
 
     const cls = computed(() => [
       `${prefixCls}-td`,
@@ -140,14 +144,9 @@ export default defineComponent({
     };
 
     return () => (
-      <td
-        class={cls.value}
-        style={style.value}
-        rowspan={props.rowSpan > 1 ? props.rowSpan : undefined}
-        colspan={props.colSpan > 1 ? props.colSpan : undefined}
-      >
+      <div class={cls.value} style={style.value}>
         <span class={`${prefixCls}-cell`}>{renderContent()}</span>
-      </td>
+      </div>
     );
   },
 });

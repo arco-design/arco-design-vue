@@ -25,7 +25,7 @@ export const clipboard = async (text: string) => {
   selection?.addRange(range);
 
   try {
-    window.document.execCommand('copy');
+    window.document.execCommand?.('copy');
   } catch (err) {
     // oxlint-disable-next-line no-console
     console.error(`execCommand Error: ${err}`);

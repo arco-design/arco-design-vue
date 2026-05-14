@@ -126,6 +126,8 @@ export default defineComponent({
       const customStyle = getCustomStyle();
       return {
         ...style,
+        ...(props.colSpan > 1 ? { gridColumn: `span ${props.colSpan}` } : undefined),
+        ...(props.rowSpan > 1 ? { gridRow: `span ${props.rowSpan}` } : undefined),
         ...props.column?.cellStyle,
         ...customStyle,
       };
@@ -202,9 +204,9 @@ export default defineComponent({
             />
           )}
           {props.showExpandBtn && (
-            <span class={`${prefixCls}-cell-inline-icon`} onClick={handleClick}>
+            <button type="button" class={`${prefixCls}-cell-inline-icon`} onClick={handleClick}>
               {isLoading.value ? <IconLoading /> : props.renderExpandBtn?.(props.record, false)}
-            </span>
+            </button>
           )}
           {props.column?.ellipsis && props.column?.tooltip ? (
             <AutoTooltip class={`${prefixCls}-td-content`} tooltipProps={tooltipProps.value}>
@@ -232,12 +234,10 @@ export default defineComponent({
           record: props.record?.raw,
           column: props.column,
           rowIndex: props.rowIndex ?? -1,
-        })[0] ?? 'td',
+        })[0] ?? 'div',
         {
           class: cls.value,
           style: style.value,
-          rowspan: props.rowSpan > 1 ? props.rowSpan : undefined,
-          colspan: props.colSpan > 1 ? props.colSpan : undefined,
         },
         {
           default: () => [renderCell()],

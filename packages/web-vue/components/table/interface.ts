@@ -11,7 +11,7 @@ export interface TableData {
    * @zh 数据行的key
    * @en The key of the data row
    */
-  key?: string;
+  key?: BaseType;
   /**
    * @zh 扩展行内容
    * @en Expand row content
@@ -39,7 +39,7 @@ export interface TableData {
 
 export interface TableDataWithRaw {
   raw: TableData;
-  key: string;
+  key: BaseType;
   disabled?: boolean;
   expand?: string | RenderFunction;
   children?: TableDataWithRaw[];

@@ -2,6 +2,8 @@ import { computed, reactive, Ref } from 'vue';
 
 import { tryOnScopeDispose, useEventListener } from '@vueuse/core';
 
+import type { BaseType } from '../../_utils/types';
+
 import { TableDraggable } from '../interface';
 
 export const useDrag = (draggable: Ref<TableDraggable | undefined>) => {
@@ -17,7 +19,7 @@ export const useDrag = (draggable: Ref<TableDraggable | undefined>) => {
 
   const dragState = reactive({
     dragging: false,
-    sourceKey: '',
+    sourceKey: '' as BaseType | '',
     sourcePath: [] as number[],
     targetPath: [] as number[],
     data: {} as Record<string, unknown>,
@@ -48,7 +50,7 @@ export const useDrag = (draggable: Ref<TableDraggable | undefined>) => {
 
   const handleDragStart = (
     ev: DragEvent,
-    sourceKey: string,
+    sourceKey: BaseType,
     sourcePath: number[],
     data: Record<string, unknown>,
   ) => {

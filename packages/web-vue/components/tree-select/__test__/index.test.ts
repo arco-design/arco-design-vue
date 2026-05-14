@@ -3,6 +3,8 @@ import { h, nextTick } from 'vue';
 
 import TreeSelect from '../index';
 
+const TreeSelectComponent = TreeSelect as any;
+
 const options = [
   {
     label: 'Root',
@@ -52,7 +54,7 @@ function getTranslateY(style: string) {
 
 describe('TreeSelect', () => {
   test('should support options alias and showPath', async () => {
-    const wrapper = mount(TreeSelect, {
+    const wrapper = mount(TreeSelectComponent, {
       props: {
         options,
         showPath: true,
@@ -80,7 +82,7 @@ describe('TreeSelect', () => {
   });
 
   test('should support v-model:value alias', async () => {
-    const wrapper = mount(TreeSelect, {
+    const wrapper = mount(TreeSelectComponent, {
       attachTo: document.body,
       props: {
         value: 'leaf-1',
@@ -107,7 +109,7 @@ describe('TreeSelect', () => {
   });
 
   test('should support v-model:show alias', async () => {
-    const wrapper = mount(TreeSelect, {
+    const wrapper = mount(TreeSelectComponent, {
       props: {
         show: false,
         options,
@@ -124,7 +126,7 @@ describe('TreeSelect', () => {
   });
 
   test('should support responsive maxTagCount', async () => {
-    const wrapper = mount(TreeSelect, {
+    const wrapper = mount(TreeSelectComponent, {
       props: {
         multiple: true,
         maxTagCount: 'responsive',
@@ -163,7 +165,7 @@ describe('TreeSelect', () => {
   });
 
   test('should render custom tag slot with selected tree option data', () => {
-    const wrapper = mount(TreeSelect, {
+    const wrapper = mount(TreeSelectComponent, {
       props: {
         multiple: true,
         defaultValue: ['leaf-1'],
@@ -173,7 +175,8 @@ describe('TreeSelect', () => {
         },
       },
       slots: {
-        tag: ({ data }) => h('span', { class: 'tree-custom-tag' }, `Tree:${data.label}`),
+        tag: ({ data }: { data: { label: string } }) =>
+          h('span', { class: 'tree-custom-tag' }, `Tree:${data.label}`),
       },
     });
 
@@ -181,7 +184,7 @@ describe('TreeSelect', () => {
   });
 
   test('should hide arrow icon when showArrow is false', () => {
-    const wrapper = mount(TreeSelect, {
+    const wrapper = mount(TreeSelectComponent, {
       props: {
         showArrow: false,
         options,
@@ -195,7 +198,7 @@ describe('TreeSelect', () => {
   });
 
   test('should support treeCheckable checkbox selection', async () => {
-    const wrapper = mount(TreeSelect, {
+    const wrapper = mount(TreeSelectComponent, {
       attachTo: document.body,
       props: {
         modelValue: [],
@@ -230,7 +233,7 @@ describe('TreeSelect', () => {
   });
 
   test('should support checkable alias as checkbox mode', async () => {
-    const wrapper = mount(TreeSelect, {
+    const wrapper = mount(TreeSelectComponent, {
       attachTo: document.body,
       props: {
         modelValue: [],
@@ -265,7 +268,7 @@ describe('TreeSelect', () => {
   });
 
   test('should render leading child options in order for small virtual tree data', async () => {
-    const wrapper = mount(TreeSelect, {
+    const wrapper = mount(TreeSelectComponent, {
       attachTo: document.body,
       props: {
         data: virtualTreeOptions,
@@ -311,7 +314,7 @@ describe('TreeSelect', () => {
   });
 
   test('should not keep trigger maxHeight on outer popup when virtual tree list is enabled', async () => {
-    const wrapper = mount(TreeSelect, {
+    const wrapper = mount(TreeSelectComponent, {
       attachTo: document.body,
       props: {
         data: virtualTreeOptions,

@@ -251,18 +251,38 @@ $__less-vars: (
     box-shadow: $table-shadow-right;
   }
 
-  &-layout-fixed {
-    .#{$table-cls-table} {
-      table-layout: fixed;
-    }
-  }
-
   .#{$table-cls-table} {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     min-width: 100%;
     margin: 0;
-    border-collapse: separate;
-    border-spacing: 0;
+  }
+
+  &-thead,
+  &-tbody,
+  &-tfoot-content {
+    display: grid;
+    grid-template-columns: var(--sd-table-grid-template, minmax(0, 1fr));
+  }
+
+  &-tr,
+  &-virtual-row {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: var(--sd-table-grid-template, minmax(0, 1fr));
+  }
+
+  &-tbody > .#{theme.$prefix}-virtual-list,
+  &-tbody > .#{$table-prefix-cls}-body {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  &-virtual-item {
+    display: grid;
+    grid-template-columns: var(--sd-table-grid-template, minmax(0, 1fr));
+    width: 100%;
   }
 
   &-virtual-row-table {
@@ -272,6 +292,7 @@ $__less-vars: (
   &-th {
     position: relative;
     box-sizing: border-box;
+    min-width: 0;
     color: $table-color-text-header-cell;
     font-weight: $table-font-weight-header-text;
     line-height: theme.$line-height-base;
@@ -301,6 +322,7 @@ $__less-vars: (
 
   &-td {
     box-sizing: border-box;
+    min-width: 0;
     color: $table-color-text-body-cell;
     line-height: theme.$line-height-base;
     text-align: left;
@@ -324,6 +346,9 @@ $__less-vars: (
   &-cell {
     display: flex;
     align-items: center;
+    width: 100%;
+    min-width: 0;
+    height: 100%;
 
     &-align-right {
       justify-content: flex-end;
@@ -421,6 +446,9 @@ $__less-vars: (
   &-cell-expand-icon &-cell-inline-icon {
     display: inline-flex;
     margin-right: $table-spacing-expand-button-margin-right;
+    padding: 0;
+    background: transparent;
+    border: 0;
 
     .#{theme.$prefix}-icon-loading {
       color: global.$color-primary-6;
@@ -478,7 +506,6 @@ $__less-vars: (
   &-td#{&}-operation &-cell {
     display: flex;
     justify-content: center;
-    padding: 0;
   }
 
   &-radio,
@@ -513,6 +540,12 @@ $__less-vars: (
   &-cell-with-sorter {
     display: flex;
     align-items: center;
+    width: 100%;
+    padding: 0;
+    color: inherit;
+    text-align: inherit;
+    background: transparent;
+    border: 0;
     cursor: pointer;
 
     &:hover {
@@ -707,9 +740,21 @@ $__less-vars: (
   }
 
   &-header {
+    width: 100%;
+    min-width: 100%;
     overflow: hidden;
     background-color: $table-color-bg-header-cell;
     scrollbar-color: transparent transparent;
+
+    > .#{$table-cls-table} {
+      width: 100%;
+      background-color: inherit;
+    }
+
+    .#{$table-prefix-cls}-thead {
+      width: 100%;
+      background-color: inherit;
+    }
 
     &-sticky {
       position: sticky;
@@ -758,7 +803,7 @@ $__less-vars: (
       border-bottom: $table-border-width $table-border-style $table-color-border;
 
       .#{$table-prefix-cls}-body .#{$table-cls-tr}:last-of-type .#{$table-cls-td},
-      tfoot .#{$table-cls-tr}:last-of-type .#{$table-cls-td} {
+      .#{$table-prefix-cls}-tfoot-content .#{$table-cls-tr}:last-of-type .#{$table-cls-td} {
         border-bottom: none;
 
         &.#{$table-prefix-cls}-col-fixed-left-last::after,
@@ -820,7 +865,7 @@ $__less-vars: (
   }
 
   &-border#{&}-border-header-cell {
-    thead {
+    .#{$table-prefix-cls}-thead {
       .#{$table-cls-tr}:first-child .#{$table-cls-th}:last-child {
         border-right: 0;
       }
@@ -862,15 +907,17 @@ $__less-vars: (
     }
   }
 
-  & .#{$table-cls-tr}-draggable {
+  & .#{$table-cls-tr}-draggable .#{$table-cls-td} {
     cursor: move;
   }
 
   // Drop target indicator during row drag
   & .#{$table-cls-tr}-drop-target {
-    position: relative;
+    .#{$table-cls-td} {
+      position: relative;
+    }
 
-    &::before {
+    .#{$table-cls-td}::before {
       position: absolute;
       top: -1px;
       right: 0;
@@ -884,7 +931,7 @@ $__less-vars: (
   }
 
   // Row drag transition
-  &-dragging .#{$table-cls-tr} {
+  &-dragging .#{$table-cls-td} {
     transition: background-color 0.2s ease;
   }
 
@@ -958,7 +1005,7 @@ $__less-vars: (
     }
   }
 
-  & tfoot &-td {
+  & &-tfoot-content &-td {
     background-color: $table-color-bg-tfoot;
   }
 
@@ -983,17 +1030,7 @@ $__less-vars: (
   }
 
   // virtualized
-  &-virtualized .#{$table-cls-table} {
-    table-layout: fixed;
-  }
-
-  &-virtualized div#{&}-body div#{&}-tr {
-    display: flex;
-  }
-
   &-virtualized div#{&}-body div#{&}-td {
-    display: flex;
-    flex: 1;
     align-items: center;
   }
 }

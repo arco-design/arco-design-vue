@@ -82,7 +82,10 @@ export default defineComponent({
       return null;
     };
 
-    const style = computed(() => getOperationStyle(props.operationColumn, props.operations));
+    const style = computed(() => ({
+      ...getOperationStyle(props.operationColumn, props.operations),
+      ...(props.rowSpan > 1 ? { gridRow: `span ${props.rowSpan}` } : undefined),
+    }));
 
     const cls = computed(() => [
       `${prefixCls}-th`,
@@ -94,13 +97,9 @@ export default defineComponent({
     ]);
 
     return () => (
-      <th
-        class={cls.value}
-        style={style.value}
-        rowspan={props.rowSpan > 1 ? props.rowSpan : undefined}
-      >
+      <div class={cls.value} style={style.value}>
         <span class={`${prefixCls}-cell`}>{renderContent()}</span>
-      </th>
+      </div>
     );
   },
 });

@@ -15,12 +15,47 @@
         >
           <slot name="before" />
           <component
+            v-if="hasCompatContentWrapper"
+            :is="mergedCompatComponent.content"
+            v-bind="props.contentWrapperAttrs"
+            :style="compatContentWrapperStyle"
+          >
+            <component
+              :is="mergedCompatComponent.item"
+              v-for="(item, index) in compatCurrentList"
+              :key="getCompatItemKey(item, compatStart + index)"
+              v-bind="props.contentAttrs"
+              :ref="
+                (element: unknown) =>
+                  setCompatItemRef(getCompatItemKey(item, compatStart + index), element)
+              "
+              :style="getCompatContentStyle(index)"
+            >
+              <slot
+                name="item"
+                :item="item"
+                :index="compatStart + index"
+                :active="true"
+                :item-with-size="undefined"
+              >
+                <slot
+                  :item="item"
+                  :index="compatStart + index"
+                  :active="true"
+                  :item-with-size="undefined"
+                />
+              </slot>
+            </component>
+          </component>
+          <component
+            v-else
             :is="mergedCompatComponent.content"
             v-for="(item, index) in compatCurrentList"
             :key="getCompatItemKey(item, compatStart + index)"
             v-bind="props.contentAttrs"
             :ref="
-              (element) => setCompatItemRef(getCompatItemKey(item, compatStart + index), element)
+              (element: unknown) =>
+                setCompatItemRef(getCompatItemKey(item, compatStart + index), element)
             "
             :style="getCompatContentStyle(index)"
           >
@@ -244,6 +279,10 @@
         type: Object as PropType<Record<string, unknown> | undefined>,
         default: undefined,
       },
+      contentWrapperAttrs: {
+        type: Object as PropType<Record<string, unknown> | undefined>,
+        default: undefined,
+      },
       contentAttrs: {
         type: Object as PropType<Record<string, unknown> | undefined>,
         default: undefined,
@@ -289,9 +328,16 @@
         return Boolean(
           props.component ||
           props.listAttrs ||
+          props.contentWrapperAttrs ||
           props.contentAttrs ||
           props.listStyle ||
           props.paddingPosition !== 'content',
+        );
+      });
+
+      const hasCompatContentWrapper = computed(() => {
+        return Boolean(
+          props.contentWrapperAttrs || (isObject(props.component) && props.component.item),
         );
       });
 
@@ -344,6 +390,7 @@
             container: 'div',
             list: 'div',
             content: 'div',
+            item: 'div',
             ...props.component,
           };
         }
@@ -352,6 +399,7 @@
           container: props.component ?? 'div',
           list: 'div',
           content: 'div',
+          item: 'div',
         };
       });
 
@@ -512,6 +560,14 @@
         return compatContentPaddingStyle.value;
       });
 
+      const compatContentWrapperStyle = computed<CSSProperties | undefined>(() => {
+        if (!hasCompatContentWrapper.value || props.paddingPosition !== 'content') {
+          return undefined;
+        }
+
+        return compatContentStyle.value;
+      });
+
       const updateCompatItemSize = (key: VirtualItemKey, element: HTMLElement) => {
         const height = element.getBoundingClientRect().height || element.offsetHeight;
 
@@ -556,6 +612,10 @@
       };
 
       const getCompatContentStyle = (index: number): CSSProperties | undefined => {
+        if (hasCompatContentWrapper.value) {
+          return undefined;
+        }
+
         if (props.paddingPosition !== 'content') {
           return compatContentStyle.value;
         }
@@ -974,7 +1034,9 @@
         if (isCompatMode.value) {
           scrollTo({
             index,
-            align: options?.behavior === 'smooth' ? 'auto' : undefined,
+            align: options?.smooth ? 'auto' : undefined,
+            smooth: options?.smooth,
+            offset: options?.offset,
           });
           return;
         }
@@ -989,8 +1051,8 @@
             return;
           }
 
-          if (options?.behavior === 'smooth') {
-            viewport.scrollTo({ top: position, behavior: options.behavior });
+          if (options?.smooth) {
+            viewport.scrollTo({ top: position, behavior: 'smooth' });
           } else {
             viewport.scrollTop = position;
           }
@@ -1122,7 +1184,8 @@
         if (isCompatMode.value) {
           setCompatStart(index - compatOverscan.value);
           scrollToPosition(getCompatScrollOffset(index), {
-            behavior: options.smooth ? 'smooth' : 'auto',
+            smooth: options.smooth,
+            offset: options.offset,
           });
           nextTick(() => {
             const scrollTop = getCompatScrollOffset(index);
@@ -1165,9 +1228,11 @@
         viewportRef,
         isCompatMode,
         mergedCompatComponent,
+        hasCompatContentWrapper,
         compatViewportStyle,
         compatListStyle,
         compatContentStyle,
+        compatContentWrapperStyle,
         compatCurrentList,
         compatStart,
         getCompatItemKey,

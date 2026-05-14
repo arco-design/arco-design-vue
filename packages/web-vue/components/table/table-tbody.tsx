@@ -4,9 +4,13 @@ export default defineComponent({
   name: 'Tbody',
   setup(_, { slots }) {
     return () => {
-      return createVNode(slots.tbody?.()[0] ?? 'tbody', null, {
-        default: slots.default,
-      });
+      return createVNode(
+        slots.tbody?.()[0] ?? 'div',
+        { class: 'sd-table-tbody' },
+        {
+          default: slots.default,
+        },
+      );
     };
   },
 });

@@ -13,8 +13,15 @@ import {
   watchEffect,
 } from 'vue';
 
-import { useElementBounding, useElementSize, useResizeObserver, useScroll } from '@vueuse/core';
+import {
+  useElementBounding,
+  useElementSize,
+  useResizeObserver,
+  watchThrottled,
+} from '@vueuse/core';
 
+import type { VirtualListRef } from '../_components/virtual-list/interface';
+import type { Size } from '../_utils/constant';
 import type { BaseType } from '../_utils/types';
 import type {
   TableBorder,
@@ -53,7 +60,7 @@ import Empty from '../empty';
 import IconMinus from '../icon/icon-minus';
 import IconPlus from '../icon/icon-plus';
 import Pagination, { PaginationProps } from '../pagination';
-import Scrollbar, { ScrollbarProps } from '../scrollbar';
+import Scrollbar, { ScrollbarInstance, ScrollbarProps } from '../scrollbar';
 import Spin from '../spin';
 import { tableInjectionKey } from './context';
 import { useColumnResize } from './hooks/use-column-resize';
@@ -64,7 +71,6 @@ import { usePagination } from './hooks/use-pagination';
 import { useRowSelection } from './hooks/use-row-selection';
 import { useSorter } from './hooks/use-sorter';
 import { useSpan } from './hooks/use-span';
-import ColGroup from './table-col-group.vue';
 import OperationTd from './table-operation-td';
 import OperationTh from './table-operation-th';
 import Tbody from './table-tbody';
@@ -145,14 +151,6 @@ export default defineComponent({
     size: {
       type: String as PropType<Size>,
       default: () => inject(configProviderInjectionKey, undefined)?.size ?? 'large',
-    },
-    /**
-     * @zh 表格的 table-layout 属性设置为 fixed，设置为 fixed 后，表格的宽度不会被内容撑开超出 100%。
-     * @en The table-layout property of the table is set to fixed. After it is set to fixed, the width of the table will not be stretched beyond 100% by the content.
-     */
-    tableLayoutFixed: {
-      type: Boolean,
-      default: false,
     },
     /**
      * @zh 是否为加载中状态
@@ -730,17 +728,50 @@ export default defineComponent({
     const { componentRef: contentComRef, elementRef: contentRef } = useComponentRef('containerRef');
     const { componentRef: tbodyComRef, elementRef: tbodyRef } = useComponentRef('containerRef');
     const { componentRef: _virtualComRef, elementRef: virtualRef } = useComponentRef('viewportRef');
-    const { componentRef: theadComRef, elementRef: theadRef } = useComponentRef('containerRef');
-    const containerElement = computed(
-      () => virtualRef.value ?? tbodyRef.value ?? contentRef.value ?? null,
+    const getVirtualListInstance = () => _virtualComRef.value as VirtualListRef | undefined;
+    const theadRef = ref<HTMLElement>();
+    const isVirtualList = computed(() => Boolean(props.virtualListProps));
+    const splitTable = computed(
+      () =>
+        resolvedScroll.value.y ||
+        props.stickyHeader ||
+        isVirtualList.value ||
+        (resolvedScroll.value.x && flattenData.value.length === 0),
     );
+    const containerScrollLeft = ref(0);
+    const alignLeft = ref(true);
+    const alignRight = ref(true);
+
+    const getScrollbarScrollElement = (
+      component: HTMLElement | ComponentPublicInstance | undefined,
+    ) => {
+      if (component instanceof HTMLElement) {
+        return component;
+      }
+
+      const scrollbar = component as ScrollbarInstance | undefined;
+      return (
+        scrollbar?.elements?.()?.scrollOffsetElement ?? scrollbar?.elements?.()?.viewport ?? null
+      );
+    };
+
+    const getScrollContainer = () => {
+      if (splitTable.value) {
+        if (isVirtualList.value) {
+          return virtualRef.value ?? null;
+        }
+
+        return getScrollbarScrollElement(tbodyComRef.value) ?? tbodyRef.value ?? null;
+      }
+
+      return getScrollbarScrollElement(contentComRef.value) ?? contentRef.value ?? null;
+    };
+
+    const containerElement = computed(() => getScrollContainer());
     const { width: containerElementWidth } = useElementSize(containerElement);
-    const { x: containerScrollLeft, arrivedState: containerArrivedState } =
-      useScroll(containerElement);
 
     const getContainerMetrics = () => {
-      const element =
-        containerElement.value ?? contentRef.value ?? tbodyRef.value ?? virtualRef.value ?? null;
+      const element = getScrollContainer();
 
       return {
         element,
@@ -749,14 +780,6 @@ export default defineComponent({
         scrollWidth: element?.scrollWidth ?? containerScrollWidth.value,
       };
     };
-
-    const splitTable = computed(
-      () =>
-        resolvedScroll.value.y ||
-        props.stickyHeader ||
-        isVirtualList.value ||
-        (resolvedScroll.value.x && flattenData.value.length === 0),
-    );
 
     const slotColumnMap = reactive(new Map<number, TableColumnData>());
     const slotColumns = ref<TableColumnData[]>();
@@ -825,15 +848,6 @@ export default defineComponent({
       if (_hasLeftFixedDataColumns !== hasLeftFixedDataColumns.value) {
         hasLeftFixedDataColumns.value = _hasLeftFixedDataColumns;
       }
-    });
-
-    const hasEllipsis = computed(() => {
-      for (const col of dataColumns.value) {
-        if (col.ellipsis) {
-          return true;
-        }
-      }
-      return false;
     });
 
     const handleChange = (type: 'pagination' | 'sorter' | 'filter' | 'drag') => {
@@ -1196,10 +1210,25 @@ export default defineComponent({
       return [];
     });
 
-    const alignLeft = computed(() => (containerElement.value ? containerArrivedState.left : true));
-    const alignRight = computed(() =>
-      containerElement.value ? containerArrivedState.right : true,
-    );
+    const setAlignPosition = (element = getScrollContainer()) => {
+      if (!element) {
+        alignLeft.value = true;
+        alignRight.value = true;
+        return;
+      }
+
+      const nextAlignLeft = containerScrollLeft.value === 0;
+      const nextAlignRight =
+        Math.ceil(containerScrollLeft.value + element.clientWidth) >= element.scrollWidth;
+
+      if (nextAlignLeft !== alignLeft.value) {
+        alignLeft.value = nextAlignLeft;
+      }
+
+      if (nextAlignRight !== alignRight.value) {
+        alignRight.value = nextAlignRight;
+      }
+    };
 
     const getTableScrollCls = () => {
       if (alignLeft.value && alignRight.value) {
@@ -1225,24 +1254,47 @@ export default defineComponent({
       return cls;
     };
 
-    watch(containerScrollLeft, (scrollLeft) => {
+    const handleScroll = (event: Event) => {
+      const element = event.target as HTMLElement | null;
+      if (!element) {
+        return;
+      }
+
+      if (element.scrollLeft !== containerScrollLeft.value) {
+        containerScrollLeft.value = element.scrollLeft;
+      }
+
+      containerClientWidth.value = element.clientWidth;
+      containerScrollWidth.value = element.scrollWidth;
+
       debugLog('scroll:x', {
-        scrollLeft,
-        clientWidth: containerClientWidth.value,
-        scrollWidth: containerScrollWidth.value,
+        scrollLeft: element.scrollLeft,
+        clientWidth: element.clientWidth,
+        scrollWidth: element.scrollWidth,
         autoScrollX: autoScrollX.value,
         calculatedTableWidth: getCalculatedTableWidth(),
       });
 
-      if (splitTable.value) {
-        if (theadRef.value) {
-          theadRef.value.scrollLeft = scrollLeft;
-        }
-        if (summaryRef.value) {
-          summaryRef.value.scrollLeft = scrollLeft;
-        }
+      setAlignPosition(element);
+    };
+
+    const onTbodyScroll = (event: Event) => {
+      handleScroll(event);
+
+      const element = event.target as HTMLElement | null;
+      if (!element) {
+        return;
       }
-    });
+
+      const scrollLeft = element.scrollLeft;
+
+      if (theadRef.value) {
+        theadRef.value.scrollLeft = scrollLeft;
+      }
+      if (summaryRef.value) {
+        summaryRef.value.scrollLeft = scrollLeft;
+      }
+    };
 
     const handleRowClick = (record: TableDataWithRaw, ev: Event) => {
       emit('rowClick', record.raw, ev);
@@ -1387,8 +1439,6 @@ export default defineComponent({
         [`${prefixCls}-dragging`]: dragState.dragging,
         [`${prefixCls}-type-selection`]: Boolean(props.rowSelection),
         [`${prefixCls}-empty`]: props.data && flattenData.value.length === 0,
-        [`${prefixCls}-layout-fixed`]:
-          props.tableLayoutFixed || resolvedScroll.value.x || splitTable.value || hasEllipsis.value,
       },
     ]);
 
@@ -1419,7 +1469,6 @@ export default defineComponent({
       return cls;
     });
 
-    const isVirtualList = computed(() => Boolean(props.virtualListProps));
     const resolvedVirtualListProps = computed<TableVirtualListProps | undefined>(() => {
       if (!props.virtualListProps) {
         return undefined;
@@ -1447,6 +1496,41 @@ export default defineComponent({
         keyField: keyField ?? itemKey ?? 'key',
         estimatedSize,
         scrollbar: virtualScrollbar ?? props.scrollbar,
+      };
+    });
+
+    const tableVirtualListProps = computed<TableVirtualListProps | undefined>(() => {
+      if (!resolvedVirtualListProps.value) {
+        return undefined;
+      }
+
+      if (
+        'prerender' in resolvedVirtualListProps.value &&
+        resolvedVirtualListProps.value.prerender !== undefined
+      ) {
+        return resolvedVirtualListProps.value;
+      }
+
+      const rowHeightSource =
+        (typeof resolvedVirtualListProps.value.itemSize === 'number'
+          ? resolvedVirtualListProps.value.itemSize
+          : undefined) ??
+        (typeof resolvedVirtualListProps.value.minItemSize === 'number'
+          ? resolvedVirtualListProps.value.minItemSize
+          : undefined) ??
+        resolvedVirtualListProps.value.estimatedSize ??
+        32;
+
+      const scrollY =
+        typeof props.scroll?.y === 'number'
+          ? props.scroll.y
+          : Number.parseFloat(props.scroll?.y ?? '') || rowHeightSource * 8;
+
+      const prerender = Math.max(Math.ceil(scrollY / Math.max(rowHeightSource, 1)), 8);
+
+      return {
+        ...resolvedVirtualListProps.value,
+        prerender,
       };
     });
 
@@ -1630,14 +1714,41 @@ export default defineComponent({
       return mergeMinWidth();
     });
 
+    const gridTemplateColumns = computed(() => {
+      const operationTracks = operations.value.map((item) => `${item.width ?? 40}px`);
+      const dataTracks = dataColumns.value.map((item) => {
+        const key = item.dataIndex;
+        const resizedWidth = key ? resolvedColumnWidth.value[key] : undefined;
+        const width = resizedWidth ?? item.width;
+        const minWidth = item.minWidth ?? 40;
+
+        if (width != null) {
+          return `${Math.max(width, minWidth)}px`;
+        }
+
+        return `minmax(${minWidth}px, 1fr)`;
+      });
+
+      return operationTracks.concat(dataTracks).join(' ');
+    });
+
+    const elementStyle = computed(() => {
+      const style = tableStyle.value ? { ...tableStyle.value } : {};
+      return {
+        ...style,
+        '--sd-table-grid-template': gridTemplateColumns.value,
+      } as CSSProperties;
+    });
+
     const syncContainerMetrics = (reason: string) => {
-      const { element } = getContainerMetrics();
+      const { element, clientWidth, scrollWidth } = getContainerMetrics();
       if (!element) {
         return;
       }
 
-      // containerClientWidth.value = clientWidth;
-      // containerScrollWidth.value = scrollWidth;
+      containerClientWidth.value = clientWidth;
+      containerScrollWidth.value = scrollWidth;
+      containerScrollLeft.value = element.scrollLeft;
 
       const explicitScrollX = Boolean(props.scroll?.x || props.scroll?.minWidth);
       const calculatedTableWidth = getCalculatedTableWidth();
@@ -1661,6 +1772,8 @@ export default defineComponent({
         hasResizedColumns: hasResizedColumns.value,
         columns: collectColumnMetrics(),
       });
+
+      setAlignPosition(element);
     };
 
     const hasScrollBar = ref(false);
@@ -1709,6 +1822,19 @@ export default defineComponent({
         syncContainerMetrics('state-change');
       },
       { deep: true },
+    );
+
+    watchThrottled(
+      columnWidth,
+      async () => {
+        if (!isVirtualList.value) {
+          return;
+        }
+
+        await nextTick();
+        getVirtualListInstance()?.forceUpdate?.(true);
+      },
+      { deep: true, throttle: 400 },
     );
 
     const spinProps = computed(() =>
@@ -1840,7 +1966,9 @@ export default defineComponent({
     const renderSummary = () => {
       if (summaryData.value && summaryData.value.length > 0) {
         return (
-          <tfoot>{summaryData.value.map((data, index) => renderSummaryRow(data, index))}</tfoot>
+          <div class={`${prefixCls}-tfoot-content`}>
+            {summaryData.value.map((data, index) => renderSummaryRow(data, index))}
+          </div>
         );
       }
       return null;
@@ -2091,6 +2219,16 @@ export default defineComponent({
       );
     };
 
+    const renderVirtualRecord = (record: TableDataWithRaw, index: number) => {
+      const hasSubData = flattenData.value.some((item) => Boolean(item.hasSubtree));
+
+      return (
+        <div class={`${prefixCls}-virtual-item`}>
+          {renderRecord(record, index, { indentSize: hasSubData ? 20 : 0 })}
+        </div>
+      );
+    };
+
     const renderHeader = () => (
       <Thead v-slots={{ thead: slots.thead }}>
         {groupColumns.value.map((row, index) => (
@@ -2144,61 +2282,38 @@ export default defineComponent({
       if (splitTable.value) {
         const top = isNumber(props.stickyHeader) ? `${props.stickyHeader}px` : undefined;
 
-        const mergeOuterClass = [scrollbarProps.value?.outerClass];
-        if (props.stickyHeader) {
-          mergeOuterClass.push(`${prefixCls}-header-sticky`);
-        }
-
-        const mergeOuterStyle = { height: 'auto', top, ...scrollbarProps.value?.outerStyle };
-
-        const Component = displayScrollbar.value ? Scrollbar : 'div';
+        const BodyComponent = displayScrollbar.value ? Scrollbar : 'div';
         const bodyContent =
           isVirtualList.value && flattenData.value.length ? (
-            <VirtualList
-              v-slots={{
-                before: () => (
-                  <ColGroup
-                    dataColumns={dataColumns.value}
-                    operations={operations.value}
-                    columnWidth={resolvedColumnWidth.value}
-                  />
-                ),
-                item: ({ item, index }: { item: TableDataWithRaw; index: number }) =>
-                  renderRecord(item, index),
-              }}
-              ref={(ins: any) => {
-                _virtualComRef.value = ins;
-                if (ins?.$el) {
-                  tbodyRef.value = ins.$el;
-                }
-                if (ins?.scrollerRef?.$el instanceof HTMLElement) {
-                  virtualRef.value = ins.scrollerRef.$el;
-                } else if (ins?.viewportRef) {
-                  virtualRef.value = ins.viewportRef;
-                }
-              }}
-              class={`${prefixCls}-body`}
-              items={flattenData.value}
-              keyField="key"
-              component={{
-                list: 'table',
-                content: 'tbody',
-              }}
-              listAttrs={{
-                class: `${prefixCls}-element`,
-                style: tableStyle.value,
-                cellpadding: 0,
-                cellspacing: 0,
-              }}
-              contentAttrs={{
-                class: `${prefixCls}-virtual-row vue-recycle-scroller__item-view`,
-              }}
-              paddingPosition="list"
-              height="auto"
-              {...resolvedVirtualListProps.value}
-            />
+            <div class={`${prefixCls}-element`} style={elementStyle.value}>
+              <div class={`${prefixCls}-tbody`}>
+                <VirtualList
+                  v-slots={{
+                    item: ({ item, index }: { item: TableDataWithRaw; index: number }) =>
+                      renderVirtualRecord(item, index),
+                  }}
+                  ref={(ins: any) => {
+                    _virtualComRef.value = ins;
+                    if (ins?.$el) {
+                      tbodyRef.value = ins.$el;
+                    }
+                    if (ins?.scrollerRef?.$el instanceof HTMLElement) {
+                      virtualRef.value = ins.scrollerRef.$el;
+                    } else if (ins?.viewportRef) {
+                      virtualRef.value = ins.viewportRef;
+                    }
+                  }}
+                  class={`${prefixCls}-body`}
+                  items={flattenData.value}
+                  keyField="key"
+                  height="auto"
+                  onScroll={onTbodyScroll}
+                  {...tableVirtualListProps.value}
+                />
+              </div>
+            </div>
           ) : (
-            <Component
+            <BodyComponent
               ref={tbodyComRef}
               class={`${prefixCls}-body`}
               style={{
@@ -2210,64 +2325,35 @@ export default defineComponent({
                     ...scrollbarProps.value,
                   }
                 : undefined)}
+              onScroll={onTbodyScroll}
             >
-              <table
-                class={`${prefixCls}-element`}
-                style={tableStyle.value}
-                cellpadding={0}
-                cellspacing={0}
-              >
-                {flattenData.value.length !== 0 && (
-                  <ColGroup
-                    dataColumns={dataColumns.value}
-                    operations={operations.value}
-                    columnWidth={resolvedColumnWidth.value}
-                  />
-                )}
+              <div class={`${prefixCls}-element`} style={elementStyle.value}>
                 {renderBody()}
-              </table>
-            </Component>
+              </div>
+            </BodyComponent>
           );
 
         return (
           <>
             {props.showHeader && (
-              <Component
-                ref={theadComRef}
+              <div
+                ref={theadRef}
                 class={[
                   `${prefixCls}-header`,
                   {
-                    [`${prefixCls}-header-sticky`]: props.stickyHeader && !displayScrollbar.value,
+                    [`${prefixCls}-header-sticky`]: props.stickyHeader,
                   },
                 ]}
                 style={{
-                  overflowY: hasScrollBar.value ? 'scroll' : undefined,
-                  top: !displayScrollbar.value ? top : undefined,
+                  overflowX: 'hidden',
+                  overflowY: hasScrollBar.value && !displayScrollbar.value ? 'scroll' : 'hidden',
+                  top,
                 }}
-                {...(scrollbar.value
-                  ? {
-                      hide: flattenData.value.length !== 0,
-                      disableVertical: true,
-                      ...scrollbarProps.value,
-                      outerClass: mergeOuterClass,
-                      outerStyle: mergeOuterStyle,
-                    }
-                  : undefined)}
               >
-                <table
-                  class={`${prefixCls}-element`}
-                  style={tableStyle.value}
-                  cellpadding={0}
-                  cellspacing={0}
-                >
-                  <ColGroup
-                    dataColumns={dataColumns.value}
-                    operations={operations.value}
-                    columnWidth={resolvedColumnWidth.value}
-                  />
+                <div class={`${prefixCls}-element`} style={elementStyle.value}>
                   {renderHeader()}
-                </table>
-              </Component>
+                </div>
+              </div>
             )}
             {bodyContent}
             {summaryData.value && summaryData.value.length > 0 && (
@@ -2278,19 +2364,9 @@ export default defineComponent({
                   overflowY: hasScrollBar.value ? 'scroll' : 'hidden',
                 }}
               >
-                <table
-                  class={`${prefixCls}-element`}
-                  style={tableStyle.value}
-                  cellpadding={0}
-                  cellspacing={0}
-                >
-                  <ColGroup
-                    dataColumns={dataColumns.value}
-                    operations={operations.value}
-                    columnWidth={resolvedColumnWidth.value}
-                  />
+                <div class={`${prefixCls}-element`} style={elementStyle.value}>
                   {renderSummary()}
-                </table>
+                </div>
               </div>
             )}
             {renderAppend()}
@@ -2300,21 +2376,11 @@ export default defineComponent({
 
       return (
         <>
-          <table
-            class={`${prefixCls}-element`}
-            cellpadding={0}
-            cellspacing={0}
-            style={tableStyle.value}
-          >
-            <ColGroup
-              dataColumns={dataColumns.value}
-              operations={operations.value}
-              columnWidth={resolvedColumnWidth.value}
-            />
+          <div class={`${prefixCls}-element`} style={elementStyle.value}>
             {props.showHeader && renderHeader()}
             {renderBody()}
             {summaryData.value && summaryData.value.length > 0 && renderSummary()}
-          </table>
+          </div>
           {renderAppend()}
         </>
       );
@@ -2323,12 +2389,12 @@ export default defineComponent({
     const renderTable = (content?: Slot) => {
       const style = props.scroll?.maxHeight ? { maxHeight: props.scroll.maxHeight } : undefined;
 
-      const Component = displayScrollbar.value ? Scrollbar : 'div';
+      const ContentComponent = !splitTable.value && displayScrollbar.value ? Scrollbar : 'div';
 
       return (
         <>
           <div class={[`${prefixCls}-container`, tableCls.value]}>
-            <Component
+            <ContentComponent
               ref={contentComRef}
               class={[
                 `${prefixCls}-content`,
@@ -2337,18 +2403,19 @@ export default defineComponent({
                 },
               ]}
               style={style}
-              {...(scrollbar.value
+              {...(!splitTable.value && scrollbar.value
                 ? { outerStyle: { height: '100%' }, ...scrollbarProps.value }
                 : undefined)}
+              onScroll={handleScroll}
             >
               {content ? (
-                <table class={`${prefixCls}-element`} cellpadding={0} cellspacing={0}>
+                <div class={`${prefixCls}-element`} style={elementStyle.value}>
                   {content()}
-                </table>
+                </div>
               ) : (
                 renderContent()
               )}
-            </Component>
+            </ContentComponent>
           </div>
           {slots.footer && <div class={`${prefixCls}-footer`}>{slots.footer()}</div>}
         </>

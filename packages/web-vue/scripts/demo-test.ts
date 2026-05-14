@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils';
+import { nextTick } from 'vue';
 import type { Component } from 'vue';
 
 import { globSync } from 'glob';
@@ -25,7 +26,12 @@ function getSnapshotName(component: string, demoName: string) {
   return demoName;
 }
 
-function demoTest(component: string) {
+type DemoTestOptions = {
+  attachTo?: HTMLElement | (() => HTMLElement | null | undefined);
+  waitTicks?: number;
+};
+
+function demoTest(component: string, options: DemoTestOptions = {}) {
   describe(`<${component}> demo:`, () => {
     const files = globSync(`src/components/generated/${component}/*.vue`, {
       cwd: docsRoot,
@@ -43,8 +49,16 @@ function demoTest(component: string) {
       }
 
       const demo = await loadDemo();
-      const wrapper = mount(demo.default);
+      const attachTarget =
+        typeof options.attachTo === 'function' ? options.attachTo() : options.attachTo;
+      const wrapper = mount(demo.default, attachTarget ? { attachTo: attachTarget } : undefined);
+
+      for (let index = 0; index < (options.waitTicks ?? 0); index += 1) {
+        await nextTick();
+      }
+
       expect(wrapper.html()).toMatchSnapshot();
+      wrapper.unmount();
     });
   });
 }

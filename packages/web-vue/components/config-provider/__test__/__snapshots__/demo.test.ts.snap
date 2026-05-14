@@ -153,48 +153,43 @@ exports[`<config-provider> demo: > render [empty] correctly 1`] = `
           <div class="sd-scrollbar sd-scrollbar-type-embed" style="height: 100%;">
             <div class="sd-scrollbar-container sd-table-content sd-table-content-scroll-x" data-overlayscrollbars="host">
               <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
-                <table class="sd-table-element" cellpadding="0" cellspacing="0">
-                  <colgroup>
-                    <col>
-                    <col>
-                    <col>
-                    <col>
-                  </colgroup>
-                  <thead>
-                    <tr class="sd-table-tr">
-                      <th class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Name</span>
+                <div class="sd-table-element" style="--sd-table-grid-template: minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
+                  <div class="sd-table-thead">
+                    <div class="sd-table-tr">
+                      <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Name</span>
                         <!---->
                         <!----></span>
                         <!---->
                         <!---->
-                      </th>
-                      <th class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Salary</span>
+                      </div>
+                      <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Salary</span>
                         <!---->
                         <!----></span>
                         <!---->
                         <!---->
-                      </th>
-                      <th class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Address</span>
+                      </div>
+                      <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Address</span>
                         <!---->
                         <!----></span>
                         <!---->
                         <!---->
-                      </th>
-                      <th class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Email</span>
+                      </div>
+                      <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Email</span>
                         <!---->
                         <!----></span>
                         <!---->
                         <!---->
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="sd-table-tr sd-table-tr-empty">
-                      <td class="sd-table-td" colspan="4"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content"><div class="sd-empty"><div class="sd-empty-image"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-empty" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M24 5v6m7 1 4-4m-18 4-4-4m28.5 22H28s-1 3-4 3-4-3-4-3H6.5M40 41H8a2 2 0 0 1-2-2v-8.46a2 2 0 0 1 .272-1.007l6.15-10.54A2 2 0 0 1 14.148 18H33.85a2 2 0 0 1 1.728.992l6.149 10.541A2 2 0 0 1 42 30.541V39a2 2 0 0 1-2 2Z"></path></svg></div><div class="sd-empty-description">table no data!</div></div></span></span></td>
-                    </tr>
-                  </tbody>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="sd-table-tbody">
+                    <div class="sd-table-tr sd-table-tr-empty">
+                      <div class="sd-table-td" style="grid-column: span 4;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content"><div class="sd-empty"><div class="sd-empty-image"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-empty" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M24 5v6m7 1 4-4m-18 4-4-4m28.5 22H28s-1 3-4 3-4-3-4-3H6.5M40 41H8a2 2 0 0 1-2-2v-8.46a2 2 0 0 1 .272-1.007l6.15-10.54A2 2 0 0 1 14.148 18H33.85a2 2 0 0 1 1.728.992l6.149 10.541A2 2 0 0 1 42 30.541V39a2 2 0 0 1-2 2Z"></path></svg></div><div class="sd-empty-description">table no data!</div></div></span></span></div>
+                    </div>
+                  </div>
                   <!---->
-                </table>
+                </div>
+                <!---->
               </div>
               <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
                 <div class="os-scrollbar-track">

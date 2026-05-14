@@ -124,7 +124,7 @@ export default defineComponent({
           <ul class={`${prefixCls}-filters-list`}>
             {filterable?.filters?.map((item, index) => {
               return (
-                <li class={`${prefixCls}-filters-item`} key={index}>
+                <li class={`${prefixCls}-filters-item`} key={`${item.value}-${index}`}>
                   {isMultipleFilter.value ? (
                     <Checkbox
                       value={item.value}
@@ -238,8 +238,8 @@ export default defineComponent({
       return props.column.title;
     };
 
-    const renderCell = () => (
-      <span class={cellCls.value} onClick={hasSorter.value ? handleClickSorter : undefined}>
+    const renderCellContent = () => (
+      <>
         {props.column?.ellipsis && props.column?.tooltip ? (
           <AutoTooltip class={`${prefixCls}-th-title`} tooltipProps={tooltipProps.value}>
             {renderTitle()}
@@ -283,15 +283,32 @@ export default defineComponent({
           </span>
         )}
         {filterIconAlignLeft.value && renderFilter()}
-      </span>
+      </>
     );
 
+    const renderCell = () => {
+      if (hasSorter.value) {
+        return (
+          <button type="button" class={cellCls.value} onClick={handleClickSorter}>
+            {renderCellContent()}
+          </button>
+        );
+      }
+
+      return <span class={cellCls.value}>{renderCellContent()}</span>;
+    };
+
     const style = computed(() => {
+      const colSpan = props.column.colSpan ?? 1;
+      const rowSpan = props.column.rowSpan ?? 1;
+
       return {
         ...getStyle(props.column, {
           dataColumns: props.dataColumns,
           operations: props.operations,
         }),
+        ...(colSpan > 1 ? { gridColumn: `span ${colSpan}` } : undefined),
+        ...(rowSpan > 1 ? { gridRow: `span ${rowSpan}` } : undefined),
         ...props.column?.cellStyle,
         ...props.column?.headerCellStyle,
       };
@@ -316,18 +333,13 @@ export default defineComponent({
     };
 
     return () => {
-      const colSpan = props.column.colSpan ?? 1;
-      const rowSpan = props.column.rowSpan ?? 1;
-
       return createVNode(
         slots.th?.({
           column: props.column,
-        })[0] ?? 'th',
+        })[0] ?? 'div',
         {
           class: cls.value,
           style: style.value,
-          colspan: colSpan > 1 ? colSpan : undefined,
-          rowspan: rowSpan > 1 ? rowSpan : undefined,
         },
         {
           default: () => [

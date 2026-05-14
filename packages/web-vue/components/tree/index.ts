@@ -7,14 +7,14 @@ import _Tree from './tree.vue';
 
 export type { TreeNodeData, TreeFieldNames } from './interface';
 
-const Tree: SFCWithInstall<typeof _Tree> = Object.assign(_Tree, {
+const Tree = Object.assign(_Tree, {
   install: (app: App, options?: SDOptions) => {
     setGlobalConfig(app, options);
     const componentPrefix = getComponentPrefix(options);
 
     app.component(componentPrefix + _Tree.name, _Tree);
   },
-});
+}) as SFCWithInstall<typeof _Tree>;
 
 export type TreeInstance = InstanceType<typeof _Tree>;
 

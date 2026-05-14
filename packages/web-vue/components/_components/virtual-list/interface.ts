@@ -50,6 +50,7 @@ interface VirtualListCommonProps<TItem = unknown> {
   estimatedSize?: number;
   component?: keyof HTMLElementTagNameMap | Record<string, unknown>;
   listAttrs?: Record<string, unknown>;
+  contentWrapperAttrs?: Record<string, unknown>;
   contentAttrs?: Record<string, unknown>;
   listStyle?: CSSProperties;
   paddingPosition?: 'content' | 'list';

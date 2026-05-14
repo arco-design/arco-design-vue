@@ -38,7 +38,7 @@ export default defineComponent({
         slots.tr?.({
           rowIndex: props.rowIndex,
           record: props.record?.raw,
-        })[0] ?? 'tr',
+        })[0] ?? 'div',
         { class: cls.value },
         {
           default: slots.default,

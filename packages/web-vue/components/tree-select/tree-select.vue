@@ -937,5 +937,5 @@
         },
       };
     },
-  }) as TreeSelectComponent;
+  }) as unknown as TreeSelectComponent;
 </script>

@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { h, nextTick, reactive, ref } from 'vue';
 
+import VirtualList from '../../_components/virtual-list';
 import { useColumnResize } from '../hooks/use-column-resize';
 import { TableChangeExtra, TableColumnData, TableData } from '../interface';
 import Table from '../table';
@@ -149,13 +150,131 @@ describe('Table', () => {
 
     expect(wrapper.find('.sd-table-body.sd-scrollbar').exists()).toBe(true);
     expect(wrapper.find('.sd-table-body .vue-recycle-scroller__item-view').exists()).toBe(true);
-    expect(wrapper.findAll('.sd-table-body .sd-table-element > tbody').length).toBeLessThan(20);
+    expect(
+      wrapper.findAll('.sd-table-body .sd-table-element > .sd-table-tbody').length,
+    ).toBeLessThan(20);
 
     await wrapper.find('.sd-table-expand-btn').trigger('click');
     await nextTick();
     await nextTick();
 
     expect(wrapper.text()).toContain('展开内容');
+  });
+
+  test('table virtual list does not write virtual padding to table element', async () => {
+    const data = Array.from({ length: 80 }, (_, index) => ({
+      key: String(index + 1),
+      name: `Jane Doe${index + 1}`,
+      age: index + 1,
+    }));
+
+    const wrapper = mount(Table as any, {
+      attachTo: document.body,
+      props: {
+        columns: JSONCopy(demoColumns),
+        data,
+        scroll: {
+          y: 320,
+        },
+        virtualListProps: {
+          estimatedSize: 32,
+          buffer: 20,
+        },
+      },
+    });
+
+    await nextTick();
+    await nextTick();
+
+    const element = wrapper.find('.sd-table-element');
+    const tbody = wrapper.find('.sd-table-tbody');
+
+    expect(element.exists()).toBe(true);
+    expect(tbody.exists()).toBe(true);
+    expect(element.attributes('style') ?? '').not.toContain('padding-top');
+    expect(element.attributes('style') ?? '').not.toContain('padding-bottom');
+    expect(tbody.find('.sd-table-body .vue-recycle-scroller__item-view').exists()).toBe(true);
+  });
+
+  test('table column resize forces virtual list rerender', async () => {
+    const data = Array.from({ length: 80 }, (_, index) => ({
+      key: String(index + 1),
+      name: `Jane Doe${index + 1}`,
+      age: index + 1,
+    }));
+
+    const columns: TableColumnData[] = [
+      {
+        title: 'Name',
+        dataIndex: 'name',
+        width: 120,
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+        width: 120,
+      },
+    ];
+
+    const wrapper = mount(Table as any, {
+      attachTo: document.body,
+      props: {
+        columns,
+        data,
+        columnResizable: true,
+        scroll: {
+          y: 320,
+        },
+        virtualListProps: {
+          estimatedSize: 32,
+          buffer: 20,
+        },
+      },
+    });
+
+    await nextTick();
+    await nextTick();
+
+    const virtualList = wrapper.findComponent(VirtualList);
+    const forceUpdate = vi.spyOn(
+      virtualList.vm.$.exposed as { forceUpdate: (clear?: boolean) => void },
+      'forceUpdate',
+    );
+
+    const headerCell = wrapper.find('.sd-table-th');
+    const headerCellElement = headerCell.element as HTMLElement;
+    headerCellElement.getBoundingClientRect = () => ({
+      x: 0,
+      y: 0,
+      top: 0,
+      left: 0,
+      bottom: 40,
+      right: 120,
+      width: 120,
+      height: 40,
+      toJSON: () => ({}),
+    });
+
+    const handle = wrapper.find('.sd-table-column-handle');
+    (handle.element as HTMLElement & { setPointerCapture?: () => void }).setPointerCapture =
+      vi.fn();
+
+    handle.element.dispatchEvent(
+      new PointerEvent('pointerdown', {
+        bubbles: true,
+        clientX: 120,
+        pointerId: 1,
+      }),
+    );
+
+    document.dispatchEvent(new PointerEvent('pointermove', { clientX: 150 }));
+
+    await nextTick();
+    await nextTick();
+
+    expect(forceUpdate).toHaveBeenCalledWith(true);
+
+    document.dispatchEvent(new PointerEvent('pointerup'));
   });
 
   test('table supports function rowKey for selection and expansion', async () => {
@@ -187,7 +306,7 @@ describe('Table', () => {
       },
     });
 
-    const checkbox = wrapper.find('tbody input[type="checkbox"]');
+    const checkbox = wrapper.find('.sd-table-tbody input[type="checkbox"]');
     expect(checkbox.exists()).toBe(true);
 
     await checkbox.setValue(true);
@@ -216,6 +335,76 @@ describe('Table', () => {
 
     expect(wrapper.find('.sd-table-append').exists()).toBe(true);
     expect(wrapper.find('.append-probe').text()).toBe('append content');
+  });
+
+  test('table syncs header scroll position from body and keeps fixed column classes', async () => {
+    const columns: TableColumnData[] = [
+      {
+        title: 'Name',
+        dataIndex: 'name',
+        width: 140,
+        fixed: 'left',
+      },
+      {
+        title: 'Age',
+        dataIndex: 'age',
+        width: 180,
+      },
+      {
+        title: 'Address',
+        dataIndex: 'address',
+        width: 180,
+      },
+      {
+        title: 'Email',
+        dataIndex: 'email',
+        width: 200,
+        fixed: 'right',
+      },
+    ];
+
+    const data = Array.from({ length: 10 }, (_, index) => ({
+      key: String(index + 1),
+      name: `Jane Doe${index + 1}`,
+      age: index + 1,
+      address: `Road ${index + 1}`,
+      email: `jane${index + 1}@example.com`,
+    }));
+
+    const wrapper = mount(Table as any, {
+      attachTo: document.body,
+      props: {
+        columns,
+        data,
+        scrollbar: false,
+        scroll: {
+          x: 700,
+          y: 240,
+        },
+      },
+    });
+
+    await nextTick();
+
+    const body = wrapper.find('.sd-table-body').element as HTMLElement;
+    const header = wrapper.find('.sd-table-header').element as HTMLElement;
+
+    Object.defineProperty(body, 'clientWidth', {
+      configurable: true,
+      value: 240,
+    });
+    Object.defineProperty(body, 'scrollWidth', {
+      configurable: true,
+      value: 700,
+    });
+
+    body.scrollLeft = 180;
+    body.dispatchEvent(new Event('scroll'));
+    await nextTick();
+
+    expect(header.scrollLeft).toBe(180);
+    expect(wrapper.find('.sd-table-col-fixed-left').exists()).toBe(true);
+    expect(wrapper.find('.sd-table-col-fixed-right').exists()).toBe(true);
   });
 
   test('column resize calculates width from mouse position', () => {
