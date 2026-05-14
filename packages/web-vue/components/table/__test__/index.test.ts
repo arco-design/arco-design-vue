@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
-import { nextTick, reactive, ref } from 'vue';
+import { h, nextTick, reactive, ref } from 'vue';
 
+import { useColumnResize } from '../hooks/use-column-resize';
 import { TableChangeExtra, TableColumnData, TableData } from '../interface';
 import Table from '../table';
 
@@ -115,5 +116,128 @@ describe('Table', () => {
     expect(testSortRes.currentDataSource.length).toBe(5);
     expect(testSortRes.currentDataSource[0].key).toBe('5');
     expect(testSortRes.currentDataSource[4].key).toBe('1');
+  });
+
+  test('table virtual list keeps expand rows and uses scrollbar', async () => {
+    const data = Array.from({ length: 40 }, (_, index) => ({
+      key: String(index + 1),
+      name: `Jane Doe${index + 1}`,
+      age: index + 1,
+      expand: `展开内容 ${index + 1}`,
+    }));
+
+    const wrapper = mount(Table as any, {
+      attachTo: document.body,
+      props: {
+        columns: JSONCopy(demoColumns),
+        data,
+        expandable: {
+          title: 'Expand',
+        },
+        scroll: {
+          y: 320,
+        },
+        virtualListProps: {
+          estimatedSize: 32,
+          buffer: 20,
+        },
+      },
+    });
+
+    await nextTick();
+    await nextTick();
+
+    expect(wrapper.find('.sd-table-body.sd-scrollbar').exists()).toBe(true);
+    expect(wrapper.find('.sd-table-body .vue-recycle-scroller__item-view').exists()).toBe(true);
+    expect(wrapper.findAll('.sd-table-body .sd-table-element > tbody').length).toBeLessThan(20);
+
+    await wrapper.find('.sd-table-expand-btn').trigger('click');
+    await nextTick();
+    await nextTick();
+
+    expect(wrapper.text()).toContain('展开内容');
+  });
+
+  test('table supports function rowKey for selection and expansion', async () => {
+    const data = [
+      {
+        id: 'row-1',
+        name: 'Jane Doe1',
+        age: 1,
+        expand: '展开内容 row-1',
+      },
+      {
+        id: 'row-2',
+        name: 'Jane Doe2',
+        age: 2,
+        expand: '展开内容 row-2',
+      },
+    ];
+
+    const wrapper = mount(Table as any, {
+      attachTo: document.body,
+      props: {
+        columns: JSONCopy(demoColumns),
+        data,
+        rowKey: (record: { id: string }) => record.id,
+        rowSelection: {},
+        expandable: {
+          title: 'Expand',
+        },
+      },
+    });
+
+    const checkbox = wrapper.find('tbody input[type="checkbox"]');
+    expect(checkbox.exists()).toBe(true);
+
+    await checkbox.setValue(true);
+
+    expect(wrapper.emitted('select')?.[0]?.[1]).toBe('row-1');
+    expect(wrapper.emitted('selectionChange')?.[0]?.[0]).toEqual(['row-1']);
+
+    await wrapper.find('.sd-table-expand-btn').trigger('click');
+    await nextTick();
+
+    expect(wrapper.emitted('expand')?.[0]?.[0]).toBe('row-1');
+    expect(wrapper.text()).toContain('展开内容 row-1');
+  });
+
+  test('table renders append slot after body content', () => {
+    const wrapper = mount(Table as any, {
+      props: {
+        columns: JSONCopy(demoColumns),
+        data: JSONCopy(demoData),
+        pagination: false,
+      },
+      slots: {
+        append: () => h('div', { class: 'append-probe' }, 'append content'),
+      },
+    });
+
+    expect(wrapper.find('.sd-table-append').exists()).toBe(true);
+    expect(wrapper.find('.append-probe').text()).toBe('append content');
+  });
+
+  test('column resize calculates width from mouse position', () => {
+    const emit = vi.fn();
+    const thRefs = ref({
+      age: {
+        getBoundingClientRect: () => ({ x: 200, width: 120 }),
+      } as HTMLElement,
+    });
+
+    const { handleThMouseDown, columnWidth } = useColumnResize(thRefs, emit as never);
+
+    handleThMouseDown('age', {
+      clientX: 320,
+      preventDefault: () => {},
+      stopPropagation: () => {},
+      target: { setPointerCapture: () => {} },
+      pointerId: 1,
+    } as unknown as PointerEvent);
+
+    document.dispatchEvent(new PointerEvent('pointermove', { clientX: 320 }));
+
+    expect(columnWidth.age).toBe(120);
   });
 });

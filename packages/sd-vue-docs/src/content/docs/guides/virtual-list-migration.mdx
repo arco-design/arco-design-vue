@@ -5,7 +5,7 @@ description: 虚拟列表能力迁移到 vue-virtual-scroller 后的参数、方
 
 ## 背景
 
-当前组件库中除 `Table` 以外的虚拟列表能力，已经统一切换到 `vue-virtual-scroller`，并继续复用组件库内置的 `Scrollbar`，不再依赖系统滚动条。
+当前组件库中的虚拟列表能力，已经统一切换到 `vue-virtual-scroller`，并继续复用组件库内置的 `Scrollbar`，不再依赖系统滚动条。
 
 这次迁移的目标是：
 
@@ -14,7 +14,7 @@ description: 虚拟列表能力迁移到 vue-virtual-scroller 后的参数、方
 - 同时暴露底层 scroller 的常用方法
 - 支持固定高度 `RecycleScroller`
 - 支持动态高度 `DynamicScroller`
-- `Table` 暂时跳过，本次不纳入新语义改造
+- `Table` 也接入共享 `VirtualList`，并补齐固定高度、估算高度与动态高度三类常见表格场景
 
 ## 适用组件
 
@@ -26,8 +26,9 @@ description: 虚拟列表能力迁移到 vue-virtual-scroller 后的参数、方
 - `Tree`
 - `TreeSelect`
 - `Cascader`
+- `Table`
 
-`Table` 仍走旧实现兼容路径，后续重写时再单独处理。
+其中 `Table` 会在内部把表格行包装进共享虚拟列表的标准渲染路径，并继续兼容固定列、勾选列、展开行与组件库 `Scrollbar` 的组合使用。
 
 ## 新的 VirtualListProps
 
@@ -90,6 +91,7 @@ description: 虚拟列表能力迁移到 vue-virtual-scroller 后的参数、方
 | `Cascader` | 固定高度，默认 `itemSize: 36` | 级联面板项当前视觉高度固定为 `36px` |
 | `Tree` | 固定高度，默认 `itemSize` 跟随 `size` | `mini / small / medium / large` 分别为 `24 / 28 / 32 / 36` |
 | `TreeSelect` | 固定高度，默认 `itemSize` 跟随内部 `Tree size` | 默认跟随树节点高度；如果你需要动态树节点高度，请显式传 `minItemSize` |
+| `Table` | 推荐显式传 `height`，并优先搭配 `estimatedSize: 42` | 行高完全一致时改用 `itemSize`；存在展开内容或更长文本时改用 `minItemSize` |
 
 也就是说：
 
@@ -174,7 +176,13 @@ description: 虚拟列表能力迁移到 vue-virtual-scroller 后的参数、方
 
 ### Table
 
-`Table` 本次明确跳过，不切到新语义。相关旧 props 仍保留在旧实现兼容路径里，等后续重写 `Table` 时再重新定义。
+`Table` 现在也走共享 `VirtualList` 的标准渲染路径。对业务侧来说，最直接的迁移建议是：
+
+- 需要常规虚拟表格时，优先使用 `height + estimatedSize`
+- 所有行高一致时，直接改用 `itemSize`
+- 行高可能变化、或需要结合展开内容时，改用 `minItemSize`
+
+文档中的 `Table` 虚拟列表示例同时覆盖了固定列、勾选列、展开行、组件库 `scrollbar` 和 `sticky-header` 的组合写法，可直接作为迁移参考。
 
 ## 迁移建议
 

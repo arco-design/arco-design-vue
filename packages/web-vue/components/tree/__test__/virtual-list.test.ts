@@ -104,4 +104,64 @@ describe('Tree virtual list', () => {
       'Option 3',
     ]);
   });
+
+  test('should keep dynamic rows contiguous after collapsing and expanding again', async () => {
+    const wrapper = mount(Tree, {
+      attachTo: document.body,
+      props: {
+        data: treeOptions,
+        virtualListProps: {
+          height: 240,
+          minItemSize: 32,
+        },
+      },
+      slots: {
+        title: ({ title, key }: { title: string; key: string }) => {
+          if (!String(key).startsWith('option-')) {
+            return title;
+          }
+
+          return `${title} - dynamic node content used to verify relayout after toggling.`;
+        },
+      },
+    });
+
+    await nextTick();
+    await nextTick();
+
+    const switchers = wrapper.findAll('.sd-tree-node-switcher');
+    await switchers[0].trigger('click');
+    await nextTick();
+    await nextTick();
+
+    await switchers[0].trigger('click');
+    await nextTick();
+    await nextTick();
+
+    await switchers[0].trigger('click');
+    await nextTick();
+    await nextTick();
+
+    const visibleTitles = wrapper
+      .findAll('.vue-recycle-scroller__item-view')
+      .map((view) => {
+        const node = view.find('.sd-tree-node');
+
+        return {
+          label: node.attributes('label'),
+          top: getTranslateY((view.element as HTMLElement).style.transform),
+        };
+      })
+      .filter((item): item is { label: string; top: number } => Boolean(item.label))
+      .sort((left, right) => left.top - right.top)
+      .map((item) => item.label);
+
+    expect(visibleTitles.slice(0, 5)).toEqual([
+      'parent-0',
+      'Option 0',
+      'Option 1',
+      'Option 2',
+      'Option 3',
+    ]);
+  });
 });

@@ -1,6 +1,50 @@
 <template>
   <div ref="scrollbarHostRef" :class="hostClassNames" :style="containerOuterStyle">
+    <template v-if="isCompatMode">
+      <component
+        :is="mergedCompatComponent.container"
+        ref="viewportRef"
+        :class="`${prefixCls}-scroller`"
+        :style="compatViewportStyle"
+        @scroll="onCompatScroll"
+      >
+        <component
+          :is="mergedCompatComponent.list"
+          v-bind="props.listAttrs"
+          :style="compatListStyle"
+        >
+          <slot name="before" />
+          <component
+            :is="mergedCompatComponent.content"
+            v-for="(item, index) in compatCurrentList"
+            :key="getCompatItemKey(item, compatStart + index)"
+            v-bind="props.contentAttrs"
+            :ref="
+              (element) => setCompatItemRef(getCompatItemKey(item, compatStart + index), element)
+            "
+            :style="getCompatContentStyle(index)"
+          >
+            <slot
+              name="item"
+              :item="item"
+              :index="compatStart + index"
+              :active="true"
+              :item-with-size="undefined"
+            >
+              <slot
+                :item="item"
+                :index="compatStart + index"
+                :active="true"
+                :item-with-size="undefined"
+              />
+            </slot>
+          </component>
+          <slot name="after" />
+        </component>
+      </component>
+    </template>
     <component
+      v-else
       :is="currentScroller"
       ref="scrollerRef"
       :class="`${prefixCls}-scroller`"
@@ -69,6 +113,7 @@
     nextTick,
     onBeforeUnmount,
     onMounted,
+    onUpdated,
     ref,
     PropType,
     watch,
@@ -96,10 +141,16 @@
   } from 'vue-virtual-scroller';
 
   import type { ScrollbarProps } from '../../scrollbar';
-  import type { ScrollIntoViewOptions, ScrollOptions, VirtualListRef } from './interface';
+  import type {
+    ScrollIntoViewOptions,
+    ScrollOptions,
+    VirtualItemKey,
+    VirtualListRef,
+  } from './interface';
 
   import { getPrefixCls } from '../../_utils/global-config';
-  import { isString } from '../../_utils/is';
+  import { isObject, isString } from '../../_utils/is';
+  import { useVirtualSize } from './use-virtual-size';
 
   type ScrollerExpose = RecycleScrollerExposed<any, KeyValue> | DynamicScrollerExposed<any>;
   type ScrollerSlotProps = {
@@ -173,6 +224,38 @@
       itemClass: {
         type: [String, Object, Array] as PropType<ClassValue>,
       },
+      threshold: {
+        type: Number,
+        default: 0,
+      },
+      fixedSize: {
+        type: Boolean,
+        default: false,
+      },
+      estimatedSize: {
+        type: Number,
+        default: undefined,
+      },
+      component: {
+        type: [String, Object] as PropType<keyof HTMLElementTagNameMap | Record<string, unknown>>,
+        default: undefined,
+      },
+      listAttrs: {
+        type: Object as PropType<Record<string, unknown> | undefined>,
+        default: undefined,
+      },
+      contentAttrs: {
+        type: Object as PropType<Record<string, unknown> | undefined>,
+        default: undefined,
+      },
+      listStyle: {
+        type: Object as PropType<CSSProperties | undefined>,
+        default: undefined,
+      },
+      paddingPosition: {
+        type: String as PropType<'content' | 'list'>,
+        default: 'content',
+      },
       scrollbar: {
         type: [Boolean, Object] as PropType<boolean | ScrollbarProps>,
         default: true,
@@ -197,9 +280,20 @@
       const prefixCls = getPrefixCls('virtual-list');
       const scrollbarHostRef = ref<HTMLElement>();
       const scrollerRef = ref<ScrollerExpose>();
+      const viewportRef = ref<HTMLElement>();
+      const compatItemRefs = new Map<VirtualItemKey, HTMLElement>();
       const osInstanceRef = ref<OverlayScrollbarsInstance | null>(null);
       const overlayViewportReadyRef = ref(false);
       const resolvedItems = computed(() => props.items ?? []);
+      const isCompatMode = computed(() => {
+        return Boolean(
+          props.component ||
+          props.listAttrs ||
+          props.contentAttrs ||
+          props.listStyle ||
+          props.paddingPosition !== 'content',
+        );
+      });
 
       const resolvedScrollbarProps = computed<ScrollbarProps | undefined>(() => {
         if (!props.scrollbar) {
@@ -244,8 +338,244 @@
         return typeof props.height === 'number' ? `${props.height}px` : props.height;
       });
 
+      const mergedCompatComponent = computed(() => {
+        if (isObject(props.component)) {
+          return {
+            container: 'div',
+            list: 'div',
+            content: 'div',
+            ...props.component,
+          };
+        }
+
+        return {
+          container: props.component ?? 'div',
+          list: 'div',
+          content: 'div',
+        };
+      });
+
+      const compatFixedSize = computed(() => {
+        return props.fixedSize || typeof props.itemSize === 'number';
+      });
+
+      const compatEstimatedSize = computed(() => {
+        if (props.estimatedSize !== undefined) {
+          return props.estimatedSize;
+        }
+
+        if (typeof props.itemSize === 'number') {
+          return props.itemSize;
+        }
+
+        if (typeof props.minItemSize === 'number') {
+          return props.minItemSize;
+        }
+
+        return undefined;
+      });
+
+      const compatViewportSize = ref(0);
+      const compatResolvedItemSize = computed(() => compatEstimatedSize.value ?? 30);
+      const compatBuffer = computed(() => props.buffer ?? 200);
+      const compatOverscan = computed(() => {
+        const baseItemSize = Math.max(compatResolvedItemSize.value, 1);
+        return Math.max(Math.ceil(compatBuffer.value / baseItemSize), 0);
+      });
+      const compatVisibleCount = computed(() => {
+        const baseItemSize = Math.max(compatResolvedItemSize.value, 1);
+
+        if (compatViewportSize.value <= 0) {
+          return 1;
+        }
+
+        return Math.max(Math.ceil(compatViewportSize.value / baseItemSize), 1);
+      });
+
+      const getCompatItemKey = (item: unknown, index: number) => {
+        const keyField = props.keyField;
+
+        if (typeof keyField === 'function') {
+          return keyField(item, index) as VirtualItemKey;
+        }
+
+        if (item && typeof item === 'object' && isString(keyField)) {
+          return ((item as Record<string, unknown>)[keyField] ?? index) as VirtualItemKey;
+        }
+
+        return index;
+      };
+
+      const compatDataKeys = computed(() => {
+        return resolvedItems.value.map((item, index) => getCompatItemKey(item, index));
+      });
+
+      const {
+        frontPadding: compatFrontPadding,
+        behindPadding: compatBehindPadding,
+        start: compatStartRef,
+        end: compatEnd,
+        getStartByScroll: getCompatStartByScroll,
+        setItemSize: compatSetItemSize,
+        setStart: setCompatStart,
+        getScrollOffset: getCompatScrollOffset,
+        getItemSize: getCompatItemSize,
+      } = useVirtualSize({
+        dataKeys: compatDataKeys,
+        fixedSize: compatFixedSize,
+        estimatedSize: compatEstimatedSize,
+        overscan: compatOverscan,
+        visibleCount: compatVisibleCount,
+      });
+
+      const compatCurrentList = computed(() => {
+        if (!isCompatMode.value) {
+          return [];
+        }
+
+        if (props.threshold && resolvedItems.value.length <= props.threshold) {
+          return resolvedItems.value;
+        }
+
+        return resolvedItems.value.slice(compatStartRef.value, compatEnd.value);
+      });
+
+      const compatStart = computed(() => {
+        if (props.threshold && resolvedItems.value.length <= props.threshold) {
+          return 0;
+        }
+
+        return compatStartRef.value;
+      });
+
+      const compatViewportStyle = computed<CSSProperties>(() => {
+        const style: CSSProperties = {
+          minHeight: 0,
+        };
+
+        if (resolvedHeightValue.value !== undefined) {
+          const shouldFillHeight =
+            resolvedScrollbarProps.value && resolvedHeightValue.value !== 'auto';
+          style.height = shouldFillHeight ? '100%' : resolvedHeightValue.value;
+        }
+
+        const shouldUseNativeViewport =
+          !resolvedScrollbarProps.value || !overlayViewportReadyRef.value;
+
+        if (shouldUseNativeViewport) {
+          if (props.direction === 'horizontal') {
+            style.overflowX = 'auto';
+            style.overflowY = 'hidden';
+          } else {
+            style.overflowY = 'auto';
+            style.overflowX = 'hidden';
+          }
+        }
+
+        return style;
+      });
+
+      const compatListPaddingStyle = computed<CSSProperties | undefined>(() => {
+        if (props.paddingPosition !== 'list') {
+          return undefined;
+        }
+
+        return {
+          paddingTop: `${compatFrontPadding.value}px`,
+          paddingBottom: `${compatBehindPadding.value}px`,
+        };
+      });
+
+      const compatContentPaddingStyle = computed<CSSProperties | undefined>(() => {
+        if (props.paddingPosition !== 'content') {
+          return undefined;
+        }
+
+        return {
+          paddingTop: `${compatFrontPadding.value}px`,
+          paddingBottom: `${compatBehindPadding.value}px`,
+        };
+      });
+
+      const compatListStyle = computed<CSSProperties | undefined>(() => {
+        if (!props.listStyle && !compatListPaddingStyle.value) {
+          return undefined;
+        }
+
+        return {
+          ...props.listStyle,
+          ...compatListPaddingStyle.value,
+        };
+      });
+
+      const compatContentStyle = computed<CSSProperties | undefined>(() => {
+        return compatContentPaddingStyle.value;
+      });
+
+      const updateCompatItemSize = (key: VirtualItemKey, element: HTMLElement) => {
+        const height = element.getBoundingClientRect().height || element.offsetHeight;
+
+        if (height) {
+          compatSetItemSize(key, height);
+        }
+      };
+
+      const updateCompatItemSizes = () => {
+        compatItemRefs.forEach((element, key) => {
+          updateCompatItemSize(key, element);
+        });
+      };
+
+      const updateCompatViewportSize = () => {
+        if (!isCompatMode.value) {
+          compatViewportSize.value = 0;
+          return;
+        }
+
+        const scrollerElement = getScrollerElement();
+        const nextViewportSize =
+          props.direction === 'horizontal'
+            ? (scrollerElement?.clientWidth ?? 0)
+            : (scrollerElement?.clientHeight ?? 0);
+
+        if (nextViewportSize > 0) {
+          compatViewportSize.value = nextViewportSize;
+        }
+      };
+
+      const setCompatItemRef = (key: VirtualItemKey, value: unknown) => {
+        const element = (value as { $el?: unknown } | null | undefined)?.$el ?? value;
+
+        if (!(element instanceof HTMLElement)) {
+          compatItemRefs.delete(key);
+          return;
+        }
+
+        compatItemRefs.set(key, element);
+        updateCompatItemSize(key, element);
+      };
+
+      const getCompatContentStyle = (index: number): CSSProperties | undefined => {
+        if (props.paddingPosition !== 'content') {
+          return compatContentStyle.value;
+        }
+
+        const style: CSSProperties = {
+          ...compatContentStyle.value,
+        };
+
+        if (index === 0) {
+          style.paddingTop = `${compatFrontPadding.value}px`;
+        }
+        if (index === compatCurrentList.value.length - 1) {
+          style.paddingBottom = `${compatBehindPadding.value}px`;
+        }
+
+        return style;
+      };
+
       const isDynamicScroller = computed(() => {
-        return props.itemSize === undefined;
+        return !isCompatMode.value && props.itemSize === undefined;
       });
 
       const currentScroller = computed<Component>(() => {
@@ -321,6 +651,10 @@
       };
 
       const getScrollerElement = () => {
+        if (isCompatMode.value) {
+          return viewportRef.value ?? null;
+        }
+
         const scroller = scrollerRef.value as { $el?: unknown } | undefined;
         return scroller?.$el instanceof HTMLElement ? scroller.$el : null;
       };
@@ -426,7 +760,9 @@
           resolvedOverlayOptions.value,
           {
             scroll: (_instance, event) => {
-              onScroll(event);
+              if (!isCompatMode.value) {
+                onScroll(event);
+              }
             },
           },
         );
@@ -434,8 +770,17 @@
         overlayViewportReadyRef.value = true;
       };
 
-      onMounted(() => {
+      onMounted(async () => {
+        await nextTick();
+        updateCompatViewportSize();
         void initOverlayScrollbar(false);
+      });
+
+      onUpdated(() => {
+        if (isCompatMode.value) {
+          updateCompatItemSizes();
+          updateCompatViewportSize();
+        }
       });
 
       watch(
@@ -470,6 +815,11 @@
         () => resolvedItems.value,
         async (nextItems, previousItems) => {
           await nextTick();
+
+          if (isCompatMode.value) {
+            updateCompatItemSizes();
+            updateCompatViewportSize();
+          }
 
           resolveOSInstance()?.update(true);
           await waitForLayoutFrame();
@@ -550,6 +900,18 @@
         }
       };
 
+      const onCompatScroll = (ev: Event) => {
+        const target = ev.target as HTMLElement | undefined;
+        if (target) {
+          const nextStart = getCompatStartByScroll(target.scrollTop);
+          if (nextStart !== compatStartRef.value) {
+            setCompatStart(nextStart);
+          }
+        }
+
+        onScroll(ev);
+      };
+
       const onScrollEnd = () => {
         emit('scrollEnd');
         const osInstance = resolveOSInstance();
@@ -609,22 +971,56 @@
       const getScroller = () => scrollerRef.value;
 
       const scrollToItem = (index: number, options?: ScrollToOptions) => {
+        if (isCompatMode.value) {
+          scrollTo({
+            index,
+            align: options?.behavior === 'smooth' ? 'auto' : undefined,
+          });
+          return;
+        }
+
         getScroller()?.scrollToItem(index, options);
       };
 
       const scrollToPosition = (position: number, options?: ScrollToOptions) => {
+        if (isCompatMode.value) {
+          const viewport = getScrollerElement();
+          if (!viewport) {
+            return;
+          }
+
+          if (options?.behavior === 'smooth') {
+            viewport.scrollTo({ top: position, behavior: options.behavior });
+          } else {
+            viewport.scrollTop = position;
+          }
+          return;
+        }
+
         getScroller()?.scrollToPosition(position, options);
       };
 
       const findItemIndex = (offset: number) => {
+        if (isCompatMode.value) {
+          return getCompatStartByScroll(offset);
+        }
+
         return getScroller()?.findItemIndex(offset) ?? -1;
       };
 
       const getItemOffset = (index: number) => {
+        if (isCompatMode.value) {
+          return getCompatScrollOffset(index);
+        }
+
         return getScroller()?.getItemOffset(index) ?? 0;
       };
 
       const getItemSize = (index: number) => {
+        if (isCompatMode.value) {
+          return getCompatItemSize(index);
+        }
+
         if (isDynamicScroller.value) {
           const dynamicScroller = getScroller() as DynamicScrollerExposed<unknown> | undefined;
           if (!dynamicScroller) {
@@ -662,16 +1058,37 @@
       };
 
       const scrollToBottom = () => {
+        if (isCompatMode.value) {
+          const viewport = getScrollerElement();
+          if (!viewport) {
+            return;
+          }
+
+          scrollToPosition(viewport.scrollHeight);
+          return;
+        }
+
         const scroller = getScroller() as DynamicScrollerExposed<unknown> | undefined;
         scroller?.scrollToBottom();
       };
 
       const forceUpdate = (clear?: boolean) => {
+        if (isCompatMode.value) {
+          if (clear) {
+            setCompatStart(0);
+          }
+          return;
+        }
+
         const scroller = getScroller() as DynamicScrollerExposed<unknown> | undefined;
         scroller?.forceUpdate(clear);
       };
 
       const getDynamicItemSize = (item: unknown, index?: number) => {
+        if (isCompatMode.value) {
+          return typeof index === 'number' ? getCompatItemSize(index) : 0;
+        }
+
         const scroller = getScroller() as DynamicScrollerExposed<unknown> | undefined;
         return scroller?.getItemSize(item, index) ?? 0;
       };
@@ -702,6 +1119,21 @@
           return;
         }
 
+        if (isCompatMode.value) {
+          setCompatStart(index - compatOverscan.value);
+          scrollToPosition(getCompatScrollOffset(index), {
+            behavior: options.smooth ? 'smooth' : 'auto',
+          });
+          nextTick(() => {
+            const scrollTop = getCompatScrollOffset(index);
+            const viewport = getScrollerElement();
+            if (viewport && scrollTop !== viewport.scrollTop) {
+              viewport.scrollTop = scrollTop;
+            }
+          });
+          return;
+        }
+
         scrollToItem(index, {
           align: normalizeAlign(options.align),
           smooth: options.smooth,
@@ -726,9 +1158,22 @@
 
       return {
         prefixCls,
+        props,
         hostClassNames,
         scrollbarHostRef,
         scrollerRef,
+        viewportRef,
+        isCompatMode,
+        mergedCompatComponent,
+        compatViewportStyle,
+        compatListStyle,
+        compatContentStyle,
+        compatCurrentList,
+        compatStart,
+        getCompatItemKey,
+        setCompatItemRef,
+        getCompatContentStyle,
+        onCompatScroll,
         currentScroller,
         isDynamicScroller,
         containerOuterStyle,

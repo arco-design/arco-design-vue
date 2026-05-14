@@ -69,6 +69,7 @@
             .join(' ');
 
           return {
+            key: `list-${index}`,
             prefix,
             title: `Virtual list item ${index}`,
             shortDescription,

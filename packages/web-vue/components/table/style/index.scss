@@ -184,10 +184,38 @@ $__less-vars: (
     position: absolute;
     top: 0;
     right: -4px;
-    z-index: 1;
+    z-index: 2;
+    display: flex;
+    align-items: center;
     width: 8px;
     height: 100%;
     cursor: col-resize;
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      width: 2px;
+      height: 0;
+      background-color: $table-color-border;
+      border-radius: 1px;
+      transform: translate(-50%, -50%);
+      transition:
+        height 0.15s ease,
+        background-color 0.15s ease;
+      content: '';
+    }
+
+    &:hover::after {
+      height: 40%;
+      background-color: global.$color-primary-6;
+    }
+  }
+
+  &-th-resizing &-column-handle::after {
+    height: 100%;
+    background-color: global.$color-primary-6;
   }
 
   // spin
@@ -205,6 +233,10 @@ $__less-vars: (
   // footer
   &-footer {
     border-radius: 0 0 $table-border-radius $table-border-radius;
+  }
+
+  &-append {
+    background-color: $table-color-body-background;
   }
 
   // box-shadow of the fixed column on the left
@@ -231,6 +263,10 @@ $__less-vars: (
     margin: 0;
     border-collapse: separate;
     border-spacing: 0;
+  }
+
+  &-virtual-row-table {
+    background-color: $table-color-body-background;
   }
 
   &-th {
@@ -828,6 +864,28 @@ $__less-vars: (
 
   & .#{$table-cls-tr}-draggable {
     cursor: move;
+  }
+
+  // Drop target indicator during row drag
+  & .#{$table-cls-tr}-drop-target {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      top: -1px;
+      right: 0;
+      left: 0;
+      height: 2px;
+      background-color: global.$color-primary-6;
+      border-radius: 1px;
+      content: '';
+      pointer-events: none;
+    }
+  }
+
+  // Row drag transition
+  &-dragging .#{$table-cls-tr} {
+    transition: background-color 0.2s ease;
   }
 
   &-hover {

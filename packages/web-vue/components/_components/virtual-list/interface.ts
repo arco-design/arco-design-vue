@@ -8,7 +8,7 @@ import type {
   ScrollToOptions,
 } from 'vue-virtual-scroller';
 
-import { VNode } from 'vue';
+import type { CSSProperties, VNode } from 'vue';
 
 import type { ScrollbarProps } from '../../scrollbar';
 
@@ -45,6 +45,14 @@ interface VirtualListCommonProps<TItem = unknown> {
   hiddenPosition?: number;
   enabled?: boolean;
   scrollbar?: boolean | ScrollbarProps;
+  threshold?: number;
+  fixedSize?: boolean;
+  estimatedSize?: number;
+  component?: keyof HTMLElementTagNameMap | Record<string, unknown>;
+  listAttrs?: Record<string, unknown>;
+  contentAttrs?: Record<string, unknown>;
+  listStyle?: CSSProperties;
+  paddingPosition?: 'content' | 'list';
 }
 
 export interface VirtualListRecycleProps<TItem = unknown> extends VirtualListCommonProps<TItem> {

@@ -2,6 +2,7 @@
   <div :class="classNames" :style="treeStyle">
     <VirtualList
       v-if="virtualListProps"
+      :key="virtualListKey"
       ref="virtualListRef"
       v-bind="resolvedVirtualListProps"
       :items="visibleTreeNodeList"
@@ -17,11 +18,12 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent, computed, provide, reactive, PropType, toRefs, ref } from 'vue';
+  import { defineComponent, computed, provide, reactive, PropType, toRefs, ref, watch } from 'vue';
 
   import type {
     VirtualListProps,
     ScrollIntoViewOptions,
+    VirtualListRef,
   } from '../_components/virtual-list/interface';
   import type {
     TreeFieldNames,
@@ -475,16 +477,6 @@
         },
         `${prefixCls}-size-${size.value}`,
       ]);
-      const isDynamicVirtualList = computed(() => {
-        if (!virtualListProps.value) {
-          return false;
-        }
-
-        return (
-          virtualListProps.value.itemSize === undefined &&
-          virtualListProps.value.minItemSize !== undefined
-        );
-      });
       const resolvedVirtualListProps = computed<VirtualListProps | undefined>(() => {
         if (!virtualListProps.value) {
           return undefined;
@@ -515,7 +507,7 @@
           return animation.value;
         }
 
-        return animation.value && isDynamicVirtualList.value;
+        return false;
       });
       const treeStyle = computed(() => {
         if (!virtualListProps.value || virtualListProps.value.height !== undefined) {
@@ -527,6 +519,9 @@
           minHeight: 0,
         };
       });
+      const virtualListRef = ref<VirtualListRef | null>(null);
+      const virtualListVersion = ref(0);
+      const virtualListKey = computed(() => `tree-virtual-list-${virtualListVersion.value}`);
 
       const switcherIcon = usePickSlots(slots, 'switcher-icon');
       const loadingIcon = usePickSlots(slots, 'loading-icon');
@@ -616,13 +611,24 @@
         }),
       );
 
+      watch(
+        () => expandedKeys.value.join(','),
+        () => {
+          if (!virtualListProps.value || enableVirtualExpandAnimation.value) {
+            return;
+          }
+
+          virtualListVersion.value += 1;
+        },
+      );
+
       const currentExpandKeys = ref<TreeNodeKey[]>([]);
 
       const visibleTreeNodeList = computed(() => {
         const expandedKeysSet = new Set(expandedKeys.value);
         const currentExpandKeysSet = new Set(currentExpandKeys.value);
 
-        return flattenTreeData.value.filter((node) => {
+        const filteredNodeList = flattenTreeData.value.filter((node) => {
           const passFilter =
             !filterTreeNode || !filterTreeNode.value || filterTreeNode?.value(node.treeNodeData);
 
@@ -636,6 +642,20 @@
 
           return isRoot || isVisibleNode;
         });
+
+        const uniqueNodeList: Node[] = [];
+        const seenNodeKeys = new Set<TreeNodeKey>();
+
+        filteredNodeList.forEach((node) => {
+          if (seenNodeKeys.has(node.key)) {
+            return;
+          }
+
+          seenNodeKeys.add(node.key);
+          uniqueNodeList.push(node);
+        });
+
+        return uniqueNodeList;
       });
 
       function getPublicCheckedKeys(
@@ -883,7 +903,9 @@
 
       function onExpandEnd(key: TreeNodeKey) {
         const index = currentExpandKeys.value.indexOf(key);
-        currentExpandKeys.value.splice(index, 1);
+        if (index > -1) {
+          currentExpandKeys.value.splice(index, 1);
+        }
       }
 
       const onLoadMore = computed(() =>
@@ -999,9 +1021,10 @@
         classNames,
         treeStyle,
         resolvedVirtualListProps,
+        virtualListKey,
         visibleTreeNodeList,
         treeContext,
-        virtualListRef: ref(),
+        virtualListRef,
         computedSelectedKeys: selectedKeys,
         computedExpandedKeys: expandedKeys,
         computedCheckedKeys: checkedKeys,

@@ -880,29 +880,21 @@ exports[`<tree> demo: > render [size] correctly 1`] = `
 `;
 
 exports[`<tree> demo: > render [virtual] correctly 1`] = `
-<button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button" style="margin-bottom: 20px;">
-  <!--v-if--> Scroll to 0-0-2-2, i.e. the 26th.
-</button>
-<div class="sd-tree sd-tree-checkable sd-tree-size-medium">
-  <div class="sd-virtual-list sd-scrollbar sd-scrollbar-type-embed sd-virtual-list-scrollbar" style="height: 200px;" data-overlayscrollbars="host">
-    <div class="vue-recycle-scroller direction-vertical sd-virtual-list-scroller" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
-      <div class="vue-recycle-scroller__slot"></div>
-      <div style="min-height: 0px;" class="vue-recycle-scroller__item-wrapper">
-        <!---->
-        <!---->
-        <!---->
-      </div>
-      <div class="vue-recycle-scroller__slot"></div>
-      <div data-v-08cc04ab="" class="vue-recycle-scroller__resize-observer" aria-hidden="true"></div>
-    </div>
-    <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-      <div class="os-scrollbar-track">
-        <div class="os-scrollbar-handle"></div>
-      </div>
-    </div>
-    <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-      <div class="os-scrollbar-track">
-        <div class="os-scrollbar-handle"></div>
+<div style="width: 420px;"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal" style="margin-bottom: 12px;"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="mini"><span class="sd-radio-button-content">mini</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="small"><span class="sd-radio-button-content">small</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="medium"><span class="sd-radio-button-content">medium</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="large"><span class="sd-radio-button-content">large</span></label></span><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal" style="margin-bottom: 12px;"><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="default"><span class="sd-radio-button-content">默认固定高度</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="dynamic"><span class="sd-radio-button-content">动态高度</span></label></span>
+  <div style="margin-bottom: 12px; color: var(--color-text-2); font-size: 12px; line-height: 1.5;">Tree 默认固定高度，映射 medium 行到 32px。</div><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button" style="margin-bottom: 12px;">
+    <!--v-if--> 滚动到 0-0-2-2
+  </button>
+  <div class="sd-tree sd-tree-checkable sd-tree-size-medium">
+    <div class="sd-virtual-list sd-scrollbar sd-scrollbar-type-embed sd-virtual-list-scrollbar" style="height: 240px;">
+      <div class="vue-recycle-scroller direction-vertical sd-virtual-list-scroller" style="min-height: 0px; height: 100%; overflow-y: auto; overflow-x: hidden;" height="240">
+        <div class="vue-recycle-scroller__slot"></div>
+        <div style="min-height: 0px;" class="vue-recycle-scroller__item-wrapper">
+          <!---->
+          <!---->
+          <!---->
+        </div>
+        <div class="vue-recycle-scroller__slot"></div>
+        <div data-v-08cc04ab="" class="vue-recycle-scroller__resize-observer" aria-hidden="true"></div>
       </div>
     </div>
   </div>

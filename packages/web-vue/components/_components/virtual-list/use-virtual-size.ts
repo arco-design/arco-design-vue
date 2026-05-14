@@ -1,15 +1,17 @@
 import { computed, onMounted, type Ref, ref } from 'vue';
 
-export const useTableVirtualSize = ({
+export const useVirtualSize = ({
   dataKeys,
   fixedSize,
   estimatedSize,
-  buffer,
+  overscan,
+  visibleCount,
 }: {
   dataKeys: Ref<(string | number)[]>;
   fixedSize: Ref<boolean>;
   estimatedSize: Ref<number | undefined>;
-  buffer: Ref<number>;
+  overscan: Ref<number>;
+  visibleCount: Ref<number>;
 }) => {
   const firstRangeAverageSize = ref(0);
   const sizeMap = new Map<string | number, number>();
@@ -17,15 +19,18 @@ export const useTableVirtualSize = ({
 
   const total = computed(() => dataKeys.value.length);
   const start = ref(0);
+  const range = computed(() => {
+    return Math.max(visibleCount.value + overscan.value * 2, 1);
+  });
   const end = computed(() => {
-    const nextEnd = start.value + buffer.value * 3;
+    const nextEnd = start.value + range.value;
     if (nextEnd > total.value) {
       return total.value;
     }
     return nextEnd;
   });
   const maxStart = computed(() => {
-    const max = total.value - buffer.value * 3;
+    const max = total.value - range.value;
     if (max < 0) {
       return 0;
     }
@@ -105,27 +110,17 @@ export const useTableVirtualSize = ({
     return getOffset(0, start.value);
   });
 
-  const getOffsetIndex = (scrollOffset: number) => {
-    const isForward = scrollOffset >= frontPadding.value;
-    let offset = Math.abs(scrollOffset - frontPadding.value);
-    const baseStart = isForward ? start.value : start.value - 1;
-    let offsetIndex = 0;
+  const getStartByScroll = (scrollOffset: number) => {
+    // Convert scrollTop to an absolute anchor index to avoid start-dependent oscillation.
+    let offset = scrollOffset;
+    let anchorIndex = 0;
 
-    while (offset > 0) {
-      offset -= getItemSize(baseStart + offsetIndex);
-      if (isForward) {
-        offsetIndex += 1;
-      } else {
-        offsetIndex -= 1;
-      }
+    while (offset > 0 && anchorIndex < total.value) {
+      offset -= getItemSize(anchorIndex);
+      anchorIndex += 1;
     }
 
-    return offsetIndex;
-  };
-
-  const getStartByScroll = (scrollOffset: number) => {
-    const offsetIndex = getOffsetIndex(scrollOffset);
-    const nextStart = start.value + offsetIndex - buffer.value;
+    const nextStart = anchorIndex - overscan.value;
     if (nextStart < 0) {
       return 0;
     }
@@ -153,5 +148,6 @@ export const useTableVirtualSize = ({
     hasItemSize,
     setStart,
     getScrollOffset,
+    getItemSize,
   };
 };

@@ -308,10 +308,11 @@ export default defineComponent({
       props.column?.headerCellClass,
     ]);
 
-    const handleMouseDown = (ev: MouseEvent) => {
-      if (props.column?.dataIndex) {
-        tableCtx.onThMouseDown?.(props.column?.dataIndex, ev);
+    const handleResizeMouseDown = (ev: PointerEvent) => {
+      if (!props.column?.dataIndex) {
+        return;
       }
+      tableCtx.onThMouseDown?.(props.column.dataIndex, ev);
     };
 
     return () => {
@@ -333,7 +334,7 @@ export default defineComponent({
             renderCell(),
             !filterIconAlignLeft.value && renderFilter(),
             props.resizable && (
-              <span class={`${prefixCls}-column-handle`} onMousedown={handleMouseDown} />
+              <span class={`${prefixCls}-column-handle`} onPointerdown={handleResizeMouseDown} />
             ),
           ],
         },

@@ -22,7 +22,7 @@ export interface TableContext {
 
   onSorterChange: (dataIndex: string, direction: 'ascend' | 'descend' | '', ev: Event) => void;
   onFilterChange: (dataIndex: string, filteredValues: string[], ev: Event) => void;
-  onThMouseDown: (dataIndex: string, ev: MouseEvent) => void;
+  onThMouseDown: (dataIndex: string, ev: PointerEvent) => void;
 }
 
 export interface TableColumnContext {

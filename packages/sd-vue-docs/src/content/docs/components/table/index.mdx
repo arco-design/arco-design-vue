@@ -6,6 +6,8 @@ description: 用于数据收集展示、分析整理、操作处理。
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import TableBasicDemo from '../../../../components/generated/table/basic.vue';
 import tableBasicSource from '../../../../components/generated/table/basic.vue?raw';
+import TableAppendDemo from '../../../../components/generated/table/append.vue';
+import tableAppendSource from '../../../../components/generated/table/append.vue?raw';
 import TableCustomDomDemo from '../../../../components/generated/table/custom-dom.vue';
 import tableCustomDomSource from '../../../../components/generated/table/custom-dom.vue?raw';
 import TableCustomDemo from '../../../../components/generated/table/custom.vue';
@@ -36,6 +38,8 @@ import TableRadioDemo from '../../../../components/generated/table/radio.vue';
 import tableRadioSource from '../../../../components/generated/table/radio.vue?raw';
 import TableResizeDemo from '../../../../components/generated/table/resize.vue';
 import tableResizeSource from '../../../../components/generated/table/resize.vue?raw';
+import TableRowKeyFunctionDemo from '../../../../components/generated/table/row-key-function.vue';
+import tableRowKeyFunctionSource from '../../../../components/generated/table/row-key-function.vue?raw';
 import TableRowSelectionDemo from '../../../../components/generated/table/row-selection.vue';
 import tableRowSelectionSource from '../../../../components/generated/table/row-selection.vue?raw';
 import TableScrollDemo from '../../../../components/generated/table/scroll.vue';
@@ -60,6 +64,16 @@ import tableVirtualListSource from '../../../../components/generated/table/virtu
 <DemoBlock source={tableBasicSource} mainFile="src/table-basic.vue">
 
 <TableBasicDemo client:only="vue" />
+
+</DemoBlock>
+
+### 追加内容
+
+通过 `append` 插槽可以在表格最后一行之后追加自定义内容，适合承载“继续加载”“汇总提示”等辅助区域。
+
+<DemoBlock source={tableAppendSource} mainFile="src/table-append.vue">
+
+<TableAppendDemo client:only="vue" />
 
 </DemoBlock>
 
@@ -203,6 +217,16 @@ import tableVirtualListSource from '../../../../components/generated/table/virtu
 
 </DemoBlock>
 
+### 函数型行 Key
+
+`row-key` 除了传字段名，也可以传函数。在数据主键不叫 `key`，或者需要基于现有字段计算唯一标识时更直接。下面示例同时演示了它与选择、展开能力的组合使用。
+
+<DemoBlock source={tableRowKeyFunctionSource} mainFile="src/table-row-key-function.vue">
+
+<TableRowKeyFunctionDemo client:only="vue" />
+
+</DemoBlock>
+
 ### 调整列宽
 
 使用 `column-resizable` 属性开启列宽调整。建议初始设置除最后一列外其他列的默认列宽。
@@ -285,7 +309,13 @@ import tableVirtualListSource from '../../../../components/generated/table/virtu
 
 ### 虚拟列表
 
-设置 `virtual-list-props` 开启虚拟列表功能。目前虚拟滚动表格受限比较多，开启虚拟滚动后不能使用展开行、树形数据、固定列等功能
+设置 `virtual-list-props` 开启虚拟列表功能。当前 `Table` 已经接入组件库共享的 `VirtualList`，推荐优先按下面的思路选择参数：
+
+- 常规表格优先使用 `height + estimatedSize`
+- 所有行高都一致时使用 `itemSize`
+- 行高可能增长、或需要结合展开内容时使用 `minItemSize`
+
+下面的示例同时演示了 `estimatedSize` / `itemSize` / `minItemSize`、可视区高度、组件库 `scrollbar`、`sticky-header`、滚动定位和展开行的组合方式。
 
 <DemoBlock source={tableVirtualListSource} mainFile="src/table-virtual-list.vue">
 
@@ -313,7 +343,7 @@ import tableVirtualListSource from '../../../../components/generated/table/virtu
 | pagination | 分页的属性配置 | `boolean \| PaginationProps` | `true` |  |
 | page-position | 分页选择器的位置 | `'tl' \| 'top' \| tr' \| 'bl' \| 'bottom' \| 'br'` | `'br'` |  |
 | indent-size | 树形表格的缩进距离 | `number` | `16` |  |
-| row-key | 表格行 `key` 的取值字段 | `string` | `'key'` |  |
+| row-key | 表格行 `key` 的取值字段 | `string \| ((record: TableData) => string \| number)` | `'key'` |  |
 | show-header | 是否显示表头 | `boolean` | `true` |  |
 | virtual-list-props | 传递虚拟列表属性，传入此参数以开启虚拟滚动 [VirtualListProps](#VirtualListProps) | `VirtualListProps` | `-` |  |
 | span-method | 单元格合并方法（索引从数据项开始计数） | `(data: {  record: TableData;  column: TableColumnData \| TableOperationColumn;  rowIndex: number;  columnIndex: number;}) => { rowspan?: number; colspan?: number } \| void` | `-` | 2.10.0 |
@@ -381,6 +411,7 @@ import tableVirtualListSource from '../../../../components/generated/table/virtu
 | th | 自定义 th 元素 | column: `TableColumnData` | 2.26.0 |
 | thead | 自定义 thead 元素 | - | 2.26.0 |
 | empty | 空白展示 | - |  |
+| append | 插入至表格最后一行之后的内容 | - |  |
 | summary-cell | 总结行 | column: `TableColumnData`<br />record: `TableData`<br />rowIndex: `number` | 2.23.0 |
 | pagination-right | 分页器右侧内容 | - | 2.18.0 |
 | pagination-left | 分页器左侧内容 | - | 2.18.0 |
@@ -562,11 +593,11 @@ type Sorter = { filed: string; direction: 'ascend' | 'descend' } | Record<string
 | 参数名 | 描述 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | :-: | :-- |
 | height | 可视区域高度 | `number \| string` | `-` |  |
-| threshold | 开启虚拟滚动的元素数量阈值，当数据数量小于阈值时不会开启虚拟滚动。 | `number` | `-` |  |
-| isStaticItemHeight | （已废除）元素高度是否是固定的。2.34.1 版本废除，请使用 `fixedSize` | `boolean` | `false` |  |
-| fixedSize | 元素高度是否是固定的。 | `boolean` | `false` | 2.34.1 |
-| estimatedSize | 元素高度不固定时的预估高度。 | `number` | `-` | 2.34.1 |
-| buffer | 视口边界外提前挂载的元素数量。 | `number` | `10` | 2.34.1 |
+| itemSize | 固定高度模式的行高。所有行高度一致时优先使用它。 | `number` | `-` |  |
+| minItemSize | 动态高度模式的最小行高。存在展开内容或更长文本时优先使用它。 | `number` | `-` |  |
+| estimatedSize | 估算行高。未显式传 `itemSize` 时，通常和 `minItemSize` 一起使用，帮助初始定位更平滑。 | `number` | `-` |  |
+| buffer | 额外渲染缓冲区，语义与底层 scroller 一致。 | `number` | `200` |  |
+| keyField | 用于提取每行唯一键，默认跟随表格行 `key`。 | `string \| ((item, index) => string \| number)` | `'key'` |  |
 
 ## FAQ
 

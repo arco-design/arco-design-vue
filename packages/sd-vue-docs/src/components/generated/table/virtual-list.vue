@@ -1,54 +1,231 @@
 <template>
-  <sd-table
-    :columns="columns"
-    :data="data"
-    :row-selection="rowSelection"
-    :virtual-list-props="{ height: 400 }"
-    :pagination="false"
-    :scroll="{ x: 1000 }"
-  />
+  <div>
+    <div :style="toolbarRowStyle">
+      <sd-radio-group v-model="mode" type="button">
+        <sd-radio value="estimated">estimatedSize</sd-radio>
+        <sd-radio value="fixed">itemSize</sd-radio>
+        <sd-radio value="dynamic">minItemSize</sd-radio>
+      </sd-radio-group>
+
+      <sd-radio-group v-model="tableHeight" type="button">
+        <sd-radio :value="280">高 280</sd-radio>
+        <sd-radio :value="360">高 360</sd-radio>
+        <sd-radio :value="480">高 480</sd-radio>
+      </sd-radio-group>
+    </div>
+
+    <div :style="toolbarRowStyle">
+      <label :style="checkStyle">
+        <input v-model="useScrollbar" type="checkbox" />
+        <span>使用组件库 scrollbar</span>
+      </label>
+      <label :style="checkStyle">
+        <input v-model="stickyHeader" type="checkbox" />
+        <span>开启 sticky header</span>
+      </label>
+    </div>
+
+    <div :style="helperStyle">
+      {{ helperText }}
+    </div>
+
+    <div :style="quickActionStyle">
+      <sd-button size="small" @click="scrollTableToRow(1)">顶部</sd-button>
+      <sd-button size="small" @click="scrollTableToRow(48)">第 48 行</sd-button>
+      <sd-button size="small" @click="scrollTableToRow(240)">第 240 行</sd-button>
+      <sd-button size="small" @click="expandAndScrollToRow(48)">展开第 48 行</sd-button>
+    </div>
+
+    <div ref="tableHostRef">
+      <sd-table
+        :columns="columns"
+        :data="data"
+        :row-selection="rowSelection"
+        :expandable="expandable"
+        v-model:expanded-keys="expandedKeys"
+        :virtual-list-props="virtualListProps"
+        :pagination="false"
+        :scrollbar="useScrollbar"
+        :sticky-header="stickyHeader ? 0 : false"
+        :scroll="{ x: 1120, y: tableHeight }"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
-  import { reactive } from 'vue';
+  import { computed, nextTick, reactive, ref } from 'vue';
 
   export default {
     setup() {
+      const mode = ref('estimated');
+      const tableHeight = ref(360);
+      const useScrollbar = ref(true);
+      const stickyHeader = ref(false);
+      const expandedKeys = ref([]);
+      const tableHostRef = ref();
+
+      const helperStyle = {
+        marginBottom: '12px',
+        color: 'var(--color-text-2)',
+        fontSize: '12px',
+        lineHeight: '1.6',
+      };
+
+      const toolbarRowStyle = {
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '12px',
+        marginBottom: '12px',
+        alignItems: 'center',
+      };
+
+      const quickActionStyle = {
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '8px',
+        marginBottom: '12px',
+      };
+
+      const checkStyle = {
+        display: 'inline-flex',
+        gap: '8px',
+        alignItems: 'center',
+        color: 'var(--color-text-2)',
+        fontSize: '13px',
+      };
+
       const columns = [
         {
-          title: 'Name',
+          title: '姓名',
           dataIndex: 'name',
           fixed: 'left',
-          width: 140,
+          width: 160,
         },
         {
-          title: 'Address',
+          title: '地址',
           dataIndex: 'address',
+          width: 260,
         },
         {
-          title: 'Email',
+          title: '邮箱',
           dataIndex: 'email',
+          width: 280,
+        },
+        {
+          title: '备注',
+          dataIndex: 'note',
+          width: 320,
         },
       ];
+
       const data = reactive(
-        Array(1000)
+        Array(1200)
           .fill(null)
           .map((_, index) => ({
-            key: String(index),
-            name: `User ${index + 1}`,
-            address: '32 Park Road, London',
+            key: String(index + 1),
+            name: `用户 ${index + 1}`,
+            address: `${index + 1} Park Road, London`,
             email: `user.${index + 1}@example.com`,
+            note:
+              index % 4 === 0
+                ? '这是一条更长的备注，用来观察表格在虚拟滚动、固定列和横向滚动并存时的表现。'
+                : '普通备注',
+            expand: `展开内容 ${index + 1}：用于确认展开行在虚拟模式下仍能正确显示。`,
           })),
       );
+
       const rowSelection = {
         type: 'checkbox',
         showCheckedAll: true,
       };
 
+      const expandable = {
+        title: '展开',
+        width: 88,
+      };
+
+      const helperText = computed(() => {
+        if (mode.value === 'estimated') {
+          return 'estimatedSize 适合常规表格场景：给出一个接近真实行高的估值，例如 42，可让首次滚动和定位更平滑。';
+        }
+
+        if (mode.value === 'fixed') {
+          return 'itemSize 适合所有行高完全一致的表格。这里固定为 42px，可以最直接地观察滚动定位与性能。';
+        }
+
+        return 'minItemSize 适合可能出现展开内容或更长文本的场景。它允许行高增长，同时保留共享 VirtualList 的滚动能力。';
+      });
+
+      const virtualListProps = computed(() => {
+        if (mode.value === 'estimated') {
+          return {
+            height: tableHeight.value,
+            estimatedSize: 42,
+            buffer: 20,
+          };
+        }
+
+        if (mode.value === 'fixed') {
+          return {
+            height: tableHeight.value,
+            itemSize: 42,
+            buffer: 20,
+          };
+        }
+
+        return {
+          height: tableHeight.value,
+          minItemSize: 42,
+          estimatedSize: 42,
+          buffer: 20,
+        };
+      });
+
+      const getTableRowHeight = () => {
+        const row = tableHostRef.value?.querySelector('.sd-table-body .sd-table-tr');
+        const height = row?.getBoundingClientRect().height ?? 0;
+
+        return height > 0 ? height : 42;
+      };
+
+      const scrollTableToRow = async (row) => {
+        await nextTick();
+
+        const viewport = tableHostRef.value?.querySelector('.sd-virtual-list-scroller');
+        if (!viewport) {
+          return;
+        }
+
+        const rowHeight = getTableRowHeight();
+        viewport.scrollTop = Math.max(row - 1, 0) * rowHeight;
+        viewport.dispatchEvent(new Event('scroll'));
+      };
+
+      const expandAndScrollToRow = async (row) => {
+        expandedKeys.value = [String(row)];
+        await scrollTableToRow(row);
+      };
+
       return {
+        mode,
+        tableHeight,
+        useScrollbar,
+        stickyHeader,
+        expandedKeys,
+        tableHostRef,
+        helperStyle,
+        toolbarRowStyle,
+        quickActionStyle,
+        checkStyle,
         columns,
         data,
         rowSelection,
+        expandable,
+        helperText,
+        virtualListProps,
+        scrollTableToRow,
+        expandAndScrollToRow,
       };
     },
   };
