@@ -7,7 +7,9 @@ export default {
     'oxfmt --no-error-on-unmatched-pattern',
     'oxlint --fix',
     'stylelint --allow-empty-input',
+    'vue-tsc --noEmit',
   ],
   '**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}': ['oxfmt --no-error-on-unmatched-pattern', 'oxlint --fix'],
   '**/*.{json,jsonc,md,yml,yaml}': ['oxfmt --no-error-on-unmatched-pattern'],
+  '**/*.{ts,tsx}': ['tsc --noEmit'],
 };
