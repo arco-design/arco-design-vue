@@ -3,14 +3,23 @@
 </template>
 
 <script setup lang="ts">
-  const fileList = [
+  import type {
+    CustomIcon,
+    FileItem,
+    FileStatus,
+    RequestOption,
+    UploadInstance,
+    UploadRequest,
+  } from '@sdata/web-vue';
+
+  const fileList: FileItem[] = [
     {
       uid: '-1',
       name: 'ice.png',
       url: '//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp',
     },
     {
-      status: 'error',
+      status: 'error' as FileStatus,
       uid: '-2',
       percent: 0,
       response: '上传错误提示',

@@ -14,17 +14,31 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, reactive } from 'vue';
+  import type {
+    TableChangeExtra,
+    TableColumnData,
+    TableData,
+    TableExpandable,
+    TableLoadMore,
+    TableRowKey,
+    TableRowSelection,
+    TableSpanMethod,
+    TableSpanMethodContext,
+    TableSummary,
+    TableSummaryContext,
+  } from '@sdata/web-vue';
 
-  const expandedKeys = ref([]);
+  import { reactive, ref } from 'vue';
 
-  const rowSelection = reactive({
+  const expandedKeys = ref<string[]>([]);
+
+  const rowSelection = reactive<TableRowSelection>({
     type: 'checkbox',
     showCheckedAll: true,
     checkStrictly: true,
   });
 
-  const columns = [
+  const columns: TableColumnData[] = [
     {
       title: 'Name',
       dataIndex: 'name',
@@ -42,7 +56,7 @@
       dataIndex: 'email',
     },
   ];
-  const data = [
+  const data: TableData[] = [
     {
       key: '1',
       name: 'Jane Doe',

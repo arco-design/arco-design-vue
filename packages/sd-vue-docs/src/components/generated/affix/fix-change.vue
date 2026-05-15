@@ -4,7 +4,7 @@
   </sd-affix>
 </template>
 <script setup lang="ts">
-  const onChange = (fixed) => {
+  const onChange = (fixed: boolean) => {
     console.log(`${fixed}`);
   };
 </script>

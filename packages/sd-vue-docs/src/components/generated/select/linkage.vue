@@ -12,7 +12,7 @@
 
   const province = ref('Sichuan');
   const city = ref('Chengdu');
-  const data = {
+  const data: Record<string, string[]> = {
     Beijing: ['Haidian', 'Chaoyang', 'Changping'],
     Sichuan: ['Chengdu', 'Mianyang', 'Aba'],
     Guangdong: ['Guangzhou', 'Shenzhen', 'Shantou'],

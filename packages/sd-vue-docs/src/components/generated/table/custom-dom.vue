@@ -10,11 +10,25 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    TableChangeExtra,
+    TableColumnData,
+    TableData,
+    TableExpandable,
+    TableLoadMore,
+    TableRowKey,
+    TableRowSelection,
+    TableSpanMethod,
+    TableSpanMethodContext,
+    TableSummary,
+    TableSummaryContext,
+  } from '@sdata/web-vue';
+
   const onContextMenu = () => {
     console.log('right click');
   };
 
-  const columns = [
+  const columns: TableColumnData[] = [
     {
       title: 'Name',
       dataIndex: 'name',
@@ -32,7 +46,7 @@
       dataIndex: 'email',
     },
   ];
-  const data = [
+  const data: TableData[] = [
     {
       key: '1',
       name: 'Jane Doe',

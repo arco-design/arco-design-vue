@@ -1,3 +1,5 @@
+import type { Simplify } from 'type-fest';
+
 import { CSSProperties, RenderFunction, Slots, VNodeChild } from 'vue';
 
 import { BaseType, ClassName, Data } from '../_utils/types';
@@ -481,6 +483,24 @@ export interface TableProps {
   pagination?: boolean | Data;
   pagePosition?: string;
 }
+
+export type TableRowKey = string | ((record: TableData) => BaseType);
+export type TableSpanMethodContext = Simplify<{
+  record: TableData;
+  column: TableColumnData | TableOperationColumn;
+  rowIndex: number;
+  columnIndex: number;
+}>;
+export type TableSpanMethod = (
+  data: TableSpanMethodContext,
+) => { rowspan?: number; colspan?: number } | void;
+export type TableLoadMore = (record: TableData, done: (children?: TableData[]) => void) => void;
+export type TableSummaryContext = Simplify<{
+  columns: TableColumnData[];
+  data: TableData[];
+}>;
+export type TableSummary = boolean | ((params: TableSummaryContext) => TableData[]);
+export type TableSummarySpanMethod = TableSpanMethod;
 
 export type Sorter = { field: string; direction: 'ascend' | 'descend' };
 

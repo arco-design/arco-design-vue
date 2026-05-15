@@ -17,6 +17,14 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    FieldRule,
+    FormInstance,
+    Size,
+    ValidateStatus,
+    ValidatedError,
+  } from '@sdata/web-vue';
+
   import { reactive } from 'vue';
 
   const form = reactive({
@@ -24,7 +32,10 @@
     post: '',
     isRead: false,
   });
-  const handleSubmit = (data) => {
+  const handleSubmit = (data: {
+    values: Record<string, unknown>;
+    errors: Record<string, ValidatedError> | undefined;
+  }) => {
     console.log(data);
   };
 </script>

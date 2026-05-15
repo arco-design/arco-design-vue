@@ -32,11 +32,13 @@
 </template>
 
 <script setup lang="ts">
+  import type { DescData, Size } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
-  const size = ref('medium');
+  const size = ref<Size>('medium');
 
-  const data = [
+  const data: DescData[] = [
     {
       label: 'Name',
       value: 'Socrates',

@@ -20,6 +20,14 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    FieldRule,
+    FormInstance,
+    Size,
+    ValidateStatus,
+    ValidatedError,
+  } from '@sdata/web-vue';
+
   import { reactive } from 'vue';
 
   const form = reactive({
@@ -31,7 +39,7 @@
       value: '',
     });
   };
-  const handleDelete = (index) => {
+  const handleDelete = (index: number) => {
     form.posts.splice(index, 1);
   };
 </script>

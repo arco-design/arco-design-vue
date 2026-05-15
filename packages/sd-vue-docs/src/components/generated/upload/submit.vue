@@ -13,23 +13,32 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    CustomIcon,
+    FileItem,
+    FileStatus,
+    RequestOption,
+    UploadInstance,
+    UploadRequest,
+  } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
-  const uploadRef = ref();
-  const files = ref([]);
+  const uploadRef = ref<UploadInstance | null>(null);
+  const files = ref<FileItem[]>([]);
 
-  const submitOne = (e) => {
+  const submitOne = (e: Event) => {
     e.stopPropagation();
     console.log(files.value);
-    uploadRef.value.submit(files.value.find((x) => x.status === 'init'));
+    uploadRef.value?.submit(files.value.find((x) => x.status === 'init'));
   };
 
-  const submit = (e) => {
+  const submit = (e: Event) => {
     e.stopPropagation();
-    uploadRef.value.submit();
+    uploadRef.value?.submit();
   };
 
-  const onChange = (fileList) => {
+  const onChange = (fileList: FileItem[]) => {
     files.value = fileList;
   };
 </script>

@@ -47,10 +47,10 @@
     'nl-NL': nlNL,
   };
 
-  const localeType = ref('es-ES');
+  const localeType = ref<keyof typeof locales>('es-ES');
   const locale = computed(() => {
     return locales[localeType.value] || zhCN;
   });
 
-  const localeOptions = Object.keys(locales);
+  const localeOptions = Object.keys(locales) as Array<keyof typeof locales>;
 </script>

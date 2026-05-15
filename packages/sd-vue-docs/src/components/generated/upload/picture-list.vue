@@ -3,7 +3,16 @@
 </template>
 
 <script setup lang="ts">
-  const fileList = [
+  import type {
+    CustomIcon,
+    FileItem,
+    FileStatus,
+    RequestOption,
+    UploadInstance,
+    UploadRequest,
+  } from '@sdata/web-vue';
+
+  const fileList: FileItem[] = [
     {
       uid: '-2',
       name: '20200717-103937.png',

@@ -13,5 +13,5 @@
 <script setup lang="ts">
   import { ref } from 'vue';
 
-  const size = ref('medium');
+  const size = ref<'mini' | 'small' | 'medium' | 'large'>('medium');
 </script>

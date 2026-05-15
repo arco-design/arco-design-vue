@@ -1,17 +1,17 @@
 <template>
-  <div class="sd:w-[360px]">
-    <sd-radio-group v-model="preset" type="button" class="sd:mb-[12px]">
+  <div class="sd:w-90">
+    <sd-radio-group v-model="preset" type="button" class="sd:mb-3">
       <sd-radio value="default">default fixed</sd-radio>
       <sd-radio value="explicit">explicit itemSize</sd-radio>
     </sd-radio-group>
 
-    <div class="sd:mb-[12px] sd:text-[var(--color-text-2)] sd:text-[12px] sd:leading-[1.5]">
+    <div class="sd:mb-3 sd:text-[var(--color-text-2)] sd:text-xs sd:leading-[1.5]">
       {{ helperText }}
     </div>
 
     <sd-cascader
       :options="options"
-      class="sd:w-[100%]"
+      class="sd:w-full"
       placeholder="Please select ..."
       allow-search
       :trigger-props="{ popupStyle: { maxHeight: '220px' } }"
@@ -21,9 +21,18 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    CascaderChangeHandler,
+    CascaderFallback,
+    CascaderFormatLabel,
+    CascaderLoadMore,
+    CascaderOption,
+    CascaderPathValue,
+  } from '@sdata/web-vue';
+
   import { computed, ref } from 'vue';
 
-  const preset = ref('default');
+  const preset = ref<'default' | 'explicit'>('default');
 
   const helperText = computed(() => {
     return preset.value === 'default'
@@ -35,7 +44,7 @@
     return preset.value === 'default' ? {} : { itemSize: 36, buffer: 260 };
   });
 
-  const createLeafOptions = (prefix, count) => {
+  const createLeafOptions = (prefix: string, count: number): CascaderOption[] => {
     return Array(count)
       .fill(null)
       .map((_, index) => ({
@@ -44,7 +53,7 @@
       }));
   };
 
-  const options = [
+  const options: CascaderOption[] = [
     {
       value: 'beijing',
       label: 'Beijing',

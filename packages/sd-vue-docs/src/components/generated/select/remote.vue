@@ -26,12 +26,14 @@
 </template>
 
 <script setup lang="ts">
+  import type { Size } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
   const options = ref(['Option1', 'Option2', 'Option3']);
   const loading = ref(false);
 
-  const handleSearch = (value) => {
+  const handleSearch = (value: string) => {
     if (value) {
       loading.value = true;
       window.setTimeout(() => {

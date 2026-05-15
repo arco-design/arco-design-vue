@@ -3,14 +3,14 @@
     <sd-cascader
       :options="options"
       default-value="beijing"
-      class="sd:w-[320px]"
+      class="sd:w-80"
       placeholder="Please select ..."
       check-strictly
     />
     <sd-cascader
       :options="options"
       :default-value="['beijing']"
-      class="sd:w-[320px]"
+      class="sd:w-80"
       placeholder="Please select ..."
       multiple
       check-strictly
@@ -19,7 +19,16 @@
 </template>
 
 <script setup lang="ts">
-  const options = [
+  import type {
+    CascaderChangeHandler,
+    CascaderFallback,
+    CascaderFormatLabel,
+    CascaderLoadMore,
+    CascaderOption,
+    CascaderPathValue,
+  } from '@sdata/web-vue';
+
+  const options: CascaderOption[] = [
     {
       value: 'beijing',
       label: 'Beijing',

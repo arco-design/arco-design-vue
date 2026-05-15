@@ -6,11 +6,23 @@
   <sd-tree :default-selected-keys="['0-0-1']" :data="treeData" :show-line="showLine" />
 </template>
 <script setup lang="ts">
+  import type {
+    CheckedStrategy,
+    LoadMore,
+    Size,
+    TreeCheckHandler,
+    TreeDropHandler,
+    TreeExpandHandler,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectHandler,
+  } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
   const showLine = ref(true);
 
-  const treeData = [
+  const treeData: TreeNodeData[] = [
     {
       title: 'Trunk 1',
       key: '0-0',

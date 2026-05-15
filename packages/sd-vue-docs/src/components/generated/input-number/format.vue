@@ -10,14 +10,17 @@
 </template>
 
 <script setup lang="ts">
-  const formatter = (value) => {
-    const values = value.split('.');
+  import type { InputNumberFormatter, InputNumberParser } from '@sdata/web-vue';
+
+  const formatter: InputNumberFormatter = (value) => {
+    const normalizedValue = String(value ?? '');
+    const values = normalizedValue.split('.');
     values[0] = values[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
     return values.join('.');
   };
 
-  const parser = (value) => {
+  const parser: InputNumberParser = (value) => {
     return value.replace(/,/g, '');
   };
 </script>

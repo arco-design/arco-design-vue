@@ -16,9 +16,22 @@
   ></sd-tree-select>
 </template>
 <script setup lang="ts">
+  import type {
+    CheckedStrategy,
+    LabelValue,
+    Size,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectChangeHandler,
+    TreeSelectFallbackOption,
+    TreeSelectFilterTreeNode,
+    TreeSelectLoadMore,
+    TreeSelectSearchHandler,
+  } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
-  const treeData = [
+  const treeData: TreeNodeData[] = [
     {
       key: 'node1',
       title: 'node1',
@@ -48,5 +61,5 @@
     },
   ];
 
-  const size = ref('medium');
+  const size = ref<Size>('medium');
 </script>

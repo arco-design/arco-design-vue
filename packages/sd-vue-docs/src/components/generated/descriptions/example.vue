@@ -47,18 +47,25 @@
 </template>
 
 <script setup lang="ts">
+  import type { DescLayout, Size } from '@sdata/web-vue';
+
   import { reactive } from 'vue';
 
   const form = reactive({
-    size: 'medium',
-    layout: 'horizontal',
+    size: 'medium' as Size,
+    layout: 'horizontal' as DescLayout,
     column: 4,
-    tableLayout: 'auto',
+    tableLayout: 'auto' as 'auto' | 'fixed',
     firstSpan: 2,
   });
 
-  const layoutOptions = ['horizontal', 'inline-horizontal', 'vertical', 'inline-vertical'];
+  const layoutOptions: DescLayout[] = [
+    'horizontal',
+    'inline-horizontal',
+    'vertical',
+    'inline-vertical',
+  ];
   const columnOptions = [1, 2, 3, 4, 5];
   const firstSpanOptions = [1, 2, 3, 4, 5];
-  const sizeOptions = ['mini', 'small', 'medium', 'large'];
+  const sizeOptions: Size[] = ['mini', 'small', 'medium', 'large'];
 </script>

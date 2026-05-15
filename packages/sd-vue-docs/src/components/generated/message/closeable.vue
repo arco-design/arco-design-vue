@@ -3,8 +3,10 @@
 </template>
 
 <script setup lang="ts">
+  import { Message } from '@sdata/web-vue';
+
   function handleClick() {
-    this.$message.info({
+    Message.info({
       content: 'This is an info message!',
       closable: true,
     });

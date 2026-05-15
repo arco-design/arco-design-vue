@@ -3,7 +3,9 @@
 </template>
 
 <script setup lang="ts">
-  const formatter = (value) => {
+  import type { SliderFormatTooltip } from '@sdata/web-vue';
+
+  const formatter: SliderFormatTooltip = (value) => {
     return `${Math.round((value / 50) * 100)}%`;
   };
 </script>

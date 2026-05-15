@@ -14,6 +14,9 @@
 <script lang="ts">
   import { computed, defineComponent, PropType } from 'vue';
 
+  import type { Size } from '../_utils/constant';
+  import type { SelectModelValue, SelectOption, SelectProps } from '../select/interface';
+
   import { getPrefixCls } from '../_utils/global-config';
   import { useI18n } from '../locale';
   import SDSelect from '../select';
@@ -25,33 +28,37 @@
     },
     props: {
       sizeOptions: {
-        type: Array,
+        type: Array as PropType<number[]>,
         required: true,
       },
       pageSize: Number,
       disabled: Boolean,
       size: {
-        type: String,
+        type: String as PropType<Size>,
       },
       onChange: {
         type: Function as PropType<(value: number) => void>,
       },
       selectProps: {
-        type: Object,
+        type: Object as PropType<SelectProps>,
       },
     },
     emits: ['change'],
     setup(props, { emit }) {
       const prefixCls = getPrefixCls('pagination-options');
       const { t } = useI18n();
-      const options = computed(() =>
+      const options = computed<SelectOption[]>(() =>
         props.sizeOptions.map((value) => ({
           value,
           label: `${value} ${t('pagination.countPerPage')}`,
         })),
       );
 
-      const handleChange = (value: string) => {
+      const handleChange = (value: SelectModelValue) => {
+        if (typeof value !== 'number') {
+          return;
+        }
+
         emit('change', value);
       };
 

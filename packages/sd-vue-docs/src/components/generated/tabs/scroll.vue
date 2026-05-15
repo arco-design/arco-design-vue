@@ -27,10 +27,12 @@
 </template>
 
 <script setup lang="ts">
+  import type { ScrollPosition, TabTriggerEvent, TabsPosition, TabsType } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
-  const position = ref('top');
-  const scrollPosition = ref('auto');
+  const position = ref<TabsPosition>('top');
+  const scrollPosition = ref<ScrollPosition>('auto');
   const activeKey = ref('Tab1');
   const tabs = Array.from({ length: 30 }, (v, i) => {
     return {

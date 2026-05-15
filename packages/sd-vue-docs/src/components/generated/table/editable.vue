@@ -36,14 +36,28 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    TableChangeExtra,
+    TableColumnData,
+    TableData,
+    TableExpandable,
+    TableLoadMore,
+    TableRowKey,
+    TableRowSelection,
+    TableSpanMethod,
+    TableSpanMethodContext,
+    TableSummary,
+    TableSummaryContext,
+  } from '@sdata/web-vue';
+
   import { reactive } from 'vue';
 
-  const options = {
+  const options: Record<string, string[]> = {
     Beijing: ['Haidian', 'Chaoyang', 'Changping'],
     Sichuan: ['Chengdu', 'Mianyang', 'Aba'],
     Guangdong: ['Guangzhou', 'Shenzhen', 'Shantou'],
   };
-  const columns = [
+  const columns: TableColumnData[] = [
     {
       title: 'Name',
       dataIndex: 'name',
@@ -73,7 +87,7 @@
     },
   ];
 
-  const data = reactive([
+  const data = reactive<TableData[]>([
     {
       key: '1',
       name: 'Jane Doe',
@@ -115,7 +129,7 @@
     },
   ]);
 
-  const handleChange = (rowIndex) => {
+  const handleChange = (rowIndex: number) => {
     data[rowIndex].city = '';
   };
 </script>

@@ -41,6 +41,18 @@
   </div>
 </template>
 <script setup lang="ts">
+  import type {
+    CheckedStrategy,
+    LoadMore,
+    Size,
+    TreeCheckHandler,
+    TreeDropHandler,
+    TreeExpandHandler,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectHandler,
+  } from '@sdata/web-vue';
+
   import { computed, ref } from 'vue';
 
   const sizeToItemSize = {
@@ -51,10 +63,10 @@
   };
 
   function loop(path = '0', level = 2) {
-    const list = [];
+    const list: TreeNodeData[] = [];
     for (let i = 0; i < 10; i += 1) {
       const key = `${path}-${i}`;
-      const treeNode = {
+      const treeNode: TreeNodeData = {
         title: `Node ${key}`,
         key,
       };
@@ -74,8 +86,8 @@
   }
 
   const treeRef = ref();
-  const size = ref('medium');
-  const mode = ref('default');
+  const size = ref<Size>('medium');
+  const mode = ref<'default' | 'dynamic'>('default');
   const treeData = loop();
 
   const helperText = computed(() => {

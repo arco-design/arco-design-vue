@@ -31,24 +31,33 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    CustomIcon,
+    FileItem,
+    FileStatus,
+    RequestOption,
+    UploadInstance,
+    UploadRequest,
+  } from '@sdata/web-vue';
+
   import { h, ref } from 'vue';
 
   import {
-    IconUpload,
-    IconFileAudio,
     IconClose,
     IconFaceFrownFill,
+    IconFileAudio,
+    IconUpload,
   } from '@sdata/web-vue/es/icon/index.js';
 
-  const type = ref('text');
-  const getCustomIcon = () => {
+  const type = ref<'text' | 'picture' | 'picture-card'>('text');
+  const getCustomIcon = (): CustomIcon => {
     return {
       retryIcon: () => h(IconUpload),
       cancelIcon: () => h(IconClose),
       fileIcon: () => h(IconFileAudio),
       removeIcon: () => h(IconClose),
       errorIcon: () => h(IconFaceFrownFill),
-      fileName: (file) => {
+      fileName: (file: FileItem) => {
         return `文件名： ${file.name}`;
       },
     };

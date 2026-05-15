@@ -3,12 +3,26 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    TableChangeExtra,
+    TableColumnData,
+    TableData,
+    TableExpandable,
+    TableLoadMore,
+    TableRowKey,
+    TableRowSelection,
+    TableSpanMethod,
+    TableSpanMethodContext,
+    TableSummary,
+    TableSummaryContext,
+  } from '@sdata/web-vue';
+
   import { reactive } from 'vue';
 
-  const rowSelection = {
+  const rowSelection: TableRowSelection = {
     type: 'radio',
   };
-  const columns = [
+  const columns: TableColumnData[] = [
     {
       title: 'Name',
       dataIndex: 'name',
@@ -26,7 +40,7 @@
       dataIndex: 'email',
     },
   ];
-  const data = reactive([
+  const data = reactive<TableData[]>([
     {
       key: '1',
       name: 'Jane Doe',

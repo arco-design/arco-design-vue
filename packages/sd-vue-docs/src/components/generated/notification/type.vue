@@ -11,6 +11,8 @@
 <script setup lang="ts">
   import { getCurrentInstance } from 'vue';
 
+  import { Notification } from '@sdata/web-vue';
+
   interface NotificationApi {
     info: (config: string | { content: string; showIcon?: boolean }) => void;
     success: (content: string) => void;

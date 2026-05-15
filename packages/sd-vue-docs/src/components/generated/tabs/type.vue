@@ -23,8 +23,10 @@
 </template>
 
 <script setup lang="ts">
+  import type { ScrollPosition, TabTriggerEvent, TabsPosition, TabsType } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
-  const type = ref('line');
-  const size = ref('medium');
+  const type = ref<TabsType>('line');
+  const size = ref<'mini' | 'small' | 'medium' | 'large'>('medium');
 </script>

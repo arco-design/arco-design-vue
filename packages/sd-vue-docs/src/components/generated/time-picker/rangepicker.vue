@@ -7,7 +7,13 @@
   />
 </template>
 <script setup lang="ts">
-  function print(...arg) {
+  function print(
+    ...arg: [
+      string,
+      string | Array<string | undefined> | undefined,
+      Date | Array<Date | undefined> | undefined,
+    ]
+  ) {
     console.log(...arg);
   }
 </script>

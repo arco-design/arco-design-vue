@@ -54,6 +54,8 @@
 </template>
 
 <script setup lang="ts">
+  import type { Size } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
   const scrollbar = ref(true);

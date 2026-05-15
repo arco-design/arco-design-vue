@@ -13,6 +13,8 @@
 </template>
 
 <script setup lang="ts">
+  import type { TransferItem, TreeNodeData } from '@sdata/web-vue';
+
   const treeData = [
     {
       title: 'Trunk 0-0',
@@ -64,24 +66,28 @@
     },
   ];
 
-  const getTransferData = (treeData = [], transferDataSource = []) => {
+  const getTransferData = (
+    treeData: TreeNodeData[] = [],
+    transferDataSource: TransferItem[] = [],
+  ) => {
     treeData.forEach((item) => {
       if (item.children) getTransferData(item.children, transferDataSource);
-      else transferDataSource.push({ label: item.title, value: item.key });
+      else
+        transferDataSource.push({ label: String(item.title ?? ''), value: String(item.key ?? '') });
     });
     return transferDataSource;
   };
 
-  const getTreeData = (data = []) => {
+  const getTreeData = (data: TransferItem[] = []) => {
     const values = data.map((item) => item.value);
 
-    const travel = (_treeData = []) => {
-      const treeDataSource = [];
+    const travel = (_treeData: TreeNodeData[] = []) => {
+      const treeDataSource: TreeNodeData[] = [];
       _treeData.forEach((item) => {
-        if (item.children || values.includes(item.key)) {
+        if (item.children || (item.key !== undefined && values.includes(String(item.key)))) {
           treeDataSource.push({
-            title: item.title,
-            key: item.key,
+            title: String(item.title ?? ''),
+            key: item.key ?? '',
             children: travel(item.children),
           });
         }

@@ -95,7 +95,8 @@
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged",
-    "commit-msg": "pnpm commitlint -e"
+    "commit-msg": "pnpm commitlint -e",
+    "pre-push": "pnpm run typecheck"
   },
   "engines": {
     "node": "~24.15.0"

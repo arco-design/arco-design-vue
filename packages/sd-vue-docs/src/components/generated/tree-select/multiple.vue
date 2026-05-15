@@ -22,11 +22,24 @@
   </sd-space>
 </template>
 <script setup lang="ts">
+  import type {
+    CheckedStrategy,
+    LabelValue,
+    Size,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectChangeHandler,
+    TreeSelectFallbackOption,
+    TreeSelectFilterTreeNode,
+    TreeSelectLoadMore,
+    TreeSelectSearchHandler,
+  } from '@sdata/web-vue';
+
   import { h, ref } from 'vue';
 
   import { IconCalendar } from '@sdata/web-vue/es/icon/index.js';
 
-  const treeData = [
+  const treeData: TreeNodeData[] = [
     {
       key: 'node1',
       icon: () => h(IconCalendar),
@@ -55,5 +68,5 @@
     },
   ];
 
-  const selected = ref([]);
+  const selected = ref<LabelValue[]>([]);
 </script>

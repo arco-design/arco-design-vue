@@ -26,9 +26,22 @@
   ></sd-tree-select>
 </template>
 <script setup lang="ts">
+  import type {
+    CheckedStrategy,
+    LabelValue,
+    Size,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectChangeHandler,
+    TreeSelectFallbackOption,
+    TreeSelectFilterTreeNode,
+    TreeSelectLoadMore,
+    TreeSelectSearchHandler,
+  } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
-  const strategyOptions = [
+  const strategyOptions: Array<{ value: CheckedStrategy; label: string }> = [
     {
       value: 'all',
       label: 'show all',
@@ -43,7 +56,7 @@
     },
   ];
 
-  const treeData = [
+  const treeData: TreeNodeData[] = [
     {
       title: 'Trunk 0-0',
       value: 'Trunk 0-0',
@@ -101,6 +114,6 @@
     },
   ];
 
-  const selected = ref([]);
-  const treeCheckedStrategy = ref('all');
+  const selected = ref<LabelValue[]>([]);
+  const treeCheckedStrategy = ref<CheckedStrategy>('all');
 </script>

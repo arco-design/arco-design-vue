@@ -19,6 +19,8 @@
   </div>
 </template>
 <script setup lang="ts">
+  import type { StepsChangeHandler } from '@sdata/web-vue';
+
   import { shallowRef } from 'vue';
 
   const current = shallowRef(1);
@@ -31,7 +33,7 @@
     current.value = Math.min(3, current.value + 1);
   }
 
-  function setCurrent(current) {
-    current.value = current;
-  }
+  const setCurrent: StepsChangeHandler = (step) => {
+    current.value = step;
+  };
 </script>

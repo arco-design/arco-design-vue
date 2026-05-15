@@ -1,9 +1,18 @@
 <template>
-  <sd-cascader :options="options" class="sd:w-[320px]" placeholder="Please select ..." />
+  <sd-cascader :options="options" class="sd:w-80" placeholder="Please select ..." />
 </template>
 
 <script setup lang="ts">
-  const options = [
+  import type {
+    CascaderChangeHandler,
+    CascaderFallback,
+    CascaderFormatLabel,
+    CascaderLoadMore,
+    CascaderOption,
+    CascaderPathValue,
+  } from '@sdata/web-vue';
+
+  const options: CascaderOption[] = [
     {
       value: 'beijing',
       label: 'Beijing',

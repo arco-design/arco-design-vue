@@ -40,6 +40,6 @@
 <script setup lang="ts">
   import { ref } from 'vue';
 
-  const position = ref('left');
+  const position = ref<'left' | 'right'>('left');
   const hideIcon = ref(false);
 </script>

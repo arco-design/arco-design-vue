@@ -4,14 +4,26 @@
     Virtual Scrollbar
   </div>
   <sd-table :columns="columns" :data="data" :scroll="scroll" :scrollbar="scrollbar" />
-  <sd-split direction="vertical" :default-size="0.9" class="sd:h-125 sd:mt-7.5">
-    <template #first>
-      <sd-table :columns="columns" :data="data" :scroll="scrollPercent" :scrollbar="scrollbar" />
-    </template>
-  </sd-split>
+  <div class="sd:mt-7.5 sd:h-125">
+    <sd-table :columns="columns" :data="data" :scroll="scrollPercent" :scrollbar="scrollbar" />
+  </div>
 </template>
 
 <script setup lang="ts">
+  import type {
+    TableChangeExtra,
+    TableColumnData,
+    TableData,
+    TableExpandable,
+    TableLoadMore,
+    TableRowKey,
+    TableRowSelection,
+    TableSpanMethod,
+    TableSpanMethodContext,
+    TableSummary,
+    TableSummaryContext,
+  } from '@sdata/web-vue';
+
   import { reactive, ref } from 'vue';
 
   const scrollbar = ref(true);
@@ -23,7 +35,7 @@
     x: '120%',
     y: '100%',
   };
-  const columns = [
+  const columns: TableColumnData[] = [
     {
       title: 'Name',
       dataIndex: 'name',
@@ -41,7 +53,7 @@
       dataIndex: 'email',
     },
   ];
-  const data = reactive([
+  const data = reactive<TableData[]>([
     {
       key: '1',
       name: 'Jane Doe',

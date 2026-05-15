@@ -10,7 +10,9 @@
   <sd-time-picker class="sd:w-48.5" :size="size" />
 </template>
 <script setup lang="ts">
+  import type { Size } from '@sdata/web-vue';
+
   import { shallowRef } from 'vue';
 
-  const size = shallowRef('small');
+  const size = shallowRef<Size>('small');
 </script>

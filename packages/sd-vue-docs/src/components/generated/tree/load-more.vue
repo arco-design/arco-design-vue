@@ -2,9 +2,21 @@
   <sd-tree :data="treeData" :load-more="loadMore" />
 </template>
 <script setup lang="ts">
+  import type {
+    CheckedStrategy,
+    LoadMore,
+    Size,
+    TreeCheckHandler,
+    TreeDropHandler,
+    TreeExpandHandler,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectHandler,
+  } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
-  const treeData = ref([
+  const treeData = ref<TreeNodeData[]>([
     {
       title: 'Trunk 0-0',
       key: '0-0',
@@ -21,7 +33,7 @@
     },
   ]);
 
-  const loadMore = (nodeData) => {
+  const loadMore: LoadMore = (nodeData) => {
     return new Promise((resolve) => {
       setTimeout(() => {
         nodeData.children = [{ title: `leaf`, key: `${nodeData.key}-1`, isLeaf: true }];

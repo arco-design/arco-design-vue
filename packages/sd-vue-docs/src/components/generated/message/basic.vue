@@ -3,7 +3,9 @@
 </template>
 
 <script setup lang="ts">
+  import { Message } from '@sdata/web-vue';
+
   function handleClick() {
-    this.$message.info('This is an info message');
+    Message.info('This is an info message');
   }
 </script>

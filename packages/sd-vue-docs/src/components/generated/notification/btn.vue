@@ -5,7 +5,7 @@
 <script setup lang="ts">
   import { h } from 'vue';
 
-  import { Notification, Space, Button } from '@sdata/web-vue';
+  import { Button, Notification, Space } from '@sdata/web-vue';
 
   function handleNotification() {
     const id = `${Date.now()}`;
@@ -14,14 +14,19 @@
       title: 'Notification',
       content: 'This is a notification!',
       duration: 0,
-      footer: h(Space, null, () => [
-        h(
-          Button,
-          { type: 'secondary', size: 'small', onClick: () => Notification.remove(id) },
-          () => 'Cancel',
-        ),
-        h(Button, { type: 'primary', size: 'small', onClick: closeNotification }, () => 'Ok'),
-      ]),
+      footer: () =>
+        h(Space, null, () => [
+          h(
+            Button,
+            { type: 'secondary', size: 'small', onClick: () => Notification.remove(id) },
+            () => 'Cancel',
+          ),
+          h(
+            Button,
+            { type: 'primary', size: 'small', onClick: () => closeNotification.close() },
+            () => 'Ok',
+          ),
+        ]),
     });
   }
 </script>

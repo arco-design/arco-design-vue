@@ -19,6 +19,8 @@
 </template>
 
 <script setup lang="ts">
+  import type { ScrollPosition, TabTriggerEvent, TabsPosition, TabsType } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
   let count = 5;
@@ -54,7 +56,7 @@
       content: `Content of New Tab Panel ${number}`,
     });
   };
-  const handleDelete = (key) => {
+  const handleDelete = (key: string | number) => {
     data.value = data.value.filter((item) => item.key !== key);
   };
 </script>

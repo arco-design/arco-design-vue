@@ -6,6 +6,14 @@ import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
 import _Carousel from './carousel';
 import _CarouselItem from './carousel-item.vue';
 
+export type {
+  CarouselArrowType,
+  CarouselAutoPlayConfig,
+  CarouselIndicatorPosition,
+  CarouselIndicatorType,
+  CarouselTriggerEvent,
+} from './interface';
+
 const Carousel = Object.assign(_Carousel, {
   Item: _CarouselItem,
   install: (app: App, options?: SDOptions) => {

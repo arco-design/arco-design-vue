@@ -6,6 +6,10 @@ import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
 import _Radio from './radio';
 import _RadioGroup from './radio-group';
 
+export type { RadioOption } from './interface';
+export type RadioValue = string | number | boolean;
+export type RadioGroupChangeHandler = (value: RadioValue) => void;
+
 const Radio = Object.assign(_Radio, {
   Group: _RadioGroup,
   install: (app: App, options?: SDOptions) => {

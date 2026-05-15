@@ -1,5 +1,5 @@
 import { spawn } from 'node:child_process';
-import { cp, mkdir, readdir, rm } from 'node:fs/promises';
+import { cp, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 const packageRoot = path.resolve(import.meta.dirname, '..');
@@ -11,8 +11,21 @@ await rm(resolveFromRoot('.temp-types'), { recursive: true, force: true });
 try {
   await runVueTsc();
   await moveDirectoryContents(resolveFromRoot('.temp-types', 'components'), resolveFromRoot('es'));
+  await linkAmbientDeclarations();
 } finally {
   await rm(resolveFromRoot('.temp-types'), { recursive: true, force: true });
+}
+
+async function linkAmbientDeclarations() {
+  const indexDtsPath = resolveFromRoot('es', 'index.d.ts');
+  const ambientReference = '/// <reference path="./components.d.ts" />';
+  const existing = await readFile(indexDtsPath, 'utf8');
+
+  if (existing.startsWith(ambientReference)) {
+    return;
+  }
+
+  await writeFile(indexDtsPath, `${ambientReference}\n${existing}`);
 }
 
 async function runVueTsc() {

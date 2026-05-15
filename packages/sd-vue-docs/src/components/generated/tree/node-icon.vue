@@ -6,11 +6,23 @@
   </sd-tree>
 </template>
 <script setup lang="ts">
+  import type {
+    CheckedStrategy,
+    LoadMore,
+    Size,
+    TreeCheckHandler,
+    TreeDropHandler,
+    TreeExpandHandler,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectHandler,
+  } from '@sdata/web-vue';
+
   import { h } from 'vue';
 
-  import { IconStar, IconDriveFile } from '@sdata/web-vue/es/icon/index.js';
+  import { IconDriveFile, IconStar } from '@sdata/web-vue/es/icon/index.js';
 
-  const treeData = [
+  const treeData: TreeNodeData[] = [
     {
       title: 'Trunk',
       key: 'node1',

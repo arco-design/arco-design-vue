@@ -8,15 +8,30 @@
     :summary="summary"
   >
     <template #summary-cell="{ column, record, rowIndex }">
-      <div :class="getColorClass(column, record)">{{ record[column.dataIndex] }}</div>
+      <div :class="getColorClass(column, record)">{{ getSummaryValue(column, record) }}</div>
     </template>
   </sd-table>
 </template>
 
 <script setup lang="ts">
+  import type {
+    TableChangeExtra,
+    TableColumnData,
+    TableData,
+    TableExpandable,
+    TableLoadMore,
+    TableRowKey,
+    TableRowSelection,
+    TableSpanMethod,
+    TableSpanMethodContext,
+    TableSummary,
+    TableSummaryContext,
+  } from '@sdata/web-vue';
+
+  import type { CSSProperties } from 'vue';
   import { reactive } from 'vue';
 
-  const expandable = {
+  const expandable: TableExpandable = {
     title: 'Expand',
     width: 80,
   };
@@ -24,7 +39,7 @@
     x: 2000,
     y: 200,
   };
-  const columns = reactive([
+  const columns = reactive<TableColumnData[]>([
     {
       title: 'Name',
       dataIndex: 'name',
@@ -34,13 +49,15 @@
     {
       title: 'Salary',
       dataIndex: 'salary',
-      summaryCellStyle: (record) => {
+      summaryCellStyle: (record): CSSProperties => {
         if (record.salary > 100000) {
           return {
             backgroundColor: 'rgb(var(--sdblue-6))',
             color: '#fff',
           };
         }
+
+        return {};
       },
     },
     {
@@ -52,7 +69,7 @@
       dataIndex: 'data2',
     },
   ]);
-  const data = reactive([
+  const data = reactive<TableData[]>([
     {
       key: '1',
       name: 'Jane Doe',
@@ -91,7 +108,7 @@
     },
   ]);
 
-  const summary = ({ columns, data }) => {
+  const summary: TableSummary = ({ columns, data }: TableSummaryContext) => {
     let countData = {
       salary: 0,
       data1: 0,
@@ -119,14 +136,22 @@
     ];
   };
 
-  const getColorClass = (column, record) => {
-    if (['data1', 'data2'].includes(column.dataIndex)) {
-      return record[column.dataIndex] > 0 ? 'sd:text-[red]' : 'sd:text-[green]';
+  const getColorClass = (column: TableColumnData, record: TableData) => {
+    const dataIndex = column.dataIndex;
+
+    if (dataIndex && ['data1', 'data2'].includes(dataIndex)) {
+      return record[dataIndex] > 0 ? 'sd:text-[red]' : 'sd:text-[green]';
     }
     return undefined;
   };
 
-  const spanMethod = ({ rowIndex, columnIndex }) => {
+  const getSummaryValue = (column: TableColumnData, record: TableData) => {
+    const dataIndex = column.dataIndex;
+
+    return dataIndex ? record[dataIndex] : undefined;
+  };
+
+  const spanMethod: TableSpanMethod = ({ rowIndex, columnIndex }: TableSpanMethodContext) => {
     if (rowIndex === 0 && columnIndex === 1) {
       return {
         colspan: 2,

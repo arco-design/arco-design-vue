@@ -7,7 +7,7 @@
   />
   <sd-date-picker
     defaultValue="2019-06-03"
-    :format="(value) => `custom format: ${dayjs(value).format('YYYY-MM-DD')}`"
+    :format="formatDate"
     @select="onSelect"
     @change="onChange"
     class="sd:w-60 sd:mr-6 sd:mb-6"
@@ -32,7 +32,7 @@
     class="sd:w-50 sd:mr-6 sd:mb-6"
   />
   <sd-week-picker
-    :defaultValue="dayjs('2019-08-02')"
+    :defaultValue="dayjs('2019-08-02').toDate()"
     @select="onSelect"
     @change="onChange"
     class="sd:w-50 sd:mr-6 sd:mb-6"
@@ -53,6 +53,15 @@
   />
 </template>
 <script setup lang="ts">
+  import type {
+    DatePickerChangeHandler,
+    DisabledDate,
+    DisabledTime,
+    DisabledTimeProps,
+    FormatFunc,
+    RangeDisabledTime,
+  } from '@sdata/web-vue';
+
   import dayjs from 'dayjs';
 
   function onSelect(dateString: unknown, date: unknown) {
@@ -62,4 +71,6 @@
   function onChange(dateString: unknown, date: unknown) {
     console.log('onChange: ', dateString, date);
   }
+
+  const formatDate: FormatFunc = (value) => `custom format: ${dayjs(value).format('YYYY-MM-DD')}`;
 </script>

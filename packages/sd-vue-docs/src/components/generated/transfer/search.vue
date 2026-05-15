@@ -13,6 +13,8 @@
 </template>
 
 <script setup lang="ts">
+  import type { TransferItem, TreeNodeData } from '@sdata/web-vue';
+
   const data = Array(8)
     .fill(undefined)
     .map((_, index) => ({

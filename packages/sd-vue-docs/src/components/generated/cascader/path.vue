@@ -2,7 +2,7 @@
   <sd-space direction="vertical" size="large">
     <sd-cascader
       :options="options"
-      class="sd:w-[320px]"
+      class="sd:w-80"
       placeholder="Please select ..."
       path-mode
       @change="handleChange"
@@ -10,7 +10,7 @@
     <sd-cascader
       :options="options"
       :default-value="[['beijing', 'chaoyang', 'datunli']]"
-      class="sd:w-[320px]"
+      class="sd:w-80"
       placeholder="Please select ..."
       path-mode
       @change="handleChange"
@@ -19,11 +19,20 @@
 </template>
 
 <script setup lang="ts">
-  const handleChange = (path) => {
+  import type {
+    CascaderChangeHandler,
+    CascaderFallback,
+    CascaderFormatLabel,
+    CascaderLoadMore,
+    CascaderOption,
+    CascaderPathValue,
+  } from '@sdata/web-vue';
+
+  const handleChange: CascaderChangeHandler = (path) => {
     console.log(path);
   };
 
-  const options = [
+  const options: CascaderOption[] = [
     {
       value: 'beijing',
       label: 'Beijing',

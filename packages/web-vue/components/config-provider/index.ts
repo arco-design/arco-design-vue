@@ -15,5 +15,12 @@ const ConfigProvider = Object.assign(_ConfigProvider, {
 });
 
 export type ConfigProviderInstance = InstanceType<typeof _ConfigProvider>;
+export type {
+  SDThemeConfig,
+  SDThemeMeta,
+  SDThemeMode,
+  ThemeTokenMap,
+  ThemeTokenValue,
+} from './theme';
 
 export default ConfigProvider;

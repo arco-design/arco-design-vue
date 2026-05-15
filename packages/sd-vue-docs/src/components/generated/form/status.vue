@@ -72,10 +72,12 @@
 </template>
 
 <script setup lang="ts">
+  import type { Size, ValidateStatus } from '@sdata/web-vue';
+
   import { reactive, ref } from 'vue';
 
-  const status = ref('success');
-  const size = ref('medium');
+  const status = ref<ValidateStatus>('success');
+  const size = ref<Size>('medium');
   const form = reactive({
     name: '',
     post: undefined,

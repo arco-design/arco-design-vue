@@ -12,7 +12,20 @@
   ></sd-tree-select>
 </template>
 <script setup lang="ts">
-  const treeData = [
+  import type {
+    CheckedStrategy,
+    LabelValue,
+    Size,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectChangeHandler,
+    TreeSelectFallbackOption,
+    TreeSelectFilterTreeNode,
+    TreeSelectLoadMore,
+    TreeSelectSearchHandler,
+  } from '@sdata/web-vue';
+
+  const treeData: TreeNodeData[] = [
     {
       label: 'Trunk 0-0',
       value: '0-0',

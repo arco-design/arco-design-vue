@@ -33,9 +33,22 @@
   </div>
 </template>
 <script setup lang="ts">
+  import type {
+    CheckedStrategy,
+    LabelValue,
+    Size,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectChangeHandler,
+    TreeSelectFallbackOption,
+    TreeSelectFilterTreeNode,
+    TreeSelectLoadMore,
+    TreeSelectSearchHandler,
+  } from '@sdata/web-vue';
+
   import { computed, ref } from 'vue';
 
-  const sizeToItemSize = {
+  const sizeToItemSize: Record<Size, number> = {
     mini: 24,
     small: 28,
     medium: 32,
@@ -43,10 +56,10 @@
   };
 
   function loop(path = '0', level = 2) {
-    const list = [];
+    const list: TreeNodeData[] = [];
     for (let i = 0; i < 10; i += 1) {
       const key = `${path}-${i}`;
-      const treeNode = {
+      const treeNode: TreeNodeData = {
         title: `Node ${key}`,
         key,
       };
@@ -60,8 +73,8 @@
     return list;
   }
 
-  const size = ref('medium');
-  const mode = ref('default');
+  const size = ref<Size>('medium');
+  const mode = ref<'default' | 'explicit' | 'dynamic'>('default');
   const treeData = loop();
 
   const helperText = computed(() => {

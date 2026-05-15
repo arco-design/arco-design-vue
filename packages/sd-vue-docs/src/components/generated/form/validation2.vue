@@ -24,7 +24,7 @@
     <sd-form-item>
       <sd-space>
         <sd-button html-type="submit">Submit</sd-button>
-        <sd-button @click="$refs.formRef.resetFields()">Reset</sd-button>
+        <sd-button @click="formRef?.resetFields()">Reset</sd-button>
       </sd-space>
     </sd-form-item>
   </sd-form>
@@ -32,9 +32,23 @@
 </template>
 
 <script setup lang="ts">
-  import { reactive } from 'vue';
+  import type {
+    FieldRule,
+    FormInstance,
+    Size,
+    ValidateStatus,
+    ValidatedError,
+  } from '@sdata/web-vue';
 
-  const handleSubmit = ({ values, errors }) => {
+  import { reactive, ref } from 'vue';
+
+  const handleSubmit = ({
+    values,
+    errors,
+  }: {
+    values: Record<string, unknown>;
+    errors: Record<string, ValidatedError> | undefined;
+  }) => {
     console.log('values:', values, '\nerrors:', errors);
   };
 
@@ -48,7 +62,7 @@
     match: '',
   });
 
-  const rules = {
+  const rules: Record<string, FieldRule[]> = {
     name: [
       {
         required: true,
@@ -67,7 +81,7 @@
         message: 'password is required',
       },
       {
-        validator: (value, cb) => {
+        validator: (value: unknown, cb: (error?: string) => void) => {
           if (value !== form.password) {
             cb('two passwords do not match');
           } else {
@@ -97,8 +111,8 @@
     match: [
       {
         required: true,
-        validator: (value, cb) => {
-          return new Promise((resolve) => {
+        validator: (value: unknown, cb: (error?: string) => void) => {
+          return new Promise<void>((resolve) => {
             if (!value) {
               cb('Please enter match');
             }
@@ -111,4 +125,6 @@
       },
     ],
   };
+
+  const formRef = ref<FormInstance | null>(null);
 </script>

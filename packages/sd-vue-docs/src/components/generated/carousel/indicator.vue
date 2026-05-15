@@ -36,6 +36,8 @@
 </template>
 
 <script setup lang="ts">
+  import type { CarouselIndicatorPosition, CarouselIndicatorType } from '@sdata/web-vue';
+
   import { ref, shallowRef } from 'vue';
 
   const images = ref([
@@ -44,15 +46,15 @@
     'https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp',
   ]);
 
-  const indicatorType = shallowRef('dot');
+  const indicatorType = shallowRef<CarouselIndicatorType>('dot');
 
-  const indicatorPosition = shallowRef('bottom');
+  const indicatorPosition = shallowRef<CarouselIndicatorPosition>('bottom');
 
-  function updateType(type) {
-    indicatorType.value = type;
+  function updateType(type: string | number | boolean) {
+    indicatorType.value = type as CarouselIndicatorType;
   }
 
-  function updatePosition(position) {
-    indicatorPosition.value = position;
+  function updatePosition(position: string | number | boolean) {
+    indicatorPosition.value = position as CarouselIndicatorPosition;
   }
 </script>

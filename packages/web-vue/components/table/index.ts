@@ -51,6 +51,14 @@ export type {
   TableExpandable,
   TableDraggable,
   TableChangeExtra,
+  TableLoadMore,
+  TableProps,
+  TableRowKey,
+  TableSpanMethod,
+  TableSpanMethodContext,
+  TableSummary,
+  TableSummaryContext,
+  TableSummarySpanMethod,
 } from './interface';
 
 export {

@@ -32,10 +32,12 @@
 </template>
 
 <script setup lang="ts">
+  import type { InputInstance } from '@sdata/web-vue';
+
   import { ref, nextTick } from 'vue';
 
   const tags = ref(['Tag 1', 'Tag 2', 'Tag 3']);
-  const inputRef = ref(null);
+  const inputRef = ref<InputInstance | null>(null);
   const showInput = ref(false);
   const inputVal = ref('');
 
@@ -57,7 +59,7 @@
     showInput.value = false;
   };
 
-  const handleRemove = (key) => {
+  const handleRemove = (key: string) => {
     tags.value = tags.value.filter((tag) => tag !== key);
   };
 </script>

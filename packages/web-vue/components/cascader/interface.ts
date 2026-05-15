@@ -8,6 +8,14 @@ export type CascaderPathValue = CascaderOptionValue[];
 export type CascaderSingleValue = CascaderOptionValue | CascaderPathValue;
 
 export type CascaderModelValue = CascaderSingleValue | CascaderSingleValue[] | undefined;
+export type CascaderFallback = (value: CascaderSingleValue) => string;
+export type CascaderFormatLabel = (options: CascaderOption[]) => string;
+export type CascaderLoadMore = (
+  option: CascaderOption,
+  done: (children?: CascaderOption[]) => void,
+) => void;
+export type CascaderChangeHandler = (value: CascaderModelValue) => void;
+export type CascaderSearchHandler = (value: string) => void;
 
 export interface CascaderOption {
   /**

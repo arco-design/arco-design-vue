@@ -1,9 +1,14 @@
 <template>
   <div>
     <sd-split
+      component="div"
+      direction="horizontal"
       class="sd:h-50 sd:w-full sd:min-w-125 sd:border sd:border-solid sd:border-(--color-border)"
       v-model:size="size"
+      :default-size="0.5"
       min="80px"
+      :max="undefined"
+      :disabled="false"
     >
       <template #first>
         <sd-typography-paragraph>Left</sd-typography-paragraph>

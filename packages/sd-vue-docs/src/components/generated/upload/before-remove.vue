@@ -20,10 +20,19 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    CustomIcon,
+    FileItem,
+    FileStatus,
+    RequestOption,
+    UploadInstance,
+    UploadRequest,
+  } from '@sdata/web-vue';
+
   import { Modal } from '@sdata/web-vue';
 
-  const beforeRemove = (file) => {
-    return new Promise((resolve, reject) => {
+  const beforeRemove = (file: FileItem) => {
+    return new Promise<boolean>((resolve, reject) => {
       Modal.confirm({
         title: 'on-before-remove',
         content: `确认删除 ${file.name}`,

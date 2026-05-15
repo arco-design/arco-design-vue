@@ -81,7 +81,7 @@
     collapsed.value = !collapsed.value;
   };
 
-  function onClickMenuItem(key) {
+  function onClickMenuItem(key: string | number) {
     Message.info({ content: `You select ${key}`, showIcon: true });
   }
 </script>

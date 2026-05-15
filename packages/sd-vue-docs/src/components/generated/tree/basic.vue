@@ -6,7 +6,19 @@
   />
 </template>
 <script setup lang="ts">
-  const treeData = [
+  import type {
+    CheckedStrategy,
+    LoadMore,
+    Size,
+    TreeCheckHandler,
+    TreeDropHandler,
+    TreeExpandHandler,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectHandler,
+  } from '@sdata/web-vue';
+
+  const treeData: TreeNodeData[] = [
     {
       title: 'Trunk 0-0',
       key: '0-0',

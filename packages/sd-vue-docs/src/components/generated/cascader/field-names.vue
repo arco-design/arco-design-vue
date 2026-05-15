@@ -2,12 +2,21 @@
   <sd-cascader
     :options="options"
     :field-names="fieldNames"
-    class="sd:w-[320px]"
+    class="sd:w-80"
     placeholder="Please select ..."
   />
 </template>
 
 <script setup lang="ts">
+  import type {
+    CascaderChangeHandler,
+    CascaderFallback,
+    CascaderFormatLabel,
+    CascaderLoadMore,
+    CascaderOption,
+    CascaderPathValue,
+  } from '@sdata/web-vue';
+
   import { reactive } from 'vue';
 
   const fieldNames = { value: 'city', label: 'text' };

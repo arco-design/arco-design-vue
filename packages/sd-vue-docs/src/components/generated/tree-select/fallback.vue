@@ -47,7 +47,20 @@
 </template>
 
 <script setup lang="ts">
-  const treeData = [
+  import type {
+    CheckedStrategy,
+    LabelValue,
+    Size,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectChangeHandler,
+    TreeSelectFallbackOption,
+    TreeSelectFilterTreeNode,
+    TreeSelectLoadMore,
+    TreeSelectSearchHandler,
+  } from '@sdata/web-vue';
+
+  const treeData: TreeNodeData[] = [
     {
       key: 'node1',
       title: 'Trunk1',
@@ -74,7 +87,7 @@
     },
   ];
 
-  function fallback(key) {
+  function fallback(key: TreeNodeKey) {
     return {
       key,
       title: `++${key}++`,

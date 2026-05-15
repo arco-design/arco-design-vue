@@ -16,7 +16,7 @@
           filterable
           clearable
           placeholder="兼容别名写法"
-          class="sd:w-[320px]"
+          class="sd:w-80"
         />
       </sd-space>
     </div>
@@ -37,7 +37,7 @@
           allow-search
           allow-clear
           placeholder="推荐本地写法"
-          class="sd:w-[320px]"
+          class="sd:w-80"
         />
       </sd-space>
     </div>
@@ -45,6 +45,15 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    CascaderChangeHandler,
+    CascaderFallback,
+    CascaderFormatLabel,
+    CascaderLoadMore,
+    CascaderOption,
+    CascaderPathValue,
+  } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
   const legacyValue = ref('chaoyang');
@@ -52,7 +61,7 @@
   const modernValue = ref('haidian');
   const modernVisible = ref(false);
 
-  const options = [
+  const options: CascaderOption[] = [
     {
       value: 'beijing',
       label: '北京',

@@ -3,7 +3,9 @@
 </template>
 
 <script setup lang="ts">
+  import type { SliderValue } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
-  const value = ref([5, 10]);
+  const value = ref<SliderValue>([5, 10]);
 </script>

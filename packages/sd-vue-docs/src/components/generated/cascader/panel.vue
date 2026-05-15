@@ -3,11 +3,20 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    CascaderChangeHandler,
+    CascaderFallback,
+    CascaderFormatLabel,
+    CascaderLoadMore,
+    CascaderOption,
+    CascaderPathValue,
+  } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
   const value = ref('');
 
-  const options = [
+  const options: CascaderOption[] = [
     {
       value: 'beijing',
       label: 'Beijing',

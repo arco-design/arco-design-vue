@@ -3,17 +3,29 @@
 </template>
 
 <script setup lang="ts">
-  const customRequest = (option) => {
+  import type {
+    CustomIcon,
+    FileItem,
+    FileStatus,
+    RequestOption,
+    UploadInstance,
+    UploadRequest,
+  } from '@sdata/web-vue';
+
+  const customRequest = (option: RequestOption): UploadRequest => {
     const { onProgress, onError, onSuccess, fileItem, name } = option;
+    const fileName = typeof name === 'function' ? name(fileItem) : (name ?? 'file');
     const xhr = new XMLHttpRequest();
     if (xhr.upload) {
       xhr.upload.onprogress = function (event) {
-        let percent;
+        let percent: number | undefined;
         if (event.total > 0) {
           // 0 ~ 1
           percent = event.loaded / event.total;
         }
-        onProgress(percent, event);
+        if (percent !== undefined) {
+          onProgress(percent, event);
+        }
       };
     }
     xhr.onerror = function error(e) {
@@ -27,7 +39,9 @@
     };
 
     const formData = new FormData();
-    formData.append(name || 'file', fileItem.file);
+    if (fileItem.file) {
+      formData.append(fileName, fileItem.file);
+    }
     xhr.open('post', '//upload-z2.qbox.me/', true);
     xhr.send(formData);
 

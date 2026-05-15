@@ -1370,13 +1370,1572 @@ function transformSetupScript(source, fullScriptBlock, prelude, existingSuffix, 
   return source.replace(fullScriptBlock, nextScript);
 }
 
-function transformSource(source) {
+function escapeForRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function ensureImportSpecifiers(scriptContent, moduleName, specifiers, isType = false) {
+  if (specifiers.length === 0) {
+    return scriptContent;
+  }
+
+  const importPattern = new RegExp(
+    `^\\s*import\\s+${isType ? 'type\\s+' : ''}\\{([^}]*)\\}\\s+from\\s+['"]${escapeForRegExp(moduleName)}['"];?\\n?`,
+    'm',
+  );
+  const match = scriptContent.match(importPattern);
+
+  if (match) {
+    const existingSpecifiers = match[1]
+      .split(',')
+      .map((item) => item.trim())
+      .filter(Boolean);
+    const nextSpecifiers = toSortedList(new Set([...existingSpecifiers, ...specifiers]));
+
+    return scriptContent.replace(
+      importPattern,
+      `import ${isType ? 'type ' : ''}{ ${nextSpecifiers.join(', ')} } from '${moduleName}';\n`,
+    );
+  }
+
+  const importStatement = `import ${isType ? 'type ' : ''}{ ${toSortedList(specifiers).join(', ')} } from '${moduleName}';`;
+  const lines = scriptContent.split('\n');
+  let insertIndex = 0;
+
+  while (insertIndex < lines.length && lines[insertIndex].startsWith('import ')) {
+    insertIndex += 1;
+  }
+
+  lines.splice(insertIndex, 0, importStatement);
+  return lines.join('\n');
+}
+
+function normalizeImports(scriptContent) {
+  const importPattern = /^\s*import\s+(type\s+)?\{([\s\S]*?)\}\s+from\s+['"]([^'"]+)['"];?\s*$/gm;
+  const importMap = new Map();
+  const matches = [...scriptContent.matchAll(importPattern)];
+
+  if (matches.length === 0) {
+    return scriptContent;
+  }
+
+  for (const match of matches) {
+    const isType = Boolean(match[1]);
+    const specifiers = match[2]
+      .split(',')
+      .map((item) => item.trim())
+      .filter(Boolean);
+    const moduleName = match[3];
+    const key = `${isType ? 'type:' : 'value:'}${moduleName}`;
+    const existing = importMap.get(key) ?? new Set();
+
+    for (const specifier of specifiers) {
+      existing.add(specifier);
+    }
+
+    importMap.set(key, existing);
+  }
+
+  const body = scriptContent.replace(importPattern, '').replace(/^\s*\n+/, '');
+  const mergedImports = [...importMap.entries()]
+    .sort(([leftKey], [rightKey]) => leftKey.localeCompare(rightKey))
+    .map(([key, specifierSet]) => {
+      const [kind, moduleName] = key.split(':');
+      return `import ${kind === 'type' ? 'type ' : ''}{ ${toSortedList(specifierSet).join(', ')} } from '${moduleName}';`;
+    })
+    .join('\n');
+
+  return `${mergedImports}\n\n${body}`;
+}
+
+function splitSfcSections(source) {
+  const templateMatch = source.match(/<template>([\s\S]*?)<\/template>/);
+  const scriptSetupMatch = source.match(/<script\s+setup\s+lang="ts">([\s\S]*?)<\/script>/);
+  if (!scriptSetupMatch) {
+    return null;
+  }
+
+  return {
+    template: templateMatch?.[1] ?? '',
+    scriptSetup: scriptSetupMatch[1],
+    scriptSetupBlock: scriptSetupMatch[0],
+  };
+}
+
+function buildLiteralTypeFromValue(rawValue) {
+  const trimmedValue = rawValue.trim();
+  if (/^-?\d+(?:\.\d+)?$/.test(trimmedValue)) {
+    return trimmedValue;
+  }
+
+  if (trimmedValue === 'true' || trimmedValue === 'false') {
+    return trimmedValue;
+  }
+
+  return `'${trimmedValue.replaceAll("'", "\\'")}'`;
+}
+
+function collectRadioModelLiteralTypes(templateSource) {
+  const modelTypes = new Map();
+  const groupPattern =
+    /<sd-radio-group\b[^>]*\bv-model="([^"]+)"[^>]*>([\s\S]*?)<\/sd-radio-group>/g;
+
+  for (const match of templateSource.matchAll(groupPattern)) {
+    const [, modelName, groupContent] = match;
+    const literalTypes = new Set();
+    const radioPattern = /<sd-radio\b[^>]*(?:\svalue="([^"]+)"|\s:value="([^"]+)")[^>]*>/g;
+
+    for (const radioMatch of groupContent.matchAll(radioPattern)) {
+      const rawValue = radioMatch[1] ?? radioMatch[2];
+      if (!rawValue) {
+        continue;
+      }
+
+      literalTypes.add(buildLiteralTypeFromValue(rawValue));
+    }
+
+    if (literalTypes.size > 0) {
+      modelTypes.set(modelName, [...literalTypes].join(' | '));
+    }
+  }
+
+  return modelTypes;
+}
+
+function annotateRadioModelRefs(scriptContent, templateSource) {
+  const modelTypes = collectRadioModelLiteralTypes(templateSource);
+  if (modelTypes.size === 0) {
+    return scriptContent;
+  }
+
+  return scriptContent.replace(
+    /const\s+([A-Za-z_$][\w$]*)\s*=\s*(ref|shallowRef)\(([^\n;]+)\);/g,
+    (match, bindingName, helperName, initializer) => {
+      if (!modelTypes.has(bindingName) || match.includes('<')) {
+        return match;
+      }
+
+      return `const ${bindingName} = ${helperName}<${modelTypes.get(bindingName)}>(${initializer.trim()});`;
+    },
+  );
+}
+
+function inferArrayElementTypeFromLiteralArray(arraySource) {
+  const elements = splitTopLevel(arraySource.trim());
+  if (elements.length === 0) {
+    return null;
+  }
+
+  if (elements.every((item) => /^(?:'[^']*'|"[^"]*"|`[^`]*`)$/.test(item))) {
+    return 'string';
+  }
+
+  if (elements.every((item) => /^-?\d+(?:\.\d+)?$/.test(item))) {
+    return 'number';
+  }
+
+  if (elements.every((item) => item === 'true' || item === 'false')) {
+    return 'boolean';
+  }
+
+  return null;
+}
+
+function inferRefArrayElementType(scriptContent, bindingName) {
+  const directAssignmentPattern = new RegExp(
+    `${bindingName}\\.value\\s*=\\s*\\[([\\s\\S]*?)\\];`,
+    'g',
+  );
+  for (const match of scriptContent.matchAll(directAssignmentPattern)) {
+    const inferredType = inferArrayElementTypeFromLiteralArray(match[1]);
+    if (inferredType) {
+      return inferredType;
+    }
+  }
+
+  const aliasAssignmentPattern = new RegExp(
+    `${bindingName}\\.value\\s*=\\s*([A-Za-z_$][\\w$]*);`,
+    'g',
+  );
+  for (const match of scriptContent.matchAll(aliasAssignmentPattern)) {
+    const aliasName = match[1];
+    const aliasPattern = new RegExp(`const\\s+${aliasName}\\s*=\\s*\\[([\\s\\S]*?)\\];`);
+    const aliasMatch = scriptContent.match(aliasPattern);
+    if (!aliasMatch) {
+      continue;
+    }
+
+    const inferredType = inferArrayElementTypeFromLiteralArray(aliasMatch[1]);
+    if (inferredType) {
+      return inferredType;
+    }
+  }
+
+  return null;
+}
+
+function annotateEmptyArrayRefs(scriptContent) {
+  return scriptContent.replace(
+    /const\s+([A-Za-z_$][\w$]*)\s*=\s*ref\(\[\]\);/g,
+    (match, bindingName) => {
+      const inferredElementType = inferRefArrayElementType(scriptContent, bindingName);
+      if (!inferredElementType) {
+        return match;
+      }
+
+      return `const ${bindingName} = ref<${inferredElementType}[]>([]);`;
+    },
+  );
+}
+
+function applyAutoCompleteTypeFixes(scriptContent) {
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    [
+      'AutoCompleteData',
+      'AutoCompleteDropdownReachBottomHandler',
+      'AutoCompleteDropdownScrollHandler',
+      'AutoCompleteSearchHandler',
+    ],
+    true,
+  );
+
+  nextContent = nextContent.replace(
+    /const\s+data\s*=\s*ref(?:<[^>]+>)?\(\[\]\);/,
+    'const data = ref<AutoCompleteData>([]);',
+  );
+  nextContent = nextContent.replace(
+    /function\s+handleSearch\(([^):]+)\)\s*\{/g,
+    'const handleSearch: AutoCompleteSearchHandler = ($1) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+handleSearch\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const handleSearch: AutoCompleteSearchHandler = ($1) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+handleScroll\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const handleScroll: AutoCompleteDropdownScrollHandler = ($1) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+handleReachBottom\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const handleReachBottom: AutoCompleteDropdownReachBottomHandler = ($1) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+createData\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const createData = ($1: string) => {',
+  );
+
+  return nextContent;
+}
+
+function applyTabsTypeFixes(scriptContent) {
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    ['ScrollPosition', 'TabTriggerEvent', 'TabsPosition', 'TabsType'],
+    true,
+  );
+
+  nextContent = nextContent.replace(
+    /const\s+position\s*=\s*ref(?:<[^>]+>)?\(([^)]+)\);/,
+    'const position = ref<TabsPosition>($1);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+scrollPosition\s*=\s*ref(?:<[^>]+>)?\(([^)]+)\);/,
+    'const scrollPosition = ref<ScrollPosition>($1);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+type\s*=\s*ref(?:<[^>]+>)?\(([^)]+)\);/,
+    'const type = ref<TabsType>($1);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+trigger\s*=\s*ref(?:<[^>]+>)?\(([^)]+)\);/,
+    'const trigger = ref<TabTriggerEvent>($1);',
+  );
+  nextContent = nextContent.replace(/\((key)\)\s*=>/g, '($1: string | number) =>');
+
+  return nextContent;
+}
+
+function applyTimelineTypeFixes(source, scriptContent) {
+  let nextSource = source.replace(/\?\s*'horizontal'\s*:\s*''/g, "? 'horizontal' : undefined");
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    ['LabelPositionType', 'ModeType'],
+    true,
+  );
+
+  nextContent = nextContent.replace(
+    /const\s+mode\s*=\s*ref(?:<[^>]+>)?\(([^)]+)\);/,
+    'const mode = ref<ModeType>($1);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+pos\s*=\s*ref(?:<[^>]+>)?\(([^)]+)\);/,
+    'const pos = ref<LabelPositionType>($1);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+onModeChange\s*=\s*\((_?mode)\)\s*=>\s*\{/g,
+    'const onModeChange = ($1: string | number | boolean) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+onLabelPositionChange\s*=\s*\((_?pos)\)\s*=>\s*\{/g,
+    'const onLabelPositionChange = ($1: string | number | boolean) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+onChange\s*=\s*\((bool|fixed|v)\)\s*=>\s*\{/g,
+    'const onChange = ($1: string | number | boolean) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+onChange\s*=\s*\((_?mode)\)\s*=>\s*\{\s*\n\s*mode\.value\s*=\s*_?mode;/g,
+    'const onChange = ($1: string | number | boolean) => {\n    mode.value = $1 as ModeType;',
+  );
+  nextContent = nextContent.replace(
+    /const\s+onLabelPositionChange\s*=\s*\((_?pos):\s*LabelPositionType\)\s*=>\s*\{\s*\n\s*pos\.value\s*=\s*_?pos;/g,
+    'const onLabelPositionChange = ($1: string | number | boolean) => {\n    pos.value = $1 as LabelPositionType;',
+  );
+  nextContent = nextContent.replace(
+    /const\s+onModeChange\s*=\s*\((_?mode):\s*ModeType\)\s*=>\s*\{\s*\n\s*mode\.value\s*=\s*_?mode;/g,
+    'const onModeChange = ($1: string | number | boolean) => {\n    mode.value = $1 as ModeType;',
+  );
+  nextContent = nextContent.replace(
+    /isReverse\.value\s*=\s*bool;/g,
+    'isReverse.value = Boolean(bool);',
+  );
+  nextSource = nextSource.replace(
+    /@change="\(v\) => onChange\(\{ reverse: v \}\)"/g,
+    '@change="(v) => onChange({ reverse: Boolean(v) })"',
+  );
+  nextSource = nextSource.replace(
+    /@change="\(v\) => onChange\(\{ pending: v \? 'This is a pending dot' : false \}\)"/g,
+    '@change="(v) => onChange({ pending: Boolean(v) ? \'This is a pending dot\' : false })"',
+  );
+  nextSource = nextSource.replace(
+    /@change="\(v\) => onChange\(\{ hasPendingDot: v \}\)"/g,
+    '@change="(v) => onChange({ hasPendingDot: Boolean(v) })"',
+  );
+  nextContent = nextContent.replace(
+    /const\s+pendingProps\s*=\s*ref<Record<string, boolean \| string>>\(\{\}\);/,
+    "const pendingProps = ref<{ direction?: 'horizontal'; reverse?: boolean; pending?: string | boolean; hasPendingDot?: boolean }>({});",
+  );
+  nextContent = nextContent.replace(
+    /function\s+onChange\(newProps: Record<string, boolean \| string>\)\s*\{/,
+    "function onChange(newProps: { direction?: 'horizontal'; reverse?: boolean; pending?: string | boolean; hasPendingDot?: boolean }) {",
+  );
+
+  return nextSource.replace(scriptContent, nextContent);
+}
+
+function applyTreeTypeFixes(scriptContent) {
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    [
+      'CheckedStrategy',
+      'LoadMore',
+      'Size',
+      'TreeCheckHandler',
+      'TreeDropHandler',
+      'TreeExpandHandler',
+      'TreeNodeData',
+      'TreeNodeKey',
+      'TreeSelectHandler',
+    ],
+    true,
+  );
+
+  nextContent = nextContent.replace(
+    /const\s+treeData\s*=\s*\[/,
+    'const treeData: TreeNodeData[] = [',
+  );
+  nextContent = nextContent.replace(
+    /const\s+treeData\s*=\s*ref\(\[/,
+    'const treeData = ref<TreeNodeData[]>([',
+  );
+  nextContent = nextContent.replace(
+    /const\s+treeData\s*=\s*ref\(defaultTreeData\);/g,
+    'const treeData = ref<TreeNodeData[]>(defaultTreeData);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+strategyOptions\s*=\s*\[/g,
+    'const strategyOptions: Array<{ value: CheckedStrategy; label: string }> = [',
+  );
+  nextContent = nextContent.replace(
+    /const\s+selectedKeys\s*=\s*ref(?:<[^>]+>)?\(\[\]\);/,
+    'const selectedKeys = ref<TreeNodeKey[]>([]);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+checkedKeys\s*=\s*ref(?:<[^>]+>)?\(\[\]\);/,
+    'const checkedKeys = ref<TreeNodeKey[]>([]);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+expandedKeys\s*=\s*ref(?:<[^>]+>)?\(\[\]\);/,
+    'const expandedKeys = ref<TreeNodeKey[]>([]);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+checkedStrategy\s*=\s*ref<'item\?\.value'>\('all'\);/g,
+    "const checkedStrategy = ref<CheckedStrategy>('all');",
+  );
+  nextContent = nextContent.replace(
+    /const\s+size\s*=\s*ref(?:<[^>]+>)?\(([^)]+)\);/,
+    'const size = ref<Size>($1);',
+  );
+  nextContent = nextContent.replace(
+    /function\s+onSelect\(([A-Za-z_$][\w$]*)\s*,\s*([A-Za-z_$][\w$]*)\)\s*\{/g,
+    'function onSelect($1: Parameters<TreeSelectHandler>[0], $2: Parameters<TreeSelectHandler>[1]) {',
+  );
+  nextContent = nextContent.replace(
+    /function\s+onCheck\(([A-Za-z_$][\w$]*)\s*,\s*([A-Za-z_$][\w$]*)\)\s*\{/g,
+    'function onCheck($1: Parameters<TreeCheckHandler>[0], $2: Parameters<TreeCheckHandler>[1]) {',
+  );
+  nextContent = nextContent.replace(
+    /function\s+onExpand\(([A-Za-z_$][\w$]*)\s*,\s*([A-Za-z_$][\w$]*)\)\s*\{/g,
+    'function onExpand($1: Parameters<TreeExpandHandler>[0], $2: { expanded?: boolean; expandedNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event }) {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+loadMore\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const loadMore: LoadMore = ($1) => {',
+  );
+  nextContent = nextContent.replace(
+    /function\s+onDrop\(\{\s*dragNode\s*,\s*dropNode\s*,\s*dropPosition\s*\}\)\s*\{/g,
+    'function onDrop({ dragNode, dropNode, dropPosition }: Parameters<TreeDropHandler>[0]) {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+loop\s*=\s*\(([^,)]+),\s*([^,)]+),\s*([^)]+)\)\s*=>\s*\{/g,
+    'const loop = ($1: TreeNodeData[], $2: TreeNodeKey, $3: (item: TreeNodeData, index: number, arr: TreeNodeData[]) => void) => {',
+  );
+  nextContent = nextContent.replace(
+    /function\s+searchData\(([^):]+)\)\s*\{/g,
+    'function searchData($1: string) {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+loop\s*=\s*\(([^):]+)\)\s*=>\s*\{\s*\n\s*const\s+result\s*=\s*\[\];/g,
+    'const loop = ($1: TreeNodeData[]): TreeNodeData[] => {\n      const result: TreeNodeData[] = [];',
+  );
+  nextContent = nextContent.replace(
+    /function\s+getMatchIndex\(([^):]+)\)\s*\{/g,
+    'function getMatchIndex($1: string) {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+treeNode\s*=\s*\{/g,
+    'const treeNode: TreeNodeData = {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+list\s*=\s*\[\];/g,
+    'const list: TreeNodeData[] = [];',
+  );
+  nextContent = nextContent.replace(
+    /item\.title\.toLowerCase\(\)\.indexOf\(keyword\.toLowerCase\(\)\) > -1/g,
+    "String(item.title ?? '').toLowerCase().indexOf(keyword.toLowerCase()) > -1",
+  );
+
+  return nextContent;
+}
+
+function applyTreeSelectTypeFixes(scriptContent) {
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    [
+      'CheckedStrategy',
+      'LabelValue',
+      'Size',
+      'TreeNodeData',
+      'TreeNodeKey',
+      'TreeSelectChangeHandler',
+      'TreeSelectFallbackOption',
+      'TreeSelectFilterTreeNode',
+      'TreeSelectLoadMore',
+      'TreeSelectSearchHandler',
+    ],
+    true,
+  );
+
+  nextContent = nextContent.replace(
+    /const\s+strategyOptions\s*=\s*\[/g,
+    'const strategyOptions: Array<{ value: CheckedStrategy; label: string }> = [',
+  );
+  nextContent = nextContent.replace(
+    /const\s+treeData\s*=\s*\[/g,
+    'const treeData: TreeNodeData[] = [',
+  );
+  nextContent = nextContent.replace(
+    /const\s+treeData\s*=\s*ref\(defaultTreeData\);/g,
+    'const treeData = ref<TreeNodeData[]>(defaultTreeData);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+sizeToItemSize\s*=\s*\{/g,
+    'const sizeToItemSize: Record<Size, number> = {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+size\s*=\s*ref(?:<[^>]+>)?\(([^)]+)\);/g,
+    'const size = ref<Size>($1);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+treeCheckedStrategy\s*=\s*ref<'item\?\.value'>\('all'\);/g,
+    "const treeCheckedStrategy = ref<CheckedStrategy>('all');",
+  );
+  nextContent = nextContent.replace(
+    /const\s+list\s*=\s*\[\];/g,
+    'const list: TreeNodeData[] = [];',
+  );
+  nextContent = nextContent.replace(
+    /const\s+treeNode\s*=\s*\{/g,
+    'const treeNode: TreeNodeData = {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+loadMore\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const loadMore: TreeSelectLoadMore = ($1) => {',
+  );
+  nextContent = nextContent.replace(
+    /new\s+Promise\(\(resolve\)\s*=>/g,
+    'new Promise<void>((resolve) =>',
+  );
+  nextContent = nextContent.replace(
+    /function\s+searchData\(([^):]+)\)\s*\{/g,
+    'function searchData($1: string) {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+loop\s*=\s*\(([^):]+)\)\s*=>\s*\{\s*\n\s*const\s+result\s*=\s*\[\];/g,
+    'const loop = ($1: TreeNodeData[]): TreeNodeData[] => {\n      const result: TreeNodeData[] = [];',
+  );
+  nextContent = nextContent.replace(
+    /const\s+onSearch\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const onSearch: TreeSelectSearchHandler = ($1) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+onChange\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const onChange: TreeSelectChangeHandler = ($1) => {',
+  );
+  nextContent = nextContent.replace(/\((key)\)\s*=>\s*\{/g, '($1: TreeNodeKey) => {');
+  nextContent = nextContent.replace(
+    /const\s+selected\s*=\s*ref(?:<[^>]+>)?\(\[\]\);/g,
+    'const selected = ref<LabelValue[]>([]);',
+  );
+  nextContent = nextContent.replace(
+    /function\s+filterTreeNode\(([^,)]+),\s*([^)]+)\)\s*\{/g,
+    'function filterTreeNode($1: string, $2: TreeNodeData) {',
+  );
+  nextContent = nextContent.replace(
+    /function\s+fallback\(([^):]+)\)\s*\{/g,
+    'function fallback($1: TreeNodeKey) {',
+  );
+  nextContent = nextContent.replace(
+    /function\s+onChange\(([^):]+)\)\s*\{/g,
+    'function onChange($1: Parameters<TreeSelectChangeHandler>[0]) {',
+  );
+  nextContent = nextContent.replace(
+    /String\(item\.title \?\? ''\)\.toLowerCase\(\)\.indexOf\(keyword\.toLowerCase\(\)\) > -1/g,
+    "String(item.title ?? '').toLowerCase().indexOf(keyword.toLowerCase()) > -1",
+  );
+  nextContent = nextContent.replace(
+    /item\.title\.toLowerCase\(\)\.indexOf\(keyword\.toLowerCase\(\)\) > -1/g,
+    "String(item.title ?? '').toLowerCase().indexOf(keyword.toLowerCase()) > -1",
+  );
+  nextContent = nextContent.replace(
+    /return\s+nodeData\.title\.toLowerCase\(\)\.indexOf\(searchValue\.toLowerCase\(\)\) > -1;/g,
+    "return String(nodeData.title ?? '').toLowerCase().indexOf(searchValue.toLowerCase()) > -1;",
+  );
+  nextContent = nextContent.replace(
+    /text\.value\s*=\s*selected;/g,
+    'text.value = String(selected ?? "");',
+  );
+
+  return nextContent;
+}
+
+function applyTransferTypeFixes(scriptContent) {
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    ['TransferItem', 'TreeNodeData'],
+    true,
+  );
+
+  nextContent = nextContent.replace(
+    /const\s+getTransferData\s*=\s*\(treeData = \[\], transferDataSource = \[\]\)\s*=>\s*\{/g,
+    'const getTransferData = (treeData: TreeNodeData[] = [], transferDataSource: TransferItem[] = []) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+getTreeData\s*=\s*\(data = \[\]\)\s*=>\s*\{/g,
+    'const getTreeData = (data: TransferItem[] = []) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+travel\s*=\s*\(_treeData = \[\]\)\s*=>\s*\{\s*\n\s*const\s+treeDataSource\s*=\s*\[\];/g,
+    'const travel = (_treeData: TreeNodeData[] = []) => {\n      const treeDataSource: TreeNodeData[] = [];',
+  );
+  nextContent = nextContent.replace(
+    /transferDataSource\.push\(\{\s*label:\s*item\.title,\s*value:\s*item\.key\s*\}\);/g,
+    "transferDataSource.push({ label: String(item.title ?? ''), value: String(item.key ?? '') });",
+  );
+  nextContent = nextContent.replace(
+    /if \(item\.children \|\| values\.includes\(item\.key\)\) \{/g,
+    'if (item.children || (item.key !== undefined && values.includes(String(item.key)))) {',
+  );
+  nextContent = nextContent.replace(/title:\s*item\.title,/g, "title: String(item.title ?? ''),");
+  nextContent = nextContent.replace(/key:\s*item\.key,/g, "key: item.key ?? '',");
+
+  return nextContent;
+}
+
+function applyTableTypeFixes(scriptContent) {
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    [
+      'TableChangeExtra',
+      'TableColumnData',
+      'TableData',
+      'TableExpandable',
+      'TableLoadMore',
+      'TableRowKey',
+      'TableRowSelection',
+      'TableSpanMethod',
+      'TableSpanMethodContext',
+      'TableSummary',
+      'TableSummaryContext',
+    ],
+    true,
+  );
+
+  nextContent = nextContent.replace(
+    /const\s+columns\s*=\s*reactive\(\[/g,
+    'const columns = reactive<TableColumnData[]>([',
+  );
+  nextContent = nextContent.replace(
+    /const\s+columns\s*=\s*\[/g,
+    'const columns: TableColumnData[] = [',
+  );
+  nextContent = nextContent.replace(
+    /const\s+data\s*=\s*reactive\(\[/g,
+    'const data = reactive<TableData[]>([',
+  );
+  nextContent = nextContent.replace(/const\s+data\s*=\s*\[/g, 'const data: TableData[] = [');
+  nextContent = nextContent.replace(
+    /const\s+data\s*=\s*ref\(\[/g,
+    'const data = ref<TableData[]>([',
+  );
+  nextContent = nextContent.replace(
+    /const\s+data\s*=\s*reactive\(\s*Array\(/g,
+    'const data = reactive<TableData[]>(Array(',
+  );
+  nextContent = nextContent.replace(
+    /const\s+expandable\s*=\s*reactive\(\{/g,
+    'const expandable = reactive<TableExpandable>({',
+  );
+  nextContent = nextContent.replace(
+    /const\s+expandable\s*=\s*\{/g,
+    'const expandable: TableExpandable = {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+rowSelection\s*=\s*\{/g,
+    'const rowSelection: TableRowSelection = {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+rowSelection\s*=\s*reactive\(\{/g,
+    'const rowSelection = reactive<TableRowSelection>({',
+  );
+  nextContent = nextContent.replace(
+    /const\s+options\s*=\s*\{/g,
+    'const options: Record<string, string[]> = {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+expandedKeys\s*=\s*ref\(\[\]\);/g,
+    'const expandedKeys = ref<string[]>([]);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+tableHostRef\s*=\s*ref\(\);/g,
+    'const tableHostRef = ref<HTMLElement | null>(null);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+summary\s*=\s*\(\{\s*columns\s*,\s*data\s*\}\)\s*=>\s*\{/g,
+    'const summary: TableSummary = ({ columns, data }: TableSummaryContext) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+spanMethod\s*=\s*\(\{\s*rowIndex\s*,\s*columnIndex\s*\}\)\s*=>\s*\{/g,
+    'const spanMethod: TableSpanMethod = ({ rowIndex, columnIndex }: TableSpanMethodContext) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+dataSpanMethod\s*=\s*\(\{\s*record\s*,\s*column\s*\}\)\s*=>\s*\{/g,
+    'const dataSpanMethod: TableSpanMethod = ({ record, column }: TableSpanMethodContext) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+spanMethodAll\s*=\s*\(\{\s*rowIndex\s*,\s*columnIndex\s*\}\)\s*=>\s*\{/g,
+    'const spanMethodAll: TableSpanMethod = ({ rowIndex, columnIndex }: TableSpanMethodContext) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+getColorClass\s*=\s*\(([A-Za-z_$][\w$]*)\s*,\s*([A-Za-z_$][\w$]*)\)\s*=>\s*\{/g,
+    'const getColorClass = ($1: TableColumnData, $2: TableData) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+loadMore\s*=\s*\((record)\s*,\s*(done)\)\s*=>\s*\{/g,
+    'const loadMore: TableLoadMore = ($1, $2) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+getRowKey\s*=\s*\((record)\)\s*=>\s*record\.id;/g,
+    "const getRowKey: TableRowKey = (record: TableData) => String(record.id ?? '');",
+  );
+  nextContent = nextContent.replace(
+    /const\s+handleChange\s*=\s*\((_data)\)\s*=>\s*\{/g,
+    'const handleChange = ($1: TableData[]) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+handleChange\s*=\s*\((rowIndex)\)\s*=>\s*\{/g,
+    'const handleChange = ($1: number) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+handleChange\s*=\s*\(([A-Za-z_$][\w$]*)\s*,\s*([A-Za-z_$][\w$]*)\s*,\s*([A-Za-z_$][\w$]*)\)\s*=>\s*\{/g,
+    'const handleChange = ($1: TableData[], $2: TableChangeExtra, $3: TableData[]) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+scrollTableToRow\s*=\s*async\s*\((row)\)\s*=>\s*\{/g,
+    'const scrollTableToRow = async ($1: number) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+expandAndScrollToRow\s*=\s*async\s*\((row)\)\s*=>\s*\{/g,
+    'const expandAndScrollToRow = async ($1: number) => {',
+  );
+
+  return nextContent;
+}
+
+function applySelectTypeFixes(scriptContent) {
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    ['SelectFallbackOption', 'Size'],
+    true,
+  );
+
+  nextContent = nextContent.replace(
+    /const\s+size\s*=\s*ref(?:<[^>]+>)?\(([^)]+)\);/g,
+    'const size = ref<Size>($1);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+fallback\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const fallback: SelectFallbackOption = ($1) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+data\s*=\s*\{/g,
+    'const data: Record<string, string[]> = {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+handleSearch\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const handleSearch = ($1: string) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+handleScroll\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const handleScroll = ($1: Event) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+handleReachBottom\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const handleReachBottom = ($1: Event) => {',
+  );
+
+  return nextContent;
+}
+
+function applyInputTypeFixes(scriptContent) {
+  let nextContent = ensureImportSpecifiers(scriptContent, '@sdata/web-vue', ['Size'], true);
+
+  nextContent = nextContent.replace(
+    /const\s+size\s*=\s*ref(?:<[^>]+>)?\(([^)]+)\);/g,
+    'const size = ref<Size>($1);',
+  );
+
+  return nextContent;
+}
+
+function applyCheckboxTypeFixes(scriptContent) {
+  let nextContent = scriptContent;
+
+  nextContent = nextContent.replace(
+    /const\s+data\s*=\s*ref\(\[\]\);/g,
+    'const data = ref<string[]>([]);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+handleChangeAll\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const handleChangeAll = ($1: boolean | (string | number | boolean)[], _event: Event) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+handleChange\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const handleChange = ($1: (string | number | boolean)[], _event: Event) => {',
+  );
+
+  return nextContent;
+}
+
+function applyLayoutTypeFixes(scriptContent) {
+  let nextContent = scriptContent;
+
+  nextContent = nextContent.replace(
+    /const\s+onCollapse\s*=\s*\(([^,)]+)\s*,\s*([^)]+)\)\s*=>\s*\{/g,
+    "const onCollapse = ($1: boolean, $2: 'responsive' | 'clickTrigger') => {",
+  );
+  nextContent = nextContent.replace(
+    /function\s+onClickMenuItem\(([^):]+)\)\s*\{/g,
+    'function onClickMenuItem($1: string | number) {',
+  );
+
+  return nextContent;
+}
+
+function applyCarouselTypeFixes(scriptContent) {
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    ['CarouselIndicatorPosition', 'CarouselIndicatorType'],
+    true,
+  );
+
+  nextContent = nextContent.replace(
+    /const\s+indicatorType\s*=\s*shallowRef\('dot'\);/g,
+    "const indicatorType = shallowRef<CarouselIndicatorType>('dot');",
+  );
+  nextContent = nextContent.replace(
+    /const\s+indicatorPosition\s*=\s*shallowRef\('bottom'\);/g,
+    "const indicatorPosition = shallowRef<CarouselIndicatorPosition>('bottom');",
+  );
+  nextContent = nextContent.replace(
+    /const\s+handleChange\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const handleChange = ($1: number) => {',
+  );
+  nextContent = nextContent.replace(
+    /function\s+updateType\(([^):]+)\)\s*\{/g,
+    'function updateType($1: string | number | boolean) {',
+  );
+  nextContent = nextContent.replace(
+    /function\s+updatePosition\(([^):]+)\)\s*\{/g,
+    'function updatePosition($1: string | number | boolean) {',
+  );
+  nextContent = nextContent.replace(
+    /indicatorType\.value\s*=\s*type;/g,
+    'indicatorType.value = type as CarouselIndicatorType;',
+  );
+  nextContent = nextContent.replace(
+    /indicatorPosition\.value\s*=\s*position;/g,
+    'indicatorPosition.value = position as CarouselIndicatorPosition;',
+  );
+
+  return nextContent;
+}
+
+function applyDrawerTypeFixes(scriptContent) {
+  let nextContent = scriptContent;
+
+  nextContent = nextContent.replace(
+    /const\s+custom\s*=\s*ref\(\[\]\);/g,
+    "const custom = ref<Array<'hide header' | 'hide footer' | 'hide cancel'>>([]);",
+  );
+  nextContent = nextContent.replace(
+    /const\s+position\s*=\s*ref\('right'\);/g,
+    "const position = ref<'top' | 'right' | 'bottom' | 'left'>('right');",
+  );
+
+  return nextContent;
+}
+
+function applySwitchTypeFixes(scriptContent) {
+  let nextContent = scriptContent;
+
+  nextContent = nextContent.replace(
+    /const\s+handleChangeIntercept(\d*)\s*=\s*async\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const handleChangeIntercept$1 = async ($2: string | number | boolean) => {',
+  );
+
+  return nextContent;
+}
+
+function applyTimePickerTypeFixes(scriptContent) {
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    ['Size', 'TimeValue'],
+    true,
+  );
+
+  nextContent = nextContent.replace(
+    /const\s+value\s*=\s*shallowRef\(null\);/g,
+    'const value = shallowRef<TimeValue | undefined>();',
+  );
+  nextContent = nextContent.replace(
+    /const\s+size\s*=\s*shallowRef\('small'\);/g,
+    "const size = shallowRef<Size>('small');",
+  );
+  nextContent = nextContent.replace(
+    /function\s+print\(\.\.\.arg\)\s*\{/g,
+    'function print(...arg: [string, string | Array<string | undefined> | undefined, Date | Array<Date | undefined> | undefined]) {',
+  );
+
+  return nextContent;
+}
+
+function applyTagTypeFixes(scriptContent) {
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    ['InputInstance'],
+    true,
+  );
+
+  nextContent = nextContent.replace(
+    /const\s+inputRef\s*=\s*ref\(null\);/g,
+    'const inputRef = ref<InputInstance | null>(null);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+handleRemove\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const handleRemove = ($1: string) => {',
+  );
+
+  return nextContent;
+}
+
+function applyStepsTypeFixes(scriptContent) {
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    ['StepsChangeHandler'],
+    true,
+  );
+
+  nextContent = nextContent.replace(
+    /function\s+setCurrent\(([^):]+)\)\s*\{\s*\n\s*current\.value\s*=\s*\1;/g,
+    'const setCurrent: StepsChangeHandler = (step) => {\n    current.value = step;',
+  );
+  nextContent = nextContent.replace(
+    /const\s+setCurrent\s*=\s*\(([^):]+)\)\s*=>\s*\{\s*\n\s*current\.value\s*=\s*\1;/g,
+    'const setCurrent: StepsChangeHandler = (step) => {\n    current.value = step;',
+  );
+
+  return nextContent;
+}
+
+function applySliderTypeFixes(scriptContent) {
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    ['SliderFormatTooltip', 'SliderValue'],
+    true,
+  );
+
+  nextContent = nextContent.replace(
+    /const\s+value\s*=\s*ref\(\[([^)]+)\]\);/g,
+    'const value = ref<SliderValue>([$1]);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+formatter\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const formatter: SliderFormatTooltip = ($1) => {',
+  );
+
+  return nextContent;
+}
+
+function applyOverflowListTypeFixes(source) {
+  return source.replace(/<sd-form\s+auto-label-width>/g, '<sd-form :auto-label-width="true">');
+}
+
+function applyMenuTypeFixes(scriptContent) {
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    ['MenuCollapseHandler'],
+    true,
+  );
+
+  nextContent = nextContent.replace(
+    /function\s+onCollapse\(([^,)]+)\s*,\s*([^)]+)\)\s*\{/g,
+    'const onCollapse: MenuCollapseHandler = ($1, $2) => {',
+  );
+
+  return nextContent;
+}
+
+function applyListTypeFixes(scriptContent) {
+  let nextContent = scriptContent;
+
+  nextContent = nextContent.replace(
+    /const\s+data\s*=\s*reactive\(\[\]\);/g,
+    'const data = reactive<string[]>([]);',
+  );
+
+  return nextContent;
+}
+
+function applyInputNumberTypeFixes(scriptContent) {
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    ['InputNumberFormatter', 'InputNumberParser'],
+    true,
+  );
+
+  nextContent = nextContent.replace(
+    /const\s+formatter\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const formatter: InputNumberFormatter = ($1) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+parser\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const parser: InputNumberParser = ($1) => {',
+  );
+
+  return nextContent;
+}
+
+function applyImageTypeFixes(scriptContent) {
+  let nextContent = scriptContent;
+
+  nextContent = nextContent.replace(
+    /const\s+timestamp\s*=\s*ref\(''\);/g,
+    'const timestamp = ref(Date.now());',
+  );
+
+  return nextContent;
+}
+
+function applyCascaderTypeFixes(scriptContent) {
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    [
+      'CascaderChangeHandler',
+      'CascaderFallback',
+      'CascaderFormatLabel',
+      'CascaderLoadMore',
+      'CascaderOption',
+      'CascaderPathValue',
+    ],
+    true,
+  );
+
+  nextContent = nextContent.replace(
+    /const\s+options\s*=\s*\[/g,
+    'const options: CascaderOption[] = [',
+  );
+  nextContent = nextContent.replace(
+    /const\s+fallback\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const fallback: CascaderFallback = ($1) => {',
+  );
+  nextContent = nextContent.replace(
+    /return\s+([A-Za-z_$][\w$]*)\.map\(/g,
+    (match, bindingName) =>
+      `return (Array.isArray(${bindingName}) ? ${bindingName} : [${bindingName}]).map(`,
+  );
+  nextContent = nextContent.replace(
+    /\.map\(\(([^)]+)\)\s*=>\s*\1\.toUpperCase\(\)\)/g,
+    '.map(($1) => String($1).toUpperCase())',
+  );
+  nextContent = nextContent.replace(
+    /const\s+format\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const format: CascaderFormatLabel = ($1) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+loadMore\s*=\s*\(([^,)]+),\s*([^)]+)\)\s*=>\s*\{/g,
+    'const loadMore: CascaderLoadMore = ($1, $2) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+handleChange\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const handleChange: CascaderChangeHandler = ($1) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+createLeafOptions\s*=\s*\(([^,)]+),\s*([^)]+)\)\s*=>\s*\{/g,
+    'const createLeafOptions = ($1: string, $2: number): CascaderOption[] => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+preset\s*=\s*ref(?:<[^>]+>)?\(([^)]+)\);/g,
+    "const preset = ref<'default' | 'explicit'>($1);",
+  );
+
+  return nextContent;
+}
+
+function applyDescriptionsTypeFixes(scriptContent) {
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    ['DescData', 'DescLayout', 'Size'],
+    true,
+  );
+
+  nextContent = nextContent.replace(
+    /const\s+size\s*=\s*ref(?:<[^>]+>)?\(([^)]+)\);/g,
+    'const size = ref<Size>($1);',
+  );
+  nextContent = nextContent.replace(/const\s+data\s*=\s*\[/g, 'const data: DescData[] = [');
+  nextContent = nextContent.replace(/size:\s*'medium',/g, "size: 'medium' as Size,");
+  nextContent = nextContent.replace(
+    /layout:\s*'horizontal',/g,
+    "layout: 'horizontal' as DescLayout,",
+  );
+  nextContent = nextContent.replace(
+    /tableLayout:\s*'auto',/g,
+    "tableLayout: 'auto' as 'auto' | 'fixed',",
+  );
+  nextContent = nextContent.replace(
+    /const\s+layoutOptions\s*=\s*\[/g,
+    'const layoutOptions: DescLayout[] = [',
+  );
+  nextContent = nextContent.replace(
+    /const\s+sizeOptions\s*=\s*\[/g,
+    'const sizeOptions: Size[] = [',
+  );
+
+  return nextContent;
+}
+
+function applyUploadTypeFixes(scriptContent) {
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    ['CustomIcon', 'FileItem', 'FileStatus', 'RequestOption', 'UploadInstance', 'UploadRequest'],
+    true,
+  );
+
+  nextContent = nextContent.replace(
+    /const\s+file\s*=\s*ref\(\);/g,
+    'const file = ref<FileItem | undefined>();',
+  );
+  nextContent = nextContent.replace(
+    /const\s+files\s*=\s*ref\(\[\]\);/g,
+    'const files = ref<FileItem[]>([]);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+uploadRef\s*=\s*ref\(\);/g,
+    'const uploadRef = ref<UploadInstance | null>(null);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+type\s*=\s*ref(?:<[^>]+>)?\('text'\);/g,
+    "const type = ref<'text' | 'picture' | 'picture-card'>('text');",
+  );
+  nextContent = nextContent.replace(/const\s+fileList\s*=\s*\[/g, 'const fileList: FileItem[] = [');
+  nextContent = nextContent.replace(/status:\s*'error',/g, "status: 'error' as FileStatus,");
+  nextContent = nextContent.replace(
+    /const\s+beforeRemove\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const beforeRemove = ($1: FileItem) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+beforeUpload\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const beforeUpload = ($1: File) => {',
+  );
+  nextContent = nextContent.replace(
+    /return\s+new\s+Promise\(\(resolve,\s*reject\)\s*=>/g,
+    'return new Promise<boolean>((resolve, reject) =>',
+  );
+  nextContent = nextContent.replace(
+    /const\s+customRequest\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const customRequest = ($1: RequestOption): UploadRequest => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+\{\s*onProgress,\s*onError,\s*onSuccess,\s*fileItem,\s*name\s*\}\s*=\s*option;/g,
+    "const { onProgress, onError, onSuccess, fileItem, name } = option;\n    const fileName = typeof name === 'function' ? name(fileItem) : (name ?? 'file');",
+  );
+  nextContent = nextContent.replace(
+    /formData\.append\(name\s*\|\|\s*'file',\s*fileItem\.file\);/g,
+    'formData.append(fileName, fileItem.file);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+onChange\s*=\s*\(([^,)]+),\s*([^)]+)\)\s*=>\s*\{/g,
+    'const onChange = ($1: FileItem[], $2: FileItem) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+onProgress\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const onProgress = ($1: FileItem) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+getCustomIcon\s*=\s*\(\)\s*=>\s*\{/g,
+    'const getCustomIcon = (): CustomIcon => {',
+  );
+  nextContent = nextContent.replace(
+    /fileName:\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'fileName: ($1: FileItem) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+submitOne\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const submitOne = ($1: Event) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+submit\s*=\s*\(([^):]+)\)\s*=>\s*\{/g,
+    'const submit = ($1: Event) => {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+onChange\s*=\s*\((fileList)\)\s*=>\s*\{/g,
+    'const onChange = ($1: FileItem[]) => {',
+  );
+
+  return nextContent;
+}
+
+function applyFormTypeFixes(source, scriptContent) {
+  let nextSource = source.replace(/\$refs\.formRef\./g, 'formRef?.');
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    ['FieldRule', 'FormInstance', 'Size', 'ValidateStatus', 'ValidatedError'],
+    true,
+  );
+
+  nextContent = nextContent.replace(
+    /const\s+formRef\s*=\s*ref\((?:null)?\);/g,
+    'const formRef = ref<FormInstance | null>(null);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+formRef\s*=\s*ref\(\);/g,
+    'const formRef = ref<FormInstance | null>(null);',
+  );
+
+  if (nextSource.includes('ref="formRef"') && !/const\s+formRef\s*=/.test(nextContent)) {
+    nextContent = nextContent.replace(
+      /import\s+\{([^}]*)\}\s+from\s+'vue';/,
+      (match, specifiers) => {
+        const nextSpecifiers = toSortedList(
+          new Set(
+            specifiers
+              .split(',')
+              .map((item) => item.trim())
+              .filter(Boolean)
+              .concat('ref'),
+          ),
+        );
+        return `import { ${nextSpecifiers.join(', ')} } from 'vue';`;
+      },
+    );
+    nextContent = `${nextContent}\nconst formRef = ref<FormInstance | null>(null);`;
+  }
+
+  nextContent = nextContent.replace(
+    /const\s+size\s*=\s*ref(?:<[^>]+>)?\(([^)]+)\);/g,
+    'const size = ref<Size>($1);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+status\s*=\s*ref(?:<[^>]+>)?\(([^)]+)\);/g,
+    'const status = ref<ValidateStatus>($1);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+layout\s*=\s*ref(?:<[^>]+>)?\(([^)]+)\);/g,
+    "const layout = ref<'horizontal' | 'vertical' | 'inline'>($1);",
+  );
+  nextContent = nextContent.replace(
+    /handleSubmit\s*=\s*\(\{\s*values\s*,\s*errors\s*\}\)\s*=>\s*\{/g,
+    'handleSubmit = ({ values, errors }: { values: Record<string, unknown>; errors: Record<string, ValidatedError> | undefined }) => {',
+  );
+  nextContent = nextContent.replace(
+    /handleSubmit\s*=\s*\(([A-Za-z_$][\w$]*)\)\s*=>\s*\{/g,
+    'handleSubmit = ($1: { values: Record<string, unknown>; errors: Record<string, ValidatedError> | undefined }) => {',
+  );
+  nextContent = nextContent.replace(/const\s+rules\s*=\s*\[/g, 'const rules: FieldRule[] = [');
+  nextContent = nextContent.replace(
+    /const\s+rules\s*=\s*\{/g,
+    'const rules: Record<string, FieldRule[]> = {',
+  );
+  nextContent = nextContent.replace(
+    /validator:\s*\(([^,)]+),\s*([^)]+)\)\s*=>/g,
+    'validator: ($1: unknown, $2: (error?: string) => void) =>',
+  );
+  nextContent = nextContent.replace(
+    /new\s+Promise\(\(resolve\)\s*=>/g,
+    'new Promise<void>((resolve) =>',
+  );
+  nextContent = nextContent.replace(/size:\s*'medium',/g, "size: 'medium' as Size,");
+  nextContent = nextContent.replace(/formRef\.value\.setFields\(/g, 'formRef.value?.setFields(');
+  nextContent = nextContent.replace(
+    /const\s+handleDelete\s*=\s*\(([A-Za-z_$][\w$]*)\)\s*=>\s*\{/g,
+    'const handleDelete = ($1: number) => {',
+  );
+
+  nextSource = nextSource.replace(scriptContent, nextContent);
+  return nextSource;
+}
+
+function applyDatePickerTypeFixes(source, scriptContent) {
+  let nextSource = source
+    .replace(
+      /:format="\(value\) => `custom format: \$\{dayjs\(value\)\.format\('YYYY-MM-DD'\)\}`"/g,
+      ':format="formatDate"',
+    )
+    .replace(
+      /:disabledDate="\(current\) => dayjs\(current\)\.isBefore\(dayjs\(\)\)"/g,
+      ':disabledDate="disablePastDate"',
+    )
+    .replace(
+      /:disabledDate="\(current\) => dayjs\(current\)\.isBefore\(dayjs\('2020-08-08'\)\)"/g,
+      ':disabledDate="disableBeforePresetDate"',
+    );
+
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    [
+      'CalendarValue',
+      'DatePickerChangeHandler',
+      'DisabledDate',
+      'DisabledTime',
+      'DisabledTimeProps',
+      'FormatFunc',
+      'RangeDisabledTime',
+    ],
+    true,
+  );
+
+  if (nextSource.includes('formatDate') && !nextContent.includes('const formatDate')) {
+    nextContent +=
+      "\nconst formatDate: FormatFunc = (value) => `custom format: ${dayjs(value).format('YYYY-MM-DD')}`;";
+  }
+
+  if (nextSource.includes('disablePastDate') && !nextContent.includes('const disablePastDate')) {
+    nextContent +=
+      '\nconst disablePastDate: DisabledDate = (current) => dayjs(current).isBefore(dayjs());';
+  }
+
+  if (
+    nextSource.includes('disableBeforePresetDate') &&
+    !nextContent.includes('const disableBeforePresetDate')
+  ) {
+    nextContent +=
+      "\nconst disableBeforePresetDate: DisabledDate = (current) => dayjs(current).isBefore(dayjs('2020-08-08'));";
+  }
+
+  nextContent = nextContent.replace(
+    /function\s+range\(([^,)]+),\s*([^)]+)\)\s*\{/g,
+    'function range($1: number, $2: number) {',
+  );
+  nextContent = nextContent.replace(
+    /function\s+getDisabledTime\(([^)]+)\)\s*\{/g,
+    'function getDisabledTime($1: Date): DisabledTimeProps {',
+  );
+  nextContent = nextContent.replace(
+    /function\s+getDisabledRangeTime\(([^,)]+),\s*([^)]+)\)\s*\{/g,
+    "function getDisabledRangeTime($1: Date, $2: 'start' | 'end'): DisabledTimeProps {",
+  );
+  nextContent = nextContent.replace(
+    /function\s+onSelect\(([A-Za-z_$][\w$]*)\s*,\s*([A-Za-z_$][\w$]*)\)\s*\{/g,
+    'function onSelect($1: unknown, $2: unknown) {',
+  );
+  nextContent = nextContent.replace(
+    /function\s+onChange\(([A-Za-z_$][\w$]*)\s*,\s*([A-Za-z_$][\w$]*)\)\s*\{/g,
+    'function onChange($1: unknown, $2: unknown) {',
+  );
+  nextContent = nextContent.replace(
+    /function\s+onOk\(([A-Za-z_$][\w$]*)\s*,\s*([A-Za-z_$][\w$]*)\)\s*\{/g,
+    'function onOk($1: unknown, $2: unknown) {',
+  );
+  nextContent = nextContent.replace(
+    /const\s+pickerValue\s*=\s*shallowRef\(null\);/g,
+    'const pickerValue = shallowRef<CalendarValue | undefined>(undefined);',
+  );
+  nextContent = nextContent.replace(
+    /const\s+rangePickerValue\s*=\s*shallowRef\(null\);/g,
+    'const rangePickerValue = shallowRef<CalendarValue[] | undefined>(undefined);',
+  );
+
+  nextSource = nextSource.replace(scriptContent, nextContent);
+  return nextSource;
+}
+
+function applyMessageTypeFixes(source, scriptContent) {
+  let nextSource = source
+    .replace(/this\.\$message\./g, 'Message.')
+    .replace(/status="primary"/g, 'type="primary"')
+    .replace(/this\.\$data\.index\+\+/g, 'index.value++');
+  const nextContent = ensureImportSpecifiers(scriptContent, '@sdata/web-vue', ['Message'], false);
+  return nextSource.replace(scriptContent, nextContent);
+}
+
+function applyNotificationTypeFixes(source, scriptContent) {
+  let nextSource = source.replace(/this\.\$notification\./g, 'Notification.');
+  let nextContent = ensureImportSpecifiers(
+    scriptContent,
+    '@sdata/web-vue',
+    ['Notification'],
+    false,
+  );
+  nextContent = nextContent.replace(
+    /onClick:\s*closeNotification/g,
+    'onClick: () => closeNotification()',
+  );
+  nextContent = nextContent.replace(
+    /onClick:\s*\(\)\s*=>\s*closeNotification\(\)/g,
+    'onClick: () => closeNotification.close()',
+  );
+  nextSource = nextSource.replace(scriptContent, nextContent);
+  nextSource = nextSource.replace(
+    /footer:\s*h\(Space, null, \(\) => \[/g,
+    'footer: () => h(Space, null, () => [',
+  );
+  nextSource = nextSource.replace(/closeIcon:\s*h\(([^)]+)\)/g, 'closeIcon: () => h($1)');
+  nextSource = nextSource.replace(
+    /closeIconElement:\s*h\(([^,]+),\s*([^,]+),\s*\(\) => ([^)]+)\)/g,
+    'closeIconElement: () => h($1, $2, () => $3)',
+  );
+  return nextSource;
+}
+
+function applyTypedScriptSetupFixes(source, relativePath) {
+  const sections = splitSfcSections(source);
+  if (!sections) {
+    return source;
+  }
+
+  let nextSource = source;
+  let nextScriptContent = annotateRadioModelRefs(sections.scriptSetup, sections.template);
+  nextScriptContent = annotateEmptyArrayRefs(nextScriptContent);
+
+  if (relativePath.includes('/auto-complete/')) {
+    nextScriptContent = applyAutoCompleteTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/tabs/')) {
+    nextScriptContent = applyTabsTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/tree-select/')) {
+    nextScriptContent = applyTreeSelectTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/tree/')) {
+    nextScriptContent = applyTreeTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/transfer/')) {
+    nextScriptContent = applyTransferTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/table/')) {
+    nextScriptContent = applyTableTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/select/')) {
+    nextScriptContent = applySelectTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/input/')) {
+    nextScriptContent = applyInputTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/checkbox/')) {
+    nextScriptContent = applyCheckboxTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/layout/')) {
+    nextScriptContent = applyLayoutTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/carousel/')) {
+    nextScriptContent = applyCarouselTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/drawer/')) {
+    nextScriptContent = applyDrawerTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/switch/')) {
+    nextScriptContent = applySwitchTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/time-picker/')) {
+    nextScriptContent = applyTimePickerTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/tag/')) {
+    nextScriptContent = applyTagTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/steps/')) {
+    nextScriptContent = applyStepsTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/slider/')) {
+    nextScriptContent = applySliderTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/overflow-list/')) {
+    nextSource = applyOverflowListTypeFixes(nextSource);
+  }
+
+  if (relativePath.includes('/menu/')) {
+    nextScriptContent = applyMenuTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/list/')) {
+    nextScriptContent = applyListTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/input-number/')) {
+    nextScriptContent = applyInputNumberTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/image/')) {
+    nextScriptContent = applyImageTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/cascader/')) {
+    nextScriptContent = applyCascaderTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/descriptions/')) {
+    nextScriptContent = applyDescriptionsTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/upload/')) {
+    nextScriptContent = applyUploadTypeFixes(nextScriptContent);
+  }
+
+  if (relativePath.includes('/form/')) {
+    const rewrittenSource = applyFormTypeFixes(nextSource, nextScriptContent);
+    const rewrittenSections = splitSfcSections(rewrittenSource);
+    if (rewrittenSections) {
+      nextSource = rewrittenSource;
+      nextScriptContent = rewrittenSections.scriptSetup;
+    }
+  }
+
+  if (relativePath.includes('/date-picker/')) {
+    const rewrittenSource = applyDatePickerTypeFixes(nextSource, nextScriptContent);
+    const rewrittenSections = splitSfcSections(rewrittenSource);
+    if (rewrittenSections) {
+      nextSource = rewrittenSource;
+      nextScriptContent = rewrittenSections.scriptSetup;
+    }
+  }
+
+  if (relativePath.includes('/timeline/')) {
+    const rewrittenSource = applyTimelineTypeFixes(nextSource, nextScriptContent);
+    const rewrittenSections = splitSfcSections(rewrittenSource);
+    if (rewrittenSections) {
+      nextSource = rewrittenSource;
+      nextScriptContent = rewrittenSections.scriptSetup;
+    }
+  }
+
+  if (relativePath.includes('/message/')) {
+    const rewrittenSource = applyMessageTypeFixes(nextSource, nextScriptContent);
+    const rewrittenSections = splitSfcSections(rewrittenSource);
+    if (rewrittenSections) {
+      nextSource = rewrittenSource;
+      nextScriptContent = rewrittenSections.scriptSetup;
+    }
+  }
+
+  if (relativePath.includes('/notification/')) {
+    const rewrittenSource = applyNotificationTypeFixes(nextSource, nextScriptContent);
+    const rewrittenSections = splitSfcSections(rewrittenSource);
+    if (rewrittenSections) {
+      nextSource = rewrittenSource;
+      nextScriptContent = rewrittenSections.scriptSetup;
+    }
+  }
+
+  const updatedBlock = `<script setup lang="ts">${normalizeImports(nextScriptContent)}</script>`;
+  return nextSource.replace(splitSfcSections(nextSource).scriptSetupBlock, updatedBlock);
+}
+
+function transformSource(source, relativePath) {
   const withNormalizedPrefix = normalizeLegacyTailwindPrefix(source);
   const withStaticStyles = transformStaticStyles(withNormalizedPrefix);
   const withBoundStyles = transformBoundStyles(withStaticStyles);
   const withLegacyScript = transformLegacyScript(withBoundStyles);
   const withSharedStyleBindings = transformSharedStyleBindings(withLegacyScript);
-  return normalizeLegacyTailwindPrefix(withSharedStyleBindings);
+  const withTypedScriptFixes = applyTypedScriptSetupFixes(withSharedStyleBindings, relativePath);
+  return normalizeLegacyTailwindPrefix(withTypedScriptFixes);
 }
 
 const vueFiles = collectVueFiles(targetDir);
@@ -1384,7 +2943,8 @@ let changedFiles = 0;
 
 for (const filePath of vueFiles) {
   const source = fs.readFileSync(filePath, 'utf8');
-  const nextSource = transformSource(source);
+  const relativePath = path.relative(rootDir, filePath).replaceAll('\\', '/');
+  const nextSource = transformSource(source, relativePath);
 
   if (source === nextSource) {
     continue;

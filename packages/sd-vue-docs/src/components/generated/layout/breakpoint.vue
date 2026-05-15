@@ -104,7 +104,7 @@
   import { IconHome, IconCalendar } from '@sdata/web-vue/es/icon/index.js';
 
   const collapsed = ref(false);
-  const onCollapse = (val, type) => {
+  const onCollapse = (val: boolean, type: 'responsive' | 'clickTrigger') => {
     const content = type === 'responsive' ? '触发响应式收缩' : '点击触发收缩';
     Message.info({
       content,
@@ -113,7 +113,7 @@
     collapsed.value = val;
   };
 
-  function onClickMenuItem(key) {
+  function onClickMenuItem(key: string | number) {
     Message.info({ content: `You select ${key}`, showIcon: true });
   }
 </script>

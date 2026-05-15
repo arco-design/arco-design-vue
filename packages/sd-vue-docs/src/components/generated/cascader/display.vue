@@ -3,21 +3,21 @@
     <sd-cascader
       :options="options"
       default-value="datunli"
-      class="sd:w-[320px]"
+      class="sd:w-80"
       placeholder="Show full path"
       separator=" > "
     />
     <sd-cascader
       :options="options"
       default-value="datunli"
-      class="sd:w-[320px]"
+      class="sd:w-80"
       placeholder="Only show leaf label"
       :show-path="false"
     />
     <sd-cascader
       :options="options"
       :default-value="['chaoyang', 'haidian', 'dongcheng']"
-      class="sd:w-[320px]"
+      class="sd:w-80"
       placeholder="Responsive tags"
       multiple
       allow-clear
@@ -27,7 +27,16 @@
 </template>
 
 <script setup lang="ts">
-  const options = [
+  import type {
+    CascaderChangeHandler,
+    CascaderFallback,
+    CascaderFormatLabel,
+    CascaderLoadMore,
+    CascaderOption,
+    CascaderPathValue,
+  } from '@sdata/web-vue';
+
+  const options: CascaderOption[] = [
     {
       value: 'beijing',
       label: 'Beijing',

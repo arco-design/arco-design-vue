@@ -14,16 +14,23 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    AutoCompleteData,
+    AutoCompleteDropdownReachBottomHandler,
+    AutoCompleteDropdownScrollHandler,
+    AutoCompleteSearchHandler,
+  } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
-  const data = ref([]);
+  const data = ref<AutoCompleteData>([]);
 
-  function handleSearch(value) {
+  const handleSearch: AutoCompleteSearchHandler = (value) => {
     if (value) {
       data.value = [...Array(5)].map((_, index) => `${value}-${index}`);
       console.log(data.value);
     } else {
       data.value = [];
     }
-  }
+  };
 </script>

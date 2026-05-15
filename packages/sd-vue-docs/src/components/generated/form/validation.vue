@@ -110,7 +110,7 @@
     <sd-form-item>
       <sd-space>
         <sd-button html-type="submit">Submit</sd-button>
-        <sd-button @click="$refs.formRef.resetFields()">Reset</sd-button>
+        <sd-button @click="formRef?.resetFields()">Reset</sd-button>
       </sd-space>
     </sd-form-item>
   </sd-form>
@@ -118,14 +118,28 @@
 </template>
 
 <script setup lang="ts">
-  import { reactive } from 'vue';
+  import type {
+    FieldRule,
+    FormInstance,
+    Size,
+    ValidateStatus,
+    ValidatedError,
+  } from '@sdata/web-vue';
 
-  const handleSubmit = ({ values, errors }) => {
+  import { reactive, ref } from 'vue';
+
+  const handleSubmit = ({
+    values,
+    errors,
+  }: {
+    values: Record<string, unknown>;
+    errors: Record<string, ValidatedError> | undefined;
+  }) => {
     console.log('values:', values, '\nerrors:', errors);
   };
 
   const form = reactive({
-    size: 'medium',
+    size: 'medium' as Size,
     name: '',
     age: undefined,
     section: '',
@@ -212,4 +226,6 @@
       ],
     },
   ];
+
+  const formRef = ref<FormInstance | null>(null);
 </script>

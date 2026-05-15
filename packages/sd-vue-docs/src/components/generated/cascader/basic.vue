@@ -1,18 +1,27 @@
 <template>
   <sd-space direction="vertical" size="large">
-    <sd-cascader :options="options" class="sd:w-[320px]" placeholder="Please select ..." />
+    <sd-cascader :options="options" class="sd:w-80" placeholder="Please select ..." />
     <sd-cascader
       :options="options"
       default-value="datunli"
       expand-trigger="hover"
-      class="sd:w-[320px]"
+      class="sd:w-80"
       placeholder="Please select ..."
     />
   </sd-space>
 </template>
 
 <script setup lang="ts">
-  const options = [
+  import type {
+    CascaderChangeHandler,
+    CascaderFallback,
+    CascaderFormatLabel,
+    CascaderLoadMore,
+    CascaderOption,
+    CascaderPathValue,
+  } from '@sdata/web-vue';
+
+  const options: CascaderOption[] = [
     {
       value: 'beijing',
       label: 'Beijing',

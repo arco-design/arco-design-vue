@@ -18,5 +18,5 @@
 <script setup lang="ts">
   import { shallowRef } from 'vue';
 
-  const align = shallowRef('center');
+  const align = shallowRef<'start' | 'center' | 'end' | 'baseline'>('center');
 </script>

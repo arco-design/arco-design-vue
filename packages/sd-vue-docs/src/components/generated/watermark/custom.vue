@@ -75,8 +75,8 @@
 
   const form = reactive({
     rotate: 0,
-    gap: [50, 50],
-    offset: [],
+    gap: [50, 50] as [number, number],
+    offset: [25, 25] as [number, number],
     font: { fontSize: 16 },
     zIndex: 6,
     repeat: true,

@@ -3,14 +3,14 @@
     <sd-cascader
       :options="options"
       v-model="value"
-      class="sd:w-[320px]"
+      class="sd:w-80"
       placeholder="Please select ..."
       multiple
     />
     <sd-cascader
       :options="options"
       v-model="value2"
-      class="sd:w-[320px]"
+      class="sd:w-80"
       placeholder="Please select ..."
       path-mode
       multiple
@@ -20,6 +20,15 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    CascaderChangeHandler,
+    CascaderFallback,
+    CascaderFormatLabel,
+    CascaderLoadMore,
+    CascaderOption,
+    CascaderPathValue,
+  } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
   const value = ref(['datunli', 'wuhou']);
@@ -27,11 +36,13 @@
     ['beijing', 'chaoyang', 'datunli'],
     ['sichuan', 'chengdu', 'wuhou'],
   ]);
-  const fallback = (value) => {
-    return value.map((item) => item.toUpperCase()).join('-');
+  const fallback: CascaderFallback = (value) => {
+    return (Array.isArray(value) ? value : [value])
+      .map((item) => String(item).toUpperCase())
+      .join('-');
   };
 
-  const options = [
+  const options: CascaderOption[] = [
     {
       value: 'beijing',
       label: 'Beijing',

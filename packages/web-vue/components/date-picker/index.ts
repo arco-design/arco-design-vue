@@ -1,6 +1,7 @@
 import type { App } from 'vue';
 
 import type { SDOptions } from '../_utils/types';
+import type { CalendarValue } from './interface';
 
 import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
 import _DatePicker from './pickers/date-picker';
@@ -10,7 +11,47 @@ import _WeekPicker from './pickers/week-picker';
 import _YearPicker from './pickers/year-picker';
 import _RangePicker from './range-picker.vue';
 
-export type { ShortcutType } from './interface';
+export type {
+  CalendarValue,
+  DatePickerProps,
+  DisabledDate,
+  DisabledTime,
+  DisabledTimeProps,
+  FormatFunc,
+  MonthPickerProps,
+  PickerProps,
+  QuarterPickerProps,
+  RangeDisabledDate,
+  RangeDisabledTime,
+  RangePickerProps,
+  ShortcutType,
+  ValueFormat,
+  WeekPickerProps,
+  YearPickerProps,
+} from './interface';
+
+export type DatePickerChangeHandler = (
+  value: CalendarValue | undefined,
+  date: Date | undefined,
+  dateString: string | undefined,
+) => void;
+export type DatePickerSelectHandler = DatePickerChangeHandler;
+export type DatePickerOkHandler = DatePickerChangeHandler;
+export type RangePickerChangeHandler = (
+  value: (CalendarValue | undefined)[] | undefined,
+  date: (Date | undefined)[] | undefined,
+  dateString: (string | undefined)[] | undefined,
+) => void;
+export type RangePickerSelectHandler = (
+  value: (CalendarValue | undefined)[],
+  date: (Date | undefined)[],
+  dateString: (string | undefined)[],
+) => void;
+export type RangePickerOkHandler = (
+  value: CalendarValue[],
+  date: Date[],
+  dateString: string[],
+) => void;
 
 const DatePicker = Object.assign(_DatePicker, {
   WeekPicker: _WeekPicker,

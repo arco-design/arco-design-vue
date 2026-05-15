@@ -42,6 +42,8 @@
 </template>
 
 <script setup lang="ts">
+  import type { StepsChangeHandler } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
   const current = ref(1);
@@ -54,7 +56,7 @@
     current.value = Math.min(3, current.value + 1);
   };
 
-  const setCurrent = (current) => {
-    current.value = current;
+  const setCurrent: StepsChangeHandler = (step) => {
+    current.value = step;
   };
 </script>

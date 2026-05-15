@@ -15,5 +15,6 @@ const Transfer = Object.assign(_Transfer, {
 });
 
 export type TransferInstance = InstanceType<typeof _Transfer>;
+export type { TransferItem } from './interface';
 
 export default Transfer;

@@ -23,9 +23,22 @@
   ></sd-tree-select>
 </template>
 <script setup lang="ts">
+  import type {
+    CheckedStrategy,
+    LabelValue,
+    Size,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectChangeHandler,
+    TreeSelectFallbackOption,
+    TreeSelectFilterTreeNode,
+    TreeSelectLoadMore,
+    TreeSelectSearchHandler,
+  } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
-  const treeData = [
+  const treeData: TreeNodeData[] = [
     {
       title: 'Trunk 0-0',
       value: 'Trunk 0-0',
@@ -83,6 +96,6 @@
     },
   ];
 
-  const selected = ref([]);
+  const selected = ref<LabelValue[]>([]);
   const treeCheckStrictly = ref(false);
 </script>

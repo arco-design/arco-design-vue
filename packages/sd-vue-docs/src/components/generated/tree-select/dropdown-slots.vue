@@ -30,7 +30,20 @@
   </sd-tree-select>
 </template>
 <script setup lang="ts">
-  import { h, reactive, computed } from 'vue';
+  import type {
+    CheckedStrategy,
+    LabelValue,
+    Size,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectChangeHandler,
+    TreeSelectFallbackOption,
+    TreeSelectFilterTreeNode,
+    TreeSelectLoadMore,
+    TreeSelectSearchHandler,
+  } from '@sdata/web-vue';
+
+  import { computed, h, reactive } from 'vue';
 
   import { IconCalendar } from '@sdata/web-vue/es/icon/index.js';
 
@@ -40,7 +53,7 @@
     showFooterOnEmpty: false,
   });
 
-  const treeData = [
+  const treeData: TreeNodeData[] = [
     {
       key: 'node1',
       icon: () => h(IconCalendar),

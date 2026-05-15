@@ -18,12 +18,26 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    TableChangeExtra,
+    TableColumnData,
+    TableData,
+    TableExpandable,
+    TableLoadMore,
+    TableRowKey,
+    TableRowSelection,
+    TableSpanMethod,
+    TableSpanMethodContext,
+    TableSummary,
+    TableSummaryContext,
+  } from '@sdata/web-vue';
+
   import { reactive, ref } from 'vue';
 
   const selectedKeys = ref(['EMP-1002']);
   const expandedKeys = ref(['EMP-1001']);
 
-  const columns = [
+  const columns: TableColumnData[] = [
     {
       title: 'Employee',
       dataIndex: 'name',
@@ -38,7 +52,7 @@
     },
   ];
 
-  const data = reactive([
+  const data = reactive<TableData[]>([
     {
       id: 'EMP-1001',
       name: 'Jane Doe',
@@ -62,17 +76,17 @@
     },
   ]);
 
-  const rowSelection = reactive({
+  const rowSelection = reactive<TableRowSelection>({
     type: 'checkbox',
     showCheckedAll: true,
   });
 
-  const expandable = reactive({
+  const expandable = reactive<TableExpandable>({
     title: 'Details',
     width: 88,
   });
 
-  const getRowKey = (record) => record.id;
+  const getRowKey: TableRowKey = (record: TableData) => String(record.id ?? '');
 </script>
 
 <style scoped>

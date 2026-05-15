@@ -53,11 +53,13 @@
 </template>
 
 <script setup lang="ts">
+  import type { LabelPositionType, ModeType } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
-  const mode = ref('top');
+  const mode = ref<ModeType>('top');
 
-  const onChange = (_mode) => {
-    mode.value = _mode;
+  const onChange = (_mode: string | number | boolean) => {
+    mode.value = _mode as ModeType;
   };
 </script>

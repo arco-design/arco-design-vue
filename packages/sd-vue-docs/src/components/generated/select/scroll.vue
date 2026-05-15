@@ -17,10 +17,12 @@
 </template>
 
 <script setup lang="ts">
-  const handleScroll = (ev) => {
+  import type { Size } from '@sdata/web-vue';
+
+  const handleScroll = (ev: Event) => {
     console.log('scroll', ev);
   };
-  const handleReachBottom = (ev) => {
+  const handleReachBottom = (ev: Event) => {
     console.log('reach the bottom', ev);
   };
 </script>

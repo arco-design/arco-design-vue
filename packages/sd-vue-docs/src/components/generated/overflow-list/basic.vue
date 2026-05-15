@@ -1,10 +1,10 @@
 <template>
-  <sd-form auto-label-width>
+  <sd-form :model="form" :auto-label-width="true">
     <sd-form-item label="Tag Number">
-      <sd-input-number v-model="number" :min="0" :max="20" class="sd:w-50" />
+      <sd-input-number v-model="form.number" :min="0" :max="20" class="sd:w-50" />
     </sd-form-item>
     <sd-form-item label="List Width">
-      <sd-slider v-model="width" :min="0" :max="800" />
+      <sd-slider v-model="form.width" :min="0" :max="800" />
     </sd-form-item>
   </sd-form>
   <div class="overflow-host sd:mt-5">
@@ -16,12 +16,14 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue';
+  import { computed, reactive } from 'vue';
 
-  const width = ref(500);
-  const number = ref(10);
-  const tags = computed(() => Array.from({ length: number.value }, (_, idx) => idx + 1));
-  const widthPx = computed(() => `${width.value}px`);
+  const form = reactive({
+    width: 500,
+    number: 10,
+  });
+  const tags = computed(() => Array.from({ length: form.number }, (_, idx) => idx + 1));
+  const widthPx = computed(() => `${form.width}px`);
 </script>
 
 <style scoped>

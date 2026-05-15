@@ -16,11 +16,13 @@
 
   const indeterminate = ref(false);
   const checkedAll = ref(false);
-  const data = ref([]);
+  const data = ref<string[]>([]);
 
-  const handleChangeAll = (value) => {
+  const handleChangeAll = (value: boolean | (string | number | boolean)[], _event: Event) => {
+    const checked = Array.isArray(value) ? value.length > 0 : value;
+
     indeterminate.value = false;
-    if (value) {
+    if (checked) {
       checkedAll.value = true;
       data.value = ['1', '2', '3'];
     } else {
@@ -29,7 +31,7 @@
     }
   };
 
-  const handleChange = (values) => {
+  const handleChange = (values: (string | number | boolean)[], _event: Event) => {
     if (values.length === 3) {
       checkedAll.value = true;
       indeterminate.value = false;

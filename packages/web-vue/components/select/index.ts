@@ -30,6 +30,7 @@ export type {
   SelectOptionGroup,
   SelectFieldNames,
   FilterOption,
+  SelectFallbackOption,
 } from './interface';
 
 export { _Option as Option, _Optgroup as Optgroup };

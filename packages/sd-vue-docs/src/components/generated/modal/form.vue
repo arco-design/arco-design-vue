@@ -34,10 +34,10 @@
   const handleClick = () => {
     visible.value = true;
   };
-  const handleBeforeOk = (done) => {
+  const handleBeforeOk = (done: (closed: boolean) => void) => {
     console.log(form);
     window.setTimeout(() => {
-      done();
+      done(true);
       // prevent close
       // done(false)
     }, 3000);

@@ -7,6 +7,19 @@
   ></sd-tree-select>
 </template>
 <script setup lang="ts">
+  import type {
+    CheckedStrategy,
+    LabelValue,
+    Size,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectChangeHandler,
+    TreeSelectFallbackOption,
+    TreeSelectFilterTreeNode,
+    TreeSelectLoadMore,
+    TreeSelectSearchHandler,
+  } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
   const defaultTreeData = [
@@ -39,15 +52,15 @@
     },
   ];
 
-  const treeData = ref(defaultTreeData);
-  const loadMore = (nodeData) => {
+  const treeData = ref<TreeNodeData[]>(defaultTreeData);
+  const loadMore: TreeSelectLoadMore = (nodeData) => {
     const { title, key } = nodeData;
     const children = [
       { title: `${title}-0`, value: `${title}-0`, key: `${key}-0` },
       { title: `${title}-1`, value: `${title}-1`, key: `${key}-1` },
     ];
 
-    return new Promise((resolve) => {
+    return new Promise<void>((resolve) => {
       setTimeout(() => {
         nodeData.children = children;
         resolve();

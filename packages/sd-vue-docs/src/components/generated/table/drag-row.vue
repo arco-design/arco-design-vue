@@ -3,9 +3,23 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    TableChangeExtra,
+    TableColumnData,
+    TableData,
+    TableExpandable,
+    TableLoadMore,
+    TableRowKey,
+    TableRowSelection,
+    TableSpanMethod,
+    TableSpanMethodContext,
+    TableSummary,
+    TableSummaryContext,
+  } from '@sdata/web-vue';
+
   import { reactive, ref } from 'vue';
 
-  const columns = reactive([
+  const columns = reactive<TableColumnData[]>([
     {
       title: 'Name',
       dataIndex: 'name',
@@ -23,7 +37,7 @@
       dataIndex: 'email',
     },
   ]);
-  const data = ref([
+  const data = ref<TableData[]>([
     {
       key: '1',
       name: 'Jane Doe',
@@ -60,7 +74,7 @@
       email: 'william.smith@example.com',
     },
   ]);
-  const handleChange = (_data) => {
+  const handleChange = (_data: TableData[]) => {
     console.log(_data);
     data.value = _data;
   };

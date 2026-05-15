@@ -18,7 +18,7 @@
 
   const current = ref(1);
   const bottom = ref(false);
-  const data = reactive([]);
+  const data = reactive<string[]>([]);
   const scrollbar = ref(true);
 
   const fetchData = () => {

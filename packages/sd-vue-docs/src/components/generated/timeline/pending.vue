@@ -2,23 +2,26 @@
   <sd-row align="center" class="sd:mb-6">
     <sd-checkbox
       :checked="!!pendingProps.direction"
-      @change="(v) => onChange({ direction: v ? 'horizontal' : '' })"
+      @change="(v) => onChange({ direction: v ? 'horizontal' : undefined })"
     >
       horizontal &nbsp; &nbsp;
     </sd-checkbox>
-    <sd-checkbox :checked="!!pendingProps.reverse" @change="(v) => onChange({ reverse: v })">
+    <sd-checkbox
+      :checked="!!pendingProps.reverse"
+      @change="(v) => onChange({ reverse: Boolean(v) })"
+    >
       reverse &nbsp; &nbsp;
     </sd-checkbox>
     <sd-checkbox
       :checked="!!pendingProps.pending"
-      @change="(v) => onChange({ pending: v ? 'This is a pending dot' : false })"
+      @change="(v) => onChange({ pending: Boolean(v) ? 'This is a pending dot' : false })"
     >
       pending &nbsp; &nbsp;
     </sd-checkbox>
 
     <sd-checkbox
       :checked="!!pendingProps.hasPendingDot"
-      @change="(v) => onChange({ hasPendingDot: v })"
+      @change="(v) => onChange({ hasPendingDot: Boolean(v) })"
     >
       custom pendingDot
     </sd-checkbox>
@@ -36,13 +39,25 @@
 </template>
 
 <script setup lang="ts">
+  import type { LabelPositionType, ModeType } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
   import { IconFire } from '@sdata/web-vue/es/icon/index.js';
 
-  const pendingProps = ref<Record<string, boolean | string>>({});
+  const pendingProps = ref<{
+    direction?: 'horizontal';
+    reverse?: boolean;
+    pending?: string | boolean;
+    hasPendingDot?: boolean;
+  }>({});
 
-  function onChange(newProps: Record<string, boolean | string>) {
+  function onChange(newProps: {
+    direction?: 'horizontal';
+    reverse?: boolean;
+    pending?: string | boolean;
+    hasPendingDot?: boolean;
+  }) {
     pendingProps.value = {
       ...pendingProps.value,
       ...newProps,

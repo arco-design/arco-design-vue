@@ -5,12 +5,14 @@
 <script setup lang="ts">
   import { shallowRef } from 'vue';
 
+  import { Message } from '@sdata/web-vue';
+
   const index = shallowRef(0);
 
   function handleClick() {
-    this.$message.info({
+    Message.info({
       id: 'myInfo',
-      content: `This is an info message ${this.$data.index++}`,
+      content: `This is an info message ${index.value++}`,
       duration: 2000,
     });
   }

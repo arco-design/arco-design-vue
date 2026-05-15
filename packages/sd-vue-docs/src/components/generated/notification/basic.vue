@@ -4,7 +4,7 @@
       type="primary"
       @click="
         () =>
-          this.$notification.info({
+          Notification.info({
             title: 'Notification',
             content: 'This is a notification!',
           })

@@ -143,8 +143,6 @@
   import { LabelValue, TreeSelectValue } from './interface';
   import Panel from './panel';
 
-  type TreeSelectComponent = DefineComponent<import('./interface').TreeSelectProps>;
-
   export default defineComponent({
     name: 'TreeSelect',
     components: {
@@ -937,5 +935,5 @@
         },
       };
     },
-  }) as unknown as TreeSelectComponent;
+  });
 </script>

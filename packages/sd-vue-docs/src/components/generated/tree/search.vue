@@ -3,21 +3,33 @@
     <sd-input-search class="sd:max-w-60 sd:mb-2" v-model="searchKey" />
     <sd-tree :data="treeData">
       <template #title="nodeData">
-        <template v-if="((index = getMatchIndex(nodeData?.title)), index < 0)">{{
-          nodeData?.title
-        }}</template>
+        <template v-if="getNodeMatchIndex(nodeData) < 0">{{ getNodeTitle(nodeData) }}</template>
         <span v-else>
-          {{ nodeData?.title?.substr(0, index) }}
+          {{ getNodeTitle(nodeData).substr(0, getNodeMatchIndex(nodeData)) }}
           <span class="sd:text-[var(--color-primary-light-4)]">
-            {{ nodeData?.title?.substr(index, searchKey.length) }} </span
-          >{{ nodeData?.title?.substr(index + searchKey.length) }}
+            {{
+              getNodeTitle(nodeData).substr(getNodeMatchIndex(nodeData), searchKey.length)
+            }} </span
+          >{{ getNodeTitle(nodeData).substr(getNodeMatchIndex(nodeData) + searchKey.length) }}
         </span>
       </template>
     </sd-tree>
   </div>
 </template>
 <script setup lang="ts">
-  import { ref, computed } from 'vue';
+  import type {
+    CheckedStrategy,
+    LoadMore,
+    Size,
+    TreeCheckHandler,
+    TreeDropHandler,
+    TreeExpandHandler,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectHandler,
+  } from '@sdata/web-vue';
+
+  import { computed, ref } from 'vue';
 
   const originTreeData = [
     {
@@ -74,11 +86,15 @@
     return searchData(searchKey.value);
   });
 
-  function searchData(keyword) {
-    const loop = (data) => {
-      const result = [];
+  function searchData(keyword: string) {
+    const loop = (data: TreeNodeData[]): TreeNodeData[] => {
+      const result: TreeNodeData[] = [];
       data.forEach((item) => {
-        if (item.title.toLowerCase().indexOf(keyword.toLowerCase()) > -1) {
+        if (
+          String(item.title ?? '')
+            .toLowerCase()
+            .indexOf(keyword.toLowerCase()) > -1
+        ) {
           result.push({ ...item });
         } else if (item.children) {
           const filterData = loop(item.children);
@@ -96,8 +112,16 @@
     return loop(originTreeData);
   }
 
-  function getMatchIndex(title) {
+  function getMatchIndex(title: string) {
     if (!searchKey.value) return -1;
     return title.toLowerCase().indexOf(searchKey.value.toLowerCase());
+  }
+
+  function getNodeTitle(nodeData?: TreeNodeData) {
+    return String(nodeData?.title ?? '');
+  }
+
+  function getNodeMatchIndex(nodeData?: TreeNodeData) {
+    return getMatchIndex(getNodeTitle(nodeData));
   }
 </script>

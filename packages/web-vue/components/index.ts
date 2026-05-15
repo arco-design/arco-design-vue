@@ -8,7 +8,17 @@ export type { AlertInstance } from './alert';
 export { default as Anchor, AnchorLink } from './anchor';
 export type { AnchorInstance, AnchorLinkInstance } from './anchor';
 export { default as AutoComplete } from './auto-complete';
-export type { AutoCompleteInstance } from './auto-complete';
+export type {
+  AutoCompleteChangeHandler,
+  AutoCompleteClearHandler,
+  AutoCompleteData,
+  AutoCompleteDropdownReachBottomHandler,
+  AutoCompleteDropdownScrollHandler,
+  AutoCompleteFilterOption,
+  AutoCompleteInstance,
+  AutoCompleteSearchHandler,
+  AutoCompleteSelectHandler,
+} from './auto-complete';
 export { default as Avatar, AvatarGroup } from './avatar';
 export type { AvatarInstance, AvatarGroupInstance } from './avatar';
 export { default as BackTop } from './back-top';
@@ -23,13 +33,30 @@ export { default as Card, CardGrid, CardMeta } from './card';
 export { default as Calendar } from './calendar';
 export type { CardGridInstance, CardInstance, CardMetaInstance } from './card';
 export { default as Carousel, CarouselItem } from './carousel';
-export type { CarouselInstance, CarouselItemInstance } from './carousel';
+export type {
+  CarouselArrowType,
+  CarouselAutoPlayConfig,
+  CarouselIndicatorPosition,
+  CarouselIndicatorType,
+  CarouselInstance,
+  CarouselItemInstance,
+  CarouselTriggerEvent,
+} from './carousel';
 export { default as Cascader, CascaderPanel } from './cascader';
 export type {
+  CascaderChangeHandler,
+  CascaderFallback,
   CascaderFieldNames,
+  CascaderFormatLabel,
   CascaderInstance,
+  CascaderLoadMore,
+  CascaderModelValue,
   CascaderPanelInstance,
   CascaderOption,
+  CascaderOptionValue,
+  CascaderPathValue,
+  CascaderSearchHandler,
+  CascaderSingleValue,
 } from './cascader';
 export { default as Checkbox, CheckboxGroup } from './checkbox';
 export type { CheckboxGroupInstance, CheckboxInstance, CheckboxOption } from './checkbox';
@@ -40,7 +67,14 @@ export type { CommentInstance } from './comment';
 export { default as ColorPicker } from './color-picker';
 export type { ColorPickerInstance } from './color-picker';
 export { default as ConfigProvider } from './config-provider';
-export type { ConfigProviderInstance } from './config-provider';
+export type {
+  ConfigProviderInstance,
+  SDThemeConfig,
+  SDThemeMeta,
+  SDThemeMode,
+  ThemeTokenMap,
+  ThemeTokenValue,
+} from './config-provider';
 export { default as ThemeProvider } from './theme-provider';
 export type { ThemeProviderInstance } from './theme-provider';
 export {
@@ -52,16 +86,42 @@ export {
   RangePicker,
 } from './date-picker';
 export type {
+  CalendarValue,
+  DatePickerChangeHandler,
   DatePickerInstance,
+  DatePickerOkHandler,
+  DatePickerProps,
+  DatePickerSelectHandler,
+  DisabledDate,
+  DisabledTime,
+  DisabledTimeProps,
+  FormatFunc,
+  MonthPickerProps,
   MonthPickerInstance,
+  PickerProps,
+  QuarterPickerProps,
   QuarterPickerInstance,
+  RangeDisabledDate,
+  RangeDisabledTime,
+  RangePickerChangeHandler,
   RangePickerInstance,
+  RangePickerOkHandler,
+  RangePickerProps,
+  RangePickerSelectHandler,
   ShortcutType,
+  ValueFormat,
+  WeekPickerProps,
   WeekPickerInstance,
+  YearPickerProps,
   YearPickerInstance,
 } from './date-picker';
 export { default as Descriptions, DescriptionsItem } from './descriptions';
-export type { DescData, DescriptionsInstance, DescriptionsItemInstance } from './descriptions';
+export type {
+  DescData,
+  DescLayout,
+  DescriptionsInstance,
+  DescriptionsItemInstance,
+} from './descriptions';
 export { default as Divider } from './divider';
 export { default as Drawer } from './drawer';
 export type { DrawerConfig, DrawerInstance, DrawerMethod, DrawerReturn } from './drawer';
@@ -125,7 +185,14 @@ export type {
   InputSearchInstance,
 } from './input';
 export { default as InputNumber } from './input-number';
-export type { InputNumberInstance } from './input-number';
+export type {
+  InputNumberChangeHandler,
+  InputNumberFormatter,
+  InputNumberInputHandler,
+  InputNumberInstance,
+  InputNumberParser,
+  InputNumberValue,
+} from './input-number';
 export { default as InputTag } from './input-tag';
 export type { InputTagFieldNames, InputTagInstance, TagData } from './input-tag';
 export {
@@ -152,10 +219,26 @@ export { default as Mention } from './mention';
 export type { MentionInstance } from './mention';
 export { default as Menu, MenuItem, MenuItemGroup, SubMenu } from './menu';
 export type {
+  MenuCollapseHandler,
+  MenuCollapseTrigger,
+  MenuData,
+  MenuDataItem,
   MenuInstance,
+  MenuItemClickHandler,
+  MenuItemGroupProps,
   MenuItemInstance,
   MenuItemGroupInstance,
+  MenuItemProps,
+  MenuMode,
+  MenuOpenKeys,
+  MenuProps,
   MenuSubMenuInstance,
+  MenuSubMenuClickHandler,
+  MenuSelectedKeys,
+  MenuTheme,
+  PopupMenuMaxHeightType,
+  SubMenuChildDataType,
+  SubMenuProps,
 } from './menu';
 export { default as Message } from './message';
 export type { MessageMethod, MessageConfig, MessageReturn } from './message';
@@ -174,7 +257,13 @@ export type { PopoverInstance } from './popover';
 export { default as Progress } from './progress';
 export type { ProgressInstance } from './progress';
 export { default as Radio, RadioGroup } from './radio';
-export type { RadioInstance, RadioGroupInstance } from './radio';
+export type {
+  RadioGroupChangeHandler,
+  RadioGroupInstance,
+  RadioInstance,
+  RadioOption,
+  RadioValue,
+} from './radio';
 export { default as Rate } from './rate';
 export type { RateInstance } from './rate';
 export { default as ResizeBox } from './resize-box';
@@ -201,6 +290,7 @@ export type {
 export { default as Select, Optgroup, Option } from './select';
 export type {
   FilterOption,
+  SelectFallbackOption,
   SelectFieldNames,
   SelectInstance,
   SelectOptGroupInstance,
@@ -213,7 +303,12 @@ export type {
 export { default as Skeleton, SkeletonLine, SkeletonShape } from './skeleton';
 export type { SkeletonInstance, SkeletonLineInstance, SkeletonShapeInstance } from './skeleton';
 export { default as Slider } from './slider';
-export type { SliderInstance } from './slider';
+export type {
+  SliderChangeHandler,
+  SliderFormatTooltip,
+  SliderInstance,
+  SliderValue,
+} from './slider';
 export { default as Space } from './space';
 export type { SpaceInstance } from './space';
 export { default as Spin } from './spin';
@@ -223,9 +318,21 @@ export type { SplitInstance } from './split';
 export { default as Statistic, Countdown } from './statistic';
 export type { CountdownInstance, StatisticInstance } from './statistic';
 export { default as Steps, Step } from './steps';
-export type { StepsInstance, StepsStepInstance } from './steps';
+export type {
+  StepData,
+  StepsChangeHandler,
+  StepsInstance,
+  StepsStepInstance,
+  StepsType,
+  StepStatus,
+} from './steps';
 export { default as Switch } from './switch';
-export type { SwitchInstance } from './switch';
+export type {
+  SwitchBeforeChange,
+  SwitchChangeHandler,
+  SwitchInstance,
+  SwitchValue,
+} from './switch';
 export { default as Table, Thead, Td, Th, Tr, Tbody, TableColumn } from './table';
 export type {
   TableBorder,
@@ -238,8 +345,16 @@ export type {
   TableFilterable,
   TableFilterData,
   TableInstance,
+  TableLoadMore,
+  TableProps,
+  TableRowKey,
   TableRowSelection,
   TableSortable,
+  TableSpanMethod,
+  TableSpanMethodContext,
+  TableSummary,
+  TableSummaryContext,
+  TableSummarySpanMethod,
   TbodyInstance,
   TdInstance,
   TheadInstance,
@@ -247,23 +362,66 @@ export type {
   TrInstance,
 } from './table';
 export { default as Tabs, TabPane } from './tabs';
-export type { TabPaneInstance, TabsInstance } from './tabs';
+export type {
+  ScrollPosition,
+  TabPaneInstance,
+  TabsInstance,
+  TabsPosition,
+  TabsType,
+  TabTriggerEvent,
+} from './tabs';
 export { default as Tag } from './tag';
 export type { TagColor, TagInstance, TagProps } from './tag';
 export { default as Textarea } from './textarea';
 export type { TextareaInstance } from './textarea';
 export { default as TimePicker } from './time-picker';
-export type { TimePickerInstance } from './time-picker';
+export type { TimePickerInstance, TimeValue } from './time-picker';
 export { default as Timeline, TimelineItem } from './timeline';
-export type { TimelineInstance, TimelineItemInstance } from './timeline';
+export type {
+  DotType,
+  LabelPositionType,
+  LineType,
+  ModeType,
+  PositionType,
+  TimelineInstance,
+  TimelineItemInstance,
+} from './timeline';
 export { default as Tooltip } from './tooltip';
 export type { TooltipInstance } from './tooltip';
 export { default as Transfer } from './transfer';
-export type { TransferInstance } from './transfer';
+export type { TransferInstance, TransferItem } from './transfer';
 export { default as Tree } from './tree';
-export type { TreeFieldNames, TreeInstance, TreeNodeData } from './tree';
+export type {
+  CheckedStrategy,
+  CheckableType,
+  DropPosition,
+  FilterTreeNode,
+  Key2TreeNode,
+  LoadMore,
+  TreeCheckHandler,
+  TreeDropHandler,
+  TreeExpandHandler,
+  TreeFieldNames,
+  TreeInstance,
+  TreeNodeData,
+  TreeNodeKey,
+  TreeProps,
+  TreeSelectHandler,
+} from './tree';
 export { default as TreeSelect } from './tree-select';
-export type { TreeSelectInstance } from './tree-select';
+export type {
+  LabelValue,
+  TreeSelectChangeHandler,
+  TreeSelectClearHandler,
+  TreeSelectFallbackOption,
+  TreeSelectFilterTreeNode,
+  TreeSelectInstance,
+  TreeSelectLoadMore,
+  TreeSelectPopupVisibleChangeHandler,
+  TreeSelectProps,
+  TreeSelectSearchHandler,
+  TreeSelectValue,
+} from './tree-select';
 export { default as Trigger } from './trigger';
 export type {
   TriggerEvent,

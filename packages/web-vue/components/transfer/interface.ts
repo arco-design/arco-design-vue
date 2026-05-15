@@ -13,7 +13,7 @@ export interface TransferItem {
    * @zh 是否禁用
    * @en Whether to disable
    */
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 export interface DataInfo {

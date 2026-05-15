@@ -27,15 +27,24 @@
   />
 </template>
 <script setup lang="ts">
-  function onSelect(dateString, date) {
+  import type {
+    DatePickerChangeHandler,
+    DisabledDate,
+    DisabledTime,
+    DisabledTimeProps,
+    FormatFunc,
+    RangeDisabledTime,
+  } from '@sdata/web-vue';
+
+  function onSelect(dateString: unknown, date: unknown) {
     console.log('onSelect', dateString, date);
   }
 
-  function onChange(dateString, date) {
+  function onChange(dateString: unknown, date: unknown) {
     console.log('onChange: ', dateString, date);
   }
 
-  function onOk(dateString, date) {
+  function onOk(dateString: unknown, date: unknown) {
     console.log('onOk: ', dateString, date);
   }
 </script>

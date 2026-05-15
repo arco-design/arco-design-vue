@@ -10,7 +10,7 @@
 <script setup lang="ts">
   import { h } from 'vue';
 
-  import { Notification, Button } from '@sdata/web-vue';
+  import { Button, Notification } from '@sdata/web-vue';
   import { IconCloseCircle } from '@sdata/web-vue/es/icon/index.js';
 
   function handleNotification() {
@@ -18,7 +18,7 @@
       title: 'Notification',
       content: 'This is a notification!',
       closable: true,
-      closeIcon: h(IconCloseCircle),
+      closeIcon: () => h(IconCloseCircle),
     });
   }
 
@@ -27,7 +27,7 @@
       title: 'Notification',
       content: 'This is a notification!',
       closable: true,
-      closeIconElement: h(Button, { size: 'mini' }, () => 'Close'),
+      closeIconElement: () => h(Button, { size: 'mini' }, () => 'Close'),
     });
   }
 </script>

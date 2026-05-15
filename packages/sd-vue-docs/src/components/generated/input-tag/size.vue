@@ -17,7 +17,9 @@
 </template>
 
 <script setup lang="ts">
+  import type { Size } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
-  const size = ref('medium');
+  const size = ref<Size>('medium');
 </script>

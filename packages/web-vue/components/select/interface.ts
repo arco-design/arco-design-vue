@@ -80,6 +80,7 @@ export interface SelectOptionGroupInfo extends SelectOptionGroup {
 }
 
 export type FilterOption = boolean | ((inputValue: string, option: SelectOptionData) => boolean);
+export type SelectFallbackOption = (value: SelectOptionValue) => SelectOptionData;
 
 export interface SelectProps {
   options?: SelectOption[];
@@ -110,7 +111,7 @@ export interface SelectProps {
   filterOption?: FilterOption;
   virtualListProps?: VirtualListProps;
   triggerProps?: TriggerProps;
-  fallbackOption?: boolean | ((value: SelectOptionValue) => SelectOptionData);
+  fallbackOption?: boolean | SelectFallbackOption;
   showExtraOptions?: boolean;
   valueKey?: string;
   searchDelay?: number;

@@ -14,7 +14,9 @@
 </template>
 
 <script setup lang="ts">
+  import type { ScrollPosition, TabTriggerEvent, TabsPosition, TabsType } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
-  const trigger = ref('click');
+  const trigger = ref<TabTriggerEvent>('click');
 </script>

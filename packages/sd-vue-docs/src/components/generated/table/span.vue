@@ -19,7 +19,21 @@
 </template>
 
 <script setup lang="ts">
-  const spanMethod = ({ rowIndex, columnIndex }) => {
+  import type {
+    TableChangeExtra,
+    TableColumnData,
+    TableData,
+    TableExpandable,
+    TableLoadMore,
+    TableRowKey,
+    TableRowSelection,
+    TableSpanMethod,
+    TableSpanMethodContext,
+    TableSummary,
+    TableSummaryContext,
+  } from '@sdata/web-vue';
+
+  const spanMethod: TableSpanMethod = ({ rowIndex, columnIndex }: TableSpanMethodContext) => {
     if (rowIndex === 1 && columnIndex === 1) {
       return {
         rowspan: 2,
@@ -27,14 +41,14 @@
       };
     }
   };
-  const dataSpanMethod = ({ record, column }) => {
-    if (record.name === 'Alisa Ross' && column.dataIndex === 'salary') {
+  const dataSpanMethod: TableSpanMethod = ({ record, column }: TableSpanMethodContext) => {
+    if (record.name === 'Alisa Ross' && 'dataIndex' in column && column.dataIndex === 'salary') {
       return {
         rowspan: 2,
       };
     }
   };
-  const spanMethodAll = ({ rowIndex, columnIndex }) => {
+  const spanMethodAll: TableSpanMethod = ({ rowIndex, columnIndex }: TableSpanMethodContext) => {
     if (rowIndex === 1 && columnIndex === 0) {
       return { rowspan: 2 };
     }
@@ -46,7 +60,7 @@
       };
     }
   };
-  const columns = [
+  const columns: TableColumnData[] = [
     {
       title: 'Name',
       dataIndex: 'name',
@@ -64,7 +78,7 @@
       dataIndex: 'email',
     },
   ];
-  const data = [
+  const data: TableData[] = [
     {
       key: '1',
       name: 'Jane Doe',

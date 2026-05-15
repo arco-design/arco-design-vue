@@ -10,6 +10,18 @@
   />
 </template>
 <script setup lang="ts">
+  import type {
+    CheckedStrategy,
+    LoadMore,
+    Size,
+    TreeCheckHandler,
+    TreeDropHandler,
+    TreeExpandHandler,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectHandler,
+  } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
   const defaultTreeData = [
@@ -62,13 +74,25 @@
     },
   ];
 
-  const treeData = ref(defaultTreeData);
-  const checkedKeys = ref([]);
+  const treeData = ref<TreeNodeData[]>(defaultTreeData);
+  const checkedKeys = ref<TreeNodeKey[]>([]);
   const checked = ref(false);
 
-  function onDrop({ dragNode, dropNode, dropPosition }) {
+  function onDrop({
+    dragNode,
+    dropNode,
+    dropPosition,
+  }: {
+    dragNode: TreeNodeData;
+    dropNode: TreeNodeData;
+    dropPosition: number;
+  }) {
     const data = treeData.value;
-    const loop = (data, key, callback) => {
+    const loop = (
+      data: TreeNodeData[],
+      key: TreeNodeKey,
+      callback: (item: TreeNodeData, index: number, arr: TreeNodeData[]) => void,
+    ) => {
       data.some((item, index, arr) => {
         if (item.key === key) {
           callback(item, index, arr);
@@ -81,17 +105,17 @@
       });
     };
 
-    loop(data, dragNode.key, (_, index, arr) => {
+    loop(data, dragNode.key ?? '', (_, index, arr) => {
       arr.splice(index, 1);
     });
 
     if (dropPosition === 0) {
-      loop(data, dropNode.key, (item) => {
+      loop(data, dropNode.key ?? '', (item) => {
         item.children = item.children || [];
         item.children.push(dragNode);
       });
     } else {
-      loop(data, dropNode.key, (_, index, arr) => {
+      loop(data, dropNode.key ?? '', (_, index, arr) => {
         arr.splice(dropPosition < 0 ? index : index + 1, 0, dragNode);
       });
     }

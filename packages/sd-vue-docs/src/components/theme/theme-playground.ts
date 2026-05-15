@@ -1,3 +1,5 @@
+import type { SDThemeConfig } from '@sdata/web-vue';
+
 export interface ThemeTokenMap {
   [key: string]: string | number;
 }
@@ -12,11 +14,7 @@ export interface ThemeMeta {
   cssVarPrefix?: string;
 }
 
-export interface ThemeConfig {
-  tokens?: ThemeTokenMap;
-  components?: ThemeComponentTokenMap;
-  meta?: ThemeMeta;
-}
+export type ThemeConfig = SDThemeConfig;
 
 export interface ThemePreset {
   key: string;

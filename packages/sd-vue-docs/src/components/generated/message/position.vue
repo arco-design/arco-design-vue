@@ -8,6 +8,8 @@
 <script setup lang="ts">
   import { getCurrentInstance } from 'vue';
 
+  import { Message } from '@sdata/web-vue';
+
   interface MessageApi {
     info: (config: { content: string; position?: 'top' | 'bottom' }) => void;
   }

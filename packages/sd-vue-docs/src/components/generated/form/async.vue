@@ -17,18 +17,26 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, reactive } from 'vue';
+  import type {
+    FieldRule,
+    FormInstance,
+    Size,
+    ValidateStatus,
+    ValidatedError,
+  } from '@sdata/web-vue';
 
-  const formRef = ref();
+  import { reactive, ref } from 'vue';
+
+  const formRef = ref<FormInstance | null>(null);
   const form = reactive({
     name: '',
     post: '',
     isRead: false,
   });
-  const rules = [
+  const rules: FieldRule[] = [
     {
-      validator: (value, cb) => {
-        return new Promise((resolve) => {
+      validator: (value: unknown, cb: (error?: string) => void) => {
+        return new Promise<void>((resolve) => {
           window.setTimeout(() => {
             if (value !== 'admin') {
               cb('name must be admin');
@@ -40,7 +48,7 @@
     },
   ];
   const handleClick = () => {
-    formRef.value.setFields({
+    formRef.value?.setFields({
       name: {
         status: 'error',
         message: 'async name error',

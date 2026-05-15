@@ -2,18 +2,27 @@
   <sd-cascader
     :options="options"
     v-model="value"
-    class="sd:w-[320px]"
+    class="sd:w-80"
     placeholder="Please select ..."
     allow-clear
   />
 </template>
 
 <script setup lang="ts">
+  import type {
+    CascaderChangeHandler,
+    CascaderFallback,
+    CascaderFormatLabel,
+    CascaderLoadMore,
+    CascaderOption,
+    CascaderPathValue,
+  } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
   const value = ref('datunli');
 
-  const options = [
+  const options: CascaderOption[] = [
     {
       value: 'beijing',
       label: 'Beijing',

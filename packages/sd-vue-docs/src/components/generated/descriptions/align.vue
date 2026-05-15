@@ -7,7 +7,9 @@
 </template>
 
 <script setup lang="ts">
-  const data = [
+  import type { DescData, Size } from '@sdata/web-vue';
+
+  const data: DescData[] = [
     {
       label: 'Name',
       value: 'Socrates',

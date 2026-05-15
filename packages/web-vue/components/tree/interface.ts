@@ -71,6 +71,8 @@ export interface TreeNodeData {
    * @en Child node
    * */
   children?: TreeNodeData[];
+
+  [other: string]: unknown;
 }
 
 export interface TreeNodeProps extends Omit<TreeNodeData, 'children'> {
@@ -148,6 +150,8 @@ export interface TreeFieldNames {
    * @defaultValue checkable
    */
   icon?: string;
+
+  [field: string]: string | undefined;
 }
 
 export type LoadMore = (node: TreeNodeData) => Promise<void>;

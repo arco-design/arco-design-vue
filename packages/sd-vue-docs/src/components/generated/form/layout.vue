@@ -28,7 +28,7 @@
 <script setup lang="ts">
   import { reactive, ref } from 'vue';
 
-  const layout = ref('horizontal');
+  const layout = ref<'horizontal' | 'vertical' | 'inline'>('horizontal');
   const form = reactive({
     name: '',
     post: '',

@@ -15,9 +15,19 @@
   </div>
 </template>
 <script setup lang="ts">
+  import type {
+    CalendarValue,
+    DatePickerChangeHandler,
+    DisabledDate,
+    DisabledTime,
+    DisabledTimeProps,
+    FormatFunc,
+    RangeDisabledTime,
+  } from '@sdata/web-vue';
+
   import { shallowRef } from 'vue';
 
-  const pickerValue = shallowRef(null);
+  const pickerValue = shallowRef<CalendarValue | undefined>(undefined);
 
-  const rangePickerValue = shallowRef(null);
+  const rangePickerValue = shallowRef<CalendarValue[] | undefined>(undefined);
 </script>

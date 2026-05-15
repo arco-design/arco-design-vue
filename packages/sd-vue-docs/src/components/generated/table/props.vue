@@ -38,6 +38,20 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    TableChangeExtra,
+    TableColumnData,
+    TableData,
+    TableExpandable,
+    TableLoadMore,
+    TableRowKey,
+    TableRowSelection,
+    TableSpanMethod,
+    TableSpanMethodContext,
+    TableSummary,
+    TableSummaryContext,
+  } from '@sdata/web-vue';
+
   import { reactive } from 'vue';
 
   const form = reactive({
@@ -51,12 +65,12 @@
     noData: false,
   });
 
-  const rowSelection = reactive({
+  const rowSelection = reactive<TableRowSelection>({
     type: 'checkbox',
     showCheckedAll: true,
   });
 
-  const columns = [
+  const columns: TableColumnData[] = [
     {
       title: 'Name',
       dataIndex: 'name',
@@ -75,7 +89,7 @@
     },
   ];
 
-  const data = [
+  const data: TableData[] = [
     {
       key: '1',
       name: 'Jane Doe',

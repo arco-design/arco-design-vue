@@ -9,11 +9,24 @@
   ></sd-tree-select>
 </template>
 <script setup lang="ts">
+  import type {
+    CheckedStrategy,
+    LabelValue,
+    Size,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectChangeHandler,
+    TreeSelectFallbackOption,
+    TreeSelectFilterTreeNode,
+    TreeSelectLoadMore,
+    TreeSelectSearchHandler,
+  } from '@sdata/web-vue';
+
   import { h } from 'vue';
 
   import { IconCalendar } from '@sdata/web-vue/es/icon/index.js';
 
-  const treeData = [
+  const treeData: TreeNodeData[] = [
     {
       key: 'node1',
       icon: () => h(IconCalendar),
@@ -43,7 +56,7 @@
     },
   ];
 
-  function onChange(value) {
+  function onChange(value: Parameters<TreeSelectChangeHandler>[0]) {
     console.log(value);
   }
 </script>

@@ -19,12 +19,24 @@
   />
 </template>
 <script setup lang="ts">
+  import type {
+    CheckedStrategy,
+    LoadMore,
+    Size,
+    TreeCheckHandler,
+    TreeDropHandler,
+    TreeExpandHandler,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectHandler,
+  } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
   const allCheckedKeys = ['0-0', '0-0-1', '0-0-2', '0-0-2-1', '0-1', '0-1-1', '0-1-2'];
   const allExpandedKeys = ['0-0', '0-1', '0-0-2'];
 
-  const treeData = [
+  const treeData: TreeNodeData[] = [
     {
       title: 'Trunk 0-0',
       key: '0-0',
@@ -61,9 +73,9 @@
     },
   ];
 
-  const selectedKeys = ref([]);
-  const checkedKeys = ref([]);
-  const expandedKeys = ref([]);
+  const selectedKeys = ref<TreeNodeKey[]>([]);
+  const checkedKeys = ref<TreeNodeKey[]>([]);
+  const expandedKeys = ref<TreeNodeKey[]>([]);
 
   function toggleChecked() {
     checkedKeys.value = checkedKeys?.value.length ? [] : allCheckedKeys;
@@ -73,15 +85,24 @@
     expandedKeys.value = expandedKeys?.value.length ? [] : allExpandedKeys;
   }
 
-  function onSelect(newSelectedKeys, event) {
+  function onSelect(
+    newSelectedKeys: Parameters<TreeSelectHandler>[0],
+    event: Parameters<TreeSelectHandler>[1],
+  ) {
     console.log('select: ', newSelectedKeys, event);
   }
 
-  function onCheck(newCheckedKeys, event) {
+  function onCheck(
+    newCheckedKeys: Parameters<TreeCheckHandler>[0],
+    event: Parameters<TreeCheckHandler>[1],
+  ) {
     console.log('check: ', newCheckedKeys, event);
   }
 
-  function onExpand(newExpandedKeys, event) {
+  function onExpand(
+    newExpandedKeys: Parameters<TreeExpandHandler>[0],
+    event: { expanded?: boolean; expandedNodes: TreeNodeData[]; node?: TreeNodeData; e?: Event },
+  ) {
     console.log('expand: ', newExpandedKeys, event);
   }
 </script>

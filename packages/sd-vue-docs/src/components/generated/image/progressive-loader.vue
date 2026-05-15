@@ -31,5 +31,5 @@
 <script setup lang="ts">
   import { ref } from 'vue';
 
-  const timestamp = ref('');
+  const timestamp = ref(Date.now());
 </script>

@@ -34,6 +34,14 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    FieldRule,
+    FormInstance,
+    Size,
+    ValidateStatus,
+    ValidatedError,
+  } from '@sdata/web-vue';
+
   import { reactive } from 'vue';
 
   const form = reactive({

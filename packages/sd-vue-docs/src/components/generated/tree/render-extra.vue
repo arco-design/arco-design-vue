@@ -11,11 +11,23 @@
   </div>
 </template>
 <script setup lang="ts">
+  import type {
+    CheckedStrategy,
+    LoadMore,
+    Size,
+    TreeCheckHandler,
+    TreeDropHandler,
+    TreeExpandHandler,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectHandler,
+  } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
   import { IconPlus } from '@sdata/web-vue/es/icon/index.js';
 
-  const treeData = ref([
+  const treeData = ref<TreeNodeData[]>([
     {
       title: 'Trunk',
       key: '0-0',
@@ -62,7 +74,7 @@
     },
   ]);
 
-  function onIconClick(nodeData) {
+  function onIconClick(nodeData: TreeNodeData) {
     const children = nodeData.children || [];
     children.push({
       title: 'new tree node',

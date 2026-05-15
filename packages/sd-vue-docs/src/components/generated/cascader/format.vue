@@ -2,14 +2,23 @@
   <sd-cascader
     :options="options"
     default-value="datunli"
-    class="sd:w-[320px]"
+    class="sd:w-80"
     placeholder="Please select ..."
     :format-label="format"
   />
 </template>
 
 <script setup lang="ts">
-  const options = [
+  import type {
+    CascaderChangeHandler,
+    CascaderFallback,
+    CascaderFormatLabel,
+    CascaderLoadMore,
+    CascaderOption,
+    CascaderPathValue,
+  } from '@sdata/web-vue';
+
+  const options: CascaderOption[] = [
     {
       value: 'beijing',
       label: 'Beijing',
@@ -60,7 +69,7 @@
     },
   ];
 
-  const format = (options) => {
+  const format: CascaderFormatLabel = (options) => {
     const labels = options.map((option) => option.label);
     return labels.join('-');
   };

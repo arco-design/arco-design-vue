@@ -6,6 +6,10 @@ import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
 import _StepsStep from './step.vue';
 import _Steps from './steps.vue';
 
+export type { StepData, StepStatus, StepsType } from './interface';
+
+export type StepsChangeHandler = (step: number, event: Event) => void;
+
 const Steps = Object.assign(_Steps, {
   Step: _StepsStep,
   install: (app: App, options?: SDOptions) => {

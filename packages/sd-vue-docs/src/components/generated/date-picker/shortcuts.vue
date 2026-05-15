@@ -4,15 +4,15 @@
     :shortcuts="[
       {
         label: '2 hours later',
-        value: () => dayjs().add(2, 'hour'),
+        value: () => dayjs().add(2, 'hour').toDate(),
       },
       {
         label: 'a week later',
-        value: () => dayjs().add(1, 'week'),
+        value: () => dayjs().add(1, 'week').toDate(),
       },
       {
         label: 'a month later',
-        value: () => dayjs().add(1, 'month'),
+        value: () => dayjs().add(1, 'month').toDate(),
       },
     ]"
     show-time
@@ -22,15 +22,15 @@
     :shortcuts="[
       {
         label: 'last month',
-        value: () => dayjs().subtract(1, 'month'),
+        value: () => dayjs().subtract(1, 'month').toDate(),
       },
       {
         label: 'six months later',
-        value: () => dayjs().add(6, 'month'),
+        value: () => dayjs().add(6, 'month').toDate(),
       },
       {
         label: 'two years later',
-        value: () => dayjs().add(2, 'year'),
+        value: () => dayjs().add(2, 'year').toDate(),
       },
     ]"
   />
@@ -39,15 +39,15 @@
     :shortcuts="[
       {
         label: 'next 7 days',
-        value: () => [dayjs(), dayjs().add(1, 'week')],
+        value: () => [dayjs().toDate(), dayjs().add(1, 'week').toDate()],
       },
       {
         label: 'next 30 days',
-        value: () => [dayjs(), dayjs().add(1, 'month')],
+        value: () => [dayjs().toDate(), dayjs().add(1, 'month').toDate()],
       },
       {
         label: 'next 365 days',
-        value: () => [dayjs(), dayjs().add(1, 'year')],
+        value: () => [dayjs().toDate(), dayjs().add(1, 'year').toDate()],
       },
     ]"
   />
@@ -57,19 +57,28 @@
     :shortcuts="[
       {
         label: 'next 6 months',
-        value: () => [dayjs(), dayjs().add(6, 'month')],
+        value: () => [dayjs().toDate(), dayjs().add(6, 'month').toDate()],
       },
       {
         label: 'next 12 months',
-        value: () => [dayjs(), dayjs().add(1, 'year')],
+        value: () => [dayjs().toDate(), dayjs().add(1, 'year').toDate()],
       },
       {
         label: 'next 10 years',
-        value: () => [dayjs(), dayjs().add(10, 'year')],
+        value: () => [dayjs().toDate(), dayjs().add(10, 'year').toDate()],
       },
     ]"
   />
 </template>
 <script setup lang="ts">
+  import type {
+    DatePickerChangeHandler,
+    DisabledDate,
+    DisabledTime,
+    DisabledTimeProps,
+    FormatFunc,
+    RangeDisabledTime,
+  } from '@sdata/web-vue';
+
   import dayjs from 'dayjs';
 </script>

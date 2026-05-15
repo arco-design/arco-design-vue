@@ -37,16 +37,18 @@
   </div>
 </template>
 <script setup lang="ts">
+  import type { MenuCollapseHandler } from '@sdata/web-vue';
+
   import { Message } from '@sdata/web-vue';
   import { IconApps, IconBug, IconBulb } from '@sdata/web-vue/es/icon/index.js';
 
-  function onCollapse(_val, type) {
+  const onCollapse: MenuCollapseHandler = (_val, type) => {
     const content = type === 'responsive' ? '触发响应式收缩' : '点击触发收缩';
     Message.info({
       content,
       duration: 2000,
     });
-  }
+  };
 </script>
 <style scoped>
   .menu-demo {

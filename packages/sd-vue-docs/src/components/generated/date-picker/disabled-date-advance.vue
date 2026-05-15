@@ -7,6 +7,15 @@
   />
 </template>
 <script setup lang="ts">
+  import type {
+    DatePickerChangeHandler,
+    DisabledDate,
+    DisabledTime,
+    DisabledTimeProps,
+    FormatFunc,
+    RangeDisabledTime,
+  } from '@sdata/web-vue';
+
   import { shallowRef } from 'vue';
 
   type RangeDateLike = Date | number | string;
@@ -19,8 +28,8 @@
     );
   }
 
-  function onSelect(_valueString: unknown, value: RangeDateLike[]) {
-    dates.value = value;
+  function onSelect(value: (RangeDateLike | undefined)[], _date: unknown, _dateString: unknown) {
+    dates.value = value.filter((item): item is RangeDateLike => item !== undefined);
   }
 
   function onPopupVisibleChange(visible: boolean) {

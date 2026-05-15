@@ -18,5 +18,5 @@
 <script setup lang="ts">
   import { shallowRef } from 'vue';
 
-  const size = shallowRef('medium');
+  const size = shallowRef<'mini' | 'small' | 'medium' | 'large'>('medium');
 </script>

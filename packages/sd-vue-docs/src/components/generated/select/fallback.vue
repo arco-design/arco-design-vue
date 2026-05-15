@@ -42,7 +42,9 @@
 </template>
 
 <script setup lang="ts">
-  const fallback = (value) => {
+  import type { SelectFallbackOption } from '@sdata/web-vue';
+
+  const fallback: SelectFallbackOption = (value) => {
     return {
       value,
       label: `++${value}++`,

@@ -29,7 +29,7 @@
   import { ref } from 'vue';
 
   const visible = ref(false);
-  const position = ref('right');
+  const position = ref<'top' | 'right' | 'bottom' | 'left'>('right');
 
   const handleClick = () => {
     visible.value = true;

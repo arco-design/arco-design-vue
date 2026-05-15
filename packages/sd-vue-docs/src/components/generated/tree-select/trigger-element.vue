@@ -8,9 +8,22 @@
   </sd-tree-select>
 </template>
 <script setup lang="ts">
+  import type {
+    CheckedStrategy,
+    LabelValue,
+    Size,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectChangeHandler,
+    TreeSelectFallbackOption,
+    TreeSelectFilterTreeNode,
+    TreeSelectLoadMore,
+    TreeSelectSearchHandler,
+  } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
-  const treeData = [
+  const treeData: TreeNodeData[] = [
     {
       key: 'node1',
       title: 'node1',
@@ -49,7 +62,7 @@
 
   const text = ref('node1');
 
-  function onChange(selected) {
-    text.value = selected;
+  function onChange(selected: Parameters<TreeSelectChangeHandler>[0]) {
+    text.value = String(selected ?? '');
   }
 </script>

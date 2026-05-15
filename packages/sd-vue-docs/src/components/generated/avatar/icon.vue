@@ -36,9 +36,10 @@
 </template>
 
 <script setup lang="ts">
+  import { Message } from '@sdata/web-vue';
   import { IconCamera, IconEdit, IconUser } from '@sdata/web-vue/es/icon/index.js';
 
   function toast() {
-    this.$message.info('Uploading...');
+    Message.info('Uploading...');
   }
 </script>

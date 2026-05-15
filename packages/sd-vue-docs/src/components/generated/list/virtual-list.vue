@@ -26,7 +26,15 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue';
 
-  const mode = ref('dynamic');
+  type ListItem = {
+    key: string;
+    prefix: string;
+    title: string;
+    shortDescription: string;
+    longDescription: string;
+  };
+
+  const mode = ref<'dynamic' | 'fixed'>('dynamic');
 
   const helperText = computed(() => {
     return mode.value === 'dynamic'
@@ -40,11 +48,11 @@
       : { height: 520, itemSize: 72 };
   });
 
-  const getDescription = (item) => {
+  const getDescription = (item: ListItem) => {
     return mode.value === 'dynamic' ? item.longDescription : item.shortDescription;
   };
 
-  const list = Array(2400)
+  const list: ListItem[] = Array(2400)
     .fill(null)
     .map((_, index) => {
       const prefix = `0${(index % 26) + 10}`.slice(-2);

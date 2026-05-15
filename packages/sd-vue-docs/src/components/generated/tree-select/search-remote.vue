@@ -11,6 +11,19 @@
   ></sd-tree-select>
 </template>
 <script setup lang="ts">
+  import type {
+    CheckedStrategy,
+    LabelValue,
+    Size,
+    TreeNodeData,
+    TreeNodeKey,
+    TreeSelectChangeHandler,
+    TreeSelectFallbackOption,
+    TreeSelectFilterTreeNode,
+    TreeSelectLoadMore,
+    TreeSelectSearchHandler,
+  } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
   const defaultTreeData = [
@@ -62,14 +75,18 @@
     },
   ];
 
-  const treeData = ref(defaultTreeData);
+  const treeData = ref<TreeNodeData[]>(defaultTreeData);
   const loading = ref(false);
 
-  function searchData(keyword) {
-    const loop = (data) => {
-      const result = [];
+  function searchData(keyword: string) {
+    const loop = (data: TreeNodeData[]): TreeNodeData[] => {
+      const result: TreeNodeData[] = [];
       data.forEach((item) => {
-        if (item.title.toLowerCase().indexOf(keyword.toLowerCase()) > -1) {
+        if (
+          String(item.title ?? '')
+            .toLowerCase()
+            .indexOf(keyword.toLowerCase()) > -1
+        ) {
           result.push({ ...item });
         } else if (item.children) {
           const filterData = loop(item.children);
@@ -87,7 +104,7 @@
     return loop(defaultTreeData);
   }
 
-  const onSearch = (searchKey) => {
+  const onSearch: TreeSelectSearchHandler = (searchKey) => {
     loading.value = true;
     setTimeout(() => {
       loading.value = false;

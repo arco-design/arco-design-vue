@@ -27,7 +27,7 @@
   import { ref } from 'vue';
 
   const visible = ref(false);
-  const custom = ref([]);
+  const custom = ref<Array<'hide header' | 'hide footer' | 'hide cancel'>>([]);
 
   const handleClick = () => {
     visible.value = true;

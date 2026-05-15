@@ -2,7 +2,7 @@
   <sd-space>
     <sd-cascader
       :options="options"
-      class="sd:w-[320px]"
+      class="sd:w-80"
       placeholder="Please select ..."
       :load-more="loadMore"
     />
@@ -10,7 +10,16 @@
 </template>
 
 <script setup lang="ts">
-  const options = [
+  import type {
+    CascaderChangeHandler,
+    CascaderFallback,
+    CascaderFormatLabel,
+    CascaderLoadMore,
+    CascaderOption,
+    CascaderPathValue,
+  } from '@sdata/web-vue';
+
+  const options: CascaderOption[] = [
     {
       value: 'beijing',
       label: 'Beijing',
@@ -47,7 +56,7 @@
       ],
     },
   ];
-  const loadMore = (option, done) => {
+  const loadMore: CascaderLoadMore = (option, done) => {
     window.setTimeout(() => {
       const nodes = [
         {

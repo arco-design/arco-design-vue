@@ -54,14 +54,28 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    TableChangeExtra,
+    TableColumnData,
+    TableData,
+    TableExpandable,
+    TableLoadMore,
+    TableRowKey,
+    TableRowSelection,
+    TableSpanMethod,
+    TableSpanMethodContext,
+    TableSummary,
+    TableSummaryContext,
+  } from '@sdata/web-vue';
+
   import { computed, nextTick, reactive, ref } from 'vue';
 
-  const mode = ref('estimated');
-  const tableHeight = ref(360);
+  const mode = ref<'estimated' | 'fixed' | 'dynamic'>('estimated');
+  const tableHeight = ref<280 | 360 | 480>(360);
   const useScrollbar = ref(true);
   const stickyHeader = ref(false);
-  const expandedKeys = ref([]);
-  const tableHostRef = ref();
+  const expandedKeys = ref<string[]>([]);
+  const tableHostRef = ref<HTMLElement | null>(null);
 
   const toolbarRowClass = 'sd:mb-3 sd:flex sd:flex-wrap sd:items-center sd:gap-3';
 
@@ -70,7 +84,7 @@
   const checkClass =
     'sd:inline-flex sd:items-center sd:gap-2 sd:text-[13px] sd:text-[var(--color-text-2)]';
 
-  const columns = [
+  const columns: TableColumnData[] = [
     {
       title: '姓名',
       dataIndex: 'name',
@@ -94,7 +108,7 @@
     },
   ];
 
-  const data = reactive(
+  const data = reactive<TableData[]>(
     Array(1200)
       .fill(null)
       .map((_, index) => ({
@@ -110,12 +124,12 @@
       })),
   );
 
-  const rowSelection = {
+  const rowSelection: TableRowSelection = {
     type: 'checkbox',
     showCheckedAll: true,
   };
 
-  const expandable = {
+  const expandable: TableExpandable = {
     title: '展开',
     width: 88,
   };
@@ -164,7 +178,7 @@
     return height > 0 ? height : 42;
   };
 
-  const scrollTableToRow = async (row) => {
+  const scrollTableToRow = async (row: number) => {
     await nextTick();
 
     const viewport = tableHostRef.value?.querySelector('.sd-virtual-list-scroller');
@@ -177,7 +191,7 @@
     viewport.dispatchEvent(new Event('scroll'));
   };
 
-  const expandAndScrollToRow = async (row) => {
+  const expandAndScrollToRow = async (row: number) => {
     expandedKeys.value = [String(row)];
     await scrollTableToRow(row);
   };

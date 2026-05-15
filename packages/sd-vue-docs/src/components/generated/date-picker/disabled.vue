@@ -6,7 +6,7 @@
   <sd-range-picker
     :defaultValue="['2020-08-08']"
     :disabled="[true, false]"
-    :disabledDate="(current) => dayjs(current).isBefore(dayjs('2020-08-08'))"
+    :disabledDate="disableBeforePresetDate"
     class="sd:mb-5 sd:w-75"
   />
   <br />
@@ -18,5 +18,17 @@
   />
 </template>
 <script setup lang="ts">
+  import type {
+    DatePickerChangeHandler,
+    DisabledDate,
+    DisabledTime,
+    DisabledTimeProps,
+    FormatFunc,
+    RangeDisabledTime,
+  } from '@sdata/web-vue';
+
   import dayjs from 'dayjs';
+
+  const disableBeforePresetDate: DisabledDate = (current) =>
+    dayjs(current).isBefore(dayjs('2020-08-08'));
 </script>

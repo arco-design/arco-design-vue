@@ -117,17 +117,24 @@ export default function useSelectedState(props: {
           }
         }
 
+        const fallbackLabel = fallbackNodeData?.[nodeDataTitle];
+        const label: LabelValue['label'] =
+          getLabel(item) ??
+          getPathLabel(key, node) ??
+          (typeof node?.title === 'string' || typeof node?.title === 'number'
+            ? node.title
+            : undefined) ??
+          originValueItem?.label ??
+          (typeof fallbackLabel === 'string' || typeof fallbackLabel === 'number'
+            ? fallbackLabel
+            : undefined) ??
+          key;
+
         res.push({
           ...(isLabelValue(item) ? item : {}),
           ...originValueItem,
           value: key,
-          label:
-            getLabel(item) ??
-            getPathLabel(key, node) ??
-            node?.title ??
-            originValueItem?.label ??
-            fallbackNodeData?.[nodeDataTitle] ??
-            key,
+          label,
         });
       });
     }

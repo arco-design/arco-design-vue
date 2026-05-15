@@ -2,7 +2,9 @@
 dist/
 public/vendor/
 # generated types
-.astro/
+.astro/*
+!.astro/content.d.ts
+!.astro/types.d.ts
 
 # dependencies
 node_modules/

@@ -21,10 +21,17 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    AutoCompleteData,
+    AutoCompleteDropdownReachBottomHandler,
+    AutoCompleteDropdownScrollHandler,
+    AutoCompleteSearchHandler,
+  } from '@sdata/web-vue';
+
   import { computed, ref } from 'vue';
 
-  const preset = ref('default');
-  const data = ref([]);
+  const preset = ref<'default' | 'explicit'>('default');
+  const data = ref<AutoCompleteData>([]);
 
   const helperText = computed(() => {
     return preset.value === 'default'
@@ -36,7 +43,7 @@
     return preset.value === 'default' ? {} : { itemSize: 36, buffer: 260 };
   });
 
-  const createData = (value) => {
+  const createData = (value: string) => {
     if (!value) {
       return [];
     }
@@ -44,7 +51,7 @@
     return [...Array(3000)].map((_, index) => `${value}-result-${index}`);
   };
 
-  const handleSearch = (value) => {
+  const handleSearch: AutoCompleteSearchHandler = (value) => {
     data.value = createData(value);
   };
 </script>

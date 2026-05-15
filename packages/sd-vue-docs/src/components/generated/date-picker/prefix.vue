@@ -22,6 +22,15 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    DatePickerChangeHandler,
+    DisabledDate,
+    DisabledTime,
+    DisabledTimeProps,
+    FormatFunc,
+    RangeDisabledTime,
+  } from '@sdata/web-vue';
+
   import { IconInfoCircle } from '@sdata/web-vue/es/icon/index.js';
 
   function onSelect(dateString: unknown, date: unknown) {

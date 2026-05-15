@@ -5,10 +5,19 @@
 </template>
 
 <script setup lang="ts">
+  import type {
+    CustomIcon,
+    FileItem,
+    FileStatus,
+    RequestOption,
+    UploadInstance,
+    UploadRequest,
+  } from '@sdata/web-vue';
+
   import { Modal } from '@sdata/web-vue';
 
-  const beforeUpload = (file) => {
-    return new Promise((resolve, reject) => {
+  const beforeUpload = (file: File) => {
+    return new Promise<boolean>((resolve, reject) => {
       Modal.confirm({
         title: 'beforeUpload',
         content: `确认上传 ${file.name}`,

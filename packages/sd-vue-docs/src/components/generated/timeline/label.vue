@@ -30,16 +30,18 @@
 </template>
 
 <script setup lang="ts">
+  import type { LabelPositionType, ModeType } from '@sdata/web-vue';
+
   import { ref } from 'vue';
 
-  const mode = ref('left');
-  const pos = ref('same');
+  const mode = ref<ModeType>('left');
+  const pos = ref<LabelPositionType>('same');
 
-  const onLabelPositionChange = (_pos) => {
-    pos.value = _pos;
+  const onLabelPositionChange = (_pos: string | number | boolean) => {
+    pos.value = _pos as LabelPositionType;
   };
 
-  const onModeChange = (_mode) => {
-    mode.value = _mode;
+  const onModeChange = (_mode: string | number | boolean) => {
+    mode.value = _mode as ModeType;
   };
 </script>
