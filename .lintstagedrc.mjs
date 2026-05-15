@@ -11,5 +11,5 @@ export default {
   ],
   '**/*.{js,jsx,cjs,mjs,ts,tsx,cts,mts}': ['oxfmt --no-error-on-unmatched-pattern', 'oxlint --fix'],
   '**/*.{json,jsonc,md,yml,yaml}': ['oxfmt --no-error-on-unmatched-pattern'],
-  '**/*.{ts,tsx}': ['tsc --noEmit'],
+  '**/*.{ts,tsx}': ['tsgo --noEmit'],
 };
