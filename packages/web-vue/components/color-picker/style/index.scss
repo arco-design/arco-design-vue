@@ -3,104 +3,22 @@
 @use '@style/theme/index.scss' as global;
 @use 'sass:string';
 @use 'sass:map';
-@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
+@use 'sass:meta';
+@use '@components/color-picker/style/token.scss' as token;
 @use '@components/color-picker/style/token.scss' as *;
 
 $color-picker-prefix-cls: string.unquote('#{theme.$prefix}-color-picker');
 
-$__less-vars: (
-  'border-radius-circle': global.$border-radius-circle,
-  'border-radius-medium': global.$border-radius-medium,
-  'color-control-bar-alpha-margin-top': $color-control-bar-alpha-margin-top,
-  'color-control-bar-border-radius': $color-control-bar-border-radius,
-  'color-control-bar-handle-size': $color-control-bar-handle-size,
-  'color-control-bar-height': $color-control-bar-height,
-  'color-control-bar-width': $color-control-bar-width,
-  'color-input-bg-color': $color-input-bg-color,
-  'color-input-border-radius': $color-input-border-radius,
-  'color-input-size-mini-padding': $color-input-size-mini-padding,
-  'color-input-size-small-padding': $color-input-size-small-padding,
-  'color-input-size-medium-padding': $color-input-size-medium-padding,
-  'color-input-size-large-padding': $color-input-size-large-padding,
-  'color-palette-handle-border-size': $color-palette-handle-border-size,
-  'color-palette-handle-size': $color-palette-handle-size,
-  'color-palette-height': $color-palette-height,
-  'color-panel-alpha-input-width': $color-panel-alpha-input-width,
-  'color-panel-bg-color': $color-panel-bg-color,
-  'color-panel-block-border-radius': $color-panel-block-border-radius,
-  'color-panel-block-margin': $color-panel-block-margin,
-  'color-panel-block-size': $color-panel-block-size,
-  'color-panel-border-color': $color-panel-border-color,
-  'color-panel-border-radius': $color-panel-border-radius,
-  'color-panel-box-shadow': $color-panel-box-shadow,
-  'color-panel-empty-font-size': $color-panel-empty-font-size,
-  'color-panel-format-select-width': $color-panel-format-select-width,
-  'color-panel-input-group-margin-left': $color-panel-input-group-margin-left,
-  'color-panel-input-margin-top': $color-panel-input-margin-top,
-  'color-panel-padding': $color-panel-padding,
-  'color-panel-preview-size': $color-panel-preview-size,
-  'color-panel-section-title-font-size': $color-panel-section-title-font-size,
-  'color-panel-width': $color-panel-width,
-  'color-preview-border-color': $color-preview-border-color,
-  'color-preview-border-size': $color-preview-border-size,
-  'color-preview-size-mini': $color-preview-size-mini,
-  'color-preview-size-small': $color-preview-size-small,
-  'color-preview-size-medium': $color-preview-size-medium,
-  'color-preview-size-large': $color-preview-size-large,
-  'color-value-font-color': $color-value-font-color,
-  'color-value-font-color_disabled': $color-value-font-color_disabled,
-  'color-value-font-size': $color-value-font-size,
-  'color-value-margin-left': $color-value-margin-left,
-  'color-value-size-mini-font-size': $color-value-size-mini-font-size,
-  'color-value-size-small-font-size': $color-value-size-small-font-size,
-  'color-value-size-medium-font-size': $color-value-size-medium-font-size,
-  'color-value-size-large-font-size': $color-value-size-large-font-size,
-  'font-size-body-1': global.$font-size-body-1,
-  'font-weight-400': global.$font-weight-400,
-  'input-color-addon-border': inputToken.$input-color-addon-border,
-  'input-color-addon-border_default': inputToken.$input-color-addon-border_default,
-  'input-color-bg': inputToken.$input-color-bg,
-  'input-color-bg_disabled': inputToken.$input-color-bg_disabled,
-  'input-color-bg_error': inputToken.$input-color-bg_error,
-  'input-color-bg_error_focus': inputToken.$input-color-bg_error_focus,
-  'input-color-bg_error_hover': inputToken.$input-color-bg_error_hover,
-  'input-color-bg_focus': inputToken.$input-color-bg_focus,
-  'input-color-bg_hover': inputToken.$input-color-bg_hover,
-  'input-color-border': inputToken.$input-color-border,
-  'input-color-border_disabled': inputToken.$input-color-border_disabled,
-  'input-color-border_error': inputToken.$input-color-border_error,
-  'input-color-border_error_focus': inputToken.$input-color-border_error_focus,
-  'input-color-border_error_hover': inputToken.$input-color-border_error_hover,
-  'input-color-border_focus': inputToken.$input-color-border_focus,
-  'input-color-border_hover': inputToken.$input-color-border_hover,
-  'input-color-icon-clear-bg_hover': inputToken.$input-color-icon-clear-bg_hover,
-  'input-color-shadow_error_focus': inputToken.$input-color-shadow_error_focus,
-  'input-color-shadow_focus': inputToken.$input-color-shadow_focus,
-  'input-color-text': inputToken.$input-color-text,
-  'input-color-text_disabled': inputToken.$input-color-text_disabled,
-  'input-feedback-icon-color_error': inputToken.$input-feedback-icon-color_error,
-  'input-feedback-icon-color_success': inputToken.$input-feedback-icon-color_success,
-  'input-feedback-icon-color_validating': inputToken.$input-feedback-icon-color_validating,
-  'input-feedback-icon-color_warning': inputToken.$input-feedback-icon-color_warning,
-  'input-group-border-radius_compact': inputToken.$input-group-border-radius_compact,
-  'input-size-mini-height': inputToken.$input-size-mini-height,
-  'input-size-small-height': inputToken.$input-size-small-height,
-  'input-size-medium-height': inputToken.$input-size-medium-height,
-  'input-size-large-height': inputToken.$input-size-large-height,
-  'input-size-shadow_error_focus': inputToken.$input-size-shadow_error_focus,
-  'input-size-shadow_focus': inputToken.$input-size-shadow_focus,
-  'prefix': theme.$prefix,
-  'size-3': global.$size-3,
-  'size-mini': global.$size-mini,
-  'spacing-2': global.$spacing-2,
-  'spacing-3': global.$spacing-3,
-  'spacing-4': global.$spacing-4,
-  'spacing-6': global.$spacing-6,
-  'spacing-none': global.$spacing-none,
-);
+$token-vars: map.merge(meta.module-variables('inputToken'), meta.module-variables('token'));
 
-@function less-var($name, $fallback: null) {
-  @return legacyLessVar.get($__less-vars, $name, $fallback);
+@function token-var($name, $fallback: null) {
+  $value: map.get($token-vars, $name);
+
+  @if $value == null {
+    @return $fallback;
+  }
+
+  @return $value;
 }
 
 .#{$color-picker-prefix-cls} {
@@ -131,16 +49,16 @@ $__less-vars: (
   }
 
   @mixin size-mixin($size) {
-    height: less-var('input-size-#{$size}-height');
-    padding: less-var('color-input-size-#{$size}-padding');
+    height: token-var('input-size-#{$size}-height');
+    padding: token-var('color-input-size-#{$size}-padding');
 
     .#{$color-picker-prefix-cls}-preview {
-      width: less-var('color-preview-size-#{$size}');
-      height: less-var('color-preview-size-#{$size}');
+      width: token-var('color-preview-size-#{$size}');
+      height: token-var('color-preview-size-#{$size}');
     }
 
     .#{$color-picker-prefix-cls}-value {
-      font-size: less-var('color-value-size-#{$size}-font-size');
+      font-size: token-var('color-value-size-#{$size}-font-size');
     }
   }
 

@@ -2,8 +2,9 @@
 @use '@style/theme/index.scss' as global;
 @use 'sass:string';
 @use 'sass:map';
-@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
+@use 'sass:meta';
 @use '@style/mixins/index.scss' as *;
+@use '@components/table/style/token.scss' as token;
 @use '@components/table/style/token.scss' as *;
 @use '@components/table/style/filters-popup.scss' as *;
 
@@ -14,98 +15,14 @@ $table-cls-tr: string.unquote('#{$table-prefix-cls}-tr');
 $table-cls-th: string.unquote('#{$table-prefix-cls}-th');
 $table-cls-td: string.unquote('#{$table-prefix-cls}-td');
 
-$__less-vars: (
-  'color-primary-6': global.$color-primary-6,
-  'line-height-base': theme.$line-height-base,
-  'prefix': theme.$prefix,
-  'sd-theme-tag': global.$sd-theme-tag,
-  'table-border-expand-icon-width': $table-border-expand-icon-width,
-  'table-border-radius': $table-border-radius,
-  'table-border-radius-expand-button': $table-border-radius-expand-button,
-  'table-border-style': $table-border-style,
-  'table-border-width': $table-border-width,
-  'table-color-bg-body-cell': $table-color-bg-body-cell,
-  'table-color-bg-body-row_active': $table-color-bg-body-row_active,
-  'table-color-bg-body-row_active_dark': $table-color-bg-body-row_active_dark,
-  'table-color-bg-body-row_hover': $table-color-bg-body-row_hover,
-  'table-color-bg-body-sorted-cell': $table-color-bg-body-sorted-cell,
-  'table-color-bg-body-stripe-row': $table-color-bg-body-stripe-row,
-  'table-color-bg-expand-content': $table-color-bg-expand-content,
-  'table-color-bg-expand-content_hover': $table-color-bg-expand-content_hover,
-  'table-color-bg-expand-icon': $table-color-bg-expand-icon,
-  'table-color-bg-expand-icon_hover': $table-color-bg-expand-icon_hover,
-  'table-color-bg-header-cell': $table-color-bg-header-cell,
-  'table-color-bg-header-filters-icon_hover': $table-color-bg-header-filters-icon_hover,
-  'table-color-bg-header-sorted-cell': $table-color-bg-header-sorted-cell,
-  'table-color-bg-header-sorted-cell_hover': $table-color-bg-header-sorted-cell_hover,
-  'table-color-bg-tfoot': $table-color-bg-tfoot,
-  'table-color-body-background': $table-color-body-background,
-  'table-color-border': $table-color-border,
-  'table-color-border_resizing': $table-color-border_resizing,
-  'table-color-editable-body-cell-border': $table-color-editable-body-cell-border,
-  'table-color-expand-icon': $table-color-expand-icon,
-  'table-color-expand-icon-border': $table-color-expand-icon-border,
-  'table-color-expand-icon-border_hover': $table-color-expand-icon-border_hover,
-  'table-color-expand-icon_hover': $table-color-expand-icon_hover,
-  'table-color-header-filters-icon': $table-color-header-filters-icon,
-  'table-color-header-filters-icon_active': $table-color-header-filters-icon_active,
-  'table-color-header-sorter-icon': $table-color-header-sorter-icon,
-  'table-color-header-sorter-icon_active': $table-color-header-sorter-icon_active,
-  'table-color-header-sorter-icon_next': $table-color-header-sorter-icon_next,
-  'table-color-text-body-cell': $table-color-text-body-cell,
-  'table-color-text-header-cell': $table-color-text-header-cell,
-  'table-filters-icon-bg_hover': $table-filters-icon-bg_hover,
-  'table-font-size-expand-button': $table-font-size-expand-button,
-  'table-font-size-filters-icon': $table-font-size-filters-icon,
-  'table-font-size-header-sorter-icon': $table-font-size-header-sorter-icon,
-  'table-font-weight-header-text': $table-font-weight-header-text,
-  'table-position-header-sorter-icon-down-top': $table-position-header-sorter-icon-down-top,
-  'table-position-header-sorter-icon-left': $table-position-header-sorter-icon-left,
-  'table-position-header-sorter-icon-up-top': $table-position-header-sorter-icon-up-top,
-  'table-shadow-left': $table-shadow-left,
-  'table-shadow-right': $table-shadow-right,
-  'table-size-body-min-width': $table-size-body-min-width,
-  'table-size-drag-handle-col-width': $table-size-drag-handle-col-width,
-  'table-size-expand-button': $table-size-expand-button,
-  'table-size-default-font-header-size': $table-size-default-font-header-size,
-  'table-size-default-font-size': $table-size-default-font-size,
-  'table-size-default-padding-horizontal': $table-size-default-padding-horizontal,
-  'table-size-default-padding-vertical': $table-size-default-padding-vertical,
-  'table-size-expand-icon-col-width': $table-size-expand-icon-col-width,
-  'table-size-filters-width': $table-size-filters-width,
-  'table-size-header-sorter-icon-height': $table-size-header-sorter-icon-height,
-  'table-size-header-sorter-icon-width': $table-size-header-sorter-icon-width,
-  'table-size-large-font-header-size': $table-size-large-font-header-size,
-  'table-size-large-font-size': $table-size-large-font-size,
-  'table-size-large-padding-horizontal': $table-size-large-padding-horizontal,
-  'table-size-large-padding-vertical': $table-size-large-padding-vertical,
-  'table-size-middle-font-header-size': $table-size-middle-font-header-size,
-  'table-size-middle-font-size': $table-size-middle-font-size,
-  'table-size-middle-padding-horizontal': $table-size-middle-padding-horizontal,
-  'table-size-middle-padding-vertical': $table-size-middle-padding-vertical,
-  'table-size-medium-font-header-size': $table-size-medium-font-header-size,
-  'table-size-medium-font-size': $table-size-medium-font-size,
-  'table-size-medium-padding-horizontal': $table-size-medium-padding-horizontal,
-  'table-size-medium-padding-vertical': $table-size-medium-padding-vertical,
-  'table-size-mini-font-header-size': $table-size-mini-font-header-size,
-  'table-size-mini-font-size': $table-size-mini-font-size,
-  'table-size-mini-padding-horizontal': $table-size-mini-padding-horizontal,
-  'table-size-mini-padding-vertical': $table-size-mini-padding-vertical,
-  'table-size-selection-col-width': $table-size-selection-col-width,
-  'table-size-small-font-header-size': $table-size-small-font-header-size,
-  'table-size-small-font-size': $table-size-small-font-size,
-  'table-size-small-padding-horizontal': $table-size-small-padding-horizontal,
-  'table-size-small-padding-vertical': $table-size-small-padding-vertical,
-  'table-size-shadow-wrapper-width': $table-size-shadow-wrapper-width,
-  'table-spacing-expand-button-margin-right': $table-spacing-expand-button-margin-right,
-  'table-spacing-header-sorter-icon-margin-left': $table-spacing-header-sorter-icon-margin-left,
-  'table-spacing-pagination-margin': $table-spacing-pagination-margin,
-  'transition-duration-1': theme.$transition-duration-1,
-  'transition-timing-function-linear': theme.$transition-timing-function-linear,
-);
+@function token-var($name, $fallback: null) {
+  $value: map.get(meta.module-variables('token'), $name);
 
-@function less-var($name, $fallback: null) {
-  @return legacyLessVar.get($__less-vars, $name, $fallback);
+  @if $value == null {
+    @return $fallback;
+  }
+
+  @return $value;
 }
 
 @mixin expandBtn() {
@@ -134,29 +51,29 @@ $__less-vars: (
 
 @mixin table-size($size) {
   .#{$table-prefix-cls}-cell {
-    padding: less-var('table-size-#{$size}-padding-vertical')
-      less-var('table-size-#{$size}-padding-horizontal');
+    padding: token-var('table-size-#{$size}-padding-vertical')
+      token-var('table-size-#{$size}-padding-horizontal');
   }
 
   //.#{$table-prefix-cls}-col-has-sorter .#{$table-prefix-cls}-cell-with-sorter {
-  //  padding: less-var('table-size-#{$size}-padding-vertical') less-var('table-size-#{$size}-padding-horizontal');
+  //  padding: token-var('table-size-#{$size}-padding-vertical') token-var('table-size-#{$size}-padding-horizontal');
   //  cursor: pointer;
   //}
 
   //.#{$table-cls-td} {
-  //  padding: less-var('table-size-#{$size}-padding-vertical') less-var('table-size-#{$size}-padding-horizontal');
+  //  padding: token-var('table-size-#{$size}-padding-vertical') token-var('table-size-#{$size}-padding-horizontal');
   //}
 
   .#{$table-cls-th} {
-    font-size: less-var('table-size-#{$size}-font-header-size');
+    font-size: token-var('table-size-#{$size}-font-header-size');
   }
 
   .#{$table-cls-td} {
-    font-size: less-var('table-size-#{$size}-font-size');
+    font-size: token-var('table-size-#{$size}-font-size');
   }
 
-  $table-size-padding-vertical: less-var('table-size-#{$size}-padding-vertical');
-  $table-size-padding-horizontal: less-var('table-size-#{$size}-padding-horizontal');
+  $table-size-padding-vertical: token-var('table-size-#{$size}-padding-vertical');
+  $table-size-padding-horizontal: token-var('table-size-#{$size}-padding-horizontal');
 
   .#{$table-prefix-cls}-footer {
     padding: $table-size-padding-vertical $table-size-padding-horizontal;

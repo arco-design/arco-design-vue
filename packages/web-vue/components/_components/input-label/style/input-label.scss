@@ -1,60 +1,20 @@
 @use 'sass:math';
 @use 'sass:string';
 @use 'sass:map';
-@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
+@use 'sass:meta';
 @use '@style/mixins/index.scss' as *;
+@use '@components/input/style/token.scss' as inputToken;
 @use '@components/input/style/token.scss' as *;
 @use '@components/input/style/input.scss' as *;
 
-$less-vars: (
-  'input-border-width': $input-border-width,
-  'input-color-addon-border': $input-color-addon-border,
-  'input-color-addon-border_default': $input-color-addon-border_default,
-  'input-color-bg': $input-color-bg,
-  'input-color-bg_disabled': $input-color-bg_disabled,
-  'input-color-bg_error': $input-color-bg_error,
-  'input-color-bg_error_focus': $input-color-bg_error_focus,
-  'input-color-bg_error_hover': $input-color-bg_error_hover,
-  'input-color-bg_focus': $input-color-bg_focus,
-  'input-color-bg_hover': $input-color-bg_hover,
-  'input-color-border': $input-color-border,
-  'input-color-border_disabled': $input-color-border_disabled,
-  'input-color-border_error': $input-color-border_error,
-  'input-color-border_error_focus': $input-color-border_error_focus,
-  'input-color-border_error_hover': $input-color-border_error_hover,
-  'input-color-border_focus': $input-color-border_focus,
-  'input-color-border_hover': $input-color-border_hover,
-  'input-color-icon-clear-bg_hover': $input-color-icon-clear-bg_hover,
-  'input-color-shadow_error_focus': $input-color-shadow_error_focus,
-  'input-color-shadow_focus': $input-color-shadow_focus,
-  'input-color-text': $input-color-text,
-  'input-color-text_disabled': $input-color-text_disabled,
-  'input-feedback-icon-color_error': $input-feedback-icon-color_error,
-  'input-feedback-icon-color_success': $input-feedback-icon-color_success,
-  'input-feedback-icon-color_validating': $input-feedback-icon-color_validating,
-  'input-feedback-icon-color_warning': $input-feedback-icon-color_warning,
-  'input-group-border-radius_compact': $input-group-border-radius_compact,
-  'input-size-default-height': $input-size-default-height,
-  'input-size-default-font-size': $input-size-default-font-size,
-  'input-size-default-line-height': $input-size-medium-line-height,
-  'input-size-large-height': $input-size-large-height,
-  'input-size-large-font-size': $input-size-large-font-size,
-  'input-size-large-line-height': $input-size-large-line-height,
-  'input-size-medium-height': $input-size-medium-height,
-  'input-size-medium-font-size': $input-size-medium-font-size,
-  'input-size-medium-line-height': $input-size-medium-line-height,
-  'input-size-mini-font-size': $input-size-mini-font-size,
-  'input-size-mini-height': $input-size-mini-height,
-  'input-size-mini-line-height': $input-size-mini-line-height,
-  'input-size-small-height': $input-size-small-height,
-  'input-size-small-font-size': $input-size-small-font-size,
-  'input-size-small-line-height': $input-size-small-line-height,
-  'input-size-shadow_error_focus': $input-size-shadow_error_focus,
-  'input-size-shadow_focus': $input-size-shadow_focus,
-);
+@function token-var($name, $fallback: null) {
+  $value: map.get(meta.module-variables('inputToken'), $name);
 
-@function less-var($name, $fallback: null) {
-  @return legacyLessVar.get($less-vars, $name, $fallback);
+  @if $value == null {
+    @return $fallback;
+  }
+
+  @return $value;
 }
 
 @mixin input-label-hide-input-element() {
@@ -74,7 +34,7 @@ $less-vars: (
   }
 
   &.#{$cls}-size-#{$size} .#{$cls}-value {
-    min-height: math.round(less-var($height) - $input-border-width * 2);
+    min-height: math.round(token-var($height) - $input-border-width * 2);
   }
 }
 

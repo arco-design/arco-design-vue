@@ -1,50 +1,20 @@
 @use '@style/theme/index.scss' as theme;
 @use 'sass:string';
 @use 'sass:map';
-@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
+@use 'sass:meta';
+@use '@components/list/style/token.scss' as token;
 @use '@components/list/style/token.scss' as *;
 
 $list-prefix-cls: string.unquote('#{theme.$prefix}-list');
 
-$__less-vars: (
-  'list-action-gap': $list-action-gap,
-  'list-action-margin-top': $list-action-margin-top,
-  'list-border-color': $list-border-color,
-  'list-border-radius': $list-border-radius,
-  'list-border-width': $list-border-width,
-  'list-color-bg-item-hover': $list-color-bg-item-hover,
-  'list-color-text': $list-color-text,
-  'list-color-text-header': $list-color-text-header,
-  'list-font-size': $list-font-size,
-  'list-font-size-header': $list-font-size-header,
-  'list-font-weight-header': $list-font-weight-header,
-  'list-line-height': $list-line-height,
-  'list-line-height-header': $list-line-height-header,
-  'list-meta-color-title': $list-meta-color-title,
-  'list-meta-font-weight-title': $list-meta-font-weight-title,
-  'list-meta-margin-bottom-title': $list-meta-margin-bottom-title,
-  'list-meta-margin-right-avatar': $list-meta-margin-right-avatar,
-  'list-meta-padding-horizontal': $list-meta-padding-horizontal,
-  'list-meta-padding-vertical': $list-meta-padding-vertical,
-  'list-mete-color-description': $list-mete-color-description,
-  'list-pagination-margin-top': $list-pagination-margin-top,
-  'list-size-small-padding-vertical-header': $list-size-small-padding-vertical-header,
-  'list-size-small-padding-horizontal-header': $list-size-small-padding-horizontal-header,
-  'list-size-small-padding-vertical-item': $list-size-small-padding-vertical-item,
-  'list-size-small-padding-horizontal-item': $list-size-small-padding-horizontal-item,
-  'list-size-medium-padding-vertical-header': $list-size-medium-padding-vertical-header,
-  'list-size-medium-padding-horizontal-header': $list-size-medium-padding-horizontal-header,
-  'list-size-medium-padding-vertical-item': $list-size-medium-padding-vertical-item,
-  'list-size-medium-padding-horizontal-item': $list-size-medium-padding-horizontal-item,
-  'list-size-large-padding-vertical-header': $list-size-large-padding-vertical-header,
-  'list-size-large-padding-horizontal-header': $list-size-large-padding-horizontal-header,
-  'list-size-large-padding-vertical-item': $list-size-large-padding-vertical-item,
-  'list-size-large-padding-horizontal-item': $list-size-large-padding-horizontal-item,
-  'prefix': theme.$prefix,
-);
+@function token-var($name, $fallback: null) {
+  $value: map.get(meta.module-variables('token'), $name);
 
-@function less-var($name, $fallback: null) {
-  @return legacyLessVar.get($__less-vars, $name, $fallback);
+  @if $value == null {
+    @return $fallback;
+  }
+
+  @return $value;
 }
 
 .#{$list-prefix-cls} {
@@ -82,7 +52,7 @@ $__less-vars: (
       $ref-padding-horizontal-item: string.unquote('list-size-#{$size}-padding-horizontal-item');
 
       .#{$list-prefix-cls}-content-wrapper .#{$list-prefix-cls}-header {
-        padding: less-var($ref-padding-vertical-header) less-var($ref-padding-horizontal-header);
+        padding: token-var($ref-padding-vertical-header) token-var($ref-padding-horizontal-header);
       }
 
       // 在存在列表嵌套的时候，通过 > 限定 size 仅对其直接子元素生效，避免影响被嵌套的列表的样式
@@ -95,7 +65,7 @@ $__less-vars: (
       .#{$list-prefix-cls}-content-wrapper
         .#{$list-prefix-cls}-content.#{$list-prefix-cls}-virtual
         .#{$list-prefix-cls}-item {
-        padding: less-var($ref-padding-vertical-item) less-var($ref-padding-horizontal-item);
+        padding: token-var($ref-padding-vertical-item) token-var($ref-padding-horizontal-item);
       }
     }
   }

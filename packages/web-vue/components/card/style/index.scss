@@ -2,55 +2,21 @@
 @use '@style/theme/index.scss' as global;
 @use 'sass:string';
 @use 'sass:map';
-@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
+@use 'sass:meta';
 @use '@style/mixins/index.scss' as *;
+@use '@components/card/style/token.scss' as token;
 @use '@components/card/style/token.scss' as *;
 
 $card-prefix-cls: string.unquote('#{theme.$prefix}-card');
 
-$__less-vars: (
-  'card-border-radius': $card-border-radius,
-  'card-border-radius-no-border': $card-border-radius-no-border,
-  'card-border-width': $card-border-width,
-  'card-border-width-title-bottom': $card-border-width-title-bottom,
-  'card-color-action': $card-color-action,
-  'card-color-action_hover': $card-color-action_hover,
-  'card-color-bg': $card-color-bg,
-  'card-color-body': $card-color-body,
-  'card-color-border': $card-color-border,
-  'card-color-box-shadow': $card-color-box-shadow,
-  'card-color-box-shadow_dark': $card-color-box-shadow_dark,
-  'card-color-title': $card-color-title,
-  'card-color-title-extra': $card-color-title-extra,
-  'card-size-small-font-size': $card-size-small-font-size,
-  'card-size-small-height-title': $card-size-small-height-title,
-  'card-size-small-padding-vertical-title': $card-size-small-padding-vertical-title,
-  'card-size-small-padding-horizontal-title': $card-size-small-padding-horizontal-title,
-  'card-size-small-font-size-title': $card-size-small-font-size-title,
-  'card-size-small-font-size-title-extra': $card-size-small-font-size-title-extra,
-  'card-size-small-padding-vertical-body': $card-size-small-padding-vertical-body,
-  'card-size-small-padding-horizontal-body': $card-size-small-padding-horizontal-body,
-  'card-size-default-font-size': $card-size-default-font-size,
-  'card-size-default-height-title': $card-size-default-height-title,
-  'card-size-default-padding-vertical-title': $card-size-default-padding-vertical-title,
-  'card-size-default-padding-horizontal-title': $card-size-default-padding-horizontal-title,
-  'card-size-default-font-size-title': $card-size-default-font-size-title,
-  'card-size-default-font-size-title-extra': $card-size-default-font-size-title-extra,
-  'card-size-default-padding-vertical-body': $card-size-default-padding-vertical-body,
-  'card-size-default-padding-horizontal-body': $card-size-default-padding-horizontal-body,
-  'card-font-weight-title': $card-font-weight-title,
-  'card-margin-right-action-item': $card-margin-right-action-item,
-  'card-margin-top-meta-description': $card-margin-top-meta-description,
-  'card-margin-top-meta-footer': $card-margin-top-meta-footer,
-  'line-height-base': theme.$line-height-base,
-  'prefix': theme.$prefix,
-  'sd-theme-tag': global.$sd-theme-tag,
-  'transition-duration-2': theme.$transition-duration-2,
-  'transition-timing-function-linear': theme.$transition-timing-function-linear,
-);
+@function token-var($name, $fallback: null) {
+  $value: map.get(meta.module-variables('token'), $name);
 
-@function less-var($name, $fallback: null) {
-  @return legacyLessVar.get($__less-vars, $name, $fallback);
+  @if $value == null {
+    @return $fallback;
+  }
+
+  @return $value;
 }
 
 .#{$card-prefix-cls} {
@@ -233,26 +199,26 @@ $__less-vars: (
   // 不同尺寸
   @mixin size($name, $size) {
     &-size-#{$name} {
-      font-size: less-var('card-size-#{$size}-font-size');
+      font-size: token-var('card-size-#{$size}-font-size');
 
       .#{$card-prefix-cls}-header {
-        height: less-var('card-size-#{$size}-height-title');
-        padding: less-var('card-size-#{$size}-padding-vertical-title')
-          less-var('card-size-#{$size}-padding-horizontal-title');
+        height: token-var('card-size-#{$size}-height-title');
+        padding: token-var('card-size-#{$size}-padding-vertical-title')
+          token-var('card-size-#{$size}-padding-horizontal-title');
       }
 
       .#{$card-prefix-cls}-header-title,
       .#{$card-prefix-cls}-meta-title {
-        font-size: less-var('card-size-#{$size}-font-size-title');
+        font-size: token-var('card-size-#{$size}-font-size-title');
       }
 
       .#{$card-prefix-cls}-header-extra {
-        font-size: less-var('card-size-#{$size}-font-size-title-extra');
+        font-size: token-var('card-size-#{$size}-font-size-title-extra');
       }
 
       .#{$card-prefix-cls}-body {
-        padding: less-var('card-size-#{$size}-padding-vertical-body')
-          less-var('card-size-#{$size}-padding-horizontal-body');
+        padding: token-var('card-size-#{$size}-padding-vertical-body')
+          token-var('card-size-#{$size}-padding-horizontal-body');
       }
     }
   }

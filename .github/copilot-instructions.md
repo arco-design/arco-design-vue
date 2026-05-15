@@ -84,3 +84,7 @@ Type `/graphify` in Copilot Chat to build or update the graph.
 ## typescript
 
 Use `ts7` by default, and use `type-fest` whenever possible for type combinations.
+
+## style
+
+Using scss for styles, and follow the existing style conventions in the codebase. Do not introduce new patterns or libraries unless explicitly required.

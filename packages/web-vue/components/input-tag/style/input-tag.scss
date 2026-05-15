@@ -1,194 +1,40 @@
 @use '@style/mixins/icon-hover.scss' as icon-hover;
 @use '@style/theme/index.scss' as theme;
-@use '@components/tag/style/token.scss';
 @use 'sass:math';
 @use 'sass:string';
 @use 'sass:map';
-@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
+@use 'sass:meta';
 @use '@style/mixins/index.scss' as *;
 @use '@components/input/style/token.scss' as *;
 @use '@components/input/style/input.scss' as *;
+@use '@components/tag/style/token.scss' as token;
 @use '@components/tag/style/index.scss' as *;
+@use '@components/input-tag/style/token.scss' as inputTagToken;
 @use '@components/input-tag/style/token.scss' as *;
 
-$less-vars: (
-  'input-color-addon-border': $input-color-addon-border,
-  'input-color-addon-border_default': $input-color-addon-border_default,
-  'input-color-bg': $input-color-bg,
-  'input-color-bg_disabled': $input-color-bg_disabled,
-  'input-color-bg_error': $input-color-bg_error,
-  'input-color-bg_error_focus': $input-color-bg_error_focus,
-  'input-color-bg_error_hover': $input-color-bg_error_hover,
-  'input-color-bg_focus': $input-color-bg_focus,
-  'input-color-bg_hover': $input-color-bg_hover,
-  'input-color-border': $input-color-border,
-  'input-color-border_disabled': $input-color-border_disabled,
-  'input-color-border_error': $input-color-border_error,
-  'input-color-border_error_focus': $input-color-border_error_focus,
-  'input-color-border_error_hover': $input-color-border_error_hover,
-  'input-color-border_focus': $input-color-border_focus,
-  'input-color-border_hover': $input-color-border_hover,
-  'input-color-icon-clear-bg_hover': $input-color-icon-clear-bg_hover,
-  'input-color-shadow_error_focus': $input-color-shadow_error_focus,
-  'input-color-shadow_focus': $input-color-shadow_focus,
-  'input-color-text': $input-color-text,
-  'input-color-text_disabled': $input-color-text_disabled,
-  'input-feedback-icon-color_error': $input-feedback-icon-color_error,
-  'input-feedback-icon-color_success': $input-feedback-icon-color_success,
-  'input-feedback-icon-color_validating': $input-feedback-icon-color_validating,
-  'input-feedback-icon-color_warning': $input-feedback-icon-color_warning,
-  'input-group-border-radius_compact': $input-group-border-radius_compact,
-  'input-padding-horizontal': $input-padding-horizontal,
-  'input-size-shadow_error_focus': $input-size-shadow_error_focus,
-  'input-size-shadow_focus': $input-size-shadow_focus,
-  'input-tag-border-width': $input-tag-border-width,
-  'input-tag-color-bg_default': $input-tag-color-bg_default,
-  'input-tag-color-bg_default_focus': $input-tag-color-bg_default_focus,
-  'input-tag-color-bg_default_hover': $input-tag-color-bg_default_hover,
-  'input-tag-color-bg_disabled': $input-tag-color-bg_disabled,
-  'input-tag-color-bg_disabled_hover': $input-tag-color-bg_disabled_hover,
-  'input-tag-color-bg_error': $input-tag-color-bg_error,
-  'input-tag-color-bg_error_focus': $input-tag-color-bg_error_focus,
-  'input-tag-color-bg_error_hover': $input-tag-color-bg_error_hover,
-  'input-tag-color-border_default': $input-tag-color-border_default,
-  'input-tag-color-border_default_focus': $input-tag-color-border_default_focus,
-  'input-tag-color-border_default_hover': $input-tag-color-border_default_hover,
-  'input-tag-color-border_disabled': $input-tag-color-border_disabled,
-  'input-tag-color-border_disabled_focus': $input-tag-color-border_disabled_focus,
-  'input-tag-color-border_disabled_hover': $input-tag-color-border_disabled_hover,
-  'input-tag-color-border_error': $input-tag-color-border_error,
-  'input-tag-color-border_error_focus': $input-tag-color-border_error_focus,
-  'input-tag-color-border_error_hover': $input-tag-color-border_error_hover,
-  'input-tag-color-icon-clear-bg_hover': $input-tag-color-icon-clear-bg_hover,
-  'input-tag-color-shadow_default_focus': $input-tag-color-shadow_default_focus,
-  'input-tag-color-shadow_error_focus': $input-tag-color-shadow_error_focus,
-  'input-tag-color-text_default': $input-tag-color-text_default,
-  'input-tag-color-text_disabled': $input-tag-color-text_disabled,
-  'input-tag-color-text_error': $input-tag-color-text_error,
-  'input-tag-padding-horizontal': $input-tag-padding-horizontal,
-  'input-tag-size-default-font-size': $input-tag-size-default-font-size,
-  'input-tag-size-default-height': $input-tag-size-default-height,
-  'input-tag-size-default-tag-height': $input-tag-size-default-tag-height,
-  'input-tag-size-icon-clear': $input-tag-size-icon-clear,
-  'input-tag-size-icon-clear_hover': $input-tag-size-icon-clear_hover,
-  'input-tag-size-large-font-size': $input-tag-size-large-font-size,
-  'input-tag-size-large-height': $input-tag-size-large-height,
-  'input-tag-size-large-tag-height': $input-tag-size-large-tag-height,
-  'input-tag-size-medium-font-size': $input-tag-size-medium-font-size,
-  'input-tag-size-medium-height': $input-tag-size-medium-height,
-  'input-tag-size-medium-tag-height': $input-tag-size-medium-tag-height,
-  'input-tag-size-mini-font-size': $input-tag-size-mini-font-size,
-  'input-tag-size-mini-height': $input-tag-size-mini-height,
-  'input-tag-size-mini-tag-height': $input-tag-size-mini-tag-height,
-  'input-tag-size-small-font-size': $input-tag-size-small-font-size,
-  'input-tag-size-small-height': $input-tag-size-small-height,
-  'input-tag-size-small-tag-height': $input-tag-size-small-tag-height,
-  'input-tag-size-shadow_default_focus': $input-tag-size-shadow_default_focus,
-  'input-tag-size-shadow_error_focus': $input-tag-size-shadow_error_focus,
-  'input-tag-tag-color-bg': $input-tag-tag-color-bg,
-  'input-tag-tag-color-bg_disabled': $input-tag-tag-color-bg_disabled,
-  'input-tag-tag-color-bg_focus': $input-tag-tag-color-bg_focus,
-  'input-tag-tag-color-border': $input-tag-tag-color-border,
-  'input-tag-tag-color-border_disabled': $input-tag-tag-color-border_disabled,
-  'input-tag-tag-color-border_focus': $input-tag-tag-color-border_focus,
-  'input-tag-tag-font-size': $input-tag-tag-font-size,
-  'input-tag-tag-margin-right': $input-tag-tag-margin-right,
-  'input-tag-tag-margin-vertical': $input-tag-tag-margin-vertical,
-  'input-tag-tag-remove-icon-color-bg': $input-tag-tag-remove-icon-color-bg,
-  'input-tag-tag-remove-icon-color-bg_focus': $input-tag-tag-remove-icon-color-bg_focus,
-  'prefix': theme.$prefix,
-  'tag-blue-color-bg': token.$tag-blue-color-bg,
-  'tag-blue-color-bg_hover': token.$tag-blue-color-bg_hover,
-  'tag-blue-color-border': token.$tag-blue-color-border,
-  'tag-blue-color-border_hover': token.$tag-blue-color-border_hover,
-  'tag-blue-color-icon-bg_hover': token.$tag-blue-color-icon-bg_hover,
-  'tag-color-bg-not-checked_hover': token.$tag-color-bg-not-checked_hover,
-  'tag-custom-color-icon-bg_hover': token.$tag-custom-color-icon-bg_hover,
-  'tag-custom-color-text': token.$tag-custom-color-text,
-  'tag-cyan-color-bg': token.$tag-cyan-color-bg,
-  'tag-cyan-color-bg_hover': token.$tag-cyan-color-bg_hover,
-  'tag-cyan-color-border': token.$tag-cyan-color-border,
-  'tag-cyan-color-border_hover': token.$tag-cyan-color-border_hover,
-  'tag-cyan-color-icon-bg_hover': token.$tag-cyan-color-icon-bg_hover,
-  'tag-default-color-bg': token.$tag-default-color-bg,
-  'tag-default-color-bg_hover': token.$tag-default-color-bg_hover,
-  'tag-default-color-border': token.$tag-default-color-border,
-  'tag-default-color-border_hover': token.$tag-default-color-border_hover,
-  'tag-gold-color-bg': token.$tag-gold-color-bg,
-  'tag-gold-color-bg_hover': token.$tag-gold-color-bg_hover,
-  'tag-gold-color-border': token.$tag-gold-color-border,
-  'tag-gold-color-border_hover': token.$tag-gold-color-border_hover,
-  'tag-gold-color-icon-bg_hover': token.$tag-gold-color-icon-bg_hover,
-  'tag-gray-color-bg': token.$tag-gray-color-bg,
-  'tag-gray-color-bg_hover': token.$tag-gray-color-bg_hover,
-  'tag-gray-color-border': token.$tag-gray-color-border,
-  'tag-gray-color-border_hover': token.$tag-gray-color-border_hover,
-  'tag-gray-color-icon-bg_hover': token.$tag-gray-color-icon-bg_hover,
-  'tag-green-color-bg': token.$tag-green-color-bg,
-  'tag-green-color-bg_hover': token.$tag-green-color-bg_hover,
-  'tag-green-color-border': token.$tag-green-color-border,
-  'tag-green-color-border_hover': token.$tag-green-color-border_hover,
-  'tag-green-color-icon-bg_hover': token.$tag-green-color-icon-bg_hover,
-  'tag-lime-color-bg': token.$tag-lime-color-bg,
-  'tag-lime-color-bg_hover': token.$tag-lime-color-bg_hover,
-  'tag-lime-color-border': token.$tag-lime-color-border,
-  'tag-lime-color-border_hover': token.$tag-lime-color-border_hover,
-  'tag-lime-color-icon-bg_hover': token.$tag-lime-color-icon-bg_hover,
-  'tag-magenta-color-bg': token.$tag-magenta-color-bg,
-  'tag-magenta-color-bg_hover': token.$tag-magenta-color-bg_hover,
-  'tag-magenta-color-border': token.$tag-magenta-color-border,
-  'tag-magenta-color-border_hover': token.$tag-magenta-color-border_hover,
-  'tag-magenta-color-icon-bg_hover': token.$tag-magenta-color-icon-bg_hover,
-  'tag-orange-color-bg': token.$tag-orange-color-bg,
-  'tag-orange-color-bg_hover': token.$tag-orange-color-bg_hover,
-  'tag-orange-color-border': token.$tag-orange-color-border,
-  'tag-orange-color-border_hover': token.$tag-orange-color-border_hover,
-  'tag-orange-color-icon-bg_hover': token.$tag-orange-color-icon-bg_hover,
-  'tag-orangered-color-bg': token.$tag-orangered-color-bg,
-  'tag-orangered-color-bg_hover': token.$tag-orangered-color-bg_hover,
-  'tag-orangered-color-border': token.$tag-orangered-color-border,
-  'tag-orangered-color-border_hover': token.$tag-orangered-color-border_hover,
-  'tag-orangered-color-icon-bg_hover': token.$tag-orangered-color-icon-bg_hover,
-  'tag-pinkpurple-color-bg': token.$tag-pinkpurple-color-bg,
-  'tag-pinkpurple-color-bg_hover': token.$tag-pinkpurple-color-bg_hover,
-  'tag-pinkpurple-color-border': token.$tag-pinkpurple-color-border,
-  'tag-pinkpurple-color-border_hover': token.$tag-pinkpurple-color-border_hover,
-  'tag-pinkpurple-color-icon-bg_hover': token.$tag-pinkpurple-color-icon-bg_hover,
-  'tag-prefix-cls': $tag-prefix-cls,
-  'tag-purple-color-bg': token.$tag-purple-color-bg,
-  'tag-purple-color-bg_hover': token.$tag-purple-color-bg_hover,
-  'tag-purple-color-border': token.$tag-purple-color-border,
-  'tag-purple-color-border_hover': token.$tag-purple-color-border_hover,
-  'tag-purple-color-icon-bg_hover': token.$tag-purple-color-icon-bg_hover,
-  'tag-red-color-bg': token.$tag-red-color-bg,
-  'tag-red-color-bg_hover': token.$tag-red-color-bg_hover,
-  'tag-red-color-border': token.$tag-red-color-border,
-  'tag-red-color-border_hover': token.$tag-red-color-border_hover,
-  'tag-red-color-icon-bg_hover': token.$tag-red-color-icon-bg_hover,
-  'tag-sdblue-color-bg': token.$tag-sdblue-color-bg,
-  'tag-sdblue-color-bg_hover': token.$tag-sdblue-color-bg_hover,
-  'tag-sdblue-color-border': token.$tag-sdblue-color-border,
-  'tag-sdblue-color-border_hover': token.$tag-sdblue-color-border_hover,
-  'tag-sdblue-color-icon-bg_hover': token.$tag-sdblue-color-icon-bg_hover,
-);
+@function token-var($name, $fallback: null) {
+  $value: map.get(meta.module-variables('inputTagToken'), $name);
 
-@function less-var($name, $fallback: null) {
-  @return legacyLessVar.get($less-vars, $name, $fallback);
+  @if $value == null {
+    @return $fallback;
+  }
+
+  @return $value;
 }
 
 @mixin input-tag-size($cls, $size) {
   $font-size-token: string.unquote('input-tag-size-#{$size}-font-size');
   $height-token: string.unquote('input-tag-size-#{$size}-height');
   $tag-height-token: string.unquote('input-tag-size-#{$size}-tag-height');
-  $vertical-padding: math.div(less-var($height-token), 2) - math.div(
-      less-var($tag-height-token),
+  $vertical-padding: math.div(token-var($height-token), 2) - math.div(
+      token-var($tag-height-token),
       2
     ) -
     $input-tag-border-width - math.div($input-tag-tag-margin-vertical, 2);
   $vertical-margin: math.div($input-tag-tag-margin-vertical, 2);
 
   &.#{$cls}-size-#{$size} {
-    font-size: less-var($font-size-token);
+    font-size: token-var($font-size-token);
 
     .#{$cls}-inner {
       padding-top: $vertical-padding;
@@ -199,14 +45,14 @@ $less-vars: (
     .#{$cls}-input {
       margin-top: $vertical-margin;
       margin-bottom: $vertical-margin;
-      line-height: less-var($tag-height-token) - 2;
+      line-height: token-var($tag-height-token) - 2;
       vertical-align: middle;
     }
 
     .#{$cls}-tag,
     .#{$cls}-input {
       height: auto;
-      min-height: less-var($tag-height-token);
+      min-height: token-var($tag-height-token);
     }
   }
 }

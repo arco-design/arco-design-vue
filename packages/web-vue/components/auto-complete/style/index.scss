@@ -1,36 +1,21 @@
 @use '@style/theme/index.scss' as theme;
 @use 'sass:string';
 @use 'sass:map';
-@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
+@use 'sass:meta';
+@use '@components/auto-complete/style/token.scss' as token;
 @use '@components/auto-complete/style/token.scss' as *;
 
 $auto-complete-prefix-cls: string.unquote('#{theme.$prefix}-autocomplete');
 $select-prefix-cls: string.unquote('#{theme.$prefix}-select');
 
-$__less-vars: (
-  'auto-complete-option-color-bg_default': $auto-complete-option-color-bg_default,
-  'auto-complete-option-color-bg_disabled': $auto-complete-option-color-bg_disabled,
-  'auto-complete-option-color-bg_hover': $auto-complete-option-color-bg_hover,
-  'auto-complete-option-color-bg_selected': $auto-complete-option-color-bg_selected,
-  'auto-complete-option-color-text_default': $auto-complete-option-color-text_default,
-  'auto-complete-option-color-text_disabled': $auto-complete-option-color-text_disabled,
-  'auto-complete-option-color-text_hover': $auto-complete-option-color-text_hover,
-  'auto-complete-option-color-text_selected': $auto-complete-option-color-text_selected,
-  'auto-complete-option-font-weight_selected': $auto-complete-option-font-weight_selected,
-  'auto-complete-option-height': $auto-complete-option-height,
-  'auto-complete-option-padding-horizontal': $auto-complete-option-padding-horizontal,
-  'auto-complete-popup-border-radius': $auto-complete-popup-border-radius,
-  'auto-complete-popup-box-shadow': $auto-complete-popup-box-shadow,
-  'auto-complete-popup-color-border': $auto-complete-popup-color-border,
-  'auto-complete-popup-font-size': $auto-complete-popup-font-size,
-  'auto-complete-popup-max-height': $auto-complete-popup-max-height,
-  'auto-complete-popup-padding-vertical': $auto-complete-popup-padding-vertical,
-  'prefix': theme.$prefix,
-  'sd-cssvars-prefix': theme.$sd-cssvars-prefix,
-);
+@function token-var($name, $fallback: null) {
+  $value: map.get(meta.module-variables('token'), $name);
 
-@function less-var($name, $fallback: null) {
-  @return legacyLessVar.get($__less-vars, $name, $fallback);
+  @if $value == null {
+    @return $fallback;
+  }
+
+  @return $value;
 }
 
 .#{$auto-complete-prefix-cls} {
@@ -59,8 +44,8 @@ $__less-vars: (
         }
 
         &#{$class-suffix} {
-          color: less-var('auto-complete-option-color-text_#{$status}');
-          background-color: less-var('auto-complete-option-color-bg_#{$status}');
+          color: token-var('auto-complete-option-color-text_#{$status}');
+          background-color: token-var('auto-complete-option-color-bg_#{$status}');
         }
       }
 

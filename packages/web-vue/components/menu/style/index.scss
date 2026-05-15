@@ -2,129 +2,26 @@
 @use '@style/theme/index.scss' as global;
 @use 'sass:string';
 @use 'sass:map';
-@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
+@use 'sass:meta';
 @use '@style/mixins/index.scss' as *;
+@use '@components/menu/style/token.scss' as token;
 @use '@components/menu/style/token.scss' as *;
+@use '@components/dropdown/style/token.scss' as dropdownToken;
 @use '@components/dropdown/style/token.scss' as *;
 
 $menu-prefix-cls: string.unquote('#{theme.$prefix}-menu');
 $trigger-menu-prefix-cls: string.unquote('#{theme.$prefix}-trigger-menu');
 
-$__less-vars: (
-  'dropdown-border-radius': $dropdown-border-radius,
-  'dropdown-box-shadow': $dropdown-box-shadow,
-  'dropdown-color-bg': $dropdown-color-bg,
-  'dropdown-color-border': $dropdown-color-border,
-  'dropdown-dark-color-bg': $dropdown-dark-color-bg,
-  'dropdown-dark-color-border': $dropdown-dark-color-border,
-  'dropdown-dark-group-title-color-text': $dropdown-dark-group-title-color-text,
-  'dropdown-dark-option-color-bg_default': $dropdown-dark-option-color-bg_default,
-  'dropdown-dark-option-color-bg_disabled': $dropdown-dark-option-color-bg_disabled,
-  'dropdown-dark-option-color-bg_hover': $dropdown-dark-option-color-bg_hover,
-  'dropdown-dark-option-color-bg_selected': $dropdown-dark-option-color-bg_selected,
-  'dropdown-dark-option-color-text_default': $dropdown-dark-option-color-text_default,
-  'dropdown-dark-option-color-text_disabled': $dropdown-dark-option-color-text_disabled,
-  'dropdown-dark-option-color-text_hover': $dropdown-dark-option-color-text_hover,
-  'dropdown-dark-option-color-text_selected': $dropdown-dark-option-color-text_selected,
-  'dropdown-font-size': $dropdown-font-size,
-  'dropdown-group-title-color-text': $dropdown-group-title-color-text,
-  'dropdown-group-title-font-size': $dropdown-group-title-font-size,
-  'dropdown-group-title-height': $dropdown-group-title-height,
-  'dropdown-group-title-padding-horizontal': $dropdown-group-title-padding-horizontal,
-  'dropdown-group-title-padding-top': $dropdown-group-title-padding-top,
-  'dropdown-margin-left-suffix-icon': $dropdown-margin-left-suffix-icon,
-  'dropdown-max-height': $dropdown-max-height,
-  'dropdown-option-color-bg_default': $dropdown-option-color-bg_default,
-  'dropdown-option-color-bg_disabled': $dropdown-option-color-bg_disabled,
-  'dropdown-option-color-bg_hover': $dropdown-option-color-bg_hover,
-  'dropdown-option-color-bg_selected': $dropdown-option-color-bg_selected,
-  'dropdown-option-color-text_default': $dropdown-option-color-text_default,
-  'dropdown-option-color-text_disabled': $dropdown-option-color-text_disabled,
-  'dropdown-option-color-text_hover': $dropdown-option-color-text_hover,
-  'dropdown-option-color-text_selected': $dropdown-option-color-text_selected,
-  'dropdown-option-font-weight_selected': $dropdown-option-font-weight_selected,
-  'dropdown-option-height': $dropdown-option-height,
-  'dropdown-option-padding-horizontal': $dropdown-option-padding-horizontal,
-  'dropdown-padding-vertical': $dropdown-padding-vertical,
-  'menu-border-radius': $menu-border-radius,
-  'menu-border-radius-collapse-button': $menu-border-radius-collapse-button,
-  'menu-collapse-padding-horizontal': $menu-collapse-padding-horizontal,
-  'menu-collapse-padding-vertical': $menu-collapse-padding-vertical,
-  'menu-collapse-width': $menu-collapse-width,
-  'menu-color-border-popup': $menu-color-border-popup,
-  'menu-color-label-item-selected': $menu-color-label-item-selected,
-  'menu-dark-color-bg': $menu-dark-color-bg,
-  'menu-dark-color-button': $menu-dark-color-button,
-  'menu-dark-color-bg-button': $menu-dark-color-bg-button,
-  'menu-dark-color-bg-button_hover': $menu-dark-color-bg-button_hover,
-  'menu-dark-color-group-title': $menu-dark-color-group-title,
-  'menu-dark-color-bg-item_default': $menu-dark-color-bg-item_default,
-  'menu-dark-color-bg-item_disabled': $menu-dark-color-bg-item_disabled,
-  'menu-dark-color-bg-item_hover': $menu-dark-color-bg-item_hover,
-  'menu-dark-color-bg-item_selected': $menu-dark-color-bg-item_selected,
-  'menu-dark-color-bg-submenu_selected_hover': $menu-dark-color-bg-submenu_selected_hover,
-  'menu-dark-color-icon_default': $menu-dark-color-icon_default,
-  'menu-dark-color-icon_disabled': $menu-dark-color-icon_disabled,
-  'menu-dark-color-icon_hover': $menu-dark-color-icon_hover,
-  'menu-dark-color-icon_selected': $menu-dark-color-icon_selected,
-  'menu-dark-color-item_default': $menu-dark-color-item_default,
-  'menu-dark-color-item_disabled': $menu-dark-color-item_disabled,
-  'menu-dark-color-item_hover': $menu-dark-color-item_hover,
-  'menu-dark-color-item_selected': $menu-dark-color-item_selected,
-  'menu-dark-color-submenu_selected': $menu-dark-color-submenu_selected,
-  'menu-font-size': $menu-font-size,
-  'menu-font-weight-item-selected': $menu-font-weight-item-selected,
-  'menu-height-collapse-button': $menu-height-collapse-button,
-  'menu-height-label-item-selected': $menu-height-label-item-selected,
-  'menu-horizontal-item-gap': $menu-horizontal-item-gap,
-  'menu-horizontal-item-height': $menu-horizontal-item-height,
-  'menu-horizontal-item-padding-horizontal': $menu-horizontal-item-padding-horizontal,
-  'menu-horizontal-margin-right-item-prefix-icon': $menu-horizontal-margin-right-item-prefix-icon,
-  'menu-horizontal-padding-horizontal': $menu-horizontal-padding-horizontal,
-  'menu-horizontal-padding-vertical': $menu-horizontal-padding-vertical,
-  'menu-item-gap': $menu-item-gap,
-  'menu-item-indent-spacing': $menu-item-indent-spacing,
-  'menu-light-color-bg': $menu-light-color-bg,
-  'menu-light-color-button': $menu-light-color-button,
-  'menu-light-color-bg-button': $menu-light-color-bg-button,
-  'menu-light-color-bg-button_hover': $menu-light-color-bg-button_hover,
-  'menu-light-color-bg-item_default': $menu-light-color-bg-item_default,
-  'menu-light-color-bg-item_disabled': $menu-light-color-bg-item_disabled,
-  'menu-light-color-bg-item_hover': $menu-light-color-bg-item_hover,
-  'menu-light-color-bg-item_selected': $menu-light-color-bg-item_selected,
-  'menu-light-color-bg-submenu_selected_hover': $menu-light-color-bg-submenu_selected_hover,
-  'menu-light-color-icon_default': $menu-light-color-icon_default,
-  'menu-light-color-icon_disabled': $menu-light-color-icon_disabled,
-  'menu-light-color-icon_hover': $menu-light-color-icon_hover,
-  'menu-light-color-icon_selected': $menu-light-color-icon_selected,
-  'menu-light-color-group-title': $menu-light-color-group-title,
-  'menu-light-color-item_default': $menu-light-color-item_default,
-  'menu-light-color-item_disabled': $menu-light-color-item_disabled,
-  'menu-light-color-item_hover': $menu-light-color-item_hover,
-  'menu-light-color-item_selected': $menu-light-color-item_selected,
-  'menu-light-color-submenu_selected': $menu-light-color-submenu_selected,
-  'menu-line-height': $menu-line-height,
-  'menu-margin-left-item-suffix-icon': $menu-margin-left-item-suffix-icon,
-  'menu-margin-right-item-prefix-icon': $menu-margin-right-item-prefix-icon,
-  'menu-pop-button-border-color': $menu-pop-button-border-color,
-  'menu-pop-button-box-shadow': $menu-pop-button-box-shadow,
-  'menu-pop-button-margin-bottom': $menu-pop-button-margin-bottom,
-  'menu-pop-button-size': $menu-pop-button-size,
-  'menu-vertical-item-padding-horizontal': $menu-vertical-item-padding-horizontal,
-  'menu-vertical-item-height': $menu-vertical-item-height,
-  'menu-vertical-padding-horizontal': $menu-vertical-padding-horizontal,
-  'menu-vertical-padding-vertical': $menu-vertical-padding-vertical,
-  'menu-width-collapse-button': $menu-width-collapse-button,
-  'prefix': theme.$prefix,
-  'sd-cssvars-prefix': global.$sd-cssvars-prefix,
-  'transition-duration-1': theme.$transition-duration-1,
-  'transition-duration-2': theme.$transition-duration-2,
-  'transition-timing-function-linear': theme.$transition-timing-function-linear,
-  'transition-timing-function-standard': theme.$transition-timing-function-standard,
-);
+$token-vars: map.merge(meta.module-variables('dropdownToken'), meta.module-variables('token'));
 
-@function less-var($name, $fallback: null) {
-  @return legacyLessVar.get($__less-vars, $name, $fallback);
+@function token-var($name, $fallback: null) {
+  $value: map.get($token-vars, $name);
+
+  @if $value == null {
+    @return $fallback;
+  }
+
+  @return $value;
 }
 
 @mixin applyStyleToItem() {
@@ -176,8 +73,8 @@ $__less-vars: (
 
 @mixin menu-item-mode($mode) {
   @include applyStyleToItem() {
-    padding: 0 less-var('menu-#{$mode}-item-padding-horizontal');
-    line-height: less-var('menu-#{$mode}-item-height');
+    padding: 0 token-var('menu-#{$mode}-item-padding-horizontal');
+    line-height: token-var('menu-#{$mode}-item-height');
 
     .#{$menu-prefix-cls}-icon-suffix .#{theme.$prefix}-icon {
       margin-right: 0;
@@ -236,61 +133,61 @@ $__less-vars: (
 
 @mixin menu-theme($theme) {
   &-#{$theme} {
-    background-color: less-var('menu-#{$theme}-color-bg');
+    background-color: token-var('menu-#{$theme}-color-bg');
 
     @include applyStyleToItem() {
-      color: less-var('menu-#{$theme}-color-item_default');
-      background-color: less-var('menu-#{$theme}-color-bg-item_default');
+      color: token-var('menu-#{$theme}-color-item_default');
+      background-color: token-var('menu-#{$theme}-color-bg-item_default');
 
       .#{theme.$prefix}-icon,
       .#{$menu-prefix-cls}-icon {
-        color: less-var('menu-#{$theme}-color-icon_default');
+        color: token-var('menu-#{$theme}-color-icon_default');
       }
 
       &:hover {
-        color: less-var('menu-#{$theme}-color-item_hover');
-        background-color: less-var('menu-#{$theme}-color-bg-item_hover');
+        color: token-var('menu-#{$theme}-color-item_hover');
+        background-color: token-var('menu-#{$theme}-color-bg-item_hover');
 
         .#{theme.$prefix}-icon,
         .#{$menu-prefix-cls}-icon {
-          color: less-var('menu-#{$theme}-color-icon_hover');
+          color: token-var('menu-#{$theme}-color-icon_hover');
         }
       }
 
       &.#{$menu-prefix-cls}-selected {
-        color: less-var('menu-#{$theme}-color-item_selected');
+        color: token-var('menu-#{$theme}-color-item_selected');
 
         .#{theme.$prefix}-icon,
         .#{$menu-prefix-cls}-icon {
-          color: less-var('menu-#{$theme}-color-icon_selected');
+          color: token-var('menu-#{$theme}-color-icon_selected');
         }
       }
 
       &.#{$menu-prefix-cls}-disabled {
-        color: less-var('menu-#{$theme}-color-item_disabled');
-        background-color: less-var('menu-#{$theme}-color-bg-item_disabled');
+        color: token-var('menu-#{$theme}-color-item_disabled');
+        background-color: token-var('menu-#{$theme}-color-bg-item_disabled');
 
         .#{theme.$prefix}-icon,
         .#{$menu-prefix-cls}-icon {
-          color: less-var('menu-#{$theme}-color-icon_disabled');
+          color: token-var('menu-#{$theme}-color-icon_disabled');
         }
       }
     }
 
     .#{$menu-prefix-cls}-item.#{$menu-prefix-cls}-selected {
-      background-color: less-var('menu-#{$theme}-color-bg-item_selected');
+      background-color: token-var('menu-#{$theme}-color-bg-item_selected');
     }
 
     .#{$menu-prefix-cls}-inline-header.#{$menu-prefix-cls}-selected {
-      color: less-var('menu-#{$theme}-color-submenu_selected');
+      color: token-var('menu-#{$theme}-color-submenu_selected');
 
       .#{theme.$prefix}-icon,
       .#{$menu-prefix-cls}-icon {
-        color: less-var('menu-#{$theme}-color-submenu_selected');
+        color: token-var('menu-#{$theme}-color-submenu_selected');
       }
 
       &:hover {
-        background-color: less-var('menu-#{$theme}-color-bg-submenu_selected_hover');
+        background-color: token-var('menu-#{$theme}-color-bg-submenu_selected_hover');
       }
     }
 
@@ -302,23 +199,23 @@ $__less-vars: (
           @include menu-text-color-transition();
 
           &:hover {
-            background-color: less-var('menu-#{$theme}-color-bg-item_hover');
+            background-color: token-var('menu-#{$theme}-color-bg-item_hover');
           }
         }
       }
     }
 
     .#{$menu-prefix-cls}-group-title {
-      color: less-var('menu-#{$theme}-color-group-title');
+      color: token-var('menu-#{$theme}-color-group-title');
       pointer-events: none;
     }
 
     .#{$menu-prefix-cls}-collapse-button {
-      color: less-var('menu-#{$theme}-color-button');
-      background-color: less-var('menu-#{$theme}-color-bg-button');
+      color: token-var('menu-#{$theme}-color-button');
+      background-color: token-var('menu-#{$theme}-color-bg-button');
 
       &:hover {
-        background-color: less-var('menu-#{$theme}-color-bg-button_hover');
+        background-color: token-var('menu-#{$theme}-color-bg-button_hover');
       }
     }
   }

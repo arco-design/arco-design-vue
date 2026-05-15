@@ -3,11 +3,12 @@
 @use '@style/theme/index.scss' as global;
 @use 'sass:string';
 @use 'sass:map';
-@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
+@use 'sass:meta';
 
 @forward '@components/tag/style/token.scss';
 
 @use '@style/mixins/index.scss' as *;
+@use '@components/tag/style/token.scss' as token;
 @use '@components/tag/style/token.scss' as *;
 
 $tag-prefix-cls: string.unquote('#{theme.$prefix}-tag');
@@ -15,143 +16,15 @@ $tag-prefix-cls: string.unquote('#{theme.$prefix}-tag');
 $colors:
   'red', 'orangered', 'orange', 'gold', 'lime', 'green', 'cyan', 'blue', 'sdblue', 'purple',
   'pinkpurple', 'magenta';
-$__less-vars: (
-  'colors': $colors,
-  'prefix': theme.$prefix,
-  'sd-cssvars-prefix': global.$sd-cssvars-prefix,
-  'sd-theme-tag': global.$sd-theme-tag,
-  'tag-blue-color-bg': $tag-blue-color-bg,
-  'tag-blue-color-bg_hover': $tag-blue-color-bg_hover,
-  'tag-blue-color-border': $tag-blue-color-border,
-  'tag-blue-color-border_hover': $tag-blue-color-border_hover,
-  'tag-blue-color-icon-bg_hover': $tag-blue-color-icon-bg_hover,
-  'tag-border-radius': $tag-border-radius,
-  'tag-border-type': $tag-border-type,
-  'tag-border-width': $tag-border-width,
-  'tag-color-bg-not-checked_hover': $tag-color-bg-not-checked_hover,
-  'tag-custom-color-icon-bg_hover': $tag-custom-color-icon-bg_hover,
-  'tag-custom-color-text': $tag-custom-color-text,
-  'tag-cyan-color-bg': $tag-cyan-color-bg,
-  'tag-cyan-color-bg_hover': $tag-cyan-color-bg_hover,
-  'tag-cyan-color-border': $tag-cyan-color-border,
-  'tag-cyan-color-border_hover': $tag-cyan-color-border_hover,
-  'tag-cyan-color-icon-bg_hover': $tag-cyan-color-icon-bg_hover,
-  'tag-default-bordered-color-border': $tag-default-bordered-color-border,
-  'tag-default-color-bg': $tag-default-color-bg,
-  'tag-default-color-bg_hover': $tag-default-color-bg_hover,
-  'tag-default-color-border': $tag-default-color-border,
-  'tag-default-color-border_hover': $tag-default-color-border_hover,
-  'tag-default-color-icon': $tag-default-color-icon,
-  'tag-default-color-text': $tag-default-color-text,
-  'tag-gold-color-bg': $tag-gold-color-bg,
-  'tag-gold-color-bg_hover': $tag-gold-color-bg_hover,
-  'tag-gold-color-border': $tag-gold-color-border,
-  'tag-gold-color-border_hover': $tag-gold-color-border_hover,
-  'tag-gold-color-icon-bg_hover': $tag-gold-color-icon-bg_hover,
-  'tag-gray-color-bg': $tag-gray-color-bg,
-  'tag-gray-color-bg_hover': $tag-gray-color-bg_hover,
-  'tag-gray-color-border': $tag-gray-color-border,
-  'tag-gray-color-border_hover': $tag-gray-color-border_hover,
-  'tag-gray-color-icon-bg_hover': $tag-gray-color-icon-bg_hover,
-  'tag-green-color-bg': $tag-green-color-bg,
-  'tag-green-color-bg_hover': $tag-green-color-bg_hover,
-  'tag-green-color-border': $tag-green-color-border,
-  'tag-green-color-border_hover': $tag-green-color-border_hover,
-  'tag-green-color-icon-bg_hover': $tag-green-color-icon-bg_hover,
-  'tag-icon-margin-right': $tag-icon-margin-right,
-  'tag-lime-color-bg': $tag-lime-color-bg,
-  'tag-lime-color-bg_hover': $tag-lime-color-bg_hover,
-  'tag-lime-color-border': $tag-lime-color-border,
-  'tag-lime-color-border_hover': $tag-lime-color-border_hover,
-  'tag-lime-color-icon-bg_hover': $tag-lime-color-icon-bg_hover,
-  'tag-magenta-color-bg': $tag-magenta-color-bg,
-  'tag-magenta-color-bg_hover': $tag-magenta-color-bg_hover,
-  'tag-magenta-color-border': $tag-magenta-color-border,
-  'tag-magenta-color-border_hover': $tag-magenta-color-border_hover,
-  'tag-magenta-color-icon-bg_hover': $tag-magenta-color-icon-bg_hover,
-  'tag-orange-color-bg': $tag-orange-color-bg,
-  'tag-orange-color-bg_hover': $tag-orange-color-bg_hover,
-  'tag-orange-color-border': $tag-orange-color-border,
-  'tag-orange-color-border_hover': $tag-orange-color-border_hover,
-  'tag-orange-color-icon-bg_hover': $tag-orange-color-icon-bg_hover,
-  'tag-orangered-color-bg': $tag-orangered-color-bg,
-  'tag-orangered-color-bg_hover': $tag-orangered-color-bg_hover,
-  'tag-orangered-color-border': $tag-orangered-color-border,
-  'tag-orangered-color-border_hover': $tag-orangered-color-border_hover,
-  'tag-orangered-color-icon-bg_hover': $tag-orangered-color-icon-bg_hover,
-  'tag-padding-horizontal': $tag-padding-horizontal,
-  'tag-padding-vertical': $tag-padding-vertical,
-  'tag-pinkpurple-color-bg': $tag-pinkpurple-color-bg,
-  'tag-pinkpurple-color-bg_hover': $tag-pinkpurple-color-bg_hover,
-  'tag-pinkpurple-color-border': $tag-pinkpurple-color-border,
-  'tag-pinkpurple-color-border_hover': $tag-pinkpurple-color-border_hover,
-  'tag-pinkpurple-color-icon-bg_hover': $tag-pinkpurple-color-icon-bg_hover,
-  'tag-purple-color-bg': $tag-purple-color-bg,
-  'tag-purple-color-bg_hover': $tag-purple-color-bg_hover,
-  'tag-purple-color-border': $tag-purple-color-border,
-  'tag-purple-color-border_hover': $tag-purple-color-border_hover,
-  'tag-purple-color-icon-bg_hover': $tag-purple-color-icon-bg_hover,
-  'tag-red-color-bg': $tag-red-color-bg,
-  'tag-red-color-bg_hover': $tag-red-color-bg_hover,
-  'tag-red-color-border': $tag-red-color-border,
-  'tag-red-color-border_hover': $tag-red-color-border_hover,
-  'tag-red-color-icon-bg_hover': $tag-red-color-icon-bg_hover,
-  'tag-sdblue-color-bg': $tag-sdblue-color-bg,
-  'tag-sdblue-color-bg_hover': $tag-sdblue-color-bg_hover,
-  'tag-sdblue-color-border': $tag-sdblue-color-border,
-  'tag-sdblue-color-border_hover': $tag-sdblue-color-border_hover,
-  'tag-sdblue-color-icon-bg_hover': $tag-sdblue-color-icon-bg_hover,
-  'tag-size-default': $tag-size-default,
-  'tag-size-default-font-size': $tag-size-default-font-size,
-  'tag-size-large': $tag-size-large,
-  'tag-size-large-font-size': $tag-size-large-font-size,
-  'tag-size-medium': $tag-size-medium,
-  'tag-size-medium-font-size': $tag-size-medium-font-size,
-  'tag-size-small': $tag-size-small,
-  'tag-size-small-font-size': $tag-size-small-font-size,
-  'tag-text-font-weight': $tag-text-font-weight,
-  'transition-duration-1': theme.$transition-duration-1,
-  'transition-timing-function-linear': theme.$transition-timing-function-linear,
-  'tag-red-color-text': $tag-red-color-text,
-  'tag-orangered-color-text': $tag-orangered-color-text,
-  'tag-orange-color-text': $tag-orange-color-text,
-  'tag-gold-color-text': $tag-gold-color-text,
-  'tag-lime-color-text': $tag-lime-color-text,
-  'tag-green-color-text': $tag-green-color-text,
-  'tag-cyan-color-text': $tag-cyan-color-text,
-  'tag-blue-color-text': $tag-blue-color-text,
-  'tag-sdblue-color-text': $tag-sdblue-color-text,
-  'tag-purple-color-text': $tag-purple-color-text,
-  'tag-pinkpurple-color-text': $tag-pinkpurple-color-text,
-  'tag-magenta-color-text': $tag-magenta-color-text,
-  'tag-red-bordered-color-border': $tag-red-bordered-color-border,
-  'tag-red-color-icon': $tag-red-color-icon,
-  'tag-orangered-bordered-color-border': $tag-orangered-bordered-color-border,
-  'tag-orange-bordered-color-border': $tag-orange-bordered-color-border,
-  'tag-gold-bordered-color-border': $tag-gold-bordered-color-border,
-  'tag-lime-bordered-color-border': $tag-lime-bordered-color-border,
-  'tag-green-bordered-color-border': $tag-green-bordered-color-border,
-  'tag-cyan-bordered-color-border': $tag-cyan-bordered-color-border,
-  'tag-blue-bordered-color-border': $tag-blue-bordered-color-border,
-  'tag-sdblue-bordered-color-border': $tag-sdblue-bordered-color-border,
-  'tag-purple-bordered-color-border': $tag-purple-bordered-color-border,
-  'tag-pinkpurple-bordered-color-border': $tag-pinkpurple-bordered-color-border,
-  'tag-magenta-bordered-color-border': $tag-magenta-bordered-color-border,
-  'tag-orangered-color-icon': $tag-orangered-color-icon,
-  'tag-orange-color-icon': $tag-orange-color-icon,
-  'tag-gold-color-icon': $tag-gold-color-icon,
-  'tag-lime-color-icon': $tag-lime-color-icon,
-  'tag-green-color-icon': $tag-green-color-icon,
-  'tag-cyan-color-icon': $tag-cyan-color-icon,
-  'tag-blue-color-icon': $tag-blue-color-icon,
-  'tag-sdblue-color-icon': $tag-sdblue-color-icon,
-  'tag-purple-color-icon': $tag-purple-color-icon,
-  'tag-pinkpurple-color-icon': $tag-pinkpurple-color-icon,
-  'tag-magenta-color-icon': $tag-magenta-color-icon,
-);
 
-@function less-var($name, $fallback: null) {
-  @return legacyLessVar.get($__less-vars, $name, $fallback);
+@function token-var($name, $fallback: null) {
+  $value: map.get(meta.module-variables('token'), $name);
+
+  @if $value == null {
+    @return $fallback;
+  }
+
+  @return $value;
 }
 
 .#{$tag-prefix-cls} {
@@ -237,30 +110,30 @@ $__less-vars: (
 
   @each $value in $colors {
     .#{$tag-prefix-cls}.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value} {
-      color: less-var('tag-#{$value}-color-text');
-      background-color: less-var('tag-#{$value}-color-bg');
-      border: $tag-border-width $tag-border-type less-var('tag-#{$value}-color-border');
+      color: token-var('tag-#{$value}-color-text');
+      background-color: token-var('tag-#{$value}-color-bg');
+      border: $tag-border-width $tag-border-type token-var('tag-#{$value}-color-border');
 
       @include icon-hover.icon-hover-bg(
         $tag-prefix-cls,
-        less-var('tag-#{$value}-color-icon-bg_hover')
+        token-var('tag-#{$value}-color-icon-bg_hover')
       );
     }
 
     .#{$tag-prefix-cls}-checkable.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value}:hover {
-      background-color: less-var('tag-#{$value}-color-bg_hover');
-      border-color: less-var('tag-#{$value}-color-border_hover');
+      background-color: token-var('tag-#{$value}-color-bg_hover');
+      border-color: token-var('tag-#{$value}-color-border_hover');
     }
 
     .#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value}.#{$tag-prefix-cls}-bordered,
     .#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value}.#{$tag-prefix-cls}-bordered:hover {
-      border-color: less-var('tag-#{$value}-bordered-color-border');
+      border-color: token-var('tag-#{$value}-bordered-color-border');
     }
 
     .#{$tag-prefix-cls}.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value} &-icon,
     .#{$tag-prefix-cls}.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value} &-close-btn,
     .#{$tag-prefix-cls}.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value} &-loading-icon {
-      color: less-var('tag-#{$value}-color-icon');
+      color: token-var('tag-#{$value}-color-icon');
     }
   }
 

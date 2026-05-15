@@ -1,98 +1,41 @@
 @use '@style/theme/index.scss' as theme;
 @use 'sass:string';
 @use 'sass:map';
-@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
+@use 'sass:meta';
+@use '@components/pagination/style/token.scss' as token;
 @use '@components/pagination/style/token.scss' as *;
 
-$__less-vars: (
-  'pagination-border-width': $pagination-border-width,
-  'pagination-color-bg-item': $pagination-color-bg-item,
-  'pagination-color-bg-item_active': $pagination-color-bg-item_active,
-  'pagination-color-bg-item_active_disabled': $pagination-color-bg-item_active_disabled,
-  'pagination-color-bg-item_disabled': $pagination-color-bg-item_disabled,
-  'pagination-color-bg-item_hover': $pagination-color-bg-item_hover,
-  'pagination-color-icon-arrow': $pagination-color-icon-arrow,
-  'pagination-color-icon-arrow-bg': $pagination-color-icon-arrow-bg,
-  'pagination-color-icon-arrow-bg_disabled': $pagination-color-icon-arrow-bg_disabled,
-  'pagination-color-icon-arrow-bg_hover': $pagination-color-icon-arrow-bg_hover,
-  'pagination-color-icon-arrow-text_disabled': $pagination-color-icon-arrow-text_disabled,
-  'pagination-color-icon-arrow-text_hover': $pagination-color-icon-arrow-text_hover,
-  'pagination-color-item-border': $pagination-color-item-border,
-  'pagination-color-item-border_active': $pagination-color-item-border_active,
-  'pagination-color-item-border_active_disabled': $pagination-color-item-border_active_disabled,
-  'pagination-color-item-border_disabled': $pagination-color-item-border_disabled,
-  'pagination-color-item-border_hover': $pagination-color-item-border_hover,
-  'pagination-color-item-text': $pagination-color-item-text,
-  'pagination-color-item-text_active': $pagination-color-item-text_active,
-  'pagination-color-item-text_active_disabled': $pagination-color-item-text_active_disabled,
-  'pagination-color-item-text_disabled': $pagination-color-item-text_disabled,
-  'pagination-color-item-text_hover': $pagination-color-item-text_hover,
-  'pagination-color-jumper-goto': $pagination-color-jumper-goto,
-  'pagination-color-text-total': $pagination-color-text-total,
-  'pagination-item-border-radius': $pagination-item-border-radius,
-  'pagination-item-spacing': $pagination-item-spacing,
-  'pagination-margin-jumper-left': $pagination-margin-jumper-left,
-  'pagination-margin-option-left': $pagination-margin-option-left,
-  'pagination-margin-total-spacing': $pagination-margin-total-spacing,
-  'pagination-padding-horizontal': $pagination-padding-horizontal,
-  'pagination-prefix-cls': $pagination-prefix-cls,
-  'pagination-simple-color-icon-arrow': $pagination-simple-color-icon-arrow,
-  'pagination-simple-color-icon-arrow-bg': $pagination-simple-color-icon-arrow-bg,
-  'pagination-simple-color-icon-arrow-bg_disabled': $pagination-simple-color-icon-arrow-bg_disabled,
-  'pagination-simple-color-icon-arrow-bg_hover': $pagination-simple-color-icon-arrow-bg_hover,
-  'pagination-simple-color-icon-arrow-text_disabled':
-    $pagination-simple-color-icon-arrow-text_disabled,
-  'pagination-simple-color-icon-arrow-text_hover': $pagination-simple-color-icon-arrow-text_hover,
-  'pagination-simple-input-width': $pagination-simple-input-width,
-  'pagination-simple-margin-next-left': $pagination-simple-margin-next-left,
-  'pagination-simple-margin-prev-right': $pagination-simple-margin-prev-right,
-  'pagination-simple-margin-separator-left': $pagination-simple-margin-separator-left,
-  'pagination-simple-margin-separator-right': $pagination-simple-margin-separator-right,
-  'pagination-size-default': $pagination-size-default,
-  'pagination-size-default-font-size': $pagination-size-default-font-size,
-  'pagination-size-icon-arrow_default': $pagination-size-icon-arrow_default,
-  'pagination-size-icon-arrow_large': $pagination-size-icon-arrow_large,
-  'pagination-size-icon-arrow_mini': $pagination-size-icon-arrow_mini,
-  'pagination-size-icon-arrow_small': $pagination-size-icon-arrow_small,
-  'pagination-size-icon-ellipsis': $pagination-size-icon-ellipsis,
-  'pagination-size-large': $pagination-size-large,
-  'pagination-size-large-font-size': $pagination-size-large-font-size,
-  'pagination-size-mini': $pagination-size-mini,
-  'pagination-size-mini-font-size': $pagination-size-mini-font-size,
-  'pagination-size-small': $pagination-size-small,
-  'pagination-size-small-font-size': $pagination-size-small-font-size,
-  'patination-jumper-input-width': $patination-jumper-input-width,
-  'prefix': theme.$prefix,
-  'sd-cssvars-prefix': theme.$sd-cssvars-prefix,
-  'transition-duration-2': theme.$transition-duration-2,
-  'transition-timing-function-linear': theme.$transition-timing-function-linear,
-);
+@function token-var($name, $fallback: null) {
+  $value: map.get(meta.module-variables('token'), $name);
 
-@function less-var($name, $fallback: null) {
-  @return legacyLessVar.get($__less-vars, $name, $fallback);
+  @if $value == null {
+    @return $fallback;
+  }
+
+  @return $value;
 }
 
 @mixin page-item($size) {
-  min-width: less-var('pagination-size-#{$size}');
-  height: less-var('pagination-size-#{$size}');
-  font-size: less-var('pagination-size-#{$size}-font-size');
-  line-height: less-var('pagination-size-#{$size}');
+  min-width: token-var('pagination-size-#{$size}');
+  height: token-var('pagination-size-#{$size}');
+  font-size: token-var('pagination-size-#{$size}-font-size');
+  line-height: token-var('pagination-size-#{$size}');
 
   &-previous,
   &-next {
-    font-size: less-var('pagination-size-icon-arrow_#{$size}');
+    font-size: token-var('pagination-size-icon-arrow_#{$size}');
   }
 }
 
 @mixin option($size) {
-  height: less-var('pagination-size-#{$size}');
-  font-size: less-var('pagination-size-#{$size}-font-size');
+  height: token-var('pagination-size-#{$size}');
+  font-size: token-var('pagination-size-#{$size}-font-size');
   line-height: 0;
 }
 
 @mixin total($size) {
-  font-size: less-var('pagination-size-#{$size}-font-size');
-  line-height: less-var('pagination-size-#{$size}');
+  font-size: token-var('pagination-size-#{$size}-font-size');
+  line-height: token-var('pagination-size-#{$size}');
 }
 
 .#{$pagination-prefix-cls} {

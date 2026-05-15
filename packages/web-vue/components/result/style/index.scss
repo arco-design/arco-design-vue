@@ -1,50 +1,28 @@
 @use '@style/theme/index.scss' as theme;
+@use 'sass:meta';
 @use 'sass:string';
 @use 'sass:map';
-@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
+@use '@components/result/style/token.scss' as token;
 @use '@components/result/style/token.scss' as *;
 
 $result-prefix-cls: string.unquote('#{theme.$prefix}-result');
 
-$__less-vars: (
-  'prefix': theme.$prefix,
-  'result-color-icon-bg_error': $result-color-icon-bg_error,
-  'result-color-icon-bg_info': $result-color-icon-bg_info,
-  'result-color-icon-bg_success': $result-color-icon-bg_success,
-  'result-color-icon-bg_warning': $result-color-icon-bg_warning,
-  'result-color-icon_default': $result-color-icon_default,
-  'result-color-icon_error': $result-color-icon_error,
-  'result-color-icon_info': $result-color-icon_info,
-  'result-color-icon_success': $result-color-icon_success,
-  'result-color-icon_warning': $result-color-icon_warning,
-  'result-color-subtitle-text': $result-color-subtitle-text,
-  'result-color-title-text': $result-color-title-text,
-  'result-font-subtitle-size': $result-font-subtitle-size,
-  'result-font-title-size': $result-font-title-size,
-  'result-font-title-weight': $result-font-title-weight,
-  'result-margin-content-top': $result-margin-content-top,
-  'result-margin-extra-top': $result-margin-extra-top,
-  'result-margin-icon-bottom': $result-margin-icon-bottom,
-  'result-padding-bottom': $result-padding-bottom,
-  'result-padding-horizontal': $result-padding-horizontal,
-  'result-padding-top': $result-padding-top,
-  'result-padding-top_icon': $result-padding-top_icon,
-  'result-size-icon': $result-size-icon,
-  'result-size-icon-wrapper': $result-size-icon-wrapper,
-  'result-size-icon_custom': $result-size-icon_custom,
-  'result-size-image-width': $result-size-image-width,
-);
+@function token-var($name, $fallback: null) {
+  $value: map.get(meta.module-variables('token'), $name);
 
-@function less-var($name, $fallback: null) {
-  @return legacyLessVar.get($__less-vars, $name, $fallback);
+  @if $value == null {
+    @return $fallback;
+  }
+
+  @return $value;
 }
 
 @mixin icon-status($status) {
   $color: string.unquote('result-color-icon_#{$status}');
   $bg: string.unquote('result-color-icon-bg_#{$status}');
 
-  color: less-var($color);
-  background-color: less-var($bg);
+  color: token-var($color);
+  background-color: token-var($bg);
 }
 
 .#{$result-prefix-cls} {

@@ -1,58 +1,21 @@
 @use '@style/theme/index.scss' as theme;
 @use 'sass:string';
 @use 'sass:map';
-@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
+@use 'sass:meta';
+@use '@components/form/style/token.scss' as token;
 @use '@components/form/style/token.scss' as *;
 
 $form-prefix-cls: string.unquote('#{theme.$prefix}-form');
 
 // for input & textarea
-$__less-vars: (
-  'form-color-bg_error': $form-color-bg_error,
-  'form-color-bg_error_focus': $form-color-bg_error_focus,
-  'form-color-bg_error_hover': $form-color-bg_error_hover,
-  'form-color-bg_success': $form-color-bg_success,
-  'form-color-bg_success_focus': $form-color-bg_success_focus,
-  'form-color-bg_success_hover': $form-color-bg_success_hover,
-  'form-color-bg_validating': $form-color-bg_validating,
-  'form-color-bg_validating_focus': $form-color-bg_validating_focus,
-  'form-color-bg_validating_hover': $form-color-bg_validating_hover,
-  'form-color-bg_warning': $form-color-bg_warning,
-  'form-color-bg_warning_focus': $form-color-bg_warning_focus,
-  'form-color-bg_warning_hover': $form-color-bg_warning_hover,
-  'form-color-border_error': $form-color-border_error,
-  'form-color-border_error_focus': $form-color-border_error_focus,
-  'form-color-border_error_hover': $form-color-border_error_hover,
-  'form-color-border_success': $form-color-border_success,
-  'form-color-border_success_focus': $form-color-border_success_focus,
-  'form-color-border_success_hover': $form-color-border_success_hover,
-  'form-color-border_validating': $form-color-border_validating,
-  'form-color-border_validating_focus': $form-color-border_validating_focus,
-  'form-color-border_validating_hover': $form-color-border_validating_hover,
-  'form-color-border_warning': $form-color-border_warning,
-  'form-color-border_warning_focus': $form-color-border_warning_focus,
-  'form-color-border_warning_hover': $form-color-border_warning_hover,
-  'form-color-shadow_error_focus': $form-color-shadow_error_focus,
-  'form-color-shadow_success_focus': $form-color-shadow_success_focus,
-  'form-color-shadow_validating_focus': $form-color-shadow_validating_focus,
-  'form-color-shadow_warning_focus': $form-color-shadow_warning_focus,
-  'form-color-tip-icon-text_error': $form-color-tip-icon-text_error,
-  'form-color-tip-icon-text_success': $form-color-tip-icon-text_success,
-  'form-color-tip-icon-text_validating': $form-color-tip-icon-text_validating,
-  'form-color-tip-icon-text_warning': $form-color-tip-icon-text_warning,
-  'form-color-tip-text_error': $form-color-tip-text_error,
-  'form-color-tip-text_success': $form-color-tip-text_success,
-  'form-color-tip-text_validating': $form-color-tip-text_validating,
-  'form-color-tip-text_warning': $form-color-tip-text_warning,
-  'form-size-shadow_error_focus': $form-size-shadow_error_focus,
-  'form-size-shadow_success_focus': $form-size-shadow_success_focus,
-  'form-size-shadow_validating_focus': $form-size-shadow_validating_focus,
-  'form-size-shadow_warning_focus': $form-size-shadow_warning_focus,
-  'prefix': theme.$prefix,
-);
+@function token-var($name, $fallback: null) {
+  $value: map.get(meta.module-variables('token'), $name);
 
-@function less-var($name, $fallback: null) {
-  @return legacyLessVar.get($__less-vars, $name, $fallback);
+  @if $value == null {
+    @return $fallback;
+  }
+
+  @return $value;
 }
 
 @mixin input-status($status) {
@@ -61,12 +24,12 @@ $__less-vars: (
 
   .#{$input-prefix-cls}-wrapper:not(.#{$input-prefix-cls}-disabled),
   .#{$textarea-prefix-cls}-wrapper:not(.#{$textarea-prefix-cls}-disabled) {
-    background-color: less-var('form-color-bg_#{$status}');
-    border-color: less-var('form-color-border_#{$status}');
+    background-color: token-var('form-color-bg_#{$status}');
+    border-color: token-var('form-color-border_#{$status}');
 
     &:hover {
-      background-color: less-var('form-color-bg_#{$status}_hover');
-      border-color: less-var('form-color-border_#{$status}_hover');
+      background-color: token-var('form-color-bg_#{$status}_hover');
+      border-color: token-var('form-color-border_#{$status}_hover');
     }
   }
 
@@ -74,10 +37,10 @@ $__less-vars: (
   .#{$textarea-prefix-cls}-wrapper:not(
       .#{$textarea-prefix-cls}-disabled
     ).#{$textarea-prefix-cls}-focus {
-    background-color: less-var('form-color-bg_#{$status}_focus');
-    border-color: less-var('form-color-border_#{$status}_focus');
-    box-shadow: 0 0 0 less-var('form-size-shadow_#{$status}_focus')
-      less-var('form-color-shadow_#{$status}_focus');
+    background-color: token-var('form-color-bg_#{$status}_focus');
+    border-color: token-var('form-color-border_#{$status}_focus');
+    box-shadow: 0 0 0 token-var('form-size-shadow_#{$status}_focus')
+      token-var('form-color-shadow_#{$status}_focus');
   }
 }
 
@@ -87,12 +50,12 @@ $__less-vars: (
 
   .#{$select-view-prefix-cls}:not(.#{$select-view-prefix-cls}-disabled),
   .#{$input-prefix-cls}:not(.#{$input-prefix-cls}-disabled) {
-    background-color: less-var('form-color-bg_#{$status}');
-    border-color: less-var('form-color-border_#{$status}');
+    background-color: token-var('form-color-bg_#{$status}');
+    border-color: token-var('form-color-border_#{$status}');
 
     &:hover {
-      background-color: less-var('form-color-bg_#{$status}_hover');
-      border-color: less-var('form-color-border_#{$status}_hover');
+      background-color: token-var('form-color-bg_#{$status}_hover');
+      border-color: token-var('form-color-border_#{$status}_hover');
     }
   }
 
@@ -100,32 +63,32 @@ $__less-vars: (
       .#{$select-view-prefix-cls}-disabled
     ).#{$select-view-prefix-cls}-focus,
   .#{$input-prefix-cls}:not(.#{$input-prefix-cls}-disabled).#{$input-prefix-cls}-focus {
-    background-color: less-var('form-color-bg_#{$status}_focus');
-    border-color: less-var('form-color-border_#{$status}_focus');
-    box-shadow: 0 0 0 less-var('form-size-shadow_#{$status}_focus')
-      less-var('form-color-shadow_#{$status}_focus');
+    background-color: token-var('form-color-bg_#{$status}_focus');
+    border-color: token-var('form-color-border_#{$status}_focus');
+    box-shadow: 0 0 0 token-var('form-size-shadow_#{$status}_focus')
+      token-var('form-color-shadow_#{$status}_focus');
   }
 }
 
 // datepicker
 @mixin picker($status) {
   .#{theme.$prefix}-picker:not(.#{theme.$prefix}-picker-disabled) {
-    background-color: less-var('form-color-bg_#{$status}');
-    border-color: less-var('form-color-border_#{$status}');
+    background-color: token-var('form-color-bg_#{$status}');
+    border-color: token-var('form-color-border_#{$status}');
 
     &:hover {
-      background-color: less-var('form-color-bg_#{$status}_hover');
-      border-color: less-var('form-color-border_#{$status}_hover');
+      background-color: token-var('form-color-bg_#{$status}_hover');
+      border-color: token-var('form-color-border_#{$status}_hover');
     }
   }
 
   .#{theme.$prefix}-picker-focused:not(.#{theme.$prefix}-picker-disabled) {
     &,
     &:hover {
-      background-color: less-var('form-color-bg_#{$status}_focus');
-      border-color: less-var('form-color-border_#{$status}_focus');
-      box-shadow: 0 0 0 less-var('form-size-shadow_#{$status}_focus')
-        less-var('form-color-shadow_#{$status}_focus');
+      background-color: token-var('form-color-bg_#{$status}_focus');
+      border-color: token-var('form-color-border_#{$status}_focus');
+      box-shadow: 0 0 0 token-var('form-size-shadow_#{$status}_focus')
+        token-var('form-color-shadow_#{$status}_focus');
     }
   }
 }
@@ -139,11 +102,11 @@ $__less-vars: (
 
   .#{theme.$prefix}-form-item-status-#{$status} {
     .#{$form-prefix-cls}-item-message-help {
-      color: less-var('form-color-tip-text_#{$status}');
+      color: token-var('form-color-tip-text_#{$status}');
     }
 
     .#{$form-prefix-cls}-item-feedback {
-      color: less-var('form-color-tip-icon-text_#{$status}');
+      color: token-var('form-color-tip-icon-text_#{$status}');
     }
   }
 }

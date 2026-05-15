@@ -5,134 +5,52 @@
 @use 'sass:math';
 @use 'sass:string';
 @use 'sass:map';
-@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
 @use 'sass:meta';
 @use '@style/mixins/index.scss' as *;
+@use '@components/tabs/style/token.scss' as token;
 @use '@components/tabs/style/token.scss' as *;
 
 $sizes: mini, small, large;
 
-$__less-vars: (
-  'color-primary-6': global.$color-primary-6,
-  'line-height-base': theme.$line-height-base,
-  'prefix': theme.$prefix,
-  'sd-cssvars-prefix': global.$sd-cssvars-prefix,
-  'sd-theme-tag': global.$sd-theme-tag,
-  'sizes': $sizes,
-  'tabs-capsule-border-header-radius': $tabs-capsule-border-header-radius,
-  'tabs-capsule-color-header-bg': $tabs-capsule-color-header-bg,
-  'tabs-capsule-color-separator-bg': $tabs-capsule-color-separator-bg,
-  'tabs-capsule-color-title-bg': $tabs-capsule-color-title-bg,
-  'tabs-capsule-color-title-bg_active': $tabs-capsule-color-title-bg_active,
-  'tabs-capsule-color-title-bg_hover': $tabs-capsule-color-title-bg_hover,
-  'tabs-capsule-margin-title-horizontal': $tabs-capsule-margin-title-horizontal,
-  'tabs-capsule-padding-header-horizontal': $tabs-capsule-padding-header-horizontal,
-  'tabs-capsule-padding-header-vertical': $tabs-capsule-padding-header-vertical,
-  'tabs-capsule-padding-title-horizontal': $tabs-capsule-padding-title-horizontal,
-  'tabs-capsule-size-separator-height': $tabs-capsule-size-separator-height,
-  'tabs-capsule-size-separator-width': $tabs-capsule-size-separator-width,
-  'tabs-card-border-content-width': $tabs-card-border-content-width,
-  'tabs-card-border-radius': $tabs-card-border-radius,
-  'tabs-card-border-width': $tabs-card-border-width,
-  'tabs-card-color-close-icon-bg_hover': $tabs-card-color-close-icon-bg_hover,
-  'tabs-card-color-title-bg': $tabs-card-color-title-bg,
-  'tabs-card-color-title-bg_active': $tabs-card-color-title-bg_active,
-  'tabs-card-color-title-bg_disabled': $tabs-card-color-title-bg_disabled,
-  'tabs-card-color-title-bg_hover': $tabs-card-color-title-bg_hover,
-  'tabs-card-color-title-border': $tabs-card-color-title-border,
-  'tabs-card-gutter-color-title-bg': $tabs-card-gutter-color-title-bg,
-  'tabs-card-gutter-color-title-bg_active': $tabs-card-gutter-color-title-bg_active,
-  'tabs-card-gutter-color-title-bg_disabled': $tabs-card-gutter-color-title-bg_disabled,
-  'tabs-card-gutter-color-title-bg_hover': $tabs-card-gutter-color-title-bg_hover,
-  'tabs-card-gutter-spacing-horizontal': $tabs-card-gutter-spacing-horizontal,
-  'tabs-card-padding-title-horizontal': $tabs-card-padding-title-horizontal,
-  'tabs-card-padding-title-right_editable': $tabs-card-padding-title-right_editable,
-  'tabs-color-icon': $tabs-color-icon,
-  'tabs-color-icon_disabled': $tabs-color-icon_disabled,
-  'tabs-color-title-text': $tabs-color-title-text,
-  'tabs-color-title-text_active': $tabs-color-title-text_active,
-  'tabs-color-title-text_disabled': $tabs-color-title-text_disabled,
-  'tabs-color-title-text_disabled_active': $tabs-color-title-text_disabled_active,
-  'tabs-color-title-text_hover': $tabs-color-title-text_hover,
-  'tabs-content-padding': $tabs-content-padding,
-  'tabs-line-border-radius': $tabs-line-border-radius,
-  'tabs-line-color-header-border': $tabs-line-color-header-border,
-  'tabs-line-color-ink-bg': $tabs-line-color-ink-bg,
-  'tabs-line-color-ink-bg_disabled': $tabs-line-color-ink-bg_disabled,
-  'tabs-line-color-title-bg': $tabs-line-color-title-bg,
-  'tabs-line-color-title-bg_active': $tabs-line-color-title-bg_active,
-  'tabs-line-color-title-bg_hover': $tabs-line-color-title-bg_hover,
-  'tabs-line-font-title-text-weight_active': $tabs-line-font-title-text-weight_active,
-  'tabs-line-font-title-text-weight_hover': $tabs-line-font-title-text-weight_hover,
-  'tabs-line-margin-title-horizontal': $tabs-line-margin-title-horizontal,
-  'tabs-line-margin-title-horizontal_first': $tabs-line-margin-title-horizontal_first,
-  'tabs-line-padding-title-horizontal_vertical': $tabs-line-padding-title-horizontal_vertical,
-  'tabs-line-size-header-border': $tabs-line-size-header-border,
-  'tabs-line-size-ink-stroke': $tabs-line-size-ink-stroke,
-  'tabs-margin-add-icon-left': $tabs-margin-add-icon-left,
-  'tabs-margin-close-icon-left': $tabs-margin-close-icon-left,
-  'tabs-padding-header-wrapper-horizontal': $tabs-padding-header-wrapper-horizontal,
-  'tabs-padding-title-text-horizontal': $tabs-padding-title-text-horizontal,
-  'tabs-padding-title-text-vertical': $tabs-padding-title-text-vertical,
-  'tabs-rounded-color-title-bg': $tabs-rounded-color-title-bg,
-  'tabs-rounded-color-title-bg_active': $tabs-rounded-color-title-bg_active,
-  'tabs-rounded-color-title-bg_disabled': $tabs-rounded-color-title-bg_disabled,
-  'tabs-rounded-color-title-bg_hover': $tabs-rounded-color-title-bg_hover,
-  'tabs-rounded-margin-title-horizontal': $tabs-rounded-margin-title-horizontal,
-  'tabs-rounded-padding-title-horizontal': $tabs-rounded-padding-title-horizontal,
-  'tabs-size-default-font-size': $tabs-size-default-font-size,
-  'tabs-size-default-font-size_capsule': $tabs-size-default-font-size_capsule,
-  'tabs-size-default-font-size_card': $tabs-size-default-font-size_card,
-  'tabs-size-default-font-size_rounded': $tabs-size-default-font-size_rounded,
-  'tabs-size-default-font-size_text': $tabs-size-default-font-size_text,
-  'tabs-size-default-header-height': $tabs-size-default-header-height,
-  'tabs-size-default-header-height_capsule': $tabs-size-default-header-height_capsule,
-  'tabs-size-default-header-height_line': $tabs-size-default-header-height_line,
-  'tabs-size-default-header-height_rounded': $tabs-size-default-header-height_rounded,
-  'tabs-size-default-header-height_text': $tabs-size-default-header-height_text,
-  'tabs-size-icon': $tabs-size-icon,
-  'tabs-size-icon-bg': $tabs-size-icon-bg,
-  'tabs-size-large-font-size': $tabs-size-large-font-size,
-  'tabs-size-large-font-size_capsule': $tabs-size-large-font-size_capsule,
-  'tabs-size-large-font-size_card': $tabs-size-large-font-size_card,
-  'tabs-size-large-font-size_rounded': $tabs-size-large-font-size_rounded,
-  'tabs-size-large-header-height': $tabs-size-large-header-height,
-  'tabs-size-large-header-height_capsule': $tabs-size-large-header-height_capsule,
-  'tabs-size-large-header-height_line': $tabs-size-large-header-height_line,
-  'tabs-size-large-header-height_rounded': $tabs-size-large-header-height_rounded,
+$token-vars: (
   'tabs-size-mini-font-size': $tabs-size-mini-font-size,
-  'tabs-size-mini-font-size_capsule': $tabs-size-mini-font-size_capsule,
-  'tabs-size-mini-font-size_card': $tabs-size-mini-font-size_card,
-  'tabs-size-mini-font-size_rounded': $tabs-size-mini-font-size_rounded,
-  'tabs-size-mini-header-height': $tabs-size-mini-header-height,
-  'tabs-size-mini-header-height_capsule': $tabs-size-mini-header-height_capsule,
-  'tabs-size-mini-header-height_line': $tabs-size-mini-header-height_line,
-  'tabs-size-mini-header-height_rounded': $tabs-size-mini-header-height_rounded,
   'tabs-size-small-font-size': $tabs-size-small-font-size,
-  'tabs-size-small-font-size_capsule': $tabs-size-small-font-size_capsule,
+  'tabs-size-large-font-size': $tabs-size-large-font-size,
+  'tabs-size-mini-font-size_card': $tabs-size-mini-font-size_card,
   'tabs-size-small-font-size_card': $tabs-size-small-font-size_card,
+  'tabs-size-large-font-size_card': $tabs-size-large-font-size_card,
+  'tabs-size-mini-font-size_capsule': $tabs-size-mini-font-size_capsule,
+  'tabs-size-small-font-size_capsule': $tabs-size-small-font-size_capsule,
+  'tabs-size-large-font-size_capsule': $tabs-size-large-font-size_capsule,
+  'tabs-size-mini-font-size_rounded': $tabs-size-mini-font-size_rounded,
   'tabs-size-small-font-size_rounded': $tabs-size-small-font-size_rounded,
+  'tabs-size-large-font-size_rounded': $tabs-size-large-font-size_rounded,
+  'tabs-size-mini-header-height': $tabs-size-mini-header-height,
   'tabs-size-small-header-height': $tabs-size-small-header-height,
-  'tabs-size-small-header-height_capsule': $tabs-size-small-header-height_capsule,
+  'tabs-size-large-header-height': $tabs-size-large-header-height,
+  'tabs-size-mini-header-height_line': $tabs-size-mini-header-height_line,
   'tabs-size-small-header-height_line': $tabs-size-small-header-height_line,
+  'tabs-size-large-header-height_line': $tabs-size-large-header-height_line,
+  'tabs-size-mini-header-height_capsule': $tabs-size-mini-header-height_capsule,
+  'tabs-size-small-header-height_capsule': $tabs-size-small-header-height_capsule,
+  'tabs-size-large-header-height_capsule': $tabs-size-large-header-height_capsule,
+  'tabs-size-mini-header-height_rounded': $tabs-size-mini-header-height_rounded,
   'tabs-size-small-header-height_rounded': $tabs-size-small-header-height_rounded,
-  'tabs-spacing-nav-icon-header': $tabs-spacing-nav-icon-header,
-  'tabs-text-color-separator-bg': $tabs-text-color-separator-bg,
-  'tabs-text-color-title-bg': $tabs-text-color-title-bg,
-  'tabs-text-color-title-bg_active': $tabs-text-color-title-bg_active,
-  'tabs-text-color-title-bg_disabled': $tabs-text-color-title-bg_disabled,
-  'tabs-text-color-title-bg_disabled_active': $tabs-text-color-title-bg_disabled_active,
-  'tabs-text-color-title-bg_hover': $tabs-text-color-title-bg_hover,
-  'tabs-text-margin-title-horizontal': $tabs-text-margin-title-horizontal,
-  'tabs-text-size-separator-height': $tabs-text-size-separator-height,
-  'tabs-text-size-separator-width': $tabs-text-size-separator-width,
-  'transition-duration-2': theme.$transition-duration-2,
-  'transition-timing-function-linear': theme.$transition-timing-function-linear,
-  'transition-timing-function-standard': theme.$transition-timing-function-standard,
+  'tabs-size-large-header-height_rounded': $tabs-size-large-header-height_rounded,
 );
 
-@function less-var($name, $fallback: null) {
-  @return legacyLessVar.get($__less-vars, $name, $fallback);
+@function token-var($name, $fallback: null) {
+  $value: map.get($token-vars, $name);
+
+  @if $value == null {
+    $value: map.get(meta.module-variables('token'), $name);
+  }
+
+  @if $value == null {
+    @return $fallback;
+  }
+
+  @return $value;
 }
 
 $tabs-prefix-cls: string.unquote('#{theme.$prefix}-tabs');
@@ -734,25 +652,25 @@ $tabs-prefix-cls: string.unquote('#{theme.$prefix}-tabs');
         $height: string.unquote('tabs-size-#{$size}-header-height_line');
         $font-size: string.unquote('tabs-size-#{$size}-font-size');
         $padding: get-title-padding(
-          less-var($height),
-          less-var($font-size),
+          token-var($height),
+          token-var($font-size),
           $tabs-padding-title-text-vertical
         );
 
         .#{$tabs-prefix-cls}-nav-extra {
-          font-size: less-var($font-size);
-          line-height: less-var($height);
+          font-size: token-var($font-size);
+          line-height: token-var($height);
         }
 
         .#{$tabs-prefix-cls}-tab {
           padding-top: $padding;
           padding-bottom: $padding;
-          font-size: less-var($font-size);
+          font-size: token-var($font-size);
         }
 
         .#{$tabs-prefix-cls}-nav-extra {
-          font-size: less-var($font-size);
-          line-height: less-var($height);
+          font-size: token-var($font-size);
+          line-height: token-var($height);
         }
       }
 
@@ -761,24 +679,24 @@ $tabs-prefix-cls: string.unquote('#{theme.$prefix}-tabs');
         $card-font-size: string.unquote('tabs-size-#{$size}-font-size_card');
         $card-height: string.unquote('tabs-size-#{$size}-header-height');
         $padding: get-title-padding(
-          less-var($card-height) - $tabs-card-border-width * 2,
-          less-var($card-font-size),
+          token-var($card-height) - $tabs-card-border-width * 2,
+          token-var($card-font-size),
           $tabs-padding-title-text-vertical
         );
 
         .#{$tabs-prefix-cls}-tab {
           padding-top: $padding;
           padding-bottom: $padding;
-          font-size: less-var($card-font-size);
+          font-size: token-var($card-font-size);
         }
 
         .#{$tabs-prefix-cls}-nav-extra {
-          font-size: less-var($card-font-size);
-          line-height: less-var($card-height);
+          font-size: token-var($card-font-size);
+          line-height: token-var($card-height);
         }
 
         .#{$tabs-prefix-cls}-nav-add-btn {
-          height: less-var($card-height);
+          height: token-var($card-height);
         }
       }
 
@@ -787,13 +705,13 @@ $tabs-prefix-cls: string.unquote('#{theme.$prefix}-tabs');
         $capsule-height: string.unquote('tabs-size-#{$size}-header-height_capsule');
 
         .#{$tabs-prefix-cls}-tab {
-          font-size: less-var($capsule-font-size);
-          line-height: less-var($capsule-height) - $tabs-capsule-padding-header-vertical * 2;
+          font-size: token-var($capsule-font-size);
+          line-height: token-var($capsule-height) - $tabs-capsule-padding-header-vertical * 2;
         }
 
         .#{$tabs-prefix-cls}-nav-extra {
-          font-size: less-var($capsule-font-size);
-          line-height: less-var($capsule-height);
+          font-size: token-var($capsule-font-size);
+          line-height: token-var($capsule-height);
         }
       }
 
@@ -803,19 +721,19 @@ $tabs-prefix-cls: string.unquote('#{theme.$prefix}-tabs');
 
         .#{$tabs-prefix-cls}-tab {
           padding-top: get-title-padding(
-            less-var($rounded-height),
-            less-var($rounded-font-size),
+            token-var($rounded-height),
+            token-var($rounded-font-size),
             0
           );
           padding-bottom: (
-            get-title-padding(less-var($rounded-height), less-var($rounded-font-size), 0)
+            get-title-padding(token-var($rounded-height), token-var($rounded-font-size), 0)
           );
-          font-size: less-var($rounded-font-size);
+          font-size: token-var($rounded-font-size);
         }
 
         .#{$tabs-prefix-cls}-nav-extra {
-          font-size: less-var($rounded-font-size);
-          line-height: less-var($rounded-height);
+          font-size: token-var($rounded-font-size);
+          line-height: token-var($rounded-height);
         }
       }
     }

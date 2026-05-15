@@ -3,50 +3,20 @@
 @use 'sass:list';
 @use 'sass:string';
 @use 'sass:map';
-@use '@style/theme/legacy-less-var.scss' as legacyLessVar;
+@use 'sass:meta';
+@use '@components/badge/style/token.scss' as token;
 @use '@components/badge/style/token.scss' as *;
 
 $badge-prefix-cls: string.unquote('#{theme.$prefix}-badge');
 
-$__less-vars: (
-  'badge-color-count-bg': $badge-color-count-bg,
-  'badge-color-count-text': $badge-color-count-text,
-  'badge-color-dot-bg_default': $badge-color-dot-bg_default,
-  'badge-color-dot-bg_error': $badge-color-dot-bg_error,
-  'badge-color-dot-bg_processing': $badge-color-dot-bg_processing,
-  'badge-color-dot-bg_success': $badge-color-dot-bg_success,
-  'badge-color-dot-bg_warning': $badge-color-dot-bg_warning,
-  'badge-red-color-dot-bg': $badge-red-color-dot-bg,
-  'badge-orangered-color-dot-bg': $badge-orangered-color-dot-bg,
-  'badge-orange-color-dot-bg': $badge-orange-color-dot-bg,
-  'badge-gold-color-dot-bg': $badge-gold-color-dot-bg,
-  'badge-lime-color-dot-bg': $badge-lime-color-dot-bg,
-  'badge-green-color-dot-bg': $badge-green-color-dot-bg,
-  'badge-cyan-color-dot-bg': $badge-cyan-color-dot-bg,
-  'badge-sdblue-color-dot-bg': $badge-sdblue-color-dot-bg,
-  'badge-purple-color-dot-bg': $badge-purple-color-dot-bg,
-  'badge-pinkpurple-color-dot-bg': $badge-pinkpurple-color-dot-bg,
-  'badge-magenta-color-dot-bg': $badge-magenta-color-dot-bg,
-  'badge-gray-color-dot-bg': $badge-gray-color-dot-bg,
-  'badge-color-status-text': $badge-color-status-text,
-  'badge-font-count-size': $badge-font-count-size,
-  'badge-font-count-weight': $badge-font-count-weight,
-  'badge-font-status-text-size': $badge-font-status-text-size,
-  'badge-margin-status-text-left': $badge-margin-status-text-left,
-  'badge-padding-count-horizontal': $badge-padding-count-horizontal,
-  'badge-size-count-height': $badge-size-count-height,
-  'badge-size-dot-width': $badge-size-dot-width,
-  'line-height-base': theme.$line-height-base,
-  'prefix': theme.$prefix,
-  'radius-circle': global.$radius-circle,
-  'sd-cssvars-prefix': theme.$sd-cssvars-prefix,
-  'transition-duration-3': theme.$transition-duration-3,
-  'transition-duration-5': theme.$transition-duration-5,
-  'transition-timing-function-overshoot': theme.$transition-timing-function-overshoot,
-);
+@function token-var($name, $fallback: null) {
+  $value: map.get(meta.module-variables('token'), $name);
 
-@function less-var($name, $fallback: null) {
-  @return legacyLessVar.get($__less-vars, $name, $fallback);
+  @if $value == null {
+    @return $fallback;
+  }
+
+  @return $value;
 }
 
 .#{$badge-prefix-cls} {
@@ -159,7 +129,7 @@ $__less-vars: (
       $color: string.unquote('badge-#{$color-name}-color-dot-bg');
 
       &-color-#{$color-name} {
-        background-color: less-var($color);
+        background-color: token-var($color);
       }
 
       @include for($data, ($i + 1));
