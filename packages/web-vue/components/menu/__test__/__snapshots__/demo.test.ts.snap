@@ -2,7 +2,7 @@
 
 exports[`<menu> demo: > render [breakpoint] correctly 1`] = `
 <div data-v-15886e98="" class="menu-demo">
-  <div data-v-15886e98="" class="sd-menu sd-menu-light sd-menu-vertical" style="height: 100%; width: 200px;">
+  <div data-v-15886e98="" class="sd-menu sd-menu-light sd-menu-vertical sd:w-50 sd:h-full">
     <div class="sd-menu-inner">
       <div data-v-15886e98="" class="sd-menu-inline">
         <div class="sd-menu-inline-header sd-menu-has-icon">
@@ -80,12 +80,12 @@ exports[`<menu> demo: > render [breakpoint] correctly 1`] = `
 `;
 
 exports[`<menu> demo: > render [collapse-control] correctly 1`] = `
-<div data-v-dd043b55="" class="menu-demo"><button data-v-dd043b55="" class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button" style="padding: 0px 12px; height: 30px; line-height: 30px; margin-bottom: 4px;">
+<div data-v-dd043b55="" class="menu-demo"><button data-v-dd043b55="" class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd:mb-1 sd:h-[30px] sd:px-3 sd:leading-[30px]" type="button">
     <!--v-if--><svg data-v-dd043b55="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-menu-fold" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
       <path d="M42 11H6M42 24H22M42 37H6M13.66 26.912l-4.82-3.118 4.82-3.118z"></path>
     </svg>
   </button>
-  <div data-v-dd043b55="" class="sd-menu sd-menu-dark sd-menu-vertical" style="border-radius: 4px; width: 200px;">
+  <div data-v-dd043b55="" class="sd-menu sd-menu-dark sd-menu-vertical sd:w-[200px] sd:rounded">
     <div class="sd-menu-inner">
       <div data-v-dd043b55="" class="sd-menu-inline">
         <div class="sd-menu-inline-header sd-menu-has-icon">
@@ -171,8 +171,8 @@ exports[`<menu> demo: > render [dark-horizontal] correctly 1`] = `
           <!--v-if-->
         </div>
         <!---->
-        <div data-v-db121378="" class="sd-menu-item sd-menu-disabled" style="padding: 0px; margin-right: 38px;">
-          <div data-v-db121378="" style="width: 80px; height: 30px; background: var(--color-fill-3); cursor: text;"></div>
+        <div data-v-db121378="" class="sd-menu-item sd-menu-disabled sd:mr-[38px] sd:p-0">
+          <div data-v-db121378="" class="sd:h-[30px] sd:w-20 sd:bg-(--color-fill-3) sd:cursor-text"></div>
           <!---->
         </div>
         <div data-v-db121378="" class="sd-menu-item sd-menu-selected">Home<div class="sd-menu-selected-label"></div>
@@ -205,8 +205,8 @@ exports[`<menu> demo: > render [horizontal] correctly 1`] = `
           <!--v-if-->
         </div>
         <!---->
-        <div data-v-f03f031e="" class="sd-menu-item sd-menu-disabled" style="padding: 0px; margin-right: 38px;">
-          <div data-v-f03f031e="" style="width: 80px; height: 30px; border-radius: 2px; background: var(--color-fill-3); cursor: text;"></div>
+        <div data-v-f03f031e="" class="sd-menu-item sd-menu-disabled sd:mr-[38px] sd:p-0">
+          <div data-v-f03f031e="" class="sd:h-[30px] sd:w-20 sd:cursor-text sd:rounded-[2px] sd:bg-[var(--color-fill-3)]"></div>
           <!---->
         </div>
         <div data-v-f03f031e="" class="sd-menu-item sd-menu-selected">Home<div class="sd-menu-selected-label"></div>
@@ -276,19 +276,19 @@ exports[`<menu> demo: > render [pop-button] correctly 1`] = `
 
 exports[`<menu> demo: > render [size] correctly 1`] = `
 <div data-v-a40de55d="" class="menu-demo">
-  <div data-v-a40de55d="" class="sd-slider" style="width: 320px; margin-bottom: 24px;">
+  <div data-v-a40de55d="" class="sd-slider sd:w-80 sd:mb-6">
     <div class="sd-slider-track">
-      <div class="sd-slider-bar" style="left: 0%; right: 66.67%;"></div>
+      <div class="sd-slider-bar" style="left: 0%; right: 100%;"></div>
       <!--v-if-->
       <!--v-if-->
       <!--v-if-->
       <!--v-if-->
-      <div style="left: 33.33%;" tabindex="0" role="slider" aria-disabled="false" aria-valuemax="400" aria-valuemin="160" aria-valuenow="240" aria-valuetext="240" class="sd-slider-btn"></div>
+      <div style="left: 0%;" tabindex="0" role="slider" aria-disabled="false" aria-valuemax="400" aria-valuemin="160" aria-valuenow="160" aria-valuetext="160" class="sd-slider-btn"></div>
       <!---->
     </div>
     <!--v-if-->
   </div>
-  <div data-v-a40de55d="" class="sd-menu sd-menu-light sd-menu-vertical" style="height: calc(100% - 28px); width: 240px;">
+  <div data-v-a40de55d="" class="sd-menu sd-menu-light sd-menu-vertical dynamic-menu">
     <div class="sd-menu-inner">
       <div data-v-a40de55d="" class="sd-menu-inline">
         <div class="sd-menu-inline-header sd-menu-has-icon">
@@ -354,7 +354,7 @@ exports[`<menu> demo: > render [size] correctly 1`] = `
 
 exports[`<menu> demo: > render [sub-menu] correctly 1`] = `
 <div data-v-f00ce67f="" class="menu-demo">
-  <div data-v-f00ce67f="" class="sd-menu sd-menu-light sd-menu-vertical" style="height: 100%; width: 200px;">
+  <div data-v-f00ce67f="" class="sd-menu sd-menu-light sd-menu-vertical sd:w-50 sd:h-full">
     <div class="sd-menu-inner">
       <div data-v-f00ce67f="" class="sd-menu-item" data-obj="1">Menu 1
         <!---->

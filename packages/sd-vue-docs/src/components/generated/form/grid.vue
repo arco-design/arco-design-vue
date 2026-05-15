@@ -33,22 +33,14 @@
   {{ form }}
 </template>
 
-<script>
+<script setup lang="ts">
   import { reactive } from 'vue';
 
-  export default {
-    setup() {
-      const form = reactive({
-        value1: '',
-        value2: '',
-        value3: '',
-        value4: '',
-        value5: '',
-      });
-
-      return {
-        form,
-      };
-    },
-  };
+  const form = reactive({
+    value1: '',
+    value2: '',
+    value3: '',
+    value4: '',
+    value5: '',
+  });
 </script>

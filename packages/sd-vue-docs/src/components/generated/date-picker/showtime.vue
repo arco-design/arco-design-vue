@@ -1,6 +1,6 @@
 <template>
   <sd-date-picker
-    style="width: 220px; margin: 0 24px 24px 0"
+    class="sd:w-55 sd:mr-6 sd:mb-6"
     show-time
     :time-picker-props="{ defaultValue: '09:09:06' }"
     format="YYYY-MM-DD HH:mm:ss"
@@ -9,7 +9,7 @@
     @ok="onOk"
   />
   <sd-date-picker
-    style="width: 220px; margin: 0 24px 24px 0"
+    class="sd:w-55 sd:mr-6 sd:mb-6"
     show-time
     format="YYYY-MM-DD hh:mm"
     @change="onChange"
@@ -17,7 +17,7 @@
     @ok="onOk"
   />
   <sd-range-picker
-    style="width: 360px; margin: 0 24px 24px 0"
+    class="sd:w-90 sd:mr-6 sd:mb-6"
     show-time
     :time-picker-props="{ defaultValue: ['00:00:00', '09:09:06'] }"
     format="YYYY-MM-DD HH:mm"
@@ -26,25 +26,16 @@
     @ok="onOk"
   />
 </template>
-<script>
-  export default {
-    setup() {
-      function onSelect(dateString, date) {
-        console.log('onSelect', dateString, date);
-      }
+<script setup lang="ts">
+  function onSelect(dateString, date) {
+    console.log('onSelect', dateString, date);
+  }
 
-      function onChange(dateString, date) {
-        console.log('onChange: ', dateString, date);
-      }
+  function onChange(dateString, date) {
+    console.log('onChange: ', dateString, date);
+  }
 
-      function onOk(dateString, date) {
-        console.log('onOk: ', dateString, date);
-      }
-      return {
-        onSelect,
-        onChange,
-        onOk,
-      };
-    },
-  };
+  function onOk(dateString, date) {
+    console.log('onOk: ', dateString, date);
+  }
 </script>

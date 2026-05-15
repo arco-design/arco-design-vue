@@ -1,7 +1,7 @@
 <template>
   <sd-input-tag
     :default-value="['one', 'two', 'three', 'four']"
-    :style="{ width: '380px' }"
+    class="sd:w-95"
     placeholder="Please Enter"
     :max-tag-count="3"
     allow-clear

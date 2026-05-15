@@ -9,6 +9,6 @@
       minRows: 2,
       maxRows: 5,
     }"
-    style="margin-top: 20px"
+    class="sd:mt-5"
   />
 </template>

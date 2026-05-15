@@ -196,7 +196,7 @@ exports[`<tag> demo: > render [dynamically] correctly 1`] = `
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked" style="width: 90px; background-color: var(--color-fill-2); border: 1px dashed var(--color-fill-3); cursor: pointer;"><span class="sd-tag-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></span> Add Tag
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd:w-[90px] sd:cursor-pointer sd:border sd:border-dashed sd:border-[var(--color-fill-3)] sd:bg-[var(--color-fill-2)]"><span class="sd-tag-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></span> Add Tag
     <!--v-if-->
     <!--v-if--></span>
   </div>

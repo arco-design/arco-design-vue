@@ -1,19 +1,14 @@
 <template>
   <div>
     <sd-split
-      :style="{
-        height: '200px',
-        width: '100%',
-        minWidth: '500px',
-        border: '1px solid var(--color-border)',
-      }"
+      class="sd:h-50 sd:w-full sd:min-w-125 sd:border sd:border-solid sd:border-(--color-border)"
     >
       <template #first>
         <sd-typography-paragraph>Left</sd-typography-paragraph>
       </template>
       <template #second>
         <div>
-          <sd-split direction="vertical" :style="{ height: '200px' }">
+          <sd-split direction="vertical" class="sd:h-50">
             <template #first><sd-typography-paragraph>Top</sd-typography-paragraph></template>
             <template #second><sd-typography-paragraph>Bottom</sd-typography-paragraph></template>
           </sd-split>

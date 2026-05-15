@@ -5,7 +5,7 @@
     <sd-slider
       direction="vertical"
       :default-value="5"
-      :style="{ width: '300px' }"
+      class="sd:w-75"
       :max="15"
       :marks="{
         5: '5km',

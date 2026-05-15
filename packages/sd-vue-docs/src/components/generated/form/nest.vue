@@ -1,5 +1,5 @@
 <template>
-  <sd-form :model="form" :style="{ width: '600px' }">
+  <sd-form :model="form" class="sd:w-150">
     <sd-form-item
       label="Username"
       :content-flex="false"
@@ -83,30 +83,22 @@
   {{ form }}
 </template>
 
-<script>
+<script setup lang="ts">
   import { reactive } from 'vue';
 
-  export default {
-    setup() {
-      const form = reactive({
-        together: {
-          firstname: '',
-          lastname: '',
-        },
-        separate: {
-          firstname: '',
-          lastname: '',
-        },
-        posts: {
-          post1: '',
-          post2: '',
-        },
-        isRead: false,
-      });
-
-      return {
-        form,
-      };
+  const form = reactive({
+    together: {
+      firstname: '',
+      lastname: '',
     },
-  };
+    separate: {
+      firstname: '',
+      lastname: '',
+    },
+    posts: {
+      post1: '',
+      post2: '',
+    },
+    isRead: false,
+  });
 </script>

@@ -7,22 +7,10 @@
   </sd-tree>
 </template>
 
-<script>
+<script setup lang="ts">
   import { h } from 'vue';
 
   import { IconDriveFile, IconDown, IconStar } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    components: {
-      IconDown,
-      IconStar,
-    },
-    setup() {
-      return {
-        treeData,
-      };
-    },
-  };
 
   const treeData = [
     {

@@ -1,19 +1,14 @@
 <template>
-  <sd-card :style="{ width: '360px' }">
+  <sd-card class="sd:w-90">
     <template #actions>
       <span class="icon-hover"> <IconThumbUp /> </span>
       <span class="icon-hover"> <IconShareInternal /> </span>
       <span class="icon-hover"> <IconMore /> </span>
     </template>
     <template #cover>
-      <div
-        :style="{
-          height: '204px',
-          overflow: 'hidden',
-        }"
-      >
+      <div class="sd:h-51 sd:overflow-hidden">
         <img
-          :style="{ width: '100%', transform: 'translateY(-20px)' }"
+          class="sd:w-full sd:-translate-y-5"
           alt="dessert"
           src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a20012a2d4d5b9db43dfc6a01fe508c0.png~tplv-uwbnlip3yd-webp.webp"
         />
@@ -21,8 +16,8 @@
     </template>
     <sd-card-meta title="Card Title" description="This is the description">
       <template #avatar>
-        <div :style="{ display: 'flex', alignItems: 'center', color: '#1D2129' }">
-          <sd-avatar :size="24" :style="{ marginRight: '8px' }"> A </sd-avatar>
+        <div class="sd:flex sd:items-center sd:text-[#1d2129]">
+          <sd-avatar :size="24" class="sd:mr-2"> A </sd-avatar>
           <sd-typography-text>Username</sd-typography-text>
         </div>
       </template>
@@ -30,12 +25,8 @@
   </sd-card>
 </template>
 
-<script>
+<script setup lang="ts">
   import { IconThumbUp, IconShareInternal, IconMore } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    components: { IconThumbUp, IconShareInternal, IconMore },
-  };
 </script>
 <style scoped>
   .icon-hover {

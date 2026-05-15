@@ -14,16 +14,8 @@
   </sd-image>
 </template>
 
-<script>
-  export default {
-    setup() {
-      const download = () => {
-        console.log('点击下载图片');
-      };
-
-      return {
-        download,
-      };
-    },
+<script setup lang="ts">
+  const download = () => {
+    console.log('点击下载图片');
   };
 </script>

@@ -1,13 +1,13 @@
 <template>
-  <div :style="{ display: 'flex' }">
-    <sd-timeline :style="{ marginRight: '40px' }">
+  <div class="sd:flex">
+    <sd-timeline class="sd:mr-10">
       <sd-timeline-item label="2020-04-12" dotColor="#00B42A">
         The first milestone
       </sd-timeline-item>
       <sd-timeline-item label="2020-05-17"> The second milestone </sd-timeline-item>
       <sd-timeline-item label="2020-06-22">
         <template #dot>
-          <IconClockCircle :style="{ fontSize: '12px', color: '#F53F3F' }" />
+          <IconClockCircle class="sd:text-xs sd:text-[#f53f3f]" />
         </template>
         The third milestone
       </sd-timeline-item>
@@ -16,17 +16,11 @@
       </sd-timeline-item>
     </sd-timeline>
 
-    <sd-timeline :style="{ marginRight: '40px' }">
+    <sd-timeline class="sd:mr-10">
       <sd-timeline-item label="2020-04-12">
         <template #dot>
           <IconCheck
-            :style="{
-              fontSize: '12px',
-              padding: '2px',
-              boxSizing: 'border-box',
-              borderRadius: '50%',
-              backgroundColor: 'var(--color-primary-light-1)',
-            }"
+            class="sd:text-xs sd:p-0.5 sd:box-border sd:rounded-full sd:bg-[var(--color-primary-light-1)]"
           />
         </template>
         The first milestone
@@ -34,13 +28,7 @@
       <sd-timeline-item label="2020-05-17">
         <template #dot>
           <IconCheck
-            :style="{
-              fontSize: '12px',
-              padding: '2px',
-              boxSizing: 'border-box',
-              borderRadius: '50%',
-              backgroundColor: 'var(--color-primary-light-1)',
-            }"
+            class="sd:text-xs sd:p-0.5 sd:box-border sd:rounded-full sd:bg-[var(--color-primary-light-1)]"
           />
         </template>
       </sd-timeline-item>
@@ -62,10 +50,6 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
   import { IconCheck } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    components: { IconCheck },
-  };
 </script>

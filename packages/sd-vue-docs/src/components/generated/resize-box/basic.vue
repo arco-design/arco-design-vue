@@ -2,13 +2,7 @@
   <div>
     <sd-resize-box
       :directions="['right', 'bottom']"
-      :style="{
-        width: '500px',
-        minWidth: '100px',
-        maxWidth: '100%',
-        height: '200px',
-        textAlign: 'center',
-      }"
+      class="sd:w-125 sd:min-w-25 sd:max-w-full sd:h-50 sd:text-center"
     >
       <sd-typography-paragraph
         >We are building the future of content discovery and creation.</sd-typography-paragraph

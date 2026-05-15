@@ -3,9 +3,9 @@
 exports[`<input> demo: > render [basic] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-input-wrapper" style="width: 320px;"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><!----></span></div>
+  <div class="sd-space-item"><span class="sd-input-wrapper sd:w-80"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><!----></span></div>
   <!---->
-  <div class="sd-space-item"><span class="sd-input-wrapper" style="width: 320px;"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value="content"><span class="sd-icon-hover sd-input-icon-hover sd-input-clear-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-input-wrapper sd:w-80"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value="content"><span class="sd-icon-hover sd-input-icon-hover sd-input-clear-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!----></span>
   </div>
 </div>
@@ -15,13 +15,13 @@ exports[`<input> demo: > render [group] correctly 1`] = `
 <div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px;">
   <!---->
   <div class="sd-space-item">
-    <div class="sd-input-group"><span class="sd-input-wrapper" style="width: 160px;"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="first" value=""><!----><!----></span><span class="sd-input-wrapper" style="width: 160px;"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="second" value=""><!----><!----></span></div>
+    <div class="sd-input-group"><span class="sd-input-wrapper sd:w-40"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="first" value=""><!----><!----></span><span class="sd-input-wrapper sd:w-40"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="second" value=""><!----><!----></span></div>
   </div>
   <!---->
   <div class="sd-space-item">
-    <div class="sd-input-group"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search" style="width: 160px;"><!----><input class="sd-select-view-input" placeholder="first" value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+    <div class="sd-input-group"><span class="sd-select-view-single sd-select sd:w-40 sd-select-view sd-select-view-size-medium sd-select-view-search"><!----><input class="sd-select-view-input" placeholder="first" value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
       <!----></span></span>
-      <!----><span class="sd-input-wrapper" style="width: 160px;"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="second" value=""><!----><!----></span>
+      <!----><span class="sd-input-wrapper sd:w-40"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="second" value=""><!----><!----></span>
     </div>
   </div>
 </div>
@@ -34,7 +34,7 @@ exports[`<input> demo: > render [password] correctly 1`] = `
       <!--v-if-->
     </button></div>
   <!---->
-  <div class="sd-space-item"><span class="sd-input-wrapper" style="width: 320px;"><!----><input class="sd-input sd-input-size-medium" type="password" placeholder="Please enter something" value=""><!----><span class="sd-input-suffix"><!----><span class="sd-icon-hover"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-eye-invisible" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M14 14.5c-2.69 2-5.415 5.33-8 9.5q8.06 13 18 13 4.987 0 9.5-3.271M17.464 12.5C19 11 21.749 11 24 11q9.94 0 18 13-2.649 4.272-5.5 7.14"></path><path d="M29 24a5 5 0 1 1-10 0 5 5 0 0 1 10 0ZM6.852 7.103l34.294 34.294"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-input-wrapper sd:w-80"><!----><input class="sd-input sd-input-size-medium" type="password" placeholder="Please enter something" value=""><!----><span class="sd-input-suffix"><!----><span class="sd-icon-hover"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-eye-invisible" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M14 14.5c-2.69 2-5.415 5.33-8 9.5q8.06 13 18 13 4.987 0 9.5-3.271M17.464 12.5C19 11 21.749 11 24 11q9.94 0 18 13-2.649 4.272-5.5 7.14"></path><path d="M29 24a5 5 0 1 1-10 0 5 5 0 0 1 10 0ZM6.852 7.103l34.294 34.294"></path></svg></span>
     <!----></span></span>
   </div>
 </div>
@@ -43,59 +43,59 @@ exports[`<input> demo: > render [password] correctly 1`] = `
 exports[`<input> demo: > render [prefix] correctly 1`] = `
 <div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-input-wrapper" style="width: 320px;"><span class="sd-input-prefix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-user" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1z"></path><circle cx="24" cy="15" r="8"></circle></svg></span><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value="">
+  <div class="sd-space-item"><span class="sd-input-wrapper sd:w-80"><span class="sd-input-prefix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-user" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1z"></path><circle cx="24" cy="15" r="8"></circle></svg></span><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value="">
     <!---->
     <!----></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-input-wrapper" style="width: 320px;"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><span class="sd-input-suffix"><!----><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-info-circle" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M24 20v14m0-16v-4m18 10c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6s18 8.059 18 18Z"></path></svg><!----></span></span></div>
+  <div class="sd-space-item"><span class="sd-input-wrapper sd:w-80"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><span class="sd-input-suffix"><!----><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-info-circle" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M24 20v14m0-16v-4m18 10c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6s18 8.059 18 18Z"></path></svg><!----></span></span></div>
 </div>
 `;
 
 exports[`<input> demo: > render [prepend] correctly 1`] = `
 <div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-input-outer sd-input-outer-size-medium" style="width: 320px;"><span class="sd-input-prepend"> +86 </span><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><!----></span>
+  <div class="sd-space-item"><span class="sd-input-outer sd-input-outer-size-medium sd:w-80"><span class="sd-input-prepend"> +86 </span><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><!----></span>
     <!----></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-input-outer sd-input-outer-size-medium" style="width: 320px;"><!----><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><!----></span><span class="sd-input-append"> RMB </span></span></div>
+  <div class="sd-space-item"><span class="sd-input-outer sd-input-outer-size-medium sd:w-80"><!----><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><!----></span><span class="sd-input-append"> RMB </span></span></div>
   <!---->
-  <div class="sd-space-item"><span class="sd-input-outer sd-input-outer-size-medium" style="width: 320px;"><span class="sd-input-prepend">+86</span><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><!----></span>
+  <div class="sd-space-item"><span class="sd-input-outer sd-input-outer-size-medium sd:w-80"><span class="sd-input-prepend">+86</span><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><!----></span>
     <!----></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-input-outer sd-input-outer-size-medium" style="width: 320px;"><!----><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><!----></span><span class="sd-input-append">RMB</span></span></div>
+  <div class="sd-space-item"><span class="sd-input-outer sd-input-outer-size-medium sd:w-80"><!----><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><!----></span><span class="sd-input-append">RMB</span></span></div>
 </div>
 `;
 
 exports[`<input> demo: > render [search] correctly 1`] = `
 <div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-input-wrapper sd-input-search" style="width: 320px;"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><span class="sd-input-suffix"><!----><span class="sd-icon-hover"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-search" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M33.072 33.071c6.248-6.248 6.248-16.379 0-22.627-6.249-6.249-16.38-6.249-22.628 0s-6.248 16.379 0 22.627 16.38 6.248 22.628 0Zm0 0 8.485 8.485"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-input-wrapper sd-input-search sd:w-80"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><span class="sd-input-suffix"><!----><span class="sd-icon-hover"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-search" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M33.072 33.071c6.248-6.248 6.248-16.379 0-22.627-6.249-6.249-16.38-6.249-22.628 0s-6.248 16.379 0 22.627 16.38 6.248 22.628 0Zm0 0 8.485 8.485"></path></svg></span>
     <!---->
     <!----></span></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-input-outer sd-input-outer-size-medium sd-input-search" style="width: 320px;"><!----><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><!----></span><span class="sd-input-append"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd-btn-only-icon sd-input-search-btn" type="button"><span class="sd-btn-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-search" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M33.072 33.071c6.248-6.248 6.248-16.379 0-22.627-6.249-6.249-16.38-6.249-22.628 0s-6.248 16.379 0 22.627 16.38 6.248 22.628 0Zm0 0 8.485 8.485"></path></svg></span></button></span></span></div>
+  <div class="sd-space-item"><span class="sd-input-outer sd-input-outer-size-medium sd-input-search sd:w-80"><!----><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><!----></span><span class="sd-input-append"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd-btn-only-icon sd-input-search-btn" type="button"><span class="sd-btn-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-search" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M33.072 33.071c6.248-6.248 6.248-16.379 0-22.627-6.249-6.249-16.38-6.249-22.628 0s-6.248 16.379 0 22.627 16.38 6.248 22.628 0Zm0 0 8.485 8.485"></path></svg></span></button></span></span></div>
 </div>
 `;
 
 exports[`<input> demo: > render [search-button] correctly 1`] = `
 <div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-input-outer sd-input-outer-size-medium sd-input-search" style="width: 320px;"><!----><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><!----></span><span class="sd-input-append"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd-input-search-btn" type="button"><!--v-if-->Search</button></span></span></div>
+  <div class="sd-space-item"><span class="sd-input-outer sd-input-outer-size-medium sd-input-search sd:w-80"><!----><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><!----></span><span class="sd-input-append"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd-input-search-btn" type="button"><!--v-if-->Search</button></span></span></div>
   <!---->
-  <div class="sd-space-item"><span class="sd-input-outer sd-input-outer-size-medium sd-input-search" style="width: 320px;"><!----><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><!----></span><span class="sd-input-append"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd-input-search-btn" type="button"><span class="sd-btn-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-search" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M33.072 33.071c6.248-6.248 6.248-16.379 0-22.627-6.249-6.249-16.38-6.249-22.628 0s-6.248 16.379 0 22.627 16.38 6.248 22.628 0Zm0 0 8.485 8.485"></path></svg></span> Search </button></span></span></div>
+  <div class="sd-space-item"><span class="sd-input-outer sd-input-outer-size-medium sd-input-search sd:w-80"><!----><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><!----></span><span class="sd-input-append"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd-input-search-btn" type="button"><span class="sd-btn-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-search" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M33.072 33.071c6.248-6.248 6.248-16.379 0-22.627-6.249-6.249-16.38-6.249-22.628 0s-6.248 16.379 0 22.627 16.38 6.248 22.628 0Zm0 0 8.485 8.485"></path></svg></span> Search </button></span></span></div>
 </div>
 `;
 
 exports[`<input> demo: > render [search-loading] correctly 1`] = `
 <div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-input-wrapper sd-input-search" style="width: 320px;"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><span class="sd-input-suffix"><!----><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-loading" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path></svg><!----><!----></span></span></div>
+  <div class="sd-space-item"><span class="sd-input-wrapper sd-input-search sd:w-80"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><span class="sd-input-suffix"><!----><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-loading" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path></svg><!----><!----></span></span></div>
   <!---->
-  <div class="sd-space-item"><span class="sd-input-outer sd-input-outer-size-medium sd-input-search" style="width: 320px;"><!----><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><!----></span><span class="sd-input-append"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd-btn-loading sd-btn-only-icon sd-input-search-btn" type="button"><span class="sd-btn-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-loading sd-icon-spin" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path></svg></span></button></span></span></div>
+  <div class="sd-space-item"><span class="sd-input-outer sd-input-outer-size-medium sd-input-search sd:w-80"><!----><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><!----></span><span class="sd-input-append"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd-btn-loading sd-btn-only-icon sd-input-search-btn" type="button"><span class="sd-btn-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-loading sd-icon-spin" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path></svg></span></button></span></span></div>
 </div>
 `;
 
@@ -104,30 +104,30 @@ exports[`<input> demo: > render [size] correctly 1`] = `
   <!---->
   <div class="sd-space-item"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="mini"><span class="sd-radio-button-content">mini</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="small"><span class="sd-radio-button-content">small</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="medium"><span class="sd-radio-button-content">medium</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="large"><span class="sd-radio-button-content">large</span></label></span></div>
   <!---->
-  <div class="sd-space-item"><span class="sd-input-wrapper" style="width: 320px;"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><!----></span></div>
+  <div class="sd-space-item"><span class="sd-input-wrapper sd:w-80"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><!----></span></div>
 </div>
 `;
 
 exports[`<input> demo: > render [status] correctly 1`] = `
 <div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-input-wrapper sd-input-disabled" style="width: 320px;"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Disabled status" disabled="" value=""><!----><!----></span></div>
+  <div class="sd-space-item"><span class="sd-input-wrapper sd-input-disabled sd:w-80"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Disabled status" disabled="" value=""><!----><!----></span></div>
   <!---->
-  <div class="sd-space-item"><span class="sd-input-wrapper sd-input-disabled" style="width: 320px;"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Disabled status" disabled="" value="Disabled"><!----><!----></span></div>
+  <div class="sd-space-item"><span class="sd-input-wrapper sd-input-disabled sd:w-80"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Disabled status" disabled="" value="Disabled"><!----><!----></span></div>
   <!---->
-  <div class="sd-space-item"><span class="sd-input-wrapper sd-input-error" style="width: 320px;"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Error status" aria-invalid="true" value=""><!----><!----></span></div>
+  <div class="sd-space-item"><span class="sd-input-wrapper sd-input-error sd:w-80"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Error status" aria-invalid="true" value=""><!----><!----></span></div>
 </div>
 `;
 
 exports[`<input> demo: > render [word-limit] correctly 1`] = `
 <div class="sd-space sd-space-vertical sd-space-fill" style="column-gap: 24px; row-gap: 24px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-input-wrapper" style="width: 320px;"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><span class="sd-input-suffix"><span class="sd-input-word-limit">0/10</span>
+  <div class="sd-space-item"><span class="sd-input-wrapper sd:w-80"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><span class="sd-input-suffix"><span class="sd-input-word-limit">0/10</span>
     <!---->
     <!----></span></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-input-wrapper" style="width: 320px;"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><span class="sd-input-suffix"><span class="sd-input-word-limit">0/10</span>
+  <div class="sd-space-item"><span class="sd-input-wrapper sd:w-80"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" value=""><!----><span class="sd-input-suffix"><span class="sd-input-word-limit">0/10</span>
     <!---->
     <!----></span></span>
   </div>

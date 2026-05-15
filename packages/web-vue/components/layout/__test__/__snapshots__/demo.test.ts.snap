@@ -2,12 +2,12 @@
 
 exports[`<layout> demo: > render [basic] correctly 1`] = `
 <div data-v-45a68723="" class="layout-demo">
-  <section data-v-45a68723="" class="sd-layout" style="height: 400px;">
+  <section data-v-45a68723="" class="sd-layout sd:h-100">
     <header data-v-45a68723="" class="sd-layout-header">Header</header>
     <main data-v-45a68723="" class="sd-layout-content">Content</main>
     <footer data-v-45a68723="" class="sd-layout-footer">Footer</footer>
   </section><br data-v-45a68723="">
-  <section data-v-45a68723="" class="sd-layout" style="height: 400px;">
+  <section data-v-45a68723="" class="sd-layout sd:h-100">
     <header data-v-45a68723="" class="sd-layout-header">Header</header>
     <section data-v-45a68723="" class="sd-layout">
       <div data-v-45a68723="" class="sd-layout-sider" style="width: 200px;">
@@ -18,7 +18,7 @@ exports[`<layout> demo: > render [basic] correctly 1`] = `
     </section>
     <footer data-v-45a68723="" class="sd-layout-footer">Footer</footer>
   </section><br data-v-45a68723="">
-  <section data-v-45a68723="" class="sd-layout" style="height: 400px;">
+  <section data-v-45a68723="" class="sd-layout sd:h-100">
     <header data-v-45a68723="" class="sd-layout-header">Header</header>
     <section data-v-45a68723="" class="sd-layout">
       <main data-v-45a68723="" class="sd-layout-content">Content</main>
@@ -29,14 +29,14 @@ exports[`<layout> demo: > render [basic] correctly 1`] = `
     </section>
     <footer data-v-45a68723="" class="sd-layout-footer">Footer</footer>
   </section><br data-v-45a68723="">
-  <section data-v-45a68723="" class="sd-layout" style="height: 400px;">
+  <section data-v-45a68723="" class="sd-layout sd:h-100">
     <header data-v-45a68723="" class="sd-layout-header">Header</header>
     <section data-v-45a68723="" class="sd-layout">
       <div data-v-45a68723="" class="sd-layout-sider sd-layout-sider-light" style="width: 64px;">
         <div class="sd-layout-sider-children">Sider</div>
         <!--v-if-->
       </div>
-      <div data-v-45a68723="" class="sd-layout-sider sd-layout-sider-light" style="width: 206px; margin-left: 1px;">
+      <div data-v-45a68723="" class="sd-layout-sider sd-layout-sider-light sd:ml-px" style="width: 206px;">
         <div class="sd-layout-sider-children">Sider</div>
         <!--v-if-->
       </div>
@@ -176,8 +176,8 @@ exports[`<layout> demo: > render [breakpoint] correctly 1`] = `
         <!--v-if-->
       </div>
     </header>
-    <section data-v-90594246="" class="sd-layout" style="padding: 0px 24px;">
-      <div data-v-90594246="" role="list" class="sd-breadcrumb" style="margin: 16px 0px;">
+    <section data-v-90594246="" class="sd-layout sd:px-6">
+      <div data-v-90594246="" role="list" class="sd-breadcrumb sd:my-4">
         <div role="listitem" class="sd-breadcrumb-item">Home
           <!---->
         </div>
@@ -207,7 +207,7 @@ exports[`<layout> demo: > render [collapsed] correctly 1`] = `
   <div data-v-6f5a7cf9="" class="sd-layout-sider sd-layout-sider-light" style="width: 200px;">
     <div class="sd-layout-sider-children">
       <div data-v-6f5a7cf9="" class="logo"></div>
-      <div data-v-6f5a7cf9="" class="sd-menu sd-menu-light sd-menu-vertical" style="width: 100%;">
+      <div data-v-6f5a7cf9="" class="sd-menu sd-menu-light sd-menu-vertical sd:w-full">
         <div class="sd-menu-inner">
           <div data-v-6f5a7cf9="" class="sd-menu-item sd-menu-disabled"><svg data-v-6f5a7cf9="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-home" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
               <path d="M7 17 24 7l17 10v24H7z"></path>
@@ -294,13 +294,13 @@ exports[`<layout> demo: > render [collapsed] correctly 1`] = `
     <!--v-if-->
   </div>
   <section data-v-6f5a7cf9="" class="sd-layout">
-    <header data-v-6f5a7cf9="" class="sd-layout-header" style="padding-left: 20px;"><button data-v-6f5a7cf9="" class="sd-btn sd-btn-secondary sd-btn-shape-round sd-btn-size-medium sd-btn-status-normal" type="button">
+    <header data-v-6f5a7cf9="" class="sd-layout-header sd:pl-5"><button data-v-6f5a7cf9="" class="sd-btn sd-btn-secondary sd-btn-shape-round sd-btn-size-medium sd-btn-status-normal" type="button">
         <!--v-if--><svg data-v-6f5a7cf9="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-left" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
           <path fill="currentColor" stroke="none" d="M13.171 24.937a1.2 1.2 0 0 1 0-1.874L30.051 9.56c.785-.629 1.949-.07 1.949.937v27.006c0 1.006-1.164 1.566-1.95.937z"></path>
         </svg>
       </button></header>
-    <section data-v-6f5a7cf9="" class="sd-layout" style="padding: 0px 24px;">
-      <div data-v-6f5a7cf9="" role="list" class="sd-breadcrumb" style="margin: 16px 0px;">
+    <section data-v-6f5a7cf9="" class="sd-layout sd:px-6">
+      <div data-v-6f5a7cf9="" role="list" class="sd-breadcrumb sd:my-4">
         <div role="listitem" class="sd-breadcrumb-item">Home
           <!---->
         </div>
@@ -330,7 +330,7 @@ exports[`<layout> demo: > render [custom-icon] correctly 1`] = `
   <div data-v-4bf645a2="" class="sd-layout-sider sd-layout-sider-light sd-layout-sider-has-trigger" style="width: 200px;">
     <div class="sd-layout-sider-children">
       <div data-v-4bf645a2="" class="logo"></div>
-      <div data-v-4bf645a2="" class="sd-menu sd-menu-light sd-menu-vertical" style="width: 100%;">
+      <div data-v-4bf645a2="" class="sd-menu sd-menu-light sd-menu-vertical sd:w-full">
         <div class="sd-menu-inner">
           <div data-v-4bf645a2="" class="sd-menu-item sd-menu-disabled"><svg data-v-4bf645a2="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-home" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
               <path d="M7 17 24 7l17 10v24H7z"></path>
@@ -423,9 +423,9 @@ exports[`<layout> demo: > render [custom-icon] correctly 1`] = `
       </svg></div>
   </div>
   <section data-v-4bf645a2="" class="sd-layout">
-    <header data-v-4bf645a2="" class="sd-layout-header" style="padding-left: 20px;"> Header </header>
-    <section data-v-4bf645a2="" class="sd-layout" style="padding: 0px 24px;">
-      <div data-v-4bf645a2="" role="list" class="sd-breadcrumb" style="margin: 16px 0px;">
+    <header data-v-4bf645a2="" class="sd-layout-header sd:pl-5"> Header </header>
+    <section data-v-4bf645a2="" class="sd-layout sd:px-6">
+      <div data-v-4bf645a2="" role="list" class="sd-breadcrumb sd:my-4">
         <div role="listitem" class="sd-breadcrumb-item">Home
           <!---->
         </div>

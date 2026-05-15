@@ -1,5 +1,5 @@
 <template>
-  <sd-space direction="vertical" :style="{ width: '100%' }">
+  <sd-space direction="vertical" class="sd:w-full">
     <sd-space>
       <sd-radio-group type="button" v-model="position">
         <sd-radio value="left">Left</sd-radio>
@@ -37,18 +37,9 @@
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const position = ref('left');
-      const hideIcon = ref(false);
-
-      return {
-        position,
-        hideIcon,
-      };
-    },
-  };
+  const position = ref('left');
+  const hideIcon = ref(false);
 </script>

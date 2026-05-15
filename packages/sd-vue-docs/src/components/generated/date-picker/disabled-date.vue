@@ -1,21 +1,21 @@
 <template>
   <div>
     <sd-date-picker
-      style="width: 200px; margin-right: 24px; margin-bottom: 24px"
+      class="sd:w-50 sd:mr-6 sd:mb-6"
       :disabledDate="(current) => dayjs(current).isBefore(dayjs())"
     />
     <sd-range-picker
-      style="width: 360px; margin-right: 24px; margin-bottom: 24px"
+      class="sd:w-90 sd:mr-6 sd:mb-6"
       :disabledDate="(current) => dayjs(current).isBefore(dayjs())"
     />
     <sd-date-picker
-      style="width: 200px; margin-right: 24px; margin-bottom: 24px"
+      class="sd:w-50 sd:mr-6 sd:mb-6"
       show-time
       :disabledDate="(current) => dayjs(current).isBefore(dayjs())"
       :disabledTime="getDisabledTime"
     />
     <sd-range-picker
-      style="width: 360px; margin-bottom: 24px"
+      class="sd:w-90 sd:mb-6"
       show-time
       :timePickerProps="{ hideDisabledOptions: true }"
       :disabledDate="(current) => dayjs(current).isBefore(dayjs())"
@@ -23,7 +23,7 @@
     />
   </div>
 </template>
-<script>
+<script setup lang="ts">
   import dayjs from 'dayjs';
 
   function range(start, end) {
@@ -49,14 +49,4 @@
       disabledSeconds: () => range(30, 60),
     };
   }
-
-  export default {
-    setup() {
-      return {
-        dayjs,
-        getDisabledTime,
-        getDisabledRangeTime,
-      };
-    },
-  };
 </script>

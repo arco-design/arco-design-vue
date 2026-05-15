@@ -315,7 +315,7 @@ exports[`<table> demo: > render [custom] correctly 1`] = `
     <!---->
   </div>
 </div>
-<div class="sd-table sd-table-size-large sd-table-border sd-table-hover" style="margin-top: 30px;">
+<div class="sd-table sd-table-size-large sd-table-border sd-table-hover sd:mt-7.5">
   <!---->
   <!---->
   <!---->
@@ -980,7 +980,7 @@ exports[`<table> demo: > render [editable] correctly 1`] = `
   </div>
 </div>
 <!-- support from v2.25.0  -->
-<div class="sd-table sd-table-size-large sd-table-border sd-table-hover" style="margin-top: 20px;">
+<div class="sd-table sd-table-size-large sd-table-border sd-table-hover sd:mt-5">
   <!---->
   <div class="sd-spin">
     <!---->
@@ -1506,116 +1506,102 @@ exports[`<table> demo: > render [fixed] correctly 1`] = `
   <div class="sd-spin">
     <!---->
     <div class="sd-table-container sd-table-has-fixed-col-left sd-table-has-fixed-col-right sd-table-scroll-position-both sd-table-scroll-y">
-      <div class="sd-scrollbar sd-scrollbar-type-embed" style="height: 100%;">
-        <div class="sd-scrollbar-container sd-table-content" data-overlayscrollbars="host">
-          <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
-            <div class="sd-table-header" style="overflow-x: hidden; overflow-y: hidden;">
-              <div class="sd-table-element" style="width: 2000px; min-width: 2000px; --sd-table-grid-template: 80px 140px minmax(40px, 1fr) minmax(40px, 1fr) 200px;">
-                <div class="sd-table-thead">
-                  <div class="sd-table-tr">
-                    <div class="sd-table-th sd-table-operation sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell">Expand</span></div>
-                    <div class="sd-table-th sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Name</span>
-                      <!---->
-                      <!----></span>
-                      <!---->
-                      <!---->
-                    </div>
-                    <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Salary</span>
-                      <!---->
-                      <!----></span>
-                      <!---->
-                      <!---->
-                    </div>
-                    <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Address</span>
-                      <!---->
-                      <!----></span>
-                      <!---->
-                      <!---->
-                    </div>
-                    <div class="sd-table-th sd-table-col-fixed-right sd-table-col-fixed-right-first" style="right: 0px;"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Email</span>
-                      <!---->
-                      <!----></span>
-                      <!---->
-                      <!---->
-                    </div>
-                  </div>
+      <div class="sd-table-content">
+        <div class="sd-table-header" style="overflow-x: hidden; overflow-y: hidden;">
+          <div class="sd-table-element" style="width: 2000px; min-width: 2000px; --sd-table-grid-template: 80px 140px minmax(40px, 1fr) minmax(40px, 1fr) 200px;">
+            <div class="sd-table-thead">
+              <div class="sd-table-tr">
+                <div class="sd-table-th sd-table-operation sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell">Expand</span></div>
+                <div class="sd-table-th sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Name</span>
+                  <!---->
+                  <!----></span>
+                  <!---->
+                  <!---->
+                </div>
+                <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Salary</span>
+                  <!---->
+                  <!----></span>
+                  <!---->
+                  <!---->
+                </div>
+                <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Address</span>
+                  <!---->
+                  <!----></span>
+                  <!---->
+                  <!---->
+                </div>
+                <div class="sd-table-th sd-table-col-fixed-right sd-table-col-fixed-right-first" style="right: 0px;"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Email</span>
+                  <!---->
+                  <!----></span>
+                  <!---->
+                  <!---->
                 </div>
               </div>
-            </div>
-            <div class="sd-scrollbar sd-scrollbar-type-embed" style="display: flex; min-height: 0px;">
-              <div class="sd-scrollbar-container sd-table-body" style="max-height: 200px;" data-overlayscrollbars="host">
-                <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
-                  <div class="sd-table-element" style="width: 2000px; min-width: 2000px; --sd-table-grid-template: 80px 140px minmax(40px, 1fr) minmax(40px, 1fr) 200px;">
-                    <div class="sd-table-tbody">
-                      <div class="sd-table-tr">
-                        <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><button type="button" class="sd-table-expand-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></button></span></div>
-                        <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Jane Doe</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">23000</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">32 Park Road, London</span></span></div>
-                        <div class="sd-table-td sd-table-col-fixed-right sd-table-col-fixed-right-first" style="right: 0px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">jane.doe@example.com</span></span></div>
-                      </div>
-                      <!---->
-                      <div class="sd-table-tr">
-                        <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><!----></span></div>
-                        <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Alisa Ross</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">25000</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">35 Park Road, London</span></span></div>
-                        <div class="sd-table-td sd-table-col-fixed-right sd-table-col-fixed-right-first" style="right: 0px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">alisa.ross@example.com</span></span></div>
-                      </div>
-                      <!---->
-                      <div class="sd-table-tr">
-                        <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><!----></span></div>
-                        <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Kevin Sandra</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">22000</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">31 Park Road, London</span></span></div>
-                        <div class="sd-table-td sd-table-col-fixed-right sd-table-col-fixed-right-first" style="right: 0px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">kevin.sandra@example.com</span></span></div>
-                      </div>
-                      <!---->
-                      <div class="sd-table-tr">
-                        <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><!----></span></div>
-                        <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Ed Hellen</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">17000</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">42 Park Road, London</span></span></div>
-                        <div class="sd-table-td sd-table-col-fixed-right sd-table-col-fixed-right-first" style="right: 0px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">ed.hellen@example.com</span></span></div>
-                      </div>
-                      <!---->
-                      <div class="sd-table-tr">
-                        <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><!----></span></div>
-                        <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">William Smith</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">27000</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">62 Park Road, London</span></span></div>
-                        <div class="sd-table-td sd-table-col-fixed-right sd-table-col-fixed-right-first" style="right: 0px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">william.smith@example.com</span></span></div>
-                      </div>
-                      <!---->
-                    </div>
-                  </div>
-                </div>
-                <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-                  <div class="os-scrollbar-track">
-                    <div class="os-scrollbar-handle"></div>
-                  </div>
-                </div>
-                <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-                  <div class="os-scrollbar-track">
-                    <div class="os-scrollbar-handle"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-            <div class="os-scrollbar-track">
-              <div class="os-scrollbar-handle"></div>
-            </div>
-          </div>
-          <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-            <div class="os-scrollbar-track">
-              <div class="os-scrollbar-handle"></div>
             </div>
           </div>
         </div>
+        <div class="sd-scrollbar sd-scrollbar-type-embed" style="display: flex; min-height: 0px;">
+          <div class="sd-scrollbar-container sd-table-body" style="max-height: 200px;" data-overlayscrollbars="host">
+            <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+              <div class="sd-table-element" style="width: 2000px; min-width: 2000px; --sd-table-grid-template: 80px 140px minmax(40px, 1fr) minmax(40px, 1fr) 200px;">
+                <div class="sd-table-tbody">
+                  <div class="sd-table-tr">
+                    <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><button type="button" class="sd-table-expand-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></button></span></div>
+                    <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Jane Doe</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">23000</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">32 Park Road, London</span></span></div>
+                    <div class="sd-table-td sd-table-col-fixed-right sd-table-col-fixed-right-first" style="right: 0px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">jane.doe@example.com</span></span></div>
+                  </div>
+                  <!---->
+                  <div class="sd-table-tr">
+                    <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><!----></span></div>
+                    <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Alisa Ross</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">25000</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">35 Park Road, London</span></span></div>
+                    <div class="sd-table-td sd-table-col-fixed-right sd-table-col-fixed-right-first" style="right: 0px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">alisa.ross@example.com</span></span></div>
+                  </div>
+                  <!---->
+                  <div class="sd-table-tr">
+                    <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><!----></span></div>
+                    <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Kevin Sandra</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">22000</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">31 Park Road, London</span></span></div>
+                    <div class="sd-table-td sd-table-col-fixed-right sd-table-col-fixed-right-first" style="right: 0px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">kevin.sandra@example.com</span></span></div>
+                  </div>
+                  <!---->
+                  <div class="sd-table-tr">
+                    <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><!----></span></div>
+                    <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Ed Hellen</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">17000</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">42 Park Road, London</span></span></div>
+                    <div class="sd-table-td sd-table-col-fixed-right sd-table-col-fixed-right-first" style="right: 0px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">ed.hellen@example.com</span></span></div>
+                  </div>
+                  <!---->
+                  <div class="sd-table-tr">
+                    <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><!----></span></div>
+                    <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">William Smith</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">27000</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">62 Park Road, London</span></span></div>
+                    <div class="sd-table-td sd-table-col-fixed-right sd-table-col-fixed-right-first" style="right: 0px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">william.smith@example.com</span></span></div>
+                  </div>
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+              <div class="os-scrollbar-track">
+                <div class="os-scrollbar-handle"></div>
+              </div>
+            </div>
+            <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+              <div class="os-scrollbar-track">
+                <div class="os-scrollbar-handle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!---->
+        <!---->
       </div>
     </div>
     <!---->
@@ -2851,7 +2837,7 @@ exports[`<table> demo: > render [row-selection] correctly 1`] = `
 `;
 
 exports[`<table> demo: > render [scroll] correctly 1`] = `
-<div style="margin-bottom: 20px;"><button type="button" role="switch" aria-checked="true" class="sd-switch sd-switch-type-circle sd-switch-checked"><span class="sd-switch-handle"><span class="sd-switch-handle-icon"></span></span><!--  prettier-ignore  -->
+<div class="sd:mb-5"><button type="button" role="switch" aria-checked="true" class="sd-switch sd-switch-type-circle sd-switch-checked"><span class="sd-switch-handle"><span class="sd-switch-handle-icon"></span></span><!--  prettier-ignore  -->
     <!--v-if-->
   </button> Virtual Scrollbar </div>
 <div class="sd-table sd-table-size-large sd-table-border sd-table-hover">
@@ -2859,11 +2845,125 @@ exports[`<table> demo: > render [scroll] correctly 1`] = `
   <div class="sd-spin">
     <!---->
     <div class="sd-table-container sd-table-scroll-position-both sd-table-scroll-y">
-      <div class="sd-scrollbar sd-scrollbar-type-embed" style="height: 100%;">
-        <div class="sd-scrollbar-container sd-table-content" data-overlayscrollbars="host">
-          <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
-            <div class="sd-table-header" style="overflow-x: hidden; overflow-y: hidden;">
+      <div class="sd-table-content">
+        <div class="sd-table-header" style="overflow-x: hidden; overflow-y: hidden;">
+          <div class="sd-table-element" style="width: 2000px; min-width: 2000px; --sd-table-grid-template: minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
+            <div class="sd-table-thead">
+              <div class="sd-table-tr">
+                <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Name</span>
+                  <!---->
+                  <!----></span>
+                  <!---->
+                  <!---->
+                </div>
+                <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Salary</span>
+                  <!---->
+                  <!----></span>
+                  <!---->
+                  <!---->
+                </div>
+                <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Address</span>
+                  <!---->
+                  <!----></span>
+                  <!---->
+                  <!---->
+                </div>
+                <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Email</span>
+                  <!---->
+                  <!----></span>
+                  <!---->
+                  <!---->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sd-scrollbar sd-scrollbar-type-embed" style="display: flex; min-height: 0px;">
+          <div class="sd-scrollbar-container sd-table-body" style="max-height: 200px;" data-overlayscrollbars="host">
+            <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
               <div class="sd-table-element" style="width: 2000px; min-width: 2000px; --sd-table-grid-template: minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
+                <div class="sd-table-tbody">
+                  <div class="sd-table-tr">
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Jane Doe</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">23000</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">32 Park Road, London</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">jane.doe@example.com</span></span></div>
+                  </div>
+                  <!---->
+                  <div class="sd-table-tr">
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Alisa Ross</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">25000</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">35 Park Road, London</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">alisa.ross@example.com</span></span></div>
+                  </div>
+                  <!---->
+                  <div class="sd-table-tr">
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Kevin Sandra</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">22000</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">31 Park Road, London</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">kevin.sandra@example.com</span></span></div>
+                  </div>
+                  <!---->
+                  <div class="sd-table-tr">
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Ed Hellen</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">17000</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">42 Park Road, London</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">ed.hellen@example.com</span></span></div>
+                  </div>
+                  <!---->
+                  <div class="sd-table-tr">
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">William Smith</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">27000</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">62 Park Road, London</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">william.smith@example.com</span></span></div>
+                  </div>
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+              <div class="os-scrollbar-track">
+                <div class="os-scrollbar-handle"></div>
+              </div>
+            </div>
+            <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+              <div class="os-scrollbar-track">
+                <div class="os-scrollbar-handle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!---->
+        <!---->
+      </div>
+    </div>
+    <!---->
+    <div class="sd-table-pagination sd-table-pagination-right">
+      <!---->
+      <div class="sd-pagination sd-pagination-size-medium">
+        <!---->
+        <ul class="sd-pagination-list"><span class="sd-pagination-item sd-pagination-item-previous sd-pagination-item-disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-left" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M32 8.4 16.444 23.956 32 39.513"></path></svg></span>
+          <li class="sd-pagination-item sd-pagination-item-active" pages="1">1</li>
+          <!----><span class="sd-pagination-item sd-pagination-item-next sd-pagination-item-disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m16 39.513 15.556-15.557L16 8.4"></path></svg></span>
+        </ul>
+        <!---->
+        <!---->
+      </div>
+      <!---->
+    </div>
+    <!---->
+  </div>
+</div>
+<div class="sd-split sd-split-vertical sd:h-125 sd:mt-7.5">
+  <div class="sd-split-pane sd-split-pane-first" style="flex: 0 0 calc(90% - 0px);">
+    <div class="sd-table sd-table-size-large sd-table-border sd-table-hover" style="height: 100%;">
+      <!---->
+      <div class="sd-spin">
+        <!---->
+        <div class="sd-table-container sd-table-scroll-position-both sd-table-scroll-y">
+          <div class="sd-table-content">
+            <div class="sd-table-header" style="overflow-x: hidden; overflow-y: hidden;">
+              <div class="sd-table-element" style="width: 120%; min-width: 120%; --sd-table-grid-template: minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
                 <div class="sd-table-thead">
                   <div class="sd-table-tr">
                     <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Name</span>
@@ -2895,9 +2995,9 @@ exports[`<table> demo: > render [scroll] correctly 1`] = `
               </div>
             </div>
             <div class="sd-scrollbar sd-scrollbar-type-embed" style="display: flex; min-height: 0px;">
-              <div class="sd-scrollbar-container sd-table-body" style="max-height: 200px;" data-overlayscrollbars="host">
+              <div class="sd-scrollbar-container sd-table-body" style="max-height: 100%;" data-overlayscrollbars="host">
                 <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
-                  <div class="sd-table-element" style="width: 2000px; min-width: 2000px; --sd-table-grid-template: minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
+                  <div class="sd-table-element" style="width: 120%; min-width: 120%; --sd-table-grid-template: minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
                     <div class="sd-table-tbody">
                       <div class="sd-table-tr">
                         <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Jane Doe</span></span></div>
@@ -2951,148 +3051,6 @@ exports[`<table> demo: > render [scroll] correctly 1`] = `
             </div>
             <!---->
             <!---->
-          </div>
-          <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-            <div class="os-scrollbar-track">
-              <div class="os-scrollbar-handle"></div>
-            </div>
-          </div>
-          <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-            <div class="os-scrollbar-track">
-              <div class="os-scrollbar-handle"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!---->
-    <div class="sd-table-pagination sd-table-pagination-right">
-      <!---->
-      <div class="sd-pagination sd-pagination-size-medium">
-        <!---->
-        <ul class="sd-pagination-list"><span class="sd-pagination-item sd-pagination-item-previous sd-pagination-item-disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-left" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M32 8.4 16.444 23.956 32 39.513"></path></svg></span>
-          <li class="sd-pagination-item sd-pagination-item-active" pages="1">1</li>
-          <!----><span class="sd-pagination-item sd-pagination-item-next sd-pagination-item-disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m16 39.513 15.556-15.557L16 8.4"></path></svg></span>
-        </ul>
-        <!---->
-        <!---->
-      </div>
-      <!---->
-    </div>
-    <!---->
-  </div>
-</div>
-<div class="sd-split sd-split-vertical" style="height: 500px; margin-top: 30px;">
-  <div class="sd-split-pane sd-split-pane-first" style="flex: 0 0 calc(90% - 0px);">
-    <div class="sd-table sd-table-size-large sd-table-border sd-table-hover" style="height: 100%;">
-      <!---->
-      <div class="sd-spin">
-        <!---->
-        <div class="sd-table-container sd-table-scroll-position-both sd-table-scroll-y">
-          <div class="sd-scrollbar sd-scrollbar-type-embed" style="height: 100%;">
-            <div class="sd-scrollbar-container sd-table-content" data-overlayscrollbars="host">
-              <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
-                <div class="sd-table-header" style="overflow-x: hidden; overflow-y: hidden;">
-                  <div class="sd-table-element" style="width: 120%; min-width: 120%; --sd-table-grid-template: minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
-                    <div class="sd-table-thead">
-                      <div class="sd-table-tr">
-                        <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Name</span>
-                          <!---->
-                          <!----></span>
-                          <!---->
-                          <!---->
-                        </div>
-                        <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Salary</span>
-                          <!---->
-                          <!----></span>
-                          <!---->
-                          <!---->
-                        </div>
-                        <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Address</span>
-                          <!---->
-                          <!----></span>
-                          <!---->
-                          <!---->
-                        </div>
-                        <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Email</span>
-                          <!---->
-                          <!----></span>
-                          <!---->
-                          <!---->
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="sd-scrollbar sd-scrollbar-type-embed" style="display: flex; min-height: 0px;">
-                  <div class="sd-scrollbar-container sd-table-body" style="max-height: 100%;" data-overlayscrollbars="host">
-                    <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
-                      <div class="sd-table-element" style="width: 120%; min-width: 120%; --sd-table-grid-template: minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
-                        <div class="sd-table-tbody">
-                          <div class="sd-table-tr">
-                            <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Jane Doe</span></span></div>
-                            <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">23000</span></span></div>
-                            <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">32 Park Road, London</span></span></div>
-                            <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">jane.doe@example.com</span></span></div>
-                          </div>
-                          <!---->
-                          <div class="sd-table-tr">
-                            <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Alisa Ross</span></span></div>
-                            <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">25000</span></span></div>
-                            <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">35 Park Road, London</span></span></div>
-                            <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">alisa.ross@example.com</span></span></div>
-                          </div>
-                          <!---->
-                          <div class="sd-table-tr">
-                            <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Kevin Sandra</span></span></div>
-                            <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">22000</span></span></div>
-                            <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">31 Park Road, London</span></span></div>
-                            <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">kevin.sandra@example.com</span></span></div>
-                          </div>
-                          <!---->
-                          <div class="sd-table-tr">
-                            <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Ed Hellen</span></span></div>
-                            <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">17000</span></span></div>
-                            <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">42 Park Road, London</span></span></div>
-                            <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">ed.hellen@example.com</span></span></div>
-                          </div>
-                          <!---->
-                          <div class="sd-table-tr">
-                            <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">William Smith</span></span></div>
-                            <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">27000</span></span></div>
-                            <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">62 Park Road, London</span></span></div>
-                            <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">william.smith@example.com</span></span></div>
-                          </div>
-                          <!---->
-                        </div>
-                      </div>
-                    </div>
-                    <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-                      <div class="os-scrollbar-track">
-                        <div class="os-scrollbar-handle"></div>
-                      </div>
-                    </div>
-                    <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-                      <div class="os-scrollbar-track">
-                        <div class="os-scrollbar-handle"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!---->
-                <!---->
-              </div>
-              <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-                <div class="os-scrollbar-track">
-                  <div class="os-scrollbar-handle"></div>
-                </div>
-              </div>
-              <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-                <div class="os-scrollbar-track">
-                  <div class="os-scrollbar-handle"></div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
         <!---->
@@ -3256,7 +3214,7 @@ exports[`<table> demo: > render [sort] correctly 1`] = `
 `;
 
 exports[`<table> demo: > render [span] correctly 1`] = `
-<div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px; width: 100%;">
+<div class="sd-space sd-space-vertical sd:w-full" style="column-gap: 24px; row-gap: 24px;">
   <!---->
   <div class="sd-space-item">
     <div class="sd-table sd-table-size-large sd-table-border sd-table-hover">
@@ -3613,110 +3571,96 @@ exports[`<table> demo: > render [sticky] correctly 1`] = `
   <div class="sd-spin">
     <!---->
     <div class="sd-table-container sd-table-scroll-y">
-      <div class="sd-scrollbar sd-scrollbar-type-embed" style="height: 100%;">
-        <div class="sd-scrollbar-container sd-table-content" data-overlayscrollbars="host">
-          <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
-            <div class="sd-table-header sd-table-header-sticky" style="overflow-x: hidden; overflow-y: hidden; top: 60px;">
-              <div class="sd-table-element" style="--sd-table-grid-template: minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
-                <div class="sd-table-thead">
-                  <div class="sd-table-tr">
-                    <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Name</span>
-                      <!---->
-                      <!----></span>
-                      <!---->
-                      <!---->
-                    </div>
-                    <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Salary</span>
-                      <!---->
-                      <!----></span>
-                      <!---->
-                      <!---->
-                    </div>
-                    <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Address</span>
-                      <!---->
-                      <!----></span>
-                      <!---->
-                      <!---->
-                    </div>
-                    <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Email</span>
-                      <!---->
-                      <!----></span>
-                      <!---->
-                      <!---->
-                    </div>
-                  </div>
+      <div class="sd-table-content">
+        <div class="sd-table-header sd-table-header-sticky" style="overflow-x: hidden; overflow-y: hidden; top: 60px;">
+          <div class="sd-table-element" style="--sd-table-grid-template: minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
+            <div class="sd-table-thead">
+              <div class="sd-table-tr">
+                <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Name</span>
+                  <!---->
+                  <!----></span>
+                  <!---->
+                  <!---->
+                </div>
+                <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Salary</span>
+                  <!---->
+                  <!----></span>
+                  <!---->
+                  <!---->
+                </div>
+                <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Address</span>
+                  <!---->
+                  <!----></span>
+                  <!---->
+                  <!---->
+                </div>
+                <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Email</span>
+                  <!---->
+                  <!----></span>
+                  <!---->
+                  <!---->
                 </div>
               </div>
-            </div>
-            <div class="sd-scrollbar sd-scrollbar-type-embed" style="display: flex; min-height: 0px;">
-              <div class="sd-scrollbar-container sd-table-body" style="max-height: 100%;" data-overlayscrollbars="host">
-                <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
-                  <div class="sd-table-element" style="--sd-table-grid-template: minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
-                    <div class="sd-table-tbody">
-                      <div class="sd-table-tr">
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Jane Doe</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">23000</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">32 Park Road, London</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">jane.doe@example.com</span></span></div>
-                      </div>
-                      <!---->
-                      <div class="sd-table-tr">
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Alisa Ross</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">25000</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">35 Park Road, London</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">alisa.ross@example.com</span></span></div>
-                      </div>
-                      <!---->
-                      <div class="sd-table-tr">
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Kevin Sandra</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">22000</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">31 Park Road, London</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">kevin.sandra@example.com</span></span></div>
-                      </div>
-                      <!---->
-                      <div class="sd-table-tr">
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Ed Hellen</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">17000</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">42 Park Road, London</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">ed.hellen@example.com</span></span></div>
-                      </div>
-                      <!---->
-                      <div class="sd-table-tr">
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">William Smith</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">27000</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">62 Park Road, London</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">william.smith@example.com</span></span></div>
-                      </div>
-                      <!---->
-                    </div>
-                  </div>
-                </div>
-                <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-                  <div class="os-scrollbar-track">
-                    <div class="os-scrollbar-handle"></div>
-                  </div>
-                </div>
-                <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-                  <div class="os-scrollbar-track">
-                    <div class="os-scrollbar-handle"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-            <div class="os-scrollbar-track">
-              <div class="os-scrollbar-handle"></div>
-            </div>
-          </div>
-          <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-            <div class="os-scrollbar-track">
-              <div class="os-scrollbar-handle"></div>
             </div>
           </div>
         </div>
+        <div class="sd-scrollbar sd-scrollbar-type-embed" style="display: flex; min-height: 0px;">
+          <div class="sd-scrollbar-container sd-table-body" style="max-height: 100%;" data-overlayscrollbars="host">
+            <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+              <div class="sd-table-element" style="--sd-table-grid-template: minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
+                <div class="sd-table-tbody">
+                  <div class="sd-table-tr">
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Jane Doe</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">23000</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">32 Park Road, London</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">jane.doe@example.com</span></span></div>
+                  </div>
+                  <!---->
+                  <div class="sd-table-tr">
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Alisa Ross</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">25000</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">35 Park Road, London</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">alisa.ross@example.com</span></span></div>
+                  </div>
+                  <!---->
+                  <div class="sd-table-tr">
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Kevin Sandra</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">22000</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">31 Park Road, London</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">kevin.sandra@example.com</span></span></div>
+                  </div>
+                  <!---->
+                  <div class="sd-table-tr">
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Ed Hellen</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">17000</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">42 Park Road, London</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">ed.hellen@example.com</span></span></div>
+                  </div>
+                  <!---->
+                  <div class="sd-table-tr">
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">William Smith</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">27000</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">62 Park Road, London</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">william.smith@example.com</span></span></div>
+                  </div>
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+              <div class="os-scrollbar-track">
+                <div class="os-scrollbar-handle"></div>
+              </div>
+            </div>
+            <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+              <div class="os-scrollbar-track">
+                <div class="os-scrollbar-handle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!---->
+        <!---->
       </div>
     </div>
     <!---->
@@ -3747,7 +3691,7 @@ exports[`<table> demo: > render [subtree] correctly 1`] = `
       <!--v-if-->
     </button></div>
 </div>
-<div class="sd-table sd-table-size-large sd-table-border sd-table-hover sd-table-type-selection" style="margin-top: 20px;">
+<div class="sd-table sd-table-size-large sd-table-border sd-table-hover sd-table-type-selection sd:mt-5">
   <!---->
   <div class="sd-spin">
     <!---->
@@ -4002,135 +3946,121 @@ exports[`<table> demo: > render [summary] correctly 1`] = `
   <div class="sd-spin">
     <!---->
     <div class="sd-table-container sd-table-has-fixed-col-left sd-table-scroll-position-both sd-table-scroll-y">
-      <div class="sd-scrollbar sd-scrollbar-type-embed" style="height: 100%;">
-        <div class="sd-scrollbar-container sd-table-content" data-overlayscrollbars="host">
-          <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
-            <div class="sd-table-header" style="overflow-x: hidden; overflow-y: hidden;">
-              <div class="sd-table-element" style="width: 2000px; min-width: 2000px; --sd-table-grid-template: 80px 140px minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
-                <div class="sd-table-thead">
-                  <div class="sd-table-tr">
-                    <div class="sd-table-th sd-table-operation sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell">Expand</span></div>
-                    <div class="sd-table-th sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Name</span>
-                      <!---->
-                      <!----></span>
-                      <!---->
-                      <!---->
-                    </div>
-                    <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Salary</span>
-                      <!---->
-                      <!----></span>
-                      <!---->
-                      <!---->
-                    </div>
-                    <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Data1</span>
-                      <!---->
-                      <!----></span>
-                      <!---->
-                      <!---->
-                    </div>
-                    <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Data2</span>
-                      <!---->
-                      <!----></span>
-                      <!---->
-                      <!---->
-                    </div>
-                  </div>
+      <div class="sd-table-content">
+        <div class="sd-table-header" style="overflow-x: hidden; overflow-y: hidden;">
+          <div class="sd-table-element" style="width: 2000px; min-width: 2000px; --sd-table-grid-template: 80px 140px minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
+            <div class="sd-table-thead">
+              <div class="sd-table-tr">
+                <div class="sd-table-th sd-table-operation sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell">Expand</span></div>
+                <div class="sd-table-th sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Name</span>
+                  <!---->
+                  <!----></span>
+                  <!---->
+                  <!---->
+                </div>
+                <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Salary</span>
+                  <!---->
+                  <!----></span>
+                  <!---->
+                  <!---->
+                </div>
+                <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Data1</span>
+                  <!---->
+                  <!----></span>
+                  <!---->
+                  <!---->
+                </div>
+                <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Data2</span>
+                  <!---->
+                  <!----></span>
+                  <!---->
+                  <!---->
                 </div>
               </div>
-            </div>
-            <div class="sd-scrollbar sd-scrollbar-type-embed" style="display: flex; min-height: 0px;">
-              <div class="sd-scrollbar-container sd-table-body" style="max-height: 200px;" data-overlayscrollbars="host">
-                <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
-                  <div class="sd-table-element" style="width: 2000px; min-width: 2000px; --sd-table-grid-template: 80px 140px minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
-                    <div class="sd-table-tbody">
-                      <div class="sd-table-tr">
-                        <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><button type="button" class="sd-table-expand-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></button></span></div>
-                        <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Jane Doe</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">23000</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">10</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">8</span></span></div>
-                      </div>
-                      <!---->
-                      <div class="sd-table-tr">
-                        <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><!----></span></div>
-                        <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Alisa Ross</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">25000</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">9</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">-12</span></span></div>
-                      </div>
-                      <!---->
-                      <div class="sd-table-tr">
-                        <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><!----></span></div>
-                        <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Kevin Sandra</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">22000</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">15</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">-2</span></span></div>
-                      </div>
-                      <!---->
-                      <div class="sd-table-tr">
-                        <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><!----></span></div>
-                        <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Ed Hellen</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">17000</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">2</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">3</span></span></div>
-                      </div>
-                      <!---->
-                      <div class="sd-table-tr">
-                        <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><!----></span></div>
-                        <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">William Smith</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">27000</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">11</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">0</span></span></div>
-                      </div>
-                      <!---->
-                    </div>
-                  </div>
-                </div>
-                <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-                  <div class="os-scrollbar-track">
-                    <div class="os-scrollbar-handle"></div>
-                  </div>
-                </div>
-                <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-                  <div class="os-scrollbar-track">
-                    <div class="os-scrollbar-handle"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="sd-table-tfoot" style="overflow-y: hidden;">
-              <div class="sd-table-element" style="width: 2000px; min-width: 2000px; --sd-table-grid-template: 80px 140px minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
-                <div class="sd-table-tfoot-content">
-                  <div class="sd-table-tr sd-table-tr-summary">
-                    <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><!----></span></div>
-                    <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content"><div>Avg</div></span></span></div>
-                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content"><div>22800</div></span></span></div>
-                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content"><div style="color: red;">9.4</div></span></span></div>
-                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content"><div style="color: green;">-0.6</div></span></span></div>
-                  </div>
-                  <div class="sd-table-tr sd-table-tr-summary">
-                    <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><!----></span></div>
-                    <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content"><div>Sum</div></span></span></div>
-                    <div class="sd-table-td" style="background-color: rgb(var(--sdblue-6)); color: rgb(255, 255, 255);"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content"><div>114000</div></span></span></div>
-                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content"><div style="color: red;">47</div></span></span></div>
-                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content"><div style="color: green;">-3</div></span></span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!---->
-          </div>
-          <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-            <div class="os-scrollbar-track">
-              <div class="os-scrollbar-handle"></div>
-            </div>
-          </div>
-          <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-            <div class="os-scrollbar-track">
-              <div class="os-scrollbar-handle"></div>
             </div>
           </div>
         </div>
+        <div class="sd-scrollbar sd-scrollbar-type-embed" style="display: flex; min-height: 0px;">
+          <div class="sd-scrollbar-container sd-table-body" style="max-height: 200px;" data-overlayscrollbars="host">
+            <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+              <div class="sd-table-element" style="width: 2000px; min-width: 2000px; --sd-table-grid-template: 80px 140px minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
+                <div class="sd-table-tbody">
+                  <div class="sd-table-tr">
+                    <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><button type="button" class="sd-table-expand-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></button></span></div>
+                    <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Jane Doe</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">23000</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">10</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">8</span></span></div>
+                  </div>
+                  <!---->
+                  <div class="sd-table-tr">
+                    <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><!----></span></div>
+                    <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Alisa Ross</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">25000</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">9</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">-12</span></span></div>
+                  </div>
+                  <!---->
+                  <div class="sd-table-tr">
+                    <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><!----></span></div>
+                    <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Kevin Sandra</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">22000</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">15</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">-2</span></span></div>
+                  </div>
+                  <!---->
+                  <div class="sd-table-tr">
+                    <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><!----></span></div>
+                    <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Ed Hellen</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">17000</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">2</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">3</span></span></div>
+                  </div>
+                  <!---->
+                  <div class="sd-table-tr">
+                    <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><!----></span></div>
+                    <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">William Smith</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">27000</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">11</span></span></div>
+                    <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">0</span></span></div>
+                  </div>
+                  <!---->
+                </div>
+              </div>
+            </div>
+            <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+              <div class="os-scrollbar-track">
+                <div class="os-scrollbar-handle"></div>
+              </div>
+            </div>
+            <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+              <div class="os-scrollbar-track">
+                <div class="os-scrollbar-handle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sd-table-tfoot" style="overflow-y: hidden;">
+          <div class="sd-table-element" style="width: 2000px; min-width: 2000px; --sd-table-grid-template: 80px 140px minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
+            <div class="sd-table-tfoot-content">
+              <div class="sd-table-tr sd-table-tr-summary">
+                <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><!----></span></div>
+                <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content"><div class="">Avg</div></span></span></div>
+                <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content"><div class="">22800</div></span></span></div>
+                <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content"><div class="sd:text-[red]">9.4</div></span></span></div>
+                <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content"><div class="sd:text-[green]">-0.6</div></span></span></div>
+              </div>
+              <div class="sd-table-tr sd-table-tr-summary">
+                <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><!----></span></div>
+                <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 80px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content"><div class="">Sum</div></span></span></div>
+                <div class="sd-table-td" style="background-color: rgb(var(--sdblue-6)); color: rgb(255, 255, 255);"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content"><div class="">114000</div></span></span></div>
+                <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content"><div class="sd:text-[red]">47</div></span></span></div>
+                <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content"><div class="sd:text-[green]">-3</div></span></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!---->
       </div>
     </div>
     <!---->
@@ -4154,10 +4084,10 @@ exports[`<table> demo: > render [summary] correctly 1`] = `
 
 exports[`<table> demo: > render [virtual-list] correctly 1`] = `
 <div>
-  <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; align-items: center;"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="estimated"><span class="sd-radio-button-content">estimatedSize</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="fixed"><span class="sd-radio-button-content">itemSize</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="dynamic"><span class="sd-radio-button-content">minItemSize</span></label></span><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="280"><span class="sd-radio-button-content">高 280</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="360"><span class="sd-radio-button-content">高 360</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="480"><span class="sd-radio-button-content">高 480</span></label></span></div>
-  <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; align-items: center;"><label style="display: inline-flex; gap: 8px; align-items: center; color: var(--color-text-2); font-size: 13px;"><input type="checkbox"><span>使用组件库 scrollbar</span></label><label style="display: inline-flex; gap: 8px; align-items: center; color: var(--color-text-2); font-size: 13px;"><input type="checkbox"><span>开启 sticky header</span></label></div>
-  <div style="margin-bottom: 12px; color: var(--color-text-2); font-size: 12px; line-height: 1.6;">estimatedSize 适合常规表格场景：给出一个接近真实行高的估值，例如 42，可让首次滚动和定位更平滑。</div>
-  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;"><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-small sd-btn-status-normal" type="button">
+  <div class="sd:mb-3 sd:flex sd:flex-wrap sd:items-center sd:gap-3"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="estimated"><span class="sd-radio-button-content">estimatedSize</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="fixed"><span class="sd-radio-button-content">itemSize</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="dynamic"><span class="sd-radio-button-content">minItemSize</span></label></span><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="280"><span class="sd-radio-button-content">高 280</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="360"><span class="sd-radio-button-content">高 360</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="480"><span class="sd-radio-button-content">高 480</span></label></span></div>
+  <div class="sd:mb-3 sd:flex sd:flex-wrap sd:items-center sd:gap-3"><label class="sd:inline-flex sd:items-center sd:gap-2 sd:text-[13px] sd:text-[var(--color-text-2)]"><input type="checkbox"><span>使用组件库 scrollbar</span></label><label class="sd:inline-flex sd:items-center sd:gap-2 sd:text-[13px] sd:text-[var(--color-text-2)]"><input type="checkbox"><span>开启 sticky header</span></label></div>
+  <div class="sd:mb-3 sd:text-[var(--color-text-2)] sd:text-xs sd:leading-[1.6]">estimatedSize 适合常规表格场景：给出一个接近真实行高的估值，例如 42，可让首次滚动和定位更平滑。</div>
+  <div class="sd:mb-3 sd:flex sd:flex-wrap sd:gap-2"><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-small sd-btn-status-normal" type="button">
       <!--v-if-->顶部
     </button><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-small sd-btn-status-normal" type="button">
       <!--v-if-->第 48 行
@@ -4172,170 +4102,156 @@ exports[`<table> demo: > render [virtual-list] correctly 1`] = `
       <div class="sd-spin">
         <!---->
         <div class="sd-table-container sd-table-has-fixed-col-left sd-table-scroll-position-both sd-table-scroll-y">
-          <div class="sd-scrollbar sd-scrollbar-type-embed" style="height: 100%;">
-            <div class="sd-scrollbar-container sd-table-content" data-overlayscrollbars="host">
-              <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
-                <div class="sd-table-header" style="overflow-x: hidden; overflow-y: hidden;">
-                  <div class="sd-table-element" style="width: 1120px; min-width: 1120px; --sd-table-grid-template: 88px 40px 160px 260px 280px 320px;">
-                    <div class="sd-table-thead">
-                      <div class="sd-table-tr">
-                        <div class="sd-table-th sd-table-operation sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell">展开</span></div>
-                        <div class="sd-table-th sd-table-operation sd-table-checkbox sd-table-col-fixed-left" style="left: 88px;"><span class="sd-table-cell"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
-                          <!----></label></span>
-                        </div>
-                        <div class="sd-table-th sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 128px;"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">姓名</span>
-                          <!---->
-                          <!----></span>
-                          <!---->
-                          <!---->
-                        </div>
-                        <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">地址</span>
-                          <!---->
-                          <!----></span>
-                          <!---->
-                          <!---->
-                        </div>
-                        <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">邮箱</span>
-                          <!---->
-                          <!----></span>
-                          <!---->
-                          <!---->
-                        </div>
-                        <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">备注</span>
-                          <!---->
-                          <!----></span>
-                          <!---->
-                          <!---->
-                        </div>
-                      </div>
+          <div class="sd-table-content">
+            <div class="sd-table-header" style="overflow-x: hidden; overflow-y: hidden;">
+              <div class="sd-table-element" style="width: 1120px; min-width: 1120px; --sd-table-grid-template: 88px 40px 160px 260px 280px 320px;">
+                <div class="sd-table-thead">
+                  <div class="sd-table-tr">
+                    <div class="sd-table-th sd-table-operation sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell">展开</span></div>
+                    <div class="sd-table-th sd-table-operation sd-table-checkbox sd-table-col-fixed-left" style="left: 88px;"><span class="sd-table-cell"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                      <!----></label></span>
+                    </div>
+                    <div class="sd-table-th sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 128px;"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">姓名</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </div>
+                    <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">地址</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </div>
+                    <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">邮箱</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
+                    </div>
+                    <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">备注</span>
+                      <!---->
+                      <!----></span>
+                      <!---->
+                      <!---->
                     </div>
                   </div>
-                </div>
-                <div class="sd-table-element" style="width: 1120px; min-width: 1120px; --sd-table-grid-template: 88px 40px 160px 260px 280px 320px;">
-                  <div class="sd-table-tbody">
-                    <div class="sd-virtual-list sd-scrollbar sd-scrollbar-type-embed sd-virtual-list-scrollbar sd-table-body" style="height: 360px;" data-overlayscrollbars="host">
-                      <div class="vue-recycle-scroller ready direction-vertical sd-virtual-list-scroller" style="min-height: 0px; height: 100%; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;" height="360" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1">
-                        <div class="vue-recycle-scroller__slot"></div>
-                        <div style="min-height: 50400px;" class="vue-recycle-scroller__item-wrapper">
-                          <!---->
-                          <div class="vue-recycle-scroller__item-view" style="visibility: visible; position: absolute; top: 0px; left: 0px; transform: translateY(168px) translateX(0px); will-change: transform;">
-                            <div>
-                              <div class="sd-table-virtual-item">
-                                <div class="sd-table-tr">
-                                  <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><button type="button" class="sd-table-expand-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></button></span></div>
-                                  <div class="sd-table-td sd-table-operation sd-table-checkbox sd-table-col-fixed-left" style="left: 88px;"><span class="sd-table-cell"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
-                                    <!----></label></span>
-                                  </div>
-                                  <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 128px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">用户 5</span></span></div>
-                                  <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">5 Park Road, London</span></span></div>
-                                  <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">user.5@example.com</span></span></div>
-                                  <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">这是一条更长的备注，用来观察表格在虚拟滚动、固定列和横向滚动并存时的表现。</span></span></div>
-                                </div>
-                                <!---->
-                              </div>
-                            </div>
-                          </div>
-                          <div class="vue-recycle-scroller__item-view" style="visibility: visible; position: absolute; top: 0px; left: 0px; transform: translateY(126px) translateX(0px); will-change: transform;">
-                            <div>
-                              <div class="sd-table-virtual-item">
-                                <div class="sd-table-tr">
-                                  <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><button type="button" class="sd-table-expand-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></button></span></div>
-                                  <div class="sd-table-td sd-table-operation sd-table-checkbox sd-table-col-fixed-left" style="left: 88px;"><span class="sd-table-cell"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
-                                    <!----></label></span>
-                                  </div>
-                                  <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 128px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">用户 4</span></span></div>
-                                  <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">4 Park Road, London</span></span></div>
-                                  <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">user.4@example.com</span></span></div>
-                                  <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">普通备注</span></span></div>
-                                </div>
-                                <!---->
-                              </div>
-                            </div>
-                          </div>
-                          <div class="vue-recycle-scroller__item-view" style="visibility: visible; position: absolute; top: 0px; left: 0px; transform: translateY(84px) translateX(0px); will-change: transform;">
-                            <div>
-                              <div class="sd-table-virtual-item">
-                                <div class="sd-table-tr">
-                                  <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><button type="button" class="sd-table-expand-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></button></span></div>
-                                  <div class="sd-table-td sd-table-operation sd-table-checkbox sd-table-col-fixed-left" style="left: 88px;"><span class="sd-table-cell"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
-                                    <!----></label></span>
-                                  </div>
-                                  <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 128px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">用户 3</span></span></div>
-                                  <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">3 Park Road, London</span></span></div>
-                                  <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">user.3@example.com</span></span></div>
-                                  <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">普通备注</span></span></div>
-                                </div>
-                                <!---->
-                              </div>
-                            </div>
-                          </div>
-                          <div class="vue-recycle-scroller__item-view" style="visibility: visible; position: absolute; top: 0px; left: 0px; transform: translateY(42px) translateX(0px); will-change: transform;">
-                            <div>
-                              <div class="sd-table-virtual-item">
-                                <div class="sd-table-tr">
-                                  <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><button type="button" class="sd-table-expand-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></button></span></div>
-                                  <div class="sd-table-td sd-table-operation sd-table-checkbox sd-table-col-fixed-left" style="left: 88px;"><span class="sd-table-cell"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
-                                    <!----></label></span>
-                                  </div>
-                                  <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 128px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">用户 2</span></span></div>
-                                  <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">2 Park Road, London</span></span></div>
-                                  <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">user.2@example.com</span></span></div>
-                                  <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">普通备注</span></span></div>
-                                </div>
-                                <!---->
-                              </div>
-                            </div>
-                          </div>
-                          <div class="vue-recycle-scroller__item-view" style="visibility: visible; position: absolute; top: 0px; left: 0px; transform: translateY(0px) translateX(0px); will-change: transform;">
-                            <div>
-                              <div class="sd-table-virtual-item">
-                                <div class="sd-table-tr">
-                                  <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><button type="button" class="sd-table-expand-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></button></span></div>
-                                  <div class="sd-table-td sd-table-operation sd-table-checkbox sd-table-col-fixed-left" style="left: 88px;"><span class="sd-table-cell"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
-                                    <!----></label></span>
-                                  </div>
-                                  <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 128px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">用户 1</span></span></div>
-                                  <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">1 Park Road, London</span></span></div>
-                                  <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">user.1@example.com</span></span></div>
-                                  <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">这是一条更长的备注，用来观察表格在虚拟滚动、固定列和横向滚动并存时的表现。</span></span></div>
-                                </div>
-                                <!---->
-                              </div>
-                            </div>
-                          </div>
-                          <!---->
-                          <!---->
-                        </div>
-                        <div class="vue-recycle-scroller__slot"></div>
-                        <div data-v-08cc04ab="" class="vue-recycle-scroller__resize-observer" aria-hidden="true"></div>
-                      </div>
-                      <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-                        <div class="os-scrollbar-track">
-                          <div class="os-scrollbar-handle"></div>
-                        </div>
-                      </div>
-                      <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-                        <div class="os-scrollbar-track">
-                          <div class="os-scrollbar-handle"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!---->
-                <!---->
-              </div>
-              <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-                <div class="os-scrollbar-track">
-                  <div class="os-scrollbar-handle"></div>
-                </div>
-              </div>
-              <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-                <div class="os-scrollbar-track">
-                  <div class="os-scrollbar-handle"></div>
                 </div>
               </div>
             </div>
+            <div class="sd-table-element" style="width: 1120px; min-width: 1120px; --sd-table-grid-template: 88px 40px 160px 260px 280px 320px;">
+              <div class="sd-table-tbody">
+                <div class="sd-virtual-list sd-scrollbar sd-scrollbar-type-embed sd-virtual-list-scrollbar sd-table-body" style="height: 360px;" data-overlayscrollbars="host">
+                  <div class="vue-recycle-scroller ready direction-vertical sd-virtual-list-scroller" style="min-height: 0px; height: 100%; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;" height="360" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1">
+                    <div class="vue-recycle-scroller__slot"></div>
+                    <div style="min-height: 50400px;" class="vue-recycle-scroller__item-wrapper">
+                      <!---->
+                      <div class="vue-recycle-scroller__item-view" style="visibility: visible; position: absolute; top: 0px; left: 0px; transform: translateY(168px) translateX(0px); will-change: transform;">
+                        <div>
+                          <div class="sd-table-virtual-item">
+                            <div class="sd-table-tr">
+                              <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><button type="button" class="sd-table-expand-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></button></span></div>
+                              <div class="sd-table-td sd-table-operation sd-table-checkbox sd-table-col-fixed-left" style="left: 88px;"><span class="sd-table-cell"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                                <!----></label></span>
+                              </div>
+                              <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 128px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">用户 5</span></span></div>
+                              <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">5 Park Road, London</span></span></div>
+                              <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">user.5@example.com</span></span></div>
+                              <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">这是一条更长的备注，用来观察表格在虚拟滚动、固定列和横向滚动并存时的表现。</span></span></div>
+                            </div>
+                            <!---->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="vue-recycle-scroller__item-view" style="visibility: visible; position: absolute; top: 0px; left: 0px; transform: translateY(126px) translateX(0px); will-change: transform;">
+                        <div>
+                          <div class="sd-table-virtual-item">
+                            <div class="sd-table-tr">
+                              <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><button type="button" class="sd-table-expand-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></button></span></div>
+                              <div class="sd-table-td sd-table-operation sd-table-checkbox sd-table-col-fixed-left" style="left: 88px;"><span class="sd-table-cell"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                                <!----></label></span>
+                              </div>
+                              <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 128px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">用户 4</span></span></div>
+                              <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">4 Park Road, London</span></span></div>
+                              <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">user.4@example.com</span></span></div>
+                              <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">普通备注</span></span></div>
+                            </div>
+                            <!---->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="vue-recycle-scroller__item-view" style="visibility: visible; position: absolute; top: 0px; left: 0px; transform: translateY(84px) translateX(0px); will-change: transform;">
+                        <div>
+                          <div class="sd-table-virtual-item">
+                            <div class="sd-table-tr">
+                              <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><button type="button" class="sd-table-expand-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></button></span></div>
+                              <div class="sd-table-td sd-table-operation sd-table-checkbox sd-table-col-fixed-left" style="left: 88px;"><span class="sd-table-cell"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                                <!----></label></span>
+                              </div>
+                              <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 128px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">用户 3</span></span></div>
+                              <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">3 Park Road, London</span></span></div>
+                              <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">user.3@example.com</span></span></div>
+                              <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">普通备注</span></span></div>
+                            </div>
+                            <!---->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="vue-recycle-scroller__item-view" style="visibility: visible; position: absolute; top: 0px; left: 0px; transform: translateY(42px) translateX(0px); will-change: transform;">
+                        <div>
+                          <div class="sd-table-virtual-item">
+                            <div class="sd-table-tr">
+                              <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><button type="button" class="sd-table-expand-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></button></span></div>
+                              <div class="sd-table-td sd-table-operation sd-table-checkbox sd-table-col-fixed-left" style="left: 88px;"><span class="sd-table-cell"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                                <!----></label></span>
+                              </div>
+                              <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 128px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">用户 2</span></span></div>
+                              <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">2 Park Road, London</span></span></div>
+                              <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">user.2@example.com</span></span></div>
+                              <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">普通备注</span></span></div>
+                            </div>
+                            <!---->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="vue-recycle-scroller__item-view" style="visibility: visible; position: absolute; top: 0px; left: 0px; transform: translateY(0px) translateX(0px); will-change: transform;">
+                        <div>
+                          <div class="sd-table-virtual-item">
+                            <div class="sd-table-tr">
+                              <div class="sd-table-td sd-table-operation sd-table-expand sd-table-col-fixed-left" style="left: 0px;"><span class="sd-table-cell"><button type="button" class="sd-table-expand-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></button></span></div>
+                              <div class="sd-table-td sd-table-operation sd-table-checkbox sd-table-col-fixed-left" style="left: 88px;"><span class="sd-table-cell"><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+                                <!----></label></span>
+                              </div>
+                              <div class="sd-table-td sd-table-col-fixed-left sd-table-col-fixed-left-last" style="left: 128px;"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">用户 1</span></span></div>
+                              <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">1 Park Road, London</span></span></div>
+                              <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">user.1@example.com</span></span></div>
+                              <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">这是一条更长的备注，用来观察表格在虚拟滚动、固定列和横向滚动并存时的表现。</span></span></div>
+                            </div>
+                            <!---->
+                          </div>
+                        </div>
+                      </div>
+                      <!---->
+                      <!---->
+                    </div>
+                    <div class="vue-recycle-scroller__slot"></div>
+                    <div data-v-08cc04ab="" class="vue-recycle-scroller__resize-observer" aria-hidden="true"></div>
+                  </div>
+                  <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+                    <div class="os-scrollbar-track">
+                      <div class="os-scrollbar-handle"></div>
+                    </div>
+                  </div>
+                  <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+                    <div class="os-scrollbar-track">
+                      <div class="os-scrollbar-handle"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!---->
+            <!---->
           </div>
         </div>
         <!---->

@@ -6,25 +6,12 @@
       <sd-radio value="medium">medium</sd-radio>
       <sd-radio value="large">large</sd-radio>
     </sd-radio-group>
-    <sd-input
-      :style="{ width: '320px' }"
-      placeholder="Please enter something"
-      :size="size"
-      allow-clear
-    />
+    <sd-input class="sd:w-80" placeholder="Please enter something" :size="size" allow-clear />
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const size = ref('medium');
-
-      return {
-        size,
-      };
-    },
-  };
+  const size = ref('medium');
 </script>

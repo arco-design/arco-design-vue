@@ -1,5 +1,5 @@
 <template>
-  <sd-checkbox v-model="checked" style="margin-bottom: 20px"> checkable </sd-checkbox>
+  <sd-checkbox v-model="checked" class="sd:mb-5"> checkable </sd-checkbox>
   <sd-tree
     class="tree-demo"
     draggable
@@ -9,51 +9,8 @@
     @drop="onDrop"
   />
 </template>
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
-  export default {
-    setup() {
-      const treeData = ref(defaultTreeData);
-      const checkedKeys = ref([]);
-      const checked = ref(false);
-
-      return {
-        treeData,
-        checkedKeys,
-        checked,
-        onDrop({ dragNode, dropNode, dropPosition }) {
-          const data = treeData.value;
-          const loop = (data, key, callback) => {
-            data.some((item, index, arr) => {
-              if (item.key === key) {
-                callback(item, index, arr);
-                return true;
-              }
-              if (item.children) {
-                return loop(item.children, key, callback);
-              }
-              return false;
-            });
-          };
-
-          loop(data, dragNode.key, (_, index, arr) => {
-            arr.splice(index, 1);
-          });
-
-          if (dropPosition === 0) {
-            loop(data, dropNode.key, (item) => {
-              item.children = item.children || [];
-              item.children.push(dragNode);
-            });
-          } else {
-            loop(data, dropNode.key, (_, index, arr) => {
-              arr.splice(dropPosition < 0 ? index : index + 1, 0, dragNode);
-            });
-          }
-        },
-      };
-    },
-  };
 
   const defaultTreeData = [
     {
@@ -104,6 +61,41 @@
       ],
     },
   ];
+
+  const treeData = ref(defaultTreeData);
+  const checkedKeys = ref([]);
+  const checked = ref(false);
+
+  function onDrop({ dragNode, dropNode, dropPosition }) {
+    const data = treeData.value;
+    const loop = (data, key, callback) => {
+      data.some((item, index, arr) => {
+        if (item.key === key) {
+          callback(item, index, arr);
+          return true;
+        }
+        if (item.children) {
+          return loop(item.children, key, callback);
+        }
+        return false;
+      });
+    };
+
+    loop(data, dragNode.key, (_, index, arr) => {
+      arr.splice(index, 1);
+    });
+
+    if (dropPosition === 0) {
+      loop(data, dropNode.key, (item) => {
+        item.children = item.children || [];
+        item.children.push(dragNode);
+      });
+    } else {
+      loop(data, dropNode.key, (_, index, arr) => {
+        arr.splice(dropPosition < 0 ? index : index + 1, 0, dragNode);
+      });
+    }
+  }
 </script>
 <style scoped>
   .tree-demo :deep(.tree-node-dropover) > :deep(.sd-tree-node-title),

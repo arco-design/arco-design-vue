@@ -212,7 +212,7 @@ exports[`<transfer> demo: > render [custom-header] correctly 1`] = `
 <div class="sd-transfer">
   <div class="sd-transfer-view sd-transfer-view-source">
     <div class="sd-transfer-view-header">
-      <div style="display: flex; align-items: center; justify-content: space-between; padding-right: 8px;"> Source Title 0-5 <label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
+      <div class="sd:flex sd:items-center sd:justify-between sd:pr-2"> Source Title 0-5 <label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
           <!---->
         </label></div>
     </div>
@@ -269,7 +269,7 @@ exports[`<transfer> demo: > render [custom-header] correctly 1`] = `
   <div class="sd-transfer-operations"><button class="sd-btn sd-btn-secondary sd-btn-shape-round sd-btn-size-small sd-btn-status-normal sd-btn-disabled sd-btn-only-icon" type="button" disabled="" tabindex="-1" aria-label="Move selected right"><span class="sd-btn-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m16 39.513 15.556-15.557L16 8.4"></path></svg></span></button><button class="sd-btn sd-btn-secondary sd-btn-shape-round sd-btn-size-small sd-btn-status-normal sd-btn-disabled sd-btn-only-icon" type="button" disabled="" tabindex="-1" aria-label="Move selected left"><span class="sd-btn-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-left" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M32 8.4 16.444 23.956 32 39.513"></path></svg></span></button></div>
   <div class="sd-transfer-view sd-transfer-view-target">
     <div class="sd-transfer-view-header">
-      <div style="display: flex; align-items: center; justify-content: space-between; padding-right: 8px;"> Target Title 0-3 <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-delete" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+      <div class="sd:flex sd:items-center sd:justify-between sd:pr-2"> Target Title 0-3 <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-delete" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
           <path d="M5 11h5.5m0 0v29a1 1 0 0 0 1 1h25a1 1 0 0 0 1-1V11m-27 0H16m21.5 0H43m-5.5 0H32m-16 0V7h16v4m-16 0h16M20 18v15m8-15v15"></path>
         </svg></div>
     </div>

@@ -1,12 +1,8 @@
 <template>
-  <sd-time-picker format="HH:mm" :defaultValue="defaultValue" style="width: 130px" />
+  <sd-time-picker format="HH:mm" :defaultValue="defaultValue" class="sd:w-32.5" />
 </template>
-<script>
-  export default {
-    data() {
-      return {
-        defaultValue: '09:24',
-      };
-    },
-  };
+<script setup lang="ts">
+  import { shallowRef } from 'vue';
+
+  const defaultValue = shallowRef('09:24');
 </script>

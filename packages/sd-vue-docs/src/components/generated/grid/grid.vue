@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-bottom: 20px">
+  <div class="sd:mb-5">
     <sd-typography-text>折叠：</sd-typography-text>
     <sd-switch :checked="collapsed" @click="collapsed = !collapsed" />
   </div>
@@ -18,18 +18,10 @@
   </sd-grid>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const collapsed = ref(false);
-
-      return {
-        collapsed,
-      };
-    },
-  };
+  const collapsed = ref(false);
 </script>
 
 <style scoped>

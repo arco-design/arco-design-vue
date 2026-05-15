@@ -16,16 +16,8 @@
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const size = ref('medium');
-
-      return {
-        size,
-      };
-    },
-  };
+  const size = ref('medium');
 </script>

@@ -44,37 +44,27 @@
   </sd-config-provider>
 </template>
 
-<script>
+<script setup lang="ts">
   import { IconTrophy } from '@sdata/web-vue/es/icon/index.js';
 
-  export default {
-    components: {
-      IconTrophy,
+  const columns = [
+    {
+      title: 'Name',
+      dataIndex: 'name',
     },
-    setup() {
-      const columns = [
-        {
-          title: 'Name',
-          dataIndex: 'name',
-        },
-        {
-          title: 'Salary',
-          dataIndex: 'salary',
-        },
-        {
-          title: 'Address',
-          dataIndex: 'address',
-        },
-        {
-          title: 'Email',
-          dataIndex: 'email',
-        },
-      ];
-      return {
-        columns,
-      };
+    {
+      title: 'Salary',
+      dataIndex: 'salary',
     },
-  };
+    {
+      title: 'Address',
+      dataIndex: 'address',
+    },
+    {
+      title: 'Email',
+      dataIndex: 'email',
+    },
+  ];
 </script>
 
 <style>

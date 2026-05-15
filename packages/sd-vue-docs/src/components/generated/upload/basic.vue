@@ -1,6 +1,6 @@
 <template>
-  <sd-space direction="vertical" :style="{ width: '100%' }">
+  <sd-space direction="vertical" class="sd:w-full">
     <sd-upload action="/" />
-    <sd-upload action="/" disabled style="margin-top: 40px" />
+    <sd-upload action="/" disabled class="sd:mt-10" />
   </sd-space>
 </template>

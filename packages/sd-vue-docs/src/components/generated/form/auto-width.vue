@@ -1,5 +1,5 @@
 <template>
-  <sd-form :model="form" :style="{ width: '600px' }" auto-label-width @submit="handleSubmit">
+  <sd-form :model="form" class="sd:w-150" auto-label-width @submit="handleSubmit">
     <sd-form-item field="name" label="Username">
       <sd-input v-model="form.name" placeholder="please enter your username..." />
     </sd-form-item>
@@ -16,24 +16,15 @@
   {{ form }}
 </template>
 
-<script>
+<script setup lang="ts">
   import { reactive } from 'vue';
 
-  export default {
-    setup() {
-      const form = reactive({
-        name: '',
-        post: '',
-        isRead: false,
-      });
-      const handleSubmit = (data) => {
-        console.log(data);
-      };
-
-      return {
-        form,
-        handleSubmit,
-      };
-    },
+  const form = reactive({
+    name: '',
+    post: '',
+    isRead: false,
+  });
+  const handleSubmit = (data) => {
+    console.log(data);
   };
 </script>

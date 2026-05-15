@@ -1,5 +1,5 @@
 <template>
-  <sd-space direction="vertical" size="large" :style="{ width: '600px' }">
+  <sd-space direction="vertical" size="large" class="sd:w-150">
     <sd-radio-group v-model="layout" type="button">
       <sd-radio value="horizontal">horizontal</sd-radio>
       <sd-radio value="vertical">vertical</sd-radio>
@@ -25,22 +25,13 @@
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { reactive, ref } from 'vue';
 
-  export default {
-    setup() {
-      const layout = ref('horizontal');
-      const form = reactive({
-        name: '',
-        post: '',
-        isRead: false,
-      });
-
-      return {
-        layout,
-        form,
-      };
-    },
-  };
+  const layout = ref('horizontal');
+  const form = reactive({
+    name: '',
+    post: '',
+    isRead: false,
+  });
 </script>

@@ -13,15 +13,8 @@
   </sd-tabs>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const trigger = ref('click');
-      return {
-        trigger,
-      };
-    },
-  };
+  const trigger = ref('click');
 </script>

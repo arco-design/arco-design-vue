@@ -1,6 +1,6 @@
 <template>
   <sd-select
-    :style="{ width: '320px' }"
+    class="sd:w-80"
     default-value="Beijing"
     placeholder="Please select ..."
     @dropdown-scroll="handleScroll"
@@ -16,20 +16,11 @@
   </sd-select>
 </template>
 
-<script>
-  export default {
-    setup() {
-      const handleScroll = (ev) => {
-        console.log('scroll', ev);
-      };
-      const handleReachBottom = (ev) => {
-        console.log('reach the bottom', ev);
-      };
-
-      return {
-        handleScroll,
-        handleReachBottom,
-      };
-    },
+<script setup lang="ts">
+  const handleScroll = (ev) => {
+    console.log('scroll', ev);
+  };
+  const handleReachBottom = (ev) => {
+    console.log('reach the bottom', ev);
   };
 </script>

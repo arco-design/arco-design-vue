@@ -5,7 +5,7 @@
     <sd-radio :model-value="checked2">binding value2</sd-radio>
     <sd-radio :default-checked="true">uncontrolled state</sd-radio>
   </sd-space>
-  <div :style="{ marginTop: '20px' }">
+  <div class="sd:mt-5">
     <sd-space size="large">
       <sd-button type="primary" @click="handleSetCheck">
         {{ checked2 ? 'uncheck' : 'check' }} value2
@@ -15,29 +15,18 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const checked1 = ref(false);
-      const checked2 = ref(false);
+  const checked1 = ref(false);
+  const checked2 = ref(false);
 
-      const handleSetCheck = () => {
-        checked2.value = !checked2.value;
-      };
+  const handleSetCheck = () => {
+    checked2.value = !checked2.value;
+  };
 
-      const handleReset = () => {
-        checked1.value = false;
-        checked2.value = false;
-      };
-
-      return {
-        checked1,
-        checked2,
-        handleSetCheck,
-        handleReset,
-      };
-    },
+  const handleReset = () => {
+    checked1.value = false;
+    checked2.value = false;
   };
 </script>

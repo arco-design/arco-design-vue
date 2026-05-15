@@ -1,33 +1,46 @@
 <template>
-  <div class="divider-demo">
+  <div
+    class="sd:box-border sd:w-140 sd:border-30 sd:border-solid sd:border-[rgb(var(--gray-2))] sd:p-6"
+  >
     <p>A design is a plan or specification for the construction of an object.</p>
     <sd-divider />
     <p>A design is a plan or specification for the construction of an object.</p>
     <sd-divider dashed />
     <p>A design is a plan or specification for the construction of an object.</p>
-    <sd-divider :size="2" style="border-bottom-style: dotted" />
+    <sd-divider :size="2" class="sd:[border-bottom-style:dotted]" />
     <p>A design is a plan or specification for the construction of an object.</p>
   </div>
-  <div class="divider-demo" style="margintop: 48px">
-    <div class="flex-box">
-      <span class="avatar"><IconImage /></span>
-      <div class="content">
+  <div
+    class="sd:mt-12 sd:box-border sd:w-140 sd:border-30 sd:border-solid sd:border-[rgb(var(--gray-2))] sd:p-6"
+  >
+    <div class="sd:flex sd:items-center sd:justify-center">
+      <span
+        class="sd:flex sd:h-10 sd:w-10 sd:items-center sd:justify-center sd:mr-4 sd:rounded-[50%] sd:bg-[var(--color-fill-3)] sd:text-base sd:text-[var(--color-text-2)]"
+        ><IconImage
+      /></span>
+      <div class="sd:flex-1 sd:text-xs sd:leading-5 sd:text-[var(--color-text-2)]">
         <sd-typography-title :heading="6">Image</sd-typography-title>
         May 4, 2010
       </div>
     </div>
-    <sd-divider class="half-divider" />
-    <div class="flex-box">
-      <span class="avatar"><IconUser /></span>
-      <div class="content">
+    <sd-divider class="sd:left-[55px] sd:w-[calc(100%-55px)] sd:min-w-auto sd:my-4" />
+    <div class="sd:flex sd:items-center sd:justify-center">
+      <span
+        class="sd:flex sd:h-10 sd:w-10 sd:items-center sd:justify-center sd:mr-4 sd:rounded-[50%] sd:bg-[var(--color-fill-3)] sd:text-base sd:text-[var(--color-text-2)]"
+        ><IconUser
+      /></span>
+      <div class="sd:flex-1 sd:text-xs sd:leading-5 sd:text-[var(--color-text-2)]">
         <sd-typography-title :heading="6">Avatar</sd-typography-title>
         May 4, 2010
       </div>
     </div>
-    <sd-divider class="half-divider" />
-    <div class="flex-box">
-      <span class="avatar"><IconPen /></span>
-      <div class="content">
+    <sd-divider class="sd:left-[55px] sd:w-[calc(100%-55px)] sd:min-w-auto sd:my-4" />
+    <div class="sd:flex sd:items-center sd:justify-center">
+      <span
+        class="sd:flex sd:h-10 sd:w-10 sd:items-center sd:justify-center sd:mr-4 sd:rounded-[50%] sd:bg-[var(--color-fill-3)] sd:text-base sd:text-[var(--color-text-2)]"
+        ><IconPen
+      /></span>
+      <div class="sd:flex-1 sd:text-xs sd:leading-5 sd:text-[var(--color-text-2)]">
         <sd-typography-title :heading="6">Icon</sd-typography-title>
         May 4, 2010
       </div>
@@ -35,56 +48,6 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
   import { IconImage, IconUser, IconPen } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    components: {
-      IconImage,
-      IconUser,
-      IconPen,
-    },
-  };
 </script>
-
-<style scoped>
-  .divider-demo {
-    box-sizing: border-box;
-    width: 560px;
-    padding: 24px;
-    border: 30px solid rgb(var(--gray-2));
-  }
-
-  .half-divider {
-    left: 55px;
-    width: calc(100% - 55px);
-    min-width: auto;
-    margin: 16px 0;
-  }
-
-  .flex-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .flex-box .avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    margin-right: 16px;
-    color: var(--color-text-2);
-    font-size: 16px;
-    background-color: var(--color-fill-3);
-    border-radius: 50%;
-  }
-
-  .flex-box .content {
-    flex: 1;
-    color: var(--color-text-2);
-    font-size: 12px;
-    line-height: 20px;
-  }
-</style>

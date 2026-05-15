@@ -31,10 +31,6 @@
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { IconUser } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    components: { IconUser },
-  };
 </script>

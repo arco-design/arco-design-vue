@@ -18,7 +18,7 @@
     v-model:activeKey="activeKey"
     :position="position"
     :scrollPosition="scrollPosition"
-    style="width: 100%; height: 300px; margin-top: 20px"
+    class="sd:w-full sd:h-75 sd:mt-5"
   >
     <sd-tab-pane v-for="tab in tabs" :key="tab.key" :title="tab.title">
       {{ tab.content }}
@@ -26,33 +26,21 @@
   </sd-tabs>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const position = ref('top');
-      const scrollPosition = ref('auto');
-      const activeKey = ref('Tab1');
-      const tabs = Array.from({ length: 30 }, (v, i) => {
-        return {
-          key: `Tab${i + 1}`,
-          title: `Tab ${i + 1}`,
-          content: `Content of Tab Panel ${i + 1}`,
-        };
-      });
+  const position = ref('top');
+  const scrollPosition = ref('auto');
+  const activeKey = ref('Tab1');
+  const tabs = Array.from({ length: 30 }, (v, i) => {
+    return {
+      key: `Tab${i + 1}`,
+      title: `Tab ${i + 1}`,
+      content: `Content of Tab Panel ${i + 1}`,
+    };
+  });
 
-      const changeActive = () => {
-        activeKey.value = `Tab${Math.floor(Math.random() * 30) + 1}`;
-      };
-
-      return {
-        tabs,
-        position,
-        scrollPosition,
-        activeKey,
-        changeActive,
-      };
-    },
+  const changeActive = () => {
+    activeKey.value = `Tab${Math.floor(Math.random() * 30) + 1}`;
   };
 </script>

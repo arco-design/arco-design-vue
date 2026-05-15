@@ -11,25 +11,21 @@
   </sd-space>
 </template>
 
-<script>
-  export default {
-    data() {
-      return {
-        routes: [
-          {
-            path: '/',
-            label: 'Home',
-          },
-          {
-            path: '/channel',
-            label: 'Channel',
-          },
-          {
-            path: '/news',
-            label: 'News',
-          },
-        ],
-      };
+<script setup lang="ts">
+  import { ref } from 'vue';
+
+  const routes = ref([
+    {
+      path: '/',
+      label: 'Home',
     },
-  };
+    {
+      path: '/channel',
+      label: 'Channel',
+    },
+    {
+      path: '/news',
+      label: 'News',
+    },
+  ]);
 </script>

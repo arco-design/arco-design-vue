@@ -37,7 +37,7 @@ exports[`<pagination> demo: > render [basic] correctly 1`] = `
 exports[`<pagination> demo: > render [custom] correctly 1`] = `
 <div class="sd-pagination sd-pagination-size-medium">
   <!---->
-  <ul class="sd-pagination-list"><span class="sd-pagination-item sd-pagination-item-previous sd-pagination-item-disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-send" style="transform: rotate(180deg);" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path stroke-miterlimit="3.864" d="m14 24-7-5V7l34 17L7 41V29zm0 0h25"></path></svg></span>
+  <ul class="sd-pagination-list"><span class="sd-pagination-item sd-pagination-item-previous sd-pagination-item-disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-send sd:rotate-180" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path stroke-miterlimit="3.864" d="m14 24-7-5V7l34 17L7 41V29zm0 0h25"></path></svg></span>
     <li class="sd-pagination-item sd-pagination-item-active" pages="20"> - 1 - </li>
     <li class="sd-pagination-item" pages="20"> - 2 - </li>
     <li class="sd-pagination-item" pages="20"> - 3 - </li>

@@ -1,25 +1,25 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<divider> demo: > render [basic] correctly 1`] = `
-<div data-v-e1a1b076="" class="divider-demo">
-  <p data-v-e1a1b076="">A design is a plan or specification for the construction of an object.</p>
-  <div data-v-e1a1b076="" role="separator" class="sd-divider sd-divider-horizontal">
+<div class="sd:box-border sd:w-140 sd:border-30 sd:border-solid sd:border-[rgb(var(--gray-2))] sd:p-6">
+  <p>A design is a plan or specification for the construction of an object.</p>
+  <div role="separator" class="sd-divider sd-divider-horizontal">
     <!---->
   </div>
-  <p data-v-e1a1b076="">A design is a plan or specification for the construction of an object.</p>
-  <div data-v-e1a1b076="" role="separator" class="sd-divider sd-divider-horizontal" dashed="">
+  <p>A design is a plan or specification for the construction of an object.</p>
+  <div role="separator" class="sd-divider sd-divider-horizontal" dashed="">
     <!---->
   </div>
-  <p data-v-e1a1b076="">A design is a plan or specification for the construction of an object.</p>
-  <div data-v-e1a1b076="" role="separator" class="sd-divider sd-divider-horizontal" style="border-bottom-width: 2px; border-bottom-style: dotted;">
+  <p>A design is a plan or specification for the construction of an object.</p>
+  <div role="separator" class="sd-divider sd-divider-horizontal sd:[border-bottom-style:dotted]" style="border-bottom-width: 2px;">
     <!---->
   </div>
-  <p data-v-e1a1b076="">A design is a plan or specification for the construction of an object.</p>
+  <p>A design is a plan or specification for the construction of an object.</p>
 </div>
-<div data-v-e1a1b076="" class="divider-demo">
-  <div data-v-e1a1b076="" class="flex-box"><span data-v-e1a1b076="" class="avatar"><svg data-v-e1a1b076="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-image" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m24 33 9-9v9zm0 0-3.5-4.5L17 33zm15 8H9a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h30a2 2 0 0 1 2 2v30a2 2 0 0 1-2 2ZM15 15h2v2h-2z"></path><path fill="currentColor" stroke="none" d="M33 33v-9l-9 9zM23.5 33l-3-4-3 4zM15 15h2v2h-2z"></path></svg></span>
-    <div data-v-e1a1b076="" class="content">
-      <h6 data-v-e1a1b076="" class="sd-typography">Image
+<div class="sd:mt-12 sd:box-border sd:w-140 sd:border-30 sd:border-solid sd:border-[rgb(var(--gray-2))] sd:p-6">
+  <div class="sd:flex sd:items-center sd:justify-center"><span class="sd:flex sd:h-10 sd:w-10 sd:items-center sd:justify-center sd:mr-4 sd:rounded-[50%] sd:bg-[var(--color-fill-3)] sd:text-base sd:text-[var(--color-text-2)]"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-image" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m24 33 9-9v9zm0 0-3.5-4.5L17 33zm15 8H9a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h30a2 2 0 0 1 2 2v30a2 2 0 0 1-2 2ZM15 15h2v2h-2z"></path><path fill="currentColor" stroke="none" d="M33 33v-9l-9 9zM23.5 33l-3-4-3 4zM15 15h2v2h-2z"></path></svg></span>
+    <div class="sd:flex-1 sd:text-xs sd:leading-5 sd:text-[var(--color-text-2)]">
+      <h6 class="sd-typography">Image
         <!---->
         <!--v-if-->
         <!--v-if-->
@@ -27,12 +27,12 @@ exports[`<divider> demo: > render [basic] correctly 1`] = `
       </h6> May 4, 2010
     </div>
   </div>
-  <div data-v-e1a1b076="" role="separator" class="sd-divider sd-divider-horizontal half-divider">
+  <div role="separator" class="sd-divider sd-divider-horizontal sd:left-[55px] sd:w-[calc(100%-55px)] sd:min-w-auto sd:my-4">
     <!---->
   </div>
-  <div data-v-e1a1b076="" class="flex-box"><span data-v-e1a1b076="" class="avatar"><svg data-v-e1a1b076="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-user" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1z"></path><circle cx="24" cy="15" r="8"></circle></svg></span>
-    <div data-v-e1a1b076="" class="content">
-      <h6 data-v-e1a1b076="" class="sd-typography">Avatar
+  <div class="sd:flex sd:items-center sd:justify-center"><span class="sd:flex sd:h-10 sd:w-10 sd:items-center sd:justify-center sd:mr-4 sd:rounded-[50%] sd:bg-[var(--color-fill-3)] sd:text-base sd:text-[var(--color-text-2)]"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-user" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 37c0-4.97 4.03-8 9-8h16c4.97 0 9 3.03 9 8v3a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1z"></path><circle cx="24" cy="15" r="8"></circle></svg></span>
+    <div class="sd:flex-1 sd:text-xs sd:leading-5 sd:text-[var(--color-text-2)]">
+      <h6 class="sd-typography">Avatar
         <!---->
         <!--v-if-->
         <!--v-if-->
@@ -40,12 +40,12 @@ exports[`<divider> demo: > render [basic] correctly 1`] = `
       </h6> May 4, 2010
     </div>
   </div>
-  <div data-v-e1a1b076="" role="separator" class="sd-divider sd-divider-horizontal half-divider">
+  <div role="separator" class="sd-divider sd-divider-horizontal sd:left-[55px] sd:w-[calc(100%-55px)] sd:min-w-auto sd:my-4">
     <!---->
   </div>
-  <div data-v-e1a1b076="" class="flex-box"><span data-v-e1a1b076="" class="avatar"><svg data-v-e1a1b076="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-pen" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m28.364 11.565 7.07 7.071M7.15 32.778 33.313 6.615l7.071 7.071L14.222 39.85H7.15z"></path></svg></span>
-    <div data-v-e1a1b076="" class="content">
-      <h6 data-v-e1a1b076="" class="sd-typography">Icon
+  <div class="sd:flex sd:items-center sd:justify-center"><span class="sd:flex sd:h-10 sd:w-10 sd:items-center sd:justify-center sd:mr-4 sd:rounded-[50%] sd:bg-[var(--color-fill-3)] sd:text-base sd:text-[var(--color-text-2)]"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-pen" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m28.364 11.565 7.07 7.071M7.15 32.778 33.313 6.615l7.071 7.071L14.222 39.85H7.15z"></path></svg></span>
+    <div class="sd:flex-1 sd:text-xs sd:leading-5 sd:text-[var(--color-text-2)]">
+      <h6 class="sd-typography">Icon
         <!---->
         <!--v-if-->
         <!--v-if-->
@@ -57,24 +57,24 @@ exports[`<divider> demo: > render [basic] correctly 1`] = `
 `;
 
 exports[`<divider> demo: > render [vertical] correctly 1`] = `
-<div data-v-e05e53e0="" class="divider-demo"><span data-v-e05e53e0="">Item 1</span>
-  <div data-v-e05e53e0="" role="separator" class="sd-divider sd-divider-vertical">
+<div class="sd:box-border sd:w-140 sd:border-30 sd:border-solid sd:border-[rgb(var(--gray-2))] sd:p-6"><span>Item 1</span>
+  <div role="separator" class="sd-divider sd-divider-vertical">
     <!---->
-  </div><span data-v-e05e53e0="">Item 2</span>
-  <div data-v-e05e53e0="" role="separator" class="sd-divider sd-divider-vertical">
+  </div><span>Item 2</span>
+  <div role="separator" class="sd-divider sd-divider-vertical">
     <!---->
-  </div><span data-v-e05e53e0="">Item 3</span>
+  </div><span>Item 3</span>
 </div>
 `;
 
 exports[`<divider> demo: > render [with-text] correctly 1`] = `
-<div data-v-7fb8fd90="" class="divider-demo">
-  <p data-v-7fb8fd90="">A design is a plan or specification for the construction of an object.</p>
-  <div data-v-7fb8fd90="" role="separator" class="sd-divider sd-divider-horizontal sd-divider-with-text"><span class="sd-divider-text sd-divider-text-left">Text</span></div>
-  <p data-v-7fb8fd90="">A design is a plan or specification for the construction of an object.</p>
-  <div data-v-7fb8fd90="" role="separator" class="sd-divider sd-divider-horizontal sd-divider-with-text"><span class="sd-divider-text sd-divider-text-center">Text</span></div>
-  <p data-v-7fb8fd90="">A design is a plan or specification for the construction of an object.</p>
-  <div data-v-7fb8fd90="" role="separator" class="sd-divider sd-divider-horizontal sd-divider-with-text"><span class="sd-divider-text sd-divider-text-right">Text</span></div>
-  <div data-v-7fb8fd90="" role="separator" class="sd-divider sd-divider-horizontal sd-divider-with-text" style="margin: 10px 0px;"><span class="sd-divider-text sd-divider-text-center"><svg data-v-7fb8fd90="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-star" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M22.552 6.908a.5.5 0 0 1 .896 0l5.02 10.17a.5.5 0 0 0 .376.274l11.224 1.631a.5.5 0 0 1 .277.853l-8.122 7.916a.5.5 0 0 0-.143.443l1.917 11.178a.5.5 0 0 1-.726.527l-10.038-5.278a.5.5 0 0 0-.466 0L12.73 39.9a.5.5 0 0 1-.726-.527l1.918-11.178a.5.5 0 0 0-.144-.443l-8.122-7.916a.5.5 0 0 1 .278-.853l11.223-1.63a.5.5 0 0 0 .376-.274z"></path></svg></span></div>
+<div class="sd:box-border sd:w-140 sd:border-30 sd:border-solid sd:border-[rgb(var(--gray-2))] sd:p-6">
+  <p>A design is a plan or specification for the construction of an object.</p>
+  <div role="separator" class="sd-divider sd-divider-horizontal sd-divider-with-text"><span class="sd-divider-text sd-divider-text-left">Text</span></div>
+  <p>A design is a plan or specification for the construction of an object.</p>
+  <div role="separator" class="sd-divider sd-divider-horizontal sd-divider-with-text"><span class="sd-divider-text sd-divider-text-center">Text</span></div>
+  <p>A design is a plan or specification for the construction of an object.</p>
+  <div role="separator" class="sd-divider sd-divider-horizontal sd-divider-with-text"><span class="sd-divider-text sd-divider-text-right">Text</span></div>
+  <div role="separator" class="sd-divider sd-divider-horizontal sd-divider-with-text" style="margin: 10px 0px;"><span class="sd-divider-text sd-divider-text-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-star" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M22.552 6.908a.5.5 0 0 1 .896 0l5.02 10.17a.5.5 0 0 0 .376.274l11.224 1.631a.5.5 0 0 1 .277.853l-8.122 7.916a.5.5 0 0 0-.143.443l1.917 11.178a.5.5 0 0 1-.726.527l-10.038-5.278a.5.5 0 0 0-.466 0L12.73 39.9a.5.5 0 0 1-.726-.527l1.918-11.178a.5.5 0 0 0-.144-.443l-8.122-7.916a.5.5 0 0 1 .278-.853l11.223-1.63a.5.5 0 0 0 .376-.274z"></path></svg></span></div>
 </div>
 `;

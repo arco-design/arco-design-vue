@@ -8,18 +8,10 @@
     }"
     :data="treeData"
     placeholder="Please select ..."
-    style="width: 300px"
+    class="sd:w-75"
   ></sd-tree-select>
 </template>
-<script>
-  export default {
-    setup() {
-      return {
-        treeData,
-      };
-    },
-  };
-
+<script setup lang="ts">
   const treeData = [
     {
       label: 'Trunk 0-0',

@@ -1,6 +1,6 @@
 <template>
   <sd-checkbox
-    style="marginbottom: 24px"
+    class="sd:mb-6"
     v-model="checkStrictly"
     @change="
       () => {
@@ -17,21 +17,8 @@
     :data="treeData"
   />
 </template>
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
-
-  export default {
-    setup() {
-      const checkedKeys = ref([]);
-      const checkStrictly = ref(false);
-
-      return {
-        checkedKeys,
-        checkStrictly,
-        treeData,
-      };
-    },
-  };
 
   const treeData = [
     {
@@ -85,4 +72,7 @@
       ],
     },
   ];
+
+  const checkedKeys = ref([]);
+  const checkStrictly = ref(false);
 </script>

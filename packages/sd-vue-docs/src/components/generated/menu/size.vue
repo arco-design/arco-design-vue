@@ -1,17 +1,11 @@
 <template>
   <div class="menu-demo">
-    <sd-slider
-      :style="{ width: '320px', marginBottom: '24px' }"
-      v-model="width"
-      :step="10"
-      :min="160"
-      :max="400"
-    />
+    <sd-slider class="sd:w-80 sd:mb-6" v-model="width" :step="10" :min="160" :max="400" />
     <sd-menu
+      class="dynamic-menu"
       showCollapseButton
       :default-open-keys="['0']"
       :default-selected-keys="['0_1']"
-      :style="{ width: `${width}px`, height: 'calc(100% - 28px)' }"
     >
       <sd-sub-menu key="0">
         <template #icon><IconApps></IconApps></template>
@@ -37,29 +31,13 @@
     </sd-menu>
   </div>
 </template>
-<script>
-  import {
-    IconMenuFold,
-    IconMenuUnfold,
-    IconApps,
-    IconBug,
-    IconBulb,
-  } from '@sdata/web-vue/es/icon/index.js';
+<script setup lang="ts">
+  import { computed, ref } from 'vue';
 
-  export default {
-    components: {
-      IconMenuFold,
-      IconMenuUnfold,
-      IconApps,
-      IconBug,
-      IconBulb,
-    },
-    data() {
-      return {
-        width: 240,
-      };
-    },
-  };
+  import { IconApps, IconBug, IconBulb } from '@sdata/web-vue/es/icon/index.js';
+
+  const width = ref(160);
+  const widthPx = computed(() => `${width.value}px`);
 </script>
 <style scoped>
   .menu-demo {
@@ -68,5 +46,10 @@
     height: 600px;
     padding: 40px;
     background-color: var(--color-neutral-2);
+  }
+
+  .menu-demo :deep(.dynamic-menu) {
+    width: v-bind('widthPx');
+    height: calc(100% - 28px);
   }
 </style>

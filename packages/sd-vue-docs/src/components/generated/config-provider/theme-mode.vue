@@ -26,37 +26,27 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
   import { computed, ref } from 'vue';
 
-  export default {
-    setup() {
-      const themeMode = ref<'light' | 'dark'>('dark');
-      const themeModeOptions = [
-        { label: 'Light', value: 'light' },
-        { label: 'Dark', value: 'dark' },
-      ];
+  const themeMode = ref<'light' | 'dark'>('dark');
+  const themeModeOptions = [
+    { label: 'Light', value: 'light' },
+    { label: 'Dark', value: 'dark' },
+  ];
 
-      const theme = computed(() => {
-        return {
-          tokens: {},
-        };
-      });
+  const theme = computed(() => {
+    return {
+      tokens: {},
+    };
+  });
 
-      const runtimePayload = computed(() => {
-        return {
-          mode: themeMode.value,
-          theme: theme.value,
-        };
-      });
-
-      return {
-        runtimePayload,
-        themeMode,
-        themeModeOptions,
-      };
-    },
-  };
+  const runtimePayload = computed(() => {
+    return {
+      mode: themeMode.value,
+      theme: theme.value,
+    };
+  });
 </script>
 
 <style scoped>

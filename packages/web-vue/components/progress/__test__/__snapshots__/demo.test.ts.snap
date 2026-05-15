@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<progress> demo: > render [basic] correctly 1`] = `
-<div class="sd-progress sd-progress-type-line sd-progress-size-medium sd-progress-status-normal" style="width: 50%;">
+<div class="sd-progress sd-progress-type-line sd-progress-size-medium sd-progress-status-normal sd:w-[50%]">
   <div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0.2" class="sd-progress-line-wrapper">
     <div class="sd-progress-line" style="width: 100%; height: 4px;">
       <div class="sd-progress-line-bar-buffer"></div>
@@ -14,7 +14,7 @@ exports[`<progress> demo: > render [basic] correctly 1`] = `
 </div>
 <br>
 <br>
-<div class="sd-progress sd-progress-type-line sd-progress-size-medium sd-progress-status-normal" style="width: 50%;">
+<div class="sd-progress sd-progress-type-line sd-progress-size-medium sd-progress-status-normal sd:w-[50%]">
   <div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0.3" class="sd-progress-line-wrapper">
     <div class="sd-progress-line" style="width: 100%; height: 4px;">
       <div class="sd-progress-line-bar-buffer"></div>
@@ -83,8 +83,8 @@ exports[`<progress> demo: > render [circle] correctly 1`] = `
     </div>
   </div>
 </div>
-<div style="margin-top: 20px;">
-  <div class="sd-slider" style="width: 150px;">
+<div class="sd:mt-5">
+  <div class="sd-slider sd:w-37.5">
     <div class="sd-slider-track">
       <div class="sd-slider-bar" style="left: 0%; right: 80%;"></div>
       <!--v-if-->
@@ -101,7 +101,7 @@ exports[`<progress> demo: > render [circle] correctly 1`] = `
 
 exports[`<progress> demo: > render [linear] correctly 1`] = `
 <div>
-  <div class="sd-progress sd-progress-type-line sd-progress-size-medium sd-progress-status-normal" style="width: 50%;">
+  <div class="sd-progress sd-progress-type-line sd-progress-size-medium sd-progress-status-normal sd:w-[50%]">
     <div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0.8" class="sd-progress-line-wrapper">
       <div class="sd-progress-line" style="width: 100%; height: 4px;">
         <div class="sd-progress-line-bar-buffer"></div>
@@ -112,7 +112,7 @@ exports[`<progress> demo: > render [linear] correctly 1`] = `
       </div>
     </div>
   </div><br><br>
-  <div class="sd-progress sd-progress-type-line sd-progress-size-medium sd-progress-status-success" style="width: 50%;">
+  <div class="sd-progress sd-progress-type-line sd-progress-size-medium sd-progress-status-success sd:w-[50%]">
     <div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="1" class="sd-progress-line-wrapper">
       <div class="sd-progress-line" style="width: 100%; height: 4px;">
         <div class="sd-progress-line-bar-buffer"></div>
@@ -126,7 +126,7 @@ exports[`<progress> demo: > render [linear] correctly 1`] = `
   <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 24px; row-gap: 24px;">
     <!---->
     <div class="sd-space-item">
-      <div class="sd-progress sd-progress-type-circle sd-progress-size-medium sd-progress-status-normal" style="width: 50%;">
+      <div class="sd-progress sd-progress-type-circle sd-progress-size-medium sd-progress-status-normal sd:w-[50%]">
         <div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0.8" class="sd-progress-circle-wrapper" style="width: 64px; height: 64px;"><svg viewBox="0 0 64 64" class="sd-progress-circle-svg">
             <defs>
               <linearGradient id="sd-progress-circle-linear-gradient-1" x1="0" y1="1" x2="0" y2="0">
@@ -143,7 +143,7 @@ exports[`<progress> demo: > render [linear] correctly 1`] = `
     </div>
     <!---->
     <div class="sd-space-item">
-      <div class="sd-progress sd-progress-type-circle sd-progress-size-medium sd-progress-status-success" style="width: 50%;">
+      <div class="sd-progress sd-progress-type-circle sd-progress-size-medium sd-progress-status-success sd:w-[50%]">
         <div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="1" class="sd-progress-circle-wrapper" style="width: 64px; height: 64px;"><svg viewBox="0 0 64 64" class="sd-progress-circle-svg">
             <defs>
               <linearGradient id="sd-progress-circle-linear-gradient-2" x1="0" y1="1" x2="0" y2="0">
@@ -165,7 +165,7 @@ exports[`<progress> demo: > render [linear] correctly 1`] = `
 `;
 
 exports[`<progress> demo: > render [mini] correctly 1`] = `
-<div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 24px; row-gap: 24px; width: 100%;">
+<div class="sd-space sd-space-horizontal sd-space-align-center sd:w-full" style="column-gap: 24px; row-gap: 24px;">
   <!---->
   <div class="sd-space-item">
     <div class="sd-progress sd-progress-type-line sd-progress-size-mini sd-progress-status-normal">
@@ -215,7 +215,7 @@ exports[`<progress> demo: > render [mini] correctly 1`] = `
     </div>
   </div>
 </div>
-<div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 24px; row-gap: 24px; width: 100%; margin-top: 20px;">
+<div class="sd-space sd-space-horizontal sd-space-align-center sd:w-full sd:mt-5" style="column-gap: 24px; row-gap: 24px;">
   <!---->
   <div class="sd-space-item">
     <div class="sd-progress sd-progress-type-circle sd-progress-size-mini sd-progress-status-normal">
@@ -263,8 +263,8 @@ exports[`<progress> demo: > render [mini] correctly 1`] = `
     </div>
   </div>
 </div>
-<div style="margin-top: 20px;">
-  <div class="sd-slider" style="width: 150px;">
+<div class="sd:mt-5">
+  <div class="sd-slider sd:w-37.5">
     <div class="sd-slider-track">
       <div class="sd-slider-bar" style="left: 0%; right: 80%;"></div>
       <!--v-if-->
@@ -280,7 +280,7 @@ exports[`<progress> demo: > render [mini] correctly 1`] = `
 `;
 
 exports[`<progress> demo: > render [size] correctly 1`] = `
-<div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px; width: 50%;">
+<div class="sd-space sd-space-vertical sd:w-[50%]" style="column-gap: 24px; row-gap: 24px;">
   <!---->
   <div class="sd-space-item"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="small"><span class="sd-radio-button-content">Small</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="medium"><span class="sd-radio-button-content">Medium</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="large"><span class="sd-radio-button-content">Large</span></label></span></div>
   <!---->
@@ -375,7 +375,7 @@ exports[`<progress> demo: > render [size] correctly 1`] = `
 `;
 
 exports[`<progress> demo: > render [status] correctly 1`] = `
-<div class="sd-space sd-space-vertical" style="column-gap: 8px; row-gap: 8px; width: 50%;">
+<div class="sd-space sd-space-vertical sd:w-[50%]" style="column-gap: 8px; row-gap: 8px;">
   <!---->
   <div class="sd-space-item">
     <div class="sd-progress sd-progress-type-line sd-progress-size-medium sd-progress-status-normal">
@@ -419,8 +419,8 @@ exports[`<progress> demo: > render [status] correctly 1`] = `
     </div>
   </div>
 </div>
-<div style="margin-top: 20px;">
-  <div class="sd-slider" style="width: 150px;">
+<div class="sd:mt-5">
+  <div class="sd-slider sd:w-37.5">
     <div class="sd-slider-track">
       <div class="sd-slider-bar" style="left: 0%; right: 80%;"></div>
       <!--v-if-->
@@ -436,7 +436,7 @@ exports[`<progress> demo: > render [status] correctly 1`] = `
 `;
 
 exports[`<progress> demo: > render [steps] correctly 1`] = `
-<div style="width: 50%;">
+<div class="sd:w-[50%]">
   <div class="sd-progress sd-progress-type-steps sd-progress-size-medium sd-progress-status-normal">
     <div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0.3" class="sd-progress-steps-wrapper">
       <div class="sd-progress-steps" style="height: 4px;">
@@ -479,8 +479,8 @@ exports[`<progress> demo: > render [steps] correctly 1`] = `
 `;
 
 exports[`<progress> demo: > render [trackcolor] correctly 1`] = `
-<div style="width: 50%;">
-  <div class="sd-progress sd-progress-type-line sd-progress-size-medium sd-progress-status-normal" style="margin-bottom: 20px;">
+<div class="sd:w-[50%]">
+  <div class="sd-progress sd-progress-type-line sd-progress-size-medium sd-progress-status-normal sd:mb-5">
     <div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0.4" class="sd-progress-line-wrapper">
       <div class="sd-progress-line" style="width: 100%; height: 4px; background-color: var(--color-primary-light-1);">
         <div class="sd-progress-line-bar-buffer"></div>
@@ -491,7 +491,7 @@ exports[`<progress> demo: > render [trackcolor] correctly 1`] = `
       </div>
     </div>
   </div>
-  <div class="sd-progress sd-progress-type-steps sd-progress-size-medium sd-progress-status-normal" style="margin-bottom: 20px;">
+  <div class="sd-progress sd-progress-type-steps sd-progress-size-medium sd-progress-status-normal sd:mb-5">
     <div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0.4" class="sd-progress-steps-wrapper">
       <div class="sd-progress-steps" style="height: 4px;">
         <div class="sd-progress-steps-item sd-progress-steps-item-active"></div>
@@ -504,7 +504,7 @@ exports[`<progress> demo: > render [trackcolor] correctly 1`] = `
       </div>
     </div>
   </div>
-  <div class="sd-progress sd-progress-type-circle sd-progress-size-medium sd-progress-status-normal" style="margin-bottom: 20px;">
+  <div class="sd-progress sd-progress-type-circle sd-progress-size-medium sd-progress-status-normal sd:mb-5">
     <div role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0.4" class="sd-progress-circle-wrapper" style="width: 64px; height: 64px;"><svg viewBox="0 0 64 64" class="sd-progress-circle-svg">
         <!--v-if-->
         <circle class="sd-progress-circle-bg" fill="none" cx="32" cy="32" r="30" stroke-width="2" style="stroke: var(--color-primary-light-1);"></circle>

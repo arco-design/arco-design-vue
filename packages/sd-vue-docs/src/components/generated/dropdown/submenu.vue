@@ -15,7 +15,7 @@
               <sd-doption>Option 2-3</sd-doption>
             </template>
             <template #footer>
-              <div style="padding: 6px; text-align: center">
+              <div class="sd:p-1.5 sd:text-center">
                 <sd-button>Click</sd-button>
               </div>
             </template>

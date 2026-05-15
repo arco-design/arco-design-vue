@@ -3,7 +3,7 @@
     <template #actions>
       <span class="action" key="heart" @click="onLikeChange">
         <span v-if="like">
-          <IconHeartFill :style="{ color: '#f53f3f' }" />
+          <IconHeartFill class="sd:text-[#f53f3f]" />
         </span>
         <span v-else>
           <IconHeart />
@@ -12,7 +12,7 @@
       </span>
       <span class="action" key="star" @click="onStarChange">
         <span v-if="star">
-          <IconStarFill style="{ color: '#ffb400' }" />
+          <IconStarFill class="sd:text-[#ffb400]" />
         </span>
         <span v-else>
           <IconStar />
@@ -39,7 +39,7 @@
   </sd-comment>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
   import {
@@ -50,32 +50,16 @@
     IconHeartFill,
   } from '@sdata/web-vue/es/icon/index.js';
 
-  export default {
-    components: {
-      IconHeart,
-      IconMessage,
-      IconStar,
-      IconStarFill,
-      IconHeartFill,
-    },
-    setup() {
-      const like = ref(false);
-      const star = ref(false);
-      const onLikeChange = () => {
-        like.value = !like.value;
-      };
-      const onStarChange = () => {
-        star.value = !star.value;
-      };
+  const like = ref(false);
+  const star = ref(false);
 
-      return {
-        like,
-        star,
-        onLikeChange,
-        onStarChange,
-      };
-    },
-  };
+  function onLikeChange() {
+    like.value = !like.value;
+  }
+
+  function onStarChange() {
+    star.value = !star.value;
+  }
 </script>
 
 <style scoped>

@@ -41,16 +41,8 @@
   </sd-comment>
 </template>
 
-<script>
+<script setup lang="ts">
   import { IconHeart, IconMessage, IconStar } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    components: {
-      IconHeart,
-      IconMessage,
-      IconStar,
-    },
-  };
 </script>
 
 <style scoped>

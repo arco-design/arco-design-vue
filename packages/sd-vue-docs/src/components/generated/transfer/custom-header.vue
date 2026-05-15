@@ -3,7 +3,7 @@
     <template
       #source-title="{ countTotal, countSelected, checked, indeterminate, onSelectAllChange }"
     >
-      <div :style="styleHeader">
+      <div class="sd:flex sd:items-center sd:justify-between sd:pr-2">
         Source Title {{ countSelected }}-{{ countTotal }}
         <sd-checkbox
           :model-value="checked"
@@ -14,7 +14,7 @@
     </template>
 
     <template #target-title="{ countTotal, countSelected, onClear }">
-      <div :style="styleHeader">
+      <div class="sd:flex sd:items-center sd:justify-between sd:pr-2">
         Target Title {{ countSelected }}-{{ countTotal }}
         <IconDelete @click="onClear" />
       </div>
@@ -22,32 +22,15 @@
   </sd-transfer>
 </template>
 
-<script>
+<script setup lang="ts">
   import { IconDelete } from '@sdata/web-vue/es/icon/index.js';
 
-  export default {
-    components: { IconDelete },
-    setup() {
-      const data = Array(8)
-        .fill(undefined)
-        .map((_, index) => ({
-          value: `option${index + 1}`,
-          label: `Option ${index + 1}`,
-        }));
-      const value = ['option1', 'option3', 'option5'];
+  const data = Array(8)
+    .fill(undefined)
+    .map((_, index) => ({
+      value: `option${index + 1}`,
+      label: `Option ${index + 1}`,
+    }));
 
-      const styleHeader = {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingRight: '8px',
-      };
-
-      return {
-        styleHeader,
-        data,
-        value,
-      };
-    },
-  };
+  const value = ['option1', 'option3', 'option5'];
 </script>

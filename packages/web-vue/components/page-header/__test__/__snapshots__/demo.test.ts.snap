@@ -1,8 +1,8 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<page-header> demo: > render [basic] correctly 1`] = `
-<div style="background: var(--color-fill-2); padding: 28px;">
-  <div class="sd-page-header" style="background: var(--color-bg-2);">
+<div class="sd:bg-(--color-fill-2) sd:p-7">
+  <div class="sd-page-header sd:bg-(--color-bg-2)">
     <div class="sd-page-header-wrapper">
       <!--v-if-->
       <div class="sd-page-header-header"><span class="sd-page-header-main"><span class="sd-icon-hover sd-page-header-icon-hover sd-page-header-back-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-left" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M32 8.4 16.444 23.956 32 39.513"></path></svg></span><span class="sd-page-header-title">SD Design</span><span class="sd-page-header-divider"></span><span class="sd-page-header-subtitle">SD Design Vue</span></span><span class="sd-page-header-extra"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="mini"><span class="sd-radio-button-content">Mini</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="small"><span class="sd-radio-button-content">Small</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="large"><span class="sd-radio-button-content">Large</span></label></span></span></div>
@@ -13,8 +13,8 @@ exports[`<page-header> demo: > render [basic] correctly 1`] = `
 `;
 
 exports[`<page-header> demo: > render [breadcrumb] correctly 1`] = `
-<div style="background: var(--color-fill-2); padding: 28px;">
-  <div class="sd-page-header sd-page-header-with-breadcrumb" style="background: var(--color-bg-2);">
+<div class="sd:bg-(--color-fill-2) sd:p-7">
+  <div class="sd-page-header sd-page-header-with-breadcrumb sd:bg-(--color-bg-2)">
     <div class="sd-page-header-wrapper">
       <div class="sd-page-header-breadcrumb">
         <div role="list" class="sd-breadcrumb">
@@ -44,8 +44,8 @@ exports[`<page-header> demo: > render [breadcrumb] correctly 1`] = `
 `;
 
 exports[`<page-header> demo: > render [content] correctly 1`] = `
-<div style="background: var(--color-fill-2); padding: 28px;">
-  <div class="sd-page-header sd-page-header-with-breadcrumb sd-page-header-with-content" style="background: var(--color-bg-2);">
+<div class="sd:bg-(--color-fill-2) sd:p-7">
+  <div class="sd-page-header sd-page-header-with-breadcrumb sd-page-header-with-content sd:bg-(--color-bg-2)">
     <div class="sd-page-header-wrapper">
       <div class="sd-page-header-breadcrumb">
         <div role="list" class="sd-breadcrumb">
@@ -82,7 +82,7 @@ exports[`<page-header> demo: > render [content] correctly 1`] = `
 `;
 
 exports[`<page-header> demo: > render [transparent] correctly 1`] = `
-<div style="background-image: radial-gradient(var(--color-fill-3) 1px, rgba(0, 0, 0, 0) 1px); background-size: 16px 16px; padding: 28px;">
+<div class="sd:bg-[radial-gradient(var(--color-fill-3)_1px,rgba(0,0,0,0)_1px)] sd:p-7 sd:[background-size:16px_16px]">
   <div class="sd-page-header sd-page-header-with-breadcrumb">
     <div class="sd-page-header-wrapper">
       <div class="sd-page-header-breadcrumb">

@@ -7,7 +7,7 @@
       :allow-search="true"
       :data="treeData"
       placeholder="Please select ..."
-      style="width: 300px"
+      class="sd:w-75"
     ></sd-tree-select>
     <sd-tree-select
       v-model="selected"
@@ -17,25 +17,14 @@
       :allow-search="true"
       :data="treeData"
       placeholder="Please select ..."
-      style="width: 300px"
+      class="sd:w-75"
     ></sd-tree-select>
   </sd-space>
 </template>
-<script>
+<script setup lang="ts">
   import { h, ref } from 'vue';
 
   import { IconCalendar } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    setup() {
-      const selected = ref([]);
-
-      return {
-        selected,
-        treeData,
-      };
-    },
-  };
 
   const treeData = [
     {
@@ -65,4 +54,6 @@
       ],
     },
   ];
+
+  const selected = ref([]);
 </script>

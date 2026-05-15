@@ -1,5 +1,5 @@
 <template>
-  <sd-form :model="form" :style="{ width: '600px' }">
+  <sd-form :model="form" class="sd:w-150">
     <sd-form-item field="name" label="Username">
       <sd-input v-model="form.name" placeholder="please enter your username..." />
     </sd-form-item>
@@ -10,7 +10,7 @@
       :key="index"
     >
       <sd-input v-model="post.value" placeholder="please enter your post..." />
-      <sd-button @click="handleDelete(index)" :style="{ marginLeft: '10px' }">Delete</sd-button>
+      <sd-button @click="handleDelete(index)" class="sd:ml-2.5">Delete</sd-button>
     </sd-form-item>
   </sd-form>
   <div>
@@ -19,29 +19,19 @@
   {{ form }}
 </template>
 
-<script>
+<script setup lang="ts">
   import { reactive } from 'vue';
 
-  export default {
-    setup() {
-      const form = reactive({
-        name: '',
-        posts: [{ value: '' }],
-      });
-      const handleAdd = () => {
-        form.posts.push({
-          value: '',
-        });
-      };
-      const handleDelete = (index) => {
-        form.posts.splice(index, 1);
-      };
-
-      return {
-        form,
-        handleAdd,
-        handleDelete,
-      };
-    },
+  const form = reactive({
+    name: '',
+    posts: [{ value: '' }],
+  });
+  const handleAdd = () => {
+    form.posts.push({
+      value: '',
+    });
+  };
+  const handleDelete = (index) => {
+    form.posts.splice(index, 1);
   };
 </script>

@@ -2,7 +2,7 @@
   <sd-space direction="vertical" size="large">
     <sd-select
       defaultValue="Shanxi"
-      :style="{ width: '320px' }"
+      class="sd:w-80"
       placeholder="Please select ..."
       :fallback-option="fallback"
     >
@@ -13,7 +13,7 @@
     </sd-select>
     <sd-select
       defaultValue="Shanxi"
-      :style="{ width: '320px' }"
+      class="sd:w-80"
       placeholder="Please select ..."
       :fallback-option="fallback"
       :show-extra-options="false"
@@ -25,7 +25,7 @@
     </sd-select>
     <sd-select
       :default-value="['Shanxi', 'Nanjing', 'Hangzhou']"
-      :style="{ width: '320px' }"
+      class="sd:w-80"
       placeholder="Please select ..."
       multiple
       :fallback-option="fallback"
@@ -41,18 +41,11 @@
   </sd-space>
 </template>
 
-<script>
-  export default {
-    setup() {
-      const fallback = (value) => {
-        return {
-          value,
-          label: `++${value}++`,
-        };
-      };
-      return {
-        fallback,
-      };
-    },
+<script setup lang="ts">
+  const fallback = (value) => {
+    return {
+      value,
+      label: `++${value}++`,
+    };
   };
 </script>

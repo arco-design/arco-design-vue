@@ -1,14 +1,6 @@
 <template>
-  <sd-dropdown trigger="contextMenu" alignPoint :style="{ display: 'block' }">
-    <div
-      :style="{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '300px',
-        backgroundColor: 'var(--color-fill-2)',
-      }"
-    >
+  <sd-dropdown trigger="contextMenu" alignPoint class="sd:block">
+    <div class="sd:flex sd:h-[300px] sd:items-center sd:justify-center sd:bg-[var(--color-fill-2)]">
       <div>Click Me</div>
     </div>
     <template #content>

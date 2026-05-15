@@ -15,7 +15,7 @@
   </sd-list>
 </template>
 
-<script>
+<script setup lang="ts">
   const dataSource = [
     {
       title: 'Platform',
@@ -54,12 +54,4 @@
       data: ['C++', 'JavaScript', 'Python'],
     },
   ];
-
-  export default {
-    setup() {
-      return {
-        dataSource,
-      };
-    },
-  };
 </script>

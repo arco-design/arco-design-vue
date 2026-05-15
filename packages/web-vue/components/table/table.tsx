@@ -736,7 +736,7 @@ export default defineComponent({
         resolvedScroll.value.y ||
         props.stickyHeader ||
         isVirtualList.value ||
-        (resolvedScroll.value.x && flattenData.value.length === 0),
+        (resolvedScroll.value.x && (props.data?.length ?? 0) === 0),
     );
     const containerScrollLeft = ref(0);
     const alignLeft = ref(true);

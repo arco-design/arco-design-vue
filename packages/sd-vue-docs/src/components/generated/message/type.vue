@@ -15,7 +15,7 @@
       >
     </sd-space>
   </div>
-  <div style="margin-top: 20px">
+  <div class="sd:mt-5">
     <sd-space>
       <sd-button @click="() => this.$message.normal('This is a normal message!')"
         >Normal Message</sd-button
@@ -37,17 +37,10 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
   import { h } from 'vue';
 
   import { IconExclamationCircleFill } from '@sdata/web-vue/es/icon/index.js';
 
-  export default {
-    setup() {
-      const renderIcon = () => h(IconExclamationCircleFill);
-      return {
-        renderIcon,
-      };
-    },
-  };
+  const renderIcon = () => h(IconExclamationCircleFill);
 </script>

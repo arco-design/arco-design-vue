@@ -1,16 +1,8 @@
 <template>
-  <sd-card hoverable :style="{ width: '360px', marginBottom: '20px' }">
-    <div
-      :style="{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      }"
-    >
-      <span :style="{ display: 'flex', alignItems: 'center', color: '#1D2129' }">
-        <sd-avatar :style="{ marginRight: '8px', backgroundColor: '#165DFF' }" :size="28">
-          A
-        </sd-avatar>
+  <sd-card hoverable class="sd:w-90 sd:mb-5">
+    <div class="sd:flex sd:items-center sd:justify-between">
+      <span class="sd:flex sd:items-center sd:text-[#1d2129]">
+        <sd-avatar class="sd:mr-2 sd:bg-[#165dff]" :size="28"> A </sd-avatar>
         <sd-typography-text>Username</sd-typography-text>
       </span>
       <sd-link>More</sd-link>

@@ -3,15 +3,11 @@
     type="time-range"
     @select="(valueString, value) => print('onSelect:', valueString, value)"
     @change="(valueString, value) => print('onChange:', valueString, value)"
-    style="width: 252px"
+    class="sd:w-[252px]"
   />
 </template>
-<script>
-  export default {
-    methods: {
-      print(...arg) {
-        console.log(...arg);
-      },
-    },
-  };
+<script setup lang="ts">
+  function print(...arg) {
+    console.log(...arg);
+  }
 </script>

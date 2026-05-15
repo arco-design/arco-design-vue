@@ -19,7 +19,7 @@
               <sd-doption>Option 2-3</sd-doption>
             </template>
             <template #footer>
-              <div style="padding: 6px; text-align: center">
+              <div class="sd:p-1.5 sd:text-center">
                 <sd-button>Click</sd-button>
               </div>
             </template>
@@ -33,45 +33,42 @@
   </sd-space>
 </template>
 
-<script>
-  export default {
-    data() {
-      return {
-        routes: [
-          {
-            path: '/',
-            label: 'Home',
-          },
-          {
-            path: '/channel',
-            label: 'Channel',
-            children: [
-              {
-                path: '/users',
-                label: 'Users',
-              },
-              {
-                path: '/permission',
-                label: 'Permission',
-              },
-            ],
-          },
-          {
-            path: '/news',
-            label: 'News',
-          },
-        ],
-        droplist: [
-          {
-            path: '/goods',
-            label: 'Goods',
-          },
-          {
-            path: '/wallet',
-            label: 'Wallet',
-          },
-        ],
-      };
+<script setup lang="ts">
+  import { ref } from 'vue';
+
+  const routes = ref([
+    {
+      path: '/',
+      label: 'Home',
     },
-  };
+    {
+      path: '/channel',
+      label: 'Channel',
+      children: [
+        {
+          path: '/users',
+          label: 'Users',
+        },
+        {
+          path: '/permission',
+          label: 'Permission',
+        },
+      ],
+    },
+    {
+      path: '/news',
+      label: 'News',
+    },
+  ]);
+
+  const droplist = ref([
+    {
+      path: '/goods',
+      label: 'Goods',
+    },
+    {
+      path: '/wallet',
+      label: 'Wallet',
+    },
+  ]);
 </script>

@@ -1,6 +1,6 @@
 <template>
   <sd-date-picker
-    style="width: 300px; margin-right: 24px; margin-bottom: 24px"
+    class="sd:w-75 sd:mr-6 sd:mb-6"
     :shortcuts="[
       {
         label: '2 hours later',
@@ -18,7 +18,7 @@
     show-time
   />
   <sd-month-picker
-    style="width: 300px; margin-right: 24px; margin-bottom: 24px"
+    class="sd:w-75 sd:mr-6 sd:mb-6"
     :shortcuts="[
       {
         label: 'last month',
@@ -35,7 +35,7 @@
     ]"
   />
   <sd-range-picker
-    style="width: 400px; margin-right: 24px; margin-bottom: 24px"
+    class="sd:w-100 sd:mr-6 sd:mb-6"
     :shortcuts="[
       {
         label: 'next 7 days',
@@ -53,7 +53,7 @@
   />
   <sd-range-picker
     mode="month"
-    style="width: 300px; margin-bottom: 24px"
+    class="sd:w-75 sd:mb-6"
     :shortcuts="[
       {
         label: 'next 6 months',
@@ -70,13 +70,6 @@
     ]"
   />
 </template>
-<script>
+<script setup lang="ts">
   import dayjs from 'dayjs';
-  export default {
-    setup() {
-      return {
-        dayjs,
-      };
-    },
-  };
 </script>

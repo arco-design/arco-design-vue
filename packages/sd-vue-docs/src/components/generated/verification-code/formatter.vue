@@ -2,12 +2,12 @@
   <sd-space direction="vertical">
     <sd-verification-code
       defaultValue="123456"
-      style="width: 300px"
+      class="sd:w-75"
       :formatter="(inputValue: string) => (/^\d*$/.test(inputValue) ? inputValue : false)"
     />
     <sd-verification-code
       defaultValue="abcdef"
-      style="width: 300px"
+      class="sd:w-75"
       :formatter="
         (inputValue: string) => (/^[a-zA-Z]*$/.test(inputValue) ? inputValue.toUpperCase() : '')
       "

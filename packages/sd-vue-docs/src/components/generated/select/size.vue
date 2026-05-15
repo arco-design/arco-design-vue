@@ -6,12 +6,7 @@
       <sd-radio value="medium">Medium</sd-radio>
       <sd-radio value="large">Large</sd-radio>
     </sd-radio-group>
-    <sd-select
-      default-value="Beijing"
-      :style="{ width: '320px' }"
-      :size="size"
-      placeholder="Please select ..."
-    >
+    <sd-select default-value="Beijing" class="sd:w-80" :size="size" placeholder="Please select ...">
       <sd-option>Beijing</sd-option>
       <sd-option>Shanghai</sd-option>
       <sd-option>Guangzhou</sd-option>
@@ -19,7 +14,7 @@
     </sd-select>
     <sd-select
       :default-value="['Beijing', 'Shanghai']"
-      :style="{ width: '320px' }"
+      class="sd:w-80"
       :size="size"
       placeholder="Please select ..."
       multiple
@@ -35,16 +30,8 @@
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const size = ref('medium');
-
-      return {
-        size,
-      };
-    },
-  };
+  const size = ref('medium');
 </script>

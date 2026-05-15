@@ -1,11 +1,11 @@
 <template>
   <sd-space size="large">
     <sd-avatar>A</sd-avatar>
-    <sd-avatar :style="{ backgroundColor: '#3370ff' }">
+    <sd-avatar class="sd:bg-[#3370ff]">
       <IconUser />
     </sd-avatar>
-    <sd-avatar :style="{ backgroundColor: '#14a9f8' }">SD</sd-avatar>
-    <sd-avatar :style="{ backgroundColor: '#00d0b6' }">Design</sd-avatar>
+    <sd-avatar class="sd:bg-[#14a9f8]">SD</sd-avatar>
+    <sd-avatar class="sd:bg-[#00d0b6]">Design</sd-avatar>
     <sd-avatar>
       <img
         alt="avatar"
@@ -15,10 +15,6 @@
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { IconUser } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    components: { IconUser },
-  };
 </script>

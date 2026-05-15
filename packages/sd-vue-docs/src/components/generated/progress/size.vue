@@ -1,5 +1,5 @@
 <template>
-  <sd-space direction="vertical" size="large" :style="{ width: '50%' }">
+  <sd-space direction="vertical" size="large" class="sd:w-[50%]">
     <sd-radio-group v-model="size" type="button">
       <sd-radio value="small">Small</sd-radio>
       <sd-radio value="medium">Medium</sd-radio>
@@ -16,14 +16,8 @@
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      return {
-        size: ref('medium'),
-      };
-    },
-  };
+  const size = ref('medium');
 </script>

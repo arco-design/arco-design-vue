@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-bottom: 24px">
+  <div class="sd:mb-6">
     <sd-button type="primary" @click="onClick">toggle</sd-button>
   </div>
   <sd-tree-select
@@ -7,26 +7,11 @@
     :allow-clear="true"
     :data="treeData"
     placeholder="Please select ..."
-    style="width: 300px"
+    class="sd:w-75"
   ></sd-tree-select>
 </template>
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
-
-  export default {
-    setup() {
-      const popupVisible = ref(false);
-      function onClick() {
-        popupVisible.value = !popupVisible.value;
-      }
-
-      return {
-        onClick,
-        popupVisible,
-        treeData,
-      };
-    },
-  };
 
   const treeData = [
     {
@@ -54,4 +39,9 @@
       ],
     },
   ];
+
+  const popupVisible = ref(false);
+  function onClick() {
+    popupVisible.value = !popupVisible.value;
+  }
 </script>

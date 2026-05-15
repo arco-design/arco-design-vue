@@ -5,30 +5,20 @@
     <sd-checkbox :model-value="checked2">binding value2</sd-checkbox>
     <sd-checkbox :default-checked="true">uncontrolled state</sd-checkbox>
   </sd-space>
-  <div :style="{ marginTop: '20px' }">
+  <div class="sd:mt-5">
     <sd-button type="primary" @click="handleSetCheck">
       {{ checked2 ? 'uncheck' : 'check' }} value2
     </sd-button>
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const checked1 = ref(false);
-      const checked2 = ref(false);
+  const checked1 = ref(false);
+  const checked2 = ref(false);
 
-      const handleSetCheck = () => {
-        checked2.value = !checked2.value;
-      };
-
-      return {
-        checked1,
-        checked2,
-        handleSetCheck,
-      };
-    },
+  const handleSetCheck = () => {
+    checked2.value = !checked2.value;
   };
 </script>

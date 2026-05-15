@@ -13,7 +13,7 @@
       <sd-radio value="large">large</sd-radio>
     </sd-radio-group>
   </sd-space>
-  <sd-form :model="form" :style="{ width: '600px', marginTop: '20px' }" :size="size">
+  <sd-form :model="form" class="sd:w-150 sd:mt-5" :size="size">
     <sd-form-item
       field="name"
       label="Username"
@@ -71,25 +71,15 @@
   </sd-form>
 </template>
 
-<script>
+<script setup lang="ts">
   import { reactive, ref } from 'vue';
 
-  export default {
-    setup() {
-      const status = ref('success');
-      const size = ref('medium');
-      const form = reactive({
-        name: '',
-        post: undefined,
-        tags: ['tag1'],
-        section: '',
-      });
-
-      return {
-        status,
-        size,
-        form,
-      };
-    },
-  };
+  const status = ref('success');
+  const size = ref('medium');
+  const form = reactive({
+    name: '',
+    post: undefined,
+    tags: ['tag1'],
+    section: '',
+  });
 </script>

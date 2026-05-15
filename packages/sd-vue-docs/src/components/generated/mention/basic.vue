@@ -1,5 +1,5 @@
 <template>
-  <sd-space direction="vertical" size="large" style="width: 100%">
+  <sd-space direction="vertical" size="large" class="sd:w-full">
     <sd-mention
       v-model="value"
       :data="['Bytedance', 'Bytedesign', 'Bytenumner']"
@@ -14,18 +14,9 @@
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const value = ref('');
-      const text = ref('');
-
-      return {
-        value,
-        text,
-      };
-    },
-  };
+  const value = ref('');
+  const text = ref('');
 </script>

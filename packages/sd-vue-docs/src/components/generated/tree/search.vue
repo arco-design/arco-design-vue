@@ -1,6 +1,6 @@
 <template>
   <div>
-    <sd-input-search style="max-width: 240px; margin-bottom: 8px" v-model="searchKey" />
+    <sd-input-search class="sd:max-w-60 sd:mb-2" v-model="searchKey" />
     <sd-tree :data="treeData">
       <template #title="nodeData">
         <template v-if="((index = getMatchIndex(nodeData?.title)), index < 0)">{{
@@ -8,7 +8,7 @@
         }}</template>
         <span v-else>
           {{ nodeData?.title?.substr(0, index) }}
-          <span style="color: var(--color-primary-light-4)">
+          <span class="sd:text-[var(--color-primary-light-4)]">
             {{ nodeData?.title?.substr(index, searchKey.length) }} </span
           >{{ nodeData?.title?.substr(index + searchKey.length) }}
         </span>
@@ -16,7 +16,7 @@
     </sd-tree>
   </div>
 </template>
-<script>
+<script setup lang="ts">
   import { ref, computed } from 'vue';
 
   const originTreeData = [
@@ -68,46 +68,36 @@
     },
   ];
 
-  export default {
-    setup() {
-      const searchKey = ref('');
-      const treeData = computed(() => {
-        if (!searchKey.value) return originTreeData;
-        return searchData(searchKey.value);
+  const searchKey = ref('');
+  const treeData = computed(() => {
+    if (!searchKey.value) return originTreeData;
+    return searchData(searchKey.value);
+  });
+
+  function searchData(keyword) {
+    const loop = (data) => {
+      const result = [];
+      data.forEach((item) => {
+        if (item.title.toLowerCase().indexOf(keyword.toLowerCase()) > -1) {
+          result.push({ ...item });
+        } else if (item.children) {
+          const filterData = loop(item.children);
+          if (filterData.length) {
+            result.push({
+              ...item,
+              children: filterData,
+            });
+          }
+        }
       });
+      return result;
+    };
 
-      function searchData(keyword) {
-        const loop = (data) => {
-          const result = [];
-          data.forEach((item) => {
-            if (item.title.toLowerCase().indexOf(keyword.toLowerCase()) > -1) {
-              result.push({ ...item });
-            } else if (item.children) {
-              const filterData = loop(item.children);
-              if (filterData.length) {
-                result.push({
-                  ...item,
-                  children: filterData,
-                });
-              }
-            }
-          });
-          return result;
-        };
+    return loop(originTreeData);
+  }
 
-        return loop(originTreeData);
-      }
-
-      function getMatchIndex(title) {
-        if (!searchKey.value) return -1;
-        return title.toLowerCase().indexOf(searchKey.value.toLowerCase());
-      }
-
-      return {
-        searchKey,
-        treeData,
-        getMatchIndex,
-      };
-    },
-  };
+  function getMatchIndex(title) {
+    if (!searchKey.value) return -1;
+    return title.toLowerCase().indexOf(searchKey.value.toLowerCase());
+  }
 </script>

@@ -55,7 +55,7 @@ exports[`<dropdown> demo: > render [button] correctly 1`] = `
 `;
 
 exports[`<dropdown> demo: > render [context-menu] correctly 1`] = `
-<div style="display: flex; align-items: center; justify-content: center; height: 300px; background-color: var(--color-fill-2);">
+<div class="sd:flex sd:h-[300px] sd:items-center sd:justify-center sd:bg-[var(--color-fill-2)]">
   <div>Click Me</div>
 </div>
 `;

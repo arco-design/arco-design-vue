@@ -22,39 +22,27 @@
   </sd-modal>
 </template>
 
-<script>
+<script setup lang="ts">
   import { reactive, ref } from 'vue';
 
-  export default {
-    setup() {
-      const visible = ref(false);
-      const form = reactive({
-        name: '',
-        post: '',
-      });
+  const visible = ref(false);
+  const form = reactive({
+    name: '',
+    post: '',
+  });
 
-      const handleClick = () => {
-        visible.value = true;
-      };
-      const handleBeforeOk = (done) => {
-        console.log(form);
-        window.setTimeout(() => {
-          done();
-          // prevent close
-          // done(false)
-        }, 3000);
-      };
-      const handleCancel = () => {
-        visible.value = false;
-      };
-
-      return {
-        visible,
-        form,
-        handleClick,
-        handleBeforeOk,
-        handleCancel,
-      };
-    },
+  const handleClick = () => {
+    visible.value = true;
+  };
+  const handleBeforeOk = (done) => {
+    console.log(form);
+    window.setTimeout(() => {
+      done();
+      // prevent close
+      // done(false)
+    }, 3000);
+  };
+  const handleCancel = () => {
+    visible.value = false;
   };
 </script>

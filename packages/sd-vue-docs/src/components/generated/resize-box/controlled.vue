@@ -2,7 +2,7 @@
   <div>
     <sd-resize-box
       :directions="['right', 'bottom']"
-      :style="{ minWidth: '100px', maxWidth: '100%', textAlign: 'center' }"
+      class="sd:min-w-25 sd:max-w-full sd:text-center"
       v-model:width="width"
       v-model:height="height"
     >
@@ -22,17 +22,9 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const width = ref(500);
-      const height = ref(200);
-      return {
-        width,
-        height,
-      };
-    },
-  };
+  const width = ref(500);
+  const height = ref(200);
 </script>

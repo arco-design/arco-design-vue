@@ -220,7 +220,7 @@ exports[`<tabs> demo: > render [scroll] correctly 1`] = `
       <!--v-if--> Change: Tab1
     </button></div>
 </div>
-<div class="sd-tabs sd-tabs-horizontal sd-tabs-top sd-tabs-type-line sd-tabs-size-medium" style="width: 100%; height: 300px; margin-top: 20px;">
+<div class="sd-tabs sd-tabs-horizontal sd-tabs-top sd-tabs-type-line sd-tabs-size-medium sd:w-full sd:h-75 sd:mt-5">
   <!---->
   <div class="sd-tabs-nav sd-tabs-nav-horizontal sd-tabs-nav-top sd-tabs-nav-size-medium sd-tabs-nav-type-line">
     <!---->

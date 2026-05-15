@@ -1,5 +1,5 @@
 <template>
-  <sd-space direction="vertical" :style="{ width: '100%' }">
+  <sd-space direction="vertical" class="sd:w-full">
     <sd-upload action="/" directory />
   </sd-space>
 </template>

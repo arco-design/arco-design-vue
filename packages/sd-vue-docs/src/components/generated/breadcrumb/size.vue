@@ -5,7 +5,7 @@
       <sd-breadcrumb-item>Channel</sd-breadcrumb-item>
       <sd-breadcrumb-item>News</sd-breadcrumb-item>
     </sd-breadcrumb>
-    <sd-breadcrumb :style="{ fontSize: `12px` }">
+    <sd-breadcrumb class="sd:text-xs">
       <sd-breadcrumb-item>Home</sd-breadcrumb-item>
       <sd-breadcrumb-item>Channel</sd-breadcrumb-item>
       <sd-breadcrumb-item>News</sd-breadcrumb-item>

@@ -1,6 +1,6 @@
 <template>
-  <div :style="{ background: 'var(--color-fill-2)', padding: '28px' }">
-    <sd-page-header :style="{ background: 'var(--color-bg-2)' }" title="SD Design">
+  <div class="sd:bg-(--color-fill-2) sd:p-7">
+    <sd-page-header class="sd:bg-(--color-bg-2)" title="SD Design">
       <template #breadcrumb>
         <sd-breadcrumb>
           <sd-breadcrumb-item>Home</sd-breadcrumb-item>
@@ -37,7 +37,3 @@
     </sd-page-header>
   </div>
 </template>
-
-<script>
-  export default {};
-</script>

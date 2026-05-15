@@ -1,5 +1,5 @@
 <template>
-  <sd-space direction="vertical" size="large" style="width: 100%">
+  <sd-space direction="vertical" size="large" class="sd:w-full">
     <sd-alert closable>
       This is an info alert.
       <template #action>

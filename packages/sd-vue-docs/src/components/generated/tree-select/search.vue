@@ -5,7 +5,7 @@
       :allow-clear="true"
       :data="treeData"
       placeholder="Please select ..."
-      style="width: 300px"
+      class="sd:w-75"
     ></sd-tree-select>
     <sd-tree-select
       :allow-search="true"
@@ -13,25 +13,12 @@
       :data="treeData"
       :filter-tree-node="filterTreeNode"
       placeholder="Please select ..."
-      style="width: 300px"
+      class="sd:w-75"
     ></sd-tree-select>
   </sd-space>
 </template>
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
-
-  export default {
-    setup() {
-      function filterTreeNode(searchValue, nodeData) {
-        return nodeData.title.toLowerCase().indexOf(searchValue.toLowerCase()) > -1;
-      }
-
-      return {
-        filterTreeNode,
-        treeData,
-      };
-    },
-  };
 
   const treeData = [
     {
@@ -81,4 +68,8 @@
       ],
     },
   ];
+
+  function filterTreeNode(searchValue, nodeData) {
+    return nodeData.title.toLowerCase().indexOf(searchValue.toLowerCase()) > -1;
+  }
 </script>

@@ -23,10 +23,6 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
   import { IconEdit } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    components: { IconEdit },
-  };
 </script>

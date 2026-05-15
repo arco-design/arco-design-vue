@@ -1,16 +1,16 @@
 <template>
   <div>
-    <sd-switch v-model="rtlType" style="margin-bottom: 20px">
+    <sd-switch v-model="rtlType" class="sd:mb-5">
       <template #checked> RTL </template>
       <template #unchecked> LTR </template>
     </sd-switch>
     <sd-config-provider :rtl="rtlType">
-      <sd-tabs :default-active-key="2" style="margin-bottom: 20px">
+      <sd-tabs :default-active-key="2" class="sd:mb-5">
         <sd-tab-pane v-for="i in 36" :key="i" :title="`Tab ${i}`">
           Content of Tab Panel {{ i }}
         </sd-tab-pane>
       </sd-tabs>
-      <sd-space :direction="'vertical'" style="width: 100%">
+      <sd-space :direction="'vertical'" class="sd:w-full">
         <sd-space :size="40">
           <sd-badge :count="9">
             <sd-avatar shape="square" />
@@ -20,7 +20,7 @@
           </sd-badge>
           <sd-badge :dotStyle="{ height: '16px', width: '16px', fontSize: '14px' }">
             <template #content>
-              <IconClockCircle :style="{ verticalAlign: 'middle', color: 'var(--color-text-2)' }" />
+              <IconClockCircle class="sd:align-middle sd:text-[var(--color-text-2)]" />
             </template>
             <sd-avatar shape="square" />
           </sd-badge>
@@ -33,16 +33,8 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const rtlType = ref(true);
-
-      return {
-        rtlType,
-      };
-    },
-  };
+  const rtlType = ref(true);
 </script>

@@ -4,9 +4,7 @@
     <sd-timeline-item label="2018-05-22">The second milestone</sd-timeline-item>
     <sd-timeline-item label="2020-06-22" dotColor="#F53F3F">
       The third milestone
-      <IconExclamationCircleFill
-        :style="{ color: 'F53F3F', fontSize: '12px', marginLeft: '4px' }"
-      />
+      <IconExclamationCircleFill class="sd:text-[f53f3f] sd:text-xs sd:ml-1" />
     </sd-timeline-item>
     <sd-timeline-item label="2020-09-30" dotColor="#C9CDD4">
       The fourth milestone
@@ -14,10 +12,6 @@
   </sd-timeline>
 </template>
 
-<script>
+<script setup lang="ts">
   import { IconExclamationCircleFill } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    components: { IconExclamationCircleFill },
-  };
 </script>

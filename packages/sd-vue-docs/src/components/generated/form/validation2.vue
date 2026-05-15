@@ -1,11 +1,5 @@
 <template>
-  <sd-form
-    ref="formRef"
-    :rules="rules"
-    :model="form"
-    :style="{ width: '600px' }"
-    @submit="handleSubmit"
-  >
+  <sd-form ref="formRef" :rules="rules" :model="form" class="sd:w-150" @submit="handleSubmit">
     <sd-form-item field="name" label="Username" validate-trigger="blur">
       <sd-input v-model="form.name" placeholder="please enter your username..." />
     </sd-form-item>
@@ -37,94 +31,84 @@
   {{ form }}
 </template>
 
-<script>
+<script setup lang="ts">
   import { reactive } from 'vue';
 
-  export default {
-    setup() {
-      const handleSubmit = ({ values, errors }) => {
-        console.log('values:', values, '\nerrors:', errors);
-      };
+  const handleSubmit = ({ values, errors }) => {
+    console.log('values:', values, '\nerrors:', errors);
+  };
 
-      const form = reactive({
-        name: '',
-        password: '',
-        password2: '',
-        email: '',
-        ip: '192.168.2.1',
-        url: '',
-        match: '',
-      });
+  const form = reactive({
+    name: '',
+    password: '',
+    password2: '',
+    email: '',
+    ip: '192.168.2.1',
+    url: '',
+    match: '',
+  });
 
-      const rules = {
-        name: [
-          {
-            required: true,
-            message: 'name is required',
-          },
-        ],
-        password: [
-          {
-            required: true,
-            message: 'password is required',
-          },
-        ],
-        password2: [
-          {
-            required: true,
-            message: 'password is required',
-          },
-          {
-            validator: (value, cb) => {
-              if (value !== form.password) {
-                cb('two passwords do not match');
-              } else {
-                cb();
-              }
-            },
-          },
-        ],
-        email: [
-          {
-            type: 'email',
-            required: true,
-          },
-        ],
-        ip: [
-          {
-            type: 'ip',
-            required: true,
-          },
-        ],
-        url: [
-          {
-            type: 'url',
-            required: true,
-          },
-        ],
-        match: [
-          {
-            required: true,
-            validator: (value, cb) => {
-              return new Promise((resolve) => {
-                if (!value) {
-                  cb('Please enter match');
-                }
-                if (value !== 'match') {
-                  cb('match must be match!');
-                }
-                resolve();
-              });
-            },
-          },
-        ],
-      };
-
-      return {
-        form,
-        rules,
-        handleSubmit,
-      };
-    },
+  const rules = {
+    name: [
+      {
+        required: true,
+        message: 'name is required',
+      },
+    ],
+    password: [
+      {
+        required: true,
+        message: 'password is required',
+      },
+    ],
+    password2: [
+      {
+        required: true,
+        message: 'password is required',
+      },
+      {
+        validator: (value, cb) => {
+          if (value !== form.password) {
+            cb('two passwords do not match');
+          } else {
+            cb();
+          }
+        },
+      },
+    ],
+    email: [
+      {
+        type: 'email',
+        required: true,
+      },
+    ],
+    ip: [
+      {
+        type: 'ip',
+        required: true,
+      },
+    ],
+    url: [
+      {
+        type: 'url',
+        required: true,
+      },
+    ],
+    match: [
+      {
+        required: true,
+        validator: (value, cb) => {
+          return new Promise((resolve) => {
+            if (!value) {
+              cb('Please enter match');
+            }
+            if (value !== 'match') {
+              cb('match must be match!');
+            }
+            resolve();
+          });
+        },
+      },
+    ],
   };
 </script>

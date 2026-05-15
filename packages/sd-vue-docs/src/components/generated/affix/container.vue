@@ -1,23 +1,15 @@
 <template>
-  <div style="height: 200px; overflow: auto" ref="containerRef">
-    <div style="height: 400px; overflow: hidden; background: #ccc">
-      <sd-affix :offsetTop="20" :target="containerRef" style="margin: 40px">
+  <div class="sd:h-50 sd:overflow-auto" ref="containerRef">
+    <div class="sd:h-100 sd:overflow-hidden sd:bg-[#ccc]">
+      <sd-affix :offsetTop="20" :target="containerRef" class="sd:m-10">
         <sd-button type="primary">Affix in scrolling container</sd-button>
       </sd-affix>
     </div>
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const containerRef = ref();
-
-      return {
-        containerRef,
-      };
-    },
-  };
+  const containerRef = ref();
 </script>

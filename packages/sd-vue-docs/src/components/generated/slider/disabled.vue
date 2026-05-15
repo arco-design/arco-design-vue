@@ -1,3 +1,3 @@
 <template>
-  <sd-slider :default-value="50" :style="{ width: '200px' }" disabled />
+  <sd-slider :default-value="50" class="sd:w-50" disabled />
 </template>

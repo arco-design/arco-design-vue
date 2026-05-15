@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-bottom: 20px">
+  <div class="sd:mb-5">
     <sd-radio-group v-model="size" type="button">
       <sd-radio value="mini">mini</sd-radio>
       <sd-radio value="small">small</sd-radio>
@@ -7,14 +7,10 @@
       <sd-radio value="large">large</sd-radio>
     </sd-radio-group>
   </div>
-  <sd-date-picker :size="size" style="width: 254px" />
+  <sd-date-picker :size="size" class="sd:w-63.5" />
 </template>
-<script>
-  export default {
-    data() {
-      return {
-        size: 'small',
-      };
-    },
-  };
+<script setup lang="ts">
+  import { shallowRef } from 'vue';
+
+  const size = shallowRef('small');
 </script>

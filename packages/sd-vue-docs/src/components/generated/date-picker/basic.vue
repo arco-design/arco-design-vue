@@ -1,3 +1,3 @@
 <template>
-  <sd-date-picker style="width: 200px" />
+  <sd-date-picker class="sd:w-50" />
 </template>

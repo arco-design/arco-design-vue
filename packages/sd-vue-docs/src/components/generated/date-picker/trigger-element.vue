@@ -1,23 +1,16 @@
 <template>
   <sd-space>
-    <sd-date-picker style="width: 268px" v-model="value">
+    <sd-date-picker class="sd:w-67" v-model="value">
       <sd-button>{{ value || '请选择日期' }}</sd-button>
     </sd-date-picker>
-    <sd-range-picker style="width: 268px" v-model="rangeValue">
+    <sd-range-picker class="sd:w-67" v-model="rangeValue">
       <sd-button>{{ (rangeValue && rangeValue.join(' - ')) || '请选择日期范围' }}</sd-button>
     </sd-range-picker>
   </sd-space>
 </template>
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
-  export default {
-    setup() {
-      const value = ref();
-      const rangeValue = ref();
-      return {
-        value,
-        rangeValue,
-      };
-    },
-  };
+
+  const value = ref();
+  const rangeValue = ref();
 </script>

@@ -1,15 +1,7 @@
 <template>
   <sd-tree blockNode :data="treeData" />
 </template>
-<script>
-  export default {
-    data() {
-      return {
-        treeData,
-      };
-    },
-  };
-
+<script setup lang="ts">
   const treeData = [
     {
       title: 'Trunk 0-0',

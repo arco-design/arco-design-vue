@@ -2,7 +2,7 @@
 
 exports[`<watermark> demo: > render [basic] correctly 1`] = `
 <div class="sd-watermark" style="position: relative; overflow: hidden;">
-  <div style="width: 100%; height: 350px;"></div>
+  <div class="sd:w-full sd:h-87.5"></div>
   <div style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;background-repeat:repeat;background-position:0px 0px;z-index:6;background-image:url('data:image/png;base64,mock');background-size:324px"></div>
 </div>
 `;
@@ -146,7 +146,7 @@ exports[`<watermark> demo: > render [custom] correctly 1`] = `
   </div>
 </form>
 <div class="sd-watermark" style="position: relative; overflow: hidden;">
-  <div style="box-sizing: border-box; width: 100%; border: 1px solid rgb(229, 230, 235);">
+  <div class="sd:box-border sd:w-full sd:border sd:border-[#e5e6eb]">
     <h5 class="sd-typography"> Design system
       <!---->
       <!--v-if-->
@@ -166,7 +166,7 @@ exports[`<watermark> demo: > render [custom] correctly 1`] = `
         <!--v-if-->
         <!--v-if-->
       </div>
-    </article><img style="position: relative; z-index: 7;" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/24e0dd27418d2291b65db1b21aa62254.png~tplv-uwbnlip3yd-webp.webp">
+    </article><img alt="watermark demo" class="sd:relative sd:z-[7]" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/24e0dd27418d2291b65db1b21aa62254.png~tplv-uwbnlip3yd-webp.webp">
   </div>
   <div style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;background-repeat:repeat;background-position:0px 0px;z-index:6;background-image:url('data:image/png;base64,mock');background-size:244px"></div>
 </div>
@@ -174,14 +174,14 @@ exports[`<watermark> demo: > render [custom] correctly 1`] = `
 
 exports[`<watermark> demo: > render [image] correctly 1`] = `
 <div class="sd-watermark" style="position: relative; overflow: hidden;">
-  <div style="width: 100%; height: 300px;"></div>
+  <div class="sd:w-full sd:h-75"></div>
   <div style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;background-repeat:repeat;background-position:0px 0px;z-index:6;background-image:url('data:image/png;base64,mock');background-size:356px"></div>
 </div>
 `;
 
 exports[`<watermark> demo: > render [multiline] correctly 1`] = `
 <div class="sd-watermark" style="position: relative; overflow: hidden;">
-  <div style="width: 100%; height: 300px;"></div>
+  <div class="sd:w-full sd:h-75"></div>
   <div style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;background-repeat:repeat;background-position:0px 0px;z-index:6;background-image:url('data:image/png;base64,mock');background-size:340px"></div>
 </div>
 `;

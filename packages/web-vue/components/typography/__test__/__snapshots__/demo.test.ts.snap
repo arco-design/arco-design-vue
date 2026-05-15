@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<typography> demo: > render [basic] correctly 1`] = `
-<article class="sd-typography" style="margin-top: -40px;">
+<article class="sd-typography sd:-mt-10">
   <h1 class="sd-typography"> Design system
     <!---->
     <!--v-if-->

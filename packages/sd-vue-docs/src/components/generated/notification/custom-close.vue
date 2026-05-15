@@ -7,31 +7,27 @@
   </sd-space>
 </template>
 
-<script lang="jsx">
+<script setup lang="ts">
+  import { h } from 'vue';
+
   import { Notification, Button } from '@sdata/web-vue';
   import { IconCloseCircle } from '@sdata/web-vue/es/icon/index.js';
 
-  export default {
-    setup() {
-      const handleNotification = () => {
-        Notification.info({
-          title: 'Notification',
-          content: 'This is a notification!',
-          closable: true,
-          closeIcon: <IconCloseCircle />,
-        });
-      };
+  function handleNotification() {
+    Notification.info({
+      title: 'Notification',
+      content: 'This is a notification!',
+      closable: true,
+      closeIcon: h(IconCloseCircle),
+    });
+  }
 
-      const handleNotification2 = () => {
-        Notification.error({
-          title: 'Notification',
-          content: 'This is a notification!',
-          closable: true,
-          closeIconElement: <Button size="mini">Close</Button>,
-        });
-      };
-
-      return { handleNotification, handleNotification2 };
-    },
-  };
+  function handleNotification2() {
+    Notification.error({
+      title: 'Notification',
+      content: 'This is a notification!',
+      closable: true,
+      closeIconElement: h(Button, { size: 'mini' }, () => 'Close'),
+    });
+  }
 </script>

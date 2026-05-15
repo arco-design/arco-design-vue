@@ -1,12 +1,6 @@
 <template>
   <div>
-    <sd-badge
-      v-for="color in colors"
-      :key="color"
-      :color="color"
-      :text="color"
-      :style="{ marginRight: '24px' }"
-    />
+    <sd-badge v-for="color in colors" :key="color" :color="color" :text="color" class="sd:mr-6" />
   </div>
   <br />
   <div>
@@ -15,12 +9,14 @@
       :key="color"
       :color="color"
       :text="color"
-      :style="{ marginRight: '24px' }"
+      class="sd:mr-6"
     />
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
+  import { ref } from 'vue';
+
   const COLORS = [
     'red',
     'orangered',
@@ -51,12 +47,8 @@
     '#168CFF',
     '#FF5722',
   ];
-  export default {
-    data() {
-      return {
-        colors: COLORS,
-        customColors: COLORS_CUSTOM,
-      };
-    },
-  };
+
+  const colors = ref(COLORS);
+
+  const customColors = ref(COLORS_CUSTOM);
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <sd-typography :style="{ marginTop: '-40px' }">
+  <sd-typography class="sd:-mt-10">
     <sd-typography-title> Design system </sd-typography-title>
     <sd-typography-paragraph>
       A design is a plan or specification for the construction of an object or system or for the

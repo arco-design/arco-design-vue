@@ -1,15 +1,7 @@
 <template>
   <div
     id="image-demo-preview-popup-container"
-    :style="{
-      width: '100%',
-      height: '400px',
-      backgroundColor: 'var(--color-fill-2)',
-      position: 'relative',
-      overflow: 'hidden',
-      lineHeight: '400px',
-      textAlign: 'center',
-    }"
+    class="sd:relative sd:h-100 sd:w-full sd:overflow-hidden sd:bg-(--color-fill-2) sd:text-center sd:leading-100"
   >
     <sd-image
       width="200"

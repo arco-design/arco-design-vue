@@ -1,30 +1,14 @@
 <template>
   <sd-tree-select :data="treeData" default-value="node1" @change="onChange">
     <template #trigger>
-      <sd-typography-paragraph style="width: 300px">
+      <sd-typography-paragraph class="sd:w-75">
         You selected: <a href="javascript: void(0)">{{ text }}</a>
       </sd-typography-paragraph>
     </template>
   </sd-tree-select>
 </template>
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
-
-  export default {
-    setup() {
-      const text = ref('node1');
-
-      function onChange(selected) {
-        text.value = selected;
-      }
-
-      return {
-        treeData,
-        text,
-        onChange,
-      };
-    },
-  };
 
   const treeData = [
     {
@@ -62,4 +46,10 @@
       ],
     },
   ];
+
+  const text = ref('node1');
+
+  function onChange(selected) {
+    text.value = selected;
+  }
 </script>

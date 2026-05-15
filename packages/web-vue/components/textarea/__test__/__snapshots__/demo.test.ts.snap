@@ -7,7 +7,7 @@ exports[`<textarea> demo: > render [auto-size] correctly 1`] = `
   <!--v-if-->
   <!--v-if-->
 </div>
-<div style="margin-top: 20px;" class="sd-textarea-wrapper">
+<div class="sd:mt-5 sd-textarea-wrapper">
   <div class="sd-textarea-mirror">This is the contents of the textarea. This is the contents of the textarea. This is the contents of the textarea.
   </div><textarea class="sd-textarea" value="This is the contents of the textarea. This is the contents of the textarea. This is the contents of the textarea."></textarea>
   <!--v-if-->
@@ -24,7 +24,7 @@ exports[`<textarea> demo: > render [basic] correctly 1`] = `
 `;
 
 exports[`<textarea> demo: > render [status] correctly 1`] = `
-<div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px; width: 100%;">
+<div class="sd-space sd-space-vertical sd:w-full" style="column-gap: 24px; row-gap: 24px;">
   <!---->
   <div class="sd-space-item">
     <div class="sd-textarea-wrapper sd-textarea-disabled">

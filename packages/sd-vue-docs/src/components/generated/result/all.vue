@@ -8,7 +8,7 @@
     <template #extra>
       <sd-button type="primary">Refresh</sd-button>
     </template>
-    <sd-typography style="padding: 24px; background: var(--color-fill-2)">
+    <sd-typography class="sd:p-6 sd:bg-(--color-fill-2)">
       <sd-typography-paragraph>Try:</sd-typography-paragraph>
       <ul>
         <li> Checking the network cables, modem, and router </li>
@@ -18,12 +18,6 @@
   </sd-result>
 </template>
 
-<script>
+<script setup lang="ts">
   import { IconFaceFrownFill } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    components: {
-      IconFaceFrownFill,
-    },
-  };
 </script>

@@ -1,7 +1,7 @@
 <template>
-  <div :style="{ background: 'var(--color-fill-2)', padding: '28px' }">
+  <div class="sd:bg-(--color-fill-2) sd:p-7">
     <sd-page-header
-      :style="{ background: 'var(--color-bg-2)' }"
+      class="sd:bg-(--color-bg-2)"
       title="SD Design"
       subtitle="SD Design Vue"
       :show-back="false"

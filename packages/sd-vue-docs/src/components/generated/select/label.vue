@@ -1,5 +1,5 @@
 <template>
-  <sd-select default-value="Beijing" :style="{ width: '320px' }" placeholder="Please select ...">
+  <sd-select default-value="Beijing" class="sd:w-80" placeholder="Please select ...">
     <template #label="{ data }">
       <span><icon-plus />{{ data?.label }}</span>
     </template>
@@ -10,10 +10,6 @@
   </sd-select>
 </template>
 
-<script>
+<script setup lang="ts">
   import { IconPlus } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    components: { IconPlus },
-  };
 </script>

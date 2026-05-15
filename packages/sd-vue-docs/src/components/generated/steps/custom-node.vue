@@ -26,7 +26,7 @@
         </template>
       </sd-step>
     </sd-steps>
-    <div style="margin-top: 20px; text-align: center">
+    <div class="sd:mt-5 sd:text-center">
       <sd-space size="large">
         <sd-button type="secondary" :disabled="current <= 1" @click="onPrev">
           <IconLeft />
@@ -41,31 +41,20 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const current = ref(1);
+  const current = ref(1);
 
-      const onPrev = () => {
-        current.value = Math.max(1, current.value - 1);
-      };
+  const onPrev = () => {
+    current.value = Math.max(1, current.value - 1);
+  };
 
-      const onNext = () => {
-        current.value = Math.min(3, current.value + 1);
-      };
+  const onNext = () => {
+    current.value = Math.min(3, current.value + 1);
+  };
 
-      const setCurrent = (current) => {
-        current.value = current;
-      };
-
-      return {
-        current,
-        onPrev,
-        onNext,
-        setCurrent,
-      };
-    },
+  const setCurrent = (current) => {
+    current.value = current;
   };
 </script>

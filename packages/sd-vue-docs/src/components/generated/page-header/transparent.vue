@@ -1,10 +1,6 @@
 <template>
   <div
-    :style="{
-      backgroundImage: 'radial-gradient(var(--color-fill-3) 1px, rgba(0, 0, 0, 0) 1px)',
-      backgroundSize: '16px 16px',
-      padding: '28px',
-    }"
+    class="sd:bg-[radial-gradient(var(--color-fill-3)_1px,rgba(0,0,0,0)_1px)] sd:p-7 sd:[background-size:16px_16px]"
   >
     <sd-page-header title="SD Design" subtitle="SD Design Vue">
       <template #breadcrumb>

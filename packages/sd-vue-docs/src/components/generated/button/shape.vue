@@ -12,10 +12,6 @@
     </sd-button>
   </sd-space>
 </template>
-<script>
+<script setup lang="ts">
   import { IconPlus } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    components: { IconPlus },
-  };
 </script>

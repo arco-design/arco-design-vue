@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-bottom: 20px">
+  <div class="sd:mb-5">
     <sd-radio-group v-model="size" type="button">
       <sd-radio value="mini">mini</sd-radio>
       <sd-radio value="small">small</sd-radio>
@@ -7,27 +7,10 @@
       <sd-radio value="large">large</sd-radio>
     </sd-radio-group>
   </div>
-  <sd-tree
-    style="margin-right: 20px"
-    :blockNode="true"
-    :checkable="true"
-    :size="size"
-    :data="treeData"
-  />
+  <sd-tree class="sd:mr-5" :blockNode="true" :checkable="true" :size="size" :data="treeData" />
 </template>
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
-
-  export default {
-    setup() {
-      const size = ref('medium');
-
-      return {
-        size,
-        treeData,
-      };
-    },
-  };
 
   const treeData = [
     {
@@ -61,4 +44,6 @@
       ],
     },
   ];
+
+  const size = ref('medium');
 </script>

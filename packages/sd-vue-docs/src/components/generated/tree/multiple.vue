@@ -1,6 +1,6 @@
 <template>
   <sd-checkbox
-    style="marginbottom: 24px"
+    class="sd:mb-6"
     v-model="multiple"
     @change="
       () => {
@@ -15,65 +15,55 @@
   <br />
   <sd-tree v-model:selected-keys="selectedKeys" :multiple="multiple" :data="treeData" />
 </template>
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const selectedKeys = ref([]);
-      const multiple = ref(true);
-      const treeData = [
+  const selectedKeys = ref([]);
+  const multiple = ref(true);
+  const treeData = [
+    {
+      title: 'Trunk 0-0',
+      key: '0-0',
+      children: [
         {
-          title: 'Trunk 0-0',
-          key: '0-0',
+          title: 'Leaf',
+          key: '0-0-1',
+        },
+        {
+          title: 'Branch 0-0-2',
+          key: '0-0-2',
           children: [
             {
               title: 'Leaf',
-              key: '0-0-1',
-            },
-            {
-              title: 'Branch 0-0-2',
-              key: '0-0-2',
-              children: [
-                {
-                  title: 'Leaf',
-                  key: '0-0-2-1',
-                },
-              ],
+              key: '0-0-2-1',
             },
           ],
         },
-        {
-          title: 'Trunk 0-1',
-          key: '0-1',
-          children: [
-            {
-              title: 'Branch 0-1-1',
-              key: '0-1-1',
-              children: [
-                {
-                  title: 'Leaf',
-                  key: '0-1-1-1',
-                },
-                {
-                  title: 'Leaf',
-                  key: '0-1-1-2',
-                },
-              ],
-            },
-            {
-              title: 'Leaf',
-              key: '0-1-2',
-            },
-          ],
-        },
-      ];
-
-      return {
-        selectedKeys,
-        multiple,
-        treeData,
-      };
+      ],
     },
-  };
+    {
+      title: 'Trunk 0-1',
+      key: '0-1',
+      children: [
+        {
+          title: 'Branch 0-1-1',
+          key: '0-1-1',
+          children: [
+            {
+              title: 'Leaf',
+              key: '0-1-1-1',
+            },
+            {
+              title: 'Leaf',
+              key: '0-1-1-2',
+            },
+          ],
+        },
+        {
+          title: 'Leaf',
+          key: '0-1-2',
+        },
+      ],
+    },
+  ];
 </script>

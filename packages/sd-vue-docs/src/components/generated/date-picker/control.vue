@@ -1,16 +1,13 @@
 <template>
   <sd-space>
-    <sd-date-picker v-model="value" style="width: 200px" />
-    <sd-range-picker v-model="rangeValue" style="width: 300px" />
+    <sd-date-picker v-model="value" class="sd:w-50" />
+    <sd-range-picker v-model="rangeValue" class="sd:w-75" />
   </sd-space>
 </template>
-<script>
-  export default {
-    data() {
-      return {
-        value: '2026-04-16',
-        rangeValue: ['2026-04-16', '2026-04-16'],
-      };
-    },
-  };
+<script setup lang="ts">
+  import { ref, shallowRef } from 'vue';
+
+  const value = shallowRef('2026-04-16');
+
+  const rangeValue = ref(['2026-04-16', '2026-04-16']);
 </script>

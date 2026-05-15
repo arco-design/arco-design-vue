@@ -1,5 +1,5 @@
 <template>
-  <sd-verification-code defaultValue="123" style="width: 300px" masked @finish="onFinish" />
+  <sd-verification-code defaultValue="123" class="sd:w-75" masked @finish="onFinish" />
 </template>
 
 <script setup>

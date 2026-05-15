@@ -49,8 +49,8 @@ exports[`<trigger> demo: > render [nest] correctly 1`] = `
 `;
 
 exports[`<trigger> demo: > render [scroll] correctly 1`] = `
-<div data-v-69a843a0="" style="height: 100px; overflow-y: scroll;">
-  <div data-v-69a843a0="" style="height: 200px;"><button data-v-69a843a0="" class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button" style="margin-top: 80px;">
+<div data-v-69a843a0="" class="sd:h-25 sd:overflow-y-scroll">
+  <div data-v-69a843a0="" class="sd:h-50"><button data-v-69a843a0="" class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd:mt-20" type="button">
       <!--v-if-->Click Me
     </button>
     <!---->

@@ -72,7 +72,7 @@ exports[`<statistic> demo: > render [countdown] correctly 1`] = `
     </div>
   </div>
 </div>
-<div class="sd-space sd-space-vertical" style="column-gap: 8px; row-gap: 8px; margin-top: 10px;">
+<div class="sd-space sd-space-vertical sd:mt-2.5" style="column-gap: 8px; row-gap: 8px;">
   <!---->
   <div class="sd-space-item">
     <div class="sd-statistic sd-statistic-countdown">

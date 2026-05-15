@@ -1,5 +1,5 @@
 <template>
-  <sd-time-picker style="width: 194px">
+  <sd-time-picker class="sd:w-48.5">
     <template #extra> Extra Footer </template>
   </sd-time-picker>
 </template>

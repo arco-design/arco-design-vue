@@ -1,5 +1,5 @@
 <template>
-  <sd-space direction="vertical" :style="{ width: '100%' }">
+  <sd-space direction="vertical" class="sd:w-full">
     <sd-upload
       action="/"
       :fileList="file ? [file] : []"
@@ -14,7 +14,7 @@
           }`"
         >
           <div class="sd-upload-list-picture custom-upload-avatar" v-if="file && file.url">
-            <img :src="file.url" />
+            <img :src="file.url" alt="upload preview" />
             <div class="sd-upload-list-picture-mask">
               <IconEdit />
             </div>
@@ -23,18 +23,13 @@
               :percent="file.percent"
               type="circle"
               size="mini"
-              :style="{
-                position: 'absolute',
-                left: '50%',
-                top: '50%',
-                transform: 'translateX(-50%) translateY(-50%)',
-              }"
+              class="sd:absolute sd:left-1/2 sd:top-1/2 sd:-translate-x-1/2 sd:-translate-y-1/2"
             />
           </div>
           <div class="sd-upload-picture-card" v-else>
             <div class="sd-upload-picture-card-text">
               <IconPlus />
-              <div style="margin-top: 10px; font-weight: 600">Upload</div>
+              <div class="sd:mt-2.5 sd:font-semibold">Upload</div>
             </div>
           </div>
         </div>
@@ -43,30 +38,20 @@
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
   import { IconEdit, IconPlus } from '@sdata/web-vue/es/icon/index.js';
 
-  export default {
-    components: { IconPlus, IconEdit },
-    setup() {
-      const file = ref();
+  const file = ref();
 
-      const onChange = (_, currentFile) => {
-        file.value = {
-          ...currentFile,
-          // url: URL.createObjectURL(currentFile.file),
-        };
-      };
-      const onProgress = (currentFile) => {
-        file.value = currentFile;
-      };
-      return {
-        file,
-        onChange,
-        onProgress,
-      };
-    },
+  const onChange = (_, currentFile) => {
+    file.value = {
+      ...currentFile,
+      // url: URL.createObjectURL(currentFile.file),
+    };
+  };
+  const onProgress = (currentFile) => {
+    file.value = currentFile;
   };
 </script>

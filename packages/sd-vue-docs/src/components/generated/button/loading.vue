@@ -13,32 +13,19 @@
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
   import { IconPlus } from '@sdata/web-vue/es/icon/index.js';
 
-  export default {
-    components: {
-      IconPlus,
-    },
-    setup() {
-      const loading1 = ref(false);
-      const loading2 = ref(false);
+  const loading1 = ref(false);
+  const loading2 = ref(false);
 
-      const handleClick1 = () => {
-        loading1.value = !loading1.value;
-      };
-      const handleClick2 = () => {
-        loading2.value = !loading2.value;
-      };
+  function handleClick1() {
+    loading1.value = !loading1.value;
+  }
 
-      return {
-        loading1,
-        loading2,
-        handleClick1,
-        handleClick2,
-      };
-    },
-  };
+  function handleClick2() {
+    loading2.value = !loading2.value;
+  }
 </script>

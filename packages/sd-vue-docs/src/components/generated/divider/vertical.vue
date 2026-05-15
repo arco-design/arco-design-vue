@@ -1,5 +1,7 @@
 <template>
-  <div class="divider-demo">
+  <div
+    class="sd:box-border sd:w-140 sd:border-30 sd:border-solid sd:border-[rgb(var(--gray-2))] sd:p-6"
+  >
     <span>Item 1</span>
     <sd-divider direction="vertical" />
     <span>Item 2</span>
@@ -7,12 +9,3 @@
     <span>Item 3</span>
   </div>
 </template>
-
-<style scoped>
-  .divider-demo {
-    box-sizing: border-box;
-    width: 560px;
-    padding: 24px;
-    border: 30px solid rgb(var(--gray-2));
-  }
-</style>

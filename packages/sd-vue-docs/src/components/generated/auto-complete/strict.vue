@@ -1,18 +1,9 @@
 <template>
-  <sd-auto-complete
-    :data="data"
-    :style="{ width: '360px' }"
-    placeholder="please enter something"
-    strict
-  />
+  <sd-auto-complete :data="data" class="sd:w-90" placeholder="please enter something" strict />
 </template>
 
-<script>
-  export default {
-    data() {
-      return {
-        data: ['Beijing', 'Shanghai', 'Chengdu', 'WuHan'],
-      };
-    },
-  };
+<script setup lang="ts">
+  import { ref } from 'vue';
+
+  const data = ref(['Beijing', 'Shanghai', 'Chengdu', 'WuHan']);
 </script>

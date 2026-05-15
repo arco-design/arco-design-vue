@@ -29,7 +29,7 @@
   </sd-list>
 </template>
 
-<script>
+<script setup lang="ts">
   import { reactive } from 'vue';
 
   const names = ['Socrates', 'Balzac', 'Plato'];
@@ -54,17 +54,10 @@
     };
   });
 
-  export default {
-    setup() {
-      return {
-        dataSource,
-        paginationProps: reactive({
-          defaultPageSize: 3,
-          total: dataSource.length,
-        }),
-      };
-    },
-  };
+  const paginationProps = reactive({
+    defaultPageSize: 3,
+    total: dataSource.length,
+  });
 </script>
 
 <style scoped>

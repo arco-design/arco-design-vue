@@ -1,5 +1,5 @@
 <template>
   <sd-watermark content="sd.design">
-    <div style="width: 100%; height: 350px" />
+    <div class="sd:w-full sd:h-87.5" />
   </sd-watermark>
 </template>

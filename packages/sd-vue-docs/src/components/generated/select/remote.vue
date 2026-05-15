@@ -2,7 +2,7 @@
   <sd-space direction="vertical" size="large">
     <div>Show selections after search options</div>
     <sd-select
-      :style="{ width: '320px' }"
+      class="sd:w-80"
       :loading="loading"
       placeholder="Please select ..."
       multiple
@@ -14,7 +14,7 @@
     <div>Hide selections after search options</div>
     <sd-select
       :options="options"
-      :style="{ width: '320px' }"
+      class="sd:w-80"
       :loading="loading"
       placeholder="Please select ..."
       multiple
@@ -25,31 +25,21 @@
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const options = ref(['Option1', 'Option2', 'Option3']);
-      const loading = ref(false);
+  const options = ref(['Option1', 'Option2', 'Option3']);
+  const loading = ref(false);
 
-      const handleSearch = (value) => {
-        if (value) {
-          loading.value = true;
-          window.setTimeout(() => {
-            options.value = [`${value}-Option1`, `${value}-Option2`, `${value}-Option3`];
-            loading.value = false;
-          }, 2000);
-        } else {
-          options.value = [];
-        }
-      };
-
-      return {
-        options,
-        loading,
-        handleSearch,
-      };
-    },
+  const handleSearch = (value) => {
+    if (value) {
+      loading.value = true;
+      window.setTimeout(() => {
+        options.value = [`${value}-Option1`, `${value}-Option2`, `${value}-Option3`];
+        loading.value = false;
+      }, 2000);
+    } else {
+      options.value = [];
+    }
   };
 </script>

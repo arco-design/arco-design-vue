@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="marginbottom: 20px">
+    <div class="sd:mb-5">
       <sd-radio-group v-model="size" type="button">
         <sd-radio value="mini">mini</sd-radio>
         <sd-radio value="small">small</sd-radio>
@@ -15,12 +15,8 @@
     </sd-space>
   </div>
 </template>
-<script>
-  export default {
-    data() {
-      return {
-        size: 'medium',
-      };
-    },
-  };
+<script setup lang="ts">
+  import { shallowRef } from 'vue';
+
+  const size = shallowRef('medium');
 </script>

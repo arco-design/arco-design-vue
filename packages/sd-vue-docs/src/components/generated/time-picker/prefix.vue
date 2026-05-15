@@ -1,13 +1,13 @@
 <template>
   <div>
     <div>
-      <sd-time-picker style="width: 194px">
+      <sd-time-picker class="sd:w-48.5">
         <template #prefix>
           <IconInfoCircle />
         </template> </sd-time-picker
     ></div>
     <div>
-      <sd-time-picker type="time-range" style="width: 252px; margin-top: 20px">
+      <sd-time-picker type="time-range" class="sd:w-63 sd:mt-5">
         <template #prefix>
           <IconInfoCircle />
         </template>
@@ -16,10 +16,6 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
   import { IconInfoCircle } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    components: { IconInfoCircle },
-  };
 </script>

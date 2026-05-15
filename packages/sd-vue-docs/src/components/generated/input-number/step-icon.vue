@@ -1,6 +1,6 @@
 <template>
   <sd-space direction="vertical" size="large">
-    <sd-input-number :style="{ width: '320px' }" placeholder="Please enter something" allow-clear>
+    <sd-input-number class="sd:w-80" placeholder="Please enter something" allow-clear>
       <template #plus>
         <icon-plus />
       </template>

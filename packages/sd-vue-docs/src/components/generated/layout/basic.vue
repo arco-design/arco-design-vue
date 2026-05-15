@@ -1,12 +1,12 @@
 <template>
   <div class="layout-demo">
-    <sd-layout style="height: 400px">
+    <sd-layout class="sd:h-100">
       <sd-layout-header>Header</sd-layout-header>
       <sd-layout-content>Content</sd-layout-content>
       <sd-layout-footer>Footer</sd-layout-footer>
     </sd-layout>
     <br />
-    <sd-layout style="height: 400px">
+    <sd-layout class="sd:h-100">
       <sd-layout-header>Header</sd-layout-header>
       <sd-layout>
         <sd-layout-sider theme="dark">Sider</sd-layout-sider>
@@ -15,7 +15,7 @@
       <sd-layout-footer>Footer</sd-layout-footer>
     </sd-layout>
     <br />
-    <sd-layout style="height: 400px">
+    <sd-layout class="sd:h-100">
       <sd-layout-header>Header</sd-layout-header>
       <sd-layout>
         <sd-layout-content>Content</sd-layout-content>
@@ -24,11 +24,11 @@
       <sd-layout-footer>Footer</sd-layout-footer>
     </sd-layout>
     <br />
-    <sd-layout style="height: 400px">
+    <sd-layout class="sd:h-100">
       <sd-layout-header>Header</sd-layout-header>
       <sd-layout>
-        <sd-layout-sider style="width: 64px">Sider</sd-layout-sider>
-        <sd-layout-sider style="width: 206px; margin-left: 1px">Sider</sd-layout-sider>
+        <sd-layout-sider :width="64">Sider</sd-layout-sider>
+        <sd-layout-sider :width="206" class="sd:ml-px">Sider</sd-layout-sider>
         <sd-layout-content>Content</sd-layout-content>
       </sd-layout>
       <sd-layout-footer>Footer</sd-layout-footer>

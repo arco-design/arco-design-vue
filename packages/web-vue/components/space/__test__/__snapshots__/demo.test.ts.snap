@@ -2,8 +2,8 @@
 
 exports[`<space> demo: > render [align] correctly 1`] = `
 <div>
-  <div><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="start"><span class="sd-radio-button-content">start</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="center"><span class="sd-radio-button-content">center</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="end"><span class="sd-radio-button-content">end</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="baseline"><span class="sd-radio-button-content">baseline</span></label></span></div>
-  <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px; padding: 10px;">
+  <div class="sd:mb-5"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="start"><span class="sd-radio-button-content">start</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="center"><span class="sd-radio-button-content">center</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="end"><span class="sd-radio-button-content">end</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="baseline"><span class="sd-radio-button-content">baseline</span></label></span></div>
+  <div class="sd-space sd-space-horizontal sd-space-align-center sd:bg-[var(--color-fill-2)] sd:p-2.5" style="column-gap: 8px; row-gap: 8px;">
     <!---->
     <div class="sd-space-item"><span class="sd-typography">Space:<!----><!--v-if--><!--v-if--><!--v-if--></span></div>
     <!---->
@@ -48,7 +48,7 @@ exports[`<space> demo: > render [basic] correctly 1`] = `
 
 exports[`<space> demo: > render [size] correctly 1`] = `
 <div>
-  <div><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="mini"><span class="sd-radio-button-content">mini</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="small"><span class="sd-radio-button-content">small</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="medium"><span class="sd-radio-button-content">medium</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="large"><span class="sd-radio-button-content">large</span></label></span></div>
+  <div class="sd:mb-5"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="mini"><span class="sd-radio-button-content">mini</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="small"><span class="sd-radio-button-content">small</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="medium"><span class="sd-radio-button-content">medium</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="large"><span class="sd-radio-button-content">large</span></label></span></div>
   <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 16px; row-gap: 16px;">
     <!---->
     <div class="sd-space-item"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button">

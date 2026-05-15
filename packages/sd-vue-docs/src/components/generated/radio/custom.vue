@@ -17,7 +17,7 @@
     </sd-radio>
   </sd-radio-group>
 
-  <div :style="{ marginTop: '20px' }">
+  <div class="sd:mt-5">
     <sd-radio-group>
       <template v-for="item in 2" :key="item">
         <sd-radio :value="item">

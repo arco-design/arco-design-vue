@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<form> demo: > render [async] correctly 1`] = `
-<form class="sd-form sd-form-layout-horizontal sd-form-size-medium" style="width: 600px;">
+<form class="sd-form sd-form-layout-horizontal sd-form-size-medium sd:w-150">
   <div class="sd-row sd-row-align-start sd-row-justify-start sd-form-item sd-form-item-layout-horizontal">
     <div class="sd-col sd-col-5 sd-form-item-label-col"><label class="sd-form-item-label">
         <!--v-if-->Username
@@ -69,7 +69,7 @@ exports[`<form> demo: > render [async] correctly 1`] = `
 `;
 
 exports[`<form> demo: > render [auto-width] correctly 1`] = `
-<form class="sd-form sd-form-layout-horizontal sd-form-size-medium sd-form-auto-label-width" style="width: 600px;">
+<form class="sd-form sd-form-layout-horizontal sd-form-size-medium sd-form-auto-label-width sd:w-150">
   <div class="sd-row sd-row-nowrap sd-row-align-start sd-row-justify-start sd-form-item sd-form-item-layout-horizontal">
     <div class="sd-col sd-col-5 sd-form-item-label-col sd-form-item-label-col-flex"><label class="sd-form-item-label">
         <!--v-if-->Username
@@ -137,7 +137,7 @@ exports[`<form> demo: > render [auto-width] correctly 1`] = `
 `;
 
 exports[`<form> demo: > render [basic] correctly 1`] = `
-<form class="sd-form sd-form-layout-horizontal sd-form-size-medium" style="width: 600px;">
+<form class="sd-form sd-form-layout-horizontal sd-form-size-medium sd:w-150">
   <div class="sd-row sd-row-align-start sd-row-justify-start sd-form-item sd-form-item-layout-horizontal">
     <div class="sd-col sd-col-5 sd-form-item-label-col"><label class="sd-form-item-label">
         <!--v-if-->Username<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-question-circle sd-form-item-label-tooltip" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
@@ -208,7 +208,7 @@ exports[`<form> demo: > render [basic] correctly 1`] = `
 `;
 
 exports[`<form> demo: > render [custom] correctly 1`] = `
-<div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px; margin-bottom: 20px;">
+<div class="sd-space sd-space-horizontal sd-space-align-center sd:mb-5" style="column-gap: 8px; row-gap: 8px;">
   <!---->
   <div class="sd-space-item"><button type="button" role="switch" aria-checked="false" class="sd-switch sd-switch-type-circle"><span class="sd-switch-handle"><span class="sd-switch-handle-icon"></span></span><!--  prettier-ignore  -->
       <!--v-if-->
@@ -216,7 +216,7 @@ exports[`<form> demo: > render [custom] correctly 1`] = `
   <!---->
   <div class="sd-space-item"> Disabled: false</div>
 </div>
-<form class="sd-form sd-form-layout-horizontal sd-form-size-medium" style="width: 600px;">
+<form class="sd-form sd-form-layout-horizontal sd-form-size-medium sd:w-150">
   <div class="sd-row sd-row-align-start sd-row-justify-start sd-form-item sd-form-item-layout-horizontal">
     <div class="sd-col sd-col-5 sd-form-item-label-col"><label class="sd-form-item-label"><strong class="sd-form-item-label-required-symbol"><svg fill="currentColor" viewBox="0 0 1024 1024" width="1em" height="1em"><path d="M583.338667 17.066667c18.773333 0 34.133333 15.36 34.133333 34.133333v349.013333l313.344-101.888a34.133333 34.133333 0 0 1 43.008 22.016l42.154667 129.706667a34.133333 34.133333 0 0 1-21.845334 43.178667l-315.733333 102.4 208.896 287.744a34.133333 34.133333 0 0 1-7.509333 47.786666l-110.421334 80.213334a34.133333 34.133333 0 0 1-47.786666-7.509334L505.685333 706.218667 288.426667 1005.226667a34.133333 34.133333 0 0 1-47.786667 7.509333l-110.421333-80.213333a34.133333 34.133333 0 0 1-7.509334-47.786667l214.186667-295.253333L29.013333 489.813333a34.133333 34.133333 0 0 1-22.016-43.008l42.154667-129.877333a34.133333 34.133333 0 0 1 43.008-22.016l320.512 104.106667L412.672 51.2c0-18.773333 15.36-34.133333 34.133333-34.133333h136.533334z"></path></svg></strong>Username
         <!--v-if-->
@@ -234,7 +234,7 @@ exports[`<form> demo: > render [custom] correctly 1`] = `
 `;
 
 exports[`<form> demo: > render [disabled] correctly 1`] = `
-<form class="sd-form sd-form-layout-horizontal sd-form-size-medium" style="width: 600px;">
+<form class="sd-form sd-form-layout-horizontal sd-form-size-medium sd:w-150">
   <div class="sd-row sd-row-align-start sd-row-justify-start sd-form-item sd-form-item-layout-horizontal">
     <div class="sd-col sd-col-5 sd-form-item-label-col"><label class="sd-form-item-label">
         <!--v-if-->Username
@@ -302,7 +302,7 @@ exports[`<form> demo: > render [disabled] correctly 1`] = `
 `;
 
 exports[`<form> demo: > render [dynamic] correctly 1`] = `
-<form class="sd-form sd-form-layout-horizontal sd-form-size-medium" style="width: 600px;">
+<form class="sd-form sd-form-layout-horizontal sd-form-size-medium sd:w-150">
   <div class="sd-row sd-row-align-start sd-row-justify-start sd-form-item sd-form-item-layout-horizontal">
     <div class="sd-col sd-col-5 sd-form-item-label-col"><label class="sd-form-item-label">
         <!--v-if-->Username
@@ -325,7 +325,7 @@ exports[`<form> demo: > render [dynamic] correctly 1`] = `
       </label></div>
     <div class="sd-col sd-col-19 sd-form-item-wrapper-col" id="posts_0_value">
       <div class="sd-form-item-content-wrapper">
-        <div class="sd-form-item-content sd-form-item-content-flex"><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="please enter your post..." value=""><!----><!----></span><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button" style="margin-left: 10px;">
+        <div class="sd-form-item-content sd-form-item-content-flex"><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="please enter your post..." value=""><!----><!----></span><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd:ml-2.5" type="button">
             <!--v-if-->Delete
           </button></div>
       </div>
@@ -348,7 +348,7 @@ exports[`<form> demo: > render [dynamic] correctly 1`] = `
 `;
 
 exports[`<form> demo: > render [extra] correctly 1`] = `
-<form class="sd-form sd-form-layout-horizontal sd-form-size-medium" style="width: 600px;">
+<form class="sd-form sd-form-layout-horizontal sd-form-size-medium sd:w-150">
   <div class="sd-row sd-row-align-start sd-row-justify-start sd-form-item sd-form-item-layout-horizontal">
     <div class="sd-col sd-col-5 sd-form-item-label-col"><label class="sd-form-item-label"><strong class="sd-form-item-label-required-symbol"><svg fill="currentColor" viewBox="0 0 1024 1024" width="1em" height="1em"><path d="M583.338667 17.066667c18.773333 0 34.133333 15.36 34.133333 34.133333v349.013333l313.344-101.888a34.133333 34.133333 0 0 1 43.008 22.016l42.154667 129.706667a34.133333 34.133333 0 0 1-21.845334 43.178667l-315.733333 102.4 208.896 287.744a34.133333 34.133333 0 0 1-7.509333 47.786666l-110.421334 80.213334a34.133333 34.133333 0 0 1-47.786666-7.509334L505.685333 706.218667 288.426667 1005.226667a34.133333 34.133333 0 0 1-47.786667 7.509333l-110.421333-80.213333a34.133333 34.133333 0 0 1-7.509334-47.786667l214.186667-295.253333L29.013333 489.813333a34.133333 34.133333 0 0 1-22.016-43.008l42.154667-129.877333a34.133333 34.133333 0 0 1 43.008-22.016l320.512 104.106667L412.672 51.2c0-18.773333 15.36-34.133333 34.133333-34.133333h136.533334z"></path></svg></strong>Username
         <!--v-if-->
@@ -502,7 +502,7 @@ exports[`<form> demo: > render [grid] correctly 1`] = `
 `;
 
 exports[`<form> demo: > render [layout] correctly 1`] = `
-<div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px; width: 600px;">
+<div class="sd-space sd-space-vertical sd:w-150" style="column-gap: 24px; row-gap: 24px;">
   <!---->
   <div class="sd-space-item"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="horizontal"><span class="sd-radio-button-content">horizontal</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="vertical"><span class="sd-radio-button-content">vertical</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="inline"><span class="sd-radio-button-content">inline</span></label></span></div>
   <!---->
@@ -580,7 +580,7 @@ exports[`<form> demo: > render [layout] correctly 1`] = `
 `;
 
 exports[`<form> demo: > render [nest] correctly 1`] = `
-<form class="sd-form sd-form-layout-horizontal sd-form-size-medium" style="width: 600px;">
+<form class="sd-form sd-form-layout-horizontal sd-form-size-medium sd:w-150">
   <div class="sd-row sd-row-align-start sd-row-justify-start sd-form-item sd-form-item-layout-horizontal">
     <div class="sd-col sd-col-5 sd-form-item-label-col"><label class="sd-form-item-label">
         <!--v-if-->Username
@@ -739,7 +739,7 @@ exports[`<form> demo: > render [scroll] correctly 1`] = `
       <!--v-if-->Scroll to the last field
     </button></div>
 </div>
-<form class="sd-form sd-form-layout-horizontal sd-form-size-medium" style="width: 500px; height: 300px; margin-top: 20px; padding-right: 16px; overflow: auto;">
+<form class="sd-form sd-form-layout-horizontal sd-form-size-medium sd:mt-5 sd:h-[300px] sd:w-[500px] sd:overflow-auto sd:pr-4">
   <div class="sd-row sd-row-align-start sd-row-justify-start sd-form-item sd-form-item-layout-horizontal">
     <div class="sd-col sd-col-5 sd-form-item-label-col"><label class="sd-form-item-label"><strong class="sd-form-item-label-required-symbol"><svg fill="currentColor" viewBox="0 0 1024 1024" width="1em" height="1em"><path d="M583.338667 17.066667c18.773333 0 34.133333 15.36 34.133333 34.133333v349.013333l313.344-101.888a34.133333 34.133333 0 0 1 43.008 22.016l42.154667 129.706667a34.133333 34.133333 0 0 1-21.845334 43.178667l-315.733333 102.4 208.896 287.744a34.133333 34.133333 0 0 1-7.509333 47.786666l-110.421334 80.213334a34.133333 34.133333 0 0 1-47.786666-7.509334L505.685333 706.218667 288.426667 1005.226667a34.133333 34.133333 0 0 1-47.786667 7.509333l-110.421333-80.213333a34.133333 34.133333 0 0 1-7.509334-47.786667l214.186667-295.253333L29.013333 489.813333a34.133333 34.133333 0 0 1-22.016-43.008l42.154667-129.877333a34.133333 34.133333 0 0 1 43.008-22.016l320.512 104.106667L412.672 51.2c0-18.773333 15.36-34.133333 34.133333-34.133333h136.533334z"></path></svg></strong>user0
         <!--v-if-->
@@ -1010,7 +1010,7 @@ exports[`<form> demo: > render [status] correctly 1`] = `
   <!---->
   <div class="sd-space-item"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="mini"><span class="sd-radio-button-content">mini</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="small"><span class="sd-radio-button-content">small</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="medium"><span class="sd-radio-button-content">medium</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="large"><span class="sd-radio-button-content">large</span></label></span></div>
 </div>
-<form class="sd-form sd-form-layout-horizontal sd-form-size-medium" style="width: 600px; margin-top: 20px;">
+<form class="sd-form sd-form-layout-horizontal sd-form-size-medium sd:w-150 sd:mt-5">
   <div class="sd-row sd-row-align-start sd-row-justify-start sd-form-item sd-form-item-layout-horizontal sd-form-item-status-success sd-form-item-has-help">
     <div class="sd-col sd-col-5 sd-form-item-label-col"><label class="sd-form-item-label">
         <!--v-if-->Username
@@ -1156,7 +1156,7 @@ exports[`<form> demo: > render [status] correctly 1`] = `
 `;
 
 exports[`<form> demo: > render [validation] correctly 1`] = `
-<form class="sd-form sd-form-layout-horizontal sd-form-size-medium" style="width: 600px;">
+<form class="sd-form sd-form-layout-horizontal sd-form-size-medium sd:w-150">
   <div class="sd-row sd-row-align-start sd-row-justify-start sd-form-item sd-form-item-layout-horizontal">
     <div class="sd-col sd-col-5 sd-form-item-label-col"><label class="sd-form-item-label">
         <!--v-if-->Form Size
@@ -1492,7 +1492,7 @@ exports[`<form> demo: > render [validation] correctly 1`] = `
 `;
 
 exports[`<form> demo: > render [validation2] correctly 1`] = `
-<form class="sd-form sd-form-layout-horizontal sd-form-size-medium" style="width: 600px;">
+<form class="sd-form sd-form-layout-horizontal sd-form-size-medium sd:w-150">
   <div class="sd-row sd-row-align-start sd-row-justify-start sd-form-item sd-form-item-layout-horizontal">
     <div class="sd-col sd-col-5 sd-form-item-label-col"><label class="sd-form-item-label"><strong class="sd-form-item-label-required-symbol"><svg fill="currentColor" viewBox="0 0 1024 1024" width="1em" height="1em"><path d="M583.338667 17.066667c18.773333 0 34.133333 15.36 34.133333 34.133333v349.013333l313.344-101.888a34.133333 34.133333 0 0 1 43.008 22.016l42.154667 129.706667a34.133333 34.133333 0 0 1-21.845334 43.178667l-315.733333 102.4 208.896 287.744a34.133333 34.133333 0 0 1-7.509333 47.786666l-110.421334 80.213334a34.133333 34.133333 0 0 1-47.786666-7.509334L505.685333 706.218667 288.426667 1005.226667a34.133333 34.133333 0 0 1-47.786667 7.509333l-110.421333-80.213333a34.133333 34.133333 0 0 1-7.509334-47.786667l214.186667-295.253333L29.013333 489.813333a34.133333 34.133333 0 0 1-22.016-43.008l42.154667-129.877333a34.133333 34.133333 0 0 1 43.008-22.016l320.512 104.106667L412.672 51.2c0-18.773333 15.36-34.133333 34.133333-34.133333h136.533334z"></path></svg></strong>Username
         <!--v-if-->

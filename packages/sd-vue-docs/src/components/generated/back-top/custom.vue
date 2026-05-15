@@ -1,25 +1,12 @@
 <template>
-  <div class="wrapper">
-    <ul id="custom-demo">
-      <li v-for="(_, index) of Array(40)" :key="index">This is the content</li>
+  <div class="sd:relative">
+    <ul id="custom-demo" class="sd:h-50 sd:overflow-y-auto">
+      <li v-for="(_, index) of Array(40)" :key="index" class="sd:leading-7.5">
+        This is the content
+      </li>
     </ul>
-    <sd-back-top target-container="#custom-demo" :style="{ position: 'absolute' }">
+    <sd-back-top target-container="#custom-demo" class="sd:absolute!">
       <sd-button>UP</sd-button>
     </sd-back-top>
   </div>
 </template>
-
-<style scoped lang="scss">
-  .wrapper {
-    position: relative;
-
-    ul {
-      height: 200px;
-      overflow-y: auto;
-
-      li {
-        line-height: 30px;
-      }
-    }
-  }
-</style>

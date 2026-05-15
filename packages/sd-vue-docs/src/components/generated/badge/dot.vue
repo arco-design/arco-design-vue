@@ -4,15 +4,11 @@
       <a href="#">Link</a>
     </sd-badge>
     <sd-badge :count="9" dot :offset="[2, -2]">
-      <IconNotification :style="{ color: '#888', fontSize: '18px', verticalAlign: '-3px' }" />
+      <IconNotification class="sd:text-[#888] sd:text-lg sd:align-[-3px]" />
     </sd-badge>
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { IconNotification } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    components: { IconNotification },
-  };
 </script>

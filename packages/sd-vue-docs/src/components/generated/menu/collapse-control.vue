@@ -1,7 +1,7 @@
 <template>
   <div class="menu-demo">
     <sd-button
-      :style="{ padding: '0 12px', height: '30px', lineHeight: '30px', marginBottom: '4px' }"
+      class="sd:mb-1 sd:h-[30px] sd:px-3 sd:leading-[30px]"
       type="primary"
       @click="toggleCollapse"
     >
@@ -9,7 +9,7 @@
       <icon-menu-fold v-else />
     </sd-button>
     <sd-menu
-      :style="{ width: '200px', borderRadius: '4px' }"
+      class="sd:w-[200px] sd:rounded"
       theme="dark"
       :collapsed="collapsed"
       :default-open-keys="['0']"
@@ -43,7 +43,7 @@
     </sd-menu>
   </div>
 </template>
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
   import {
@@ -54,24 +54,11 @@
     IconBulb,
   } from '@sdata/web-vue/es/icon/index.js';
 
-  export default {
-    components: {
-      IconMenuFold,
-      IconMenuUnfold,
-      IconApps,
-      IconBug,
-      IconBulb,
-    },
-    setup() {
-      const collapsed = ref(false);
-      return {
-        collapsed,
-        toggleCollapse: () => {
-          collapsed.value = !collapsed.value;
-        },
-      };
-    },
-  };
+  const collapsed = ref(false);
+
+  function toggleCollapse() {
+    collapsed.value = !collapsed.value;
+  }
 </script>
 <style scoped>
   .menu-demo {

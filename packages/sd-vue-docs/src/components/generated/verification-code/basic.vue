@@ -1,5 +1,5 @@
 <template>
-  <sd-verification-code v-model="value" style="width: 300px" @finish="onFinish" />
+  <sd-verification-code v-model="value" class="sd:w-75" @finish="onFinish" />
 </template>
 
 <script setup>

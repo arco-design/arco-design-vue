@@ -4,27 +4,14 @@
     :label-in-value="true"
     :default-value="{ value: 'node2', label: 'Leaf' }"
     placeholder="Please select ..."
-    style="width: 300px"
+    class="sd:w-75"
     @change="onChange"
   ></sd-tree-select>
 </template>
-<script>
+<script setup lang="ts">
   import { h } from 'vue';
 
   import { IconCalendar } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    setup() {
-      function onChange(value) {
-        console.log(value);
-      }
-
-      return {
-        onChange,
-        treeData,
-      };
-    },
-  };
 
   const treeData = [
     {
@@ -55,4 +42,8 @@
       ],
     },
   ];
+
+  function onChange(value) {
+    console.log(value);
+  }
 </script>

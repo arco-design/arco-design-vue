@@ -14,16 +14,8 @@
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const position = ref('top');
-
-      return {
-        position,
-      };
-    },
-  };
+  const position = ref('top');
 </script>

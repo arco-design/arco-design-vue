@@ -11,89 +11,80 @@
     </sd-form-item>
   </sd-form>
   <sd-tree-select
-    style="width: 300px"
+    class="sd:w-75"
     placeholder="Please select ..."
     :data="computedTreeData"
     :show-header-on-empty="form.showHeaderOnEmpty"
     :show-footer-on-empty="form.showFooterOnEmpty"
   >
     <template #header>
-      <div style="padding: 6px 12px">
+      <div class="sd:py-1.5 sd:px-3">
         <sd-checkbox value="1">All</sd-checkbox>
       </div>
     </template>
     <template #footer>
-      <div style="padding: 6px 0; text-align: center">
+      <div class="sd:py-1.5 sd:text-center">
         <sd-button>Click Me</sd-button>
       </div>
     </template>
   </sd-tree-select>
 </template>
-<script>
+<script setup lang="ts">
   import { h, reactive, computed } from 'vue';
 
   import { IconCalendar } from '@sdata/web-vue/es/icon/index.js';
 
-  export default {
-    setup() {
-      const form = reactive({
-        empty: false,
-        showHeaderOnEmpty: false,
-        showFooterOnEmpty: false,
-      });
+  const form = reactive({
+    empty: false,
+    showHeaderOnEmpty: false,
+    showFooterOnEmpty: false,
+  });
 
-      const treeData = [
+  const treeData = [
+    {
+      key: 'node1',
+      icon: () => h(IconCalendar),
+      title: 'Trunk',
+      children: [
         {
-          key: 'node1',
-          icon: () => h(IconCalendar),
-          title: 'Trunk',
-          children: [
-            {
-              key: 'node2',
-              title: 'Leaf',
-            },
-          ],
+          key: 'node2',
+          title: 'Leaf',
         },
-        {
-          key: 'node3',
-          title: 'Trunk2',
-          icon: () => h(IconCalendar),
-          children: [
-            {
-              key: 'node4',
-              title: 'Leaf',
-            },
-            {
-              key: 'node5',
-              title: 'Leaf',
-            },
-          ],
-        },
-        {
-          key: 'node6',
-          title: 'Trunk3',
-          icon: () => h(IconCalendar),
-          children: [
-            {
-              key: 'node7',
-              title: 'Leaf',
-            },
-            {
-              key: 'node8',
-              title: 'Leaf',
-            },
-          ],
-        },
-      ];
-
-      const computedTreeData = computed(() => {
-        return form.empty ? [] : treeData;
-      });
-
-      return {
-        form,
-        computedTreeData,
-      };
+      ],
     },
-  };
+    {
+      key: 'node3',
+      title: 'Trunk2',
+      icon: () => h(IconCalendar),
+      children: [
+        {
+          key: 'node4',
+          title: 'Leaf',
+        },
+        {
+          key: 'node5',
+          title: 'Leaf',
+        },
+      ],
+    },
+    {
+      key: 'node6',
+      title: 'Trunk3',
+      icon: () => h(IconCalendar),
+      children: [
+        {
+          key: 'node7',
+          title: 'Leaf',
+        },
+        {
+          key: 'node8',
+          title: 'Leaf',
+        },
+      ],
+    },
+  ];
+
+  const computedTreeData = computed(() => {
+    return form.empty ? [] : treeData;
+  });
 </script>

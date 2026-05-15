@@ -8,17 +8,13 @@
     </sd-badge>
     <sd-badge :dotStyle="{ height: '16px', width: '16px', fontSize: '14px' }">
       <template #content>
-        <IconClockCircle :style="{ verticalAlign: 'middle', color: 'var(--color-text-2)' }" />
+        <IconClockCircle class="sd:align-middle sd:text-[var(--color-text-2)]" />
       </template>
       <sd-avatar shape="square" />
     </sd-badge>
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { IconClockCircle } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    components: { IconClockCircle },
-  };
 </script>

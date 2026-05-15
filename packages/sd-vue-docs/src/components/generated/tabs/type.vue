@@ -22,18 +22,9 @@
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const type = ref('line');
-      const size = ref('medium');
-
-      return {
-        type,
-        size,
-      };
-    },
-  };
+  const type = ref('line');
+  const size = ref('medium');
 </script>

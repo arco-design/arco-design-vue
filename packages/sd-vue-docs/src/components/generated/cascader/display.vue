@@ -3,21 +3,21 @@
     <sd-cascader
       :options="options"
       default-value="datunli"
-      :style="{ width: '320px' }"
+      class="sd:w-[320px]"
       placeholder="Show full path"
       separator=" > "
     />
     <sd-cascader
       :options="options"
       default-value="datunli"
-      :style="{ width: '320px' }"
+      class="sd:w-[320px]"
       placeholder="Only show leaf label"
       :show-path="false"
     />
     <sd-cascader
       :options="options"
       :default-value="['chaoyang', 'haidian', 'dongcheng']"
-      :style="{ width: '320px' }"
+      class="sd:w-[320px]"
       placeholder="Responsive tags"
       multiple
       allow-clear
@@ -26,49 +26,41 @@
   </sd-space>
 </template>
 
-<script>
-  export default {
-    setup() {
-      const options = [
+<script setup lang="ts">
+  const options = [
+    {
+      value: 'beijing',
+      label: 'Beijing',
+      children: [
         {
-          value: 'beijing',
-          label: 'Beijing',
+          value: 'chaoyang',
+          label: 'ChaoYang',
           children: [
             {
-              value: 'chaoyang',
-              label: 'ChaoYang',
-              children: [
-                {
-                  value: 'datunli',
-                  label: 'Datunli',
-                },
-              ],
-            },
-            {
-              value: 'haidian',
-              label: 'Haidian',
-            },
-            {
-              value: 'dongcheng',
-              label: 'Dongcheng',
+              value: 'datunli',
+              label: 'Datunli',
             },
           ],
         },
         {
-          value: 'shanghai',
-          label: 'Shanghai',
-          children: [
-            {
-              value: 'huangpu',
-              label: 'Huangpu',
-            },
-          ],
+          value: 'haidian',
+          label: 'Haidian',
         },
-      ];
-
-      return {
-        options,
-      };
+        {
+          value: 'dongcheng',
+          label: 'Dongcheng',
+        },
+      ],
     },
-  };
+    {
+      value: 'shanghai',
+      label: 'Shanghai',
+      children: [
+        {
+          value: 'huangpu',
+          label: 'Huangpu',
+        },
+      ],
+    },
+  ];
 </script>

@@ -1,12 +1,12 @@
 <template>
-  <div style="margin-bottom: 10px">
+  <div class="sd:mb-2.5">
     <sd-switch v-model="scrollbar" />
     Virtual Scrollbar
   </div>
   <sd-space direction="vertical" size="large">
     <sd-select
       :default-value="['Beijing', 'Shanghai']"
-      :style="{ width: '360px' }"
+      class="sd:w-90"
       placeholder="Please select ..."
       multiple
       :scrollbar="scrollbar"
@@ -20,7 +20,7 @@
     </sd-select>
     <sd-select
       :default-value="['Beijing', 'Shanghai', 'Guangzhou']"
-      :style="{ width: '360px' }"
+      class="sd:w-90"
       placeholder="Please select ..."
       multiple
       :max-tag-count="2"
@@ -37,7 +37,7 @@
     </sd-select>
     <sd-select
       :default-value="['Beijing', 'Shanghai']"
-      :style="{ width: '360px' }"
+      class="sd:w-90"
       placeholder="Please select ..."
       multiple
       :limit="2"
@@ -53,16 +53,8 @@
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const scrollbar = ref(true);
-
-      return {
-        scrollbar,
-      };
-    },
-  };
+  const scrollbar = ref(true);
 </script>

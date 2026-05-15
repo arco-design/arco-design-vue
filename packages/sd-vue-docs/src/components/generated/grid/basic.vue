@@ -1,6 +1,6 @@
 <template>
   <div class="grid-demo-background">
-    <sd-space direction="vertical" :size="16" style="display: block">
+    <sd-space direction="vertical" :size="16" class="sd:block">
       <sd-row class="grid-demo">
         <sd-col :span="24">
           <div>24 - 100%</div>

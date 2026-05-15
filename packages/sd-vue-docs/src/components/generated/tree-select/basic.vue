@@ -1,22 +1,10 @@
 <template>
-  <sd-tree-select
-    :data="treeData"
-    placeholder="Please select ..."
-    style="width: 300px"
-  ></sd-tree-select>
+  <sd-tree-select :data="treeData" placeholder="Please select ..." class="sd:w-75"></sd-tree-select>
 </template>
-<script>
+<script setup lang="ts">
   import { h } from 'vue';
 
   import { IconCalendar } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    setup() {
-      return {
-        treeData,
-      };
-    },
-  };
 
   const treeData = [
     {

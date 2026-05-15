@@ -1,6 +1,6 @@
 <template>
   <sd-checkbox-group v-model="custom" :options="['hide header', 'hide footer', 'hide cancel']" />
-  <div :style="{ marginTop: '20px' }">
+  <div class="sd:mt-5">
     <sd-button type="primary" @click="handleClick">Open Drawer</sd-button>
   </div>
   <sd-drawer
@@ -23,31 +23,19 @@
   </sd-drawer>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const visible = ref(false);
-      const custom = ref([]);
+  const visible = ref(false);
+  const custom = ref([]);
 
-      const handleClick = () => {
-        visible.value = true;
-      };
-      const handleOk = () => {
-        visible.value = false;
-      };
-      const handleCancel = () => {
-        visible.value = false;
-      };
-
-      return {
-        custom,
-        visible,
-        handleClick,
-        handleOk,
-        handleCancel,
-      };
-    },
+  const handleClick = () => {
+    visible.value = true;
+  };
+  const handleOk = () => {
+    visible.value = false;
+  };
+  const handleCancel = () => {
+    visible.value = false;
   };
 </script>

@@ -15,16 +15,8 @@
   <sd-button @click="start = true">Start</sd-button>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const start = ref(false);
-
-      return {
-        start,
-      };
-    },
-  };
+  const start = ref(false);
 </script>

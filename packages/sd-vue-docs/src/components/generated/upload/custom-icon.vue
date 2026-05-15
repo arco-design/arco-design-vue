@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="margin-bottom: 20px">
+    <div class="sd:mb-5">
       <sd-space>
         <span>Type: </span>
         <sd-radio-group v-model="type">
@@ -30,7 +30,7 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
   import { h, ref } from 'vue';
 
   import {
@@ -40,26 +40,17 @@
     IconFaceFrownFill,
   } from '@sdata/web-vue/es/icon/index.js';
 
-  export default {
-    setup() {
-      const type = ref('text');
-      const getCustomIcon = () => {
-        return {
-          retryIcon: () => h(IconUpload),
-          cancelIcon: () => h(IconClose),
-          fileIcon: () => h(IconFileAudio),
-          removeIcon: () => h(IconClose),
-          errorIcon: () => h(IconFaceFrownFill),
-          fileName: (file) => {
-            return `文件名： ${file.name}`;
-          },
-        };
-      };
-
-      return {
-        type,
-        getCustomIcon,
-      };
-    },
+  const type = ref('text');
+  const getCustomIcon = () => {
+    return {
+      retryIcon: () => h(IconUpload),
+      cancelIcon: () => h(IconClose),
+      fileIcon: () => h(IconFileAudio),
+      removeIcon: () => h(IconClose),
+      errorIcon: () => h(IconFaceFrownFill),
+      fileName: (file) => {
+        return `文件名： ${file.name}`;
+      },
+    };
   };
 </script>

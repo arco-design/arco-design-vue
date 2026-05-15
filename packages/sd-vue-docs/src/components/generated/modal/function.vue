@@ -2,7 +2,7 @@
   <sd-button @click="handleClick">Open Modal</sd-button>
 </template>
 
-<script>
+<script setup lang="ts">
   import { h } from 'vue';
 
   import { Modal, Button } from '@sdata/web-vue';
@@ -24,19 +24,11 @@
     },
   };
 
-  export default {
-    setup() {
-      const handleClick = () => {
-        Modal.info({
-          title: 'Info Title',
-          content: () => h(ModalContent),
-        });
-      };
-
-      return {
-        handleClick,
-      };
-    },
+  const handleClick = () => {
+    Modal.info({
+      title: 'Info Title',
+      content: () => h(ModalContent),
+    });
   };
 </script>
 

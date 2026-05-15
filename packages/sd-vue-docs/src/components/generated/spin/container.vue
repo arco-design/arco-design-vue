@@ -8,12 +8,8 @@
   </sd-spin>
 </template>
 
-<script>
-  export default {
-    data() {
-      return {
-        loading: true,
-      };
-    },
-  };
+<script setup lang="ts">
+  import { shallowRef } from 'vue';
+
+  const loading = shallowRef(true);
 </script>

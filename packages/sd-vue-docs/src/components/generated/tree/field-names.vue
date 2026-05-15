@@ -10,17 +10,10 @@
     :data="treeData"
   />
 </template>
-<script>
+<script setup lang="ts">
   import { h } from 'vue';
 
   import { IconStar, IconDriveFile } from '@sdata/web-vue/es/icon/index.js';
-  export default {
-    data() {
-      return {
-        treeData,
-      };
-    },
-  };
 
   const treeData = [
     {

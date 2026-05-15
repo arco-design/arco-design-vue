@@ -4,7 +4,7 @@
     title="A user’s avatar"
     description="Present by SD Design"
     width="260"
-    style="margin-right: 67px; vertical-align: top"
+    class="sd:mr-[67px] sd:align-top"
     :preview-visible="visible1"
     @preview-visible-change="
       () => {
@@ -62,30 +62,17 @@
     </template>
   </sd-image>
 </template>
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
   import { IconEye, IconDownload, IconInfoCircle } from '@sdata/web-vue/es/icon/index.js';
 
-  export default {
-    components: {
-      IconEye,
-      IconDownload,
-      IconInfoCircle,
-    },
-    setup() {
-      const visible1 = ref(false);
-      const visible2 = ref(false);
+  const visible1 = ref(false);
+  const visible2 = ref(false);
 
-      return {
-        visible1,
-        visible2,
-        onDownLoad() {
-          console.log('download');
-        },
-      };
-    },
-  };
+  function onDownLoad() {
+    console.log('download');
+  }
 </script>
 <style scoped>
   .actions {

@@ -6,6 +6,6 @@
       <sd-step>Pending</sd-step>
     </sd-steps>
     <sd-divider />
-    <div style="color: #c9cdd4; line-height: 140px; text-align: center"> Step 2 Content </div>
+    <div class="sd:text-[#c9cdd4] sd:leading-35 sd:text-center"> Step 2 Content </div>
   </div>
 </template>

@@ -1,16 +1,16 @@
 <template>
   <sd-space direction="vertical">
     <sd-space>
-      <sd-typography-text style="width: 80px">Disabled:</sd-typography-text>
-      <sd-verification-code defaultValue="123456" style="width: 300px" disabled />
+      <sd-typography-text class="sd:w-20">Disabled:</sd-typography-text>
+      <sd-verification-code defaultValue="123456" class="sd:w-75" disabled />
     </sd-space>
     <sd-space>
-      <sd-typography-text style="width: 80px">Readonly:</sd-typography-text>
-      <sd-verification-code defaultValue="123456" style="width: 300px" readonly />
+      <sd-typography-text class="sd:w-20">Readonly:</sd-typography-text>
+      <sd-verification-code defaultValue="123456" class="sd:w-75" readonly />
     </sd-space>
     <sd-space>
-      <sd-typography-text style="width: 80px">Error:</sd-typography-text>
-      <sd-verification-code defaultValue="123456" style="width: 300px" error />
+      <sd-typography-text class="sd:w-20">Error:</sd-typography-text>
+      <sd-verification-code defaultValue="123456" class="sd:w-75" error />
     </sd-space>
   </sd-space>
 </template>

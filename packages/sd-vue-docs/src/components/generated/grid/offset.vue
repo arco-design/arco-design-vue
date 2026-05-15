@@ -1,14 +1,14 @@
 <template>
   <div>
-    <sd-row class="grid-demo" style="marginbottom: 16px; backgroundcolor: var(--color-fill-2)">
+    <sd-row class="grid-demo sd:mb-4 sd:bg-[var(--color-fill-2)]">
       <sd-col :span="8">col - 8</sd-col>
       <sd-col :span="8" :offset="8"> col - 8 | offset - 8 </sd-col>
     </sd-row>
-    <sd-row class="grid-demo" style="marginbottom: 16px; backgroundcolor: var(--color-fill-2)">
+    <sd-row class="grid-demo sd:mb-4 sd:bg-[var(--color-fill-2)]">
       <sd-col :span="6" :offset="8"> col - 6 | offset - 8 </sd-col>
       <sd-col :span="6" :offset="4"> col - 6 | offset - 4 </sd-col>
     </sd-row>
-    <sd-row class="grid-demo" style="backgroundcolor: var(--color-fill-2)">
+    <sd-row class="grid-demo sd:bg-[var(--color-fill-2)]">
       <sd-col :span="12" :offset="8"> col - 12 | offset - 8 </sd-col>
     </sd-row>
   </div>

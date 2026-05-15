@@ -1,6 +1,6 @@
 <template>
   <sd-space direction="vertical" size="large">
-    <sd-select :style="{ width: '100%' }" placeholder="Please select ..." :bordered="false">
+    <sd-select class="sd:w-full" placeholder="Please select ..." :bordered="false">
       <sd-option>Beijing</sd-option>
       <sd-option>Shanghai</sd-option>
       <sd-option>Guangzhou</sd-option>
@@ -8,7 +8,7 @@
     </sd-select>
     <sd-select
       :default-value="['Beijing', 'Shanghai']"
-      :style="{ width: '360px' }"
+      class="sd:w-90"
       placeholder="Please select ..."
       multiple
       :bordered="false"

@@ -1,5 +1,5 @@
 <template>
-  <sd-space direction="vertical" size="large" style="width: 100%">
+  <sd-space direction="vertical" size="large" class="sd:w-full">
     <sd-mention :data="['Bytedance', 'Bytedesign', 'Bytenumner']" placeholder="input @" />
     <sd-mention
       :data="['Bytedance', 'Bytedesign', 'Bytenumner']"

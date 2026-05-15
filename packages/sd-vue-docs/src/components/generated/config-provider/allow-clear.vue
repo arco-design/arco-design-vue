@@ -23,24 +23,15 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const enabled = ref(true);
-      const cityOptions = [
-        { label: '上海', value: 'shanghai' },
-        { label: '杭州', value: 'hangzhou' },
-        { label: '成都', value: 'chengdu' },
-      ];
-
-      return {
-        enabled,
-        cityOptions,
-      };
-    },
-  };
+  const enabled = ref(true);
+  const cityOptions = [
+    { label: '上海', value: 'shanghai' },
+    { label: '杭州', value: 'hangzhou' },
+    { label: '成都', value: 'chengdu' },
+  ];
 </script>
 
 <style scoped>

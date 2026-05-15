@@ -25,27 +25,17 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const current = ref(1);
+  const current = ref(1);
 
-      const onPrev = () => {
-        current.value = Math.max(1, current.value - 1);
-      };
+  const onPrev = () => {
+    current.value = Math.max(1, current.value - 1);
+  };
 
-      const onNext = () => {
-        current.value = Math.min(3, current.value + 1);
-      };
-
-      return {
-        current,
-        onPrev,
-        onNext,
-      };
-    },
+  const onNext = () => {
+    current.value = Math.min(3, current.value + 1);
   };
 </script>
 

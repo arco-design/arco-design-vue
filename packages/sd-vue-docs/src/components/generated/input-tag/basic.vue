@@ -1,8 +1,3 @@
 <template>
-  <sd-input-tag
-    :default-value="['test']"
-    :style="{ width: '320px' }"
-    placeholder="Please Enter"
-    allow-clear
-  />
+  <sd-input-tag :default-value="['test']" class="sd:w-80" placeholder="Please Enter" allow-clear />
 </template>

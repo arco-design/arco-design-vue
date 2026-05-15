@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<alert> demo: > render [action] correctly 1`] = `
-<div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px; width: 100%;">
+<div class="sd-space sd-space-vertical sd:w-full" style="column-gap: 24px; row-gap: 24px;">
   <!---->
   <div class="sd-space-item">
     <transition-stub name="zoom-in-top" appear="false" persisted="false" css="true">

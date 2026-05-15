@@ -4,28 +4,28 @@
       defaultValue="node0"
       :data="treeData"
       placeholder="Please select ..."
-      style="width: 300px"
+      class="sd:w-75"
     ></sd-tree-select>
     <sd-tree-select
       defaultValue="node0"
       :data="treeData"
       :fallback-option="false"
       placeholder="Please select ..."
-      style="width: 300px"
+      class="sd:w-75"
     ></sd-tree-select>
     <sd-tree-select
       defaultValue="node0"
       :data="treeData"
       :fallback-option="fallback"
       placeholder="Please select ..."
-      style="width: 300px"
+      class="sd:w-75"
     ></sd-tree-select>
     <sd-tree-select
       :defaultValue="['node0', 'node2']"
       :data="treeData"
       multiple
       placeholder="Please select ..."
-      style="width: 300px"
+      class="sd:w-75"
     ></sd-tree-select>
     <sd-tree-select
       :defaultValue="['node0', 'node2']"
@@ -33,7 +33,7 @@
       :fallback-option="false"
       multiple
       placeholder="Please select ..."
-      style="width: 300px"
+      class="sd:w-75"
     ></sd-tree-select>
     <sd-tree-select
       :default-value="['node0', 'node2']"
@@ -41,26 +41,12 @@
       :fallback-option="fallback"
       multiple
       placeholder="Please select ..."
-      style="width: 300px"
+      class="sd:w-75"
     ></sd-tree-select>
   </sd-space>
 </template>
 
-<script>
-  export default {
-    setup() {
-      return {
-        treeData,
-        fallback(key) {
-          return {
-            key,
-            title: `++${key}++`,
-          };
-        },
-      };
-    },
-  };
-
+<script setup lang="ts">
   const treeData = [
     {
       key: 'node1',
@@ -87,4 +73,11 @@
       ],
     },
   ];
+
+  function fallback(key) {
+    return {
+      key,
+      title: `++${key}++`,
+    };
+  }
 </script>

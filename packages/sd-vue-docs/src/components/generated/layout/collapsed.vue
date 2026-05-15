@@ -5,7 +5,7 @@
       <sd-menu
         :defaultOpenKeys="['1']"
         :defaultSelectedKeys="['0_3']"
-        :style="{ width: '100%' }"
+        class="sd:w-full"
         @menuItemClick="onClickMenuItem"
       >
         <sd-menu-item key="0_1" disabled>
@@ -47,14 +47,14 @@
       </sd-menu>
     </sd-layout-sider>
     <sd-layout>
-      <sd-layout-header style="padding-left: 20px">
+      <sd-layout-header class="sd:pl-5">
         <sd-button shape="round" @click="onCollapse">
           <IconCaretRight v-if="collapsed" />
           <IconCaretLeft v-else />
         </sd-button>
       </sd-layout-header>
-      <sd-layout style="padding: 0 24px">
-        <sd-breadcrumb :style="{ margin: '16px 0' }">
+      <sd-layout class="sd:px-6">
+        <sd-breadcrumb class="sd:my-4">
           <sd-breadcrumb-item>Home</sd-breadcrumb-item>
           <sd-breadcrumb-item>List</sd-breadcrumb-item>
           <sd-breadcrumb-item>App</sd-breadcrumb-item>
@@ -65,8 +65,8 @@
     </sd-layout>
   </sd-layout>
 </template>
-<script>
-  import { defineComponent, ref } from 'vue';
+<script setup lang="ts">
+  import { ref } from 'vue';
 
   import { Message } from '@sdata/web-vue';
   import {
@@ -76,27 +76,14 @@
     IconCalendar,
   } from '@sdata/web-vue/es/icon/index.js';
 
-  export default defineComponent({
-    components: {
-      IconCaretRight,
-      IconCaretLeft,
-      IconHome,
-      IconCalendar,
-    },
-    setup() {
-      const collapsed = ref(false);
-      const onCollapse = () => {
-        collapsed.value = !collapsed.value;
-      };
-      return {
-        collapsed,
-        onCollapse,
-        onClickMenuItem(key) {
-          Message.info({ content: `You select ${key}`, showIcon: true });
-        },
-      };
-    },
-  });
+  const collapsed = ref(false);
+  const onCollapse = () => {
+    collapsed.value = !collapsed.value;
+  };
+
+  function onClickMenuItem(key) {
+    Message.info({ content: `You select ${key}`, showIcon: true });
+  }
 </script>
 <style scoped>
   .layout-demo {

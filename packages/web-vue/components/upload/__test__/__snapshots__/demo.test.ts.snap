@@ -1,14 +1,14 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<upload> demo: > render [avatar] correctly 1`] = `
-<div class="sd-space sd-space-vertical" style="column-gap: 8px; row-gap: 8px; width: 100%;">
+<div class="sd-space sd-space-vertical sd:w-full" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-upload"><input type="file" style="display: none;"><span><div class="sd-upload-list-item"><div class="sd-upload-picture-card"><div class="sd-upload-picture-card-text"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg><div style="margin-top: 10px; font-weight: 600;">Upload</div></div></div></div></span></span></div>
+  <div class="sd-space-item"><span class="sd-upload"><input type="file" style="display: none;"><span><div class="sd-upload-list-item"><div class="sd-upload-picture-card"><div class="sd-upload-picture-card-text"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg><div class="sd:mt-2.5 sd:font-semibold">Upload</div></div></div></div></span></span></div>
 </div>
 `;
 
 exports[`<upload> demo: > render [basic] correctly 1`] = `
-<div class="sd-space sd-space-vertical" style="column-gap: 8px; row-gap: 8px; width: 100%;">
+<div class="sd-space sd-space-vertical sd:w-full" style="column-gap: 8px; row-gap: 8px;">
   <!---->
   <div class="sd-space-item">
     <div class="sd-upload-wrapper sd-upload-wrapper-type-text">
@@ -20,7 +20,7 @@ exports[`<upload> demo: > render [basic] correctly 1`] = `
   </div>
   <!---->
   <div class="sd-space-item">
-    <div class="sd-upload-wrapper sd-upload-wrapper-type-text" style="margin-top: 40px;">
+    <div class="sd-upload-wrapper sd-upload-wrapper-type-text sd:mt-10">
       <!----><span class="sd-upload sd-upload-disabled"><input type="file" style="display: none;" disabled=""><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd-btn-disabled" type="button" disabled=""><span class="sd-btn-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-upload" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M14.93 17.071 24.001 8l9.071 9.071m-9.07 16.071v-25M40 35v6H8v-6"></path></svg></span>点击上传</button></span>
       <transition-group-stub tag="div" appear="false" persisted="false" css="true" class="sd-upload-list sd-upload-list-type-text">
         <!---->
@@ -31,7 +31,7 @@ exports[`<upload> demo: > render [basic] correctly 1`] = `
 `;
 
 exports[`<upload> demo: > render [before-remove] correctly 1`] = `
-<div class="sd-space sd-space-vertical" style="column-gap: 8px; row-gap: 8px; width: 100%;">
+<div class="sd-space sd-space-vertical sd:w-full" style="column-gap: 8px; row-gap: 8px;">
   <!---->
   <div class="sd-space-item">
     <div class="sd-upload-wrapper sd-upload-wrapper-type-text">
@@ -63,7 +63,7 @@ exports[`<upload> demo: > render [before-remove] correctly 1`] = `
 `;
 
 exports[`<upload> demo: > render [before-upload] correctly 1`] = `
-<div class="sd-space sd-space-vertical" style="column-gap: 8px; row-gap: 8px; width: 100%;">
+<div class="sd-space sd-space-vertical sd:w-full" style="column-gap: 8px; row-gap: 8px;">
   <!---->
   <div class="sd-space-item">
     <div class="sd-upload-wrapper sd-upload-wrapper-type-text">
@@ -78,7 +78,7 @@ exports[`<upload> demo: > render [before-upload] correctly 1`] = `
 
 exports[`<upload> demo: > render [custom-button] correctly 1`] = `
 <div class="sd-upload-wrapper sd-upload-wrapper-type-text">
-  <!----><span class="sd-upload"><input type="file" style="display: none;"><span><div style="width: 380px; height: 158px; color: var(--color-text-1); line-height: 158px; text-align: center; background-color: var(--color-fill-2); border: 1px dashed var(--color-fill-4);"><div> Drag the file here or <span style="color: rgb(51, 112, 255);"> Click to upload</span>
+  <!----><span class="sd-upload"><input type="file" style="display: none;"><span><div class="sd:h-[158px] sd:w-[380px] sd:rounded-[2px] sd:border sd:border-dashed sd:border-[var(--color-fill-4)] sd:bg-[var(--color-fill-2)] sd:text-center sd:leading-[158px] sd:text-[var(--color-text-1)]"><div> Drag the file here or <span class="sd:text-[#3370ff]"> Click to upload</span>
 </div>
 </div></span></span>
 <transition-group-stub tag="div" appear="false" persisted="false" css="true" class="sd-upload-list sd-upload-list-type-text">
@@ -89,7 +89,7 @@ exports[`<upload> demo: > render [custom-button] correctly 1`] = `
 
 exports[`<upload> demo: > render [custom-icon] correctly 1`] = `
 <div>
-  <div style="margin-bottom: 20px;">
+  <div class="sd:mb-5">
     <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
       <!---->
       <div class="sd-space-item"><span>Type: </span></div>
@@ -125,7 +125,7 @@ exports[`<upload> demo: > render [custom-icon] correctly 1`] = `
 `;
 
 exports[`<upload> demo: > render [directory] correctly 1`] = `
-<div class="sd-space sd-space-vertical" style="column-gap: 8px; row-gap: 8px; width: 100%;">
+<div class="sd-space sd-space-vertical sd:w-full" style="column-gap: 8px; row-gap: 8px;">
   <!---->
   <div class="sd-space-item">
     <div class="sd-upload-wrapper sd-upload-wrapper-type-text">

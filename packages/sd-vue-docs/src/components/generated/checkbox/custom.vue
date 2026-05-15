@@ -17,7 +17,7 @@
     </sd-checkbox>
   </sd-checkbox-group>
 
-  <div :style="{ marginTop: '20px' }">
+  <div class="sd:mt-5">
     <sd-checkbox-group :default-value="[1]">
       <template v-for="item in 2" :key="item">
         <sd-checkbox :value="item">

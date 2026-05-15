@@ -1,3 +1,3 @@
 <template>
-  <sd-month-picker style="width: 200px" />
+  <sd-month-picker class="sd:w-50" />
 </template>

@@ -1,7 +1,5 @@
 <template>
-  <sd-scrollbar type="track" style="height: 200px; overflow: auto">
-    <div style="width: 2000px; height: 2000px; background-color: var(--color-primary-light-4)">
-      Content
-    </div>
+  <sd-scrollbar type="track" class="sd:h-50 sd:overflow-auto">
+    <div class="sd:w-500 sd:h-500 sd:bg-(--color-primary-light-4)"> Content </div>
   </sd-scrollbar>
 </template>

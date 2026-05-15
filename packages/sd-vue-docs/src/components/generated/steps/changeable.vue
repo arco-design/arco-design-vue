@@ -5,16 +5,8 @@
       <sd-step description="This is a description">Processing</sd-step>
       <sd-step description="This is a description">Pending</sd-step>
     </sd-steps>
-    <div
-      :style="{
-        width: '100%',
-        height: '200px',
-        textAlign: 'center',
-        background: 'var(--color-bg-2)',
-        color: '#C2C7CC',
-      }"
-    >
-      <div style="line-height: 160px">Step{{ current }} Content</div>
+    <div class="sd:w-full sd:h-50 sd:text-center sd:bg-(--color-bg-2) sd:text-[#c2c7cc]">
+      <div class="sd:leading-40">Step{{ current }} Content</div>
       <sd-space size="large">
         <sd-button type="secondary" :disabled="current <= 1" @click="onPrev">
           <IconLeft /> Back
@@ -26,25 +18,20 @@
     </div>
   </div>
 </template>
-<script>
-  export default {
-    data() {
-      return {
-        current: 1,
-      };
-    },
-    methods: {
-      onPrev() {
-        this.current = Math.max(1, this.current - 1);
-      },
+<script setup lang="ts">
+  import { shallowRef } from 'vue';
 
-      onNext() {
-        this.current = Math.min(3, this.current + 1);
-      },
+  const current = shallowRef(1);
 
-      setCurrent(current) {
-        this.current = current;
-      },
-    },
-  };
+  function onPrev() {
+    current.value = Math.max(1, current.value - 1);
+  }
+
+  function onNext() {
+    current.value = Math.min(3, current.value + 1);
+  }
+
+  function setCurrent(current) {
+    current.value = current;
+  }
 </script>

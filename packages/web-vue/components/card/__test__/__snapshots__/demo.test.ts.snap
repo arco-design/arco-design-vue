@@ -1,10 +1,10 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<card> demo: > render [actions] correctly 1`] = `
-<div data-v-da4ba0ec="" class="sd-card sd-card-size-medium sd-card-bordered" style="width: 360px;">
+<div data-v-da4ba0ec="" class="sd-card sd-card-size-medium sd-card-bordered sd:w-90">
   <!---->
   <div class="sd-card-cover">
-    <div data-v-da4ba0ec="" style="height: 204px; overflow: hidden;"><img data-v-da4ba0ec="" style="width: 100%; transform: translateY(-20px);" alt="dessert" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a20012a2d4d5b9db43dfc6a01fe508c0.png~tplv-uwbnlip3yd-webp.webp"></div>
+    <div data-v-da4ba0ec="" class="sd:h-51 sd:overflow-hidden"><img data-v-da4ba0ec="" class="sd:w-full sd:-translate-y-5" alt="dessert" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a20012a2d4d5b9db43dfc6a01fe508c0.png~tplv-uwbnlip3yd-webp.webp"></div>
   </div>
   <div class="sd-card-body">
     <div data-v-da4ba0ec="" class="sd-card-meta">
@@ -14,8 +14,8 @@ exports[`<card> demo: > render [actions] correctly 1`] = `
       </div>
       <div class="sd-card-meta-footer">
         <div class="sd-card-meta-avatar">
-          <div data-v-da4ba0ec="" style="display: flex; align-items: center; color: rgb(29, 33, 41);">
-            <div data-v-da4ba0ec="" style="width: 24px; height: 24px; font-size: 12px; margin-right: 8px;" class="sd-avatar sd-avatar-circle"><span class="sd-avatar-text"> A </span>
+          <div data-v-da4ba0ec="" class="sd:flex sd:items-center sd:text-[#1d2129]">
+            <div data-v-da4ba0ec="" style="width: 24px; height: 24px; font-size: 12px;" class="sd-avatar sd-avatar-circle sd:mr-2"><span class="sd-avatar-text"> A </span>
               <!--v-if-->
             </div><span data-v-da4ba0ec="" class="sd-typography">Username<!----><!--v-if--><!--v-if--><!--v-if--></span>
           </div>
@@ -33,8 +33,8 @@ exports[`<card> demo: > render [actions] correctly 1`] = `
 `;
 
 exports[`<card> demo: > render [basic] correctly 1`] = `
-<div style="display: flex;">
-  <div class="sd-card sd-card-size-medium sd-card-bordered" style="width: 360px;">
+<div class="sd:flex">
+  <div class="sd-card sd-card-size-medium sd-card-bordered sd:w-90">
     <div class="sd-card-header">
       <div class="sd-card-header-title">SD Card</div>
       <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal">
@@ -50,8 +50,8 @@ exports[`<card> demo: > render [basic] correctly 1`] = `
 `;
 
 exports[`<card> demo: > render [bordered] correctly 1`] = `
-<div style="display: flex; width: 100%; box-sizing: border-box; padding: 40px; background-color: var(--color-fill-2);">
-  <div class="sd-card sd-card-size-medium" style="width: 360px;">
+<div class="sd:flex sd:w-full sd:box-border sd:p-10 sd:bg-(--color-fill-2)">
+  <div class="sd-card sd-card-size-medium sd:w-90">
     <div class="sd-card-header">
       <div class="sd-card-header-title">SD Card</div>
       <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal">
@@ -63,7 +63,7 @@ exports[`<card> demo: > render [bordered] correctly 1`] = `
       <!---->
     </div>
   </div>
-  <div class="sd-card sd-card-size-medium sd-card-hoverable" style="width: 360px; margin-left: 24px;">
+  <div class="sd-card sd-card-size-medium sd-card-hoverable sd:w-90 sd:ml-6">
     <div class="sd-card-header">
       <div class="sd-card-header-title">Hover me</div>
       <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal">
@@ -79,11 +79,11 @@ exports[`<card> demo: > render [bordered] correctly 1`] = `
 `;
 
 exports[`<card> demo: > render [content] correctly 1`] = `
-<div class="sd-card sd-card-size-medium sd-card-bordered sd-card-hoverable" style="width: 360px; margin-bottom: 20px;">
+<div class="sd-card sd-card-size-medium sd-card-bordered sd-card-hoverable sd:w-90 sd:mb-5">
   <!---->
   <!---->
   <div class="sd-card-body">
-    <div style="display: flex; align-items: center; justify-content: space-between;"><span style="display: flex; align-items: center; color: rgb(29, 33, 41);"><div style="width: 28px; height: 28px; font-size: 14px; margin-right: 8px; background-color: rgb(22, 93, 255);" class="sd-avatar sd-avatar-circle"><span class="sd-avatar-text"> A </span>
+    <div class="sd:flex sd:items-center sd:justify-between"><span class="sd:flex sd:items-center sd:text-[#1d2129]"><div style="width: 28px; height: 28px; font-size: 14px;" class="sd-avatar sd-avatar-circle sd:mr-2 sd:bg-[#165dff]"><span class="sd-avatar-text"> A </span>
       <!--v-if-->
     </div><span class="sd-typography">Username<!----><!--v-if--><!--v-if--><!--v-if--></span></span><a class="sd-link sd-link-status-normal">
       <!--v-if-->More
@@ -95,11 +95,11 @@ exports[`<card> demo: > render [content] correctly 1`] = `
 `;
 
 exports[`<card> demo: > render [grid] correctly 1`] = `
-<div data-v-9cfe5307="" class="sd-card sd-card-size-medium" style="width: 100%;">
+<div data-v-9cfe5307="" class="sd-card sd-card-size-medium sd:w-full">
   <!---->
   <!---->
   <div class="sd-card-body">
-    <div data-v-9cfe5307="" class="sd-card-grid sd-card-grid-hoverable" style="width: 25%;">
+    <div data-v-9cfe5307="" class="sd-card-grid sd-card-grid-hoverable sd:w-[25%]">
       <div data-v-9cfe5307="" class="sd-card sd-card-size-medium card-demo">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
@@ -109,12 +109,12 @@ exports[`<card> demo: > render [grid] correctly 1`] = `
         </div>
         <!---->
         <div class="sd-card-body">
-          <p data-v-9cfe5307="" style="margin: 0px;">Card allow to hover</p>
+          <p data-v-9cfe5307="" class="sd:m-0">Card allow to hover</p>
           <!---->
         </div>
       </div>
     </div>
-    <div data-v-9cfe5307="" class="sd-card-grid" style="width: 25%;">
+    <div data-v-9cfe5307="" class="sd-card-grid sd:w-[25%]">
       <div data-v-9cfe5307="" class="sd-card sd-card-size-medium card-demo">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
@@ -124,12 +124,12 @@ exports[`<card> demo: > render [grid] correctly 1`] = `
         </div>
         <!---->
         <div class="sd-card-body">
-          <p data-v-9cfe5307="" style="margin: 0px;">Card content</p>
+          <p data-v-9cfe5307="" class="sd:m-0">Card content</p>
           <!---->
         </div>
       </div>
     </div>
-    <div data-v-9cfe5307="" class="sd-card-grid sd-card-grid-hoverable" style="width: 25%;">
+    <div data-v-9cfe5307="" class="sd-card-grid sd-card-grid-hoverable sd:w-[25%]">
       <div data-v-9cfe5307="" class="sd-card sd-card-size-medium card-demo">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
@@ -139,12 +139,12 @@ exports[`<card> demo: > render [grid] correctly 1`] = `
         </div>
         <!---->
         <div class="sd-card-body">
-          <p data-v-9cfe5307="" style="margin: 0px;">Card allow to hover</p>
+          <p data-v-9cfe5307="" class="sd:m-0">Card allow to hover</p>
           <!---->
         </div>
       </div>
     </div>
-    <div data-v-9cfe5307="" class="sd-card-grid" style="width: 25%;">
+    <div data-v-9cfe5307="" class="sd-card-grid sd:w-[25%]">
       <div data-v-9cfe5307="" class="sd-card sd-card-size-medium card-demo">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
@@ -154,12 +154,12 @@ exports[`<card> demo: > render [grid] correctly 1`] = `
         </div>
         <!---->
         <div class="sd-card-body">
-          <p data-v-9cfe5307="" style="margin: 0px;">Card content</p>
+          <p data-v-9cfe5307="" class="sd:m-0">Card content</p>
           <!---->
         </div>
       </div>
     </div>
-    <div data-v-9cfe5307="" class="sd-card-grid sd-card-grid-hoverable" style="width: 25%;">
+    <div data-v-9cfe5307="" class="sd-card-grid sd-card-grid-hoverable sd:w-[25%]">
       <div data-v-9cfe5307="" class="sd-card sd-card-size-medium card-demo">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
@@ -169,12 +169,12 @@ exports[`<card> demo: > render [grid] correctly 1`] = `
         </div>
         <!---->
         <div class="sd-card-body">
-          <p data-v-9cfe5307="" style="margin: 0px;">Card allow to hover</p>
+          <p data-v-9cfe5307="" class="sd:m-0">Card allow to hover</p>
           <!---->
         </div>
       </div>
     </div>
-    <div data-v-9cfe5307="" class="sd-card-grid" style="width: 25%;">
+    <div data-v-9cfe5307="" class="sd-card-grid sd:w-[25%]">
       <div data-v-9cfe5307="" class="sd-card sd-card-size-medium card-demo">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
@@ -184,12 +184,12 @@ exports[`<card> demo: > render [grid] correctly 1`] = `
         </div>
         <!---->
         <div class="sd-card-body">
-          <p data-v-9cfe5307="" style="margin: 0px;">Card content</p>
+          <p data-v-9cfe5307="" class="sd:m-0">Card content</p>
           <!---->
         </div>
       </div>
     </div>
-    <div data-v-9cfe5307="" class="sd-card-grid sd-card-grid-hoverable" style="width: 25%;">
+    <div data-v-9cfe5307="" class="sd-card-grid sd-card-grid-hoverable sd:w-[25%]">
       <div data-v-9cfe5307="" class="sd-card sd-card-size-medium card-demo">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
@@ -199,7 +199,7 @@ exports[`<card> demo: > render [grid] correctly 1`] = `
         </div>
         <!---->
         <div class="sd-card-body">
-          <p data-v-9cfe5307="" style="margin: 0px;">Card allow to hover</p>
+          <p data-v-9cfe5307="" class="sd:m-0">Card allow to hover</p>
           <!---->
         </div>
       </div>
@@ -210,8 +210,8 @@ exports[`<card> demo: > render [grid] correctly 1`] = `
 `;
 
 exports[`<card> demo: > render [hoverable] correctly 1`] = `
-<div data-v-d40b0b92="" style="display: flex;">
-  <div data-v-d40b0b92="" class="sd-card sd-card-size-medium sd-card-bordered sd-card-hoverable" style="width: 360px;">
+<div data-v-d40b0b92="" class="sd:flex">
+  <div data-v-d40b0b92="" class="sd-card sd-card-size-medium sd-card-bordered sd-card-hoverable sd:w-90">
     <div class="sd-card-header">
       <div class="sd-card-header-title">SD Card</div>
       <div class="sd-card-header-extra"><a data-v-d40b0b92="" class="sd-link sd-link-status-normal">
@@ -246,7 +246,7 @@ exports[`<card> demo: > render [inner] correctly 1`] = `
   </div>
   <!---->
   <div class="sd-card-body">
-    <div class="sd-card sd-card-size-medium sd-card-bordered" style="margin-bottom: 20px;">
+    <div class="sd-card sd-card-size-medium sd-card-bordered sd:mb-5">
       <div class="sd-card-header">
         <div class="sd-card-header-title">Inner Card Title</div>
         <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal">
@@ -276,10 +276,10 @@ exports[`<card> demo: > render [inner] correctly 1`] = `
 `;
 
 exports[`<card> demo: > render [meta] correctly 1`] = `
-<div class="sd-card sd-card-size-medium sd-card-bordered sd-card-hoverable" style="width: 360px;">
+<div class="sd-card sd-card-size-medium sd-card-bordered sd-card-hoverable sd:w-90">
   <!---->
   <div class="sd-card-cover">
-    <div style="height: 204px; overflow: hidden;"><img style="width: 100%; transform: translateY(-20px);" alt="dessert" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a20012a2d4d5b9db43dfc6a01fe508c0.png~tplv-uwbnlip3yd-webp.webp"></div>
+    <div class="sd:h-51 sd:overflow-hidden"><img class="sd:w-full sd:-translate-y-5" alt="dessert" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a20012a2d4d5b9db43dfc6a01fe508c0.png~tplv-uwbnlip3yd-webp.webp"></div>
   </div>
   <div class="sd-card-body">
     <div class="sd-card-meta">
@@ -295,10 +295,10 @@ exports[`<card> demo: > render [meta] correctly 1`] = `
 `;
 
 exports[`<card> demo: > render [row] correctly 1`] = `
-<div style="box-sizing: border-box; width: 100%; padding: 40px; background-color: var(--color-fill-2);">
-  <div class="sd-row sd-row-align-start sd-row-justify-start" style="margin-left: -10px; margin-right: -10px; margin-bottom: 20px;">
+<div class="sd:box-border sd:w-full sd:p-10 sd:bg-(--color-fill-2)">
+  <div class="sd-row sd-row-align-start sd-row-justify-start sd:mb-5" style="margin-left: -10px; margin-right: -10px;">
     <div class="sd-col sd-col-8" style="padding-left: 10px; padding-right: 10px;">
-      <div class="sd-card sd-card-size-medium" style="width: 100%;">
+      <div class="sd-card sd-card-size-medium sd:w-full">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
           <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal">
@@ -312,7 +312,7 @@ exports[`<card> demo: > render [row] correctly 1`] = `
       </div>
     </div>
     <div class="sd-col sd-col-8" style="padding-left: 10px; padding-right: 10px;">
-      <div class="sd-card sd-card-size-medium" style="width: 100%;">
+      <div class="sd-card sd-card-size-medium sd:w-full">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
           <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal">
@@ -326,7 +326,7 @@ exports[`<card> demo: > render [row] correctly 1`] = `
       </div>
     </div>
     <div class="sd-col sd-col-8" style="padding-left: 10px; padding-right: 10px;">
-      <div class="sd-card sd-card-size-medium" style="width: 100%;">
+      <div class="sd-card sd-card-size-medium sd:w-full">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
           <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal">
@@ -342,7 +342,7 @@ exports[`<card> demo: > render [row] correctly 1`] = `
   </div>
   <div class="sd-row sd-row-align-start sd-row-justify-start" style="margin-left: -10px; margin-right: -10px;">
     <div class="sd-col sd-col-16" style="padding-left: 10px; padding-right: 10px;">
-      <div class="sd-card sd-card-size-medium" style="width: 100%;">
+      <div class="sd-card sd-card-size-medium sd:w-full">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
           <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal">
@@ -356,7 +356,7 @@ exports[`<card> demo: > render [row] correctly 1`] = `
       </div>
     </div>
     <div class="sd-col sd-col-8" style="padding-left: 10px; padding-right: 10px;">
-      <div class="sd-card sd-card-size-medium" style="width: 100%;">
+      <div class="sd-card sd-card-size-medium sd:w-full">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
           <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal">

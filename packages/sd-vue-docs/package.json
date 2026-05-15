@@ -11,6 +11,7 @@
     "build": "pnpm run docs:vendor && astro build",
     "build:site": "astro build",
     "typecheck": "vue-tsc --noEmit -p tsconfig.json",
+    "migrate:generated-demos": "node ./scripts/migrate-generated-demo-conventions.mjs",
     "verify:theme-runtime": "node ./scripts/verify-theme-runtime-paths.mjs",
     "preview": "pnpm run docs:vendor && astro preview",
     "astro": "astro",

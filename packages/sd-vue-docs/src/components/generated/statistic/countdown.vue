@@ -20,7 +20,7 @@
       />
     </sd-col>
   </sd-row>
-  <sd-space direction="vertical" style="margin-top: 10px">
+  <sd-space direction="vertical" class="sd:mt-2.5">
     <sd-countdown
       title="Trigger on finish"
       :value="Date.now() + 5 * 1000"
@@ -33,25 +33,15 @@
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
   import { Message } from '@sdata/web-vue';
 
-  export default {
-    setup() {
-      const now = Date.now();
-      const start = ref(false);
+  const now = Date.now();
+  const start = ref(false);
 
-      const handleFinish = () => {
-        Message.info('Finish');
-      };
-
-      return {
-        now,
-        start,
-        handleFinish,
-      };
-    },
+  const handleFinish = () => {
+    Message.info('Finish');
   };
 </script>

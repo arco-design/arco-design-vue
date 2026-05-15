@@ -11,38 +11,25 @@
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
   import { IconEdit } from '@sdata/web-vue/es/icon/index.js';
 
-  export default {
-    components: {
-      IconEdit,
-    },
-    setup() {
-      const loading1 = ref(false);
-      const loading2 = ref(false);
+  const loading1 = ref(false);
+  const loading2 = ref(false);
 
-      const handleClick1 = () => {
-        loading1.value = true;
-        setTimeout(() => {
-          loading1.value = false;
-        }, 3000);
-      };
-      const handleClick2 = () => {
-        loading2.value = true;
-        setTimeout(() => {
-          loading2.value = false;
-        }, 3000);
-      };
+  function handleClick1() {
+    loading1.value = true;
+    setTimeout(() => {
+      loading1.value = false;
+    }, 3000);
+  }
 
-      return {
-        loading1,
-        loading2,
-        handleClick1,
-        handleClick2,
-      };
-    },
-  };
+  function handleClick2() {
+    loading2.value = true;
+    setTimeout(() => {
+      loading2.value = false;
+    }, 3000);
+  }
 </script>

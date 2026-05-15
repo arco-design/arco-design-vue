@@ -1,7 +1,7 @@
 <template>
   <div class="menu-demo">
     <sd-menu
-      :style="{ width: '200px', height: '100%' }"
+      class="sd:w-50 sd:h-full"
       :default-open-keys="['0']"
       :default-selected-keys="['0_1']"
       show-collapse-button
@@ -36,7 +36,7 @@
     </sd-menu>
   </div>
 </template>
-<script>
+<script setup lang="ts">
   import {
     IconMenuFold,
     IconMenuUnfold,
@@ -44,16 +44,6 @@
     IconBug,
     IconBulb,
   } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    components: {
-      IconMenuFold,
-      IconMenuUnfold,
-      IconApps,
-      IconBug,
-      IconBulb,
-    },
-  };
 </script>
 <style scoped>
   .menu-demo {

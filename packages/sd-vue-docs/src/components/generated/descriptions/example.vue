@@ -20,7 +20,7 @@
       <sd-radio-group v-model="form.firstSpan" type="button" :options="firstSpanOptions" />
     </sd-form-item>
   </sd-form>
-  <div style="margin-top: 20px">
+  <div class="sd:mt-5">
     <sd-descriptions
       title="Layout Example"
       :size="form.size"
@@ -32,7 +32,7 @@
       <sd-descriptions-item label="Item1" :span="form.firstSpan">
         <div
           >Span：{{ form.firstSpan }}
-          <span v-if="form.firstSpan > form.column" style="color: red">
+          <span v-if="form.firstSpan > form.column" class="sd:text-[red]">
             Exceeds Column, set to Column size
           </span>
         </div>
@@ -46,7 +46,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
   import { reactive } from 'vue';
 
   const form = reactive({

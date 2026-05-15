@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<mention> demo: > render [basic] correctly 1`] = `
-<div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px; width: 100%;">
+<div class="sd-space sd-space-vertical sd:w-full" style="column-gap: 24px; row-gap: 24px;">
   <!---->
   <div class="sd-space-item"><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="enter something" value=""><!----><!----></span>
     <!---->
@@ -21,7 +21,7 @@ exports[`<mention> demo: > render [basic] correctly 1`] = `
 `;
 
 exports[`<mention> demo: > render [prefix] correctly 1`] = `
-<div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px; width: 100%;">
+<div class="sd-space sd-space-vertical sd:w-full" style="column-gap: 24px; row-gap: 24px;">
   <!---->
   <div class="sd-space-item"><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="input @" value=""><!----><!----></span>
     <!---->

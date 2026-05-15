@@ -1,14 +1,6 @@
 <template>
-  <div
-    :style="{
-      display: 'flex',
-      width: '100%',
-      boxSizing: 'border-box',
-      padding: '40px',
-      backgroundColor: 'var(--color-fill-2)',
-    }"
-  >
-    <sd-card :style="{ width: '360px' }" title="SD Card" :bordered="false">
+  <div class="sd:flex sd:w-full sd:box-border sd:p-10 sd:bg-(--color-fill-2)">
+    <sd-card class="sd:w-90" title="SD Card" :bordered="false">
       <template #extra>
         <sd-link>More</sd-link>
       </template>
@@ -16,12 +8,7 @@
       <br />
       Card content
     </sd-card>
-    <sd-card
-      :style="{ width: '360px', marginLeft: '24px' }"
-      title="Hover me"
-      hoverable
-      :bordered="false"
-    >
+    <sd-card class="sd:w-90 sd:ml-6" title="Hover me" hoverable :bordered="false">
       <template #extra>
         <sd-link>More</sd-link>
       </template>

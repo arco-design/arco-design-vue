@@ -14,7 +14,7 @@ exports[`<drawer> demo: > render [basic] correctly 1`] = `
 
 exports[`<drawer> demo: > render [custom] correctly 1`] = `
 <span class="sd-checkbox-group sd-checkbox-group-direction-horizontal"><label aria-disabled="false" class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="hide header"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">hide header</span></label><label aria-disabled="false" class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="hide footer"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">hide footer</span></label><label aria-disabled="false" class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="hide cancel"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label">hide cancel</span></label></span>
-<div style="margin-top: 20px;"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button">
+<div class="sd:mt-5"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button">
     <!--v-if-->Open Drawer
   </button></div>
 `;
@@ -33,7 +33,7 @@ exports[`<drawer> demo: > render [nested] correctly 1`] = `
 
 exports[`<drawer> demo: > render [popup-container] correctly 1`] = `
 <div>
-  <div id="parentNode" style="position: relative; width: 100%; height: 300px; overflow: hidden; line-height: 300px; text-align: center; background-color: var(--color-fill-2);"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button">
+  <div id="parentNode" class="sd:relative sd:h-[300px] sd:w-full sd:overflow-hidden sd:bg-[var(--color-fill-2)] sd:text-center sd:leading-[300px]"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button">
       <!--v-if-->Open Drawer
     </button></div>
 </div>
@@ -41,7 +41,7 @@ exports[`<drawer> demo: > render [popup-container] correctly 1`] = `
 
 exports[`<drawer> demo: > render [position] correctly 1`] = `
 <span class="sd-radio-group sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio"><input type="radio" class="sd-radio-target" value="top"><span class="sd-icon-hover sd-radio-icon-hover"><span class="sd-radio-icon"></span></span><span class="sd-radio-label">Top</span></label><label class="sd-radio sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="right"><span class="sd-icon-hover sd-icon-hover-disabled sd-radio-icon-hover"><span class="sd-radio-icon"></span></span><span class="sd-radio-label">Right</span></label><label class="sd-radio"><input type="radio" class="sd-radio-target" value="bottom"><span class="sd-icon-hover sd-radio-icon-hover"><span class="sd-radio-icon"></span></span><span class="sd-radio-label">Bottom</span></label><label class="sd-radio"><input type="radio" class="sd-radio-target" value="left"><span class="sd-icon-hover sd-radio-icon-hover"><span class="sd-radio-icon"></span></span><span class="sd-radio-label">Left</span></label></span>
-<div style="margin-top: 20px;"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button">
+<div class="sd:mt-5"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button">
     <!--v-if-->Open Drawer
   </button></div>
 `;

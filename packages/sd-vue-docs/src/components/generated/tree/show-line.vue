@@ -1,23 +1,14 @@
 <template>
   <div>
     <sd-typography-text>showLine</sd-typography-text>
-    <sd-switch v-model="showLine" style="margin-left: 12px" />
+    <sd-switch v-model="showLine" class="sd:ml-3" />
   </div>
   <sd-tree :default-selected-keys="['0-0-1']" :data="treeData" :show-line="showLine" />
 </template>
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const showLine = ref(true);
-
-      return {
-        showLine,
-        treeData,
-      };
-    },
-  };
+  const showLine = ref(true);
 
   const treeData = [
     {

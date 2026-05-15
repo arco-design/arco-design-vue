@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-bottom: 24px">
+  <div class="sd:mb-6">
     <sd-checkbox
       v-model="treeCheckStrictly"
       @change="
@@ -19,24 +19,11 @@
     :tree-check-strictly="treeCheckStrictly"
     :data="treeData"
     placeholder="Please select ..."
-    style="width: 300px"
+    class="sd:w-75"
   ></sd-tree-select>
 </template>
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
-
-  export default {
-    setup() {
-      const selected = ref([]);
-      const treeCheckStrictly = ref(false);
-
-      return {
-        selected,
-        treeCheckStrictly,
-        treeData,
-      };
-    },
-  };
 
   const treeData = [
     {
@@ -95,4 +82,7 @@
       ],
     },
   ];
+
+  const selected = ref([]);
+  const treeCheckStrictly = ref(false);
 </script>

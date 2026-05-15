@@ -1,16 +1,16 @@
 <template>
-  <sd-card :bordered="false" :style="{ width: '100%' }">
+  <sd-card :bordered="false" class="sd:w-full">
     <sd-card-grid
       v-for="(_, index) in new Array(7)"
       :key="index"
       :hoverable="index % 2 === 0"
-      :style="{ width: '25%' }"
+      class="sd:w-[25%]"
     >
       <sd-card class="card-demo" title="SD Card" :bordered="false">
         <template #extra>
           <sd-link>More</sd-link>
         </template>
-        <p :style="{ margin: 0 }">
+        <p class="sd:m-0">
           {{ index % 2 === 0 ? 'Card allow to hover' : 'Card content' }}
         </p>
       </sd-card>

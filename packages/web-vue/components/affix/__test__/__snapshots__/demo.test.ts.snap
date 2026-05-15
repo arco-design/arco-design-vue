@@ -19,9 +19,9 @@ exports[`<affix> demo: > render [bottom] correctly 1`] = `
 `;
 
 exports[`<affix> demo: > render [container] correctly 1`] = `
-<div style="height: 200px; overflow: auto;">
-  <div style="height: 400px; overflow: hidden; background: rgb(204, 204, 204);">
-    <div style="margin: 40px;">
+<div class="sd:h-50 sd:overflow-auto">
+  <div class="sd:h-100 sd:overflow-hidden sd:bg-[#ccc]">
+    <div class="sd:m-10">
       <!--v-if-->
       <div class=""><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button">
           <!--v-if-->Affix in scrolling container

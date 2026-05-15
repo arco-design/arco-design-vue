@@ -12,44 +12,35 @@
   </sd-space>
 </template>
 
-<script>
-  export default {
-    setup() {
-      const colors = [
-        'red',
-        'orangered',
-        'orange',
-        'gold',
-        'lime',
-        'green',
-        'cyan',
-        'blue',
-        'sdblue',
-        'purple',
-        'pinkpurple',
-        'magenta',
-        'gray',
-      ];
-      const custom = [
-        '#f53f3f',
-        '#7816ff',
-        '#00b42a',
-        '#165dff',
-        '#ff7d00',
-        '#eb0aa4',
-        '#7bc616',
-        '#86909c',
-        '#b71de8',
-        '#0fc6c2',
-        '#ffb400',
-        '#168cff',
-        '#ff5722',
-      ];
-
-      return {
-        colors,
-        custom,
-      };
-    },
-  };
+<script setup lang="ts">
+  const colors = [
+    'red',
+    'orangered',
+    'orange',
+    'gold',
+    'lime',
+    'green',
+    'cyan',
+    'blue',
+    'sdblue',
+    'purple',
+    'pinkpurple',
+    'magenta',
+    'gray',
+  ];
+  const custom = [
+    '#f53f3f',
+    '#7816ff',
+    '#00b42a',
+    '#165dff',
+    '#ff7d00',
+    '#eb0aa4',
+    '#7bc616',
+    '#86909c',
+    '#b71de8',
+    '#0fc6c2',
+    '#ffb400',
+    '#168cff',
+    '#ff5722',
+  ];
 </script>

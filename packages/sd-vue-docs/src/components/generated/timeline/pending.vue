@@ -1,5 +1,5 @@
 <template>
-  <sd-row align="center" :style="{ marginBottom: '24px' }">
+  <sd-row align="center" class="sd:mb-6">
     <sd-checkbox
       :checked="!!pendingProps.direction"
       @change="(v) => onChange({ direction: v ? 'horizontal' : '' })"
@@ -25,7 +25,7 @@
   </sd-row>
   <sd-timeline v-bind="pendingProps">
     <template v-if="pendingProps.hasPendingDot" #dot>
-      <IconFire :style="{ color: '#e70a0a' }" />
+      <IconFire class="sd:text-[#e70a0a]" />
     </template>
     <sd-timeline-item label="2017-03-10" dotColor="#52C419"> The first milestone </sd-timeline-item>
     <sd-timeline-item label="2018-05-12" dotColor="#F5222D">
@@ -35,29 +35,17 @@
   </sd-timeline>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
   import { IconFire } from '@sdata/web-vue/es/icon/index.js';
 
-  export default {
-    components: {
-      IconFire,
-    },
-    setup() {
-      const pendingProps = ref({});
+  const pendingProps = ref<Record<string, boolean | string>>({});
 
-      const onChange = (newProps) => {
-        pendingProps.value = {
-          ...pendingProps.value,
-          ...newProps,
-        };
-      };
-
-      return {
-        pendingProps,
-        onChange,
-      };
-    },
-  };
+  function onChange(newProps: Record<string, boolean | string>) {
+    pendingProps.value = {
+      ...pendingProps.value,
+      ...newProps,
+    };
+  }
 </script>

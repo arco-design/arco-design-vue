@@ -7,26 +7,19 @@
   </sd-space>
 </template>
 
-<script>
-  export default {
-    setup() {
-      const colors = [
-        'orangered',
-        'orange',
-        'gold',
-        'lime',
-        'green',
-        'cyan',
-        'blue',
-        'sdblue',
-        'purple',
-        'pinkpurple',
-        'magenta',
-        'gray',
-      ];
-      return {
-        colors,
-      };
-    },
-  };
+<script setup lang="ts">
+  const colors = [
+    'orangered',
+    'orange',
+    'gold',
+    'lime',
+    'green',
+    'cyan',
+    'blue',
+    'sdblue',
+    'purple',
+    'pinkpurple',
+    'magenta',
+    'gray',
+  ];
 </script>

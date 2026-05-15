@@ -146,7 +146,7 @@ exports[`<collapse> demo: > render [border-less] correctly 1`] = `
 
 exports[`<collapse> demo: > render [custom] correctly 1`] = `
 <div class="sd-collapse sd-collapse-borderless">
-  <div class="sd-collapse-item sd-collapse-item-active" style="border-radius: 6px; margin-bottom: 18px; border: medium; overflow: hidden;">
+  <div class="sd-collapse-item sd-collapse-item-active sd:mb-[18px] sd:overflow-hidden sd:rounded-[6px] sd:border-none">
     <div role="button" aria-disabled="false" aria-expanded="true" tabindex="0" class="sd-collapse-item-header sd-collapse-item-header-left"><span class="sd-icon-hover sd-collapse-item-icon-hover"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-right sd-collapse-item-expand-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937z"></path></svg></span>
       <div class="sd-collapse-item-header-title">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
@@ -160,7 +160,7 @@ exports[`<collapse> demo: > render [custom] correctly 1`] = `
       </div>
     </transition-stub>
   </div>
-  <div class="sd-collapse-item sd-collapse-item-active" style="border-radius: 6px; margin-bottom: 18px; border: medium; overflow: hidden;">
+  <div class="sd-collapse-item sd-collapse-item-active sd:mb-[18px] sd:overflow-hidden sd:rounded-[6px] sd:border-none">
     <div role="button" aria-disabled="false" aria-expanded="true" tabindex="0" class="sd-collapse-item-header sd-collapse-item-header-left"><span class="sd-icon-hover sd-collapse-item-icon-hover"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-right sd-collapse-item-expand-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937z"></path></svg></span>
       <div class="sd-collapse-item-header-title">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
@@ -174,7 +174,7 @@ exports[`<collapse> demo: > render [custom] correctly 1`] = `
       </div>
     </transition-stub>
   </div>
-  <div class="sd-collapse-item" style="border-radius: 6px; margin-bottom: 18px; border: medium; overflow: hidden;">
+  <div class="sd-collapse-item sd:mb-[18px] sd:overflow-hidden sd:rounded-[6px] sd:border-none">
     <div role="button" aria-disabled="false" aria-expanded="false" tabindex="0" class="sd-collapse-item-header sd-collapse-item-header-left"><span class="sd-icon-hover sd-collapse-item-icon-hover"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-right sd-collapse-item-expand-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937z"></path></svg></span>
       <div class="sd-collapse-item-header-title">Beijing Toutiao Technology Co., Ltd.</div>
       <!---->
@@ -334,7 +334,7 @@ exports[`<collapse> demo: > render [extra] correctly 1`] = `
 `;
 
 exports[`<collapse> demo: > render [icon-position] correctly 1`] = `
-<div class="sd-space sd-space-vertical" style="column-gap: 8px; row-gap: 8px; width: 100%;">
+<div class="sd-space sd-space-vertical sd:w-full" style="column-gap: 8px; row-gap: 8px;">
   <!---->
   <div class="sd-space-item">
     <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">

@@ -1,9 +1,9 @@
 <template>
-  <sd-space style="margin-bottom: 20px">
+  <sd-space class="sd:mb-5">
     <sd-switch v-model="disabled" />
     Disabled: {{ disabled }}
   </sd-space>
-  <Form :model="form" :disabled="disabled" :style="{ width: '600px' }">
+  <Form :model="form" :disabled="disabled" class="sd:w-150">
     <FormItem
       field="name"
       label="Username"
@@ -17,10 +17,15 @@
   </Form>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
   import { defineComponent, h, reactive, ref, type SetupContext } from 'vue';
 
   import { Form, FormItem, useFormItem } from '@sdata/web-vue';
+
+  const disabled = ref(false);
+  const form = reactive({
+    name: '',
+  });
 
   const MyInput = defineComponent({
     emits: ['update:modelValue'],
@@ -34,23 +39,4 @@
       return () => h('input', { disabled: mergedDisabled.value, onInput: handleInput });
     },
   });
-
-  export default {
-    components: {
-      Form,
-      FormItem,
-      MyInput,
-    },
-    setup() {
-      const disabled = ref(false);
-      const form = reactive({
-        name: '',
-      });
-
-      return {
-        disabled,
-        form,
-      };
-    },
-  };
 </script>

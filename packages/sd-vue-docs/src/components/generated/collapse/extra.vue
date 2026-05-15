@@ -24,18 +24,10 @@
   </sd-collapse>
 </template>
 
-<script>
+<script setup lang="ts">
   import { Message } from '@sdata/web-vue';
 
-  export default {
-    setup() {
-      const sayHello = () => {
-        Message.info('hello');
-      };
-
-      return {
-        sayHello,
-      };
-    },
+  const sayHello = () => {
+    Message.info('hello');
   };
 </script>

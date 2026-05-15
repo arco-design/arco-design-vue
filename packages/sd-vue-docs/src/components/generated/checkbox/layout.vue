@@ -20,16 +20,8 @@
   </sd-checkbox-group>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const checkedValue = ref(['1', '2']);
-
-      return {
-        checkedValue,
-      };
-    },
-  };
+  const checkedValue = ref(['1', '2']);
 </script>

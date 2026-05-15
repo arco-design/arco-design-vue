@@ -88,7 +88,7 @@ exports[`<tree> demo: > render [block-node] correctly 1`] = `
 `;
 
 exports[`<tree> demo: > render [checkable] correctly 1`] = `
-<label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label"> checkStrictly </span></label>
+<label class="sd-checkbox sd:mb-6"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label"> checkStrictly </span></label>
 <div class="sd-tree sd-tree-checkable sd-tree-size-medium">
   <div class="sd-tree-node sd-tree-node-expanded" data-level="0" data-key="0-0">
     <!-- 缩进 --><span class="sd-tree-node-indent"></span><!-- switcher --><span class="sd-tree-node-switcher sd-tree-node-switcher-expanded"><span class="sd-icon-hover sd-tree-node-icon-hover"><span class="sd-tree-node-switcher-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95z"></path></svg></span></span></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
@@ -166,7 +166,7 @@ exports[`<tree> demo: > render [checkable] correctly 1`] = `
 exports[`<tree> demo: > render [checked-strategy] correctly 1`] = `
 <span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="all"><span class="sd-radio-button-content">show all</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="parent"><span class="sd-radio-button-content">show parent</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="child"><span class="sd-radio-button-content">show child</span></label></span>
 <br>
-<span class="sd-typography" style="display: inline-block; margin: 24px 0px;"> Current: <!----><!--v-if--><!--v-if--><!--v-if--></span>
+<span class="sd-typography sd:my-6 sd:inline-block"> Current: <!----><!--v-if--><!--v-if--><!--v-if--></span>
 <br>
 <div class="sd-tree sd-tree-checkable sd-tree-size-medium">
   <div class="sd-tree-node sd-tree-node-expanded" data-level="0" data-key="0-0">
@@ -236,7 +236,7 @@ exports[`<tree> demo: > render [checked-strategy] correctly 1`] = `
 `;
 
 exports[`<tree> demo: > render [control] correctly 1`] = `
-<div class="sd-btn-group" style="margin-bottom: 20px;"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button">
+<div class="sd-btn-group sd:mb-5"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button">
     <!--v-if-->select all
   </button><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button">
     <!--v-if-->unfold
@@ -260,7 +260,7 @@ exports[`<tree> demo: > render [control] correctly 1`] = `
 `;
 
 exports[`<tree> demo: > render [draggable] correctly 1`] = `
-<label data-v-1cd877ec="" class="sd-checkbox" style="margin-bottom: 20px;"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label"> checkable </span></label>
+<label data-v-1cd877ec="" class="sd-checkbox sd:mb-5"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span><span class="sd-checkbox-label"> checkable </span></label>
 <div data-v-1cd877ec="" class="sd-tree sd-tree-size-medium tree-demo">
   <div class="sd-tree-node sd-tree-node-expanded" data-level="0" data-key="0-0">
     <!-- 缩进 --><span class="sd-tree-node-indent"></span><!-- switcher --><span class="sd-tree-node-switcher sd-tree-node-switcher-expanded"><span class="sd-icon-hover sd-tree-node-icon-hover"><span class="sd-tree-node-switcher-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95z"></path></svg></span></span></span><!-- checkbox -->
@@ -456,7 +456,7 @@ exports[`<tree> demo: > render [load-more] correctly 1`] = `
 `;
 
 exports[`<tree> demo: > render [multiple] correctly 1`] = `
-<label aria-disabled="false" class="sd-checkbox sd-checkbox-checked"><input type="checkbox" checked="" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-icon-hover-disabled sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 1024 1024" width="200" height="200" fill="currentColor" class="sd-checkbox-icon-check"><path d="M877.44815445 206.10060629a64.72691371 64.72691371 0 0 0-95.14856334 4.01306852L380.73381888 685.46812814 235.22771741 533.48933518a64.72691371 64.72691371 0 0 0-92.43003222-1.03563036l-45.82665557 45.82665443a64.72691371 64.72691371 0 0 0-0.90617629 90.61767965l239.61903446 250.10479331a64.72691371 64.72691371 0 0 0 71.19960405 15.14609778 64.33855261 64.33855261 0 0 0 35.08198741-21.23042702l36.24707186-42.71976334 40.5190474-40.77795556-3.36579926-3.49525333 411.40426297-486.74638962a64.72691371 64.72691371 0 0 0-3.88361443-87.64024149l-45.3088404-45.43829334z" p-id="840"></path></svg></div></span><span class="sd-checkbox-label"> multiple </span></label>
+<label aria-disabled="false" class="sd-checkbox sd-checkbox-checked sd:mb-6"><input type="checkbox" checked="" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-icon-hover-disabled sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><svg aria-hidden="true" focusable="false" viewBox="0 0 1024 1024" width="200" height="200" fill="currentColor" class="sd-checkbox-icon-check"><path d="M877.44815445 206.10060629a64.72691371 64.72691371 0 0 0-95.14856334 4.01306852L380.73381888 685.46812814 235.22771741 533.48933518a64.72691371 64.72691371 0 0 0-92.43003222-1.03563036l-45.82665557 45.82665443a64.72691371 64.72691371 0 0 0-0.90617629 90.61767965l239.61903446 250.10479331a64.72691371 64.72691371 0 0 0 71.19960405 15.14609778 64.33855261 64.33855261 0 0 0 35.08198741-21.23042702l36.24707186-42.71976334 40.5190474-40.77795556-3.36579926-3.49525333 411.40426297-486.74638962a64.72691371 64.72691371 0 0 0-3.88361443-87.64024149l-45.3088404-45.43829334z" p-id="840"></path></svg></div></span><span class="sd-checkbox-label"> multiple </span></label>
 <br>
 <span class="sd-typography"> Current: <!----><!--v-if--><!--v-if--><!--v-if--></span>
 <br>
@@ -568,12 +568,12 @@ exports[`<tree> demo: > render [node-icon] correctly 1`] = `
 `;
 
 exports[`<tree> demo: > render [render-extra] correctly 1`] = `
-<div style="width: 500px; padding: 2px; overflow: auto;">
+<div class="sd:w-125 sd:p-0.5 sd:overflow-auto">
   <div class="sd-tree sd-tree-checkable sd-tree-size-medium">
     <div class="sd-tree-node sd-tree-node-expanded" data-level="0" data-key="0-0">
       <!-- 缩进 --><span class="sd-tree-node-indent"></span><!-- switcher --><span class="sd-tree-node-switcher sd-tree-node-switcher-expanded"><span class="sd-icon-hover sd-tree-node-icon-hover"><span class="sd-tree-node-switcher-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95z"></path></svg></span></span></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
         <!---->
-      </label><!-- 内容 --><span class="sd-tree-node-title sd-tree-node-title-block" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Trunk<!--v-if--></span></span><!-- 额外 --><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" style="position: absolute; top: 10px; right: 8px; color: rgb(51, 112, 255); font-size: 12px;" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+      </label><!-- 内容 --><span class="sd-tree-node-title sd-tree-node-title-block" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Trunk<!--v-if--></span></span><!-- 额外 --><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus sd:absolute sd:top-[10px] sd:right-2 sd:text-xs sd:text-[#3370ff]" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
         <path d="M5 24h38M24 5v38"></path>
       </svg>
     </div>
@@ -581,7 +581,7 @@ exports[`<tree> demo: > render [render-extra] correctly 1`] = `
     <div class="sd-tree-node sd-tree-node-is-leaf" data-level="1" data-key="0-0-1">
       <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block"></span></span><!-- switcher --><span class="sd-tree-node-switcher"><!----></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
         <!---->
-      </label><!-- 内容 --><span class="sd-tree-node-title sd-tree-node-title-block" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf<!--v-if--></span></span><!-- 额外 --><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" style="position: absolute; top: 10px; right: 8px; color: rgb(51, 112, 255); font-size: 12px;" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+      </label><!-- 内容 --><span class="sd-tree-node-title sd-tree-node-title-block" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf<!--v-if--></span></span><!-- 额外 --><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus sd:absolute sd:top-[10px] sd:right-2 sd:text-xs sd:text-[#3370ff]" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
         <path d="M5 24h38M24 5v38"></path>
       </svg>
     </div>
@@ -589,7 +589,7 @@ exports[`<tree> demo: > render [render-extra] correctly 1`] = `
     <div class="sd-tree-node sd-tree-node-is-tail sd-tree-node-expanded" data-level="1" data-key="0-0-2">
       <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block"></span></span><!-- switcher --><span class="sd-tree-node-switcher sd-tree-node-switcher-expanded"><span class="sd-icon-hover sd-tree-node-icon-hover"><span class="sd-tree-node-switcher-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95z"></path></svg></span></span></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
         <!---->
-      </label><!-- 内容 --><span class="sd-tree-node-title sd-tree-node-title-block" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Branch<!--v-if--></span></span><!-- 额外 --><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" style="position: absolute; top: 10px; right: 8px; color: rgb(51, 112, 255); font-size: 12px;" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+      </label><!-- 内容 --><span class="sd-tree-node-title sd-tree-node-title-block" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Branch<!--v-if--></span></span><!-- 额外 --><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus sd:absolute sd:top-[10px] sd:right-2 sd:text-xs sd:text-[#3370ff]" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
         <path d="M5 24h38M24 5v38"></path>
       </svg>
     </div>
@@ -597,7 +597,7 @@ exports[`<tree> demo: > render [render-extra] correctly 1`] = `
     <div class="sd-tree-node sd-tree-node-is-leaf sd-tree-node-is-tail" data-level="2" data-key="0-0-2-1">
       <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block"></span><span class="sd-tree-node-indent-block sd-tree-node-indent-block-lineless"></span></span><!-- switcher --><span class="sd-tree-node-switcher"><!----></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
         <!---->
-      </label><!-- 内容 --><span class="sd-tree-node-title sd-tree-node-title-block" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf<!--v-if--></span></span><!-- 额外 --><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" style="position: absolute; top: 10px; right: 8px; color: rgb(51, 112, 255); font-size: 12px;" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+      </label><!-- 内容 --><span class="sd-tree-node-title sd-tree-node-title-block" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf<!--v-if--></span></span><!-- 额外 --><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus sd:absolute sd:top-[10px] sd:right-2 sd:text-xs sd:text-[#3370ff]" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
         <path d="M5 24h38M24 5v38"></path>
       </svg>
     </div>
@@ -605,7 +605,7 @@ exports[`<tree> demo: > render [render-extra] correctly 1`] = `
     <div class="sd-tree-node sd-tree-node-is-tail sd-tree-node-expanded" data-level="0" data-key="0-1">
       <!-- 缩进 --><span class="sd-tree-node-indent"></span><!-- switcher --><span class="sd-tree-node-switcher sd-tree-node-switcher-expanded"><span class="sd-icon-hover sd-tree-node-icon-hover"><span class="sd-tree-node-switcher-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95z"></path></svg></span></span></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
         <!---->
-      </label><!-- 内容 --><span class="sd-tree-node-title sd-tree-node-title-block" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Trunk<!--v-if--></span></span><!-- 额外 --><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" style="position: absolute; top: 10px; right: 8px; color: rgb(51, 112, 255); font-size: 12px;" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+      </label><!-- 内容 --><span class="sd-tree-node-title sd-tree-node-title-block" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Trunk<!--v-if--></span></span><!-- 额外 --><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus sd:absolute sd:top-[10px] sd:right-2 sd:text-xs sd:text-[#3370ff]" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
         <path d="M5 24h38M24 5v38"></path>
       </svg>
     </div>
@@ -613,7 +613,7 @@ exports[`<tree> demo: > render [render-extra] correctly 1`] = `
     <div class="sd-tree-node sd-tree-node-expanded" data-level="1" data-key="0-1-1">
       <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block sd-tree-node-indent-block-lineless"></span></span><!-- switcher --><span class="sd-tree-node-switcher sd-tree-node-switcher-expanded"><span class="sd-icon-hover sd-tree-node-icon-hover"><span class="sd-tree-node-switcher-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95z"></path></svg></span></span></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
         <!---->
-      </label><!-- 内容 --><span class="sd-tree-node-title sd-tree-node-title-block" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Branch<!--v-if--></span></span><!-- 额外 --><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" style="position: absolute; top: 10px; right: 8px; color: rgb(51, 112, 255); font-size: 12px;" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+      </label><!-- 内容 --><span class="sd-tree-node-title sd-tree-node-title-block" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Branch<!--v-if--></span></span><!-- 额外 --><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus sd:absolute sd:top-[10px] sd:right-2 sd:text-xs sd:text-[#3370ff]" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
         <path d="M5 24h38M24 5v38"></path>
       </svg>
     </div>
@@ -621,7 +621,7 @@ exports[`<tree> demo: > render [render-extra] correctly 1`] = `
     <div class="sd-tree-node sd-tree-node-is-leaf" data-level="2" data-key="0-1-1-1">
       <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block sd-tree-node-indent-block-lineless"></span><span class="sd-tree-node-indent-block"></span></span><!-- switcher --><span class="sd-tree-node-switcher"><!----></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
         <!---->
-      </label><!-- 内容 --><span class="sd-tree-node-title sd-tree-node-title-block" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf<!--v-if--></span></span><!-- 额外 --><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" style="position: absolute; top: 10px; right: 8px; color: rgb(51, 112, 255); font-size: 12px;" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+      </label><!-- 内容 --><span class="sd-tree-node-title sd-tree-node-title-block" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf<!--v-if--></span></span><!-- 额外 --><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus sd:absolute sd:top-[10px] sd:right-2 sd:text-xs sd:text-[#3370ff]" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
         <path d="M5 24h38M24 5v38"></path>
       </svg>
     </div>
@@ -629,7 +629,7 @@ exports[`<tree> demo: > render [render-extra] correctly 1`] = `
     <div class="sd-tree-node sd-tree-node-is-leaf sd-tree-node-is-tail" data-level="2" data-key="0-1-1-2">
       <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block sd-tree-node-indent-block-lineless"></span><span class="sd-tree-node-indent-block"></span></span><!-- switcher --><span class="sd-tree-node-switcher"><!----></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
         <!---->
-      </label><!-- 内容 --><span class="sd-tree-node-title sd-tree-node-title-block" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf<!--v-if--></span></span><!-- 额外 --><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" style="position: absolute; top: 10px; right: 8px; color: rgb(51, 112, 255); font-size: 12px;" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+      </label><!-- 内容 --><span class="sd-tree-node-title sd-tree-node-title-block" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf<!--v-if--></span></span><!-- 额外 --><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus sd:absolute sd:top-[10px] sd:right-2 sd:text-xs sd:text-[#3370ff]" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
         <path d="M5 24h38M24 5v38"></path>
       </svg>
     </div>
@@ -637,7 +637,7 @@ exports[`<tree> demo: > render [render-extra] correctly 1`] = `
     <div class="sd-tree-node sd-tree-node-is-leaf sd-tree-node-is-tail" data-level="1" data-key="0-1-2">
       <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block sd-tree-node-indent-block-lineless"></span></span><!-- switcher --><span class="sd-tree-node-switcher"><!----></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
         <!---->
-      </label><!-- 内容 --><span class="sd-tree-node-title sd-tree-node-title-block" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf<!--v-if--></span></span><!-- 额外 --><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" style="position: absolute; top: 10px; right: 8px; color: rgb(51, 112, 255); font-size: 12px;" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+      </label><!-- 内容 --><span class="sd-tree-node-title sd-tree-node-title-block" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf<!--v-if--></span></span><!-- 额外 --><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus sd:absolute sd:top-[10px] sd:right-2 sd:text-xs sd:text-[#3370ff]" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
         <path d="M5 24h38M24 5v38"></path>
       </svg>
     </div>
@@ -647,7 +647,7 @@ exports[`<tree> demo: > render [render-extra] correctly 1`] = `
 `;
 
 exports[`<tree> demo: > render [search] correctly 1`] = `
-<div><span class="sd-input-wrapper sd-input-search" style="max-width: 240px; margin-bottom: 8px;"><!----><input class="sd-input sd-input-size-medium" type="text" value=""><!----><span class="sd-input-suffix"><!----><span class="sd-icon-hover"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-search" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M33.072 33.071c6.248-6.248 6.248-16.379 0-22.627-6.249-6.249-16.38-6.249-22.628 0s-6.248 16.379 0 22.627 16.38 6.248 22.628 0Zm0 0 8.485 8.485"></path></svg></span>
+<div><span class="sd-input-wrapper sd-input-search sd:max-w-60 sd:mb-2"><!----><input class="sd-input sd-input-size-medium" type="text" value=""><!----><span class="sd-input-suffix"><!----><span class="sd-icon-hover"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-search" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M33.072 33.071c6.248-6.248 6.248-16.379 0-22.627-6.249-6.249-16.38-6.249-22.628 0s-6.248 16.379 0 22.627 16.38 6.248 22.628 0Zm0 0 8.485 8.485"></path></svg></span>
   <!---->
   <!----></span></span>
   <div class="sd-tree sd-tree-size-medium">
@@ -719,7 +719,7 @@ exports[`<tree> demo: > render [search] correctly 1`] = `
 `;
 
 exports[`<tree> demo: > render [show-line] correctly 1`] = `
-<div><span class="sd-typography">showLine<!----><!--v-if--><!--v-if--><!--v-if--></span><button type="button" role="switch" aria-checked="true" class="sd-switch sd-switch-type-circle sd-switch-checked" style="margin-left: 12px;"><span class="sd-switch-handle"><span class="sd-switch-handle-icon"></span></span><!--  prettier-ignore  -->
+<div><span class="sd-typography">showLine<!----><!--v-if--><!--v-if--><!--v-if--></span><button type="button" role="switch" aria-checked="true" class="sd-switch sd-switch-type-circle sd-switch-checked sd:ml-3"><span class="sd-switch-handle"><span class="sd-switch-handle-icon"></span></span><!--  prettier-ignore  -->
     <!--v-if-->
   </button></div>
 <div class="sd-tree sd-tree-show-line sd-tree-size-medium">
@@ -832,8 +832,8 @@ exports[`<tree> demo: > render [show-line] correctly 1`] = `
 `;
 
 exports[`<tree> demo: > render [size] correctly 1`] = `
-<div style="margin-bottom: 20px;"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="mini"><span class="sd-radio-button-content">mini</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="small"><span class="sd-radio-button-content">small</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="medium"><span class="sd-radio-button-content">medium</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="large"><span class="sd-radio-button-content">large</span></label></span></div>
-<div class="sd-tree sd-tree-checkable sd-tree-size-medium" style="margin-right: 20px;">
+<div class="sd:mb-5"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="mini"><span class="sd-radio-button-content">mini</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="small"><span class="sd-radio-button-content">small</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="medium"><span class="sd-radio-button-content">medium</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="large"><span class="sd-radio-button-content">large</span></label></span></div>
+<div class="sd-tree sd-tree-checkable sd-tree-size-medium sd:mr-5">
   <div class="sd-tree-node sd-tree-node-is-tail sd-tree-node-expanded" data-level="0" data-key="0-0">
     <!-- 缩进 --><span class="sd-tree-node-indent"></span><!-- switcher --><span class="sd-tree-node-switcher sd-tree-node-switcher-expanded"><span class="sd-icon-hover sd-tree-node-icon-hover"><span class="sd-tree-node-switcher-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M24.938 34.829a1.2 1.2 0 0 1-1.875 0L9.56 17.949c-.628-.785-.069-1.949.937-1.949h27.007c1.006 0 1.565 1.164.937 1.95z"></path></svg></span></span></span><!-- checkbox --><label class="sd-checkbox"><input type="checkbox" class="sd-checkbox-target" value="false"><span class="sd-icon-hover sd-checkbox-icon-hover"><div class="sd-checkbox-icon"><!----></div></span>
       <!---->
@@ -880,8 +880,8 @@ exports[`<tree> demo: > render [size] correctly 1`] = `
 `;
 
 exports[`<tree> demo: > render [virtual] correctly 1`] = `
-<div style="width: 420px;"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal" style="margin-bottom: 12px;"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="mini"><span class="sd-radio-button-content">mini</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="small"><span class="sd-radio-button-content">small</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="medium"><span class="sd-radio-button-content">medium</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="large"><span class="sd-radio-button-content">large</span></label></span><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal" style="margin-bottom: 12px;"><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="default"><span class="sd-radio-button-content">默认固定高度</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="dynamic"><span class="sd-radio-button-content">动态高度</span></label></span>
-  <div style="margin-bottom: 12px; color: var(--color-text-2); font-size: 12px; line-height: 1.5;">Tree 默认固定高度，映射 medium 行到 32px。</div><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button" style="margin-bottom: 12px;">
+<div class="sd:w-105"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal sd:mb-3"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="mini"><span class="sd-radio-button-content">mini</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="small"><span class="sd-radio-button-content">small</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="medium"><span class="sd-radio-button-content">medium</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="large"><span class="sd-radio-button-content">large</span></label></span><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal sd:mb-3"><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="default"><span class="sd-radio-button-content">默认固定高度</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="dynamic"><span class="sd-radio-button-content">动态高度</span></label></span>
+  <div class="sd:mb-3 sd:text-[var(--color-text-2)] sd:text-xs sd:leading-[1.5]">Tree 默认固定高度，映射 medium 行到 32px。</div><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd:mb-3" type="button">
     <!--v-if--> 滚动到 0-0-2-2
   </button>
   <div class="sd-tree sd-tree-checkable sd-tree-size-medium">

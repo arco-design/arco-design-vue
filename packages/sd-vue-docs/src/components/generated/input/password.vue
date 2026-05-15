@@ -4,23 +4,15 @@
     <sd-input-password
       v-model:visibility="visibility"
       placeholder="Please enter something"
-      :style="{ width: '320px' }"
+      class="sd:w-80"
       :defaultVisibility="false"
       allow-clear
     />
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const visibility = ref(true);
-
-      return {
-        visibility,
-      };
-    },
-  };
+  const visibility = ref(true);
 </script>

@@ -2,75 +2,66 @@
   <sd-cascader
     :options="options"
     default-value="datunli"
-    :style="{ width: '320px' }"
+    class="sd:w-[320px]"
     placeholder="Please select ..."
     :format-label="format"
   />
 </template>
 
-<script>
-  export default {
-    setup() {
-      const options = [
+<script setup lang="ts">
+  const options = [
+    {
+      value: 'beijing',
+      label: 'Beijing',
+      children: [
         {
-          value: 'beijing',
-          label: 'Beijing',
+          value: 'chaoyang',
+          label: 'ChaoYang',
           children: [
             {
-              value: 'chaoyang',
-              label: 'ChaoYang',
-              children: [
-                {
-                  value: 'datunli',
-                  label: 'Datunli',
-                },
-              ],
-            },
-            {
-              value: 'haidian',
-              label: 'Haidian',
-            },
-            {
-              value: 'dongcheng',
-              label: 'Dongcheng',
-            },
-            {
-              value: 'xicheng',
-              label: 'Xicheng',
-              children: [
-                {
-                  value: 'jinrongjie',
-                  label: 'Jinrongjie',
-                },
-                {
-                  value: 'tianqiao',
-                  label: 'Tianqiao',
-                },
-              ],
+              value: 'datunli',
+              label: 'Datunli',
             },
           ],
         },
         {
-          value: 'shanghai',
-          label: 'Shanghai',
+          value: 'haidian',
+          label: 'Haidian',
+        },
+        {
+          value: 'dongcheng',
+          label: 'Dongcheng',
+        },
+        {
+          value: 'xicheng',
+          label: 'Xicheng',
           children: [
             {
-              value: 'huangpu',
-              label: 'Huangpu',
+              value: 'jinrongjie',
+              label: 'Jinrongjie',
+            },
+            {
+              value: 'tianqiao',
+              label: 'Tianqiao',
             },
           ],
         },
-      ];
-
-      const format = (options) => {
-        const labels = options.map((option) => option.label);
-        return labels.join('-');
-      };
-
-      return {
-        options,
-        format,
-      };
+      ],
     },
+    {
+      value: 'shanghai',
+      label: 'Shanghai',
+      children: [
+        {
+          value: 'huangpu',
+          label: 'Huangpu',
+        },
+      ],
+    },
+  ];
+
+  const format = (options) => {
+    const labels = options.map((option) => option.label);
+    return labels.join('-');
   };
 </script>

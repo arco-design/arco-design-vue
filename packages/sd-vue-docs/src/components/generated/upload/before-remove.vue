@@ -1,5 +1,5 @@
 <template>
-  <sd-space direction="vertical" :style="{ width: '100%' }">
+  <sd-space direction="vertical" class="sd:w-full">
     <sd-upload
       action="/"
       :default-file-list="[
@@ -19,25 +19,17 @@
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { Modal } from '@sdata/web-vue';
 
-  export default {
-    setup() {
-      const beforeRemove = (file) => {
-        return new Promise((resolve, reject) => {
-          Modal.confirm({
-            title: 'on-before-remove',
-            content: `确认删除 ${file.name}`,
-            onOk: () => resolve(true),
-            onCancel: () => reject('cancel'),
-          });
-        });
-      };
-
-      return {
-        beforeRemove,
-      };
-    },
+  const beforeRemove = (file) => {
+    return new Promise((resolve, reject) => {
+      Modal.confirm({
+        title: 'on-before-remove',
+        content: `确认删除 ${file.name}`,
+        onOk: () => resolve(true),
+        onCancel: () => reject('cancel'),
+      });
+    });
   };
 </script>

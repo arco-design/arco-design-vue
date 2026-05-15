@@ -1,108 +1,84 @@
 <template>
-  <div :style="{ position: 'relative', width: '440px', height: '280px' }">
+  <div class="sd:relative sd:w-110 sd:h-70">
     <sd-popover position="tl">
-      <sd-button class="button" :style="{ position: 'absolute', top: '0', left: '70px' }"
-        >TL</sd-button
-      >
+      <sd-button class="sd:absolute sd:top-0 sd:left-17.5 sd:w-25">TL</sd-button>
       <template #content>
         <p>Here is the text content</p>
         <p>Here is the text content</p>
       </template>
     </sd-popover>
     <sd-popover position="top">
-      <sd-button class="button" :style="{ position: 'absolute', top: '0', left: '180px' }"
-        >TOP</sd-button
-      >
+      <sd-button class="sd:absolute sd:top-0 sd:left-45 sd:w-25">TOP</sd-button>
       <template #content>
         <p>Here is the text content</p>
         <p>Here is the text content</p>
       </template>
     </sd-popover>
     <sd-popover position="tr">
-      <sd-button class="button" :style="{ position: 'absolute', top: '0', left: '290px' }"
-        >TR</sd-button
-      >
+      <sd-button class="sd:absolute sd:top-0 sd:left-72.5 sd:w-25">TR</sd-button>
       <template #content>
         <p>Here is the text content</p>
         <p>Here is the text content</p>
       </template>
     </sd-popover>
     <sd-popover position="bl">
-      <sd-button class="button" :style="{ position: 'absolute', top: '240px', left: '70px' }"
-        >BL</sd-button
-      >
+      <sd-button class="sd:absolute sd:top-60 sd:left-17.5 sd:w-25">BL</sd-button>
       <template #content>
         <p>Here is the text content</p>
         <p>Here is the text content</p>
       </template>
     </sd-popover>
     <sd-popover position="bottom">
-      <sd-button class="button" :style="{ position: 'absolute', top: '240px', left: '180px' }"
-        >BOTTOM</sd-button
-      >
+      <sd-button class="sd:absolute sd:top-60 sd:left-45 sd:w-25">BOTTOM</sd-button>
       <template #content>
         <p>Here is the text content</p>
         <p>Here is the text content</p>
       </template>
     </sd-popover>
     <sd-popover position="br">
-      <sd-button class="button" :style="{ position: 'absolute', top: '240px', left: '290px' }"
-        >BR</sd-button
-      >
+      <sd-button class="sd:absolute sd:top-60 sd:left-72.5 sd:w-25">BR</sd-button>
       <template #content>
         <p>Here is the text content</p>
         <p>Here is the text content</p>
       </template>
     </sd-popover>
     <sd-popover position="lt">
-      <sd-button class="button" :style="{ position: 'absolute', top: '60px', left: '10px' }"
-        >LT</sd-button
-      >
+      <sd-button class="sd:absolute sd:top-15 sd:left-2.5 sd:w-25">LT</sd-button>
       <template #content>
         <p>Here is the text content</p>
         <p>Here is the text content</p>
       </template>
     </sd-popover>
     <sd-popover position="left">
-      <sd-button class="button" :style="{ position: 'absolute', top: '120px', left: '10px' }"
-        >LEFT</sd-button
-      >
+      <sd-button class="sd:absolute sd:top-30 sd:left-2.5 sd:w-25">LEFT</sd-button>
       <template #content>
         <p>Here is the text content</p>
         <p>Here is the text content</p>
       </template>
     </sd-popover>
     <sd-popover position="lb">
-      <sd-button class="button" :style="{ position: 'absolute', top: '180px', left: '10px' }"
-        >LB</sd-button
-      >
+      <sd-button class="sd:absolute sd:top-45 sd:left-2.5 sd:w-25">LB</sd-button>
       <template #content>
         <p>Here is the text content</p>
         <p>Here is the text content</p>
       </template>
     </sd-popover>
     <sd-popover position="rt">
-      <sd-button class="button" :style="{ position: 'absolute', top: '60px', left: '350px' }"
-        >RT</sd-button
-      >
+      <sd-button class="sd:absolute sd:top-15 sd:left-87.5 sd:w-25">RT</sd-button>
       <template #content>
         <p>Here is the text content</p>
         <p>Here is the text content</p>
       </template>
     </sd-popover>
     <sd-popover position="right">
-      <sd-button class="button" :style="{ position: 'absolute', top: '120px', left: '350px' }"
-        >RIGHT</sd-button
-      >
+      <sd-button class="sd:absolute sd:top-30 sd:left-87.5 sd:w-25">RIGHT</sd-button>
       <template #content>
         <p>Here is the text content</p>
         <p>Here is the text content</p>
       </template>
     </sd-popover>
     <sd-popover position="rb">
-      <sd-button class="button" :style="{ position: 'absolute', top: '180px', left: '350px' }"
-        >RB</sd-button
-      >
+      <sd-button class="sd:absolute sd:top-45 sd:left-87.5 sd:w-25">RB</sd-button>
       <template #content>
         <p>Here is the text content</p>
         <p>Here is the text content</p>
@@ -110,9 +86,3 @@
     </sd-popover>
   </div>
 </template>
-
-<style scoped lang="scss">
-  .button {
-    width: 100px;
-  }
-</style>

@@ -2,7 +2,7 @@
   <sd-space>
     <sd-select
       :default-value="'Beijing'"
-      :style="{ width: '360px' }"
+      class="sd:w-90"
       placeholder="Please select ..."
       allow-search
     >
@@ -13,14 +13,14 @@
       <sd-option>Shenzhen</sd-option>
       <sd-option>Wuhan</sd-option>
       <template #footer>
-        <div style="padding: 6px 0; text-align: center">
+        <div class="sd:py-1.5 sd:text-center">
           <sd-button>Click Me</sd-button>
         </div>
       </template>
     </sd-select>
     <sd-select
       :default-value="'Beijing'"
-      :style="{ width: '360px' }"
+      class="sd:w-90"
       placeholder="Please select ..."
       allow-search
       show-footer-on-empty
@@ -32,7 +32,7 @@
       <sd-option>Shenzhen</sd-option>
       <sd-option>Wuhan</sd-option>
       <template #footer>
-        <div style="padding: 6px 0; text-align: center">
+        <div class="sd:py-1.5 sd:text-center">
           <sd-button>Click Me</sd-button>
         </div>
       </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="menu-demo">
     <sd-menu
-      :style="{ width: '200px', height: '100%' }"
+      class="sd:w-50 sd:h-full"
       :default-open-keys="['0']"
       :default-selected-keys="['0_2']"
       show-collapse-button
@@ -36,38 +36,17 @@
     </sd-menu>
   </div>
 </template>
-<script>
-  import { ref } from 'vue';
-
+<script setup lang="ts">
   import { Message } from '@sdata/web-vue';
-  import {
-    IconMenuFold,
-    IconMenuUnfold,
-    IconApps,
-    IconBug,
-    IconBulb,
-  } from '@sdata/web-vue/es/icon/index.js';
+  import { IconApps, IconBug, IconBulb } from '@sdata/web-vue/es/icon/index.js';
 
-  export default {
-    components: {
-      IconMenuFold,
-      IconMenuUnfold,
-      IconApps,
-      IconBug,
-      IconBulb,
-    },
-    setup() {
-      return {
-        onCollapse(val, type) {
-          const content = type === 'responsive' ? '触发响应式收缩' : '点击触发收缩';
-          Message.info({
-            content,
-            duration: 2000,
-          });
-        },
-      };
-    },
-  };
+  function onCollapse(_val, type) {
+    const content = type === 'responsive' ? '触发响应式收缩' : '点击触发收缩';
+    Message.info({
+      content,
+      duration: 2000,
+    });
+  }
 </script>
 <style scoped>
   .menu-demo {

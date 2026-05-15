@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<date-picker> demo: > render [basic] correctly 1`] = `
-<div class="sd-picker sd-picker-size-medium" style="width: 200px;" visible="false">
+<div class="sd-picker sd-picker-size-medium sd:w-50" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input placeholder="请选择日期" class="sd-picker-start-time"></div>
   <div class="sd-picker-suffix">
@@ -15,7 +15,7 @@ exports[`<date-picker> demo: > render [control] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
   <div class="sd-space-item">
-    <div class="sd-picker sd-picker-size-medium" style="width: 200px;" visible="false">
+    <div class="sd-picker sd-picker-size-medium sd:w-50" visible="false">
       <!--v-if-->
       <div class="sd-picker-input"><input placeholder="请选择日期" class="sd-picker-start-time" value="2026-04-16"></div>
       <div class="sd-picker-suffix"><span class="sd-icon-hover sd-picker-icon-hover sd-picker-clear-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span><span class="sd-picker-suffix-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path></svg></span>
@@ -26,7 +26,7 @@ exports[`<date-picker> demo: > render [control] correctly 1`] = `
   </div>
   <!---->
   <div class="sd-space-item">
-    <div class="sd-picker sd-picker-range sd-picker-size-medium" style="width: 300px;" visible="false">
+    <div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-75" visible="false">
       <!--v-if-->
       <div class="sd-picker-input sd-picker-input-active"><input placeholder="开始日期" value="2026-04-16"></div><span class="sd-picker-separator">-</span>
       <div class="sd-picker-input"><input placeholder="结束日期" value="2026-04-16"></div>
@@ -51,49 +51,49 @@ exports[`<date-picker> demo: > render [date-render] correctly 1`] = `
 `;
 
 exports[`<date-picker> demo: > render [default-value] correctly 1`] = `
-<div class="sd-picker sd-picker-size-medium" style="width: 200px; margin-bottom: 24px; margin-right: 24px;" visible="false">
+<div class="sd-picker sd-picker-size-medium sd:w-50 sd:mr-6 sd:mb-6" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input placeholder="请选择日期" class="sd-picker-start-time" value="2019-06-03"></div>
   <div class="sd-picker-suffix"><span class="sd-icon-hover sd-picker-icon-hover sd-picker-clear-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span><span class="sd-picker-suffix-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path></svg></span>
     <!--v-if-->
   </div>
 </div>
-<div class="sd-picker sd-picker-size-medium" style="width: 240px; margin-bottom: 24px; margin-right: 24px;" visible="false">
+<div class="sd-picker sd-picker-size-medium sd:w-60 sd:mr-6 sd:mb-6" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input placeholder="请选择日期" class="sd-picker-start-time" readonly="" value="custom format: 2019-06-03"></div>
   <div class="sd-picker-suffix"><span class="sd-icon-hover sd-picker-icon-hover sd-picker-clear-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span><span class="sd-picker-suffix-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path></svg></span>
     <!--v-if-->
   </div>
 </div>
-<div class="sd-picker sd-picker-size-medium" style="width: 200px; margin-bottom: 24px; margin-right: 24px;" visible="false">
+<div class="sd-picker sd-picker-size-medium sd:w-50 sd:mr-6 sd:mb-6" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input placeholder="请选择日期" class="sd-picker-start-time" value="2019-06-03 08:00:00"></div>
   <div class="sd-picker-suffix"><span class="sd-icon-hover sd-picker-icon-hover sd-picker-clear-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span><span class="sd-picker-suffix-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path></svg></span>
     <!--v-if-->
   </div>
 </div>
-<div class="sd-picker sd-picker-size-medium" style="width: 200px; margin-bottom: 24px; margin-right: 24px;" visible="false">
+<div class="sd-picker sd-picker-size-medium sd:w-50 sd:mr-6 sd:mb-6" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input placeholder="请选择年份" class="sd-picker-start-time" value="2019"></div>
   <div class="sd-picker-suffix"><span class="sd-icon-hover sd-picker-icon-hover sd-picker-clear-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span><span class="sd-picker-suffix-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path></svg></span>
     <!--v-if-->
   </div>
 </div>
-<div class="sd-picker sd-picker-size-medium" style="width: 200px; margin-bottom: 24px; margin-right: 24px;" visible="false">
+<div class="sd-picker sd-picker-size-medium sd:w-50 sd:mr-6 sd:mb-6" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input placeholder="请选择月份" class="sd-picker-start-time" value="2019-06"></div>
   <div class="sd-picker-suffix"><span class="sd-icon-hover sd-picker-icon-hover sd-picker-clear-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span><span class="sd-picker-suffix-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path></svg></span>
     <!--v-if-->
   </div>
 </div>
-<div class="sd-picker sd-picker-size-medium" style="width: 200px; margin-bottom: 24px; margin-right: 24px;" visible="false">
+<div class="sd-picker sd-picker-size-medium sd:w-50 sd:mr-6 sd:mb-6" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input placeholder="请选择周" class="sd-picker-start-time" value="2019-31周"></div>
   <div class="sd-picker-suffix"><span class="sd-icon-hover sd-picker-icon-hover sd-picker-clear-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span><span class="sd-picker-suffix-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path></svg></span>
     <!--v-if-->
   </div>
 </div>
-<div class="sd-picker sd-picker-range sd-picker-size-medium" style="width: 360px; margin-bottom: 24px; margin-right: 24px;" visible="false">
+<div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-90 sd:mr-6 sd:mb-6" visible="false">
   <!--v-if-->
   <div class="sd-picker-input sd-picker-input-active"><input placeholder="开始日期" value="2019-08-08 00:00:00"></div><span class="sd-picker-separator">-</span>
   <div class="sd-picker-input"><input placeholder="结束日期" value="2019-08-18 00:00:00"></div>
@@ -101,7 +101,7 @@ exports[`<date-picker> demo: > render [default-value] correctly 1`] = `
     <!--v-if-->
   </div>
 </div>
-<div class="sd-picker sd-picker-range sd-picker-size-medium" style="width: 300px;" visible="false">
+<div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-75 sd:mb-6" visible="false">
   <!--v-if-->
   <div class="sd-picker-input sd-picker-input-active"><input placeholder="开始月份" value="2019-08"></div><span class="sd-picker-separator">-</span>
   <div class="sd-picker-input"><input placeholder="结束月份" value="2020-06"></div>
@@ -112,7 +112,7 @@ exports[`<date-picker> demo: > render [default-value] correctly 1`] = `
 `;
 
 exports[`<date-picker> demo: > render [disabled] correctly 1`] = `
-<div class="sd-picker sd-picker-size-medium sd-picker-disabled" style="width: 200px; margin-bottom: 20px;" visible="false">
+<div class="sd-picker sd-picker-size-medium sd-picker-disabled sd:w-50 sd:mb-5" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input disabled="" placeholder="请选择日期" class="sd-picker-start-time" value="2020-08-08"></div>
   <div class="sd-picker-suffix">
@@ -121,7 +121,7 @@ exports[`<date-picker> demo: > render [disabled] correctly 1`] = `
   </div>
 </div>
 <br>
-<div class="sd-picker sd-picker-range sd-picker-size-medium sd-picker-disabled" style="width: 300px; margin-bottom: 20px;" visible="false">
+<div class="sd-picker sd-picker-range sd-picker-size-medium sd-picker-disabled sd:w-75 sd:mb-5" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input disabled="" placeholder="开始日期" value="2020-08-08"></div><span class="sd-picker-separator">-</span>
   <div class="sd-picker-input sd-picker-input-active"><input disabled="" placeholder="结束日期" value="2020-08-18"></div>
@@ -130,7 +130,7 @@ exports[`<date-picker> demo: > render [disabled] correctly 1`] = `
   </div>
 </div>
 <br>
-<div class="sd-picker sd-picker-range sd-picker-size-medium" style="width: 300px; margin-bottom: 20px;" visible="false">
+<div class="sd-picker sd-picker-range sd-picker-size-medium sd:mb-5 sd:w-75" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input disabled="" placeholder="开始日期" value="2020-08-08"></div><span class="sd-picker-separator">-</span>
   <div class="sd-picker-input sd-picker-input-active"><input placeholder="结束日期"></div>
@@ -140,7 +140,7 @@ exports[`<date-picker> demo: > render [disabled] correctly 1`] = `
   </div>
 </div>
 <br>
-<div class="sd-picker sd-picker-range sd-picker-size-medium" style="width: 380px;" visible="false">
+<div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-95" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input disabled="" placeholder="开始日期" value="2020-08-08 02:02:02"></div><span class="sd-picker-separator">-</span>
   <div class="sd-picker-input sd-picker-input-active"><input placeholder="结束日期"></div>
@@ -153,7 +153,7 @@ exports[`<date-picker> demo: > render [disabled] correctly 1`] = `
 
 exports[`<date-picker> demo: > render [disabled-date] correctly 1`] = `
 <div>
-  <div class="sd-picker sd-picker-size-medium" style="width: 200px; margin-right: 24px; margin-bottom: 24px;" visible="false">
+  <div class="sd-picker sd-picker-size-medium sd:w-50 sd:mr-6 sd:mb-6" visible="false">
     <!--v-if-->
     <div class="sd-picker-input"><input placeholder="请选择日期" class="sd-picker-start-time"></div>
     <div class="sd-picker-suffix">
@@ -162,7 +162,7 @@ exports[`<date-picker> demo: > render [disabled-date] correctly 1`] = `
     </div>
   </div>
   <!---->
-  <div class="sd-picker sd-picker-range sd-picker-size-medium" style="width: 360px; margin-right: 24px; margin-bottom: 24px;" visible="false">
+  <div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-90 sd:mr-6 sd:mb-6" visible="false">
     <!--v-if-->
     <div class="sd-picker-input sd-picker-input-active"><input placeholder="开始日期"></div><span class="sd-picker-separator">-</span>
     <div class="sd-picker-input"><input placeholder="结束日期"></div>
@@ -172,7 +172,7 @@ exports[`<date-picker> demo: > render [disabled-date] correctly 1`] = `
     </div>
   </div>
   <!---->
-  <div class="sd-picker sd-picker-size-medium" style="width: 200px; margin-right: 24px; margin-bottom: 24px;" visible="false">
+  <div class="sd-picker sd-picker-size-medium sd:w-50 sd:mr-6 sd:mb-6" visible="false">
     <!--v-if-->
     <div class="sd-picker-input"><input placeholder="请选择日期" class="sd-picker-start-time"></div>
     <div class="sd-picker-suffix">
@@ -181,7 +181,7 @@ exports[`<date-picker> demo: > render [disabled-date] correctly 1`] = `
     </div>
   </div>
   <!---->
-  <div class="sd-picker sd-picker-range sd-picker-size-medium" style="width: 360px; margin-bottom: 24px;" visible="false">
+  <div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-90 sd:mb-6" visible="false">
     <!--v-if-->
     <div class="sd-picker-input sd-picker-input-active"><input placeholder="开始日期"></div><span class="sd-picker-separator">-</span>
     <div class="sd-picker-input"><input placeholder="结束日期"></div>
@@ -195,7 +195,7 @@ exports[`<date-picker> demo: > render [disabled-date] correctly 1`] = `
 `;
 
 exports[`<date-picker> demo: > render [disabled-date-advance] correctly 1`] = `
-<div class="sd-picker sd-picker-range sd-picker-size-medium" style="width: 300px;" visible="false">
+<div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-75" visible="false">
   <!--v-if-->
   <div class="sd-picker-input sd-picker-input-active"><input placeholder="开始日期"></div><span class="sd-picker-separator">-</span>
   <div class="sd-picker-input"><input placeholder="结束日期"></div>
@@ -207,7 +207,7 @@ exports[`<date-picker> demo: > render [disabled-date-advance] correctly 1`] = `
 `;
 
 exports[`<date-picker> demo: > render [extra] correctly 1`] = `
-<div class="sd-picker sd-picker-size-medium" style="width: 200px; margin-bottom: 20px;" visible="false">
+<div class="sd-picker sd-picker-size-medium sd:w-50 sd:mb-5" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input placeholder="请选择日期" class="sd-picker-start-time"></div>
   <div class="sd-picker-suffix">
@@ -216,7 +216,7 @@ exports[`<date-picker> demo: > render [extra] correctly 1`] = `
   </div>
 </div>
 <br>
-<div class="sd-picker sd-picker-range sd-picker-size-medium" style="width: 360px;" visible="false">
+<div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-90" visible="false">
   <!--v-if-->
   <div class="sd-picker-input sd-picker-input-active"><input placeholder="开始日期"></div><span class="sd-picker-separator">-</span>
   <div class="sd-picker-input"><input placeholder="结束日期"></div>
@@ -228,7 +228,7 @@ exports[`<date-picker> demo: > render [extra] correctly 1`] = `
 `;
 
 exports[`<date-picker> demo: > render [month] correctly 1`] = `
-<div class="sd-picker sd-picker-size-medium" style="width: 200px;" visible="false">
+<div class="sd-picker sd-picker-size-medium sd:w-50" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input placeholder="请选择月份" class="sd-picker-start-time"></div>
   <div class="sd-picker-suffix">
@@ -240,7 +240,7 @@ exports[`<date-picker> demo: > render [month] correctly 1`] = `
 
 exports[`<date-picker> demo: > render [panel-only] correctly 1`] = `
 <div>
-  <div class="sd-picker-container sd-picker-container-panel-only" style="width: 268px;" visible="false">
+  <div class="sd-picker-container sd-picker-container-panel-only sd:w-67" visible="false">
     <!--v-if-->
     <div class="sd-picker-panel-wrapper">
       <div class="sd-panel-date">
@@ -513,7 +513,7 @@ exports[`<date-picker> demo: > render [panel-only] correctly 1`] = `
     </div>
     <!--v-if-->
   </div>
-  <div class="sd-picker-range-container sd-picker-range-container-panel-only" style="width: 560px; margin-top: 20px;">
+  <div class="sd-picker-range-container sd-picker-range-container-panel-only sd:w-140 sd:mt-5">
     <!--v-if-->
     <div class="sd-picker-range-panel-wrapper">
       <!-- panel -->
@@ -1057,7 +1057,7 @@ exports[`<date-picker> demo: > render [panel-only] correctly 1`] = `
 exports[`<date-picker> demo: > render [prefix] correctly 1`] = `
 <div>
   <div>
-    <div class="sd-picker sd-picker-size-medium sd-picker-has-prefix" style="width: 300px;" visible="false">
+    <div class="sd-picker sd-picker-size-medium sd-picker-has-prefix sd:w-75" visible="false">
       <div class="sd-picker-prefix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-info-circle" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
           <path d="M24 20v14m0-16v-4m18 10c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6s18 8.059 18 18Z"></path>
         </svg></div>
@@ -1069,7 +1069,7 @@ exports[`<date-picker> demo: > render [prefix] correctly 1`] = `
     </div>
     <!---->
   </div>
-  <div class="sd-picker sd-picker-range sd-picker-size-medium sd-picker-has-prefix" style="width: 400px; margin-top: 20px;" visible="false">
+  <div class="sd-picker sd-picker-range sd-picker-size-medium sd-picker-has-prefix sd:mt-5 sd:w-100" visible="false">
     <div class="sd-picker-prefix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-info-circle" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
         <path d="M24 20v14m0-16v-4m18 10c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6s18 8.059 18 18Z"></path>
       </svg></div>
@@ -1084,7 +1084,7 @@ exports[`<date-picker> demo: > render [prefix] correctly 1`] = `
 `;
 
 exports[`<date-picker> demo: > render [quarter] correctly 1`] = `
-<div class="sd-picker sd-picker-size-medium" style="width: 200px;" visible="false">
+<div class="sd-picker sd-picker-size-medium sd:w-50" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input placeholder="请选择季度" class="sd-picker-start-time"></div>
   <div class="sd-picker-suffix">
@@ -1095,7 +1095,7 @@ exports[`<date-picker> demo: > render [quarter] correctly 1`] = `
 `;
 
 exports[`<date-picker> demo: > render [range] correctly 1`] = `
-<div class="sd-picker sd-picker-range sd-picker-size-medium" style="width: 254px;" visible="false">
+<div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-63.5 sd:mb-5" visible="false">
   <!--v-if-->
   <div class="sd-picker-input sd-picker-input-active"><input placeholder="开始日期"></div><span class="sd-picker-separator">-</span>
   <div class="sd-picker-input"><input placeholder="结束日期"></div>
@@ -1105,7 +1105,7 @@ exports[`<date-picker> demo: > render [range] correctly 1`] = `
   </div>
 </div>
 <br>
-<div class="sd-picker sd-picker-range sd-picker-size-medium" style="width: 254px;" visible="false">
+<div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-63.5 sd:mb-5" visible="false">
   <!--v-if-->
   <div class="sd-picker-input sd-picker-input-active"><input placeholder="开始周"></div><span class="sd-picker-separator">-</span>
   <div class="sd-picker-input"><input placeholder="结束周"></div>
@@ -1115,7 +1115,7 @@ exports[`<date-picker> demo: > render [range] correctly 1`] = `
   </div>
 </div>
 <br>
-<div class="sd-picker sd-picker-range sd-picker-size-medium" style="width: 254px;" visible="false">
+<div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-63.5 sd:mb-5" visible="false">
   <!--v-if-->
   <div class="sd-picker-input sd-picker-input-active"><input placeholder="开始月份"></div><span class="sd-picker-separator">-</span>
   <div class="sd-picker-input"><input placeholder="结束月份"></div>
@@ -1125,7 +1125,7 @@ exports[`<date-picker> demo: > render [range] correctly 1`] = `
   </div>
 </div>
 <br>
-<div class="sd-picker sd-picker-range sd-picker-size-medium" style="width: 254px;" visible="false">
+<div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-63.5 sd:mb-5" visible="false">
   <!--v-if-->
   <div class="sd-picker-input sd-picker-input-active"><input placeholder="开始年份"></div><span class="sd-picker-separator">-</span>
   <div class="sd-picker-input"><input placeholder="结束年份"></div>
@@ -1135,7 +1135,7 @@ exports[`<date-picker> demo: > render [range] correctly 1`] = `
   </div>
 </div>
 <br>
-<div class="sd-picker sd-picker-range sd-picker-size-medium" style="width: 254px;" visible="false">
+<div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-63.5 sd:mb-5" visible="false">
   <!--v-if-->
   <div class="sd-picker-input sd-picker-input-active"><input placeholder="开始季度"></div><span class="sd-picker-separator">-</span>
   <div class="sd-picker-input"><input placeholder="结束季度"></div>
@@ -1145,7 +1145,7 @@ exports[`<date-picker> demo: > render [range] correctly 1`] = `
   </div>
 </div>
 <br>
-<div class="sd-picker sd-picker-range sd-picker-size-medium" style="width: 380px;" visible="false">
+<div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-95" visible="false">
   <!--v-if-->
   <div class="sd-picker-input sd-picker-input-active"><input placeholder="开始日期"></div><span class="sd-picker-separator">-</span>
   <div class="sd-picker-input"><input placeholder="结束日期"></div>
@@ -1157,7 +1157,7 @@ exports[`<date-picker> demo: > render [range] correctly 1`] = `
 `;
 
 exports[`<date-picker> demo: > render [shortcuts] correctly 1`] = `
-<div class="sd-picker sd-picker-size-medium" style="width: 300px; margin-right: 24px; margin-bottom: 24px;" visible="false">
+<div class="sd-picker sd-picker-size-medium sd:w-75 sd:mr-6 sd:mb-6" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input placeholder="请选择日期" class="sd-picker-start-time"></div>
   <div class="sd-picker-suffix">
@@ -1165,7 +1165,7 @@ exports[`<date-picker> demo: > render [shortcuts] correctly 1`] = `
     <!--v-if-->
   </div>
 </div>
-<div class="sd-picker sd-picker-size-medium" style="width: 300px; margin-right: 24px; margin-bottom: 24px;" visible="false">
+<div class="sd-picker sd-picker-size-medium sd:w-75 sd:mr-6 sd:mb-6" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input placeholder="请选择月份" class="sd-picker-start-time"></div>
   <div class="sd-picker-suffix">
@@ -1173,7 +1173,7 @@ exports[`<date-picker> demo: > render [shortcuts] correctly 1`] = `
     <!--v-if-->
   </div>
 </div>
-<div class="sd-picker sd-picker-range sd-picker-size-medium" style="width: 400px; margin-right: 24px; margin-bottom: 24px;" visible="false">
+<div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-100 sd:mr-6 sd:mb-6" visible="false">
   <!--v-if-->
   <div class="sd-picker-input sd-picker-input-active"><input placeholder="开始日期"></div><span class="sd-picker-separator">-</span>
   <div class="sd-picker-input"><input placeholder="结束日期"></div>
@@ -1182,7 +1182,7 @@ exports[`<date-picker> demo: > render [shortcuts] correctly 1`] = `
     <!--v-if-->
   </div>
 </div>
-<div class="sd-picker sd-picker-range sd-picker-size-medium" style="width: 300px; margin-bottom: 24px;" visible="false">
+<div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-75 sd:mb-6" visible="false">
   <!--v-if-->
   <div class="sd-picker-input sd-picker-input-active"><input placeholder="开始月份"></div><span class="sd-picker-separator">-</span>
   <div class="sd-picker-input"><input placeholder="结束月份"></div>
@@ -1194,7 +1194,7 @@ exports[`<date-picker> demo: > render [shortcuts] correctly 1`] = `
 `;
 
 exports[`<date-picker> demo: > render [shortcuts-position] correctly 1`] = `
-<div class="sd-picker sd-picker-size-medium" style="width: 254px; margin-right: 24px; margin-bottom: 20px;" visible="false">
+<div class="sd-picker sd-picker-size-medium sd:w-63.5 sd:mr-6 sd:mb-5" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input placeholder="请选择日期" class="sd-picker-start-time"></div>
   <div class="sd-picker-suffix">
@@ -1202,7 +1202,7 @@ exports[`<date-picker> demo: > render [shortcuts-position] correctly 1`] = `
     <!--v-if-->
   </div>
 </div>
-<div class="sd-picker sd-picker-range sd-picker-size-medium" style="width: 300px; margin-bottom: 20px;" visible="false">
+<div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-75 sd:mb-5" visible="false">
   <!--v-if-->
   <div class="sd-picker-input sd-picker-input-active"><input placeholder="开始日期"></div><span class="sd-picker-separator">-</span>
   <div class="sd-picker-input"><input placeholder="结束日期"></div>
@@ -1212,7 +1212,7 @@ exports[`<date-picker> demo: > render [shortcuts-position] correctly 1`] = `
   </div>
 </div>
 <br>
-<div class="sd-picker sd-picker-size-medium" style="width: 254px; margin-right: 24px;" visible="false">
+<div class="sd-picker sd-picker-size-medium sd:w-63.5 sd:mr-6" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input placeholder="请选择日期" class="sd-picker-start-time"></div>
   <div class="sd-picker-suffix">
@@ -1220,7 +1220,7 @@ exports[`<date-picker> demo: > render [shortcuts-position] correctly 1`] = `
     <!--v-if-->
   </div>
 </div>
-<div class="sd-picker sd-picker-range sd-picker-size-medium" style="width: 300px;" visible="false">
+<div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-75" visible="false">
   <!--v-if-->
   <div class="sd-picker-input sd-picker-input-active"><input placeholder="开始日期"></div><span class="sd-picker-separator">-</span>
   <div class="sd-picker-input"><input placeholder="结束日期"></div>
@@ -1232,7 +1232,7 @@ exports[`<date-picker> demo: > render [shortcuts-position] correctly 1`] = `
 `;
 
 exports[`<date-picker> demo: > render [showtime] correctly 1`] = `
-<div class="sd-picker sd-picker-size-medium" style="width: 220px; margin: 0px 24px 24px 0px;" visible="false">
+<div class="sd-picker sd-picker-size-medium sd:w-55 sd:mr-6 sd:mb-6" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input placeholder="请选择日期" class="sd-picker-start-time"></div>
   <div class="sd-picker-suffix">
@@ -1240,7 +1240,7 @@ exports[`<date-picker> demo: > render [showtime] correctly 1`] = `
     <!--v-if-->
   </div>
 </div>
-<div class="sd-picker sd-picker-size-medium" style="width: 220px; margin: 0px 24px 24px 0px;" visible="false">
+<div class="sd-picker sd-picker-size-medium sd:w-55 sd:mr-6 sd:mb-6" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input placeholder="请选择日期" class="sd-picker-start-time"></div>
   <div class="sd-picker-suffix">
@@ -1248,7 +1248,7 @@ exports[`<date-picker> demo: > render [showtime] correctly 1`] = `
     <!--v-if-->
   </div>
 </div>
-<div class="sd-picker sd-picker-range sd-picker-size-medium" style="width: 360px; margin: 0px 24px 24px 0px;" visible="false">
+<div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-90 sd:mr-6 sd:mb-6" visible="false">
   <!--v-if-->
   <div class="sd-picker-input sd-picker-input-active"><input placeholder="开始日期"></div><span class="sd-picker-separator">-</span>
   <div class="sd-picker-input"><input placeholder="结束日期"></div>
@@ -1260,8 +1260,8 @@ exports[`<date-picker> demo: > render [showtime] correctly 1`] = `
 `;
 
 exports[`<date-picker> demo: > render [size] correctly 1`] = `
-<div style="margin-bottom: 20px;"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="mini"><span class="sd-radio-button-content">mini</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="small"><span class="sd-radio-button-content">small</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="medium"><span class="sd-radio-button-content">medium</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="large"><span class="sd-radio-button-content">large</span></label></span></div>
-<div class="sd-picker sd-picker-size-small" style="width: 254px;" visible="false">
+<div class="sd:mb-5"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="mini"><span class="sd-radio-button-content">mini</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="small"><span class="sd-radio-button-content">small</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="medium"><span class="sd-radio-button-content">medium</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="large"><span class="sd-radio-button-content">large</span></label></span></div>
+<div class="sd-picker sd-picker-size-small sd:w-63.5" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input placeholder="请选择日期" class="sd-picker-start-time"></div>
   <div class="sd-picker-suffix">
@@ -1289,7 +1289,7 @@ exports[`<date-picker> demo: > render [trigger-element] correctly 1`] = `
 `;
 
 exports[`<date-picker> demo: > render [week] correctly 1`] = `
-<div class="sd-picker sd-picker-size-medium" style="width: 200px; margin: 0px 24px 24px 0px;" visible="false">
+<div class="sd-picker sd-picker-size-medium sd:w-50 sd:mr-6 sd:mb-6" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input placeholder="请选择周" class="sd-picker-start-time"></div>
   <div class="sd-picker-suffix">
@@ -1297,7 +1297,7 @@ exports[`<date-picker> demo: > render [week] correctly 1`] = `
     <!--v-if-->
   </div>
 </div>
-<div class="sd-picker sd-picker-size-medium" style="width: 200px; margin: 0px 24px 24px 0px;" visible="false">
+<div class="sd-picker sd-picker-size-medium sd:w-50 sd:mr-6 sd:mb-6" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input placeholder="请选择周" class="sd-picker-start-time"></div>
   <div class="sd-picker-suffix">
@@ -1308,7 +1308,7 @@ exports[`<date-picker> demo: > render [week] correctly 1`] = `
 `;
 
 exports[`<date-picker> demo: > render [year] correctly 1`] = `
-<div class="sd-picker sd-picker-size-medium" style="width: 200px;" visible="false">
+<div class="sd-picker sd-picker-size-medium sd:w-50" visible="false">
   <!--v-if-->
   <div class="sd-picker-input"><input placeholder="请选择年份" class="sd-picker-start-time"></div>
   <div class="sd-picker-suffix">

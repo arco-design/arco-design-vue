@@ -7,22 +7,6 @@
     update: (force?: boolean) => boolean;
   }
 
-  const statusStyle = {
-    color: 'var(--color-text-3)',
-  };
-
-  const wrapperStyle = {
-    height: '220px',
-    overflow: 'auto',
-  };
-
-  const contentStyle = {
-    width: '900px',
-    height: '540px',
-    padding: '20px',
-    background: 'linear-gradient(180deg, var(--color-fill-2), var(--color-secondary-light-1))',
-  };
-
   const scrollbarRef = ref<ScrollbarInstance>();
   const statusText = shallowRef('ready');
 
@@ -55,10 +39,14 @@
       <sd-button size="small" @click="forceUpdate">update</sd-button>
     </sd-space>
 
-    <div :style="statusStyle">status: {{ statusText }}</div>
+    <div class="sd:text-[var(--color-text-3)]">status: {{ statusText }}</div>
 
-    <sd-scrollbar ref="scrollbarRef" :style="wrapperStyle">
-      <div :style="contentStyle"> 通过 ref 调用底层 OverlayScrollbars 方法。 </div>
+    <sd-scrollbar ref="scrollbarRef" class="sd:h-55 sd:overflow-auto">
+      <div
+        class="sd:w-225 sd:h-135 sd:p-5 sd:bg-[linear-gradient(180deg, var(--color-fill-2), var(--color-secondary-light-1))]"
+      >
+        通过 ref 调用底层 OverlayScrollbars 方法。
+      </div>
     </sd-scrollbar>
   </sd-space>
 </template>

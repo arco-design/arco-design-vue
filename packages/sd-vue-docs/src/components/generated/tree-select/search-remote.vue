@@ -5,56 +5,13 @@
     :disable-filter="true"
     :data="treeData"
     :loading="loading"
-    style="width: 300px"
+    class="sd:w-75"
     placeholder="Please select ..."
     @search="onSearch"
   ></sd-tree-select>
 </template>
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
-
-  export default {
-    setup() {
-      const treeData = ref(defaultTreeData);
-      const loading = ref(false);
-
-      function searchData(keyword) {
-        const loop = (data) => {
-          const result = [];
-          data.forEach((item) => {
-            if (item.title.toLowerCase().indexOf(keyword.toLowerCase()) > -1) {
-              result.push({ ...item });
-            } else if (item.children) {
-              const filterData = loop(item.children);
-              if (filterData.length) {
-                result.push({
-                  ...item,
-                  children: filterData,
-                });
-              }
-            }
-          });
-          return result;
-        };
-
-        return loop(defaultTreeData);
-      }
-
-      const onSearch = (searchKey) => {
-        loading.value = true;
-        setTimeout(() => {
-          loading.value = false;
-          treeData.value = searchData(searchKey);
-        }, 200);
-      };
-
-      return {
-        treeData,
-        loading,
-        onSearch,
-      };
-    },
-  };
 
   const defaultTreeData = [
     {
@@ -104,4 +61,37 @@
       ],
     },
   ];
+
+  const treeData = ref(defaultTreeData);
+  const loading = ref(false);
+
+  function searchData(keyword) {
+    const loop = (data) => {
+      const result = [];
+      data.forEach((item) => {
+        if (item.title.toLowerCase().indexOf(keyword.toLowerCase()) > -1) {
+          result.push({ ...item });
+        } else if (item.children) {
+          const filterData = loop(item.children);
+          if (filterData.length) {
+            result.push({
+              ...item,
+              children: filterData,
+            });
+          }
+        }
+      });
+      return result;
+    };
+
+    return loop(defaultTreeData);
+  }
+
+  const onSearch = (searchKey) => {
+    loading.value = true;
+    setTimeout(() => {
+      loading.value = false;
+      treeData.value = searchData(searchKey);
+    }, 200);
+  };
 </script>

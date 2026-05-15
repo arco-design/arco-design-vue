@@ -20,7 +20,7 @@ exports[`<grid> demo: > render [adaptation-object] correctly 1`] = `
 
 exports[`<grid> demo: > render [basic] correctly 1`] = `
 <div data-v-982e4ac2="" class="grid-demo-background">
-  <div data-v-982e4ac2="" class="sd-space sd-space-vertical" style="column-gap: 16px; row-gap: 16px; display: block;">
+  <div data-v-982e4ac2="" class="sd-space sd-space-vertical sd:block" style="column-gap: 16px; row-gap: 16px;">
     <!---->
     <div class="sd-space-item">
       <div data-v-982e4ac2="" class="sd-row sd-row-align-start sd-row-justify-start grid-demo">
@@ -99,7 +99,7 @@ exports[`<grid> demo: > render [basic] correctly 1`] = `
 `;
 
 exports[`<grid> demo: > render [flex] correctly 1`] = `
-<div data-v-7d13c13f="" class="sd-row sd-row-align-start sd-row-justify-start grid-demo" style="margin-bottom: 16px;">
+<div data-v-7d13c13f="" class="sd-row sd-row-align-start sd-row-justify-start grid-demo sd:mb-4">
   <div data-v-7d13c13f="" class="sd-col" style="flex: 0 0 100px;">
     <div data-v-7d13c13f="">100px</div>
   </div>
@@ -107,7 +107,7 @@ exports[`<grid> demo: > render [flex] correctly 1`] = `
     <div data-v-7d13c13f="">auto</div>
   </div>
 </div>
-<div data-v-7d13c13f="" class="sd-row sd-row-align-start sd-row-justify-start grid-demo" style="margin-bottom: 16px;">
+<div data-v-7d13c13f="" class="sd-row sd-row-align-start sd-row-justify-start grid-demo sd:mb-4">
   <div data-v-7d13c13f="" class="sd-col" style="flex: 0 0 100px;">
     <div data-v-7d13c13f="">100px</div>
   </div>
@@ -118,7 +118,7 @@ exports[`<grid> demo: > render [flex] correctly 1`] = `
     <div data-v-7d13c13f="">100px</div>
   </div>
 </div>
-<div data-v-7d13c13f="" class="sd-row sd-row-align-start sd-row-justify-start grid-demo" style="margin-bottom: 16px;">
+<div data-v-7d13c13f="" class="sd-row sd-row-align-start sd-row-justify-start grid-demo sd:mb-4">
   <div data-v-7d13c13f="" class="sd-col" style="flex: 3 1 0%;">
     <div data-v-7d13c13f="">3 / 12</div>
   </div>
@@ -262,7 +262,7 @@ exports[`<grid> demo: > render [flex-justify] correctly 1`] = `
 `;
 
 exports[`<grid> demo: > render [grid] correctly 1`] = `
-<div data-v-6dae0265="" style="margin-bottom: 20px;"><span data-v-6dae0265="" class="sd-typography">折叠：<!----><!--v-if--><!--v-if--><!--v-if--></span><button data-v-6dae0265="" type="button" role="switch" aria-checked="false" class="sd-switch sd-switch-type-circle" checked="false"><span class="sd-switch-handle"><span class="sd-switch-handle-icon"></span></span><!--  prettier-ignore  -->
+<div data-v-6dae0265="" class="sd:mb-5"><span data-v-6dae0265="" class="sd-typography">折叠：<!----><!--v-if--><!--v-if--><!--v-if--></span><button data-v-6dae0265="" type="button" role="switch" aria-checked="false" class="sd-switch sd-switch-type-circle" checked="false"><span class="sd-switch-handle"><span class="sd-switch-handle-icon"></span></span><!--  prettier-ignore  -->
     <!--v-if-->
   </button></div>
 <div data-v-6dae0265="" class="sd-grid grid-demo-grid" style="gap: 16px 12px; grid-template-columns: repeat(3, minmax(0px, 1fr));">
@@ -348,15 +348,15 @@ exports[`<grid> demo: > render [gutter] correctly 1`] = `
 
 exports[`<grid> demo: > render [offset] correctly 1`] = `
 <div data-v-ae50d186="">
-  <div data-v-ae50d186="" class="sd-row sd-row-align-start sd-row-justify-start grid-demo">
+  <div data-v-ae50d186="" class="sd-row sd-row-align-start sd-row-justify-start grid-demo sd:mb-4 sd:bg-[var(--color-fill-2)]">
     <div data-v-ae50d186="" class="sd-col sd-col-8">col - 8</div>
     <div data-v-ae50d186="" class="sd-col sd-col-8 sd-col-offset-8"> col - 8 | offset - 8 </div>
   </div>
-  <div data-v-ae50d186="" class="sd-row sd-row-align-start sd-row-justify-start grid-demo">
+  <div data-v-ae50d186="" class="sd-row sd-row-align-start sd-row-justify-start grid-demo sd:mb-4 sd:bg-[var(--color-fill-2)]">
     <div data-v-ae50d186="" class="sd-col sd-col-6 sd-col-offset-8"> col - 6 | offset - 8 </div>
     <div data-v-ae50d186="" class="sd-col sd-col-6 sd-col-offset-4"> col - 6 | offset - 4 </div>
   </div>
-  <div data-v-ae50d186="" class="sd-row sd-row-align-start sd-row-justify-start grid-demo">
+  <div data-v-ae50d186="" class="sd-row sd-row-align-start sd-row-justify-start grid-demo sd:bg-[var(--color-fill-2)]">
     <div data-v-ae50d186="" class="sd-col sd-col-12 sd-col-offset-8"> col - 12 | offset - 8 </div>
   </div>
 </div>

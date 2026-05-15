@@ -1,3 +1,3 @@
 <template>
-  <sd-year-picker style="width: 200px" />
+  <sd-year-picker class="sd:w-50" />
 </template>

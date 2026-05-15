@@ -45,7 +45,7 @@
     </sd-row>
   </sd-form>
   <sd-watermark content="sd.design" v-bind="form">
-    <div style="box-sizing: border-box; width: 100%; border: 1px solid #e5e6eb">
+    <div class="sd:box-border sd:w-full sd:border sd:border-[#e5e6eb]">
       <sd-typography-title :heading="5"> Design system </sd-typography-title>
       <sd-typography>
         <sd-typography-paragraph>
@@ -62,30 +62,24 @@
         </sd-typography-paragraph>
       </sd-typography>
       <img
-        style="position: relative; z-index: 7"
+        alt="watermark demo"
+        class="sd:relative sd:z-[7]"
         src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/24e0dd27418d2291b65db1b21aa62254.png~tplv-uwbnlip3yd-webp.webp"
       />
     </div>
   </sd-watermark>
 </template>
 
-<script>
+<script setup lang="ts">
   import { reactive } from 'vue';
 
-  export default {
-    setup() {
-      const form = reactive({
-        rotate: 0,
-        gap: [50, 50],
-        offset: [],
-        font: { fontSize: 16 },
-        zIndex: 6,
-        repeat: true,
-        staggered: true,
-      });
-      return {
-        form,
-      };
-    },
-  };
+  const form = reactive({
+    rotate: 0,
+    gap: [50, 50],
+    offset: [],
+    font: { fontSize: 16 },
+    zIndex: 6,
+    repeat: true,
+    staggered: true,
+  });
 </script>

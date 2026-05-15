@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-bottom: 24px">
+  <div class="sd:mb-6">
     <sd-radio-group
       type="button"
       v-model="treeCheckedStrategy"
@@ -22,25 +22,11 @@
     :tree-checked-strategy="treeCheckedStrategy"
     :data="treeData"
     placeholder="Please select ..."
-    style="width: 300px"
+    class="sd:w-75"
   ></sd-tree-select>
 </template>
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
-
-  export default {
-    setup() {
-      const selected = ref([]);
-      const treeCheckedStrategy = ref('all');
-
-      return {
-        selected,
-        treeCheckedStrategy,
-        strategyOptions,
-        treeData,
-      };
-    },
-  };
 
   const strategyOptions = [
     {
@@ -114,4 +100,7 @@
       ],
     },
   ];
+
+  const selected = ref([]);
+  const treeCheckedStrategy = ref('all');
 </script>

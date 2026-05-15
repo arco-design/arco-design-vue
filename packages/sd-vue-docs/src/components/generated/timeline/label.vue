@@ -7,7 +7,7 @@
         <sd-radio value="relative">relative</sd-radio>
       </sd-radio-group>
     </sd-row>
-    <sd-row align="center" :style="{ margin: '20px 0px 24px' }">
+    <sd-row align="center" class="sd:mt-5 sd:mb-6">
       <sd-typography-text>mode: &nbsp; &nbsp;</sd-typography-text>
       <sd-radio-group @change="onModeChange" :modelValue="mode">
         <sd-radio value="left">left</sd-radio>
@@ -29,28 +29,17 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const mode = ref('left');
-      const pos = ref('same');
+  const mode = ref('left');
+  const pos = ref('same');
 
-      const onLabelPositionChange = (_pos) => {
-        pos.value = _pos;
-      };
+  const onLabelPositionChange = (_pos) => {
+    pos.value = _pos;
+  };
 
-      const onModeChange = (_mode) => {
-        mode.value = _mode;
-      };
-
-      return {
-        mode,
-        pos,
-        onLabelPositionChange,
-        onModeChange,
-      };
-    },
+  const onModeChange = (_mode) => {
+    mode.value = _mode;
   };
 </script>

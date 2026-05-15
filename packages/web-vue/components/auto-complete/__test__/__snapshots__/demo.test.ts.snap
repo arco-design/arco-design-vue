@@ -1,16 +1,16 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`<auto-complete> demo: > render [basic] correctly 1`] = `<span class="sd-input-wrapper" style="width: 360px;"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="please enter something" value=""><!----><!----></span>`;
+exports[`<auto-complete> demo: > render [basic] correctly 1`] = `<span class="sd-input-wrapper sd:w-90"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="please enter something" value=""><!----><!----></span>`;
 
-exports[`<auto-complete> demo: > render [footer] correctly 1`] = `<span class="sd-input-wrapper" style="width: 360px;"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="please enter something" value=""><!----><!----></span>`;
+exports[`<auto-complete> demo: > render [footer] correctly 1`] = `<span class="sd-input-wrapper sd:w-90"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="please enter something" value=""><!----><!----></span>`;
 
-exports[`<auto-complete> demo: > render [scroll] correctly 1`] = `<span class="sd-input-wrapper" style="width: 360px;"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="please enter something" value=""><!----><!----></span>`;
+exports[`<auto-complete> demo: > render [scroll] correctly 1`] = `<span class="sd-input-wrapper sd:w-90"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="please enter something" value=""><!----><!----></span>`;
 
-exports[`<auto-complete> demo: > render [strict] correctly 1`] = `<span class="sd-input-wrapper" style="width: 360px;"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="please enter something" value=""><!----><!----></span>`;
+exports[`<auto-complete> demo: > render [strict] correctly 1`] = `<span class="sd-input-wrapper sd:w-90"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="please enter something" value=""><!----><!----></span>`;
 
 exports[`<auto-complete> demo: > render [virtual-list] correctly 1`] = `
-<div style="width: 360px;"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal" style="margin-bottom: 12px;"><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="default"><span class="sd-radio-button-content">默认固定高度</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="explicit"><span class="sd-radio-button-content">显式设置 itemSize</span></label></span>
-  <div style="margin-bottom: 12px; color: var(--color-text-2); font-size: 12px; line-height: 1.5;">AutoComplete 现在默认使用固定高度的虚拟行，当你只启用 virtual-list-props 时。</div><span class="sd-input-wrapper" style="width: 100%;"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Type sd or design" value=""><!----><!----></span>
+<div class="sd:w-90"><span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal sd:mb-3"><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="default"><span class="sd-radio-button-content">默认固定高度</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="explicit"><span class="sd-radio-button-content">显式设置 itemSize</span></label></span>
+  <div class="sd:mb-3 sd:text-[var(--color-text-2)] sd:text-xs sd:leading-[1.5]">AutoComplete 现在默认使用固定高度的虚拟行，当你只启用 virtual-list-props 时。</div><span class="sd-input-wrapper sd:w-full"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Type sd or design" value=""><!----><!----></span>
   <!---->
 </div>
 `;

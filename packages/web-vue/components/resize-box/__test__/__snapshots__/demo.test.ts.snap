@@ -2,7 +2,7 @@
 
 exports[`<resize-box> demo: > render [basic] correctly 1`] = `
 <div>
-  <div class="sd-resizebox" style="width: 500px; min-width: 100px; max-width: 100%; height: 200px; text-align: center;">
+  <div class="sd-resizebox sd:w-125 sd:min-w-25 sd:max-w-full sd:h-50 sd:text-center">
     <div class="sd-typography">We are building the future of content discovery and creation.
       <!---->
       <!--v-if-->
@@ -49,7 +49,7 @@ exports[`<resize-box> demo: > render [basic] correctly 1`] = `
 
 exports[`<resize-box> demo: > render [controlled] correctly 1`] = `
 <div>
-  <div class="sd-resizebox" style="min-width: 100px; max-width: 100%; text-align: center; width: 500px; height: 200px;">
+  <div class="sd-resizebox sd:min-w-25 sd:max-w-full sd:text-center" style="width: 500px; height: 200px;">
     <div class="sd-typography">We are building the future of content discovery and creation.
       <!---->
       <!--v-if-->
@@ -95,7 +95,7 @@ exports[`<resize-box> demo: > render [controlled] correctly 1`] = `
 `;
 
 exports[`<resize-box> demo: > render [custom-triggers] correctly 1`] = `
-<div data-v-4187a860="" class="sd-resizebox" style="width: 500px; min-width: 100px; max-width: 100%; height: 200px; text-align: center;">
+<div data-v-4187a860="" class="sd-resizebox sd:w-125 sd:min-w-25 sd:max-w-full sd:h-50 sd:text-center">
   <div data-v-4187a860="" class="sd-typography">We are building the future of content discovery and creation.
     <!---->
     <!--v-if-->

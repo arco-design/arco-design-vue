@@ -2,15 +2,7 @@
   <div>
     <div
       id="parentNode"
-      style="
-        position: relative;
-        width: 100%;
-        height: 300px;
-        overflow: hidden;
-        line-height: 300px;
-        text-align: center;
-        background-color: var(--color-fill-2);
-      "
+      class="sd:relative sd:h-[300px] sd:w-full sd:overflow-hidden sd:bg-[var(--color-fill-2)] sd:text-center sd:leading-[300px]"
     >
       <sd-button type="primary" @click="handleClick">Open Drawer</sd-button>
     </div>
@@ -24,29 +16,18 @@
   </sd-drawer>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const visible = ref(false);
+  const visible = ref(false);
 
-      const handleClick = () => {
-        visible.value = true;
-      };
-      const handleOk = () => {
-        visible.value = false;
-      };
-      const handleCancel = () => {
-        visible.value = false;
-      };
-
-      return {
-        visible,
-        handleClick,
-        handleOk,
-        handleCancel,
-      };
-    },
+  const handleClick = () => {
+    visible.value = true;
+  };
+  const handleOk = () => {
+    visible.value = false;
+  };
+  const handleCancel = () => {
+    visible.value = false;
   };
 </script>

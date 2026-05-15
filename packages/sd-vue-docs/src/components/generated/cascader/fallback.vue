@@ -3,14 +3,14 @@
     <sd-cascader
       :options="options"
       v-model="value"
-      :style="{ width: '320px' }"
+      class="sd:w-[320px]"
       placeholder="Please select ..."
       multiple
     />
     <sd-cascader
       :options="options"
       v-model="value2"
-      :style="{ width: '320px' }"
+      class="sd:w-[320px]"
       placeholder="Please select ..."
       path-mode
       multiple
@@ -19,76 +19,66 @@
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const value = ref(['datunli', 'wuhou']);
-      const value2 = ref([
-        ['beijing', 'chaoyang', 'datunli'],
-        ['sichuan', 'chengdu', 'wuhou'],
-      ]);
-      const fallback = (value) => {
-        return value.map((item) => item.toUpperCase()).join('-');
-      };
-
-      const options = [
-        {
-          value: 'beijing',
-          label: 'Beijing',
-          children: [
-            {
-              value: 'chaoyang',
-              label: 'ChaoYang',
-              children: [
-                {
-                  value: 'datunli',
-                  label: 'Datunli',
-                },
-              ],
-            },
-            {
-              value: 'haidian',
-              label: 'Haidian',
-            },
-            {
-              value: 'dongcheng',
-              label: 'Dongcheng',
-            },
-            {
-              value: 'xicheng',
-              label: 'Xicheng',
-              children: [
-                {
-                  value: 'jinrongjie',
-                  label: 'Jinrongjie',
-                },
-                {
-                  value: 'tianqiao',
-                  label: 'Tianqiao',
-                },
-              ],
-            },
-          ],
-        },
-        {
-          value: 'shanghai',
-          label: 'Shanghai',
-          children: [
-            {
-              value: 'huangpu',
-              label: 'Huangpu',
-            },
-          ],
-        },
-      ];
-      return {
-        options,
-        value,
-        value2,
-        fallback,
-      };
-    },
+  const value = ref(['datunli', 'wuhou']);
+  const value2 = ref([
+    ['beijing', 'chaoyang', 'datunli'],
+    ['sichuan', 'chengdu', 'wuhou'],
+  ]);
+  const fallback = (value) => {
+    return value.map((item) => item.toUpperCase()).join('-');
   };
+
+  const options = [
+    {
+      value: 'beijing',
+      label: 'Beijing',
+      children: [
+        {
+          value: 'chaoyang',
+          label: 'ChaoYang',
+          children: [
+            {
+              value: 'datunli',
+              label: 'Datunli',
+            },
+          ],
+        },
+        {
+          value: 'haidian',
+          label: 'Haidian',
+        },
+        {
+          value: 'dongcheng',
+          label: 'Dongcheng',
+        },
+        {
+          value: 'xicheng',
+          label: 'Xicheng',
+          children: [
+            {
+              value: 'jinrongjie',
+              label: 'Jinrongjie',
+            },
+            {
+              value: 'tianqiao',
+              label: 'Tianqiao',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      value: 'shanghai',
+      label: 'Shanghai',
+      children: [
+        {
+          value: 'huangpu',
+          label: 'Huangpu',
+        },
+      ],
+    },
+  ];
 </script>

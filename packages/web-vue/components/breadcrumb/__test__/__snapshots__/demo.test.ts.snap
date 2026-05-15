@@ -351,7 +351,7 @@ exports[`<breadcrumb> demo: > render [size] correctly 1`] = `
   </div>
   <!---->
   <div class="sd-space-item">
-    <div role="list" class="sd-breadcrumb" style="font-size: 12px;">
+    <div role="list" class="sd-breadcrumb sd:text-xs">
       <div role="listitem" class="sd-breadcrumb-item">Home
         <!---->
       </div>

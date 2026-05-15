@@ -10,6 +10,8 @@ packages/sd-vue-docs/
 ├── public/
 │   └── vendor/                      # 在线示例运行时依赖，构建前自动生成，不提交 Git
 ├── scripts/
+│   ├── migrate-generated-demo-conventions.mjs
+│   │                               # generated 示例自动转换脚本
 │   └── sync-vendor.mjs              # 同步在线示例运行时依赖
 ├── src/
 │   ├── browser-repl/                # Vue REPL 使用的浏览器模块桥接
@@ -58,6 +60,8 @@ pnpm --filter @sd-design/sd-vue-docs run docs:vendor
 1. 页面细调、排版、链接、额外说明直接改 `src/content/docs/**/*.mdx`。
 2. 日常启动直接用 `dev`，命令只会补齐在线示例依赖，不会改写文档内容。
 3. 组件库产物变化后，如在线示例资源缺失，可单独执行 `docs:vendor`，它会自动先准备 web-vue 模块产物。
+4. 批量迁移 generated 示例时，执行 `pnpm --filter @sd-design/sd-vue-docs run migrate:generated-demos -- <target-dir> --write`。
+5. 现在 generated 示例已经全部完成 `<script setup lang="ts">` 与非 `style` 标签内联样式迁移；仓库不再保留额外的 generated demo 校验脚本和 baseline 文件。
 
 ## 打包说明
 

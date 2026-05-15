@@ -1,5 +1,5 @@
 <template>
-  <sd-row class="grid-demo" style="margin-bottom: 16px">
+  <sd-row class="grid-demo sd:mb-4">
     <sd-col flex="100px">
       <div>100px</div>
     </sd-col>
@@ -7,7 +7,7 @@
       <div>auto</div>
     </sd-col>
   </sd-row>
-  <sd-row class="grid-demo" style="margin-bottom: 16px">
+  <sd-row class="grid-demo sd:mb-4">
     <sd-col flex="100px">
       <div>100px</div>
     </sd-col>
@@ -18,7 +18,7 @@
       <div>100px</div>
     </sd-col>
   </sd-row>
-  <sd-row class="grid-demo" style="margin-bottom: 16px">
+  <sd-row class="grid-demo sd:mb-4">
     <sd-col :flex="3">
       <div>3 / 12</div>
     </sd-col>

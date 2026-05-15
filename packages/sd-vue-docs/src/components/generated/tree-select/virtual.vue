@@ -1,19 +1,19 @@
 <template>
-  <div :style="{ width: '360px' }">
-    <sd-radio-group v-model="size" type="button" :style="{ marginBottom: '12px' }">
+  <div class="sd:w-90">
+    <sd-radio-group v-model="size" type="button" class="sd:mb-3">
       <sd-radio value="mini">mini</sd-radio>
       <sd-radio value="small">small</sd-radio>
       <sd-radio value="medium">medium</sd-radio>
       <sd-radio value="large">large</sd-radio>
     </sd-radio-group>
 
-    <sd-radio-group v-model="mode" type="button" :style="{ marginBottom: '12px' }">
+    <sd-radio-group v-model="mode" type="button" class="sd:mb-3">
       <sd-radio value="default">默认固定高度</sd-radio>
       <sd-radio value="explicit">显式设置 itemSize</sd-radio>
       <sd-radio value="dynamic">动态高度</sd-radio>
     </sd-radio-group>
 
-    <div :style="helperStyle">
+    <div class="sd:mb-3 sd:text-[var(--color-text-2)] sd:text-xs sd:leading-[1.5]">
       {{ helperText }}
     </div>
 
@@ -32,7 +32,7 @@
     />
   </div>
 </template>
-<script>
+<script setup lang="ts">
   import { computed, ref } from 'vue';
 
   const sizeToItemSize = {
@@ -40,54 +40,6 @@
     small: 28,
     medium: 32,
     large: 36,
-  };
-
-  export default {
-    setup() {
-      const size = ref('medium');
-      const mode = ref('default');
-      const treeData = loop();
-
-      const helperStyle = {
-        marginBottom: '12px',
-        color: 'var(--color-text-2)',
-        fontSize: '12px',
-        lineHeight: '1.5',
-      };
-
-      const helperText = computed(() => {
-        if (mode.value === 'default') {
-          return `TreeSelect 现在支持直接使用 virtual-list-props，并会将 ${size.value} 行映射为默认的 ${sizeToItemSize[size.value]}px 高度。`;
-        }
-
-        if (mode.value === 'explicit') {
-          return `显式设置 itemSize 可保持弹出层在相同的 ${sizeToItemSize[size.value]}px 固定行网格中。`;
-        }
-
-        return `动态模式下，minItemSize 设置为 ${sizeToItemSize[size.value]}，用于可展开的可变高度树行。`;
-      });
-
-      const virtualListProps = computed(() => {
-        if (mode.value === 'default') {
-          return {};
-        }
-
-        if (mode.value === 'explicit') {
-          return { itemSize: sizeToItemSize[size.value], buffer: 220 };
-        }
-
-        return { minItemSize: sizeToItemSize[size.value], buffer: 220 };
-      });
-
-      return {
-        treeData,
-        size,
-        mode,
-        helperStyle,
-        helperText,
-        virtualListProps,
-      };
-    },
   };
 
   function loop(path = '0', level = 2) {
@@ -107,4 +59,32 @@
     }
     return list;
   }
+
+  const size = ref('medium');
+  const mode = ref('default');
+  const treeData = loop();
+
+  const helperText = computed(() => {
+    if (mode.value === 'default') {
+      return `TreeSelect 现在支持直接使用 virtual-list-props，并会将 ${size.value} 行映射为默认的 ${sizeToItemSize[size.value]}px 高度。`;
+    }
+
+    if (mode.value === 'explicit') {
+      return `显式设置 itemSize 可保持弹出层在相同的 ${sizeToItemSize[size.value]}px 固定行网格中。`;
+    }
+
+    return `动态模式下，minItemSize 设置为 ${sizeToItemSize[size.value]}，用于可展开的可变高度树行。`;
+  });
+
+  const virtualListProps = computed(() => {
+    if (mode.value === 'default') {
+      return {};
+    }
+
+    if (mode.value === 'explicit') {
+      return { itemSize: sizeToItemSize[size.value], buffer: 220 };
+    }
+
+    return { minItemSize: sizeToItemSize[size.value], buffer: 220 };
+  });
 </script>

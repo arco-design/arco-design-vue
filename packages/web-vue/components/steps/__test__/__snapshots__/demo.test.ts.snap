@@ -72,7 +72,7 @@ exports[`<steps> demo: > render [basic] correctly 1`] = `
   <div role="separator" class="sd-divider sd-divider-horizontal">
     <!---->
   </div>
-  <div style="color: rgb(201, 205, 212); line-height: 140px; text-align: center;"> Step 2 Content </div>
+  <div class="sd:text-[#c9cdd4] sd:leading-35 sd:text-center"> Step 2 Content </div>
 </div>
 `;
 
@@ -116,8 +116,8 @@ exports[`<steps> demo: > render [changeable] correctly 1`] = `
       </div>
     </div>
   </div>
-  <div style="width: 100%; height: 200px; text-align: center; background: var(--color-bg-2); color: rgb(194, 199, 204);">
-    <div style="line-height: 160px;">Step1 Content</div>
+  <div class="sd:w-full sd:h-50 sd:text-center sd:bg-(--color-bg-2) sd:text-[#c2c7cc]">
+    <div class="sd:leading-40">Step1 Content</div>
     <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 24px; row-gap: 24px;">
       <!---->
       <div class="sd-space-item"><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd-btn-disabled" type="button" disabled="">
@@ -170,7 +170,7 @@ exports[`<steps> demo: > render [custom-node] correctly 1`] = `
       </div>
     </div>
   </div>
-  <div style="margin-top: 20px; text-align: center;">
+  <div class="sd:mt-5 sd:text-center">
     <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 24px; row-gap: 24px;">
       <!---->
       <div class="sd-space-item"><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd-btn-disabled" type="button" disabled="">
@@ -514,13 +514,13 @@ exports[`<steps> demo: > render [small] correctly 1`] = `
   <div role="separator" class="sd-divider sd-divider-horizontal">
     <!---->
   </div>
-  <div style="color: rgb(201, 205, 212); line-height: 140px; text-align: center;"> Step 2 Content </div>
+  <div class="sd:text-[#c9cdd4] sd:leading-35 sd:text-center"> Step 2 Content </div>
 </div>
 `;
 
 exports[`<steps> demo: > render [small-arrow] correctly 1`] = `
 <div>
-  <div class="sd-steps sd-steps-horizontal sd-steps-label-horizontal sd-steps-mode-arrow sd-steps-size-small" style="margin-bottom: 20px;">
+  <div class="sd-steps sd-steps-horizontal sd-steps-label-horizontal sd-steps-mode-arrow sd-steps-size-small sd:mb-5">
     <div class="sd-steps-item sd-steps-item-finish">
       <!--v-if-->
       <!--v-if-->

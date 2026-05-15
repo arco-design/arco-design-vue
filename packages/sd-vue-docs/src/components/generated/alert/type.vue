@@ -23,10 +23,6 @@
   </sd-row>
 </template>
 
-<script>
+<script setup lang="ts">
   import { IconExclamationCircleFill } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    components: { IconExclamationCircleFill },
-  };
 </script>

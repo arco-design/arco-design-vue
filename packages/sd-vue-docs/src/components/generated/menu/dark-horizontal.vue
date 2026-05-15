@@ -1,15 +1,8 @@
 <template>
   <div class="menu-demo">
     <sd-menu mode="horizontal" theme="dark" :default-selected-keys="['1']">
-      <sd-menu-item key="0" :style="{ padding: 0, marginRight: '38px' }" disabled>
-        <div
-          :style="{
-            width: '80px',
-            height: '30px',
-            background: 'var(--color-fill-3)',
-            cursor: 'text',
-          }"
-        />
+      <sd-menu-item key="0" class="sd:mr-[38px] sd:p-0" disabled>
+        <div class="sd:h-[30px] sd:w-20 sd:bg-(--color-fill-3) sd:cursor-text" />
       </sd-menu-item>
       <sd-menu-item key="1">Home</sd-menu-item>
       <sd-menu-item key="2">Solution</sd-menu-item>

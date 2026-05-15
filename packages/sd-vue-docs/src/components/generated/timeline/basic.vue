@@ -1,9 +1,7 @@
 <template>
-  <div :style="{ marginBottom: '40px' }">
-    <sd-typography-text :style="{ verticalAlign: 'middle', marginRight: '8px' }">
-      Reverse
-    </sd-typography-text>
-    <sd-radio-group @change="onChange" style="{ marginBottom: '30px' }" :modelValue="isReverse">
+  <div class="sd:mb-10">
+    <sd-typography-text class="sd:mr-2 sd:align-middle"> Reverse </sd-typography-text>
+    <sd-radio-group @change="onChange" class="sd:mb-7.5" :modelValue="isReverse">
       <sd-radio :value="false">No Reverse</sd-radio>
       <sd-radio :value="true">Reverse</sd-radio>
     </sd-radio-group>
@@ -15,21 +13,12 @@
   </sd-timeline>
 </template>
 
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const isReverse = ref(false);
+  const isReverse = ref(false);
 
-      const onChange = (bool) => {
-        isReverse.value = bool;
-      };
-
-      return {
-        isReverse,
-        onChange,
-      };
-    },
+  const onChange = (bool) => {
+    isReverse.value = bool;
   };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <sd-resize-box
     :directions="['right', 'bottom']"
-    style="width: 500px; min-width: 100px; max-width: 100%; height: 200px; text-align: center"
+    class="sd:w-125 sd:min-w-25 sd:max-w-full sd:h-50 sd:text-center"
   >
     <template #resize-trigger="{ direction }">
       <div

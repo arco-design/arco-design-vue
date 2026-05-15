@@ -15,10 +15,6 @@
   </sd-space>
 </template>
 
-<script>
+<script setup lang="ts">
   import { IconPlus, IconDelete } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    components: { IconPlus, IconDelete },
-  };
 </script>

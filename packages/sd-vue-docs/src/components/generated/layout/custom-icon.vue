@@ -5,7 +5,7 @@
       <sd-menu
         :default-open-keys="['1']"
         :default-selected-keys="['0_3']"
-        :style="{ width: '100%' }"
+        class="sd:w-full"
         @menu-item-click="onClickMenuItem"
       >
         <sd-menu-item key="0_1" disabled>
@@ -48,9 +48,9 @@
       </template>
     </sd-layout-sider>
     <sd-layout>
-      <sd-layout-header style="padding-left: 20px"> Header </sd-layout-header>
-      <sd-layout style="padding: 0 24px">
-        <sd-breadcrumb :style="{ margin: '16px 0' }">
+      <sd-layout-header class="sd:pl-5"> Header </sd-layout-header>
+      <sd-layout class="sd:px-6">
+        <sd-breadcrumb class="sd:my-4">
           <sd-breadcrumb-item>Home</sd-breadcrumb-item>
           <sd-breadcrumb-item>List</sd-breadcrumb-item>
           <sd-breadcrumb-item>App</sd-breadcrumb-item>
@@ -61,9 +61,7 @@
     </sd-layout>
   </sd-layout>
 </template>
-<script>
-  import { defineComponent } from 'vue';
-
+<script setup lang="ts">
   import { Message } from '@sdata/web-vue';
   import {
     IconCaretRight,
@@ -72,19 +70,9 @@
     IconCalendar,
   } from '@sdata/web-vue/es/icon/index.js';
 
-  export default defineComponent({
-    components: {
-      IconCaretRight,
-      IconCaretLeft,
-      IconHome,
-      IconCalendar,
-    },
-    methods: {
-      onClickMenuItem(key) {
-        Message.info({ content: `You select ${key}`, showIcon: true });
-      },
-    },
-  });
+  function onClickMenuItem(key) {
+    Message.info({ content: `You select ${key}`, showIcon: true });
+  }
 </script>
 <style scoped>
   .layout-demo {

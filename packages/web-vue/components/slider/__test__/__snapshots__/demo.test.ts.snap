@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<slider> demo: > render [basic] correctly 1`] = `
-<div class="sd-slider" style="width: 200px;">
+<div class="sd-slider sd:w-50">
   <div class="sd-slider-track">
     <div class="sd-slider-bar" style="left: 0%; right: 50%;"></div>
     <!--v-if-->
@@ -16,7 +16,7 @@ exports[`<slider> demo: > render [basic] correctly 1`] = `
 `;
 
 exports[`<slider> demo: > render [disabled] correctly 1`] = `
-<div class="sd-slider" style="width: 200px;">
+<div class="sd-slider sd:w-50">
   <div class="sd-slider-track sd-slider-track-disabled">
     <div class="sd-slider-bar" style="left: 0%; right: 50%;"></div>
     <!--v-if-->
@@ -34,7 +34,7 @@ exports[`<slider> demo: > render [input] correctly 1`] = `
 <div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px;">
   <!---->
   <div class="sd-space-item">
-    <div class="sd-slider" style="width: 300px;">
+    <div class="sd-slider sd:w-75">
       <div class="sd-slider-track">
         <div class="sd-slider-bar" style="left: 0%; right: 90%;"></div>
         <!--v-if-->
@@ -51,7 +51,7 @@ exports[`<slider> demo: > render [input] correctly 1`] = `
   </div>
   <!---->
   <div class="sd-space-item">
-    <div class="sd-slider" style="width: 380px;">
+    <div class="sd-slider sd:w-95">
       <div class="sd-slider-track">
         <div class="sd-slider-bar" style="left: 10%; right: 80%;"></div>
         <!--v-if-->
@@ -71,7 +71,7 @@ exports[`<slider> demo: > render [input] correctly 1`] = `
 `;
 
 exports[`<slider> demo: > render [marks] correctly 1`] = `
-<div class="sd-slider sd-slider-with-marks" style="width: 300px;">
+<div class="sd-slider sd-slider-with-marks sd:w-75">
   <div class="sd-slider-track">
     <div class="sd-slider-bar" style="left: 0%; right: 66.67%;"></div>
     <!--v-if-->
@@ -104,7 +104,7 @@ exports[`<slider> demo: > render [marks] correctly 1`] = `
 `;
 
 exports[`<slider> demo: > render [range] correctly 1`] = `
-<div class="sd-slider" style="width: 300px;">
+<div class="sd-slider sd:w-75">
   <div class="sd-slider-track">
     <div class="sd-slider-bar" style="left: 5%; right: 90%;"></div>
     <!--v-if-->
@@ -132,7 +132,7 @@ exports[`<slider> demo: > render [step] correctly 1`] = `
           </label></div>
         <div class="sd-form-item-wrapper-col" id="step">
           <div class="sd-form-item-content-wrapper">
-            <div class="sd-form-item-content sd-form-item-content-flex"><span class="sd-input-wrapper sd-input-number sd-input-number-mode-embed sd-input-number-size-medium" style="width: 100px;"><!----><input class="sd-input sd-input-size-medium" type="text" role="spinbutton" aria-valuemax="Infinity" aria-valuemin="-Infinity" aria-valuenow="5" value="5"><!----><span class="sd-input-suffix"><!----><!----><div class="sd-input-number-step"><button class="sd-input-number-step-button" type="button" tabindex="-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-up" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 30.557 24.043 15 8.487 30.557"></path></svg></button><button class="sd-input-number-step-button" type="button" tabindex="-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></button></div><!----></span></span></div>
+            <div class="sd-form-item-content sd-form-item-content-flex"><span class="sd-input-wrapper sd-input-number sd-input-number-mode-embed sd-input-number-size-medium sd:w-25"><!----><input class="sd-input sd-input-size-medium" type="text" role="spinbutton" aria-valuemax="Infinity" aria-valuemin="-Infinity" aria-valuenow="5" value="5"><!----><span class="sd-input-suffix"><!----><!----><div class="sd-input-number-step"><button class="sd-input-number-step-button" type="button" tabindex="-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-up" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 30.557 24.043 15 8.487 30.557"></path></svg></button><button class="sd-input-number-step-button" type="button" tabindex="-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></button></div><!----></span></span></div>
           </div>
           <!--v-if-->
           <!--v-if-->
@@ -158,7 +158,7 @@ exports[`<slider> demo: > render [step] correctly 1`] = `
   </div>
   <!---->
   <div class="sd-space-item">
-    <div class="sd-slider" style="width: 300px;">
+    <div class="sd-slider sd:w-75">
       <div class="sd-slider-track">
         <div class="sd-slider-bar" style="left: 0%; right: 80%;"></div>
         <div class="sd-slider-ticks">
@@ -195,7 +195,7 @@ exports[`<slider> demo: > render [step] correctly 1`] = `
 `;
 
 exports[`<slider> demo: > render [tooltip] correctly 1`] = `
-<div class="sd-slider" style="width: 200px;">
+<div class="sd-slider sd:w-50">
   <div class="sd-slider-track">
     <div class="sd-slider-bar" style="left: 0%; right: 100%;"></div>
     <!--v-if-->
@@ -228,7 +228,7 @@ exports[`<slider> demo: > render [vertical] correctly 1`] = `
   </div>
   <!---->
   <div class="sd-space-item">
-    <div class="sd-slider sd-slider-vertical sd-slider-with-marks" style="width: 300px;">
+    <div class="sd-slider sd-slider-vertical sd-slider-with-marks sd:w-75">
       <div class="sd-slider-track sd-slider-track-vertical">
         <div class="sd-slider-bar" style="bottom: 0%; top: 66.67%;"></div>
         <!--v-if-->

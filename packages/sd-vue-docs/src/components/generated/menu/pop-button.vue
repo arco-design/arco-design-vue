@@ -12,7 +12,7 @@
       </div>
       <template #content>
         <sd-menu
-          :style="{ marginBottom: '-4px' }"
+          class="sd:-mb-1"
           mode="popButton"
           :tooltipProps="{ position: 'left' }"
           showCollapseButton
@@ -41,7 +41,7 @@
       </div>
       <template #content>
         <sd-menu
-          :style="{ marginBottom: '-4px' }"
+          class="sd:-mb-1"
           mode="popButton"
           :tooltipProps="{ position: 'left' }"
           showCollapseButton
@@ -59,23 +59,13 @@
     </sd-trigger>
   </div>
 </template>
-<script>
+<script setup lang="ts">
+  import { ref } from 'vue';
+
   import { IconBug, IconBulb, IconClose, IconMessage } from '@sdata/web-vue/es/icon/index.js';
 
-  export default {
-    components: {
-      IconBug,
-      IconBulb,
-      IconClose,
-      IconMessage,
-    },
-    data() {
-      return {
-        popupVisible1: false,
-        popupVisible2: false,
-      };
-    },
-  };
+  const popupVisible1 = ref(false);
+  const popupVisible2 = ref(false);
 </script>
 <style scoped>
   .menu-demo {

@@ -33,17 +33,9 @@
   </sd-space>
 </template>
 
-<script>
-  export default {
-    setup() {
-      const handleSelect = (v) => {
-        console.log(v);
-      };
-
-      return {
-        handleSelect,
-      };
-    },
+<script setup lang="ts">
+  const handleSelect = (v) => {
+    console.log(v);
   };
 </script>
 

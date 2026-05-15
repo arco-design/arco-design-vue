@@ -1,5 +1,5 @@
 <template>
-  <sd-button-group style="margin-bottom: 20px">
+  <sd-button-group class="sd:mb-5">
     <sd-button type="primary" @click="toggleChecked">
       {{ checkedKeys?.length ? 'deselect all' : 'select all' }}
     </sd-button>
@@ -18,41 +18,11 @@
     :data="treeData"
   />
 </template>
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
   const allCheckedKeys = ['0-0', '0-0-1', '0-0-2', '0-0-2-1', '0-1', '0-1-1', '0-1-2'];
   const allExpandedKeys = ['0-0', '0-1', '0-0-2'];
-
-  export default {
-    setup() {
-      const selectedKeys = ref([]);
-      const checkedKeys = ref([]);
-      const expandedKeys = ref([]);
-
-      return {
-        selectedKeys,
-        checkedKeys,
-        expandedKeys,
-        treeData,
-        toggleChecked() {
-          checkedKeys.value = checkedKeys?.value.length ? [] : allCheckedKeys;
-        },
-        toggleExpanded() {
-          expandedKeys.value = expandedKeys?.value.length ? [] : allExpandedKeys;
-        },
-        onSelect(newSelectedKeys, event) {
-          console.log('select: ', newSelectedKeys, event);
-        },
-        onCheck(newCheckedKeys, event) {
-          console.log('check: ', newCheckedKeys, event);
-        },
-        onExpand(newExpandedKeys, event) {
-          console.log('expand: ', newExpandedKeys, event);
-        },
-      };
-    },
-  };
 
   const treeData = [
     {
@@ -90,4 +60,28 @@
       ],
     },
   ];
+
+  const selectedKeys = ref([]);
+  const checkedKeys = ref([]);
+  const expandedKeys = ref([]);
+
+  function toggleChecked() {
+    checkedKeys.value = checkedKeys?.value.length ? [] : allCheckedKeys;
+  }
+
+  function toggleExpanded() {
+    expandedKeys.value = expandedKeys?.value.length ? [] : allExpandedKeys;
+  }
+
+  function onSelect(newSelectedKeys, event) {
+    console.log('select: ', newSelectedKeys, event);
+  }
+
+  function onCheck(newCheckedKeys, event) {
+    console.log('check: ', newCheckedKeys, event);
+  }
+
+  function onExpand(newExpandedKeys, event) {
+    console.log('expand: ', newExpandedKeys, event);
+  }
 </script>

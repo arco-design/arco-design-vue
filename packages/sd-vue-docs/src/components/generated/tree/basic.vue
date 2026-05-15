@@ -5,15 +5,7 @@
     :default-selected-keys="['0-0-0', '0-0-1']"
   />
 </template>
-<script>
-  export default {
-    data() {
-      return {
-        treeData,
-      };
-    },
-  };
-
+<script setup lang="ts">
   const treeData = [
     {
       title: 'Trunk 0-0',

@@ -1,5 +1,5 @@
 <template>
-  <sd-form :model="form" :style="{ width: '600px' }" disabled>
+  <sd-form :model="form" class="sd:w-150" disabled>
     <sd-form-item field="name" label="Username">
       <sd-input v-model="form.name" placeholder="please enter your username..." />
     </sd-form-item>
@@ -16,20 +16,12 @@
   {{ form }}
 </template>
 
-<script>
+<script setup lang="ts">
   import { reactive } from 'vue';
 
-  export default {
-    setup() {
-      const form = reactive({
-        name: '',
-        post: '',
-        isRead: false,
-      });
-
-      return {
-        form,
-      };
-    },
-  };
+  const form = reactive({
+    name: '',
+    post: '',
+    isRead: false,
+  });
 </script>

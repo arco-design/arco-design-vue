@@ -13,7 +13,7 @@
     </sd-radio>
   </sd-radio-group>
   <br />
-  <sd-typography-text style="display: inline-block; margin: 24px 0">
+  <sd-typography-text class="sd:my-6 sd:inline-block">
     Current: {{ checkedKeys?.join(' , ') }}
   </sd-typography-text>
   <br />
@@ -24,7 +24,7 @@
     :data="treeData"
   />
 </template>
-<script>
+<script setup lang="ts">
   import { ref } from 'vue';
 
   const treeData = [
@@ -89,17 +89,6 @@
     },
   ];
 
-  export default {
-    setup() {
-      const checkedKeys = ref([]);
-      const checkedStrategy = ref('all');
-
-      return {
-        treeData,
-        strategyOptions,
-        checkedStrategy,
-        checkedKeys,
-      };
-    },
-  };
+  const checkedKeys = ref([]);
+  const checkedStrategy = ref('all');
 </script>

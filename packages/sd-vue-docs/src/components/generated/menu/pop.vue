@@ -29,16 +29,8 @@
     </sd-menu>
   </div>
 </template>
-<script>
+<script setup lang="ts">
   import { IconApps, IconBug, IconBulb } from '@sdata/web-vue/es/icon/index.js';
-
-  export default {
-    components: {
-      IconApps,
-      IconBug,
-      IconBulb,
-    },
-  };
 </script>
 <style scoped>
   .menu-demo {

@@ -1,3 +1,3 @@
 <template>
-  <sd-quarter-picker style="width: 200px" />
+  <sd-quarter-picker class="sd:w-50" />
 </template>

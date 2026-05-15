@@ -261,7 +261,7 @@ exports[`<descriptions> demo: > render [example] correctly 1`] = `
     </div>
   </div>
 </form>
-<div style="margin-top: 20px;">
+<div class="sd:mt-5">
   <div class="sd-descriptions sd-descriptions-layout-horizontal sd-descriptions-size-medium sd-descriptions-border">
     <div class="sd-descriptions-title">Layout Example</div>
     <div class="sd-descriptions-body">
@@ -298,7 +298,7 @@ exports[`<descriptions> demo: > render [example] correctly 1`] = `
 
 exports[`<descriptions> demo: > render [layout] correctly 1`] = `
 <span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="mini"><span class="sd-radio-button-content">mini</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="small"><span class="sd-radio-button-content">small</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="medium"><span class="sd-radio-button-content">medium</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="large"><span class="sd-radio-button-content">large</span></label></span>
-<div style="margin-top: 20px;">
+<div class="sd:mt-5">
   <div class="sd-descriptions sd-descriptions-layout-horizontal sd-descriptions-size-medium sd-descriptions-border">
     <div class="sd-descriptions-title">User Info (horizontal)</div>
     <div class="sd-descriptions-body">
@@ -420,7 +420,7 @@ exports[`<descriptions> demo: > render [layout] correctly 1`] = `
 
 exports[`<descriptions> demo: > render [single] correctly 1`] = `
 <span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="mini"><span class="sd-radio-button-content">mini</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="small"><span class="sd-radio-button-content">small</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="medium"><span class="sd-radio-button-content">medium</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="large"><span class="sd-radio-button-content">large</span></label></span>
-<div class="sd-descriptions sd-descriptions-layout-horizontal sd-descriptions-size-medium" style="margin-top: 20px;">
+<div class="sd-descriptions sd-descriptions-layout-horizontal sd-descriptions-size-medium sd:mt-5">
   <div class="sd-descriptions-title">User Info</div>
   <div class="sd-descriptions-body">
     <table class="sd-descriptions-table">

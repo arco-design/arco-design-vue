@@ -1,6 +1,6 @@
 <template>
-  <div :style="{ display: 'flex' }">
-    <sd-card :style="{ width: '360px' }" title="SD Card">
+  <div class="sd:flex">
+    <sd-card class="sd:w-90" title="SD Card">
       <template #extra>
         <sd-link>More</sd-link>
       </template>

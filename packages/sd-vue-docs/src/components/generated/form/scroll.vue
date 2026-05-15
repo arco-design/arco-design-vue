@@ -8,7 +8,7 @@
   </sd-space>
   <sd-form
     ref="formRef"
-    style="width: 500px; height: 300px; margin-top: 20px; padding-right: 16px; overflow: auto"
+    class="sd:mt-5 sd:h-[300px] sd:w-[500px] sd:overflow-auto sd:pr-4"
     :model="form"
     :scrollToFirstError="true"
   >
@@ -24,26 +24,15 @@
   </sd-form>
 </template>
 
-<script>
+<script setup lang="ts">
   import { reactive, ref } from 'vue';
 
-  export default {
-    setup() {
-      const formRef = ref(null);
-      const fieldCount = 20;
-      const fieldNames = Array.from({ length: fieldCount }, (_, index) => `name${index}`);
-      const form = reactive(
-        Object.fromEntries(
-          fieldNames.map((fieldName, index) => [fieldName, index === 7 ? '' : index.toString()]),
-        ),
-      );
-
-      return {
-        form,
-        formRef,
-        fieldCount,
-        fieldNames,
-      };
-    },
-  };
+  const formRef = ref(null);
+  const fieldCount = 20;
+  const fieldNames = Array.from({ length: fieldCount }, (_, index) => `name${index}`);
+  const form = reactive(
+    Object.fromEntries(
+      fieldNames.map((fieldName, index) => [fieldName, index === 7 ? '' : index.toString()]),
+    ),
+  );
 </script>

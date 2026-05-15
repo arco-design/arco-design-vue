@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<verification-code> demo: > render [basic] correctly 1`] = `
-<div class="sd-verification-code" style="width: 300px;"><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value="6"><!----><!----></span>
+<div class="sd-verification-code sd:w-75"><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value="6"><!----><!----></span>
   <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value="5"><!----><!----></span>
   <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value="4"><!----><!----></span>
   <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value="3"><!----><!----></span>
@@ -12,7 +12,7 @@ exports[`<verification-code> demo: > render [basic] correctly 1`] = `
 `;
 
 exports[`<verification-code> demo: > render [form] correctly 1`] = `
-<form class="sd-form sd-form-layout-horizontal sd-form-size-medium" style="width: 300px;">
+<form class="sd-form sd-form-layout-horizontal sd-form-size-medium sd:w-75">
   <div class="sd-row sd-row-align-start sd-row-justify-start sd-form-item sd-form-item-layout-horizontal">
     <div class="sd-col sd-col-5 sd-form-item-label-col"><label class="sd-form-item-label"><strong class="sd-form-item-label-required-symbol"><svg fill="currentColor" viewBox="0 0 1024 1024" width="1em" height="1em"><path d="M583.338667 17.066667c18.773333 0 34.133333 15.36 34.133333 34.133333v349.013333l313.344-101.888a34.133333 34.133333 0 0 1 43.008 22.016l42.154667 129.706667a34.133333 34.133333 0 0 1-21.845334 43.178667l-315.733333 102.4 208.896 287.744a34.133333 34.133333 0 0 1-7.509333 47.786666l-110.421334 80.213334a34.133333 34.133333 0 0 1-47.786666-7.509334L505.685333 706.218667 288.426667 1005.226667a34.133333 34.133333 0 0 1-47.786667 7.509333l-110.421333-80.213333a34.133333 34.133333 0 0 1-7.509334-47.786667l214.186667-295.253333L29.013333 489.813333a34.133333 34.133333 0 0 1-22.016-43.008l42.154667-129.877333a34.133333 34.133333 0 0 1 43.008-22.016l320.512 104.106667L412.672 51.2c0-18.773333 15.36-34.133333 34.133333-34.133333h136.533334z"></path></svg></strong>code
         <!--v-if-->
@@ -21,7 +21,7 @@ exports[`<verification-code> demo: > render [form] correctly 1`] = `
     <div class="sd-col sd-col-19 sd-form-item-wrapper-col" id="code">
       <div class="sd-form-item-content-wrapper">
         <div class="sd-form-item-content sd-form-item-content-flex">
-          <div class="sd-verification-code" style="width: 300px;"><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value=""><!----><!----></span>
+          <div class="sd-verification-code sd:w-75"><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value=""><!----><!----></span>
             <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value=""><!----><!----></span>
             <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value=""><!----><!----></span>
             <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value=""><!----><!----></span>
@@ -43,7 +43,7 @@ exports[`<verification-code> demo: > render [form] correctly 1`] = `
       </label></div>
     <div class="sd-col sd-col-19 sd-form-item-wrapper-col">
       <div class="sd-form-item-content-wrapper">
-        <div class="sd-form-item-content sd-form-item-content-flex"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-large sd-btn-status-normal" type="submit" style="width: 60px;">
+        <div class="sd-form-item-content sd-form-item-content-flex"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-large sd-btn-status-normal sd:w-15" type="submit">
             <!--v-if-->Submit
           </button></div>
       </div>
@@ -58,7 +58,7 @@ exports[`<verification-code> demo: > render [formatter] correctly 1`] = `
 <div class="sd-space sd-space-vertical" style="column-gap: 8px; row-gap: 8px;">
   <!---->
   <div class="sd-space-item">
-    <div class="sd-verification-code" style="width: 300px;"><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value="1"><!----><!----></span>
+    <div class="sd-verification-code sd:w-75"><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value="1"><!----><!----></span>
       <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value="2"><!----><!----></span>
       <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value="3"><!----><!----></span>
       <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value="4"><!----><!----></span>
@@ -69,7 +69,7 @@ exports[`<verification-code> demo: > render [formatter] correctly 1`] = `
   </div>
   <!---->
   <div class="sd-space-item">
-    <div class="sd-verification-code" style="width: 300px;"><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value="a"><!----><!----></span>
+    <div class="sd-verification-code sd:w-75"><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value="a"><!----><!----></span>
       <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value="b"><!----><!----></span>
       <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value="c"><!----><!----></span>
       <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value="d"><!----><!----></span>
@@ -82,7 +82,7 @@ exports[`<verification-code> demo: > render [formatter] correctly 1`] = `
 `;
 
 exports[`<verification-code> demo: > render [masked] correctly 1`] = `
-<div class="sd-verification-code" style="width: 300px;"><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="password" value="1"><!----><!----></span>
+<div class="sd-verification-code sd:w-75"><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="password" value="1"><!----><!----></span>
   <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="password" value="2"><!----><!----></span>
   <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="password" value="3"><!----><!----></span>
   <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="password" value=""><!----><!----></span>
@@ -93,7 +93,7 @@ exports[`<verification-code> demo: > render [masked] correctly 1`] = `
 `;
 
 exports[`<verification-code> demo: > render [separator] correctly 1`] = `
-<div class="sd-verification-code" style="width: 400px;"><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value=""><!----><!----></span>
+<div class="sd-verification-code sd:w-100"><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value=""><!----><!----></span>
   <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value=""><!----><!----></span>
   <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value=""><!----><!----></span>-<span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value=""><!----><!----></span>
   <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" value=""><!----><!----></span>
@@ -110,10 +110,10 @@ exports[`<verification-code> demo: > render [status] correctly 1`] = `
   <div class="sd-space-item">
     <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
       <!---->
-      <div class="sd-space-item"><span class="sd-typography" style="width: 80px;">Disabled:<!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+      <div class="sd-space-item"><span class="sd-typography sd:w-20">Disabled:<!----><!--v-if--><!--v-if--><!--v-if--></span></div>
       <!---->
       <div class="sd-space-item">
-        <div class="sd-verification-code" style="width: 300px;"><span class="sd-input-wrapper sd-input-disabled sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" disabled="" value="1"><!----><!----></span>
+        <div class="sd-verification-code sd:w-75"><span class="sd-input-wrapper sd-input-disabled sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" disabled="" value="1"><!----><!----></span>
           <!----><span class="sd-input-wrapper sd-input-disabled sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" disabled="" value="2"><!----><!----></span>
           <!----><span class="sd-input-wrapper sd-input-disabled sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" disabled="" value="3"><!----><!----></span>
           <!----><span class="sd-input-wrapper sd-input-disabled sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" disabled="" value="4"><!----><!----></span>
@@ -128,10 +128,10 @@ exports[`<verification-code> demo: > render [status] correctly 1`] = `
   <div class="sd-space-item">
     <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
       <!---->
-      <div class="sd-space-item"><span class="sd-typography" style="width: 80px;">Readonly:<!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+      <div class="sd-space-item"><span class="sd-typography sd:w-20">Readonly:<!----><!--v-if--><!--v-if--><!--v-if--></span></div>
       <!---->
       <div class="sd-space-item">
-        <div class="sd-verification-code" style="width: 300px;"><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" readonly="" value="1"><!----><!----></span>
+        <div class="sd-verification-code sd:w-75"><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" readonly="" value="1"><!----><!----></span>
           <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" readonly="" value="2"><!----><!----></span>
           <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" readonly="" value="3"><!----><!----></span>
           <!----><span class="sd-input-wrapper sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" readonly="" value="4"><!----><!----></span>
@@ -146,10 +146,10 @@ exports[`<verification-code> demo: > render [status] correctly 1`] = `
   <div class="sd-space-item">
     <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
       <!---->
-      <div class="sd-space-item"><span class="sd-typography" style="width: 80px;">Error:<!----><!--v-if--><!--v-if--><!--v-if--></span></div>
+      <div class="sd-space-item"><span class="sd-typography sd:w-20">Error:<!----><!--v-if--><!--v-if--><!--v-if--></span></div>
       <!---->
       <div class="sd-space-item">
-        <div class="sd-verification-code" style="width: 300px;"><span class="sd-input-wrapper sd-input-error sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" aria-invalid="true" value="1"><!----><!----></span>
+        <div class="sd-verification-code sd:w-75"><span class="sd-input-wrapper sd-input-error sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" aria-invalid="true" value="1"><!----><!----></span>
           <!----><span class="sd-input-wrapper sd-input-error sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" aria-invalid="true" value="2"><!----><!----></span>
           <!----><span class="sd-input-wrapper sd-input-error sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" aria-invalid="true" value="3"><!----><!----></span>
           <!----><span class="sd-input-wrapper sd-input-error sd-input"><!----><input class="sd-input sd-input-size-medium" type="text" aria-invalid="true" value="4"><!----><!----></span>

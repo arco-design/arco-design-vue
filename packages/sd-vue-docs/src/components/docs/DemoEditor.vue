@@ -6,6 +6,8 @@
 
   import vueRuntimeSource from 'vue/dist/vue.runtime.esm-browser.js?raw';
 
+  import demoStylesheetHref from '../../styles/demo.css?url';
+
   function createJavaScriptDataUrl(source: string) {
     return `data:text/javascript;charset=utf-8,${encodeURIComponent(source)}`;
   }
@@ -31,6 +33,7 @@
   const previewOptions = computed(() => ({
     headHTML: [
       '<link rel="stylesheet" href="/vendor/sd-web-vue/dist/sd.css">',
+      `<link rel="stylesheet" href="${demoStylesheetHref}">`,
       '<style>body{margin:0;padding:16px;font-family:Inter,Segoe UI,sans-serif;}body[sd-theme="dark"]{background:#141414;color:#f2f3f5;}#app{min-height:40px;}</style>',
       `<script>document.addEventListener('DOMContentLoaded',function(){if(${JSON.stringify(replTheme.value)}==='dark'){document.body.setAttribute('sd-theme','dark');}else{document.body.removeAttribute('sd-theme');}});${previewThemeScriptCloseTag}`,
     ].join(''),
