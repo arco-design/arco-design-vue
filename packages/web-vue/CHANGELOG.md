@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/liunnn1994/sd-design/compare/v1.11.0...v1.11.1) (2026-05-16)
+
+### Bug Fixes
+
+- 🐛 修复 ts 和错误导入 react 的问题 ([3518677](https://github.com/liunnn1994/sd-design/commit/3518677a09d1a96f1198c462a345a9caca2761f0))
+- 🐛 修复错误的引入 react 的问题 ([5b790a0](https://github.com/liunnn1994/sd-design/commit/5b790a01c3fe1054c618645f763e038d80eddad3))
+
 # [1.11.0](https://github.com/liunnn1994/sd-design/compare/v1.10.0...v1.11.0) (2026-05-16)
 
 ### Bug Fixes
