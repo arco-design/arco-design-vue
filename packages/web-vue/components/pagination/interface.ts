@@ -7,6 +7,8 @@ export const PAGE_ITEM_TYPES = ['page', 'more', 'previous', 'next'] as const;
 
 export type PageItemType = (typeof PAGE_ITEM_TYPES)[number];
 
+export type PaginationSelectProps = Omit<SelectProps, 'value' | 'modelValue' | 'defaultValue'>;
+
 export interface PaginationProps {
   total?: number;
   current?: number;
@@ -21,7 +23,7 @@ export interface PaginationProps {
   showJumper?: boolean;
   showPageSize?: boolean;
   pageSizeOptions?: number[];
-  pageSizeProps?: SelectProps;
+  pageSizeProps?: PaginationSelectProps;
   size?: Size;
   pageItemStyle?: CSSProperties;
   activePageItemStyle?: CSSProperties;

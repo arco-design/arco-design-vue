@@ -1,7 +1,7 @@
 <template>
   <span :class="prefixCls">
     <sd-select
-      :model-value="pageSize"
+      :model-value="modelValue"
       :options="options"
       :size="size"
       :disabled="disabled"
@@ -15,7 +15,8 @@
   import { computed, defineComponent, PropType } from 'vue';
 
   import type { Size } from '../_utils/constant';
-  import type { SelectModelValue, SelectOption, SelectProps } from '../select/interface';
+  import type { SelectModelValue, SelectOption } from '../select/interface';
+  import type { PaginationSelectProps } from './interface';
 
   import { getPrefixCls } from '../_utils/global-config';
   import { useI18n } from '../locale';
@@ -31,7 +32,7 @@
         type: Array as PropType<number[]>,
         required: true,
       },
-      pageSize: Number,
+      pageSize: Number as PropType<number | undefined>,
       disabled: Boolean,
       size: {
         type: String as PropType<Size>,
@@ -40,13 +41,14 @@
         type: Function as PropType<(value: number) => void>,
       },
       selectProps: {
-        type: Object as PropType<SelectProps>,
+        type: Object as PropType<PaginationSelectProps>,
       },
     },
     emits: ['change'],
     setup(props, { emit }) {
       const prefixCls = getPrefixCls('pagination-options');
       const { t } = useI18n();
+      const modelValue = computed<number | undefined>(() => props.pageSize ?? undefined);
       const options = computed<SelectOption[]>(() =>
         props.sizeOptions.map((value) => ({
           value,
@@ -64,6 +66,7 @@
 
       return {
         prefixCls,
+        modelValue,
         options,
         handleChange,
       };

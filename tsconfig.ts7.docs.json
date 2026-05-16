@@ -28,6 +28,7 @@
   ],
   "exclude": [
     "packages/sd-vue-docs/dist",
+    "packages/sd-vue-docs/src/types/sdata-web-vue-vue-tsc.d.ts",
     "packages/sd-vue-docs/**/*.vue",
     "packages/sd-vue-docs/**/*.astro"
   ]

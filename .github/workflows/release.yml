@@ -49,10 +49,10 @@ jobs:
           pnpm -v
           pnpm run install:ci
 
-      - name: Build web-vue
+      - name: Build release package
         env:
           NODE_OPTIONS: '--max-old-space-size=6144'
-        run: pnpm run build:component --verbose
+        run: pnpm --filter @sdata/web-vue run build
 
       - name: Release web-vue
         working-directory: packages/web-vue

@@ -1,10 +1,28 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "rootDir": ".",
+    "moduleResolution": "bundler",
+    "allowJs": true,
+    "allowArbitraryExtensions": true,
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    "resolveJsonModule": true,
+    "verbatimModuleSyntax": false,
+    "paths": {
+      "@sdata/web-vue": ["../web-vue/components/index.ts"],
+      "@sdata/web-vue/es/icon": ["../web-vue/components/icon-component/index.ts"],
+      "@sdata/web-vue/es/icon.js": ["../web-vue/components/icon-component/index.ts"],
+      "@sdata/web-vue/es/locale/lang/*": ["../web-vue/components/locale/lang/*"]
+    },
     "skipLibCheck": true,
     "types": ["node", "vite/client"]
   },
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"]
+  "include": [
+    ".astro/types.d.ts",
+    "src/**/*",
+    "../web-vue/global.d.ts",
+    "../web-vue/components/shims.d.ts",
+    "../web-vue/components/components.ts"
+  ],
+  "exclude": ["dist", "src/types/sdata-web-vue-ts7.d.ts", "src/types/sdata-web-vue-vue-tsc.d.ts"]
 }

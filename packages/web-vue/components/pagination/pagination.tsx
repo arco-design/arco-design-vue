@@ -2,14 +2,13 @@ import type { PropType, CSSProperties } from 'vue';
 import { computed, defineComponent, reactive, ref, toRefs, watch } from 'vue';
 
 import type { Data } from '../_utils/types';
-import type { PageItemType } from './interface';
+import type { PageItemType, PaginationSelectProps } from './interface';
 
 import { useSize } from '../_hooks/use-size';
 import { Size } from '../_utils/constant';
 import { getPrefixCls } from '../_utils/global-config';
 import { isNumber } from '../_utils/is';
 import { useI18n } from '../locale';
-import { SelectProps } from '../select';
 import EllipsisPager from './page-item-ellipsis.vue';
 import StepPager from './page-item-step.vue';
 import Pager from './page-item.vue';
@@ -124,7 +123,7 @@ export default defineComponent({
      * @en Props of data number selector
      */
     pageSizeProps: {
-      type: Object as PropType<SelectProps>,
+      type: Object as PropType<PaginationSelectProps>,
     },
     /**
      * @zh 分页选择器的大小
