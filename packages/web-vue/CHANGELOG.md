@@ -1,3 +1,15 @@
+# [1.11.0](https://github.com/liunnn1994/sd-design/compare/v1.10.0...v1.11.0) (2026-05-16)
+
+### Bug Fixes
+
+- 🐛 修复 table 固定列的问题 ([26d4dcd](https://github.com/liunnn1994/sd-design/commit/26d4dcd5eae33a01f4718b813494a454c36cecef))
+- 🐛 修复 ts 报错 ([31880dc](https://github.com/liunnn1994/sd-design/commit/31880dc15596465cd4272039a84dae5ce31d58c3))
+- 🐛 修复 ts 报错 ([ea5166e](https://github.com/liunnn1994/sd-design/commit/ea5166ea6b68cd079009d0fffccdaf1c8c2d461a))
+
+### Features
+
+- 🆕 优化所有 less 遗留 ([8513187](https://github.com/liunnn1994/sd-design/commit/8513187d734703cdbb8345750438c335a7f2daf9))
+
 # [1.10.0](https://github.com/liunnn1994/sd-design/compare/v1.9.0...v1.10.0) (2026-05-12)
 
 ### Bug Fixes
