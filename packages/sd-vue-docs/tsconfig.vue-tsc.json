@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@sdata/web-vue": ["../web-vue/components/index.ts"],
+      "@sdata/web-vue/es/icon": ["../web-vue/components/icon-component/index.ts"],
+      "@sdata/web-vue/es/icon.js": ["../web-vue/components/icon-component/index.ts"],
+      "@sdata/web-vue/es/locale/lang/*": ["../web-vue/components/locale/lang/*"]
+    }
+  },
+  "exclude": ["dist", "src/types/sdata-web-vue-ts7.d.ts", "src/types/sdata-web-vue-vue-tsc.d.ts"]
+}

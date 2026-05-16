@@ -47,6 +47,10 @@ export default defineConfig({
       noExternal: ['@vue/repl'],
       alias: [
         {
+          find: /^@sdata\/web-vue$/,
+          replacement: fileURLToPath(new URL('../web-vue/es/index.js', import.meta.url)),
+        },
+        {
           find: /^@style\/(.*)$/,
           replacement: `${fileURLToPath(new URL('../web-vue/components/style/', import.meta.url))}$1`,
         },

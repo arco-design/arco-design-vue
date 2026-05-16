@@ -18,5 +18,5 @@
     "../web-vue/components/shims.d.ts",
     "../web-vue/components/components.ts"
   ],
-  "exclude": ["dist", "src/types/sdata-web-vue-ts7.d.ts", "src/types/sdata-web-vue-vue-tsc.d.ts"]
+  "exclude": ["dist", "src/types/sdata-web-vue-ts7.d.ts"]
 }
