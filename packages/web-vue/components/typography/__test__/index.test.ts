@@ -1,6 +1,8 @@
 import { mount } from '@vue/test-utils';
 import { defineComponent, h } from 'vue';
 
+import { afterEach, vi } from 'vitest';
+
 import Typography from '../index';
 
 const { Paragraph } = Typography;
@@ -17,6 +19,10 @@ const _getInnerText = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'in
 const sleep = (timeout = 0) => new Promise((resolve) => setTimeout(resolve, timeout));
 
 describe('Typography', () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   beforeAll(() => {
     Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
       configurable: true,
@@ -73,6 +79,42 @@ describe('Typography', () => {
     expect(copyIconWrapper.exists()).toBe(true);
     await copyIconWrapper.trigger('click');
     expect(wrapper.find('.sd-typography-operation-copied').exists()).toBe(true);
+  });
+
+  test('Paragraph should pass clipboard props to copy-to-clipboard', async () => {
+    const promptSpy = vi.fn();
+    const execCommandSpy = vi.fn().mockReturnValue(false);
+
+    Object.defineProperty(window, 'isSecureContext', {
+      configurable: true,
+      value: false,
+    });
+    Object.defineProperty(window, 'prompt', {
+      configurable: true,
+      value: promptSpy,
+    });
+    Object.defineProperty(document, 'execCommand', {
+      configurable: true,
+      value: execCommandSpy,
+    });
+
+    const wrapper = mount(Paragraph, {
+      props: {
+        copyable: true,
+        copyText: 'clipboard-text',
+        clipboardProps: {
+          fallbackToPrompt: true,
+        },
+      },
+      slots: {
+        default: 'my text',
+      },
+    });
+
+    await wrapper.find('.sd-typography-operation-copy').trigger('click');
+
+    expect(execCommandSpy).toHaveBeenCalledWith('copy');
+    expect(promptSpy).toHaveBeenCalledWith('Copy to clipboard: Ctrl+C, Enter', 'clipboard-text');
   });
 
   test('Paragraph should support editable', async () => {

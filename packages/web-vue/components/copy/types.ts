@@ -1,3 +1,5 @@
+import type { Options as ClipboardOptions } from 'copy-to-clipboard';
+
 import type { ButtonProps } from '../button';
 import type { LinkProps } from '../link';
 import type { TooltipInstance } from '../tooltip';
@@ -20,6 +22,11 @@ type CopyBaseProps = {
    * @en Tooltip props
    */
   tooltipProps?: TooltipInstance['$props'];
+  /**
+   * @zh 透传给 copy-to-clipboard 的配置
+   * @en Options passed through to copy-to-clipboard
+   */
+  clipboardProps?: ClipboardOptions;
   /**
    * @zh 是否继承当前文本颜色
    * @en Whether to inherit the current text color

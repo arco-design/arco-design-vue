@@ -1,3 +1,5 @@
+import type { Options as ClipboardOptions } from 'copy-to-clipboard';
+
 import { VNode } from 'vue';
 
 export interface EllipsisConfig {
@@ -52,6 +54,7 @@ export interface CopyProps {
   copyable: boolean;
   copyDelay: number;
   copyText: string | undefined;
+  clipboardProps?: ClipboardOptions;
 }
 
 export interface EditProps {

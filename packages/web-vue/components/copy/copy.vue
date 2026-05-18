@@ -14,9 +14,10 @@
 <script setup lang="ts">
   import { computed, useAttrs } from 'vue';
 
+  import copy from 'copy-to-clipboard';
+
   import type { CopyComponentType, CopyProps } from './types';
 
-  import { clipboard } from '../_utils/clipboard';
   import { getPrefixCls } from '../_utils/global-config';
   import Button from '../button';
   import IconCopy from '../icon/icon-copy';
@@ -33,6 +34,7 @@
     content: '',
     tooltip: '复制',
     tooltipProps: undefined,
+    clipboardProps: undefined,
     component: 'link',
     textInherit: true,
     successMessage: '复制成功',
@@ -58,13 +60,23 @@
     prefixCls,
     { [`${prefixCls}-inherit`]: props.component === 'link' && props.textInherit },
   ]);
+  const isDisabled = computed(() => {
+    const disabled =
+      (props as CopyProps & { disabled?: boolean | string }).disabled ?? attrs.disabled;
+
+    return disabled === '' || disabled === true || disabled === 'true';
+  });
   const mergedTooltipProps = computed(() => ({
     ...props.tooltipProps,
     content: props.tooltipProps?.content ?? props.tooltip,
   }));
 
   async function handleCopy() {
-    await clipboard(props.content);
+    if (isDisabled.value) {
+      return;
+    }
+
+    await copy(props.content, props.clipboardProps);
     Message.success(props.successMessage);
     emit('copy', props.content);
   }

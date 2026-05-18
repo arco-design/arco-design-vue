@@ -1,3 +1,5 @@
+import type { Options as ClipboardOptions } from 'copy-to-clipboard';
+
 import {
   defineComponent,
   VNode,
@@ -13,9 +15,10 @@ import {
   onUpdated,
 } from 'vue';
 
+import copy from 'copy-to-clipboard';
+
 import ResizeObserver from '../_components/resize-observer';
 import useMergeState from '../_hooks/use-merge-state';
-import { clipboard } from '../_utils/clipboard';
 import { getPrefixCls } from '../_utils/global-config';
 import { isObject } from '../_utils/is';
 import { omit } from '../_utils/omit';
@@ -193,6 +196,13 @@ export default defineComponent({
       type: String,
     },
     /**
+     * @zh 透传给 copy-to-clipboard 的配置
+     * @en Options passed through to copy-to-clipboard
+     */
+    clipboardProps: {
+      type: Object as PropType<ClipboardOptions>,
+    },
+    /**
      * @zh 复制成功后，复制按钮恢复到可点击状态的延迟时间，单位是毫秒
      * @en After the copy is successful, the delay time for the copy button to return to the clickable state, in milliseconds
      * @version 2.16.0
@@ -341,7 +351,7 @@ export default defineComponent({
     function onCopyClick() {
       const text = copyText.value ?? fullText.value;
 
-      clipboard(text || '');
+      copy(text || '', props.clipboardProps);
 
       isCopied.value = true;
 
