@@ -344,8 +344,8 @@ export default defineComponent({
           return;
         }
 
-        emit('input', value, e);
         updateValue(value);
+        emit('input', value, e);
         eventHandlers.value?.onInput?.(e);
       } else {
         isComposition.value = true;
@@ -367,8 +367,8 @@ export default defineComponent({
           return;
         }
 
-        emit('input', value, e);
         updateValue(value);
+        emit('input', value, e);
         eventHandlers.value?.onInput?.(e);
       } else {
         compositionValue.value = value;
