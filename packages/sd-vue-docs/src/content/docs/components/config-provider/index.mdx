@@ -12,6 +12,8 @@ import ConfigProviderRtlDemo from '../../../../components/generated/config-provi
 import configProviderRtlSource from '../../../../components/generated/config-provider/rtl.vue?raw';
 import ConfigProviderAllowClearDemo from '../../../../components/generated/config-provider/allow-clear.vue';
 import configProviderAllowClearSource from '../../../../components/generated/config-provider/allow-clear.vue?raw';
+import ConfigProviderAllowSearchDemo from '../../../../components/generated/config-provider/allow-search.vue';
+import configProviderAllowSearchSource from '../../../../components/generated/config-provider/allow-search.vue?raw';
 import ConfigProviderThemeModeDemo from '../../../../components/generated/config-provider/theme-mode.vue';
 import configProviderThemeModeSource from '../../../../components/generated/config-provider/theme-mode.vue?raw';
 
@@ -55,6 +57,16 @@ import configProviderThemeModeSource from '../../../../components/generated/conf
 
 </DemoBlock>
 
+### 默认开启 allowSearch
+
+设置 `allow-search` 后，支持搜索的组件会默认继承这个配置；如果组件自己显式传入了 `allow-search` 或 `allowSearch`，则以组件 props 为准。
+
+<DemoBlock source={configProviderAllowSearchSource} mainFile="src/config-provider-allow-search.vue">
+
+<ConfigProviderAllowSearchDemo client:only="vue" />
+
+</DemoBlock>
+
 ### 局部主题模式
 
 `ConfigProvider` 现在可以作为局部 ThemeProvider 使用。设置 `theme-mode` 后，组件库会在当前子树上挂载真正的局部 `sd-theme` 容器，而不是只依赖 `body`。
@@ -75,6 +87,7 @@ import configProviderThemeModeSource from '../../../../components/generated/conf
 | locale           | 配置语言包                         | `SDLang`            |   `-`   |        |
 | size             | 大小                               | `Size`              |   `-`   | 2.14.0 |
 | allow-clear      | 是否默认开启清除按钮               | `boolean`           | `false` |        |
+| allow-search     | 是否默认开启搜索                   | `boolean`           | `false` |        |
 | global           | 是否全局生效                       | `boolean`           | `false` | 2.25.0 |
 | update-at-scroll | 是否在容器滚动时更新弹出框的位置   | `boolean`           | `false` | 2.25.0 |
 | scroll-to-close  | 是否在滚动时关闭弹出框             | `boolean`           | `false` | 2.46.0 |
@@ -97,6 +110,8 @@ import configProviderThemeModeSource from '../../../../components/generated/conf
 `global` 属性设置为 `true` 时，会将配置内容注入到 Vue AppContext 中，一般用于解决使用 Modal、Message 组件的函数式调用方法时，配置内容无法生效的问题。
 
 `allow-clear` 只会给未显式传入 `allowClear` 或 `allow-clear` 的组件提供默认值，不会覆盖组件自己已经声明的 props。
+
+`allow-search` 也只会给未显式传入 `allowSearch` 或 `allow-search` 的组件提供默认值；像 `filterable` 这类兼容别名如果已经显式传入，同样会优先于全局配置。
 
 ### 局部主题模式
 

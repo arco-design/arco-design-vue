@@ -4,7 +4,10 @@ import { defineComponent, h, nextTick, ref } from 'vue';
 import { afterEach, describe, expect, it } from 'vitest';
 
 import AutoComplete from '../../auto-complete';
+import Cascader from '../../cascader';
 import Input from '../../input';
+import Select from '../../select';
+import TreeSelect from '../../tree-select';
 import ConfigProvider from '../config-provider.vue';
 import {
   applyThemeCSSVariables,
@@ -320,5 +323,118 @@ describe('config-provider theme', () => {
     await nextTick();
 
     expect(wrapper.find('.sd-input-clear-btn').exists()).toBe(false);
+  });
+
+  it('keeps allowSearch behavior unchanged when config is unset', async () => {
+    const wrapper = mount(
+      defineComponent({
+        setup() {
+          return () =>
+            h(
+              ConfigProvider,
+              {},
+              {
+                default: () =>
+                  h('div', [
+                    h(Cascader, {
+                      options: [
+                        {
+                          label: 'Zhejiang',
+                          value: 'zhejiang',
+                          children: [{ label: 'Hangzhou', value: 'hangzhou' }],
+                        },
+                      ],
+                    }),
+                    h(TreeSelect, {
+                      options: [{ label: 'Node 1', value: 'node-1' }],
+                      fieldNames: { title: 'label' },
+                    }),
+                    h(Select, {
+                      options: ['Beijing', 'Shanghai'],
+                    }),
+                  ]),
+              },
+            );
+        },
+      }),
+    );
+
+    await nextTick();
+
+    expect(wrapper.findComponent(Cascader).find('input').attributes('readonly')).toBeDefined();
+    expect(wrapper.findComponent(TreeSelect).find('input').attributes('readonly')).toBeDefined();
+    expect(wrapper.findComponent(Select).find('input').attributes('readonly')).toBeUndefined();
+  });
+
+  it('enables allowSearch by default for descendants when configured', async () => {
+    const wrapper = mount(
+      defineComponent({
+        setup() {
+          return () =>
+            h(
+              ConfigProvider,
+              { allowSearch: true },
+              {
+                default: () =>
+                  h('div', [
+                    h(Cascader, {
+                      options: [
+                        {
+                          label: 'Zhejiang',
+                          value: 'zhejiang',
+                          children: [{ label: 'Hangzhou', value: 'hangzhou' }],
+                        },
+                      ],
+                    }),
+                    h(TreeSelect, {
+                      options: [{ label: 'Node 1', value: 'node-1' }],
+                      fieldNames: { title: 'label' },
+                    }),
+                    h(Select, {
+                      options: ['Beijing', 'Shanghai'],
+                    }),
+                  ]),
+              },
+            );
+        },
+      }),
+    );
+
+    await nextTick();
+
+    expect(wrapper.findComponent(Cascader).find('input').attributes('readonly')).toBeUndefined();
+    expect(wrapper.findComponent(TreeSelect).find('input').attributes('readonly')).toBeUndefined();
+    expect(wrapper.findComponent(Select).find('input').attributes('readonly')).toBeUndefined();
+  });
+
+  it('prefers explicit allow-search prop over provider defaults', async () => {
+    const wrapper = mount(
+      defineComponent({
+        setup() {
+          return () =>
+            h(
+              ConfigProvider,
+              { allowSearch: true },
+              {
+                default: () =>
+                  h(Cascader, {
+                    'options': [
+                      {
+                        label: 'Zhejiang',
+                        value: 'zhejiang',
+                        children: [{ label: 'Hangzhou', value: 'hangzhou' }],
+                      },
+                    ],
+                    'allow-search': false,
+                  }),
+              },
+            );
+        },
+      }),
+    );
+
+    await nextTick();
+
+    expect(wrapper.findComponent(Cascader).find('input').attributes('readonly')).toBeDefined();
   });
 });

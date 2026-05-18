@@ -10,6 +10,7 @@ export interface ConfigProvider {
   locale?: SDLang;
   size?: Size;
   allowClear?: boolean;
+  allowSearch?: boolean;
   updateAtScroll?: boolean;
   scrollToClose?: boolean;
   exchangeTime?: boolean;

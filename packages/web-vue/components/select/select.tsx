@@ -19,6 +19,7 @@ import type {
 import SelectView from '../_components/select-view/select-view';
 import VirtualList from '../_components/virtual-list';
 import { useAllowClear } from '../_hooks/use-allow-clear';
+import { useAllowSearch } from '../_hooks/use-allow-search';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useTrigger } from '../_hooks/use-trigger';
 import { debounce } from '../_utils/debounce';
@@ -250,6 +251,7 @@ export default defineComponent({
       loading,
       defaultActiveFirstOption,
       allowClear,
+      allowSearch,
     } = toRefs(props);
 
     const prefixCls = getPrefixCls('select');
@@ -260,9 +262,10 @@ export default defineComponent({
       error,
     });
     const { mergedAllowClear } = useAllowClear(allowClear);
+    const { mergedAllowSearch } = useAllowSearch(allowSearch);
     const component = computed(() => (props.virtualListProps ? 'div' : 'li'));
     const retainInputValue = computed(
-      () => isObject(props.allowSearch) && Boolean(props.allowSearch.retainInputValue),
+      () => isObject(mergedAllowSearch.value) && Boolean(mergedAllowSearch.value.retainInputValue),
     );
 
     const dropdownRef = ref<ComponentPublicInstance>();
@@ -521,7 +524,7 @@ export default defineComponent({
 
       updateInputValue(inputValue);
 
-      if (props.allowSearch) {
+      if (mergedAllowSearch.value) {
         handleSearch(inputValue);
       }
     };
@@ -716,7 +719,7 @@ export default defineComponent({
         disabled={mergedDisabled.value}
         popupVisible={computedPopupVisible.value}
         unmountOnClose={props.unmountOnClose}
-        clickToClose={!(props.allowSearch || props.allowCreate)}
+        clickToClose={!(mergedAllowSearch.value || props.allowCreate)}
         popupContainer={props.popupContainer}
         onPopupVisibleChange={handlePopupVisibleChange}
         {...props.triggerProps}
@@ -741,7 +744,7 @@ export default defineComponent({
             loading={props.loading}
             allowClear={mergedAllowClear.value}
             allowCreate={props.allowCreate}
-            allowSearch={Boolean(props.allowSearch)}
+            allowSearch={Boolean(mergedAllowSearch.value)}
             showArrow={props.showArrow}
             opened={computedPopupVisible.value}
             maxTagCount={props.maxTagCount}

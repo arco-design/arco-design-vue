@@ -102,6 +102,7 @@
   import SelectView from '../_components/select-view/select-view';
   import { VirtualListProps } from '../_components/virtual-list/interface';
   import { useAllowClear } from '../_hooks/use-allow-clear';
+  import { useAllowSearch } from '../_hooks/use-allow-search';
   import { useFormItem } from '../_hooks/use-form-item';
   import { useTrigger } from '../_hooks/use-trigger';
   import { Size } from '../_utils/constant';
@@ -600,22 +601,14 @@
       const instance = getCurrentInstance();
 
       const { mergedDisabled, eventHandlers } = useFormItem({ disabled });
-      const mergedAllowSearch = computed(() => {
-        const rawProps = instance?.vnode.props;
-        const hasAllowSearchProp =
-          !!rawProps &&
-          ['allowSearch', 'allow-search'].some((propName) => Object.hasOwn(rawProps, propName));
-
-        if (hasAllowSearchProp) {
-          return props.allowSearch;
-        }
-
-        if (props.filterable !== undefined) {
-          return props.filterable;
-        }
-
-        return props.allowSearch;
-      });
+      const { mergedAllowSearch } = useAllowSearch(
+        computed(() => props.allowSearch),
+        {
+          compatPropNames: ['filterable'],
+          getCompatValue: () => props.filterable,
+          getDefaultValue: () => props.allowSearch,
+        },
+      );
       const mergedAllowClearValue = computed(() => {
         const rawProps = instance?.vnode.props;
         const hasAllowClearProp =

@@ -49,6 +49,14 @@
         default: false,
       },
       /**
+       * @zh 是否默认开启搜索
+       * @en Whether to enable search by default
+       */
+      allowSearch: {
+        type: Boolean,
+        default: false,
+      },
+      /**
        * @zh 是否全局生效
        * @en Is global effect
        * @version 2.25.0
@@ -126,6 +134,7 @@
         locale,
         size,
         allowClear,
+        allowSearch,
         updateAtScroll,
         scrollToClose,
         exchangeTime,
@@ -138,6 +147,7 @@
         locale,
         size,
         allowClear,
+        allowSearch,
         updateAtScroll,
         scrollToClose,
         exchangeTime,

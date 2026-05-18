@@ -107,7 +107,6 @@
     CSSProperties,
     defineComponent,
     DefineComponent,
-    getCurrentInstance,
     nextTick,
     PropType,
     reactive,
@@ -121,6 +120,7 @@
   import SelectView from '../_components/select-view/select-view';
   import { VirtualListProps } from '../_components/virtual-list/interface';
   import { useAllowClear } from '../_hooks/use-allow-clear';
+  import { useAllowSearch } from '../_hooks/use-allow-search';
   import { useFormItem } from '../_hooks/use-form-item';
   import useMergeState from '../_hooks/use-merge-state';
   import { Size } from '../_utils/constant';
@@ -648,22 +648,14 @@
       });
       const prefixCls = getPrefixCls('tree-select');
       const configCtx = inject(configProviderInjectionKey, undefined);
-      const instance = getCurrentInstance();
-      const mergedAllowSearch = computed(() => {
-        const rawProps = instance?.vnode.props;
-        const hasAllowSearchProp =
-          !!rawProps && ['allowSearch', 'allow-search'].some((propName) => propName in rawProps);
-
-        if (hasAllowSearchProp) {
-          return props.allowSearch;
-        }
-
-        if (props.filterable !== undefined) {
-          return props.filterable;
-        }
-
-        return Boolean(props.multiple || props.treeCheckable || props.checkable);
-      });
+      const { mergedAllowSearch } = useAllowSearch(
+        computed(() => props.allowSearch),
+        {
+          compatPropNames: ['filterable'],
+          getCompatValue: () => props.filterable,
+          getDefaultValue: () => Boolean(props.multiple || props.treeCheckable || props.checkable),
+        },
+      );
       const { mergedAllowClear } = useAllowClear(
         computed(() => props.allowClear || props.clearable),
       );
