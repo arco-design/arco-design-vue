@@ -1,0 +1,95 @@
+---
+title: 标签组 TagGroup
+description: 用于展示一组标签项，并在数量过多时自动折叠为计数入口。
+---
+
+import DemoBlock from "../../../../components/docs/DemoBlock.astro";
+import TagGroupBasicDemo from "../../../../components/generated/tag-group/basic.vue";
+import tagGroupBasicSource from "../../../../components/generated/tag-group/basic.vue?raw";
+import TagGroupCounterDemo from "../../../../components/generated/tag-group/counter.vue";
+import tagGroupCounterSource from "../../../../components/generated/tag-group/counter.vue?raw";
+import TagGroupCustomItemDemo from "../../../../components/generated/tag-group/custom-item.vue";
+import tagGroupCustomItemSource from "../../../../components/generated/tag-group/custom-item.vue?raw";
+import TagGroupMaxCountDemo from "../../../../components/generated/tag-group/max-count.vue";
+import tagGroupMaxCountSource from "../../../../components/generated/tag-group/max-count.vue?raw";
+import TagGroupResponsiveDemo from "../../../../components/generated/tag-group/responsive.vue";
+import tagGroupResponsiveSource from "../../../../components/generated/tag-group/responsive.vue?raw";
+
+### 基本用法
+
+传入字符串数组时，组件会默认渲染为标签组。
+
+<DemoBlock source={tagGroupBasicSource} mainFile="src/tag-group-basic.vue">
+
+<TagGroupBasicDemo client:only="vue" />
+
+</DemoBlock>
+
+### 限制展示数量
+
+通过 `max-count` 指定固定展示数量，剩余项会折叠到 `+N` 入口中。
+
+<DemoBlock source={tagGroupMaxCountSource} mainFile="src/tag-group-max-count.vue">
+
+<TagGroupMaxCountDemo client:only="vue" />
+
+</DemoBlock>
+
+### 默认响应式折叠
+
+`maxCount` 默认值为 `responsive`，会根据容器宽度自动压缩首项并显示剩余数量。
+
+<DemoBlock source={tagGroupResponsiveSource} mainFile="src/tag-group-responsive.vue">
+
+<TagGroupResponsiveDemo client:only="vue" />
+
+</DemoBlock>
+
+### 自定义项渲染
+
+通过 `item` 插槽可以把默认的标签项替换成链接、文本或自定义组件。若需要保留响应式压缩效果，请把插槽提供的 `itemClass` 和 `itemStyle` 透传到自定义根节点。
+
+<DemoBlock source={tagGroupCustomItemSource} mainFile="src/tag-group-custom-item.vue">
+
+<TagGroupCustomItemDemo client:only="vue" />
+
+</DemoBlock>
+
+### 自定义计数器
+
+通过 `counter` 插槽可以单独替换 `+N` 计数器，且计数器不会参与首项省略逻辑。
+
+<DemoBlock source={tagGroupCounterSource} mainFile="src/tag-group-counter.vue">
+
+<TagGroupCounterDemo client:only="vue" />
+
+</DemoBlock>
+
+## API
+
+### `<tag-group>` Props
+
+| 参数名      | 描述                                                | 类型                                     |     默认值     | 版本 |
+| ----------- | --------------------------------------------------- | ---------------------------------------- | :------------: | :--- |
+| max-count   | 最多展示的项数，`responsive` 会根据容器宽度自动折叠 | `number \| 'responsive'`                 | `'responsive'` |      |
+| options     | 标签组选项                                          | `(string \| number \| TagGroupOption)[]` |      `[]`      |      |
+| field-names | 自定义字段名                                        | `{ label?: string; value?: string }`     |      `-`       |      |
+
+### `TagGroupOption`
+
+| 字段名    | 描述                         | 类型                                           | 默认值 |
+| --------- | ---------------------------- | ---------------------------------------------- | :----: |
+| label     | 展示文本                     | `string \| number \| (() => string \| number)` |  `-`   |
+| value     | 唯一标识                     | `string \| number`                             |  `-`   |
+| itemProps | 透传给默认 `<sd-tag>` 的属性 | `Record<string, unknown>`                      |  `-`   |
+
+说明：当 `options` 传入对象时，除 `label`、`value`、`itemProps` 之外的字段也会透传给默认标签项，便于直接复用 `Tag` 的颜色、边框等属性。
+
+### `<tag-group>` Slots
+
+| 插槽名  | 描述                         | 参数                                                                                                                                                                                                                                   |
+| ------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| default | `options` 为空时的兜底内容   | -                                                                                                                                                                                                                                      |
+| label   | 自定义默认标签内部的文本内容 | data: `TagGroupOption`                                                                                                                                                                                                                 |
+| item    | 自定义普通项渲染             | data: `TagGroupOption`<br />label: `string \| number`<br />value: `string \| number`<br />index: `number`<br />itemClass: `ClassValue`<br />itemStyle: `CSSProperties \| undefined`<br />isOverflow: `boolean`<br />measure: `boolean` |
+| counter | 自定义折叠计数器渲染         | label: `string`<br />value: `string`<br />hiddenCount: `number`<br />measure: `boolean`<br />counterClass: `ClassValue`                                                                                                                |

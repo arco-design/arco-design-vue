@@ -1,0 +1,108 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+
+@forward '@components/tag-group/style/token.scss';
+
+@use '@components/tag-group/style/token.scss' as *;
+
+$tag-group-prefix-cls: string.unquote('#{theme.$prefix}-tag-group');
+$tag-prefix-cls: string.unquote('#{theme.$prefix}-tag');
+$link-prefix-cls: string.unquote('#{theme.$prefix}-link');
+
+.#{$tag-group-prefix-cls} {
+  position: relative;
+  display: inline-flex;
+  min-width: 0;
+  max-width: 100%;
+  vertical-align: middle;
+
+  &-responsive {
+    display: block;
+    width: 100%;
+  }
+
+  &-inner,
+  &-popover {
+    display: inline-flex;
+    gap: $tag-group-gap;
+    align-items: center;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &-responsive &-inner {
+    display: flex;
+    width: 100%;
+  }
+
+  &-popover {
+    flex-wrap: wrap;
+    max-width: $tag-group-popover-max-width;
+  }
+
+  &-item {
+    display: inline-flex;
+    flex: 0 1 auto;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  &-item-counter > .#{$tag-prefix-cls} {
+    cursor: pointer;
+  }
+
+  &-item-content {
+    max-width: 100%;
+  }
+
+  &-counter-content {
+    max-width: 100%;
+  }
+
+  &-item-content-overflow {
+    min-width: 0;
+  }
+
+  &-item-content > .#{$tag-prefix-cls},
+  &-counter-content > .#{$tag-prefix-cls},
+  &-item-content > .#{$link-prefix-cls},
+  &-counter-content > .#{$link-prefix-cls},
+  &-item-content > a,
+  &-counter-content > a,
+  &-item-content > span,
+  &-counter-content > span {
+    max-width: 100%;
+  }
+
+  &-item-ellipsis {
+    max-width: 100%;
+  }
+
+  &-measure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    display: inline-flex;
+    gap: $tag-group-gap;
+    align-items: center;
+    height: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  &-measure &-item {
+    flex: 0 0 auto;
+    max-width: none;
+  }
+
+  &-resize-observer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+}

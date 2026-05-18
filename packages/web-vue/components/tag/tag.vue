@@ -3,17 +3,31 @@
     <span v-if="$slots.icon" :class="`${prefixCls}-icon`">
       <slot name="icon" />
     </span>
-    <span v-if="nowrap" :class="`${prefixCls}-text`">
+    <component
+      :is="ellipsisComponent"
+      v-if="shouldRenderEllipsis"
+      :class="`${prefixCls}-text`"
+      :line-clamp="ellipsisLineClamp"
+      :expand-trigger="ellipsisExpandTrigger"
+      :tooltip="ellipsisTooltip"
+    >
+      <slot />
+      <template v-if="$slots.tooltip" #tooltip>
+        <slot name="tooltip" />
+      </template>
+    </component>
+    <span v-else-if="$slots.default" :class="`${prefixCls}-text`">
       <slot />
     </span>
-    <slot v-else />
     <icon-hover
       v-if="closable"
+      tabindex="0"
       role="button"
       aria-label="Close"
       :prefix="prefixCls"
       :class="`${prefixCls}-close-btn`"
       @click.stop="handleClose"
+      @keydown.stop.prevent="handleCloseKeydown"
     >
       <slot name="close-icon">
         <icon-close />
@@ -33,6 +47,7 @@
   import { useSize } from '../_hooks/use-size';
   import { getPrefixCls } from '../_utils/global-config';
   import { configProviderInjectionKey } from '../config-provider/context';
+  import Ellipsis, { PerformantEllipsis } from '../ellipsis';
   import IconClose from '../icon/icon-close';
   import IconLoading from '../icon/icon-loading';
   import { TAG_COLORS, TagColor } from './interface';
@@ -40,9 +55,11 @@
   export default defineComponent({
     name: 'Tag',
     components: {
+      Ellipsis,
       IconHover,
       IconClose,
       IconLoading,
+      PerformantEllipsis,
     },
     props: {
       /**
@@ -136,6 +153,49 @@
        */
       nowrap: {
         type: Boolean,
+        default: undefined,
+      },
+      /**
+       * @zh 是否开启默认内容省略
+       * @en Whether to enable ellipsis for the default slot content
+       * @defaultValue true
+       */
+      ellipsis: {
+        type: Boolean,
+        default: undefined,
+      },
+      /**
+       * @zh 默认内容省略的最大显示行数
+       * @en Maximum number of displayed lines for ellipsis content
+       */
+      ellipsisLineClamp: {
+        type: [Number, String] as PropType<number | string>,
+        default: undefined,
+      },
+      /**
+       * @zh 省略内容的展开触发方式
+       * @en Trigger mode for ellipsis expansion
+       * @values 'click'
+       */
+      ellipsisExpandTrigger: {
+        type: String as PropType<'click'>,
+        default: undefined,
+      },
+      /**
+       * @zh 省略时是否展示提示。可传入 Tooltip 属性。
+       * @en Whether to show a tooltip when ellipsis is active. Tooltip props are supported.
+       * @defaultValue true
+       */
+      ellipsisTooltip: {
+        type: [Boolean, Object] as PropType<boolean | Record<string, unknown>>,
+        default: true,
+      },
+      /**
+       * @zh 是否使用高性能省略实现
+       * @en Whether to use the performant ellipsis implementation
+       */
+      ellipsisPerformant: {
+        type: Boolean,
         default: false,
       },
     },
@@ -145,9 +205,9 @@
       /**
        * @zh 点击关闭按钮时触发
        * @en Emitted when the close button is clicked
-       * @param {MouseEvent} ev
+       * @param {MouseEvent | KeyboardEvent} ev
        */
-      'close': (_ev: MouseEvent) => true,
+      'close': (_ev: MouseEvent | KeyboardEvent) => true,
       /**
        * @zh 用户选中时触发（仅在可选中模式下触发）
        * @en Emitted when the user check (emit only in the checkable mode)
@@ -166,7 +226,7 @@
      * @en Close button icon
      * @slot close-icon
      */
-    setup(props, { emit }) {
+    setup(props, { emit, slots }) {
       const { size } = toRefs(props);
       const prefixCls = getPrefixCls('tag');
       const isBuiltInColor = computed(() => props.color && TAG_COLORS.includes(props.color as any));
@@ -184,11 +244,28 @@
         }
         return _mergedSize.value;
       });
+      const hasDefaultSlot = computed(() => Boolean(slots.default));
+      const resolvedEllipsis = computed(() => props.ellipsis ?? props.nowrap ?? true);
+      const shouldRenderEllipsis = computed(() => resolvedEllipsis.value && hasDefaultSlot.value);
+      const hasLineClampEllipsis = computed(
+        () => shouldRenderEllipsis.value && props.ellipsisLineClamp !== undefined,
+      );
+      const ellipsisComponent = computed(() =>
+        props.ellipsisPerformant ? PerformantEllipsis : Ellipsis,
+      );
 
-      const handleClose = (ev: MouseEvent) => {
+      const handleClose = (ev: MouseEvent | KeyboardEvent) => {
         _visible.value = false;
         emit('update:visible', false);
         emit('close', ev);
+      };
+
+      const handleCloseKeydown = (ev: KeyboardEvent) => {
+        if (ev.key !== 'Enter' && ev.key !== ' ') {
+          return;
+        }
+
+        handleClose(ev);
       };
 
       const handleClick = (ev: MouseEvent) => {
@@ -206,8 +283,11 @@
         prefixCls,
         `${prefixCls}-size-${mergedSize.value}`,
         {
+          [`${prefixCls}-ellipsis`]: shouldRenderEllipsis.value,
+          [`${prefixCls}-ellipsis-line-clamp`]: hasLineClampEllipsis.value,
           [`${prefixCls}-loading`]: props.loading,
           [`${prefixCls}-hide`]: !computedVisible.value,
+          [`${prefixCls}-no-ellipsis`]: !shouldRenderEllipsis.value,
           [`${prefixCls}-${props.color}`]: isBuiltInColor.value,
           [`${prefixCls}-bordered`]: props.bordered,
           [`${prefixCls}-checkable`]: props.checkable,
@@ -232,8 +312,11 @@
         style,
         computedVisible,
         computedChecked,
+        ellipsisComponent,
         handleClick,
         handleClose,
+        handleCloseKeydown,
+        shouldRenderEllipsis,
       };
     },
   });

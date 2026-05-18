@@ -211,6 +211,10 @@ export const docsSidebar = [
             label: '标签 Tag',
           },
           {
+            slug: 'components/tag-group',
+            label: '标签组 TagGroup',
+          },
+          {
             slug: 'components/timeline',
             label: '时间轴 Timeline',
           },

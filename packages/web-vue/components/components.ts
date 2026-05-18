@@ -122,6 +122,7 @@ declare module 'vue' {
     SdTabs: SDVue['Tabs'];
     SdTabPane: SDVue['TabPane'];
     SdTag: SDVue['Tag'];
+    SdTagGroup: SDVue['TagGroup'];
     SdTextarea: SDVue['Textarea'];
     SdTimePicker: SDVue['TimePicker'];
     SdTimeline: SDVue['Timeline'];

@@ -1,0 +1,6 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+
+$tag-group-gap: global.$spacing-2;
+$tag-group-popover-max-width: 320px;

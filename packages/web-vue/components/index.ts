@@ -393,6 +393,15 @@ export type {
 } from './tabs';
 export { default as Tag } from './tag';
 export type { TagColor, TagInstance, TagProps } from './tag';
+export { default as TagGroup } from './tag-group';
+export type {
+  TagGroupFieldNames,
+  TagGroupInstance,
+  TagGroupObjectOption,
+  TagGroupOption,
+  TagGroupOptionLabel,
+  TagGroupProps,
+} from './tag-group';
 export { default as Textarea } from './textarea';
 export type { TextareaInstance } from './textarea';
 export { default as TimePicker } from './time-picker';

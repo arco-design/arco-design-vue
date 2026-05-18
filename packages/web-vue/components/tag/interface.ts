@@ -1,3 +1,5 @@
+import type { EllipsisTooltipProps } from '../ellipsis';
+
 export const TAG_COLORS = [
   'red',
   'orangered',
@@ -21,12 +23,17 @@ export interface TagProps {
    * @zh 标签的颜色
    * @en Label color
    */
-  color?: TagColor | string;
+  color?: string;
   /**
    * @zh 标签的大小
    * @en Label size
    */
   size?: 'small' | 'medium' | 'large';
+  /**
+   * @zh 是否显示边框
+   * @en Whether the tag is bordered
+   */
+  bordered?: boolean;
   /**
    * @zh 标签是否可见
    * @en Whether the tag is visible
@@ -62,4 +69,37 @@ export interface TagProps {
    * @en Whether the tag is checked by default (available when the tag is checkable)
    */
   defaultChecked?: boolean;
+  /**
+   * @zh 标签内容不换行。已废弃，建议改用 ellipsis。
+   * @en Tag content does not wrap. Deprecated, use ellipsis instead.
+   */
+  nowrap?: boolean;
+  /**
+   * @zh 是否开启默认内容省略
+   * @en Whether to enable ellipsis for the default slot content
+   * @defaultValue true
+   */
+  ellipsis?: boolean;
+  /**
+   * @zh 默认内容省略的最大显示行数
+   * @en Maximum number of displayed lines for ellipsis content
+   */
+  ellipsisLineClamp?: number | string;
+  /**
+   * @zh 省略内容的展开触发方式
+   * @en Trigger mode for ellipsis expansion
+   * @values 'click'
+   */
+  ellipsisExpandTrigger?: 'click';
+  /**
+   * @zh 省略时是否展示提示。可传入 Tooltip 属性。
+   * @en Whether to show a tooltip when ellipsis is active. Tooltip props are supported.
+   * @defaultValue true
+   */
+  ellipsisTooltip?: boolean | EllipsisTooltipProps;
+  /**
+   * @zh 是否使用高性能省略实现
+   * @en Whether to use the performant ellipsis implementation
+   */
+  ellipsisPerformant?: boolean;
 }

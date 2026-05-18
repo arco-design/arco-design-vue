@@ -3,13 +3,26 @@
 exports[`<tag> demo: > render [basic] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if-->Default<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Default</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if-->Tag 1<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Tag 1</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if-->Tag 2<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Tag 2</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><span class="sd-tag-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-check-circle-fill" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" fill-rule="evenodd" stroke="none" d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20m10.207-24.379a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0L22 26.172l-4.878-4.88a1 1 0 0 0-1.415 0l-1.414 1.415a1 1 0 0 0 0 1.414l7 7a1 1 0 0 0 1.414 0z" clip-rule="evenodd"></path></svg></span> Complete
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><span class="sd-tag-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-check-circle-fill" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" fill-rule="evenodd" stroke="none" d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20m10.207-24.379a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0L22 26.172l-4.878-4.88a1 1 0 0 0-1.415 0l-1.414 1.415a1 1 0 0 0 0 1.414l7 7a1 1 0 0 0 1.414 0z" clip-rule="evenodd"></path></svg></span><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content"> Complete </span></span>
+    <!---->
     <!--v-if-->
     <!--v-if--></span>
   </div>
@@ -19,53 +32,119 @@ exports[`<tag> demo: > render [basic] correctly 1`] = `
 exports[`<tag> demo: > render [bordered] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center sd-space-wrap" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-bordered sd-tag-checked"><!--v-if-->default<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-bordered sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">default</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-orangered sd-tag-bordered sd-tag-checked"><!--v-if-->orangered<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-orangered sd-tag-bordered sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">orangered</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-orange sd-tag-bordered sd-tag-checked"><!--v-if-->orange<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-orange sd-tag-bordered sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">orange</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-gold sd-tag-bordered sd-tag-checked"><!--v-if-->gold<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-gold sd-tag-bordered sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">gold</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-lime sd-tag-bordered sd-tag-checked"><!--v-if-->lime<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-lime sd-tag-bordered sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">lime</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-green sd-tag-bordered sd-tag-checked"><!--v-if-->green<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-green sd-tag-bordered sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">green</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-cyan sd-tag-bordered sd-tag-checked"><!--v-if-->cyan<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-cyan sd-tag-bordered sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">cyan</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-blue sd-tag-bordered sd-tag-checked"><!--v-if-->blue<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-blue sd-tag-bordered sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">blue</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-sdblue sd-tag-bordered sd-tag-checked"><!--v-if-->sdblue<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-sdblue sd-tag-bordered sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">sdblue</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-purple sd-tag-bordered sd-tag-checked"><!--v-if-->purple<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-purple sd-tag-bordered sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">purple</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-pinkpurple sd-tag-bordered sd-tag-checked"><!--v-if-->pinkpurple<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-pinkpurple sd-tag-bordered sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">pinkpurple</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-magenta sd-tag-bordered sd-tag-checked"><!--v-if-->magenta<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-magenta sd-tag-bordered sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">magenta</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-gray sd-tag-bordered sd-tag-checked"><!--v-if-->gray<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-gray sd-tag-bordered sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">gray</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
 </div>
 `;
 
 exports[`<tag> demo: > render [checkable] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checkable sd-tag-checked"><!--v-if-->Awesome<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checkable sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Awesome</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-red sd-tag-checkable sd-tag-checked"><!--v-if-->Toutiao<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-red sd-tag-checkable sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Toutiao</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-sdblue sd-tag-checkable sd-tag-checked"><!--v-if-->Lark<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-sdblue sd-tag-checkable sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Lark</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
 </div>
 `;
 
 exports[`<tag> demo: > render [closeable] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if-->Tag<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Tag</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><span class="sd-tag-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-star" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M22.552 6.908a.5.5 0 0 1 .896 0l5.02 10.17a.5.5 0 0 0 .376.274l11.224 1.631a.5.5 0 0 1 .277.853l-8.122 7.916a.5.5 0 0 0-.143.443l1.917 11.178a.5.5 0 0 1-.726.527l-10.038-5.278a.5.5 0 0 0-.466 0L12.73 39.9a.5.5 0 0 1-.726-.527l1.918-11.178a.5.5 0 0 0-.144-.443l-8.122-7.916a.5.5 0 0 1 .278-.853l11.223-1.63a.5.5 0 0 0 .376-.274z"></path></svg></span> Tag <span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><span class="sd-tag-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-star" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M22.552 6.908a.5.5 0 0 1 .896 0l5.02 10.17a.5.5 0 0 0 .376.274l11.224 1.631a.5.5 0 0 1 .277.853l-8.122 7.916a.5.5 0 0 0-.143.443l1.917 11.178a.5.5 0 0 1-.726.527l-10.038-5.278a.5.5 0 0 0-.466 0L12.73 39.9a.5.5 0 0 1-.726-.527l1.918-11.178a.5.5 0 0 0-.144-.443l-8.122-7.916a.5.5 0 0 1 .278-.853l11.223-1.63a.5.5 0 0 0 .376-.274z"></path></svg></span><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content"> Tag </span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
 </div>
@@ -74,110 +153,136 @@ exports[`<tag> demo: > render [closeable] correctly 1`] = `
 exports[`<tag> demo: > render [color] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center sd-space-wrap" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-red sd-tag-checked"><!--v-if-->red<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-red sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">red</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-orangered sd-tag-checked"><!--v-if-->orangered<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-orangered sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">orangered</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-orange sd-tag-checked"><!--v-if-->orange<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-orange sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">orange</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-gold sd-tag-checked"><!--v-if-->gold<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-gold sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">gold</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-lime sd-tag-checked"><!--v-if-->lime<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-lime sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">lime</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-green sd-tag-checked"><!--v-if-->green<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-green sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">green</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-cyan sd-tag-checked"><!--v-if-->cyan<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-cyan sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">cyan</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-blue sd-tag-checked"><!--v-if-->blue<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-blue sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">blue</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-sdblue sd-tag-checked"><!--v-if-->sdblue<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-sdblue sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">sdblue</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-purple sd-tag-checked"><!--v-if-->purple<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-purple sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">purple</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-pinkpurple sd-tag-checked"><!--v-if-->pinkpurple<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-pinkpurple sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">pinkpurple</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-magenta sd-tag-checked"><!--v-if-->magenta<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-magenta sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">magenta</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-gray sd-tag-checked"><!--v-if-->gray<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-gray sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">gray</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
 </div>
 <h3>Custom Color:</h3>
 <div class="sd-space sd-space-horizontal sd-space-align-center sd-space-wrap" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(245, 63, 63);"><!--v-if-->#f53f3f<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(245, 63, 63);"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">#f53f3f</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(120, 22, 255);"><!--v-if-->#7816ff<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(120, 22, 255);"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">#7816ff</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(0, 180, 42);"><!--v-if-->#00b42a<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(0, 180, 42);"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">#00b42a</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(22, 93, 255);"><!--v-if-->#165dff<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(22, 93, 255);"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">#165dff</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(255, 125, 0);"><!--v-if-->#ff7d00<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(255, 125, 0);"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">#ff7d00</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(235, 10, 164);"><!--v-if-->#eb0aa4<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(235, 10, 164);"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">#eb0aa4</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(123, 198, 22);"><!--v-if-->#7bc616<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(123, 198, 22);"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">#7bc616</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(134, 144, 156);"><!--v-if-->#86909c<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(134, 144, 156);"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">#86909c</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(183, 29, 232);"><!--v-if-->#b71de8<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(183, 29, 232);"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">#b71de8</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(15, 198, 194);"><!--v-if-->#0fc6c2<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(15, 198, 194);"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">#0fc6c2</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(255, 180, 0);"><!--v-if-->#ffb400<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(255, 180, 0);"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">#ffb400</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(22, 140, 255);"><!--v-if-->#168cff<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(22, 140, 255);"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">#168cff</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(255, 87, 34);"><!--v-if-->#ff5722<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-custom-color" style="background-color: rgb(255, 87, 34);"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">#ff5722</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
 </div>
@@ -186,17 +291,24 @@ exports[`<tag> demo: > render [color] correctly 1`] = `
 exports[`<tag> demo: > render [dynamically] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center sd-space-wrap" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if-->Tag 1<!--v-if--><!--v-if--></span></div>
-  <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if-->Tag 2<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Tag 1</span></span>
+    <!---->
+    <!--v-if-->
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if-->Tag 3<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Tag 2</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd:w-[90px] sd:cursor-pointer sd:border sd:border-dashed sd:border-[var(--color-fill-3)] sd:bg-[var(--color-fill-2)]"><span class="sd-tag-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></span> Add Tag
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Tag 3</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+    <!--v-if--></span>
+  </div>
+  <!---->
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd:w-[90px] sd:cursor-pointer sd:border sd:border-dashed sd:border-[var(--color-fill-3)] sd:bg-[var(--color-fill-2)]"><span class="sd-tag-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></span><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content"> Add Tag </span></span>
+    <!---->
     <!--v-if-->
     <!--v-if--></span>
   </div>
@@ -206,37 +318,57 @@ exports[`<tag> demo: > render [dynamically] correctly 1`] = `
 exports[`<tag> demo: > render [icon] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-gray sd-tag-checked"><span class="sd-tag-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-github" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M.056 24.618c0 10.454 6.7 19.344 16.038 22.608 1.259.32 1.067-.582 1.067-1.19v-4.148c-7.265.853-7.553-3.957-8.043-4.758-.987-1.686-3.312-2.112-2.62-2.912 1.654-.853 3.34.213 5.291 3.1 1.413 2.09 4.166 1.738 5.562 1.385a6.8 6.8 0 0 1 1.856-3.253C11.687 34.112 8.55 29.519 8.55 24.057c0-2.646.874-5.082 2.586-7.045-1.088-3.243.102-6.01.26-6.422 3.11-.282 6.337 2.225 6.587 2.421 1.766-.474 3.782-.73 6.038-.73 2.266 0 4.293.26 6.069.74.603-.458 3.6-2.608 6.49-2.345.155.41 1.317 3.12.294 6.315 1.734 1.968 2.62 4.422 2.62 7.077 0 5.472-3.158 10.07-10.699 11.397a6.82 6.82 0 0 1 2.037 4.875v6.02c.042.48 0 .96.806.96 9.477-3.194 16.299-12.15 16.299-22.697C47.938 11.396 37.218.68 23.996.68 10.77.675.055 11.391.055 24.617z"></path></svg></span> Github
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-gray sd-tag-checked"><span class="sd-tag-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-github" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M.056 24.618c0 10.454 6.7 19.344 16.038 22.608 1.259.32 1.067-.582 1.067-1.19v-4.148c-7.265.853-7.553-3.957-8.043-4.758-.987-1.686-3.312-2.112-2.62-2.912 1.654-.853 3.34.213 5.291 3.1 1.413 2.09 4.166 1.738 5.562 1.385a6.8 6.8 0 0 1 1.856-3.253C11.687 34.112 8.55 29.519 8.55 24.057c0-2.646.874-5.082 2.586-7.045-1.088-3.243.102-6.01.26-6.422 3.11-.282 6.337 2.225 6.587 2.421 1.766-.474 3.782-.73 6.038-.73 2.266 0 4.293.26 6.069.74.603-.458 3.6-2.608 6.49-2.345.155.41 1.317 3.12.294 6.315 1.734 1.968 2.62 4.422 2.62 7.077 0 5.472-3.158 10.07-10.699 11.397a6.82 6.82 0 0 1 2.037 4.875v6.02c.042.48 0 .96.806.96 9.477-3.194 16.299-12.15 16.299-22.697C47.938 11.396 37.218.68 23.996.68 10.77.675.055 11.391.055 24.617z"></path></svg></span><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content"> Github </span></span>
+    <!---->
     <!--v-if-->
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-orangered sd-tag-checked"><span class="sd-tag-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-gitlab" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M45.53 26.154 39.694 6.289v-.005c-.407-1.227-1.376-1.955-2.587-1.955-1.254 0-2.277.723-2.663 1.885L30.62 17.625H17.4l-3.825-11.41c-.386-1.163-1.41-1.886-2.663-1.886-1.237 0-2.276.792-2.592 1.96l-5.83 19.865a2.05 2.05 0 0 0 .724 2.18l19.741 14.807c.14.193.332.338.557.418l.461.343.455-.343c.263-.091.483-.252.638-.477L44.8 28.33a2.03 2.03 0 0 0 .728-2.175M36.84 6.932c.053-.096.155-.102.187-.102.06 0 .134.016.182.161l3.183 10.704H33.24zm-26.11.054c.047-.14.122-.156.181-.156.145 0 .156.006.183.091L14.699 17.7H7.633zM5.076 26.502l1.511-5.213 10.843 14.475zm3.96-6.236h6.54l4.865 15.23zm15.01 17.877-5.743-17.877h11.48zm8.459-17.877h6.402L27.642 35.31zm-2.18 15.745L41.43 21.187l1.58 5.315z"></path></svg></span> Gitlab
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-orangered sd-tag-checked"><span class="sd-tag-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-gitlab" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M45.53 26.154 39.694 6.289v-.005c-.407-1.227-1.376-1.955-2.587-1.955-1.254 0-2.277.723-2.663 1.885L30.62 17.625H17.4l-3.825-11.41c-.386-1.163-1.41-1.886-2.663-1.886-1.237 0-2.276.792-2.592 1.96l-5.83 19.865a2.05 2.05 0 0 0 .724 2.18l19.741 14.807c.14.193.332.338.557.418l.461.343.455-.343c.263-.091.483-.252.638-.477L44.8 28.33a2.03 2.03 0 0 0 .728-2.175M36.84 6.932c.053-.096.155-.102.187-.102.06 0 .134.016.182.161l3.183 10.704H33.24zm-26.11.054c.047-.14.122-.156.181-.156.145 0 .156.006.183.091L14.699 17.7H7.633zM5.076 26.502l1.511-5.213 10.843 14.475zm3.96-6.236h6.54l4.865 15.23zm15.01 17.877-5.743-17.877h11.48zm8.459-17.877h6.402L27.642 35.31zm-2.18 15.745L41.43 21.187l1.58 5.315z"></path></svg></span><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content"> Gitlab </span></span>
+    <!---->
     <!--v-if-->
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-blue sd-tag-checked"><span class="sd-tag-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-twitter" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M43.277 13.575c0 16.613-10.912 28.575-26.962 29.1-6.788.525-11.438-1.537-15.6-4.65 4.65.525 10.912-1.012 13.987-4.163-4.65 0-7.275-2.625-8.812-6.187h4.162C5.89 26.1 2.74 22.988 2.74 17.813c1.012.524 2.062 1.012 4.162 1.012-3.637-2.062-5.7-8.812-3.112-12.975 4.65 5.175 10.35 9.863 19.762 10.35C20.927 5.85 34.465.6 40.165 7.388c2.625-.525 4.162-1.538 6.187-2.625-.525 2.625-2.062 4.162-4.162 5.175 2.062 0 3.637-.525 5.175-1.538-.488 2.063-2.55 4.163-4.088 5.175"></path></svg></span> Twitter
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-blue sd-tag-checked"><span class="sd-tag-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-twitter" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M43.277 13.575c0 16.613-10.912 28.575-26.962 29.1-6.788.525-11.438-1.537-15.6-4.65 4.65.525 10.912-1.012 13.987-4.163-4.65 0-7.275-2.625-8.812-6.187h4.162C5.89 26.1 2.74 22.988 2.74 17.813c1.012.524 2.062 1.012 4.162 1.012-3.637-2.062-5.7-8.812-3.112-12.975 4.65 5.175 10.35 9.863 19.762 10.35C20.927 5.85 34.465.6 40.165 7.388c2.625-.525 4.162-1.538 6.187-2.625-.525 2.625-2.062 4.162-4.162 5.175 2.062 0 3.637-.525 5.175-1.538-.488 2.063-2.55 4.163-4.088 5.175"></path></svg></span><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content"> Twitter </span></span>
+    <!---->
     <!--v-if-->
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-sdblue sd-tag-checked"><span class="sd-tag-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-facebook" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M35.184 15.727 34.312 24h-6.613v24h-9.933V24h-4.95v-8.273h4.95v-4.98C17.766 4.016 20.564 0 28.518 0h6.61v8.273H30.99c-3.086 0-3.292 1.166-3.292 3.32v4.134z"></path></svg></span> Facebook
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-sdblue sd-tag-checked"><span class="sd-tag-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-facebook" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M35.184 15.727 34.312 24h-6.613v24h-9.933V24h-4.95v-8.273h4.95v-4.98C17.766 4.016 20.564 0 28.518 0h6.61v8.273H30.99c-3.086 0-3.292 1.166-3.292 3.32v4.134z"></path></svg></span><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content"> Facebook </span></span>
+    <!---->
     <!--v-if-->
     <!--v-if--></span>
   </div>
 </div>
 `;
 
-exports[`<tag> demo: > render [loading] correctly 1`] = `<span class="sd-tag sd-tag-size-medium sd-tag-loading sd-tag-checked"><!--v-if-->Loading<!--v-if--><span class="sd-tag-loading-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-loading" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path></svg></span></span>`;
+exports[`<tag> demo: > render [loading] correctly 1`] = `
+<span class="sd-tag sd-tag-size-medium sd-tag-loading sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Loading</span></span>
+<!---->
+<!--v-if--><span class="sd-tag-loading-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-loading" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path></svg></span></span>
+`;
 
 exports[`<tag> demo: > render [size] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-large sd-tag-checked"><!--v-if-->Large<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-large sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Large</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if-->Medium<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Medium</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-small sd-tag-checked"><!--v-if-->Small<!--v-if--><!--v-if--></span></div>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-small sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Small</span></span>
+    <!---->
+    <!--v-if-->
+    <!--v-if--></span>
+  </div>
 </div>
 `;

@@ -37,11 +37,11 @@ $colors:
   font-weight: $tag-text-font-weight;
   font-size: $tag-size-default-font-size;
   line-height: $tag-size-default - $tag-border-width * 2 - $tag-padding-vertical * 2;
+  white-space: nowrap;
   vertical-align: middle;
   border: $tag-border-width $tag-border-type transparent;
   border-radius: $tag-border-radius;
 
-  @include text-ellipsis();
   @include icon-hover.icon-hover($tag-prefix-cls, 12px, 16px);
   @include icon-hover.icon-hover-bg($tag-prefix-cls, $tag-default-color-bg_hover);
 
@@ -103,9 +103,21 @@ $colors:
   }
 
   &-text {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  &-ellipsis-line-clamp {
+    height: auto;
+  }
+
+  &-no-ellipsis {
+    min-width: fit-content;
+
+    .#{$tag-prefix-cls}-text {
+      min-width: fit-content;
+      max-width: none;
+    }
   }
 
   @each $value in $colors {
