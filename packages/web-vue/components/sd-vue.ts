@@ -63,6 +63,7 @@ import Rate from './rate';
 import ResizeBox from './resize-box';
 import Result from './result';
 import Scrollbar from './scrollbar';
+import Secret from './secret';
 import Select, { Option, Optgroup } from './select';
 import Skeleton, { SkeletonLine, SkeletonShape } from './skeleton';
 import Slider from './slider';
@@ -131,6 +132,7 @@ const components: Record<string, Plugin> = {
   Radio,
   Rate,
   Select,
+  Secret,
   Slider,
   Switch,
   Textarea,

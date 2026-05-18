@@ -97,6 +97,7 @@ declare module 'vue' {
     SdResizeBox: SDVue['ResizeBox'];
     SdResult: SDVue['Result'];
     SdSelect: SDVue['Select'];
+    SdSecret: SDVue['Secret'];
     SdOption: SDVue['Option'];
     SdOptgroup: SDVue['Optgroup'];
     SdSkeleton: SDVue['Skeleton'];

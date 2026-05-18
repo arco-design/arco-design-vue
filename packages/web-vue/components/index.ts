@@ -319,6 +319,8 @@ export type {
   SelectOptionInstance,
   SelectProps,
 } from './select';
+export { default as Secret } from './secret';
+export type { SecretInstance } from './secret';
 export { default as Skeleton, SkeletonLine, SkeletonShape } from './skeleton';
 export type { SkeletonInstance, SkeletonLineInstance, SkeletonShapeInstance } from './skeleton';
 export { default as Slider } from './slider';

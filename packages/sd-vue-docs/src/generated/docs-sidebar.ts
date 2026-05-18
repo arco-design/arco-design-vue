@@ -68,6 +68,10 @@ export const docsSidebar = [
             label: '复制 Copy',
           },
           {
+            slug: 'components/secret',
+            label: '敏感信息 Secret',
+          },
+          {
             slug: 'components/theme-provider',
             label: '主题容器 ThemeProvider',
           },
