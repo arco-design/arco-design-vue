@@ -31,4 +31,27 @@ describe('InputNumber', () => {
     await input.trigger('blur');
     expect(input.element.value).toBe('10');
   });
+
+  test('should keep string model value type on step and clear', async () => {
+    const wrapper = mount(InputNumber, {
+      props: {
+        'modelValue': '2',
+        'allowClear': true,
+        'onUpdate:modelValue': () => {},
+      },
+    });
+
+    const stepButton = wrapper.find('button');
+    await stepButton.trigger('mousedown');
+
+    const updateEvents = wrapper.emitted('update:modelValue');
+    expect(updateEvents?.[0]).toEqual(['3']);
+
+    const input = wrapper.find('input');
+    await input.setValue('');
+    await input.trigger('blur');
+
+    const nextUpdateEvents = wrapper.emitted('update:modelValue');
+    expect(nextUpdateEvents?.at(-1)).toEqual(['']);
+  });
 });

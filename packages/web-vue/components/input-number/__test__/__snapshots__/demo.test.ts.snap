@@ -55,3 +55,20 @@ exports[`<input-number> demo: > render [step-icon] correctly 1`] = `
   <div class="sd-space-item"><span class="sd-input-wrapper sd-input-number sd-input-number-mode-embed sd-input-number-size-medium sd:w-80"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="Please enter something" role="spinbutton" aria-valuemax="Infinity" aria-valuemin="-Infinity" aria-valuenow="" value=""><!----><span class="sd-input-suffix"><!----><!----><div class="sd-input-number-step"><button class="sd-input-number-step-button" type="button" tabindex="-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></button><button class="sd-input-number-step-button" type="button" tabindex="-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-minus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38"></path></svg></button></div><!----></span></span></div>
 </div>
 `;
+
+exports[`<input-number> demo: > render [string-model] correctly 1`] = `
+<div class="sd-space sd-space-vertical" style="column-gap: 24px; row-gap: 24px;">
+  <!---->
+  <div class="sd-space-item"><span class="sd-input-outer sd-input-outer-size-medium sd-input-number sd-input-number-mode-button sd-input-number-size-medium input-demo sd:w-80"><span class="sd-input-prepend"><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd-btn-only-icon sd-input-number-step-button" type="button" tabindex="-1"><span class="sd-btn-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-minus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38"></path></svg></span></button></span><span class="sd-input-wrapper"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="请输入数字" role="spinbutton" aria-valuemax="Infinity" aria-valuemin="-Infinity" aria-valuenow="12" value="12"><span class="sd-icon-hover sd-input-icon-hover sd-input-clear-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+    <!----></span><span class="sd-input-append"><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd-btn-only-icon sd-input-number-step-button" type="button" tabindex="-1"><span class="sd-btn-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></span></button></span></span>
+  </div>
+  <!---->
+  <div class="sd-space-item">
+    <div>当前值：12</div>
+  </div>
+  <!---->
+  <div class="sd-space-item">
+    <div>值类型：string</div>
+  </div>
+</div>
+`;

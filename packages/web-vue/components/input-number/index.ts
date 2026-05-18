@@ -5,8 +5,8 @@ import type { SDOptions } from '../_utils/types';
 import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
 import _InputNumber from './input-number';
 
-export type InputNumberValue = number | undefined;
-export type InputNumberFormatter = (value: string | number | undefined) => string;
+export type InputNumberValue = string | number | null | undefined;
+export type InputNumberFormatter = (value: string | number | null | undefined) => string;
 export type InputNumberParser = (value: string) => string | number;
 export type InputNumberChangeHandler = (value: InputNumberValue, event: Event) => void;
 export type InputNumberInputHandler = (

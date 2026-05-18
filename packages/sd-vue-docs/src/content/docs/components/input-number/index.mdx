@@ -18,6 +18,8 @@ import InputNumberPrefixDemo from '../../../../components/generated/input-number
 import inputNumberPrefixSource from '../../../../components/generated/input-number/prefix.vue?raw';
 import InputNumberSizeDemo from '../../../../components/generated/input-number/size.vue';
 import inputNumberSizeSource from '../../../../components/generated/input-number/size.vue?raw';
+import InputNumberStringModelDemo from '../../../../components/generated/input-number/string-model.vue';
+import inputNumberStringModelSource from '../../../../components/generated/input-number/string-model.vue?raw';
 import InputNumberStepIconDemo from '../../../../components/generated/input-number/step-icon.vue';
 import inputNumberStepIconSource from '../../../../components/generated/input-number/step-icon.vue?raw';
 
@@ -58,6 +60,16 @@ import inputNumberStepIconSource from '../../../../components/generated/input-nu
 <DemoBlock source={inputNumberModelSource} mainFile="src/input-number-model.vue">
 
 <InputNumberModelDemo client:only="vue" />
+
+</DemoBlock>
+
+### 字符串值兼容
+
+当外层表单把数字字段保存为字符串时，组件会保留字符串类型，在步进、输入和清空后仍然按字符串回写。
+
+<DemoBlock source={inputNumberStringModelSource} mainFile="src/input-number-string-model.vue">
+
+<InputNumberStringModelDemo client:only="vue" />
 
 </DemoBlock>
 
@@ -107,8 +119,8 @@ import inputNumberStepIconSource from '../../../../components/generated/input-nu
 
 | 参数名 | 描述 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | :-: | :-- |
-| model-value **(v-model)** | 绑定值 | `number` | `-` |  |
-| default-value | 默认值（非受控模式） | `number` | `-` |  |
+| model-value **(v-model)** | 绑定值，支持数字或数字字符串 | `string \| number \| null` | `-` |  |
+| default-value | 默认值（非受控模式），支持数字或数字字符串 | `string \| number \| null` | `-` |  |
 | mode | 模式（`embed`：按钮内嵌模式，`button`：左右按钮模式） | `'embed' \| 'button'` | `'embed'` |  |
 | precision | 数字精度 | `number` | `-` |  |
 | step | 数字变化步长 | `number` | `1` |  |
@@ -130,11 +142,11 @@ import inputNumberStepIconSource from '../../../../components/generated/input-nu
 
 | 事件名 | 描述 | 参数 | 版本 |
 | --- | --- | --- | :-- |
-| change | 值发生改变时触发 | value: `number \| undefined`<br />ev: `Event` |  |
+| change | 值发生改变时触发；当 `v-model` 为字符串时保留字符串类型 | value: `string \| number \| undefined`<br />ev: `Event` |  |
 | focus | 输入框获取焦点时触发 | ev: `FocusEvent` |  |
 | blur | 输入框失去焦点时触发 | ev: `FocusEvent` |  |
 | clear | 用户点击清除按钮时触发 | ev: `Event` | 2.23.0 |
-| input | 输入时触发 | value: `number \| undefined`<br />inputValue: `string`<br />ev: `Event` | 2.27.0 |
+| input | 输入时触发；当 `v-model` 为字符串时保留字符串类型 | value: `string \| number \| undefined`<br />inputValue: `string`<br />ev: `Event` | 2.27.0 |
 | keydown | 按下键盘时触发 | ev: `MouseEvent` | 2.56.0 |
 
 ### `<input-number>` Methods

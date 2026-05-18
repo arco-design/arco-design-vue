@@ -3,15 +3,15 @@ title: 图片裁剪 Cropper
 description: 基于 cropperjs 的图片裁剪封装，提供选区联动、实例方法和底层元素配置透传。
 ---
 
-import DemoBlock from "../../../../components/docs/DemoBlock.astro";
-import CropperBasicDemo from "../../../../components/generated/cropper/basic.vue";
-import cropperBasicSource from "../../../../components/generated/cropper/basic.vue?raw";
-import CropperAspectRatioDemo from "../../../../components/generated/cropper/aspect-ratio.vue";
-import cropperAspectRatioSource from "../../../../components/generated/cropper/aspect-ratio.vue?raw";
-import CropperControlledDemo from "../../../../components/generated/cropper/controlled.vue";
-import cropperControlledSource from "../../../../components/generated/cropper/controlled.vue?raw";
-import CropperCoverModeDemo from "../../../../components/generated/cropper/cover-mode.vue";
-import cropperCoverModeSource from "../../../../components/generated/cropper/cover-mode.vue?raw";
+import DemoBlock from '../../../../components/docs/DemoBlock.astro';
+import CropperBasicDemo from '../../../../components/generated/cropper/basic.vue';
+import cropperBasicSource from '../../../../components/generated/cropper/basic.vue?raw';
+import CropperAspectRatioDemo from '../../../../components/generated/cropper/aspect-ratio.vue';
+import cropperAspectRatioSource from '../../../../components/generated/cropper/aspect-ratio.vue?raw';
+import CropperControlledDemo from '../../../../components/generated/cropper/controlled.vue';
+import cropperControlledSource from '../../../../components/generated/cropper/controlled.vue?raw';
+import CropperCoverModeDemo from '../../../../components/generated/cropper/cover-mode.vue';
+import cropperCoverModeSource from '../../../../components/generated/cropper/cover-mode.vue?raw';
 
 ### 基本用法
 
@@ -57,20 +57,20 @@ import cropperCoverModeSource from "../../../../components/generated/cropper/cov
 
 ### `<cropper>` Props
 
-| 参数名                 | 描述                                                   | 类型                    |  默认值  |
-| ---------------------- | ------------------------------------------------------ | ----------------------- | :------: |
-| src                    | 裁剪图片地址                                           | `string`                |   `''`   |
-| canvas-props           | 透传给 `CropperCanvas` 的属性                          | `CropperCanvasProps`    |   `{}`   |
-| image-props            | 透传给 `CropperImage` 的属性                           | `CropperImageProps`     |   `{}`   |
-| selection-props        | 透传给 `CropperSelection` 的属性，不包含位置与尺寸控制 | `CropperSelectionProps` |   `{}`   |
-| template               | 自定义 cropperjs 内部模板                              | `string`                |   `-`    |
-| selection-x            | 选区 x 坐标                                            | `number`                |   `-`    |
-| selection-y            | 选区 y 坐标                                            | `number`                |   `-`    |
-| selection-width        | 选区宽度                                               | `number`                |   `-`    |
-| selection-height       | 选区高度                                               | `number`                |   `-`    |
-| width                  | 容器宽度                                               | `string \| number`      | `'100%'` |
-| height                 | 容器高度                                               | `string \| number`      | `'100%'` |
-| fit-selection-to-image | 图片加载完成后是否让选区贴合图片可见区域               | `boolean`               |  `true`  |
+| 参数名 | 描述 | 类型 | 默认值 |
+| --- | --- | --- | :-: |
+| src | 裁剪图片地址 | `string` | `''` |
+| canvas-props | 透传给 `CropperCanvas` 的属性 | `CropperCanvasProps` | `{}` |
+| image-props | 透传给 `CropperImage` 的属性 | `CropperImageProps` | `{}` |
+| selection-props | 透传给 `CropperSelection` 的属性，不包含位置与尺寸控制 | `CropperSelectionProps` | `{}` |
+| template | 自定义 cropperjs 内部模板 | `string` | `-` |
+| selection-x | 选区 x 坐标 | `number` | `-` |
+| selection-y | 选区 y 坐标 | `number` | `-` |
+| selection-width | 选区宽度 | `number` | `-` |
+| selection-height | 选区高度 | `number` | `-` |
+| width | 容器宽度 | `string \| number` | `'100%'` |
+| height | 容器高度 | `string \| number` | `'100%'` |
+| fit-selection-to-image | 图片加载完成后是否让选区贴合图片可见区域 | `boolean` | `true` |
 
 ### `CropperCanvasProps`
 
@@ -108,18 +108,18 @@ import cropperCoverModeSource from "../../../../components/generated/cropper/cov
 
 ### `<cropper>` Events
 
-| 事件名                 | 描述                     | 参数                                                              |
-| ---------------------- | ------------------------ | ----------------------------------------------------------------- |
-| selection:change       | 选区位置或尺寸变化时触发 | `detail: { x: number; y: number; width: number; height: number }` |
-| update:selectionX      | 选区 x 坐标更新时触发    | `value: number`                                                   |
-| update:selectionY      | 选区 y 坐标更新时触发    | `value: number`                                                   |
-| update:selectionWidth  | 选区宽度更新时触发       | `value: number`                                                   |
-| update:selectionHeight | 选区高度更新时触发       | `value: number`                                                   |
-| canvas:action          | 画布动作状态变化时触发   | `detail: unknown`                                                 |
-| canvas:actionstart     | 指针按下时触发           | `detail: unknown`                                                 |
-| canvas:actionmove      | 指针移动时触发           | `detail: unknown`                                                 |
-| canvas:actionend       | 指针抬起时触发           | `detail: unknown`                                                 |
-| image:transform        | 图片变换矩阵变化时触发   | `detail: { matrix: number[]; oldMatrix: number[] }`               |
+| 事件名 | 描述 | 参数 |
+| --- | --- | --- |
+| selection:change | 选区位置或尺寸变化时触发 | `detail: { x: number; y: number; width: number; height: number }` |
+| update:selectionX | 选区 x 坐标更新时触发 | `value: number` |
+| update:selectionY | 选区 y 坐标更新时触发 | `value: number` |
+| update:selectionWidth | 选区宽度更新时触发 | `value: number` |
+| update:selectionHeight | 选区高度更新时触发 | `value: number` |
+| canvas:action | 画布动作状态变化时触发 | `detail: unknown` |
+| canvas:actionstart | 指针按下时触发 | `detail: unknown` |
+| canvas:actionmove | 指针移动时触发 | `detail: unknown` |
+| canvas:actionend | 指针抬起时触发 | `detail: unknown` |
+| image:transform | 图片变换矩阵变化时触发 | `detail: { matrix: number[]; oldMatrix: number[] }` |
 
 ### `<cropper>` Methods
 

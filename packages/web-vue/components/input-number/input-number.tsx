@@ -17,6 +17,8 @@ import IconUp from '../icon/icon-up';
 import SDInput from '../input';
 
 type StepMethods = 'minus' | 'plus';
+type InputNumberValue = string | number | null | undefined;
+type InputNumberValueMode = 'string' | 'number';
 
 const FIRST_DELAY = 800;
 const SPEED = 150;
@@ -30,12 +32,16 @@ export default defineComponent({
      * @zh 绑定值
      * @en Value
      */
-    modelValue: Number,
+    modelValue: {
+      type: [String, Number] as PropType<string | number>,
+    },
     /**
      * @zh 默认值（非受控模式）
      * @en Default value (uncontrolled mode)
      */
-    defaultValue: Number,
+    defaultValue: {
+      type: [String, Number] as PropType<string | number>,
+    },
     /**
      * @zh 模式（`embed`：按钮内嵌模式，`button`：左右按钮模式）
      * @en Mode (`embed`: button embedded mode, `button`: left and right button mode)
@@ -161,14 +167,14 @@ export default defineComponent({
     },
   },
   emits: {
-    'update:modelValue': (_value: number | undefined) => true,
+    'update:modelValue': (_value: InputNumberValue) => true,
     /**
      * @zh 值发生改变时触发
      * @en Triggered when the value changes
      * @param { number | undefined } value
      * @param {Event} ev
      */
-    'change': (_value: number | undefined, _ev: Event) => true,
+    'change': (_value: InputNumberValue, _ev: Event) => true,
     /**
      * @zh 输入框获取焦点时触发
      * @en Triggered when the input gets focus
@@ -196,7 +202,7 @@ export default defineComponent({
      * @param {Event} ev
      * @version 2.27.0
      */
-    'input': (_value: number | undefined, _inputValue: string, _ev: Event) => true,
+    'input': (_value: InputNumberValue, _inputValue: string, _ev: Event) => true,
     /**
      * @zh 按下键盘时触发
      * @en Triggered on keydown
@@ -249,14 +255,35 @@ export default defineComponent({
     });
     const { mergedSize } = useSize(_mergedSize);
     const { mergedAllowClear } = useAllowClear(allowClear);
+    const valueMode = ref<InputNumberValueMode>(
+      typeof (props.modelValue ?? props.defaultValue) === 'string' ? 'string' : 'number',
+    );
     const mergedPrecision = computed(() => {
       if (isNumber(props.precision)) {
         const decimal = `${props.step}`.split('.')[1];
-        const stepPrecision = (decimal && decimal.length) || 0;
+        const stepPrecision = decimal?.length || 0;
         return Math.max(stepPrecision, props.precision);
       }
       return undefined;
     });
+
+    const getNumberValue = (value: InputNumberValue) => {
+      if (isUndefined(value) || value === null || value === '') {
+        return undefined;
+      }
+
+      if (typeof value === 'number') {
+        return Number.isNaN(value) ? undefined : value;
+      }
+
+      const normalizedValue = value.trim();
+      if (!normalizedValue || /^[-.]$/.test(normalizedValue)) {
+        return undefined;
+      }
+
+      const parsed = Number(props.parser?.(normalizedValue) ?? normalizedValue);
+      return Number.isNaN(parsed) ? undefined : parsed;
+    };
 
     const getStringValue = (number: number | undefined) => {
       if (!isNumber(number)) {
@@ -269,15 +296,33 @@ export default defineComponent({
       return props.formatter?.(numString) ?? numString;
     };
 
+    const getDisplayValue = (value: InputNumberValue) => {
+      if (typeof value === 'string') {
+        const normalizedValue = value.trim();
+        if (!normalizedValue || /^[-.]$/.test(normalizedValue)) {
+          return value;
+        }
+
+        const parsed = getNumberValue(value);
+        return isNumber(parsed) ? getStringValue(parsed) : value;
+      }
+
+      return getStringValue(value ?? undefined);
+    };
+
+    const getModelValue = (value: number | undefined): InputNumberValue => {
+      if (valueMode.value === 'string') {
+        return isUndefined(value) ? '' : String(value);
+      }
+
+      return value;
+    };
+
     // inner input value to display
-    const _value = ref(getStringValue(props.modelValue ?? props.defaultValue));
+    const _value = ref(getDisplayValue(props.modelValue ?? props.defaultValue));
 
     const valueNumber = computed(() => {
-      if (!_value.value) {
-        return undefined;
-      }
-      const number = Number(props.parser?.(_value.value) ?? _value.value);
-      return Number.isNaN(number) ? undefined : number;
+      return getNumberValue(_value.value);
     });
 
     const isMin = ref(isNumber(valueNumber.value) && valueNumber.value <= props.min);
@@ -334,7 +379,7 @@ export default defineComponent({
       if (finalValue !== valueNumber.value || _value.value !== stringValue) {
         _value.value = stringValue;
       }
-      emit('update:modelValue', finalValue);
+      emit('update:modelValue', getModelValue(finalValue));
     };
 
     watch(
@@ -363,8 +408,9 @@ export default defineComponent({
 
       _value.value = getStringValue(nextValue);
       updateNumberStatus(nextValue);
-      emit('update:modelValue', nextValue);
-      emit('change', nextValue, event);
+      const emittedValue = getModelValue(nextValue);
+      emit('update:modelValue', emittedValue);
+      emit('change', emittedValue, event);
     };
 
     const handleStepButton = (event: Event, method: StepMethods, needRepeat = false) => {
@@ -389,14 +435,15 @@ export default defineComponent({
       value = value.trim().replace(/。/g, '.');
       value = props.parser?.(value) ?? value;
 
-      if (isNumber(Number(value)) || /^(\.|-)$/.test(value)) {
+      if (isNumber(Number(value)) || /^[-.]$/.test(value)) {
         _value.value = props.formatter?.(value) ?? value;
         updateNumberStatus(valueNumber.value);
 
-        emit('input', valueNumber.value, _value.value, ev);
+        const emittedValue = getModelValue(valueNumber.value);
+        emit('input', emittedValue, _value.value, ev);
         if (props.modelEvent === 'input') {
-          emit('update:modelValue', valueNumber.value);
-          emit('change', valueNumber.value, ev);
+          emit('update:modelValue', emittedValue);
+          emit('change', emittedValue, ev);
         }
       }
     };
@@ -411,7 +458,7 @@ export default defineComponent({
       }
 
       handleExceedRange();
-      emit('change', valueNumber.value, ev);
+      emit('change', getModelValue(valueNumber.value), ev);
     };
 
     const handleBlur = (ev: FocusEvent) => {
@@ -420,8 +467,9 @@ export default defineComponent({
 
     const handleClear = (ev: Event) => {
       _value.value = '';
-      emit('update:modelValue', undefined);
-      emit('change', undefined, ev);
+      const emittedValue = getModelValue(undefined);
+      emit('update:modelValue', emittedValue);
+      emit('change', emittedValue, ev);
       eventHandlers.value?.onChange?.(ev);
       emit('clear', ev);
     };
@@ -454,11 +502,20 @@ export default defineComponent({
 
     watch(
       () => props.modelValue,
-      (value: number | undefined) => {
-        if (value !== valueNumber.value) {
-          // TODO: verify number
-          _value.value = getStringValue(value);
-          updateNumberStatus(value);
+      (value: InputNumberValue) => {
+        if (typeof value === 'string') {
+          valueMode.value = 'string';
+        } else if (typeof value === 'number') {
+          valueMode.value = 'number';
+        }
+
+        const nextNumberValue = getNumberValue(value);
+        if (value !== _value.value && nextNumberValue !== valueNumber.value) {
+          _value.value = getDisplayValue(value);
+          updateNumberStatus(nextNumberValue);
+        } else if (value === '' && _value.value !== '') {
+          _value.value = '';
+          updateNumberStatus(undefined);
         }
       },
     );
