@@ -69,7 +69,11 @@ exports[`<page-header> demo: > render [content] correctly 1`] = `
       </div>
       <div class="sd-page-header-header"><span class="sd-page-header-main"><span class="sd-icon-hover sd-page-header-icon-hover sd-page-header-back-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-left" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M32 8.4 16.444 23.956 32 39.513"></path></svg></span><span class="sd-page-header-title">SD Design</span><span class="sd-page-header-divider"></span><span class="sd-page-header-subtitle"><div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;"><!----><div class="sd-space-item"><span>SD Design Vue</span></div>
       <!---->
-      <div class="sd-space-item"><span class="sd-tag sd-tag-size-small sd-tag-red sd-tag-checked"><!--v-if-->Default<!--v-if--><!--v-if--></span></div>
+      <div class="sd-space-item"><span class="sd-tag sd-tag-size-small sd-tag-ellipsis sd-tag-red sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Default</span></span>
+        <!---->
+        <!--v-if-->
+        <!--v-if--></span>
+      </div>
     </div></span></span><span class="sd-page-header-extra"><div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;"><!----><div class="sd-space-item"><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button"><!--v-if-->Cancel</button></div><!----><div class="sd-space-item"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button"><!--v-if-->Save</button></div></div></span>
   </div>
 </div>

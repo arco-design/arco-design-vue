@@ -142,17 +142,37 @@ exports[`<descriptions> demo: > render [basic] correctly 1`] = `
           <tbody>
             <tr class="sd-descriptions-row">
               <td class="sd-descriptions-item-label sd-descriptions-item-label-block" style="text-align: left;">Name</td>
-              <td class="sd-descriptions-item-value sd-descriptions-item-value-block" style="text-align: left;" colspan="5"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if-->Socrates<!--v-if--><!--v-if--></span></td>
+              <td class="sd-descriptions-item-value sd-descriptions-item-value-block" style="text-align: left;" colspan="5"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Socrates</span></span>
+                <!---->
+                <!--v-if-->
+                <!--v-if--></span>
+              </td>
               <td class="sd-descriptions-item-label sd-descriptions-item-label-block" style="text-align: left;">Mobile</td>
-              <td class="sd-descriptions-item-value sd-descriptions-item-value-block" style="text-align: left;" colspan="1"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if-->123-1234-1234<!--v-if--><!--v-if--></span></td>
+              <td class="sd-descriptions-item-value sd-descriptions-item-value-block" style="text-align: left;" colspan="1"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">123-1234-1234</span></span>
+                <!---->
+                <!--v-if-->
+                <!--v-if--></span>
+              </td>
             </tr>
             <tr class="sd-descriptions-row">
               <td class="sd-descriptions-item-label sd-descriptions-item-label-block" style="text-align: left;">Residence</td>
-              <td class="sd-descriptions-item-value sd-descriptions-item-value-block" style="text-align: left;" colspan="1"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if-->Beijing<!--v-if--><!--v-if--></span></td>
+              <td class="sd-descriptions-item-value sd-descriptions-item-value-block" style="text-align: left;" colspan="1"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Beijing</span></span>
+                <!---->
+                <!--v-if-->
+                <!--v-if--></span>
+              </td>
               <td class="sd-descriptions-item-label sd-descriptions-item-label-block" style="text-align: left;">Hometown</td>
-              <td class="sd-descriptions-item-value sd-descriptions-item-value-block" style="text-align: left;" colspan="1"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if-->Beijing<!--v-if--><!--v-if--></span></td>
+              <td class="sd-descriptions-item-value sd-descriptions-item-value-block" style="text-align: left;" colspan="1"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Beijing</span></span>
+                <!---->
+                <!--v-if-->
+                <!--v-if--></span>
+              </td>
               <td class="sd-descriptions-item-label sd-descriptions-item-label-block" style="text-align: left;">Address</td>
-              <td class="sd-descriptions-item-value sd-descriptions-item-value-block" style="text-align: left;" colspan="3"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><!--v-if-->Yingdu Building, Zhichun Road, Beijing<!--v-if--><!--v-if--></span></td>
+              <td class="sd-descriptions-item-value sd-descriptions-item-value-block" style="text-align: left;" colspan="3"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Yingdu Building, Zhichun Road, Beijing</span></span>
+                <!---->
+                <!--v-if-->
+                <!--v-if--></span>
+              </td>
             </tr>
           </tbody>
         </table>

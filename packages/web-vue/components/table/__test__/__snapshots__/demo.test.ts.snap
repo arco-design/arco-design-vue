@@ -2954,133 +2954,121 @@ exports[`<table> demo: > render [scroll] correctly 1`] = `
     <!---->
   </div>
 </div>
-<div class="sd-split sd-split-vertical sd:h-125 sd:mt-7.5">
-  <div class="sd-split-pane sd-split-pane-first" style="flex: 0 0 calc(90% - 0px);">
-    <div class="sd-table sd-table-size-large sd-table-border sd-table-hover" style="height: 100%;">
+<div class="sd:mt-7.5 sd:h-125">
+  <div class="sd-table sd-table-size-large sd-table-border sd-table-hover" style="height: 100%;">
+    <!---->
+    <div class="sd-spin">
       <!---->
-      <div class="sd-spin">
-        <!---->
-        <div class="sd-table-container sd-table-scroll-position-both sd-table-scroll-y">
-          <div class="sd-table-content">
-            <div class="sd-table-header" style="overflow-x: hidden; overflow-y: hidden;">
-              <div class="sd-table-element" style="width: 120%; min-width: 120%; --sd-table-grid-template: minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
-                <div class="sd-table-thead">
-                  <div class="sd-table-tr">
-                    <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Name</span>
-                      <!---->
-                      <!----></span>
-                      <!---->
-                      <!---->
-                    </div>
-                    <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Salary</span>
-                      <!---->
-                      <!----></span>
-                      <!---->
-                      <!---->
-                    </div>
-                    <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Address</span>
-                      <!---->
-                      <!----></span>
-                      <!---->
-                      <!---->
-                    </div>
-                    <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Email</span>
-                      <!---->
-                      <!----></span>
-                      <!---->
-                      <!---->
-                    </div>
+      <div class="sd-table-container sd-table-scroll-position-both sd-table-scroll-y">
+        <div class="sd-table-content">
+          <div class="sd-table-header" style="overflow-x: hidden; overflow-y: hidden;">
+            <div class="sd-table-element" style="width: 120%; min-width: 120%; --sd-table-grid-template: minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
+              <div class="sd-table-thead">
+                <div class="sd-table-tr">
+                  <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Name</span>
+                    <!---->
+                    <!----></span>
+                    <!---->
+                    <!---->
+                  </div>
+                  <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Salary</span>
+                    <!---->
+                    <!----></span>
+                    <!---->
+                    <!---->
+                  </div>
+                  <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Address</span>
+                    <!---->
+                    <!----></span>
+                    <!---->
+                    <!---->
+                  </div>
+                  <div class="sd-table-th"><span class="sd-table-cell sd-table-cell-align-left"><span class="sd-table-th-title">Email</span>
+                    <!---->
+                    <!----></span>
+                    <!---->
+                    <!---->
                   </div>
                 </div>
               </div>
             </div>
-            <div class="sd-scrollbar sd-scrollbar-type-embed" style="display: flex; min-height: 0px;">
-              <div class="sd-scrollbar-container sd-table-body" style="max-height: 100%;" data-overlayscrollbars="host">
-                <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
-                  <div class="sd-table-element" style="width: 120%; min-width: 120%; --sd-table-grid-template: minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
-                    <div class="sd-table-tbody">
-                      <div class="sd-table-tr">
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Jane Doe</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">23000</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">32 Park Road, London</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">jane.doe@example.com</span></span></div>
-                      </div>
-                      <!---->
-                      <div class="sd-table-tr">
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Alisa Ross</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">25000</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">35 Park Road, London</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">alisa.ross@example.com</span></span></div>
-                      </div>
-                      <!---->
-                      <div class="sd-table-tr">
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Kevin Sandra</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">22000</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">31 Park Road, London</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">kevin.sandra@example.com</span></span></div>
-                      </div>
-                      <!---->
-                      <div class="sd-table-tr">
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Ed Hellen</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">17000</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">42 Park Road, London</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">ed.hellen@example.com</span></span></div>
-                      </div>
-                      <!---->
-                      <div class="sd-table-tr">
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">William Smith</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">27000</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">62 Park Road, London</span></span></div>
-                        <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">william.smith@example.com</span></span></div>
-                      </div>
-                      <!---->
-                    </div>
-                  </div>
-                </div>
-                <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-                  <div class="os-scrollbar-track">
-                    <div class="os-scrollbar-handle"></div>
-                  </div>
-                </div>
-                <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-                  <div class="os-scrollbar-track">
-                    <div class="os-scrollbar-handle"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!---->
-            <!---->
           </div>
-        </div>
-        <!---->
-        <div class="sd-table-pagination sd-table-pagination-right">
+          <div class="sd-scrollbar sd-scrollbar-type-embed" style="display: flex; min-height: 0px;">
+            <div class="sd-scrollbar-container sd-table-body" style="max-height: 100%;" data-overlayscrollbars="host">
+              <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+                <div class="sd-table-element" style="width: 120%; min-width: 120%; --sd-table-grid-template: minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr) minmax(40px, 1fr);">
+                  <div class="sd-table-tbody">
+                    <div class="sd-table-tr">
+                      <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Jane Doe</span></span></div>
+                      <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">23000</span></span></div>
+                      <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">32 Park Road, London</span></span></div>
+                      <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">jane.doe@example.com</span></span></div>
+                    </div>
+                    <!---->
+                    <div class="sd-table-tr">
+                      <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Alisa Ross</span></span></div>
+                      <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">25000</span></span></div>
+                      <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">35 Park Road, London</span></span></div>
+                      <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">alisa.ross@example.com</span></span></div>
+                    </div>
+                    <!---->
+                    <div class="sd-table-tr">
+                      <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Kevin Sandra</span></span></div>
+                      <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">22000</span></span></div>
+                      <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">31 Park Road, London</span></span></div>
+                      <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">kevin.sandra@example.com</span></span></div>
+                    </div>
+                    <!---->
+                    <div class="sd-table-tr">
+                      <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">Ed Hellen</span></span></div>
+                      <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">17000</span></span></div>
+                      <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">42 Park Road, London</span></span></div>
+                      <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">ed.hellen@example.com</span></span></div>
+                    </div>
+                    <!---->
+                    <div class="sd-table-tr">
+                      <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">William Smith</span></span></div>
+                      <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">27000</span></span></div>
+                      <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">62 Park Road, London</span></span></div>
+                      <div class="sd-table-td"><span class="sd-table-cell sd-table-cell-align-left"><!----><!----><span class="sd-table-td-content">william.smith@example.com</span></span></div>
+                    </div>
+                    <!---->
+                  </div>
+                </div>
+              </div>
+              <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+                <div class="os-scrollbar-track">
+                  <div class="os-scrollbar-handle"></div>
+                </div>
+              </div>
+              <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+                <div class="os-scrollbar-track">
+                  <div class="os-scrollbar-handle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
           <!---->
-          <div class="sd-pagination sd-pagination-size-medium">
-            <!---->
-            <ul class="sd-pagination-list"><span class="sd-pagination-item sd-pagination-item-previous sd-pagination-item-disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-left" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M32 8.4 16.444 23.956 32 39.513"></path></svg></span>
-              <li class="sd-pagination-item sd-pagination-item-active" pages="1">1</li>
-              <!----><span class="sd-pagination-item sd-pagination-item-next sd-pagination-item-disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m16 39.513 15.556-15.557L16 8.4"></path></svg></span>
-            </ul>
-            <!---->
-            <!---->
-          </div>
+          <!---->
+        </div>
+      </div>
+      <!---->
+      <div class="sd-table-pagination sd-table-pagination-right">
+        <!---->
+        <div class="sd-pagination sd-pagination-size-medium">
+          <!---->
+          <ul class="sd-pagination-list"><span class="sd-pagination-item sd-pagination-item-previous sd-pagination-item-disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-left" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M32 8.4 16.444 23.956 32 39.513"></path></svg></span>
+            <li class="sd-pagination-item sd-pagination-item-active" pages="1">1</li>
+            <!----><span class="sd-pagination-item sd-pagination-item-next sd-pagination-item-disabled"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m16 39.513 15.556-15.557L16 8.4"></path></svg></span>
+          </ul>
+          <!---->
           <!---->
         </div>
         <!---->
       </div>
+      <!---->
     </div>
   </div>
-  <div class="sd-split-trigger sd-split-trigger-horizontal">
-    <!-- @slot 自定义内容 -->
-    <div class="sd-split-trigger-icon-wrapper">
-      <!-- @slot 自定义 icon --><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-drag-dot sd-split-trigger-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-        <path fill="currentColor" stroke="none" d="M40 17v2h-2v-2zM25 17v2h-2v-2zM10 17v2H8v-2zM40 29v2h-2v-2zM25 29v2h-2v-2zM10 29v2H8v-2z"></path>
-        <path d="M40 17v2h-2v-2zM25 17v2h-2v-2zM10 17v2H8v-2zM40 29v2h-2v-2zM25 29v2h-2v-2zM10 29v2H8v-2z"></path>
-      </svg>
-    </div>
-  </div>
-  <div class="sd-split-pane sd-split-pane-second"></div>
 </div>
 `;
 

@@ -3,37 +3,45 @@
 exports[`<tag-group> demo: > render [basic] correctly 1`] = `
 <span class="sd-tag-group sd-tag-group-responsive"><span class="sd-tag-group-resize-observer" aria-hidden="true"></span>
 <ul class="sd-tag-group-inner">
-  <li class="sd-tag-group-item" option="[object Object]" index="0" hidden-count="0"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text">运行中</span>
+  <li class="sd-tag-group-item" option="[object Object]" index="0" hidden-count="0"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">运行中</span></span>
+    <!---->
     <!--v-if-->
     <!--v-if--></span>
   </li>
-  <li class="sd-tag-group-item" option="[object Object]" index="1" hidden-count="0"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text">高优先级</span>
+  <li class="sd-tag-group-item" option="[object Object]" index="1" hidden-count="0"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">高优先级</span></span>
+    <!---->
     <!--v-if-->
     <!--v-if--></span>
   </li>
-  <li class="sd-tag-group-item" option="[object Object]" index="2" hidden-count="0"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text">已同步</span>
+  <li class="sd-tag-group-item" option="[object Object]" index="2" hidden-count="0"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">已同步</span></span>
+    <!---->
     <!--v-if-->
     <!--v-if--></span>
   </li>
   <!--v-if-->
-</ul><span class="sd-tag-group-measure" aria-hidden="true"><span class="sd-tag-group-item sd-tag-group-item-measure" data-measure-item="true" option="[object Object]" index="0" hidden-count="0" measure="true"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text">运行中</span>
+</ul><span class="sd-tag-group-measure" aria-hidden="true"><span class="sd-tag-group-item sd-tag-group-item-measure" data-measure-item="true" option="[object Object]" index="0" hidden-count="0" measure="true"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">运行中</span></span>
+<!---->
 <!--v-if-->
-<!--v-if--></span></span><span class="sd-tag-group-item sd-tag-group-item-measure" data-measure-item="true" option="[object Object]" index="1" hidden-count="0" measure="true"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text">高优先级</span>
+<!--v-if--></span></span><span class="sd-tag-group-item sd-tag-group-item-measure" data-measure-item="true" option="[object Object]" index="1" hidden-count="0" measure="true"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">高优先级</span></span>
+<!---->
 <!--v-if-->
-<!--v-if--></span></span><span class="sd-tag-group-item sd-tag-group-item-measure" data-measure-item="true" option="[object Object]" index="2" hidden-count="0" measure="true"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text">已同步</span>
+<!--v-if--></span></span><span class="sd-tag-group-item sd-tag-group-item-measure" data-measure-item="true" option="[object Object]" index="2" hidden-count="0" measure="true"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">已同步</span></span>
+<!---->
 <!--v-if-->
-<!--v-if--></span></span><span class="sd-tag-group-item sd-tag-group-item-counter sd-tag-group-item-measure" data-hidden-count="1" option="[object Object]" index="3" hidden-count="1" measure="true"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-counter-content"><!--v-if--><span class="sd-tag-text">+1</span>
+<!--v-if--></span></span><span class="sd-tag-group-item sd-tag-group-item-counter sd-tag-group-item-measure" data-hidden-count="1" option="[object Object]" index="3" hidden-count="1" measure="true"><span class="sd-tag sd-tag-size-medium sd-tag-no-ellipsis sd-tag-checked sd-tag-group-counter-content"><!--v-if--><span class="sd-tag-text">+1</span>
 <!--v-if-->
-<!--v-if--></span></span><span class="sd-tag-group-item sd-tag-group-item-counter sd-tag-group-item-measure" data-hidden-count="2" option="[object Object]" index="3" hidden-count="2" measure="true"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-counter-content"><!--v-if--><span class="sd-tag-text">+2</span>
+<!--v-if--></span></span><span class="sd-tag-group-item sd-tag-group-item-counter sd-tag-group-item-measure" data-hidden-count="2" option="[object Object]" index="3" hidden-count="2" measure="true"><span class="sd-tag sd-tag-size-medium sd-tag-no-ellipsis sd-tag-checked sd-tag-group-counter-content"><!--v-if--><span class="sd-tag-text">+2</span>
 <!--v-if-->
 <!--v-if--></span></span></span></span>
 `;
 
 exports[`<tag-group> demo: > render [counter] correctly 1`] = `
-<span class="sd-tag-group"><!--v-if--><ul class="sd-tag-group-inner"><li class="sd-tag-group-item" option="[object Object]" index="0" hidden-count="0"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text">运行中</span>
+<span class="sd-tag-group"><!--v-if--><ul class="sd-tag-group-inner"><li class="sd-tag-group-item" option="[object Object]" index="0" hidden-count="0"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">运行中</span></span>
+<!---->
 <!--v-if-->
 <!--v-if--></span></li>
-<li class="sd-tag-group-item" option="[object Object]" index="1" hidden-count="0"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text">高优先级</span>
+<li class="sd-tag-group-item" option="[object Object]" index="1" hidden-count="0"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">高优先级</span></span>
+  <!---->
   <!--v-if-->
   <!--v-if--></span>
 </li>
@@ -48,7 +56,7 @@ exports[`<tag-group> demo: > render [custom-item] correctly 1`] = `
 <li class="sd-tag-group-item" option="[object Object]" index="1" hidden-count="0"><a href="/alert" class="sd-link sd-link-status-normal sd-link-hoverless sd-tag-group-item-content">
     <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">告警中心</span></span>
   </a></li>
-<li class="sd-tag-group-item sd-tag-group-item-counter" data-hidden-count="1" option="[object Object]" index="2" hidden-count="1"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-counter-content"><!--v-if--><span class="sd-tag-text">+1</span>
+<li class="sd-tag-group-item sd-tag-group-item-counter" data-hidden-count="1" option="[object Object]" index="2" hidden-count="1"><span class="sd-tag sd-tag-size-medium sd-tag-no-ellipsis sd-tag-checked sd-tag-group-counter-content"><!--v-if--><span class="sd-tag-text">+1</span>
   <!--v-if-->
   <!--v-if--></span>
 </li>
@@ -58,14 +66,16 @@ exports[`<tag-group> demo: > render [custom-item] correctly 1`] = `
 `;
 
 exports[`<tag-group> demo: > render [max-count] correctly 1`] = `
-<span class="sd-tag-group"><!--v-if--><ul class="sd-tag-group-inner"><li class="sd-tag-group-item" option="[object Object]" index="0" hidden-count="0"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text">运行中</span>
+<span class="sd-tag-group"><!--v-if--><ul class="sd-tag-group-inner"><li class="sd-tag-group-item" option="[object Object]" index="0" hidden-count="0"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">运行中</span></span>
+<!---->
 <!--v-if-->
 <!--v-if--></span></li>
-<li class="sd-tag-group-item" option="[object Object]" index="1" hidden-count="0"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text">高优先级</span>
+<li class="sd-tag-group-item" option="[object Object]" index="1" hidden-count="0"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">高优先级</span></span>
+  <!---->
   <!--v-if-->
   <!--v-if--></span>
 </li>
-<li class="sd-tag-group-item sd-tag-group-item-counter" data-hidden-count="2" option="[object Object]" index="2" hidden-count="2"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-counter-content"><!--v-if--><span class="sd-tag-text">+2</span>
+<li class="sd-tag-group-item sd-tag-group-item-counter" data-hidden-count="2" option="[object Object]" index="2" hidden-count="2"><span class="sd-tag sd-tag-size-medium sd-tag-no-ellipsis sd-tag-checked sd-tag-group-counter-content"><!--v-if--><span class="sd-tag-text">+2</span>
   <!--v-if-->
   <!--v-if--></span>
 </li>
@@ -85,28 +95,34 @@ exports[`<tag-group> demo: > render [responsive] correctly 1`] = `
         <!---->
         <!----><span class="sd-tag-group sd-tag-group-responsive"><span class="sd-tag-group-resize-observer" aria-hidden="true"></span>
         <ul class="sd-tag-group-inner">
-          <li class="sd-tag-group-item" option="[object Object]" index="0" hidden-count="0"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text">超长标签文案需要折叠</span>
+          <li class="sd-tag-group-item" option="[object Object]" index="0" hidden-count="0"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">超长标签文案需要折叠</span></span>
+            <!---->
             <!--v-if-->
             <!--v-if--></span>
           </li>
-          <li class="sd-tag-group-item" option="[object Object]" index="1" hidden-count="0"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text">处理中</span>
+          <li class="sd-tag-group-item" option="[object Object]" index="1" hidden-count="0"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">处理中</span></span>
+            <!---->
             <!--v-if-->
             <!--v-if--></span>
           </li>
-          <li class="sd-tag-group-item" option="[object Object]" index="2" hidden-count="0"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text">已告警</span>
+          <li class="sd-tag-group-item" option="[object Object]" index="2" hidden-count="0"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">已告警</span></span>
+            <!---->
             <!--v-if-->
             <!--v-if--></span>
           </li>
           <!--v-if-->
-        </ul><span class="sd-tag-group-measure" aria-hidden="true"><span class="sd-tag-group-item sd-tag-group-item-measure" data-measure-item="true" option="[object Object]" index="0" hidden-count="0" measure="true"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text">超长标签文案需要折叠</span>
+        </ul><span class="sd-tag-group-measure" aria-hidden="true"><span class="sd-tag-group-item sd-tag-group-item-measure" data-measure-item="true" option="[object Object]" index="0" hidden-count="0" measure="true"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">超长标签文案需要折叠</span></span>
+        <!---->
         <!--v-if-->
-        <!--v-if--></span></span><span class="sd-tag-group-item sd-tag-group-item-measure" data-measure-item="true" option="[object Object]" index="1" hidden-count="0" measure="true"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text">处理中</span>
+        <!--v-if--></span></span><span class="sd-tag-group-item sd-tag-group-item-measure" data-measure-item="true" option="[object Object]" index="1" hidden-count="0" measure="true"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">处理中</span></span>
+        <!---->
         <!--v-if-->
-        <!--v-if--></span></span><span class="sd-tag-group-item sd-tag-group-item-measure" data-measure-item="true" option="[object Object]" index="2" hidden-count="0" measure="true"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text">已告警</span>
+        <!--v-if--></span></span><span class="sd-tag-group-item sd-tag-group-item-measure" data-measure-item="true" option="[object Object]" index="2" hidden-count="0" measure="true"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked sd-tag-group-item-content"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">已告警</span></span>
+        <!---->
         <!--v-if-->
-        <!--v-if--></span></span><span class="sd-tag-group-item sd-tag-group-item-counter sd-tag-group-item-measure" data-hidden-count="1" option="[object Object]" index="3" hidden-count="1" measure="true"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-counter-content"><!--v-if--><span class="sd-tag-text">+1</span>
+        <!--v-if--></span></span><span class="sd-tag-group-item sd-tag-group-item-counter sd-tag-group-item-measure" data-hidden-count="1" option="[object Object]" index="3" hidden-count="1" measure="true"><span class="sd-tag sd-tag-size-medium sd-tag-no-ellipsis sd-tag-checked sd-tag-group-counter-content"><!--v-if--><span class="sd-tag-text">+1</span>
         <!--v-if-->
-        <!--v-if--></span></span><span class="sd-tag-group-item sd-tag-group-item-counter sd-tag-group-item-measure" data-hidden-count="2" option="[object Object]" index="3" hidden-count="2" measure="true"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-tag-group-counter-content"><!--v-if--><span class="sd-tag-text">+2</span>
+        <!--v-if--></span></span><span class="sd-tag-group-item sd-tag-group-item-counter sd-tag-group-item-measure" data-hidden-count="2" option="[object Object]" index="3" hidden-count="2" measure="true"><span class="sd-tag sd-tag-size-medium sd-tag-no-ellipsis sd-tag-checked sd-tag-group-counter-content"><!--v-if--><span class="sd-tag-text">+2</span>
         <!--v-if-->
         <!--v-if--></span></span></span></span>
       </div>

@@ -102,24 +102,24 @@ exports[`<space> demo: > render [split] correctly 1`] = `
 </div>
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><a class="sd-link sd-link-status-normal" type="primary">
-      <!--v-if-->Link1
+  <div class="sd-space-item"><a class="sd-link sd-link-status-normal sd-link-hoverless" type="primary">
+      <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Link1</span></span>
     </a></div>
   <div class="sd-space-item-split">
     <div role="separator" class="sd-divider sd-divider-vertical" style="margin: 0px;">
       <!---->
     </div>
   </div>
-  <div class="sd-space-item"><a class="sd-link sd-link-status-normal" type="primary">
-      <!--v-if-->Link2
+  <div class="sd-space-item"><a class="sd-link sd-link-status-normal sd-link-hoverless" type="primary">
+      <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Link2</span></span>
     </a></div>
   <div class="sd-space-item-split">
     <div role="separator" class="sd-divider sd-divider-vertical" style="margin: 0px;">
       <!---->
     </div>
   </div>
-  <div class="sd-space-item"><a class="sd-link sd-link-status-normal" type="primary">
-      <!--v-if-->Link3
+  <div class="sd-space-item"><a class="sd-link sd-link-status-normal sd-link-hoverless" type="primary">
+      <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Link3</span></span>
     </a></div>
 </div>
 `;

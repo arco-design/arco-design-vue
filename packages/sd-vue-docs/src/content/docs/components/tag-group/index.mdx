@@ -3,17 +3,17 @@ title: 标签组 TagGroup
 description: 用于展示一组标签项，并在数量过多时自动折叠为计数入口。
 ---
 
-import DemoBlock from "../../../../components/docs/DemoBlock.astro";
-import TagGroupBasicDemo from "../../../../components/generated/tag-group/basic.vue";
-import tagGroupBasicSource from "../../../../components/generated/tag-group/basic.vue?raw";
-import TagGroupCounterDemo from "../../../../components/generated/tag-group/counter.vue";
-import tagGroupCounterSource from "../../../../components/generated/tag-group/counter.vue?raw";
-import TagGroupCustomItemDemo from "../../../../components/generated/tag-group/custom-item.vue";
-import tagGroupCustomItemSource from "../../../../components/generated/tag-group/custom-item.vue?raw";
-import TagGroupMaxCountDemo from "../../../../components/generated/tag-group/max-count.vue";
-import tagGroupMaxCountSource from "../../../../components/generated/tag-group/max-count.vue?raw";
-import TagGroupResponsiveDemo from "../../../../components/generated/tag-group/responsive.vue";
-import tagGroupResponsiveSource from "../../../../components/generated/tag-group/responsive.vue?raw";
+import DemoBlock from '../../../../components/docs/DemoBlock.astro';
+import TagGroupBasicDemo from '../../../../components/generated/tag-group/basic.vue';
+import tagGroupBasicSource from '../../../../components/generated/tag-group/basic.vue?raw';
+import TagGroupCounterDemo from '../../../../components/generated/tag-group/counter.vue';
+import tagGroupCounterSource from '../../../../components/generated/tag-group/counter.vue?raw';
+import TagGroupCustomItemDemo from '../../../../components/generated/tag-group/custom-item.vue';
+import tagGroupCustomItemSource from '../../../../components/generated/tag-group/custom-item.vue?raw';
+import TagGroupMaxCountDemo from '../../../../components/generated/tag-group/max-count.vue';
+import tagGroupMaxCountSource from '../../../../components/generated/tag-group/max-count.vue?raw';
+import TagGroupResponsiveDemo from '../../../../components/generated/tag-group/responsive.vue';
+import tagGroupResponsiveSource from '../../../../components/generated/tag-group/responsive.vue?raw';
 
 ### 基本用法
 
@@ -69,27 +69,27 @@ import tagGroupResponsiveSource from "../../../../components/generated/tag-group
 
 ### `<tag-group>` Props
 
-| 参数名      | 描述                                                | 类型                                     |     默认值     | 版本 |
-| ----------- | --------------------------------------------------- | ---------------------------------------- | :------------: | :--- |
-| max-count   | 最多展示的项数，`responsive` 会根据容器宽度自动折叠 | `number \| 'responsive'`                 | `'responsive'` |      |
-| options     | 标签组选项                                          | `(string \| number \| TagGroupOption)[]` |      `[]`      |      |
-| field-names | 自定义字段名                                        | `{ label?: string; value?: string }`     |      `-`       |      |
+| 参数名 | 描述 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | :-: | :-- |
+| max-count | 最多展示的项数，`responsive` 会根据容器宽度自动折叠 | `number \| 'responsive'` | `'responsive'` |  |
+| options | 标签组选项 | `(string \| number \| TagGroupOption)[]` | `[]` |  |
+| field-names | 自定义字段名 | `{ label?: string; value?: string }` | `-` |  |
 
 ### `TagGroupOption`
 
-| 字段名    | 描述                         | 类型                                           | 默认值 |
-| --------- | ---------------------------- | ---------------------------------------------- | :----: |
-| label     | 展示文本                     | `string \| number \| (() => string \| number)` |  `-`   |
-| value     | 唯一标识                     | `string \| number`                             |  `-`   |
-| itemProps | 透传给默认 `<sd-tag>` 的属性 | `Record<string, unknown>`                      |  `-`   |
+| 字段名 | 描述 | 类型 | 默认值 |
+| --- | --- | --- | :-: |
+| label | 展示文本 | `string \| number \| (() => string \| number)` | `-` |
+| value | 唯一标识 | `string \| number` | `-` |
+| itemProps | 透传给默认 `<sd-tag>` 的属性 | `Record<string, unknown>` | `-` |
 
 说明：当 `options` 传入对象时，除 `label`、`value`、`itemProps` 之外的字段也会透传给默认标签项，便于直接复用 `Tag` 的颜色、边框等属性。
 
 ### `<tag-group>` Slots
 
-| 插槽名  | 描述                         | 参数                                                                                                                                                                                                                                   |
-| ------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| default | `options` 为空时的兜底内容   | -                                                                                                                                                                                                                                      |
-| label   | 自定义默认标签内部的文本内容 | data: `TagGroupOption`                                                                                                                                                                                                                 |
-| item    | 自定义普通项渲染             | data: `TagGroupOption`<br />label: `string \| number`<br />value: `string \| number`<br />index: `number`<br />itemClass: `ClassValue`<br />itemStyle: `CSSProperties \| undefined`<br />isOverflow: `boolean`<br />measure: `boolean` |
-| counter | 自定义折叠计数器渲染         | label: `string`<br />value: `string`<br />hiddenCount: `number`<br />measure: `boolean`<br />counterClass: `ClassValue`                                                                                                                |
+| 插槽名 | 描述 | 参数 |
+| --- | --- | --- |
+| default | `options` 为空时的兜底内容 | - |
+| label | 自定义默认标签内部的文本内容 | data: `TagGroupOption` |
+| item | 自定义普通项渲染 | data: `TagGroupOption`<br />label: `string \| number`<br />value: `string \| number`<br />index: `number`<br />itemClass: `ClassValue`<br />itemStyle: `CSSProperties \| undefined`<br />isOverflow: `boolean`<br />measure: `boolean` |
+| counter | 自定义折叠计数器渲染 | label: `string`<br />value: `string`<br />hiddenCount: `number`<br />measure: `boolean`<br />counterClass: `ClassValue` |

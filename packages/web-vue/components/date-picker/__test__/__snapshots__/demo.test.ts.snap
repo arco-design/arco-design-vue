@@ -505,8 +505,8 @@ exports[`<date-picker> demo: > render [panel-only] correctly 1`] = `
       </div>
       <div class="sd-picker-footer">
         <!--v-if-->
-        <div class="sd-picker-footer-now-wrapper"><a class="sd-link sd-link-status-normal">
-            <!--v-if-->今天
+        <div class="sd-picker-footer-now-wrapper"><a class="sd-link sd-link-status-normal sd-link-hoverless">
+            <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">今天</span></span>
           </a></div>
         <!--v-if-->
       </div>

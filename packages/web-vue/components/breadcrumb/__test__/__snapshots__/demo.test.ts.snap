@@ -237,24 +237,24 @@ exports[`<breadcrumb> demo: > render [routes] correctly 1`] = `
   <!---->
   <div class="sd-space-item">
     <div role="list" class="sd-breadcrumb">
-      <div role="listitem" class="sd-breadcrumb-item"><a href="" class="sd-link sd-link-status-normal">
-          <!--v-if-->Home
+      <div role="listitem" class="sd-breadcrumb-item"><a href="" class="sd-link sd-link-status-normal sd-link-hoverless">
+          <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Home</span></span>
         </a>
         <!---->
       </div>
       <div aria-hidden="true" class="sd-breadcrumb-item-separator"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-oblique-line" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
           <path d="M29.506 6.502 18.493 41.498"></path>
         </svg></div>
-      <div role="listitem" class="sd-breadcrumb-item"><a href="/channel" class="sd-link sd-link-status-normal">
-          <!--v-if-->Channel
+      <div role="listitem" class="sd-breadcrumb-item"><a href="/channel" class="sd-link sd-link-status-normal sd-link-hoverless">
+          <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Channel</span></span>
         </a>
         <!---->
       </div>
       <div aria-hidden="true" class="sd-breadcrumb-item-separator"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-oblique-line" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
           <path d="M29.506 6.502 18.493 41.498"></path>
         </svg></div>
-      <div role="listitem" class="sd-breadcrumb-item"><a href="/channel/news" class="sd-link sd-link-status-normal">
-          <!--v-if-->News
+      <div role="listitem" class="sd-breadcrumb-item"><a href="/channel/news" class="sd-link sd-link-status-normal sd-link-hoverless">
+          <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">News</span></span>
         </a>
         <!---->
       </div>

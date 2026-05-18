@@ -6,7 +6,11 @@ exports[`<config-provider> demo: > render [allow-clear] correctly 1`] = `
     <!---->
     <div class="sd-space-item"><button data-v-85262714="" type="button" role="switch" aria-checked="true" class="sd-switch sd-switch-type-circle sd-switch-checked"><span class="sd-switch-handle"><span class="sd-switch-handle-icon"></span></span><!--  prettier-ignore  --><span class="sd-switch-text-holder">全局 allowClear 开启</span><span class="sd-switch-text">全局 allowClear 开启</span></button></div>
     <!---->
-    <div class="sd-space-item"><span data-v-85262714="" class="sd-tag sd-tag-size-medium sd-tag-blue sd-tag-checked"><!--v-if-->组件显式传入 allow-clear 时优先级更高<!--v-if--><!--v-if--></span></div>
+    <div class="sd-space-item"><span data-v-85262714="" class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-blue sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">组件显式传入 allow-clear 时优先级更高</span></span>
+      <!---->
+      <!--v-if-->
+      <!--v-if--></span>
+    </div>
   </div>
   <div data-v-85262714="" class="sd-space sd-space-vertical sd-space-fill" style="column-gap: 8px; row-gap: 8px;">
     <!---->
@@ -39,7 +43,11 @@ exports[`<config-provider> demo: > render [allow-search] correctly 1`] = `
     <!---->
     <div class="sd-space-item"><button data-v-de07f7f8="" type="button" role="switch" aria-checked="true" class="sd-switch sd-switch-type-circle sd-switch-checked"><span class="sd-switch-handle"><span class="sd-switch-handle-icon"></span></span><!--  prettier-ignore  --><span class="sd-switch-text-holder">全局 allowSearch 开启</span><span class="sd-switch-text">全局 allowSearch 开启</span></button></div>
     <!---->
-    <div class="sd-space-item"><span data-v-de07f7f8="" class="sd-tag sd-tag-size-medium sd-tag-blue sd-tag-checked"><!--v-if-->组件显式传入 allow-search 时优先级更高<!--v-if--><!--v-if--></span></div>
+    <div class="sd-space-item"><span data-v-de07f7f8="" class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-blue sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">组件显式传入 allow-search 时优先级更高</span></span>
+      <!---->
+      <!--v-if-->
+      <!--v-if--></span>
+    </div>
   </div>
   <div data-v-de07f7f8="" class="sd-space sd-space-vertical sd-space-fill" style="column-gap: 8px; row-gap: 8px;">
     <!---->
@@ -403,15 +411,18 @@ exports[`<config-provider> demo: > render [rtl] correctly 1`] = `
     </div><span class="sd-badge-custom-dot" style="height: 16px; width: 16px; font-size: 14px;"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-clock-circle sd:align-middle sd:text-[var(--color-text-2)]" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M24 14v10h9.5m8.5 0c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6s18 8.059 18 18Z"></path></svg></span></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-red sd-tag-checked sd-tag-rtl"><!--v-if-->red<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-red sd-tag-checked sd-tag-rtl"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">red</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" tabindex="0" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-blue sd-tag-checked sd-tag-rtl"><!--v-if-->blue<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-blue sd-tag-checked sd-tag-rtl"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">blue</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" tabindex="0" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
   <!---->
-  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-green sd-tag-checked sd-tag-rtl"><!--v-if-->green<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <div class="sd-space-item"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-green sd-tag-checked sd-tag-rtl"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">green</span></span>
+    <!----><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" tabindex="0" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!--v-if--></span>
   </div>
 </div>
@@ -426,7 +437,11 @@ exports[`<config-provider> demo: > render [theme-mode] correctly 1`] = `
     <!---->
     <div class="sd-space-item"><span data-v-7240c418="" class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="light"><span class="sd-radio-button-content">Light</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="dark"><span class="sd-radio-button-content">Dark</span></label></span></div>
     <!---->
-    <div class="sd-space-item"><span data-v-7240c418="" class="sd-tag sd-tag-size-medium sd-tag-blue sd-tag-checked"><!--v-if-->局部主题容器：dark<!--v-if--><!--v-if--></span></div>
+    <div class="sd-space-item"><span data-v-7240c418="" class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-blue sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">局部主题容器：dark</span></span>
+      <!---->
+      <!--v-if-->
+      <!--v-if--></span>
+    </div>
   </div>
   <div data-v-7240c418="" class="sd-theme-provider">
     <div data-v-7240c418="" class="theme-mode-demo__panel">

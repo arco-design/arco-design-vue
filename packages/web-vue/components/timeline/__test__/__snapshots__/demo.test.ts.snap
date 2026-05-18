@@ -56,7 +56,8 @@ exports[`<timeline> demo: > render [custom] correctly 1`] = `
     </div>
     <div class="sd-timeline-item-content-wrapper">
       <div class="sd-timeline-item-content"> Code Review </div>
-      <div class="sd-timeline-item-label"><span class="sd-tag sd-tag-size-medium sd-tag-checked"><span class="sd-tag-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-check-circle-fill" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" fill-rule="evenodd" stroke="none" d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20m10.207-24.379a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0L22 26.172l-4.878-4.88a1 1 0 0 0-1.415 0l-1.414 1.415a1 1 0 0 0 0 1.414l7 7a1 1 0 0 0 1.414 0z" clip-rule="evenodd"></path></svg></span> Passed
+      <div class="sd-timeline-item-label"><span class="sd-tag sd-tag-size-medium sd-tag-ellipsis sd-tag-checked"><span class="sd-tag-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-check-circle-fill" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" fill-rule="evenodd" stroke="none" d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4 4 12.954 4 24s8.954 20 20 20m10.207-24.379a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0L22 26.172l-4.878-4.88a1 1 0 0 0-1.415 0l-1.414 1.415a1 1 0 0 0 0 1.414l7 7a1 1 0 0 0 1.414 0z" clip-rule="evenodd"></path></svg></span><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content"> Passed </span></span>
+        <!---->
         <!--v-if-->
         <!--v-if--></span>
       </div>

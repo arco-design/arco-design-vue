@@ -3,7 +3,7 @@
 exports[`<upload> demo: > render [avatar] correctly 1`] = `
 <div class="sd-space sd-space-vertical sd:w-full" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><span class="sd-upload"><input type="file" style="display: none;"><span><div class="sd-upload-list-item"><div class="sd-upload-picture-card"><div class="sd-upload-picture-card-text"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg><div class="sd:mt-2.5 sd:font-semibold">Upload</div></div></div></div></span></span></div>
+  <div class="sd-space-item"><span class="sd-upload"><input type="file" style="display: none;"><span><div class="sd-upload-list-item"><div class="sd:upload-picture-card"><div class="sd:upload-picture-card-text"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg><div class="sd:mt-2.5 sd:font-semibold">Upload</div></div></div></div></span></span></div>
 </div>
 `;
 
@@ -78,7 +78,7 @@ exports[`<upload> demo: > render [before-upload] correctly 1`] = `
 
 exports[`<upload> demo: > render [custom-button] correctly 1`] = `
 <div class="sd-upload-wrapper sd-upload-wrapper-type-text">
-  <!----><span class="sd-upload"><input type="file" style="display: none;"><span><div class="sd:h-[158px] sd:w-[380px] sd:rounded-[2px] sd:border sd:border-dashed sd:border-[var(--color-fill-4)] sd:bg-[var(--color-fill-2)] sd:text-center sd:leading-[158px] sd:text-[var(--color-text-1)]"><div> Drag the file here or <span class="sd:text-[#3370ff]"> Click to upload</span>
+  <!----><span class="sd-upload"><input type="file" style="display: none;"><span><div class="sd:h-39.5 sd:w-95 sd:rounded-[2px] sd:border sd:border-dashed sd:border-[var(--color-fill-4)] sd:bg-[var(--color-fill-2)] sd:text-center sd:leading-39.5 sd:text-[var(--color-text-1)]"><div> Drag the file here or <span class="sd:text-[#3370ff]"> Click to upload</span>
 </div>
 </div></span></span>
 <transition-group-stub tag="div" appear="false" persisted="false" css="true" class="sd-upload-list sd-upload-list-type-text">

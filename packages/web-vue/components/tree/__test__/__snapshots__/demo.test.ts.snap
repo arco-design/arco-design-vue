@@ -399,7 +399,7 @@ exports[`<tree> demo: > render [icons] correctly 1`] = `
   </div>
   <transition-stub appear="false" persisted="false" css="true"></transition-stub>
   <div class="sd-tree-node sd-tree-node-is-leaf sd-tree-node-is-tail" data-level="1" data-key="node2">
-    <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block"></span></span><!-- switcher --><span class="sd-tree-node-switcher"><span class="sd-tree-node-switcher-icon"><!--v-if--><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-star" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M22.552 6.908a.5.5 0 0 1 .896 0l5.02 10.17a.5.5 0 0 0 .376.274l11.224 1.631a.5.5 0 0 1 .277.853l-8.122 7.916a.5.5 0 0 0-.143.443l1.917 11.178a.5.5 0 0 1-.726.527l-10.038-5.278a.5.5 0 0 0-.466 0L12.73 39.9a.5.5 0 0 1-.726-.527l1.918-11.178a.5.5 0 0 0-.144-.443l-8.122-7.916a.5.5 0 0 1 .278-.853l11.223-1.63a.5.5 0 0 0 .376-.274z"></path></svg></span></span><!-- checkbox -->
+    <!-- 缩进 --><span class="sd-tree-node-indent"><span class="sd-tree-node-indent-block"></span></span><!-- switcher --><span class="sd-tree-node-switcher"><span class="sd-tree-node-switcher-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg><!--v-if--></span></span><!-- checkbox -->
     <!--v-if-->
     <!-- 内容 --><span class="sd-tree-node-title" draggable="false"><!--v-if--><span class="sd-tree-node-title-text"><!-- 标题，treeTitle 优先级高于节点的 title -->Leaf<!--v-if--></span></span><!-- 额外 -->
     <!--v-if-->

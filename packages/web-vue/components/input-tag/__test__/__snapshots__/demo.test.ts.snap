@@ -4,7 +4,7 @@ exports[`<input-tag> demo: > render [basic] correctly 1`] = `
 <span class="sd-input-tag sd-input-tag-size-medium sd-input-tag-has-tag sd-input-tag-has-suffix sd:w-80"><!----><span class="sd-input-tag-mirror"></span>
 <!---->
 <!---->
-<transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-input-tag-inner"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-input-tag-tag"><!--v-if-->test<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+<transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-input-tag-inner"><span class="sd-tag sd-tag-size-medium sd-tag-no-ellipsis sd-tag-checked sd-input-tag-tag"><!--v-if--><span class="sd-tag-text">test</span><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" tabindex="0" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
   <!--v-if--></span><input class="sd-input-tag-input" style="width: 12px;">
 </transition-group-stub><span class="sd-icon-hover sd-input-tag-clear-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
 <!----></span>
@@ -14,10 +14,12 @@ exports[`<input-tag> demo: > render [max] correctly 1`] = `
 <span class="sd-input-tag sd-input-tag-size-medium sd-input-tag-has-tag sd-input-tag-has-suffix sd:w-95"><!----><span class="sd-input-tag-mirror"></span>
 <!---->
 <!---->
-<transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-input-tag-inner"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-input-tag-tag"><!--v-if-->one<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
-  <!--v-if--></span><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-input-tag-tag"><!--v-if-->two<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
-  <!--v-if--></span><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-input-tag-tag"><!--v-if-->three<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
-  <!--v-if--></span><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-input-tag-tag sd-input-tag-tag-counter"><!--v-if-->+1<!--v-if--><!--v-if--></span><input class="sd-input-tag-input" style="width: 12px;">
+<transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-input-tag-inner"><span class="sd-tag sd-tag-size-medium sd-tag-no-ellipsis sd-tag-checked sd-input-tag-tag"><!--v-if--><span class="sd-tag-text">one</span><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" tabindex="0" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <!--v-if--></span><span class="sd-tag sd-tag-size-medium sd-tag-no-ellipsis sd-tag-checked sd-input-tag-tag"><!--v-if--><span class="sd-tag-text">two</span><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" tabindex="0" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <!--v-if--></span><span class="sd-tag sd-tag-size-medium sd-tag-no-ellipsis sd-tag-checked sd-input-tag-tag"><!--v-if--><span class="sd-tag-text">three</span><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" tabindex="0" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+  <!--v-if--></span><span class="sd-tag sd-tag-size-medium sd-tag-no-ellipsis sd-tag-checked sd-input-tag-tag sd-input-tag-tag-counter"><!--v-if--><span class="sd-tag-text">+1</span>
+  <!--v-if-->
+  <!--v-if--></span><input class="sd-input-tag-input" style="width: 12px;">
 </transition-group-stub><span class="sd-icon-hover sd-input-tag-clear-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
 <!----></span>
 `;
@@ -30,7 +32,7 @@ exports[`<input-tag> demo: > render [size] correctly 1`] = `
   <div class="sd-space-item"><span class="sd-input-tag sd-input-tag-size-medium sd-input-tag-has-tag sd-input-tag-has-suffix sd:w-80"><!----><span class="sd-input-tag-mirror"></span>
     <!---->
     <!---->
-    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-input-tag-inner"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-input-tag-tag"><!--v-if-->one<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-input-tag-inner"><span class="sd-tag sd-tag-size-medium sd-tag-no-ellipsis sd-tag-checked sd-input-tag-tag"><!--v-if--><span class="sd-tag-text">one</span><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" tabindex="0" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
       <!--v-if--></span><input class="sd-input-tag-input" style="width: 12px;">
     </transition-group-stub><span class="sd-icon-hover sd-input-tag-clear-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
     <!----></span>
@@ -44,7 +46,10 @@ exports[`<input-tag> demo: > render [status] correctly 1`] = `
   <div class="sd-space-item"><span class="sd-input-tag sd-input-tag-size-medium sd-input-tag-disabled sd-input-tag-has-tag sd:w-80"><!----><span class="sd-input-tag-mirror"></span>
     <!---->
     <!---->
-    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-input-tag-inner"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-input-tag-tag"><!--v-if-->test<!--v-if--><!--v-if--></span><input class="sd-input-tag-input" style="width: 12px;" disabled=""></transition-group-stub>
+    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-input-tag-inner"><span class="sd-tag sd-tag-size-medium sd-tag-no-ellipsis sd-tag-checked sd-input-tag-tag"><!--v-if--><span class="sd-tag-text">test</span>
+      <!--v-if-->
+      <!--v-if--></span><input class="sd-input-tag-input" style="width: 12px;" disabled="">
+    </transition-group-stub>
     <!---->
     <!----></span>
   </div>
@@ -52,7 +57,10 @@ exports[`<input-tag> demo: > render [status] correctly 1`] = `
   <div class="sd-space-item"><span class="sd-input-tag sd-input-tag-size-medium sd-input-tag-readonly sd-input-tag-has-tag sd:w-80"><!----><span class="sd-input-tag-mirror"></span>
     <!---->
     <!---->
-    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-input-tag-inner"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-input-tag-tag"><!--v-if-->test<!--v-if--><!--v-if--></span><input class="sd-input-tag-input" style="width: 12px;" readonly=""></transition-group-stub>
+    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-input-tag-inner"><span class="sd-tag sd-tag-size-medium sd-tag-no-ellipsis sd-tag-checked sd-input-tag-tag"><!--v-if--><span class="sd-tag-text">test</span>
+      <!--v-if-->
+      <!--v-if--></span><input class="sd-input-tag-input" style="width: 12px;" readonly="">
+    </transition-group-stub>
     <!---->
     <!----></span>
   </div>
@@ -60,7 +68,7 @@ exports[`<input-tag> demo: > render [status] correctly 1`] = `
   <div class="sd-space-item"><span class="sd-input-tag sd-input-tag-size-medium sd-input-tag-error sd-input-tag-has-tag sd:w-80"><!----><span class="sd-input-tag-mirror"></span>
     <!---->
     <!---->
-    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-input-tag-inner"><span class="sd-tag sd-tag-size-medium sd-tag-checked sd-input-tag-tag"><!--v-if-->test<span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
+    <transition-group-stub tag="span" name="input-tag-zoom" appear="false" persisted="false" css="true" class="sd-input-tag-inner"><span class="sd-tag sd-tag-size-medium sd-tag-no-ellipsis sd-tag-checked sd-input-tag-tag"><!--v-if--><span class="sd-tag-text">test</span><span class="sd-icon-hover sd-tag-icon-hover sd-tag-close-btn" tabindex="0" role="button" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span>
       <!--v-if--></span><input class="sd-input-tag-input" style="width: 12px;">
     </transition-group-stub>
     <!---->

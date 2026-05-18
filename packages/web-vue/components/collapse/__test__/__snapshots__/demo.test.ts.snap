@@ -319,7 +319,11 @@ exports[`<collapse> demo: > render [extra] correctly 1`] = `
   <div class="sd-collapse-item">
     <div role="button" aria-disabled="false" aria-expanded="false" tabindex="0" class="sd-collapse-item-header sd-collapse-item-header-left"><span class="sd-icon-hover sd-collapse-item-icon-hover"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-right sd-collapse-item-expand-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path fill="currentColor" stroke="none" d="M34.829 23.063c.6.48.6 1.394 0 1.874L17.949 38.44c-.785.629-1.949.07-1.949-.937V10.497c0-1.007 1.164-1.566 1.95-.937z"></path></svg></span>
       <div class="sd-collapse-item-header-title">Beijing Toutiao Technology Co., Ltd.</div>
-      <div class="sd-collapse-item-header-extra"><span class="sd-tag sd-tag-size-small sd-tag-checked"><!--v-if-->city<!--v-if--><!--v-if--></span></div>
+      <div class="sd-collapse-item-header-extra"><span class="sd-tag sd-tag-size-small sd-tag-ellipsis sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">city</span></span>
+        <!---->
+        <!--v-if-->
+        <!--v-if--></span>
+      </div>
     </div>
     <transition-stub name="collapse-slider" appear="false" persisted="false" css="true">
       <div role="region" class="sd-collapse-item-content" style="display: none;">
@@ -350,7 +354,11 @@ exports[`<collapse> demo: > render [icon-position] correctly 1`] = `
       <div class="sd-collapse-item sd-collapse-item-active">
         <div role="button" aria-disabled="false" aria-expanded="true" tabindex="0" class="sd-collapse-item-header sd-collapse-item-header-left"><span class="sd-icon-hover sd-collapse-item-icon-hover"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-plus" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M5 24h38M24 5v38"></path></svg></span>
           <div class="sd-collapse-item-header-title">Beijing Toutiao Technology Co., Ltd.</div>
-          <div class="sd-collapse-item-header-extra"><span class="sd-tag sd-tag-size-small sd-tag-checked"><!--v-if-->city<!--v-if--><!--v-if--></span></div>
+          <div class="sd-collapse-item-header-extra"><span class="sd-tag sd-tag-size-small sd-tag-ellipsis sd-tag-checked"><!--v-if--><span class="sd-tag-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">city</span></span>
+            <!---->
+            <!--v-if-->
+            <!--v-if--></span>
+          </div>
         </div>
         <transition-stub name="collapse-slider" appear="false" persisted="false" css="true">
           <div role="region" class="sd-collapse-item-content sd-collapse-item-content-expend">

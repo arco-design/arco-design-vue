@@ -63,7 +63,7 @@ exports[`<message> demo: > render [type] correctly 1`] = `
         <!--v-if-->Normal Message With Icon
       </button></div>
     <!---->
-    <div class="sd-space-item"><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-medium sd-btn-status-primary" type="button">
+    <div class="sd-space-item"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button">
         <!--v-if-->Loading Message
       </button></div>
   </div>

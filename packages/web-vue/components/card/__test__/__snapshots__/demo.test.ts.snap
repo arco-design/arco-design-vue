@@ -37,8 +37,8 @@ exports[`<card> demo: > render [basic] correctly 1`] = `
   <div class="sd-card sd-card-size-medium sd-card-bordered sd:w-90">
     <div class="sd-card-header">
       <div class="sd-card-header-title">SD Card</div>
-      <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal">
-          <!--v-if-->More
+      <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
+          <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
         </a></div>
     </div>
     <!---->
@@ -54,8 +54,8 @@ exports[`<card> demo: > render [bordered] correctly 1`] = `
   <div class="sd-card sd-card-size-medium sd:w-90">
     <div class="sd-card-header">
       <div class="sd-card-header-title">SD Card</div>
-      <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal">
-          <!--v-if-->More
+      <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
+          <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
         </a></div>
     </div>
     <!---->
@@ -66,8 +66,8 @@ exports[`<card> demo: > render [bordered] correctly 1`] = `
   <div class="sd-card sd-card-size-medium sd-card-hoverable sd:w-90 sd:ml-6">
     <div class="sd-card-header">
       <div class="sd-card-header-title">Hover me</div>
-      <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal">
-          <!--v-if-->More
+      <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
+          <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
         </a></div>
     </div>
     <!---->
@@ -85,8 +85,8 @@ exports[`<card> demo: > render [content] correctly 1`] = `
   <div class="sd-card-body">
     <div class="sd:flex sd:items-center sd:justify-between"><span class="sd:flex sd:items-center sd:text-[#1d2129]"><div style="width: 28px; height: 28px; font-size: 14px;" class="sd-avatar sd-avatar-circle sd:mr-2 sd:bg-[#165dff]"><span class="sd-avatar-text"> A </span>
       <!--v-if-->
-    </div><span class="sd-typography">Username<!----><!--v-if--><!--v-if--><!--v-if--></span></span><a class="sd-link sd-link-status-normal">
-      <!--v-if-->More
+    </div><span class="sd-typography">Username<!----><!--v-if--><!--v-if--><!--v-if--></span></span><a class="sd-link sd-link-status-normal sd-link-hoverless">
+      <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
     </a>
   </div>
   <!---->
@@ -103,8 +103,8 @@ exports[`<card> demo: > render [grid] correctly 1`] = `
       <div data-v-9cfe5307="" class="sd-card sd-card-size-medium card-demo">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
-          <div class="sd-card-header-extra"><a data-v-9cfe5307="" class="sd-link sd-link-status-normal">
-              <!--v-if-->More
+          <div class="sd-card-header-extra"><a data-v-9cfe5307="" class="sd-link sd-link-status-normal sd-link-hoverless">
+              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
             </a></div>
         </div>
         <!---->
@@ -118,8 +118,8 @@ exports[`<card> demo: > render [grid] correctly 1`] = `
       <div data-v-9cfe5307="" class="sd-card sd-card-size-medium card-demo">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
-          <div class="sd-card-header-extra"><a data-v-9cfe5307="" class="sd-link sd-link-status-normal">
-              <!--v-if-->More
+          <div class="sd-card-header-extra"><a data-v-9cfe5307="" class="sd-link sd-link-status-normal sd-link-hoverless">
+              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
             </a></div>
         </div>
         <!---->
@@ -133,8 +133,8 @@ exports[`<card> demo: > render [grid] correctly 1`] = `
       <div data-v-9cfe5307="" class="sd-card sd-card-size-medium card-demo">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
-          <div class="sd-card-header-extra"><a data-v-9cfe5307="" class="sd-link sd-link-status-normal">
-              <!--v-if-->More
+          <div class="sd-card-header-extra"><a data-v-9cfe5307="" class="sd-link sd-link-status-normal sd-link-hoverless">
+              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
             </a></div>
         </div>
         <!---->
@@ -148,8 +148,8 @@ exports[`<card> demo: > render [grid] correctly 1`] = `
       <div data-v-9cfe5307="" class="sd-card sd-card-size-medium card-demo">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
-          <div class="sd-card-header-extra"><a data-v-9cfe5307="" class="sd-link sd-link-status-normal">
-              <!--v-if-->More
+          <div class="sd-card-header-extra"><a data-v-9cfe5307="" class="sd-link sd-link-status-normal sd-link-hoverless">
+              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
             </a></div>
         </div>
         <!---->
@@ -163,8 +163,8 @@ exports[`<card> demo: > render [grid] correctly 1`] = `
       <div data-v-9cfe5307="" class="sd-card sd-card-size-medium card-demo">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
-          <div class="sd-card-header-extra"><a data-v-9cfe5307="" class="sd-link sd-link-status-normal">
-              <!--v-if-->More
+          <div class="sd-card-header-extra"><a data-v-9cfe5307="" class="sd-link sd-link-status-normal sd-link-hoverless">
+              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
             </a></div>
         </div>
         <!---->
@@ -178,8 +178,8 @@ exports[`<card> demo: > render [grid] correctly 1`] = `
       <div data-v-9cfe5307="" class="sd-card sd-card-size-medium card-demo">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
-          <div class="sd-card-header-extra"><a data-v-9cfe5307="" class="sd-link sd-link-status-normal">
-              <!--v-if-->More
+          <div class="sd-card-header-extra"><a data-v-9cfe5307="" class="sd-link sd-link-status-normal sd-link-hoverless">
+              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
             </a></div>
         </div>
         <!---->
@@ -193,8 +193,8 @@ exports[`<card> demo: > render [grid] correctly 1`] = `
       <div data-v-9cfe5307="" class="sd-card sd-card-size-medium card-demo">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
-          <div class="sd-card-header-extra"><a data-v-9cfe5307="" class="sd-link sd-link-status-normal">
-              <!--v-if-->More
+          <div class="sd-card-header-extra"><a data-v-9cfe5307="" class="sd-link sd-link-status-normal sd-link-hoverless">
+              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
             </a></div>
         </div>
         <!---->
@@ -214,8 +214,8 @@ exports[`<card> demo: > render [hoverable] correctly 1`] = `
   <div data-v-d40b0b92="" class="sd-card sd-card-size-medium sd-card-bordered sd-card-hoverable sd:w-90">
     <div class="sd-card-header">
       <div class="sd-card-header-title">SD Card</div>
-      <div class="sd-card-header-extra"><a data-v-d40b0b92="" class="sd-link sd-link-status-normal">
-          <!--v-if-->More
+      <div class="sd-card-header-extra"><a data-v-d40b0b92="" class="sd-link sd-link-status-normal sd-link-hoverless">
+          <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
         </a></div>
     </div>
     <!---->
@@ -226,8 +226,8 @@ exports[`<card> demo: > render [hoverable] correctly 1`] = `
   <div data-v-d40b0b92="" class="sd-card sd-card-size-medium sd-card-bordered sd-card-hoverable card-demo">
     <div class="sd-card-header">
       <div class="sd-card-header-title">Custom hover style</div>
-      <div class="sd-card-header-extra"><a data-v-d40b0b92="" class="sd-link sd-link-status-normal">
-          <!--v-if-->More
+      <div class="sd-card-header-extra"><a data-v-d40b0b92="" class="sd-link sd-link-status-normal sd-link-hoverless">
+          <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
         </a></div>
     </div>
     <!---->
@@ -249,8 +249,8 @@ exports[`<card> demo: > render [inner] correctly 1`] = `
     <div class="sd-card sd-card-size-medium sd-card-bordered sd:mb-5">
       <div class="sd-card-header">
         <div class="sd-card-header-title">Inner Card Title</div>
-        <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal">
-            <!--v-if-->More
+        <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
+            <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
           </a></div>
       </div>
       <!---->
@@ -261,8 +261,8 @@ exports[`<card> demo: > render [inner] correctly 1`] = `
     <div class="sd-card sd-card-size-medium sd-card-bordered">
       <div class="sd-card-header">
         <div class="sd-card-header-title">Inner Card Title</div>
-        <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal">
-            <!--v-if-->More
+        <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
+            <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
           </a></div>
       </div>
       <!---->
@@ -301,8 +301,8 @@ exports[`<card> demo: > render [row] correctly 1`] = `
       <div class="sd-card sd-card-size-medium sd:w-full">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
-          <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal">
-              <!--v-if-->More
+          <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
+              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
             </a></div>
         </div>
         <!---->
@@ -315,8 +315,8 @@ exports[`<card> demo: > render [row] correctly 1`] = `
       <div class="sd-card sd-card-size-medium sd:w-full">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
-          <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal">
-              <!--v-if-->More
+          <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
+              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
             </a></div>
         </div>
         <!---->
@@ -329,8 +329,8 @@ exports[`<card> demo: > render [row] correctly 1`] = `
       <div class="sd-card sd-card-size-medium sd:w-full">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
-          <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal">
-              <!--v-if-->More
+          <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
+              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
             </a></div>
         </div>
         <!---->
@@ -345,8 +345,8 @@ exports[`<card> demo: > render [row] correctly 1`] = `
       <div class="sd-card sd-card-size-medium sd:w-full">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
-          <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal">
-              <!--v-if-->More
+          <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
+              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
             </a></div>
         </div>
         <!---->
@@ -359,8 +359,8 @@ exports[`<card> demo: > render [row] correctly 1`] = `
       <div class="sd-card sd-card-size-medium sd:w-full">
         <div class="sd-card-header">
           <div class="sd-card-header-title">SD Card</div>
-          <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal">
-              <!--v-if-->More
+          <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
+              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
             </a></div>
         </div>
         <!---->
