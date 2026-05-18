@@ -1,9 +1,11 @@
 import { defineComponent, PropType } from 'vue';
 import { WeekStart } from '../interface';
 import Picker from '../picker.vue';
+import useListeners from '../../_hooks/use-listeners';
 
 export default defineComponent({
   name: 'WeekPicker',
+  extends: Picker,
   props: {
     /**
      * @zh 绑定值
@@ -48,6 +50,16 @@ export default defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    return () => <Picker {...props} {...attrs} mode="week" v-slots={slots} />;
+    const { listeners } = useListeners();
+
+    return () => (
+      <Picker
+        {...props}
+        {...attrs}
+        {...listeners.value}
+        mode="week"
+        v-slots={slots}
+      />
+    );
   },
 });

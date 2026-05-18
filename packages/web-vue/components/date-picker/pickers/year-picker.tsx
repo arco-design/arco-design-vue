@@ -1,8 +1,10 @@
 import { defineComponent, PropType } from 'vue';
 import Picker from '../picker.vue';
+import useListeners from '../../_hooks/use-listeners';
 
 export default defineComponent({
   name: 'YearPicker',
+  extends: Picker,
   props: {
     /**
      * @zh 绑定值
@@ -28,6 +30,16 @@ export default defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    return () => <Picker {...props} {...attrs} mode="year" v-slots={slots} />;
+    const { listeners } = useListeners();
+
+    return () => (
+      <Picker
+        {...props}
+        {...attrs}
+        {...listeners.value}
+        mode="year"
+        v-slots={slots}
+      />
+    );
   },
 });

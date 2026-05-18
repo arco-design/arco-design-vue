@@ -1,5 +1,9 @@
 <template>
-  <a-input ref="inputRef" :type="mergedVisible ? 'password' : 'text'">
+  <a-input
+    ref="inputRef"
+    v-bind="{ ...$props, ...listeners }"
+    :type="mergedVisible ? 'password' : 'text'"
+  >
     <template v-if="$slots.prepend" #prepend>
       <slot name="prepend" />
     </template>
@@ -32,6 +36,7 @@ import IconEye from '../icon/icon-eye';
 import IconEyeInvisible from '../icon/icon-eye-invisible';
 import useMergeState from '../_hooks/use-merge-state';
 import AInput from './input';
+import useListeners from '../_hooks/use-listeners';
 
 export default defineComponent({
   name: 'InputPassword',
@@ -41,6 +46,7 @@ export default defineComponent({
     AIconHover,
     AInput,
   },
+  extends: AInput,
   props: {
     /**
      * @zh 是否可见，受控属性
@@ -100,10 +106,13 @@ export default defineComponent({
       }
     };
 
+    const { listeners } = useListeners();
+
     return {
       inputRef,
       mergedVisible,
       handleInvisible,
+      listeners,
     };
   },
   methods: {
