@@ -1,0 +1,8 @@
+@use '@style/theme/index.scss' as global;
+
+$cropper-background-color: global.$color-fill-2;
+$cropper-border-color: global.$color-border-2;
+$cropper-border-radius: global.$border-radius-medium;
+$cropper-min-width: 200px;
+$cropper-min-height: 120px;
+$cropper-theme-color: rgb(var(--primary-6));

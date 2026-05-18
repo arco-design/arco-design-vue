@@ -1,0 +1,139 @@
+---
+title: 图片裁剪 Cropper
+description: 基于 cropperjs 的图片裁剪封装，提供选区联动、实例方法和底层元素配置透传。
+---
+
+import DemoBlock from "../../../../components/docs/DemoBlock.astro";
+import CropperBasicDemo from "../../../../components/generated/cropper/basic.vue";
+import cropperBasicSource from "../../../../components/generated/cropper/basic.vue?raw";
+import CropperAspectRatioDemo from "../../../../components/generated/cropper/aspect-ratio.vue";
+import cropperAspectRatioSource from "../../../../components/generated/cropper/aspect-ratio.vue?raw";
+import CropperControlledDemo from "../../../../components/generated/cropper/controlled.vue";
+import cropperControlledSource from "../../../../components/generated/cropper/controlled.vue?raw";
+import CropperCoverModeDemo from "../../../../components/generated/cropper/cover-mode.vue";
+import cropperCoverModeSource from "../../../../components/generated/cropper/cover-mode.vue?raw";
+
+### 基本用法
+
+默认会在图片加载后自动把选区贴合到图片可见区域，适合快速给用户一个可调整的初始裁剪框。
+
+<DemoBlock source={cropperBasicSource} mainFile="src/cropper-basic.vue">
+
+<CropperBasicDemo client:only="vue" />
+
+</DemoBlock>
+
+### 固定宽高比
+
+通过 `selection-props` 约束选区比例，适合头像、卡片封面这类固定裁切输出。
+
+<DemoBlock source={cropperAspectRatioSource} mainFile="src/cropper-aspect-ratio.vue">
+
+<CropperAspectRatioDemo client:only="vue" />
+
+</DemoBlock>
+
+### 受控选区
+
+通过多路 `v-model` 风格事件同步选区位置和尺寸，方便在表单、向导或服务端预览链路里持久化裁剪结果。
+
+<DemoBlock source={cropperControlledSource} mainFile="src/cropper-controlled.vue">
+
+<CropperControlledDemo client:only="vue" />
+
+</DemoBlock>
+
+### 自定义图片行为
+
+通过 `image-props` 和 `fit-selection-to-image` 调整图片初始化方式，适合需要保留封面填充感的场景。
+
+<DemoBlock source={cropperCoverModeSource} mainFile="src/cropper-cover-mode.vue">
+
+<CropperCoverModeDemo client:only="vue" />
+
+</DemoBlock>
+
+## API
+
+### `<cropper>` Props
+
+| 参数名                 | 描述                                                   | 类型                    |  默认值  |
+| ---------------------- | ------------------------------------------------------ | ----------------------- | :------: |
+| src                    | 裁剪图片地址                                           | `string`                |   `''`   |
+| canvas-props           | 透传给 `CropperCanvas` 的属性                          | `CropperCanvasProps`    |   `{}`   |
+| image-props            | 透传给 `CropperImage` 的属性                           | `CropperImageProps`     |   `{}`   |
+| selection-props        | 透传给 `CropperSelection` 的属性，不包含位置与尺寸控制 | `CropperSelectionProps` |   `{}`   |
+| template               | 自定义 cropperjs 内部模板                              | `string`                |   `-`    |
+| selection-x            | 选区 x 坐标                                            | `number`                |   `-`    |
+| selection-y            | 选区 y 坐标                                            | `number`                |   `-`    |
+| selection-width        | 选区宽度                                               | `number`                |   `-`    |
+| selection-height       | 选区高度                                               | `number`                |   `-`    |
+| width                  | 容器宽度                                               | `string \| number`      | `'100%'` |
+| height                 | 容器高度                                               | `string \| number`      | `'100%'` |
+| fit-selection-to-image | 图片加载完成后是否让选区贴合图片可见区域               | `boolean`               |  `true`  |
+
+### `CropperCanvasProps`
+
+| 参数名      | 描述               | 类型      | 默认值  |
+| ----------- | ------------------ | --------- | :-----: |
+| background  | 是否显示棋盘格背景 | `boolean` | `false` |
+| disabled    | 是否禁用画布交互   | `boolean` | `false` |
+| scale-step  | 滚轮缩放步进       | `number`  |   `-`   |
+| theme-color | 主题色             | `string`  |   `-`   |
+
+### `CropperImageProps`
+
+| 参数名              | 描述                 | 类型                   |   默认值    |
+| ------------------- | -------------------- | ---------------------- | :---------: |
+| initial-center-size | 图片初始居中尺寸模式 | `'contain' \| 'cover'` | `'contain'` |
+| rotatable           | 是否允许旋转         | `boolean`              |   `false`   |
+| scalable            | 是否允许缩放与翻转   | `boolean`              |   `false`   |
+| skewable            | 是否允许斜切         | `boolean`              |   `false`   |
+| translatable        | 是否允许平移         | `boolean`              |   `false`   |
+
+### `CropperSelectionProps`
+
+| 参数名               | 描述                         | 类型      | 默认值  |
+| -------------------- | ---------------------------- | --------- | :-----: |
+| aspect-ratio         | 选区宽高比约束               | `number`  |   `-`   |
+| initial-aspect-ratio | 初始宽高比                   | `number`  |   `-`   |
+| initial-coverage     | 初始覆盖率                   | `number`  |   `-`   |
+| dynamic              | 是否跟随图片变换动态调整     | `boolean` | `false` |
+| movable              | 是否可移动                   | `boolean` | `false` |
+| resizable            | 是否可调整尺寸               | `boolean` | `false` |
+| zoomable             | 是否支持滚轮缩放选区         | `boolean` | `false` |
+| keyboard             | 是否启用键盘控制             | `boolean` | `false` |
+| outlined             | 是否显示轮廓                 | `boolean` | `false` |
+| precise              | 是否保留坐标和尺寸的小数精度 | `boolean` | `false` |
+
+### `<cropper>` Events
+
+| 事件名                 | 描述                     | 参数                                                              |
+| ---------------------- | ------------------------ | ----------------------------------------------------------------- |
+| selection:change       | 选区位置或尺寸变化时触发 | `detail: { x: number; y: number; width: number; height: number }` |
+| update:selectionX      | 选区 x 坐标更新时触发    | `value: number`                                                   |
+| update:selectionY      | 选区 y 坐标更新时触发    | `value: number`                                                   |
+| update:selectionWidth  | 选区宽度更新时触发       | `value: number`                                                   |
+| update:selectionHeight | 选区高度更新时触发       | `value: number`                                                   |
+| canvas:action          | 画布动作状态变化时触发   | `detail: unknown`                                                 |
+| canvas:actionstart     | 指针按下时触发           | `detail: unknown`                                                 |
+| canvas:actionmove      | 指针移动时触发           | `detail: unknown`                                                 |
+| canvas:actionend       | 指针抬起时触发           | `detail: unknown`                                                 |
+| image:transform        | 图片变换矩阵变化时触发   | `detail: { matrix: number[]; oldMatrix: number[] }`               |
+
+### `<cropper>` Methods
+
+通过组件 `ref` 可调用以下实例方法：
+
+| 方法名               | 描述                             | 返回值                       |
+| -------------------- | -------------------------------- | ---------------------------- |
+| getInstance          | 获取 cropperjs 原始实例          | `Cropper \| null`            |
+| getCropperCanvas     | 获取底层 `CropperCanvas` 元素    | `CropperCanvas \| null`      |
+| getCropperImage      | 获取底层 `CropperImage` 元素     | `CropperImage \| null`       |
+| getCropperSelection  | 获取首个 `CropperSelection` 元素 | `CropperSelection \| null`   |
+| getCropperSelections | 获取全部 `CropperSelection` 元素 | `CropperSelection[] \| null` |
+| destroy              | 销毁当前实例                     | `void`                       |
+
+### `<cropper>` Slots
+
+当前组件不提供具名插槽，推荐通过 `template` 和底层 props 组合来调整 cropperjs 的内部行为。

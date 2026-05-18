@@ -33,6 +33,39 @@ exports[`<config-provider> demo: > render [allow-clear] correctly 1`] = `
 </div>
 `;
 
+exports[`<config-provider> demo: > render [allow-search] correctly 1`] = `
+<div data-v-de07f7f8="" class="config-provider-allow-search-demo">
+  <div data-v-de07f7f8="" class="sd-space sd-space-horizontal sd-space-align-center sd-space-wrap" style="column-gap: 8px; row-gap: 8px;">
+    <!---->
+    <div class="sd-space-item"><button data-v-de07f7f8="" type="button" role="switch" aria-checked="true" class="sd-switch sd-switch-type-circle sd-switch-checked"><span class="sd-switch-handle"><span class="sd-switch-handle-icon"></span></span><!--  prettier-ignore  --><span class="sd-switch-text-holder">全局 allowSearch 开启</span><span class="sd-switch-text">全局 allowSearch 开启</span></button></div>
+    <!---->
+    <div class="sd-space-item"><span data-v-de07f7f8="" class="sd-tag sd-tag-size-medium sd-tag-blue sd-tag-checked"><!--v-if-->组件显式传入 allow-search 时优先级更高<!--v-if--><!--v-if--></span></div>
+  </div>
+  <div data-v-de07f7f8="" class="sd-space sd-space-vertical sd-space-fill" style="column-gap: 8px; row-gap: 8px;">
+    <!---->
+    <div class="sd-space-item"><span class="sd-select-view-single sd-select-view sd-select-view-size-medium sd-select-view-search"><!----><input class="sd-select-view-input" placeholder="Cascader 会继承全局 allowSearch" value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+      <!----></span></span>
+      <!---->
+    </div>
+    <!---->
+    <div class="sd-space-item"><span class="sd-select-view-single sd-select-view sd-select-view-size-medium sd-select-view-search"><!----><input class="sd-select-view-input" placeholder="TreeSelect 也会继承这个默认值" value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+      <!----></span></span>
+      <!---->
+    </div>
+    <!---->
+    <div class="sd-space-item"><span class="sd-select-view-single sd-select sd-select-view sd-select-view-size-medium sd-select-view-search"><!----><input class="sd-select-view-input" placeholder="Select 保持可搜索行为" value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+      <!----></span></span>
+      <!---->
+    </div>
+    <!---->
+    <div class="sd-space-item"><span class="sd-select-view-single sd-select-view sd-select-view-size-medium"><!----><input class="sd-select-view-input" readonly="" placeholder="这个 Cascader 显式关闭了 allowSearch" value=""><span class="sd-select-view-value sd-select-view-value-hidden"><!----></span><span class="sd-select-view-suffix"><!----><span class="sd-select-view-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down sd-select-view-arrow-icon" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+      <!----></span></span>
+      <!---->
+    </div>
+  </div>
+</div>
+`;
+
 exports[`<config-provider> demo: > render [basic] correctly 1`] = `
 <span class="sd-radio-group-button sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="zh-CN"><span class="sd-radio-button-content">zh-CN</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="en-US"><span class="sd-radio-button-content">en-US</span></label><label class="sd-radio-button sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="es-ES"><span class="sd-radio-button-content">es-ES</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="ja-JP"><span class="sd-radio-button-content">ja-JP</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="id-ID"><span class="sd-radio-button-content">id-ID</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="fr-FR"><span class="sd-radio-button-content">fr-FR</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="pt-PT"><span class="sd-radio-button-content">pt-PT</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="de-DE"><span class="sd-radio-button-content">de-DE</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="ko-KR"><span class="sd-radio-button-content">ko-KR</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="it-IT"><span class="sd-radio-button-content">it-IT</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="th-TH"><span class="sd-radio-button-content">th-TH</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="vi-VN"><span class="sd-radio-button-content">vi-VN</span></label><label class="sd-radio-button"><input type="radio" class="sd-radio-target" value="nl-NL"><span class="sd-radio-button-content">nl-NL</span></label></span>
 <div>

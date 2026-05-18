@@ -22,6 +22,7 @@ import ColorPicker from './color-picker';
 import Comment from './comment';
 import ConfigProvider from './config-provider';
 import Copy from './copy';
+import Cropper from './cropper';
 import DatePicker, {
   WeekPicker,
   MonthPicker,
@@ -106,6 +107,7 @@ const components: Record<string, Plugin> = {
   ColorPicker,
   Descriptions,
   Copy,
+  Cropper,
   Empty,
   Image,
   Scrollbar,

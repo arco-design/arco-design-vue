@@ -85,6 +85,17 @@ export type {
   CopyLinkProps,
   CopyProps,
 } from './copy';
+export { default as Cropper } from './cropper';
+export type {
+  CropperCanvasProps,
+  CropperExpose,
+  CropperImageProps,
+  CropperImageTransformDetail,
+  CropperInstance,
+  CropperProps,
+  CropperSelectionChangeDetail,
+  CropperSelectionProps,
+} from './cropper';
 export {
   default as DatePicker,
   MonthPicker,

@@ -179,6 +179,10 @@ export const docsSidebar = [
             label: '图片 Image',
           },
           {
+            slug: 'components/cropper',
+            label: '图片裁剪 Cropper',
+          },
+          {
             slug: 'components/list',
             label: '列表 List',
           },

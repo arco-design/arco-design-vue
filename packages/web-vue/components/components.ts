@@ -37,6 +37,7 @@ declare module 'vue' {
     SdComment: SDVue['Comment'];
     SdConfigProvider: SDVue['ConfigProvider'];
     SdCopy: SDVue['Copy'];
+    SdCropper: SDVue['Cropper'];
     SdDatePicker: SDVue['DatePicker'];
     SdWeekPicker: SDVue['WeekPicker'];
     SdMonthPicker: SDVue['MonthPicker'];

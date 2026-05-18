@@ -1,0 +1,43 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+@use '@components/cropper/style/token.scss' as *;
+
+$cropper-prefix-cls: string.unquote('#{theme.$prefix}-cropper');
+
+.#{$cropper-prefix-cls} {
+  position: relative;
+  display: block;
+  width: var(--sd-cropper-width, 100%);
+  min-width: $cropper-min-width;
+  height: var(--sd-cropper-height, 100%);
+  min-height: $cropper-min-height;
+  overflow: hidden;
+  background-color: $cropper-background-color;
+  border: 1px solid $cropper-border-color;
+  border-radius: $cropper-border-radius;
+
+  &-source-image {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  cropper-canvas {
+    width: var(--sd-cropper-width, 100%);
+    height: var(--sd-cropper-height, 100%);
+    background-color: $cropper-background-color;
+  }
+
+  cropper-image,
+  cropper-selection,
+  cropper-handle,
+  cropper-grid,
+  cropper-shade,
+  cropper-viewer,
+  cropper-crosshair {
+    color: $cropper-theme-color;
+  }
+}
