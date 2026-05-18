@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 // @ts-check
 import { fileURLToPath } from 'node:url';
+import starlightLlmsTxt from 'starlight-llms-txt';
 
 import { docsSidebar } from './src/generated/docs-sidebar';
 
@@ -102,6 +103,7 @@ export default defineConfig({
       },
       pagination: true,
       credits: false,
+      plugins: [starlightLlmsTxt()],
     }),
     mdx(),
     vue({ appEntrypoint: '/src/pages/_app.ts' }),
