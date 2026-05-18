@@ -10,6 +10,10 @@ import LinkHoverableDemo from '../../../../components/generated/link/hoverable.v
 import linkHoverableSource from '../../../../components/generated/link/hoverable.vue?raw';
 import LinkIconDemo from '../../../../components/generated/link/icon.vue';
 import linkIconSource from '../../../../components/generated/link/icon.vue?raw';
+import LinkIconTooltipDemo from '../../../../components/generated/link/icon-tooltip.vue';
+import linkIconTooltipSource from '../../../../components/generated/link/icon-tooltip.vue?raw';
+import LinkEllipsisDemo from '../../../../components/generated/link/ellipsis.vue';
+import linkEllipsisSource from '../../../../components/generated/link/ellipsis.vue?raw';
 import LinkLoadingDemo from '../../../../components/generated/link/loading.vue';
 import linkLoadingSource from '../../../../components/generated/link/loading.vue?raw';
 import LinkStatusDemo from '../../../../components/generated/link/status.vue';
@@ -45,6 +49,26 @@ import linkStatusSource from '../../../../components/generated/link/status.vue?r
 
 </DemoBlock>
 
+### 图标提示
+
+通过 `icon-tooltip` 可以为图标区域补充提示文案。仅图标链接默认不会展示 hover 底色，如有需要可手动传入 `hoverable`。
+
+<DemoBlock source={linkIconTooltipSource} mainFile="src/link-icon-tooltip.vue">
+
+<LinkIconTooltipDemo client:only="vue" />
+
+</DemoBlock>
+
+### 省略内容
+
+默认内容区域内置 `sd-performant-ellipsis`，默认开启单行省略；可以通过 `ellipsis-line-clamp`、`ellipsis-expand-trigger` 和 `tooltip` 插槽控制省略行为。
+
+<DemoBlock source={linkEllipsisSource} mainFile="src/link-ellipsis.vue">
+
+<LinkEllipsisDemo client:only="vue" />
+
+</DemoBlock>
+
 ### 加载中状态
 
 通过设置 `loading` 可以让链接处于加载中状态。处于加载中状态的链接不会触发点击事件。
@@ -73,8 +97,13 @@ import linkStatusSource from '../../../../components/generated/link/status.vue?r
 | --- | --- | --- | :-: | :-- |
 | href | 链接地址 | `string` | `-` |  |
 | status | 链接的状态 | `'normal' \| 'warning' \| 'success' \| 'danger'` | `'normal'` |  |
-| hoverable | 鼠标悬浮时存在底色 | `boolean` | `true` | 2.7.0 |
+| hoverable | 鼠标悬浮时是否展示底色。不传时，带正文的链接默认为 `true`，仅图标链接默认为 `false` | `boolean` | `-` | 2.7.0 |
 | icon | 图标 | `boolean` | `false` | 2.7.0 |
+| ellipsis | 是否开启默认内容省略 | `boolean` | `true` |  |
+| ellipsis-line-clamp | 默认内容省略的最大显示行数 | `number \| string` | `-` |  |
+| ellipsis-expand-trigger | 省略内容的展开触发方式 | `'click'` | `-` |  |
+| ellipsis-tooltip | 省略时是否展示提示。可传入 Tooltip 属性 | `boolean \| EllipsisTooltipProps` | `true` |  |
+| icon-tooltip | 图标提示文案 | `string` | `-` |  |
 | loading | 链接是否为加载中状态 | `boolean` | `false` | 2.37.0 |
 | disabled | 链接是否禁用 | `boolean` | `false` |  |
 
@@ -83,3 +112,11 @@ import linkStatusSource from '../../../../components/generated/link/status.vue?r
 | 事件名 | 描述       | 参数             |
 | ------ | ---------- | ---------------- |
 | click  | 点击时触发 | ev: `MouseEvent` |
+
+### `<link>` Slots
+
+| 插槽名  | 描述                                           |
+| ------- | ---------------------------------------------- |
+| default | 链接正文内容                                   |
+| icon    | 自定义图标内容                                 |
+| tooltip | 自定义省略提示内容，仅在开启 `ellipsis` 时生效 |

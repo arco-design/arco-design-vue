@@ -120,4 +120,14 @@ $link-prefix-cls: string.unquote('#{theme.$prefix}-link');
     font-size: $link-size-icon;
     vertical-align: middle;
   }
+
+  &-content {
+    min-width: 0;
+  }
+
+  &#{&}-icon-only {
+    .#{$link-prefix-cls}-icon {
+      margin-right: 0;
+    }
+  }
 }

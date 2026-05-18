@@ -3,12 +3,26 @@
 exports[`<link> demo: > render [basic] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><a href="link" class="sd-link sd-link-status-normal">
-      <!--v-if-->Link
+  <div class="sd-space-item"><a href="#" class="sd-link sd-link-status-normal sd-link-hoverless">
+      <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Link</span></span>
     </a></div>
   <!---->
-  <div class="sd-space-item"><a class="sd-link sd-link-status-normal sd-link-disabled">
-      <!--v-if-->Link
+  <div class="sd-space-item"><a class="sd-link sd-link-status-normal sd-link-disabled sd-link-hoverless">
+      <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Link</span></span>
+    </a></div>
+</div>
+`;
+
+exports[`<link> demo: > render [ellipsis] correctly 1`] = `
+<div class="sd-space sd-space-vertical sd:w-80" style="column-gap: 8px; row-gap: 8px;">
+  <!---->
+  <div class="sd-space-item"><a href="#" class="sd-link sd-link-status-normal sd-link-hoverless sd:w-full">
+      <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content"> 这是一段较长的链接文案，用于演示默认单行省略能力，宽度受限时会自动截断并在悬浮后展示完整内容。 </span></span>
+    </a></div>
+  <!---->
+  <div class="sd-space-item"><a href="#" class="sd-link sd-link-status-normal sd-link-hoverless sd:w-full">
+      <!--v-if-->
+      <div class="sd-link-content sd-ellipsis sd-ellipsis--line-clamp sd-ellipsis--expandable" style="overflow: hidden; text-overflow: ellipsis; display: -webkit-box; white-space: normal; -webkit-line-clamp: 2; -webkit-box-orient: vertical;"> 这是一段更长的链接文案，用于演示多行省略与点击展开。内容被截断时，会保留链接交互，并支持通过 tooltip 插槽展示自定义提示信息。 </div>
     </a></div>
 </div>
 `;
@@ -16,12 +30,12 @@ exports[`<link> demo: > render [basic] correctly 1`] = `
 exports[`<link> demo: > render [hoverable] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><a href="link" class="sd-link sd-link-status-normal sd-link-hoverless">
-      <!--v-if-->Link
+  <div class="sd-space-item"><a href="#" class="sd-link sd-link-status-normal sd-link-hoverless">
+      <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Link</span></span>
     </a></div>
   <!---->
-  <div class="sd-space-item"><a href="link" class="sd-link sd-link-status-danger sd-link-hoverless">
-      <!--v-if-->Link
+  <div class="sd-space-item"><a href="#" class="sd-link sd-link-status-danger sd-link-hoverless">
+      <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Link</span></span>
     </a></div>
 </div>
 `;
@@ -30,31 +44,44 @@ exports[`<link> demo: > render [icon] correctly 1`] = `
 <div>
   <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
     <!---->
-    <div class="sd-space-item"><a href="link" class="sd-link sd-link-status-normal sd-link-with-icon"><span class="sd-link-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-link" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m14.1 25.414-4.95 4.95a6 6 0 0 0 8.486 8.485l8.485-8.485a6 6 0 0 0 0-8.485m7.779.707 4.95-4.95a6 6 0 1 0-8.486-8.485l-8.485 8.485a6 6 0 0 0 0 8.485"></path></svg></span>Link</a></div>
+    <div class="sd-space-item"><a href="#" class="sd-link sd-link-status-normal sd-link-hoverless sd-link-with-icon"><span class="sd-link-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-link" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m14.1 25.414-4.95 4.95a6 6 0 0 0 8.486 8.485l8.485-8.485a6 6 0 0 0 0-8.485m7.779.707 4.95-4.95a6 6 0 1 0-8.486-8.485l-8.485 8.485a6 6 0 0 0 0 8.485"></path></svg></span><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Link</span></span></a></div>
     <!---->
-    <div class="sd-space-item"><a class="sd-link sd-link-status-normal sd-link-disabled sd-link-with-icon"><span class="sd-link-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-link" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m14.1 25.414-4.95 4.95a6 6 0 0 0 8.486 8.485l8.485-8.485a6 6 0 0 0 0-8.485m7.779.707 4.95-4.95a6 6 0 1 0-8.486-8.485l-8.485 8.485a6 6 0 0 0 0 8.485"></path></svg></span>Link</a></div>
+    <div class="sd-space-item"><a class="sd-link sd-link-status-normal sd-link-disabled sd-link-hoverless sd-link-with-icon"><span class="sd-link-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-link" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m14.1 25.414-4.95 4.95a6 6 0 0 0 8.486 8.485l8.485-8.485a6 6 0 0 0 0-8.485m7.779.707 4.95-4.95a6 6 0 1 0-8.486-8.485l-8.485 8.485a6 6 0 0 0 0 8.485"></path></svg></span><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Link</span></span></a></div>
   </div>
 </div>
 <div>
   <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
     <!---->
-    <div class="sd-space-item"><a href="link" class="sd-link sd-link-status-normal sd-link-with-icon"><span class="sd-link-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-edit" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m30.48 19.038 5.733-5.734a1 1 0 0 0 0-1.414l-5.586-5.586a1 1 0 0 0-1.414 0l-5.734 5.734m7 7L15.763 33.754a1 1 0 0 1-.59.286l-6.048.708a1 1 0 0 1-1.113-1.069l.477-6.31a1 1 0 0 1 .29-.631l14.7-14.7m7 7-7-7M6 42h36"></path></svg></span> Link </a></div>
+    <div class="sd-space-item"><a href="#" class="sd-link sd-link-status-normal sd-link-hoverless sd-link-with-icon"><span class="sd-link-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-edit" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m30.48 19.038 5.733-5.734a1 1 0 0 0 0-1.414l-5.586-5.586a1 1 0 0 0-1.414 0l-5.734 5.734m7 7L15.763 33.754a1 1 0 0 1-.59.286l-6.048.708a1 1 0 0 1-1.113-1.069l.477-6.31a1 1 0 0 1 .29-.631l14.7-14.7m7 7-7-7M6 42h36"></path></svg></span><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content"> Link </span></span></a></div>
     <!---->
-    <div class="sd-space-item"><a class="sd-link sd-link-status-normal sd-link-disabled sd-link-with-icon"><span class="sd-link-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-edit" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m30.48 19.038 5.733-5.734a1 1 0 0 0 0-1.414l-5.586-5.586a1 1 0 0 0-1.414 0l-5.734 5.734m7 7L15.763 33.754a1 1 0 0 1-.59.286l-6.048.708a1 1 0 0 1-1.113-1.069l.477-6.31a1 1 0 0 1 .29-.631l14.7-14.7m7 7-7-7M6 42h36"></path></svg></span> Link </a></div>
+    <div class="sd-space-item"><a class="sd-link sd-link-status-normal sd-link-disabled sd-link-hoverless sd-link-with-icon"><span class="sd-link-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-edit" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m30.48 19.038 5.733-5.734a1 1 0 0 0 0-1.414l-5.586-5.586a1 1 0 0 0-1.414 0l-5.734 5.734m7 7L15.763 33.754a1 1 0 0 1-.59.286l-6.048.708a1 1 0 0 1-1.113-1.069l.477-6.31a1 1 0 0 1 .29-.631l14.7-14.7m7 7-7-7M6 42h36"></path></svg></span><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content"> Link </span></span></a></div>
   </div>
+</div>
+`;
+
+exports[`<link> demo: > render [icon-tooltip] correctly 1`] = `
+<div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
+  <!---->
+  <div class="sd-space-item"><a href="#" class="sd-link sd-link-status-normal sd-link-hoverless sd-link-with-icon sd-link-icon-only"><span class="sd-link-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-link" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m14.1 25.414-4.95 4.95a6 6 0 0 0 8.486 8.485l8.485-8.485a6 6 0 0 0 0-8.485m7.779.707 4.95-4.95a6 6 0 1 0-8.486-8.485l-8.485 8.485a6 6 0 0 0 0 8.485"></path></svg><!----></span>
+      <!--v-if-->
+    </a></div>
+  <!---->
+  <div class="sd-space-item"><a href="#" class="sd-link sd-link-status-normal sd-link-hoverless sd-link-with-icon sd-link-icon-only"><span class="sd-link-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-edit" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m30.48 19.038 5.733-5.734a1 1 0 0 0 0-1.414l-5.586-5.586a1 1 0 0 0-1.414 0l-5.734 5.734m7 7L15.763 33.754a1 1 0 0 1-.59.286l-6.048.708a1 1 0 0 1-1.113-1.069l.477-6.31a1 1 0 0 1 .29-.631l14.7-14.7m7 7-7-7M6 42h36"></path></svg><!----></span>
+      <!--v-if-->
+    </a></div>
 </div>
 `;
 
 exports[`<link> demo: > render [loading] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->
-  <div class="sd-space-item"><a class="sd-link sd-link-status-normal sd-link-loading sd-link-with-icon"><span class="sd-link-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-loading" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path></svg></span>Link</a></div>
+  <div class="sd-space-item"><a class="sd-link sd-link-status-normal sd-link-loading sd-link-hoverless sd-link-with-icon"><span class="sd-link-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-loading" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path></svg></span><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Link</span></span></a></div>
   <!---->
-  <div class="sd-space-item"><a class="sd-link sd-link-status-normal">
-      <!--v-if-->Link
+  <div class="sd-space-item"><a class="sd-link sd-link-status-normal sd-link-hoverless">
+      <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Link</span></span>
     </a></div>
   <!---->
-  <div class="sd-space-item"><a class="sd-link sd-link-status-normal sd-link-with-icon"><span class="sd-link-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-edit" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m30.48 19.038 5.733-5.734a1 1 0 0 0 0-1.414l-5.586-5.586a1 1 0 0 0-1.414 0l-5.734 5.734m7 7L15.763 33.754a1 1 0 0 1-.59.286l-6.048.708a1 1 0 0 1-1.113-1.069l.477-6.31a1 1 0 0 1 .29-.631l14.7-14.7m7 7-7-7M6 42h36"></path></svg></span> Link </a></div>
+  <div class="sd-space-item"><a class="sd-link sd-link-status-normal sd-link-hoverless sd-link-with-icon"><span class="sd-link-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-edit" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m30.48 19.038 5.733-5.734a1 1 0 0 0 0-1.414l-5.586-5.586a1 1 0 0 0-1.414 0l-5.734 5.734m7 7L15.763 33.754a1 1 0 0 1-.59.286l-6.048.708a1 1 0 0 1-1.113-1.069l.477-6.31a1 1 0 0 1 .29-.631l14.7-14.7m7 7-7-7M6 42h36"></path></svg></span><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content"> Link </span></span></a></div>
 </div>
 `;
 
@@ -64,25 +91,12 @@ exports[`<link> demo: > render [status] correctly 1`] = `
   <div class="sd-space-item">
     <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
       <!---->
-      <div class="sd-space-item"><a href="link" class="sd-link sd-link-status-normal">
-          <!--v-if-->Normal Link
+      <div class="sd-space-item"><a href="#" class="sd-link sd-link-status-normal sd-link-hoverless">
+          <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Normal Link</span></span>
         </a></div>
       <!---->
-      <div class="sd-space-item"><a class="sd-link sd-link-status-normal sd-link-disabled">
-          <!--v-if-->Normal Link
-        </a></div>
-    </div>
-  </div>
-  <!---->
-  <div class="sd-space-item">
-    <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
-      <!---->
-      <div class="sd-space-item"><a href="link" class="sd-link sd-link-status-success">
-          <!--v-if-->Success Link
-        </a></div>
-      <!---->
-      <div class="sd-space-item"><a class="sd-link sd-link-status-success sd-link-disabled">
-          <!--v-if-->Success Link
+      <div class="sd-space-item"><a class="sd-link sd-link-status-normal sd-link-disabled sd-link-hoverless">
+          <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Normal Link</span></span>
         </a></div>
     </div>
   </div>
@@ -90,12 +104,12 @@ exports[`<link> demo: > render [status] correctly 1`] = `
   <div class="sd-space-item">
     <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
       <!---->
-      <div class="sd-space-item"><a href="link" class="sd-link sd-link-status-warning">
-          <!--v-if-->Warning Link
+      <div class="sd-space-item"><a href="#" class="sd-link sd-link-status-success sd-link-hoverless">
+          <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Success Link</span></span>
         </a></div>
       <!---->
-      <div class="sd-space-item"><a class="sd-link sd-link-status-warning sd-link-disabled">
-          <!--v-if-->Warning Link
+      <div class="sd-space-item"><a class="sd-link sd-link-status-success sd-link-disabled sd-link-hoverless">
+          <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Success Link</span></span>
         </a></div>
     </div>
   </div>
@@ -103,12 +117,25 @@ exports[`<link> demo: > render [status] correctly 1`] = `
   <div class="sd-space-item">
     <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
       <!---->
-      <div class="sd-space-item"><a href="link" class="sd-link sd-link-status-danger">
-          <!--v-if-->Danger Link
+      <div class="sd-space-item"><a href="#" class="sd-link sd-link-status-warning sd-link-hoverless">
+          <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Warning Link</span></span>
         </a></div>
       <!---->
-      <div class="sd-space-item"><a class="sd-link sd-link-status-danger sd-link-disabled">
-          <!--v-if-->Danger Link
+      <div class="sd-space-item"><a class="sd-link sd-link-status-warning sd-link-disabled sd-link-hoverless">
+          <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Warning Link</span></span>
+        </a></div>
+    </div>
+  </div>
+  <!---->
+  <div class="sd-space-item">
+    <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
+      <!---->
+      <div class="sd-space-item"><a href="#" class="sd-link sd-link-status-danger sd-link-hoverless">
+          <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Danger Link</span></span>
+        </a></div>
+      <!---->
+      <div class="sd-space-item"><a class="sd-link sd-link-status-danger sd-link-disabled sd-link-hoverless">
+          <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Danger Link</span></span>
         </a></div>
     </div>
   </div>

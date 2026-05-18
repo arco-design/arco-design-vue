@@ -1,19 +1,19 @@
 <template>
   <div>
     <sd-space>
-      <sd-link href="link" icon>Link</sd-link>
-      <sd-link href="link" disabled icon>Link</sd-link>
+      <sd-link href="#" icon>Link</sd-link>
+      <sd-link href="#" disabled icon>Link</sd-link>
     </sd-space>
   </div>
   <div>
     <sd-space>
-      <sd-link href="link">
+      <sd-link href="#">
         <template #icon>
           <icon-edit />
         </template>
         Link
       </sd-link>
-      <sd-link href="link" disabled>
+      <sd-link href="#" disabled>
         <template #icon>
           <icon-edit />
         </template>
