@@ -10,99 +10,58 @@
   </a>
 </template>
 
-<script lang="ts">
-  import type { PropType } from 'vue';
-  import { computed, defineComponent } from 'vue';
+<script setup lang="ts">
+  import { computed, useSlots } from 'vue';
 
-  import { Status } from '../_utils/constant';
+  import type { Status } from '../_utils/constant';
+  import type { LinkProps } from './interface';
+
   import { getPrefixCls } from '../_utils/global-config';
   import { hasPropOrSlot } from '../_utils/use-prop-or-slot';
   import IconLink from '../icon/icon-link';
   import IconLoading from '../icon/icon-loading';
 
-  export default defineComponent({
+  defineOptions({
     name: 'Link',
-    components: { IconLink, IconLoading },
-    props: {
-      /**
-       * @zh 链接地址
-       * @en Link address
-       */
-      href: String,
-      /**
-       * @zh 链接的状态
-       * @en Link status
-       * @values 'normal','warning','success','danger'
-       */
-      status: {
-        type: String as PropType<Status>,
-        default: 'normal',
-      },
-      /**
-       * @zh 鼠标悬浮时存在底色
-       * @en Whether to hide background when hover
-       * @defaultValue true
-       * @version 2.7.0
-       */
-      hoverable: {
-        type: Boolean,
-        default: true,
-      },
-      /**
-       * @zh 图标
-       * @en icon
-       * @version 2.7.0
-       */
-      icon: Boolean,
-      /**
-       * @zh 链接是否为加载中状态
-       * @en Whether the link is in the loading state
-       * @version 2.37.0
-       */
-      loading: Boolean,
-      /**
-       * @zh 链接是否禁用
-       * @en Whether the link is disabled
-       */
-      disabled: Boolean,
-    },
-    emits: {
-      /**
-       * @zh 点击时触发
-       * @en Emitted when the link is clicked
-       * @property {MouseEvent} ev
-       */
-      click: (_ev: MouseEvent) => true,
-    },
-    setup(props, { slots, emit }) {
-      const prefixCls = getPrefixCls('link');
-      const showIcon = hasPropOrSlot(props, slots, 'icon');
-
-      const handleClick = (ev: MouseEvent) => {
-        if (props.disabled || props.loading) {
-          ev.preventDefault();
-          return;
-        }
-        emit('click', ev);
-      };
-
-      const cls = computed(() => [
-        prefixCls,
-        `${prefixCls}-status-${props.status}`,
-        {
-          [`${prefixCls}-disabled`]: props.disabled,
-          [`${prefixCls}-loading`]: props.loading,
-          [`${prefixCls}-hoverless`]: !props.hoverable,
-          [`${prefixCls}-with-icon`]: props.loading || showIcon.value,
-        },
-      ]);
-
-      return {
-        cls,
-        prefixCls,
-        showIcon,
-        handleClick,
-      };
-    },
   });
+
+  const emit = defineEmits<{
+    /**
+     * @zh 点击时触发
+     * @en Emitted when the link is clicked
+     * @property {MouseEvent} ev
+     */
+    click: [ev: MouseEvent];
+  }>();
+
+  const props = withDefaults(defineProps<LinkProps>(), {
+    status: 'normal',
+    hoverable: true,
+    icon: false,
+    loading: false,
+    disabled: false,
+  });
+
+  const slots = useSlots();
+  const prefixCls = getPrefixCls('link');
+  const showIcon = hasPropOrSlot(props, slots, 'icon');
+
+  const handleClick = (ev: MouseEvent) => {
+    if (props.disabled || props.loading) {
+      ev.preventDefault();
+      return;
+    }
+    emit('click', ev);
+  };
+
+  const cls = computed(() => [
+    prefixCls,
+    `${prefixCls}-status-${props.status}`,
+    {
+      [`${prefixCls}-disabled`]: props.disabled,
+      [`${prefixCls}-loading`]: props.loading,
+      [`${prefixCls}-hoverless`]: !props.hoverable,
+      [`${prefixCls}-with-icon`]: props.loading || showIcon.value,
+    },
+  ]);
 </script>

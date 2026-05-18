@@ -77,6 +77,14 @@ export type {
 } from './config-provider';
 export { default as ThemeProvider } from './theme-provider';
 export type { ThemeProviderInstance } from './theme-provider';
+export { default as Copy } from './copy';
+export type {
+  CopyButtonProps,
+  CopyComponentType,
+  CopyInstance,
+  CopyLinkProps,
+  CopyProps,
+} from './copy';
 export {
   default as DatePicker,
   MonthPicker,
@@ -212,7 +220,7 @@ export type {
   SiderProps,
 } from './layout';
 export { default as Link } from './link';
-export type { LinkInstance } from './link';
+export type { LinkInstance, LinkProps } from './link';
 export { default as List, ListItem, ListItemMeta } from './list';
 export type { ListInstance, ListItemInstance, ListItemMetaInstance } from './list';
 export { default as Mention } from './mention';

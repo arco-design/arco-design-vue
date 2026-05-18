@@ -1,21 +1,20 @@
 import type { App } from 'vue';
 
 import type { SDOptions } from '../_utils/types';
-import type { LinkProps } from './interface';
 
 import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
-import _Link from './link.vue';
+import _Copy from './copy.vue';
 
-const Link = Object.assign(_Link, {
+const Copy = Object.assign(_Copy, {
   install: (app: App, options?: SDOptions) => {
     setGlobalConfig(app, options);
     const componentPrefix = getComponentPrefix(options);
 
-    app.component(componentPrefix + _Link.name, _Link);
+    app.component(componentPrefix + _Copy.name, _Copy);
   },
 });
 
-export type LinkInstance = InstanceType<typeof _Link>;
-export type { LinkProps };
+export type CopyInstance = InstanceType<typeof _Copy>;
+export type { CopyButtonProps, CopyComponentType, CopyLinkProps, CopyProps } from './types';
 
-export default Link;
+export default Copy;

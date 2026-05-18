@@ -64,6 +64,10 @@ export const docsSidebar = [
             label: '全局配置 ConfigProvider',
           },
           {
+            slug: 'components/copy',
+            label: '复制 Copy',
+          },
+          {
             slug: 'components/theme-provider',
             label: '主题容器 ThemeProvider',
           },

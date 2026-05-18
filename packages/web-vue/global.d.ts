@@ -1,7 +1,8 @@
 /// <reference types="vitest/globals" />
 /// <reference types="vite/client" />
 
-import type { NativeElements, ReservedProps, VNode } from '@vue/runtime-dom';
+type RuntimeDomNativeElements = import('@vue/runtime-dom').NativeElements;
+type RuntimeDomReservedProps = import('@vue/runtime-dom').ReservedProps;
 
 declare module '*.vue' {
   import type { DefineComponent } from 'vue';
@@ -10,22 +11,20 @@ declare module '*.vue' {
   export default component;
 }
 
-declare global {
-  namespace JSX {
-    export type Element = VNode;
-    export interface ElementClass {
-      // oxlint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
-      $props: {};
-    }
-    export interface ElementAttributesProperty {
-      // oxlint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
-      $props: {};
-    }
-    export interface IntrinsicElements extends NativeElements {
-      [name: string]: any;
-    }
-    export type IntrinsicAttributes = ReservedProps;
+declare namespace JSX {
+  export type Element = import('vue').VNode;
+  export interface ElementClass {
+    // oxlint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
+    $props: {};
   }
+  export interface ElementAttributesProperty {
+    // oxlint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
+    $props: {};
+  }
+  export interface IntrinsicElements extends RuntimeDomNativeElements {
+    [name: string]: any;
+  }
+  export type IntrinsicAttributes = RuntimeDomReservedProps;
 }
 
 declare module '*.scss' {

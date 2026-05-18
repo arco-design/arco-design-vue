@@ -21,6 +21,7 @@ import Collapse, { CollapseItem } from './collapse';
 import ColorPicker from './color-picker';
 import Comment from './comment';
 import ConfigProvider from './config-provider';
+import Copy from './copy';
 import DatePicker, {
   WeekPicker,
   MonthPicker,
@@ -104,6 +105,7 @@ const components: Record<string, Plugin> = {
   Comment,
   ColorPicker,
   Descriptions,
+  Copy,
   Empty,
   Image,
   Scrollbar,

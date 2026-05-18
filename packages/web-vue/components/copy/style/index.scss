@@ -1,0 +1,15 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+@use '@components/copy/style/token.scss' as *;
+
+$copy-prefix-cls: string.unquote('#{theme.$prefix}-copy');
+
+.#{$copy-prefix-cls} {
+  border-radius: $copy-border-radius;
+
+  &#{&}-inherit {
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
+  }
+}
