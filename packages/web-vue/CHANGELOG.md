@@ -1,3 +1,9 @@
+# [1.13.0](https://github.com/liunnn1994/sd-design/compare/v1.12.0...v1.13.0) (2026-05-19)
+
+### Features
+
+- 🆕 新增默认下拉虚拟滚动参数 ([5fabe49](https://github.com/liunnn1994/sd-design/commit/5fabe499adb899069b1213807de91e7f19582639))
+
 # [1.12.0](https://github.com/liunnn1994/sd-design/compare/v1.11.1...v1.12.0) (2026-05-19)
 
 ### Bug Fixes
