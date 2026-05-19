@@ -15,6 +15,7 @@
 </template>
 
 <script lang="ts">
+  import type { DefineComponent } from 'vue';
   import { computed, defineComponent, PropType, provide, reactive, ref, toRefs, watch } from 'vue';
 
   import { isNull, isUndefined } from '../_utils/is';
@@ -51,7 +52,7 @@
     return '';
   };
 
-  export default defineComponent({
+  const CascaderPanel: DefineComponent = defineComponent({
     name: 'CascaderPanel',
     components: {
       BaseCascaderPanel,
@@ -412,4 +413,6 @@
       };
     },
   });
+
+  export default CascaderPanel;
 </script>

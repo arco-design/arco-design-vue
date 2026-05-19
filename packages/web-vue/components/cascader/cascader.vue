@@ -87,6 +87,7 @@
 </template>
 
 <script lang="ts">
+  import type { DefineComponent } from 'vue';
   import {
     computed,
     defineComponent,
@@ -147,7 +148,7 @@
     return '';
   };
 
-  export default defineComponent({
+  const Cascader: DefineComponent = defineComponent({
     name: 'Cascader',
     components: {
       Trigger,
@@ -1061,4 +1062,6 @@
       };
     },
   });
+
+  export default Cascader;
 </script>
