@@ -1,3 +1,16 @@
+# [1.14.0](https://github.com/liunnn1994/sd-design/compare/v1.13.0...v1.14.0) (2026-05-19)
+
+### Bug Fixes
+
+- 🐛 修复 ts 报错 ([ce5b3c2](https://github.com/liunnn1994/sd-design/commit/ce5b3c2a1319bbf573968c132d20985b40d9bd0b))
+- 🐛 修复 ts 报错 ([5156619](https://github.com/liunnn1994/sd-design/commit/5156619f189b6628cb9132ec5604509987f46277))
+
+### Features
+
+- 🆕 DatePicker 默认配置 ([a71ba18](https://github.com/liunnn1994/sd-design/commit/a71ba18bb4bd2913048f9ad683661316fabe9042))
+- 🆕 新增自动导入插件 ([cc6fb54](https://github.com/liunnn1994/sd-design/commit/cc6fb54744d015c535d98636e02581cb6b3f7e42))
+- 🆕 给 modal/drawer 添加全局配置 ([a81fff9](https://github.com/liunnn1994/sd-design/commit/a81fff99e566aa0d4a3808ab7c3434cb5ee155ff))
+
 # [1.13.0](https://github.com/liunnn1994/sd-design/compare/v1.12.0...v1.13.0) (2026-05-19)
 
 ### Features
