@@ -38,5 +38,7 @@ export type {
   CascaderSingleValue,
 } from './interface';
 
+export type { CascaderEmits, CascaderPanelEmits, CascaderPanelProps, CascaderProps } from './types';
+
 export { _CascaderPanel as CascaderPanel };
 export default Cascader;

@@ -116,7 +116,7 @@
     "vue-tsc": "^3.2.6"
   },
   "peerDependencies": {
-    "vue": ">=3.1.0"
+    "vue": "catalog:"
   },
   "vetur": {
     "tags": "json/vetur-tags.json",

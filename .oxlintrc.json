@@ -12,7 +12,8 @@
     "packages/web-vue/lib/*",
     "packages/web-vue/*.json",
     "packages/web-vue/*.js",
-    "vendor/**"
+    "vendor/**",
+    "packages/sd-vue-docs/.astro/**"
   ],
   "overrides": [
     {

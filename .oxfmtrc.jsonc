@@ -55,5 +55,6 @@
     "vendor/**",
     ".*/",
     "graphify-*",
+    "packages/sd-vue-docs/.astro/**",
   ],
 }
