@@ -437,4 +437,142 @@ describe('config-provider theme', () => {
 
     expect(wrapper.findComponent(Cascader).find('input').attributes('readonly')).toBeDefined();
   });
+
+  it('keeps dropdown virtual list behavior unchanged when config is unset', async () => {
+    const wrapper = mount(
+      defineComponent({
+        setup() {
+          return () =>
+            h(
+              ConfigProvider,
+              {},
+              {
+                default: () =>
+                  h('div', [
+                    h(TreeSelect, {
+                      defaultPopupVisible: true,
+                      options: [{ label: 'Node 1', value: 'node-1' }],
+                      fieldNames: { title: 'label' },
+                    }),
+                    h(Select, {
+                      defaultPopupVisible: true,
+                      options: ['Beijing', 'Shanghai'],
+                    }),
+                  ]),
+              },
+            );
+        },
+      }),
+      {
+        attachTo: document.body,
+      },
+    );
+
+    await nextTick();
+
+    expect(
+      wrapper.findComponent(TreeSelect).findComponent({ name: 'Tree' }).props('virtualListProps'),
+    ).toBeUndefined();
+    expect(
+      wrapper.findComponent(Select).findComponent({ name: 'SelectDropdown' }).props('virtualList'),
+    ).toBe(false);
+
+    wrapper.unmount();
+  });
+
+  it('applies virtualListProps to dropdown descendants when configured', async () => {
+    const virtualListProps = {
+      itemSize: 40,
+      buffer: 200,
+    };
+
+    const wrapper = mount(
+      defineComponent({
+        setup() {
+          return () =>
+            h(
+              ConfigProvider,
+              { virtualListProps },
+              {
+                default: () =>
+                  h('div', [
+                    h(TreeSelect, {
+                      defaultPopupVisible: true,
+                      options: [{ label: 'Node 1', value: 'node-1' }],
+                      fieldNames: { title: 'label' },
+                    }),
+                    h(Select, {
+                      defaultPopupVisible: true,
+                      options: ['Beijing', 'Shanghai'],
+                    }),
+                  ]),
+              },
+            );
+        },
+      }),
+      {
+        attachTo: document.body,
+      },
+    );
+
+    await nextTick();
+
+    expect(
+      wrapper.findComponent(TreeSelect).findComponent({ name: 'Tree' }).props('virtualListProps'),
+    ).toMatchObject({
+      itemSize: 40,
+      buffer: 200,
+      height: '200px',
+    });
+    expect(
+      wrapper.findComponent(Select).findComponent({ name: 'SelectDropdown' }).props('virtualList'),
+    ).toBe(true);
+
+    wrapper.unmount();
+  });
+
+  it('prefers explicit virtual-list-props over provider defaults', async () => {
+    const wrapper = mount(
+      defineComponent({
+        setup() {
+          return () =>
+            h(
+              ConfigProvider,
+              {
+                virtualListProps: {
+                  itemSize: 40,
+                  buffer: 200,
+                },
+              },
+              {
+                default: () =>
+                  h(Select, {
+                    'defaultPopupVisible': true,
+                    'options': ['Beijing', 'Shanghai'],
+                    'virtual-list-props': {
+                      itemSize: 28,
+                      height: 160,
+                    },
+                  }),
+              },
+            );
+        },
+      }),
+      {
+        attachTo: document.body,
+      },
+    );
+
+    await nextTick();
+
+    const selectDropdown = wrapper.findComponent(Select).findComponent({ name: 'SelectDropdown' });
+
+    expect(selectDropdown.props('virtualList')).toBe(true);
+    expect(selectDropdown.findComponent({ name: 'VirtualList' }).props()).toMatchObject({
+      itemSize: 28,
+      height: 160,
+    });
+
+    wrapper.unmount();
+  });
 });

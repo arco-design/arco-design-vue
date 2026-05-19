@@ -8,6 +8,7 @@
   import type { PropType } from 'vue';
   import { defineComponent, provide, reactive, toRefs, getCurrentInstance, watch } from 'vue';
 
+  import { VirtualListProps } from '../_components/virtual-list/interface';
   import { Size } from '../_utils/constant';
   import { SDLang } from '../locale/interface';
   import { configProviderInjectionKey } from './context';
@@ -55,6 +56,13 @@
       allowSearch: {
         type: Boolean,
         default: false,
+      },
+      /**
+       * @zh 下拉类组件默认虚拟滚动参数，仅对 Select、AutoComplete、Cascader、TreeSelect 等下拉组件生效
+       * @en Default virtual list props for dropdown-like components such as Select, AutoComplete, Cascader, and TreeSelect
+       */
+      virtualListProps: {
+        type: Object as PropType<VirtualListProps>,
       },
       /**
        * @zh 是否全局生效
@@ -135,6 +143,7 @@
         size,
         allowClear,
         allowSearch,
+        virtualListProps,
         updateAtScroll,
         scrollToClose,
         exchangeTime,
@@ -148,6 +157,7 @@
         size,
         allowClear,
         allowSearch,
+        virtualListProps,
         updateAtScroll,
         scrollToClose,
         exchangeTime,

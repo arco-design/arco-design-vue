@@ -1,5 +1,6 @@
 import { InjectionKey, Ref, Slots } from 'vue';
 
+import { VirtualListProps } from '../_components/virtual-list/interface';
 import { Size } from '../_utils/constant';
 import { SDLang } from '../locale/interface';
 import { SDThemeNormalized } from './theme';
@@ -11,6 +12,7 @@ export interface ConfigProvider {
   size?: Size;
   allowClear?: boolean;
   allowSearch?: boolean;
+  virtualListProps?: VirtualListProps;
   updateAtScroll?: boolean;
   scrollToClose?: boolean;
   exchangeTime?: boolean;

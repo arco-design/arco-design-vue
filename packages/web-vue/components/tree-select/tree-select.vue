@@ -106,7 +106,6 @@
     computed,
     CSSProperties,
     defineComponent,
-    DefineComponent,
     nextTick,
     PropType,
     reactive,
@@ -121,6 +120,7 @@
   import { VirtualListProps } from '../_components/virtual-list/interface';
   import { useAllowClear } from '../_hooks/use-allow-clear';
   import { useAllowSearch } from '../_hooks/use-allow-search';
+  import { useDropdownVirtualListProps } from '../_hooks/use-dropdown-virtual-list-props';
   import { useFormItem } from '../_hooks/use-form-item';
   import useMergeState from '../_hooks/use-merge-state';
   import { Size } from '../_utils/constant';
@@ -659,6 +659,9 @@
       const { mergedAllowClear } = useAllowClear(
         computed(() => props.allowClear || props.clearable),
       );
+      const { mergedDropdownVirtualListProps } = useDropdownVirtualListProps(
+        computed(() => props.virtualListProps ?? treeProps.value?.virtualListProps),
+      );
       const TreeSelectEmpty = configCtx?.slots.empty?.({
         component: 'tree-select',
       })?.[0];
@@ -670,7 +673,7 @@
       );
       const mergedTreeProps = computed(() => {
         const resolvedVirtualListProps = resolveDropdownVirtualListProps(
-          props.virtualListProps ?? treeProps.value?.virtualListProps,
+          mergedDropdownVirtualListProps.value,
           props.triggerProps,
         );
 

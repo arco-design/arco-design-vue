@@ -20,6 +20,7 @@ import SelectView from '../_components/select-view/select-view';
 import VirtualList from '../_components/virtual-list';
 import { useAllowClear } from '../_hooks/use-allow-clear';
 import { useAllowSearch } from '../_hooks/use-allow-search';
+import { useDropdownVirtualListProps } from '../_hooks/use-dropdown-virtual-list-props';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useTrigger } from '../_hooks/use-trigger';
 import { debounce } from '../_utils/debounce';
@@ -263,7 +264,10 @@ export default defineComponent({
     });
     const { mergedAllowClear } = useAllowClear(allowClear);
     const { mergedAllowSearch } = useAllowSearch(allowSearch);
-    const component = computed(() => (props.virtualListProps ? 'div' : 'li'));
+    const { mergedDropdownVirtualListProps } = useDropdownVirtualListProps(
+      computed(() => props.virtualListProps),
+    );
+    const component = computed(() => (mergedDropdownVirtualListProps.value ? 'div' : 'li'));
     const retainInputValue = computed(
       () => isObject(mergedAllowSearch.value) && Boolean(mergedAllowSearch.value.retainInputValue),
     );
@@ -273,7 +277,7 @@ export default defineComponent({
     const virtualListRef = ref();
     const resolvedVirtualListProps = computed<VirtualListProps | undefined>(() => {
       return resolveDropdownVirtualListProps(
-        props.virtualListProps,
+        mergedDropdownVirtualListProps.value,
         props.triggerProps,
         DEFAULT_SELECT_VIRTUAL_ITEM_SIZE,
       );
@@ -666,7 +670,7 @@ export default defineComponent({
         }}
         loading={props.loading}
         empty={validOptionInfos.value.length === 0}
-        virtualList={Boolean(props.virtualListProps)}
+        virtualList={Boolean(resolvedVirtualListProps.value)}
         scrollbar={props.scrollbar}
         showHeaderOnEmpty={props.showHeaderOnEmpty}
         showFooterOnEmpty={props.showFooterOnEmpty}

@@ -43,5 +43,17 @@ declare module '*.md' {
   export default component;
 }
 
+declare module '../icon/*' {
+  import type { DefineComponent } from 'vue';
+  const component: DefineComponent<Record<string, never>, Record<string, never>, any>;
+  export default component;
+}
+
+declare module '../../icon/*' {
+  import type { DefineComponent } from 'vue';
+  const component: DefineComponent<Record<string, never>, Record<string, never>, any>;
+  export default component;
+}
+
 declare module 'b-tween';
 declare module 'clean-css';

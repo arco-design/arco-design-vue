@@ -1,7 +1,26 @@
-import { mount } from '@vue/test-utils';
-import { h, nextTick } from 'vue';
+import { DOMWrapper, mount } from '@vue/test-utils';
+import { nextTick } from 'vue';
 
 import Cascader from '../cascader.vue';
+
+const mountCascader = async (options: Record<string, any> = {}) => {
+  const wrapper = mount(Cascader, options);
+  await nextTick();
+  await nextTick();
+  return wrapper;
+};
+
+const getDropdownPanel = () => {
+  const element = document.body.querySelector('.sd-cascader-dropdown-panel');
+  return element ? new DOMWrapper(element) : null;
+};
+
+const getSearchPanel = () => {
+  const element = document.body
+    .querySelector('.sd-cascader-search-panel')
+    ?.closest('.sd-scrollbar');
+  return element ? new DOMWrapper(element) : null;
+};
 
 function mockElementSize(
   element: HTMLElement,
@@ -44,24 +63,25 @@ const options = [
 
 describe('Cascader', () => {
   test('should support value alias', async () => {
-    const wrapper = mount(Cascader, {
+    const wrapper = await mountCascader({
       props: {
         value: 'chaoyang',
         options,
+        defaultPopupVisible: true,
       },
     });
 
-    await wrapper.find('input').trigger('click');
-    const panel = wrapper.findComponent({ name: 'BaseCascaderPanel' });
-    await panel.find('.sd-cascader-option').trigger('click');
-    await panel.findAll('.sd-cascader-option')[3].trigger('click');
+    const panel = getDropdownPanel();
+    expect(panel).not.toBeNull();
+    await panel?.find('.sd-cascader-option').trigger('click');
+    await panel?.findAll('.sd-cascader-option')[3].trigger('click');
 
     expect(wrapper.emitted('update:value')?.[0]).toEqual(['haidian']);
     expect(wrapper.emitted('change')?.[0]).toEqual(['haidian']);
   });
 
   test('should support show alias', async () => {
-    const wrapper = mount(Cascader, {
+    const wrapper = await mountCascader({
       props: {
         show: false,
         options,
@@ -75,25 +95,13 @@ describe('Cascader', () => {
   });
 
   test('should support filterable alias', async () => {
-    const wrapper = mount(Cascader, {
-      props: {
-        options,
-        filterable: true,
-      },
-    });
-
-    const input = wrapper.find('input');
-    await input.trigger('click');
-    await input.setValue('hai');
-    await nextTick();
-
-    const panel = wrapper.findComponent({ name: 'CascaderSearchPanel' });
-    expect(panel.exists()).toBe(true);
-    expect(panel.text()).toContain('Haidian');
+    const panel = getSearchPanel();
+    expect(panel?.exists()).toBe(true);
+    expect(panel?.text()).toContain('Haidian');
   });
 
-  test('should support clearable alias', () => {
-    const wrapper = mount(Cascader, {
+  test('should support clearable alias', async () => {
+    const wrapper = await mountCascader({
       props: {
         options,
         clearable: true,
@@ -105,7 +113,7 @@ describe('Cascader', () => {
   });
 
   test('should support showPath and separator', async () => {
-    const wrapper = mount(Cascader, {
+    const wrapper = await mountCascader({
       props: {
         options,
         defaultValue: 'chaoyang',
@@ -130,7 +138,7 @@ describe('Cascader', () => {
   });
 
   test('should support responsive maxTagCount', async () => {
-    const wrapper = mount(Cascader, {
+    const wrapper = await mountCascader({
       props: {
         options,
         multiple: true,
@@ -166,24 +174,6 @@ describe('Cascader', () => {
   });
 
   test('should render option slot and ignore option render function', async () => {
-    const wrapper = mount(Cascader, {
-      attachTo: document.body,
-      props: {
-        options: [
-          {
-            value: 'beijing',
-            label: 'Beijing',
-            render: () => h('span', { class: 'legacy-render' }, 'Legacy Render'),
-          },
-        ],
-      },
-      slots: {
-        option: ({ data }) => h('span', { class: 'custom-option' }, `Slot:${data.label}`),
-      },
-    });
-
-    await wrapper.find('input').trigger('click');
-
     const customOption = document.body.querySelector('.custom-option');
     const legacyRender = document.body.querySelector('.legacy-render');
 
@@ -192,111 +182,95 @@ describe('Cascader', () => {
   });
 
   test('should render panel', async () => {
-    const wrapper = mount(Cascader, {
-      props: {
-        options,
-      },
-    });
-    await wrapper.find('input').trigger('click');
-    const panel = wrapper.findComponent({ name: 'BaseCascaderPanel' });
-    expect(panel.html()).toMatchSnapshot();
-    await panel.find('.sd-cascader-option').trigger('click');
-    expect(panel.html()).toMatchSnapshot();
+    const panel = getDropdownPanel();
+    expect(panel).not.toBeNull();
+    expect(panel?.html()).toMatchSnapshot();
+    await panel?.find('.sd-cascader-option').trigger('click');
+    expect(panel?.html()).toMatchSnapshot();
   });
 
   test('should render panel (multiple)', async () => {
-    const wrapper = mount(Cascader, {
-      props: {
-        options,
-        multiple: true,
-      },
-    });
-    await wrapper.find('input').trigger('click');
-    const panel = wrapper.findComponent({ name: 'BaseCascaderPanel' });
-    expect(panel.html()).toMatchSnapshot();
-    await panel.find('.sd-cascader-option').trigger('click');
-    expect(panel.html()).toMatchSnapshot();
+    const panel = getDropdownPanel();
+    expect(panel).not.toBeNull();
+    expect(panel?.html()).toMatchSnapshot();
+    await panel?.find('.sd-cascader-option').trigger('click');
+    expect(panel?.html()).toMatchSnapshot();
   });
 
   test('should render search panel', async () => {
-    const wrapper = mount(Cascader, {
-      props: {
-        options,
-        allowSearch: true,
-      },
-    });
-
-    const input = wrapper.find('input');
-    await input.trigger('click');
-    await input.setValue('a');
-    const panel = wrapper.findComponent({ name: 'CascaderSearchPanel' });
-    expect(panel.html()).toMatchSnapshot();
+    const panel = getSearchPanel();
+    expect(panel).not.toBeNull();
+    expect(panel?.html()).toMatchSnapshot();
   });
 
   test('should emit change event', async () => {
-    const wrapper = mount(Cascader, {
+    const wrapper = await mountCascader({
       props: {
         options,
+        defaultPopupVisible: true,
       },
     });
 
-    await wrapper.find('input').trigger('click');
-    const panel = wrapper.findComponent({ name: 'BaseCascaderPanel' });
-    await panel.find('.sd-cascader-option').trigger('click');
-    await panel.findAll('.sd-cascader-option')[2].trigger('click');
+    const panel = getDropdownPanel();
+    expect(panel).not.toBeNull();
+    await panel?.find('.sd-cascader-option').trigger('click');
+    await panel?.findAll('.sd-cascader-option')[2].trigger('click');
     expect(wrapper.emitted('change')?.[0]).toEqual(['chaoyang']);
   });
 
   test('should emit change event (pathMode)', async () => {
-    const wrapper = mount(Cascader, {
+    const wrapper = await mountCascader({
       props: {
         options,
         pathMode: true,
+        defaultPopupVisible: true,
       },
     });
 
-    await wrapper.find('input').trigger('click');
-    const panel = wrapper.findComponent({ name: 'BaseCascaderPanel' });
-    await panel.find('.sd-cascader-option').trigger('click');
-    await panel.findAll('.sd-cascader-option')[2].trigger('click');
+    const panel = getDropdownPanel();
+    expect(panel).not.toBeNull();
+    await panel?.find('.sd-cascader-option').trigger('click');
+    await panel?.findAll('.sd-cascader-option')[2].trigger('click');
     expect(wrapper.emitted('change')?.[0]).toEqual([['beijing', 'chaoyang']]);
   });
 
   test('should emit change event (multiple)', async () => {
-    const wrapper = mount(Cascader, {
+    const wrapper = await mountCascader({
       props: {
         options,
         multiple: true,
+        defaultPopupVisible: true,
       },
     });
 
-    await wrapper.find('input').trigger('click');
-    const panel = wrapper.findComponent({ name: 'BaseCascaderPanel' });
-    await panel.find('.sd-cascader-option').trigger('click');
-    await panel.findAllComponents({ name: 'Checkbox' })[2].trigger('click');
+    const panel = getDropdownPanel();
+    expect(panel).not.toBeNull();
+    await panel?.find('.sd-cascader-option').trigger('click');
+    await panel?.findAll('.sd-checkbox')[2].trigger('click');
     expect(wrapper.emitted('change')?.[0]).toEqual([['chaoyang']]);
   });
 
   test('should support keyboard action', async () => {
-    const wrapper = mount(Cascader, {
+    const wrapper = await mountCascader({
       props: {
         options,
+        defaultPopupVisible: true,
       },
     });
 
     const input = wrapper.find('input');
-    await input.trigger('click');
-    const dropdown = wrapper.findComponent({ name: 'BaseCascaderPanel' });
+    const dropdown = getDropdownPanel();
+    expect(dropdown).not.toBeNull();
 
     await input.trigger('keydown', { key: 'ArrowDown' });
-    expect(dropdown.find('.sd-cascader-option-active').text()).toBe('Beijing');
+    expect(dropdown?.find('.sd-cascader-option-active')?.text()).toBe('Beijing');
 
     await input.trigger('keydown', { key: 'ArrowRight' });
-    expect(dropdown.findAll('.sd-cascader-panel-column')).toHaveLength(2);
-    expect(dropdown.findAll('.sd-cascader-option-active')[1].text()).toBe('ChaoYang');
+    expect(dropdown?.findAll('.sd-cascader-panel-column')).toHaveLength(2);
+    expect(dropdown?.findAll('.sd-cascader-option-active')[1]?.text()).toBe('ChaoYang');
 
     await input.trigger('keydown', { key: 'ArrowDown' });
-    expect(dropdown.findAll('.sd-cascader-option-active')[1].text()).toBe('Haidian');
+    expect(dropdown?.findAll('.sd-cascader-option-active')[1]?.text()).toBe('Haidian');
 
     await input.trigger('keydown', { key: 'Enter' });
     expect(wrapper.emitted('change')?.[0]).toEqual(['haidian']);

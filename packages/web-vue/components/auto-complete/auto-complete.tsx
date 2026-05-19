@@ -12,6 +12,7 @@ import {
 import VirtualList from '../_components/virtual-list';
 import { VirtualListProps } from '../_components/virtual-list/interface';
 import { useAllowClear } from '../_hooks/use-allow-clear';
+import { useDropdownVirtualListProps } from '../_hooks/use-dropdown-virtual-list-props';
 import { useFormItem } from '../_hooks/use-form-item';
 import { getPrefixCls } from '../_utils/global-config';
 import { isFunction, isNull, isUndefined } from '../_utils/is';
@@ -204,10 +205,13 @@ export default defineComponent({
 
     // VirtualList
     const virtualListRef = ref();
-    const component = computed(() => (props.virtualListProps ? 'div' : 'li'));
+    const { mergedDropdownVirtualListProps } = useDropdownVirtualListProps(
+      computed(() => props.virtualListProps),
+    );
+    const component = computed(() => (mergedDropdownVirtualListProps.value ? 'div' : 'li'));
     const resolvedVirtualListProps = computed(() => {
       return resolveDropdownVirtualListProps(
-        props.virtualListProps,
+        mergedDropdownVirtualListProps.value,
         props.triggerProps,
         DEFAULT_AUTOCOMPLETE_VIRTUAL_ITEM_SIZE,
       );
@@ -330,7 +334,7 @@ export default defineComponent({
             ),
             'footer': slots.footer,
           }}
-          virtualList={Boolean(props.virtualListProps)}
+          virtualList={Boolean(resolvedVirtualListProps.value)}
           onScroll={handleDropdownScroll}
           onReachBottom={handleDropdownReachBottom}
         />

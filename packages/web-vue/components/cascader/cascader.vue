@@ -110,6 +110,7 @@
   import SelectView from '../_components/select-view/select-view';
   import { useAllowClear } from '../_hooks/use-allow-clear';
   import { useAllowSearch } from '../_hooks/use-allow-search';
+  import { useDropdownVirtualListProps } from '../_hooks/use-dropdown-virtual-list-props';
   import { useFormItem } from '../_hooks/use-form-item';
   import { useTrigger } from '../_hooks/use-trigger';
   import { debounce } from '../_utils/debounce';
@@ -210,8 +211,12 @@
   );
   const _inputValue = ref(props.defaultInputValue);
   const instance = getCurrentInstance();
+  const rawProps = instance?.vnode.props;
 
   const { mergedDisabled, eventHandlers } = useFormItem({ disabled });
+  const hasTriggerProp = (propNames: string[]) => {
+    return !!rawProps && propNames.some((propName) => Object.hasOwn(rawProps, propName));
+  };
   const { mergedAllowSearch } = useAllowSearch(
     computed(() => props.allowSearch ?? props.multiple),
     {
@@ -233,11 +238,39 @@
     return props.clearable ?? props.allowClear;
   });
   const { mergedAllowClear } = useAllowClear(mergedAllowClearValue, ['clearable']);
+  const mergedPopupVisible = computed(() => {
+    if (hasTriggerProp(['popupVisible', 'popup-visible'])) {
+      return props.popupVisible;
+    }
+
+    return undefined;
+  });
+  const mergedShow = computed(() => {
+    if (hasTriggerProp(['show'])) {
+      return props.show;
+    }
+
+    return undefined;
+  });
+  const mergedDefaultPopupVisible = computed(() => {
+    if (hasTriggerProp(['defaultPopupVisible', 'default-popup-visible'])) {
+      return props.defaultPopupVisible;
+    }
+
+    return undefined;
+  });
+  const mergedDefaultShow = computed(() => {
+    if (hasTriggerProp(['defaultShow', 'default-show'])) {
+      return props.defaultShow;
+    }
+
+    return undefined;
+  });
   const { computedPopupVisible, handlePopupVisibleChange } = useTrigger({
-    popupVisible,
-    defaultPopupVisible,
-    show,
-    defaultShow,
+    popupVisible: mergedPopupVisible,
+    defaultPopupVisible: mergedDefaultPopupVisible,
+    show: mergedShow,
+    defaultShow: mergedDefaultShow,
     emit: emit as unknown as (
       event: 'update:popupVisible' | 'popupVisibleChange' | 'update:show' | 'showChange',
       visible: boolean,
@@ -325,10 +358,13 @@
   });
 
   const computedInputValue = computed(() => props.inputValue ?? _inputValue.value);
+  const { mergedDropdownVirtualListProps } = useDropdownVirtualListProps(
+    computed(() => props.virtualListProps),
+  );
 
   const resolvedVirtualListProps = computed(() => {
     return resolveDropdownVirtualListProps(
-      props.virtualListProps,
+      mergedDropdownVirtualListProps.value,
       props.triggerProps,
       DEFAULT_CASCADER_VIRTUAL_ITEM_SIZE,
     );

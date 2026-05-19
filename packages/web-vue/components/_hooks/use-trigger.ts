@@ -9,7 +9,7 @@ export const useTrigger = ({
   emit,
 }: {
   popupVisible?: Ref<boolean | undefined>;
-  defaultPopupVisible?: Ref<boolean>;
+  defaultPopupVisible?: Ref<boolean | undefined>;
   show?: Ref<boolean | undefined>;
   defaultShow?: Ref<boolean | undefined>;
   emit: (
