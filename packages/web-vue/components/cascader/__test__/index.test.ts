@@ -1,5 +1,5 @@
 import { DOMWrapper, mount } from '@vue/test-utils';
-import { nextTick } from 'vue';
+import { h, nextTick } from 'vue';
 
 import Cascader from '../cascader.vue';
 
@@ -95,6 +95,15 @@ describe('Cascader', () => {
   });
 
   test('should support filterable alias', async () => {
+    await mountCascader({
+      props: {
+        options,
+        filterable: true,
+        inputValue: 'hai',
+        defaultPopupVisible: true,
+      },
+    });
+
     const panel = getSearchPanel();
     expect(panel?.exists()).toBe(true);
     expect(panel?.text()).toContain('Haidian');
@@ -174,6 +183,19 @@ describe('Cascader', () => {
   });
 
   test('should render option slot and ignore option render function', async () => {
+    await mountCascader({
+      props: {
+        options,
+        defaultPopupVisible: true,
+        optionRender: (option: { label: string }) =>
+          h('span', { class: 'legacy-render' }, `Legacy:${option.label}`),
+      },
+      slots: {
+        option: ({ data }: { data: { label: string } }) =>
+          h('span', { class: 'custom-option' }, `Slot:${data.label}`),
+      },
+    });
+
     const customOption = document.body.querySelector('.custom-option');
     const legacyRender = document.body.querySelector('.legacy-render');
 
@@ -182,6 +204,13 @@ describe('Cascader', () => {
   });
 
   test('should render panel', async () => {
+    await mountCascader({
+      props: {
+        options,
+        defaultPopupVisible: true,
+      },
+    });
+
     const panel = getDropdownPanel();
     expect(panel).not.toBeNull();
     expect(panel?.html()).toMatchSnapshot();
@@ -190,6 +219,14 @@ describe('Cascader', () => {
   });
 
   test('should render panel (multiple)', async () => {
+    await mountCascader({
+      props: {
+        options,
+        multiple: true,
+        defaultPopupVisible: true,
+      },
+    });
+
     const panel = getDropdownPanel();
     expect(panel).not.toBeNull();
     expect(panel?.html()).toMatchSnapshot();
@@ -198,6 +235,15 @@ describe('Cascader', () => {
   });
 
   test('should render search panel', async () => {
+    await mountCascader({
+      props: {
+        options,
+        allowSearch: true,
+        inputValue: 'h',
+        defaultPopupVisible: true,
+      },
+    });
+
     const panel = getSearchPanel();
     expect(panel).not.toBeNull();
     expect(panel?.html()).toMatchSnapshot();

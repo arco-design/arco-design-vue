@@ -33,6 +33,8 @@ $END$
 
 点击触发按钮抽屉从右侧滑出，点击遮罩区关闭。
 
+如果项目里需要统一抽屉行为，可以通过 `ConfigProvider` 的 `drawer` 字段设置全局默认值（如 `closable`、`okText`、`cancelText`、`width`、`height` 等）。
+
 <DemoBlock source={drawerBasicSource} mainFile="src/drawer-basic.vue">
 
 <DrawerBasicDemo client:only="vue" />

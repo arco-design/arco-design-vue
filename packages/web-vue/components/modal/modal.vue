@@ -10,11 +10,11 @@
       >
         <transition :name="maskAnimationName" appear>
           <div
-            v-if="mask"
+            v-if="mergedMask"
             v-show="computedVisible"
             ref="maskRef"
             :class="`${prefixCls}-mask`"
-            :style="maskStyle"
+            :style="mergedMaskStyle"
           />
         </transition>
         <div
@@ -36,13 +36,13 @@
               :style="mergedModalStyle"
             >
               <div
-                v-if="!hideTitle && ($slots.title || title || closable)"
+                v-if="!hideTitle && ($slots.title || title || mergedClosable)"
                 :class="`${prefixCls}-header`"
                 @mousedown="handleMoveDown"
               >
                 <div
                   v-if="$slots.title || title"
-                  :class="[`${prefixCls}-title`, `${prefixCls}-title-align-${titleAlign}`]"
+                  :class="[`${prefixCls}-title`, `${prefixCls}-title-align-${mergedTitleAlign}`]"
                 >
                   <div v-if="messageType" :class="`${prefixCls}-title-icon`">
                     <icon-info-circle-fill v-if="messageType === 'info'" />
@@ -53,7 +53,7 @@
                   <slot name="title">{{ title }}</slot>
                 </div>
                 <div
-                  v-if="!simple && closable"
+                  v-if="!simple && mergedClosable"
                   tabindex="-1"
                   role="button"
                   aria-label="Close"
@@ -68,14 +68,18 @@
               <div :class="[`${prefixCls}-body`, bodyClass]" :style="bodyStyle">
                 <slot />
               </div>
-              <div v-if="footer" :class="`${prefixCls}-footer`">
+              <div v-if="mergedFooter" :class="`${prefixCls}-footer`">
                 <slot name="footer">
-                  <sd-button v-if="!hideCancel" v-bind="cancelButtonProps" @click="handleCancel">
+                  <sd-button
+                    v-if="!mergedHideCancel"
+                    v-bind="mergedCancelButtonProps"
+                    @click="handleCancel"
+                  >
                     {{ cancelDisplayText }}
                   </sd-button>
                   <sd-button
                     type="primary"
-                    v-bind="okButtonProps"
+                    v-bind="mergedOkButtonProps"
                     :loading="mergedOkLoading"
                     @click="handleOk"
                   >
@@ -97,6 +101,7 @@
 
   import ClientOnly from '../_components/client-only';
   import IconHover from '../_components/icon-hover.vue';
+  import { useConfigProviderProp } from '../_hooks/use-config-provider-prop';
   import { useOverflow } from '../_hooks/use-overflow';
   import usePopupManager from '../_hooks/use-popup-manager';
   import { useTeleportContainer } from '../_hooks/use-teleport-container';
@@ -463,17 +468,104 @@
      * @slot footer
      */
     setup(props, { emit }) {
-      const { fullscreen, popupContainer, alignCenter } = toRefs(props);
+      const {
+        fullscreen,
+        popupContainer,
+        alignCenter,
+        mask,
+        maskClosable,
+        maskStyle,
+        closable,
+        titleAlign,
+        top,
+        footer,
+        hideCancel,
+        escToClose,
+        draggable,
+        okText,
+        cancelText,
+        okButtonProps,
+        cancelButtonProps,
+        width,
+      } = toRefs(props);
       const prefixCls = getPrefixCls('modal');
       const { t } = useI18n();
       const wrapperRef = ref<HTMLElement>();
       const modalRef = ref<HTMLElement>();
 
+      const { mergedValue: mergedMask } = useConfigProviderProp(mask, {
+        propNames: ['mask'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.modal?.mask,
+      });
+      const { mergedValue: mergedMaskClosable } = useConfigProviderProp(maskClosable, {
+        propNames: ['maskClosable', 'mask-closable'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.modal?.maskClosable,
+      });
+      const { mergedValue: mergedMaskStyle } = useConfigProviderProp(maskStyle, {
+        propNames: ['maskStyle', 'mask-style'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.modal?.maskStyle,
+      });
+      const { mergedValue: mergedAlignCenter } = useConfigProviderProp(alignCenter, {
+        propNames: ['alignCenter', 'align-center'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.modal?.alignCenter,
+      });
+      const { mergedValue: mergedEscToClose } = useConfigProviderProp(escToClose, {
+        propNames: ['escToClose', 'esc-to-close'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.modal?.escToClose,
+      });
+      const { mergedValue: mergedDraggableBase } = useConfigProviderProp(draggable, {
+        propNames: ['draggable'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.modal?.draggable,
+      });
+      const { mergedValue: mergedClosable } = useConfigProviderProp(closable, {
+        propNames: ['closable'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.modal?.closable,
+      });
+      const { mergedValue: mergedTitleAlign } = useConfigProviderProp(titleAlign, {
+        propNames: ['titleAlign', 'title-align'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.modal?.titleAlign,
+      });
+      const { mergedValue: mergedTop } = useConfigProviderProp(top, {
+        propNames: ['top'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.modal?.top,
+      });
+      const { mergedValue: mergedFooter } = useConfigProviderProp(footer, {
+        propNames: ['footer'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.modal?.footer,
+      });
+      const { mergedValue: mergedHideCancel } = useConfigProviderProp(hideCancel, {
+        propNames: ['hideCancel', 'hide-cancel'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.modal?.hideCancel,
+      });
+      const { mergedValue: mergedOkText } = useConfigProviderProp(okText, {
+        propNames: ['okText', 'ok-text'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.modal?.okText,
+      });
+      const { mergedValue: mergedCancelText } = useConfigProviderProp(cancelText, {
+        propNames: ['cancelText', 'cancel-text'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.modal?.cancelText,
+      });
+      const { mergedValue: mergedOkButtonProps } = useConfigProviderProp(okButtonProps, {
+        propNames: ['okButtonProps', 'ok-button-props'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.modal?.okButtonProps,
+      });
+      const { mergedValue: mergedCancelButtonProps } = useConfigProviderProp(cancelButtonProps, {
+        propNames: ['cancelButtonProps', 'cancel-button-props'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.modal?.cancelButtonProps,
+      });
+      const { mergedValue: mergedWidth } = useConfigProviderProp(width, {
+        propNames: ['width'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.modal?.width,
+      });
+
       const _visible = ref(props.defaultVisible);
       const computedVisible = computed(() => props.visible ?? _visible.value);
       const _okLoading = ref(false);
       const mergedOkLoading = computed(() => props.okLoading || _okLoading.value);
-      const mergedDraggable = computed(() => props.draggable && !props.fullscreen);
+      const mergedDraggable = computed(
+        () => Boolean(mergedDraggableBase.value) && !props.fullscreen,
+      );
+      const mergedAlignCenterBoolean = computed(() => Boolean(mergedAlignCenter.value));
 
       const { teleportContainer, containerRef } = useTeleportContainer({
         popupContainer,
@@ -482,8 +574,8 @@
 
       const mounted = ref(computedVisible.value);
 
-      const okDisplayText = computed(() => props.okText || t('modal.okText'));
-      const cancelDisplayText = computed(() => props.cancelText || t('modal.cancelText'));
+      const okDisplayText = computed(() => mergedOkText.value || t('modal.okText'));
+      const cancelDisplayText = computed(() => mergedCancelText.value || t('modal.cancelText'));
 
       const { zIndex, isLastDialog } = usePopupManager('dialog', {
         visible: computedVisible,
@@ -492,13 +584,13 @@
       let globalKeyDownListener = false;
 
       const handleGlobalKeyDown = (ev: KeyboardEvent) => {
-        if (props.escToClose && ev.key === KEYBOARD_KEY.ESC && isLastDialog()) {
+        if (mergedEscToClose.value && ev.key === KEYBOARD_KEY.ESC && isLastDialog()) {
           handleCancel(ev);
         }
       };
 
       const addGlobalKeyDownListener = () => {
-        if (props.escToClose && !globalKeyDownListener) {
+        if (mergedEscToClose.value && !globalKeyDownListener) {
           globalKeyDownListener = true;
           on(document.documentElement, 'keydown', handleGlobalKeyDown);
         }
@@ -516,7 +608,7 @@
         wrapperRef,
         modalRef,
         draggable: mergedDraggable,
-        alignCenter,
+        alignCenter: mergedAlignCenterBoolean,
       });
 
       const close = () => {
@@ -586,7 +678,7 @@
       };
 
       const handleMaskClick = (e: Event) => {
-        if (props.mask && props.maskClosable && currentIsMask.value) {
+        if (mergedMask.value && mergedMaskClosable.value && currentIsMask.value) {
           handleCancel(e);
         }
       };
@@ -621,7 +713,7 @@
         containerRef.value = getElement(props.popupContainer);
         if (computedVisible.value) {
           setOverflowHidden();
-          if (props.escToClose) {
+          if (mergedEscToClose.value) {
             addGlobalKeyDownListener();
           }
         }
@@ -657,7 +749,8 @@
       const wrapperCls = computed(() => [
         `${prefixCls}-wrapper`,
         {
-          [`${prefixCls}-wrapper-align-center`]: props.alignCenter && !props.fullscreen,
+          [`${prefixCls}-wrapper-align-center`]:
+            mergedAlignCenterBoolean.value && !props.fullscreen,
           [`${prefixCls}-wrapper-moved`]: Boolean(position.value),
         },
       ]);
@@ -677,11 +770,11 @@
           ...props.modalStyle,
         };
         // 修复设置width属性后，全屏无法生效的问题
-        if (props.width && !props.fullscreen) {
-          style.width = isNumber(props.width) ? `${props.width}px` : props.width;
+        if (mergedWidth.value && !props.fullscreen) {
+          style.width = isNumber(mergedWidth.value) ? `${mergedWidth.value}px` : mergedWidth.value;
         }
-        if (!props.alignCenter && props.top) {
-          style.top = isNumber(props.top) ? `${props.top}px` : props.top;
+        if (!mergedAlignCenterBoolean.value && mergedTop.value) {
+          style.top = isNumber(mergedTop.value) ? `${mergedTop.value}px` : mergedTop.value;
         }
         if (position.value) {
           style.transform = `translate(${position.value[0]}px, ${position.value[1]}px)`;
@@ -699,6 +792,14 @@
         mergedModalStyle,
         okDisplayText,
         cancelDisplayText,
+        mergedMask,
+        mergedMaskStyle,
+        mergedClosable,
+        mergedTitleAlign,
+        mergedFooter,
+        mergedHideCancel,
+        mergedOkButtonProps,
+        mergedCancelButtonProps,
         zIndex,
         handleOk,
         handleCancel,

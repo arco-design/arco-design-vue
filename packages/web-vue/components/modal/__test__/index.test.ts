@@ -1,6 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { defineComponent, getCurrentInstance, nextTick } from 'vue';
 
+import ConfigProvider from '../../config-provider';
 import Modal from '../index';
 import ModalComponent from '../modal.vue';
 
@@ -86,5 +87,78 @@ describe('Modal', () => {
 
     await nextTick();
     expect(wrapper.html()).toMatchSnapshot();
+  });
+
+  test('should use modal defaults from config-provider', async () => {
+    const wrapper = mount(
+      defineComponent({
+        components: {
+          ConfigProvider,
+          ModalComponent,
+        },
+        template: `
+          <config-provider
+            :modal="{
+              closable: false,
+              okText: '全局确认',
+              cancelText: '全局取消',
+              width: 520,
+              hideCancel: true,
+              alignCenter: false,
+              titleAlign: 'start',
+              maskStyle: { backgroundColor: 'rgb(1, 2, 3)' },
+              draggable: true,
+              escToClose: false,
+              top: '10vh',
+            }"
+          >
+            <modal-component title="Title" default-visible :render-to-body="false">
+              Modal Body
+            </modal-component>
+          </config-provider>
+        `,
+      }),
+    );
+
+    await nextTick();
+    expect(wrapper.find('.sd-modal-close-btn').exists()).toBe(false);
+    expect(wrapper.text()).toContain('全局确认');
+    expect(wrapper.text()).not.toContain('全局取消');
+    expect(wrapper.find('.sd-modal').attributes('style')).toContain('width: 520px');
+    expect(wrapper.find('.sd-modal').classes()).toContain('sd-modal-draggable');
+    expect(wrapper.find('.sd-modal-wrapper').classes()).not.toContain(
+      'sd-modal-wrapper-align-center',
+    );
+    expect(wrapper.find('.sd-modal-title').classes()).toContain('sd-modal-title-align-start');
+    expect(wrapper.find('.sd-modal-mask').attributes('style')).toContain(
+      'background-color: rgb(1, 2, 3);',
+    );
+
+    document.documentElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    await nextTick();
+    expect(wrapper.find('.sd-modal').exists()).toBe(true);
+  });
+
+  test('should prefer explicit modal props over config-provider defaults', async () => {
+    const wrapper = mount(
+      defineComponent({
+        components: {
+          ConfigProvider,
+          ModalComponent,
+        },
+        template: `
+          <config-provider :modal="{ closable: false, okText: '全局确认' }">
+            <modal-component default-visible :render-to-body="false" closable ok-text="本地确认">
+              Modal Body
+            </modal-component>
+          </config-provider>
+        `,
+      }),
+    );
+
+    await nextTick();
+    expect(wrapper.find('.sd-modal-close-btn').exists()).toBe(true);
+    expect(wrapper.text()).toContain('本地确认');
+    expect(wrapper.text()).not.toContain('全局确认');
   });
 });

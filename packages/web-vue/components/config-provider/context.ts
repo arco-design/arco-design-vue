@@ -1,9 +1,46 @@
-import { InjectionKey, Ref, Slots } from 'vue';
+import { CSSProperties, InjectionKey, Ref, Slots } from 'vue';
 
 import { VirtualListProps } from '../_components/virtual-list/interface';
 import { Size } from '../_utils/constant';
+import { ButtonProps } from '../button';
 import { SDLang } from '../locale/interface';
 import { SDThemeNormalized } from './theme';
+
+export interface ConfigProviderModal {
+  mask?: boolean;
+  maskClosable?: boolean;
+  maskStyle?: CSSProperties;
+  alignCenter?: boolean;
+  escToClose?: boolean;
+  draggable?: boolean;
+  closable?: boolean;
+  titleAlign?: 'start' | 'center';
+  top?: number | string;
+  footer?: boolean;
+  hideCancel?: boolean;
+  okText?: string;
+  cancelText?: string;
+  okButtonProps?: ButtonProps;
+  cancelButtonProps?: ButtonProps;
+  width?: number | string;
+}
+
+export interface ConfigProviderDrawer {
+  placement?: 'top' | 'right' | 'bottom' | 'left';
+  mask?: boolean;
+  maskClosable?: boolean;
+  escToClose?: boolean;
+  closable?: boolean;
+  header?: boolean;
+  footer?: boolean;
+  hideCancel?: boolean;
+  okText?: string;
+  cancelText?: string;
+  okButtonProps?: ButtonProps;
+  cancelButtonProps?: ButtonProps;
+  width?: number | string;
+  height?: number | string;
+}
 
 export interface ConfigProvider {
   slots: Slots;
@@ -17,6 +54,8 @@ export interface ConfigProvider {
   scrollToClose?: boolean;
   exchangeTime?: boolean;
   rtl?: boolean;
+  modal?: ConfigProviderModal;
+  drawer?: ConfigProviderDrawer;
   theme?: SDThemeNormalized;
 }
 

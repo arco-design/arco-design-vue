@@ -11,7 +11,7 @@
   import { VirtualListProps } from '../_components/virtual-list/interface';
   import { Size } from '../_utils/constant';
   import { SDLang } from '../locale/interface';
-  import { configProviderInjectionKey } from './context';
+  import { ConfigProviderDrawer, ConfigProviderModal, configProviderInjectionKey } from './context';
   import { SDThemeConfig, SDThemeMode, normalizeTheme } from './theme';
   import ThemeProvider from './theme-provider.vue';
 
@@ -109,6 +109,20 @@
         default: false,
       },
       /**
+       * @zh Modal 组件默认配置
+       * @en Default config for Modal
+       */
+      modal: {
+        type: Object as PropType<ConfigProviderModal>,
+      },
+      /**
+       * @zh Drawer 组件默认配置
+       * @en Default config for Drawer
+       */
+      drawer: {
+        type: Object as PropType<ConfigProviderDrawer>,
+      },
+      /**
        * @zh 主题配置对象
        * @en Runtime theme configuration object
        */
@@ -148,6 +162,8 @@
         scrollToClose,
         exchangeTime,
         rtl,
+        modal,
+        drawer,
       } = toRefs(props);
 
       const config = reactive({
@@ -162,6 +178,8 @@
         scrollToClose,
         exchangeTime,
         rtl,
+        modal,
+        drawer,
         theme: normalizeTheme(props.theme),
       });
 

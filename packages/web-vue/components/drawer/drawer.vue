@@ -10,26 +10,26 @@
       >
         <transition name="fade-drawer" appear>
           <div
-            v-if="mask"
+            v-if="mergedMask"
             v-show="computedVisible"
             :class="`${prefixCls}-mask`"
             @click="handleMask"
           />
         </transition>
         <transition
-          :name="`slide-${placement}-drawer`"
+          :name="`slide-${mergedPlacement}-drawer`"
           appear
           @after-enter="handleOpen"
           @after-leave="handleClose"
         >
           <div v-show="computedVisible" :class="prefixCls" :style="style">
-            <div v-if="header" :class="`${prefixCls}-header`">
+            <div v-if="mergedHeader" :class="`${prefixCls}-header`">
               <slot name="header">
                 <div v-if="$slots.title || title" :class="`${prefixCls}-title`">
                   <slot name="title">{{ title }}</slot>
                 </div>
                 <div
-                  v-if="closable"
+                  v-if="mergedClosable"
                   tabindex="-1"
                   role="button"
                   aria-label="Close"
@@ -45,18 +45,22 @@
             <div :class="[`${prefixCls}-body`, bodyClass]" :style="bodyStyle">
               <slot />
             </div>
-            <div v-if="footer" :class="`${prefixCls}-footer`">
+            <div v-if="mergedFooter" :class="`${prefixCls}-footer`">
               <slot name="footer">
-                <sd-button v-if="!hideCancel" v-bind="cancelButtonProps" @click="handleCancel">
-                  {{ cancelText || t('drawer.cancelText') }}
+                <sd-button
+                  v-if="!mergedHideCancel"
+                  v-bind="mergedCancelButtonProps"
+                  @click="handleCancel"
+                >
+                  {{ mergedCancelText || t('drawer.cancelText') }}
                 </sd-button>
                 <sd-button
                   type="primary"
                   :loading="mergedOkLoading"
-                  v-bind="okButtonProps"
+                  v-bind="mergedOkButtonProps"
                   @click="handleOk"
                 >
-                  {{ okText || t('drawer.okText') }}
+                  {{ mergedOkText || t('drawer.okText') }}
                 </sd-button>
               </slot>
             </div>
@@ -73,6 +77,7 @@
 
   import ClientOnly from '../_components/client-only';
   import IconHover from '../_components/icon-hover.vue';
+  import { useConfigProviderProp } from '../_hooks/use-config-provider-prop';
   import { useOverflow } from '../_hooks/use-overflow';
   import usePopupManager from '../_hooks/use-popup-manager';
   import { useTeleportContainer } from '../_hooks/use-teleport-container';
@@ -355,9 +360,82 @@
      * @version 2.33.0
      */
     setup(props, { emit }) {
-      const { popupContainer } = toRefs(props);
+      const {
+        popupContainer,
+        placement,
+        mask,
+        maskClosable,
+        escToClose,
+        closable,
+        header,
+        footer,
+        hideCancel,
+        okText,
+        cancelText,
+        okButtonProps,
+        cancelButtonProps,
+        width,
+        height,
+      } = toRefs(props);
       const prefixCls = getPrefixCls('drawer');
       const { t } = useI18n();
+
+      const { mergedValue: mergedPlacement } = useConfigProviderProp(placement, {
+        propNames: ['placement'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.drawer?.placement,
+      });
+      const { mergedValue: mergedMask } = useConfigProviderProp(mask, {
+        propNames: ['mask'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.drawer?.mask,
+      });
+      const { mergedValue: mergedMaskClosable } = useConfigProviderProp(maskClosable, {
+        propNames: ['maskClosable', 'mask-closable'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.drawer?.maskClosable,
+      });
+      const { mergedValue: mergedEscToClose } = useConfigProviderProp(escToClose, {
+        propNames: ['escToClose', 'esc-to-close'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.drawer?.escToClose,
+      });
+      const { mergedValue: mergedClosable } = useConfigProviderProp(closable, {
+        propNames: ['closable'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.drawer?.closable,
+      });
+      const { mergedValue: mergedHeader } = useConfigProviderProp(header, {
+        propNames: ['header'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.drawer?.header,
+      });
+      const { mergedValue: mergedFooter } = useConfigProviderProp(footer, {
+        propNames: ['footer'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.drawer?.footer,
+      });
+      const { mergedValue: mergedHideCancel } = useConfigProviderProp(hideCancel, {
+        propNames: ['hideCancel', 'hide-cancel'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.drawer?.hideCancel,
+      });
+      const { mergedValue: mergedOkText } = useConfigProviderProp(okText, {
+        propNames: ['okText', 'ok-text'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.drawer?.okText,
+      });
+      const { mergedValue: mergedCancelText } = useConfigProviderProp(cancelText, {
+        propNames: ['cancelText', 'cancel-text'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.drawer?.cancelText,
+      });
+      const { mergedValue: mergedOkButtonProps } = useConfigProviderProp(okButtonProps, {
+        propNames: ['okButtonProps', 'ok-button-props'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.drawer?.okButtonProps,
+      });
+      const { mergedValue: mergedCancelButtonProps } = useConfigProviderProp(cancelButtonProps, {
+        propNames: ['cancelButtonProps', 'cancel-button-props'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.drawer?.cancelButtonProps,
+      });
+      const { mergedValue: mergedWidth } = useConfigProviderProp(width, {
+        propNames: ['width'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.drawer?.width,
+      });
+      const { mergedValue: mergedHeight } = useConfigProviderProp(height, {
+        propNames: ['height'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.drawer?.height,
+      });
 
       const _visible = ref(props.defaultVisible);
       const computedVisible = computed(() => props.visible ?? _visible.value);
@@ -366,7 +444,7 @@
       const classNames = computed(() => [
         `${prefixCls}-container`,
         {
-          [`${prefixCls}-penetrable`]: !props.mask,
+          [`${prefixCls}-penetrable`]: !mergedMask.value,
         },
       ]);
 
@@ -380,13 +458,13 @@
       let globalKeyDownListener = false;
 
       const handleGlobalKeyDown = (ev: KeyboardEvent) => {
-        if (props.escToClose && ev.key === KEYBOARD_KEY.ESC && isLastDialog()) {
+        if (mergedEscToClose.value && ev.key === KEYBOARD_KEY.ESC && isLastDialog()) {
           handleCancel(ev);
         }
       };
 
       const addGlobalKeyDownListener = () => {
-        if (props.escToClose && !globalKeyDownListener) {
+        if (mergedEscToClose.value && !globalKeyDownListener) {
           globalKeyDownListener = true;
           on(document.documentElement, 'keydown', handleGlobalKeyDown);
         }
@@ -468,7 +546,7 @@
       };
 
       const handleMask = (e: Event) => {
-        if (props.maskClosable) {
+        if (mergedMaskClosable.value) {
           handleCancel(e);
         }
       };
@@ -493,7 +571,9 @@
         if (computedVisible.value) {
           mounted.value = true;
           setOverflowHidden();
-          addGlobalKeyDownListener();
+          if (mergedEscToClose.value) {
+            addGlobalKeyDownListener();
+          }
         }
       });
 
@@ -519,13 +599,15 @@
 
       const style = computed(() => {
         const style: CSSProperties = {
-          [props.placement]: 0,
+          [mergedPlacement.value as string]: 0,
           ...props.drawerStyle,
         };
-        if (['right', 'left'].includes(props.placement)) {
-          style.width = isNumber(props.width) ? `${props.width}px` : props.width;
+        if (['right', 'left'].includes(mergedPlacement.value as string)) {
+          style.width = isNumber(mergedWidth.value) ? `${mergedWidth.value}px` : mergedWidth.value;
         } else {
-          style.height = isNumber(props.height) ? `${props.height}px` : props.height;
+          style.height = isNumber(mergedHeight.value)
+            ? `${mergedHeight.value}px`
+            : mergedHeight.value;
         }
         return style;
       });
@@ -537,6 +619,16 @@
         t,
         mounted,
         computedVisible,
+        mergedMask,
+        mergedPlacement,
+        mergedClosable,
+        mergedHeader,
+        mergedFooter,
+        mergedHideCancel,
+        mergedOkText,
+        mergedCancelText,
+        mergedOkButtonProps,
+        mergedCancelButtonProps,
         mergedOkLoading,
         zIndex,
         handleOk,

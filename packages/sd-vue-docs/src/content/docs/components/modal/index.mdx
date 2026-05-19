@@ -39,6 +39,8 @@ import modalWidthSource from '../../../../components/generated/modal/width.vue?r
 
 对话框的基本用法。
 
+如果需要统一交互文案和关闭行为，可以通过 `ConfigProvider` 的 `modal` 字段配置全局默认值（如 `closable`、`okText`、`cancelText`、`width` 等）。
+
 <DemoBlock source={modalBasicSource} mainFile="src/modal-basic.vue">
 
 <ModalBasicDemo client:only="vue" />

@@ -22,14 +22,9 @@
             AutoComplete 也会继承这组参数
           </div>
           <div class="config-provider-virtual-list-props-demo__popup-host">
-            <sd-auto-complete
-              ref="autoCompleteRef"
-              :data="autoCompleteOptions"
-              placeholder="继承 176px 的虚拟滚动高度"
-            />
+            <sd-auto-complete :data="autoCompleteOptions" placeholder="继承 176px 的虚拟滚动高度" />
           </div>
         </section>
-
         <section class="config-provider-virtual-list-props-demo__card">
           <div class="config-provider-virtual-list-props-demo__title">Cascader 继承同一组参数</div>
           <div class="config-provider-virtual-list-props-demo__popup-host">
@@ -67,13 +62,6 @@
   import { computed, nextTick, onMounted, ref } from 'vue';
 
   const enabled = ref(true);
-  const autoCompleteRef = ref<{ focus: () => void } | null>(null);
-
-  onMounted(() => {
-    nextTick(() => {
-      autoCompleteRef.value?.focus();
-    });
-  });
 
   const providerVirtualListProps = computed(() => {
     if (!enabled.value) {
@@ -146,7 +134,6 @@
 
   .config-provider-virtual-list-props-demo__popup-host {
     position: relative;
-    min-height: 240px;
     padding: 12px;
     overflow: hidden;
     background: rgb(var(--sd-color-fill-1));
