@@ -1,3 +1,24 @@
+# [1.12.0](https://github.com/liunnn1994/sd-design/compare/v1.11.1...v1.12.0) (2026-05-19)
+
+### Bug Fixes
+
+- 🐛 修复 css 不存在的问题 ([b13f58f](https://github.com/liunnn1994/sd-design/commit/b13f58fb52ff73a55292cbbae49bee5a2f5b1653))
+- 🐛 修复 ts 报错 ([b0e43e4](https://github.com/liunnn1994/sd-design/commit/b0e43e409d2afbbb0597902fd553027fb1814379))
+- 🐛 修复打包错误 ([d484da2](https://github.com/liunnn1994/sd-design/commit/d484da2b6c15b4188ac896173dddf92bd23ebdaa))
+
+### Features
+
+- 🆕 input number 新增字符串格式的支持 ([a0781f4](https://github.com/liunnn1994/sd-design/commit/a0781f4af9b23d3e1e0cbf9a1826b8f2f366a025))
+- 🆕 link 支持 ellipsis 功能 ([b4a3faa](https://github.com/liunnn1994/sd-design/commit/b4a3faad4699443633d1280c12c368f5bbc2f32e))
+- 🆕 tag 新增 ellipsis 支持，新增 tagGroup ([4f3eec1](https://github.com/liunnn1994/sd-design/commit/4f3eec192392fda1eff7d543839189c83629f783))
+- 🆕 为 copy 添加参数透传 ([eac34d2](https://github.com/liunnn1994/sd-design/commit/eac34d28950bbebf5751807675ef672930b988cb))
+- 🆕 新增 copy 组件 ([abc7f71](https://github.com/liunnn1994/sd-design/commit/abc7f716c087378d12ad8174a6681f32a01f22e1))
+- 🆕 新增 cropper 组件 ([5836775](https://github.com/liunnn1994/sd-design/commit/5836775e97006df825ceb87191c71ef80a4aa0e1))
+- 🆕 添加 llms.txt ([f7728d0](https://github.com/liunnn1994/sd-design/commit/f7728d060de8f9b257fba80dd5bad8cb826b7ea6))
+- 🆕 添加 secret 组件 ([8baa016](https://github.com/liunnn1994/sd-design/commit/8baa016b3da76ac907d46ef469573d4b14bfab93))
+- 🆕 添加全局 allow-search ([2816edd](https://github.com/liunnn1994/sd-design/commit/2816edd6368c12b4cffb2958b11fbdc6c35d935a))
+- 🆕 组件改为 setup 写法 ([282678b](https://github.com/liunnn1994/sd-design/commit/282678bce6a34512d3656bf215d7cfd0c13bdf2c))
+
 ## [1.11.1](https://github.com/liunnn1994/sd-design/compare/v1.11.0...v1.11.1) (2026-05-16)
 
 ### Bug Fixes
