@@ -560,9 +560,13 @@ export default defineComponent({
               hideButton
               disabled={props.disabled}
               modelValue={colorState.value.gradientDegree}
-              onChange={(value = 0) =>
-                emitStateChange(setGradientDegree(colorState.value, value), 'input')
-              }
+              onChange={(value) => {
+                if (typeof value !== 'number') {
+                  return;
+                }
+
+                emitStateChange(setGradientDegree(colorState.value, value), 'input');
+              }}
             />
           </div>
           <div

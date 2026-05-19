@@ -761,7 +761,7 @@ export default defineComponent({
               nowrap={props.tagNowrap || isResponsiveMaxTagCount.value}
               style={getTagStyle(index)}
               {...item.tagProps}
-              onClose={(ev: MouseEvent) => handleRemove(item.value, index, ev)}
+              onClose={(ev) => handleRemove(item.value, index, ev)}
             >
               {renderTagContent(item, index)}
             </Tag>

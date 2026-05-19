@@ -1,7 +1,11 @@
 <template>
   <sd-tag-group :options="options" :max-count="2">
     <template #item="{ data, itemClass, itemStyle }">
-      <sd-link :class="itemClass" :style="itemStyle" :href="data.href">
+      <sd-link
+        :class="itemClass"
+        :style="itemStyle"
+        :href="typeof data.href === 'string' ? data.href : undefined"
+      >
         {{ data.label }}
       </sd-link>
     </template>

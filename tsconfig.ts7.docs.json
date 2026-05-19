@@ -3,6 +3,11 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "bundler",
+    "paths": {
+      "@sdata/web-vue": ["./packages/sd-vue-docs/src/types/sdata-web-vue-ts7.d.ts"],
+      "@sdata/web-vue/es/icon": ["./packages/sd-vue-docs/src/types/sdata-web-vue-ts7.d.ts"],
+      "@sdata/web-vue/es/icon.js": ["./packages/sd-vue-docs/src/types/sdata-web-vue-ts7.d.ts"]
+    },
     "strict": true,
     "allowJs": true,
     "allowImportingTsExtensions": true,

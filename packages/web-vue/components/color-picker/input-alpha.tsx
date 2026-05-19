@@ -25,7 +25,7 @@ export default defineComponent({
         max={100}
         disabled={props.disabled}
         modelValue={Math.round(props.value * 100)}
-        onChange={(a = 100) => props.onChange?.(a / 100)}
+        onChange={(value) => props.onChange?.((typeof value === 'number' ? value : 100) / 100)}
       />
     );
   },

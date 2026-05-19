@@ -28,6 +28,7 @@
   import { computed, defineComponent, nextTick, PropType, ref, watch } from 'vue';
 
   import type { Size } from '../_utils/constant';
+  import type { InputNumberValue } from '../input-number';
 
   import { getPrefixCls } from '../_utils/global-config';
   import InputNumber from '../input-number';
@@ -73,7 +74,7 @@
         return Number.isNaN(parseIntVal) ? undefined : String(parseIntVal);
       };
 
-      const handleChange = (value: number | undefined) => {
+      const handleChange = (value: InputNumberValue) => {
         if (typeof value !== 'number') {
           return;
         }

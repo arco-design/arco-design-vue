@@ -43,6 +43,8 @@
   import type { CSSProperties, PropType } from 'vue';
   import { computed, defineComponent, ref, toRefs, inject } from 'vue';
 
+  import type { EllipsisTooltipProps } from '../ellipsis';
+
   import IconHover from '../_components/icon-hover.vue';
   import { useSize } from '../_hooks/use-size';
   import { getPrefixCls } from '../_utils/global-config';
@@ -187,7 +189,7 @@
        * @defaultValue true
        */
       ellipsisTooltip: {
-        type: [Boolean, Object] as PropType<boolean | Record<string, unknown>>,
+        type: [Boolean, Object] as PropType<boolean | EllipsisTooltipProps>,
         default: true,
       },
       /**
