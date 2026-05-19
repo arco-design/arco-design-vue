@@ -1,0 +1,65 @@
+name: Release auto-import-resolver
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/release-auto-import-resolver.yml
+      - .npmrc
+      - package.json
+      - pnpm-lock.yaml
+      - pnpm-workspace.yaml
+      - packages/auto-import-resolver/**
+      - packages/web-vue/components/**
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: release-auto-import-resolver-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: 'package.json'
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@sdata'
+
+      - name: Install dependencies
+        run: |
+          corepack enable
+          node -v
+          pnpm -v
+          pnpm run install:ci
+
+      - name: Build release package
+        env:
+          NODE_OPTIONS: '--max-old-space-size=4096'
+        run: pnpm --filter @sdata/web-vue-auto-import-resolver run build
+
+      - name: Release auto-import-resolver
+        working-directory: packages/auto-import-resolver
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pnpm exec semantic-release
+
+      - name: Show error
+        if: failure()
+        run: |
+          pnpm vp run --last-details

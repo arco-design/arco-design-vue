@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    "module": "es2022",
+    "moduleResolution": "Bundler"
+  },
+  "exclude": ["node_modules", "dist"]
+}

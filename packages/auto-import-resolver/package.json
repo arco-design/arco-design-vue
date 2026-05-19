@@ -1,0 +1,58 @@
+{
+  "name": "@sdata/web-vue-auto-import-resolver",
+  "version": "1.0.0",
+  "description": "Auto import resolver for @sdata/web-vue and unplugin-vue-components.",
+  "homepage": "https://sd.design/vue",
+  "bugs": {
+    "url": "https://github.com/liunnn1994/sd-design/issues"
+  },
+  "license": "AGPL-3.0-only",
+  "author": "SData FE Team",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liunnn1994/sd-design.git",
+    "directory": "packages/auto-import-resolver"
+  },
+  "type": "module",
+  "main": "./index.ts",
+  "module": "./index.ts",
+  "types": "./index.ts",
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist",
+    "exports": {
+      ".": {
+        "types": "./index.d.ts",
+        "import": "./index.js",
+        "default": "./index.js"
+      }
+    },
+    "linkDirectory": false,
+    "main": "./index.js",
+    "module": "./index.js",
+    "types": "./index.d.ts"
+  },
+  "scripts": {
+    "build": "pnpm run build:package",
+    "build:package": "tsup && pnpm run build:postbuild",
+    "build:postbuild": "node ./scripts/postbuild.mjs",
+    "dev:link": "pnpm link --global && npm link"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/exec": "^7.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^12.0.8",
+    "@semantic-release/release-notes-generator": "^14.1.1",
+    "semantic-release": "^25.0.3",
+    "tsup": "^8.5.0",
+    "unplugin-vue-components": "^0.27.0"
+  },
+  "peerDependencies": {
+    "@sdata/web-vue": "*"
+  },
+  "engines": {
+    "node": "~24.15.0"
+  }
+}

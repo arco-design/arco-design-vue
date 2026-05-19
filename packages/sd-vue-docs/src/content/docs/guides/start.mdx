@@ -16,6 +16,9 @@ vue >= 3.2.0
 npm install --save-dev @sdata/web-vue
 # yarn
 yarn add --dev @sdata/web-vue
+
+# 自动导入解析器
+pnpm add -D @sdata/web-vue-auto-import-resolver unplugin-vue-components
 ```
 
 ## 完整引入
@@ -33,24 +36,20 @@ app.mount('#app');
 
 ## 按需加载（模板）
 
-如果使用模板方式进行开发，可以使用 [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) 和 [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) 这两款插件来开启按需加载及自动导入的支持。插件会自动解析模板中的使用到的组件，并导入组件和对应的样式文件。需要组件库 `version >= 2.11.0`。
+如果使用模板方式进行开发，可以使用 [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) 和 `@sdata/web-vue-auto-import-resolver` 开启按需加载和组件自动导入。插件会自动解析模板中的组件，并导入组件和对应的样式文件。
 
 ```ts
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
-import { SDResolver } from 'unplugin-vue-components/resolvers';
+import { SDataResolver } from '@sdata/web-vue-auto-import-resolver';
 
 export default defineConfig({
   plugins: [
     vue(),
-    AutoImport({
-      resolvers: [SDResolver()],
-    }),
     Components({
       resolvers: [
-        SDResolver({
+        SDataResolver({
           sideEffect: true,
         }),
       ],
@@ -59,7 +58,16 @@ export default defineConfig({
 });
 ```
 
-注意：这种方法并不会处理用户在 script 中手动导入的组件，比如 Message 组件，用户仍需要手动导入组件对应的样式文件，例如 `@sdata/web-vue/es/message/style/css.js`。
+注意：这种方法只会处理模板里使用到的组件。如果你在 `script` 里手动导入了 `Message` 之类的 API，仍然需要按实际使用场景手动处理样式入口。
+
+如果你的项目调整了 `app.use(SDVue, { componentPrefix })` 的组件前缀，也可以把同样的前缀传给解析器：
+
+```ts
+SDataResolver({
+  prefix: 'Acme',
+  sideEffect: true,
+});
+```
 
 ## 按需加载与组件库主题（SD 插件）
 
