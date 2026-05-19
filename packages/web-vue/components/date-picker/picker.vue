@@ -69,6 +69,7 @@
 
   import DateInput from '../_components/picker/input.vue';
   import { useAllowClear } from '../_hooks/use-allow-clear';
+  import { useConfigProviderProp } from '../_hooks/use-config-provider-prop';
   import { useFormItem } from '../_hooks/use-form-item';
   import useMergeState from '../_hooks/use-merge-state';
   import useState from '../_hooks/use-state';
@@ -463,13 +464,46 @@
         pickerValue,
         defaultPickerValue,
         dayStartOfWeek,
+        shortcuts,
+        shortcutsPosition,
         previewShortcut,
         showConfirmBtn,
+        showNowBtn,
+        abbreviation,
       } = toRefs(props);
+
+      const { mergedValue: mergedDayStartOfWeek } = useConfigProviderProp(dayStartOfWeek, {
+        propNames: ['dayStartOfWeek', 'day-start-of-week'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.datePicker?.dayStartOfWeek,
+      });
+      const { mergedValue: mergedShortcuts } = useConfigProviderProp(shortcuts, {
+        propNames: ['shortcuts'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.datePicker?.shortcuts,
+      });
+      const { mergedValue: mergedShortcutsPosition } = useConfigProviderProp(shortcutsPosition, {
+        propNames: ['shortcutsPosition', 'shortcuts-position'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.datePicker?.shortcutsPosition,
+      });
+      const { mergedValue: mergedPreviewShortcut } = useConfigProviderProp(previewShortcut, {
+        propNames: ['previewShortcut', 'preview-shortcut'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.datePicker?.previewShortcut,
+      });
+      const { mergedValue: mergedShowConfirmBtn } = useConfigProviderProp(showConfirmBtn, {
+        propNames: ['showConfirmBtn', 'show-confirm-btn'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.datePicker?.showConfirmBtn,
+      });
+      const { mergedValue: mergedShowNowBtn } = useConfigProviderProp(showNowBtn, {
+        propNames: ['showNowBtn', 'show-now-btn'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.datePicker?.showNowBtn,
+      });
+      const { mergedValue: mergedAbbreviation } = useConfigProviderProp(abbreviation, {
+        propNames: ['abbreviation'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.datePicker?.abbreviation,
+      });
 
       const { locale: globalLocal } = useI18n();
       watchEffect(() => {
-        initializeDateLocale(globalLocal.value, dayStartOfWeek.value);
+        initializeDateLocale(globalLocal.value, mergedDayStartOfWeek.value);
       });
 
       const { mergedDisabled, eventHandlers } = useFormItem({ disabled });
@@ -525,7 +559,7 @@
         }),
       );
 
-      const needConfirm = computed(() => showTime.value || showConfirmBtn.value);
+      const needConfirm = computed(() => showTime.value || mergedShowConfirmBtn.value);
       const confirmBtnDisabled = computed(
         () =>
           needConfirm.value && (!forSelectedValue.value || isDisabledDate(forSelectedValue.value)),
@@ -787,18 +821,12 @@
       }));
 
       const panelProps = computed(() => ({
-        ...pick(props, [
-          'mode',
-          'shortcuts',
-          'shortcutsPosition',
-          'dayStartOfWeek',
-          'disabledDate',
-          'disabledTime',
-          'showTime',
-          'hideTrigger',
-          'abbreviation',
-        ]),
-        showNowBtn: props.showNowBtn && mode.value === 'date',
+        ...pick(props, ['mode', 'disabledDate', 'disabledTime', 'showTime', 'hideTrigger']),
+        shortcuts: mergedShortcuts.value,
+        shortcutsPosition: mergedShortcutsPosition.value,
+        dayStartOfWeek: mergedDayStartOfWeek.value,
+        abbreviation: mergedAbbreviation.value,
+        showNowBtn: mergedShowNowBtn.value && mode.value === 'date',
         prefixCls,
         format: parseValueFormat.value,
         value: panelValue.value,
@@ -822,8 +850,8 @@
         onTimePickerSelect,
         onConfirm: onPanelConfirm,
         onShortcutClick: onPanelShortcutClick,
-        onShortcutMouseEnter: previewShortcut.value ? onPanelShortcutMouseEnter : undefined,
-        onShortcutMouseLeave: previewShortcut.value ? onPanelShortcutMouseLeave : undefined,
+        onShortcutMouseEnter: mergedPreviewShortcut.value ? onPanelShortcutMouseEnter : undefined,
+        onShortcutMouseLeave: mergedPreviewShortcut.value ? onPanelShortcutMouseLeave : undefined,
         onTodayBtnClick: onPanelSelect,
         onHeaderLabelClick: onPanelHeaderLabelClick,
         onHeaderSelect: onPanelHeaderSelect,

@@ -3,6 +3,7 @@ import { CSSProperties, InjectionKey, Ref, Slots } from 'vue';
 import { VirtualListProps } from '../_components/virtual-list/interface';
 import { Size } from '../_utils/constant';
 import { ButtonProps } from '../button';
+import { ShortcutType, WeekStart } from '../date-picker/interface';
 import { SDLang } from '../locale/interface';
 import { SDThemeNormalized } from './theme';
 
@@ -42,6 +43,16 @@ export interface ConfigProviderDrawer {
   height?: number | string;
 }
 
+export interface ConfigProviderDatePicker {
+  shortcuts?: ShortcutType[];
+  shortcutsPosition?: 'left' | 'bottom' | 'right';
+  previewShortcut?: boolean;
+  showConfirmBtn?: boolean;
+  showNowBtn?: boolean;
+  dayStartOfWeek?: WeekStart;
+  abbreviation?: boolean;
+}
+
 export interface ConfigProvider {
   slots: Slots;
   prefixCls?: string;
@@ -54,6 +65,7 @@ export interface ConfigProvider {
   scrollToClose?: boolean;
   exchangeTime?: boolean;
   rtl?: boolean;
+  datePicker?: ConfigProviderDatePicker;
   modal?: ConfigProviderModal;
   drawer?: ConfigProviderDrawer;
   theme?: SDThemeNormalized;

@@ -11,7 +11,12 @@
   import { VirtualListProps } from '../_components/virtual-list/interface';
   import { Size } from '../_utils/constant';
   import { SDLang } from '../locale/interface';
-  import { ConfigProviderDrawer, ConfigProviderModal, configProviderInjectionKey } from './context';
+  import {
+    ConfigProviderDatePicker,
+    ConfigProviderDrawer,
+    ConfigProviderModal,
+    configProviderInjectionKey,
+  } from './context';
   import { SDThemeConfig, SDThemeMode, normalizeTheme } from './theme';
   import ThemeProvider from './theme-provider.vue';
 
@@ -109,6 +114,13 @@
         default: false,
       },
       /**
+       * @zh DatePicker 组件默认配置
+       * @en Default config for DatePicker
+       */
+      datePicker: {
+        type: Object as PropType<ConfigProviderDatePicker>,
+      },
+      /**
        * @zh Modal 组件默认配置
        * @en Default config for Modal
        */
@@ -162,6 +174,7 @@
         scrollToClose,
         exchangeTime,
         rtl,
+        datePicker,
         modal,
         drawer,
       } = toRefs(props);
@@ -178,6 +191,7 @@
         scrollToClose,
         exchangeTime,
         rtl,
+        datePicker,
         modal,
         drawer,
         theme: normalizeTheme(props.theme),

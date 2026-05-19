@@ -74,6 +74,7 @@
 
   import DateRangeInput from '../_components/picker/input-range.vue';
   import { useAllowClear } from '../_hooks/use-allow-clear';
+  import { useConfigProviderProp } from '../_hooks/use-config-provider-prop';
   import { useFormItem } from '../_hooks/use-form-item';
   import useMergeState from '../_hooks/use-merge-state';
   import useState from '../_hooks/use-state';
@@ -90,7 +91,6 @@
   import { isArray, isBoolean } from '../_utils/is';
   import { omit } from '../_utils/omit';
   import pick from '../_utils/pick';
-  import { EmitType } from '../_utils/types';
   import { configProviderInjectionKey } from '../config-provider/context';
   import IconCalendar from '../icon/icon-calendar';
   import { useI18n } from '../locale';
@@ -104,7 +104,7 @@
   import useRangePickerState from './hooks/use-range-picker-state';
   import useRangeTimePickerValue from './hooks/use-range-time-picker-value';
   import { getReturnRangeValue } from './hooks/use-value-format';
-  import { DisabledTimeProps, ShortcutType, CalendarValue, WeekStart, Mode } from './interface';
+  import { DisabledTimeProps, ShortcutType, CalendarValue, WeekStart } from './interface';
   import RangePickerPanel from './range-picker-panel.vue';
   import { isCompleteRangeValue, isValidRangeValue, mergeValueWithTime } from './utils';
 
@@ -131,28 +131,28 @@
        * @en Value
        */
       modelValue: {
-        type: Array as PropType<(Date | string | number)[]>,
+        type: Array as PropType<CalendarValue[]>,
       },
       /**
        * @zh 默认值
        * @en Default value
        */
       defaultValue: {
-        type: Array as PropType<(Date | string | number)[]>,
+        type: Array as PropType<CalendarValue[]>,
       },
       /**
        * @zh 默认面板显示的日期
        * @en The date displayed in the default panel
        * */
       pickerValue: {
-        type: Array as PropType<(Date | string | number)[]>,
+        type: Array as PropType<CalendarValue[]>,
       },
       /**
        * @zh 面板显示的日期
        * @en Date displayed on the panel
        * */
       defaultPickerValue: {
-        type: Array as PropType<(Date | string | number)[]>,
+        type: Array as PropType<CalendarValue[]>,
       },
       /**
        * @zh 是否禁用
@@ -413,16 +413,44 @@
         size,
         error,
         dayStartOfWeek,
+        shortcuts,
+        shortcutsPosition,
         exchangeTime,
         previewShortcut,
         showConfirmBtn,
         allowClear,
+        abbreviation,
       } = toRefs(props);
+
+      const { mergedValue: mergedDayStartOfWeek } = useConfigProviderProp(dayStartOfWeek, {
+        propNames: ['dayStartOfWeek', 'day-start-of-week'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.datePicker?.dayStartOfWeek,
+      });
+      const { mergedValue: mergedShortcuts } = useConfigProviderProp(shortcuts, {
+        propNames: ['shortcuts'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.datePicker?.shortcuts,
+      });
+      const { mergedValue: mergedShortcutsPosition } = useConfigProviderProp(shortcutsPosition, {
+        propNames: ['shortcutsPosition', 'shortcuts-position'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.datePicker?.shortcutsPosition,
+      });
+      const { mergedValue: mergedPreviewShortcut } = useConfigProviderProp(previewShortcut, {
+        propNames: ['previewShortcut', 'preview-shortcut'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.datePicker?.previewShortcut,
+      });
+      const { mergedValue: mergedShowConfirmBtn } = useConfigProviderProp(showConfirmBtn, {
+        propNames: ['showConfirmBtn', 'show-confirm-btn'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.datePicker?.showConfirmBtn,
+      });
+      const { mergedValue: mergedAbbreviation } = useConfigProviderProp(abbreviation, {
+        propNames: ['abbreviation'],
+        getGlobalValue: (configProviderCtx) => configProviderCtx?.datePicker?.abbreviation,
+      });
 
       const { locale: globalLocal } = useI18n();
       const configCtx = inject(configProviderInjectionKey, undefined);
       watchEffect(() => {
-        initializeDateLocale(globalLocal.value, dayStartOfWeek.value);
+        initializeDateLocale(globalLocal.value, mergedDayStartOfWeek.value);
       });
 
       const mergedExchangeTime = computed(() => {
@@ -634,7 +662,7 @@
       );
 
       // needConfirm logic
-      const needConfirm = computed(() => isDateTime.value || showConfirmBtn.value);
+      const needConfirm = computed(() => isDateTime.value || mergedShowConfirmBtn.value);
       const confirmBtnDisabled = computed(
         () =>
           needConfirm.value &&
@@ -954,17 +982,11 @@
       });
 
       const rangePanelProps = computed(() => ({
-        ...pick(props, [
-          'mode',
-          'showTime',
-          'shortcuts',
-          'shortcutsPosition',
-          'dayStartOfWeek',
-          'disabledDate',
-          'disabledTime',
-          'hideTrigger',
-          'abbreviation',
-        ]),
+        ...pick(props, ['mode', 'disabledDate', 'disabledTime', 'hideTrigger', 'showTime']),
+        shortcuts: mergedShortcuts.value,
+        shortcutsPosition: mergedShortcutsPosition.value,
+        dayStartOfWeek: mergedDayStartOfWeek.value,
+        abbreviation: mergedAbbreviation.value,
         prefixCls,
         format: parseValueFormat.value,
         value: panelValue.value,
@@ -982,8 +1004,8 @@
         onCellClick: onPanelCellClick,
         onCellMouseEnter: onPanelCellMouseEnter,
         onShortcutClick: onPanelShortcutClick,
-        onShortcutMouseEnter: previewShortcut.value ? onPanelShortcutMouseEnter : undefined,
-        onShortcutMouseLeave: previewShortcut.value ? onPanelShortcutMouseLeave : undefined,
+        onShortcutMouseEnter: mergedPreviewShortcut.value ? onPanelShortcutMouseEnter : undefined,
+        onShortcutMouseLeave: mergedPreviewShortcut.value ? onPanelShortcutMouseLeave : undefined,
         onConfirm: onPanelConfirm,
         onTimePickerSelect,
         startHeaderMode: startHeaderMode.value,
