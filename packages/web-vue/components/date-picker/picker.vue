@@ -503,7 +503,7 @@
 
       const { locale: globalLocal } = useI18n();
       watchEffect(() => {
-        initializeDateLocale(globalLocal.value, mergedDayStartOfWeek.value);
+        initializeDateLocale(globalLocal.value, mergedDayStartOfWeek.value ?? 0);
       });
 
       const { mergedDisabled, eventHandlers } = useFormItem({ disabled });

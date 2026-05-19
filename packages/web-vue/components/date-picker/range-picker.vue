@@ -450,7 +450,7 @@
       const { locale: globalLocal } = useI18n();
       const configCtx = inject(configProviderInjectionKey, undefined);
       watchEffect(() => {
-        initializeDateLocale(globalLocal.value, mergedDayStartOfWeek.value);
+        initializeDateLocale(globalLocal.value, mergedDayStartOfWeek.value ?? 0);
       });
 
       const mergedExchangeTime = computed(() => {
