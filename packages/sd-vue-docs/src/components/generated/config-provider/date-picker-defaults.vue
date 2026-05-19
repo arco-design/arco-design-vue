@@ -11,6 +11,8 @@
 <script setup lang="ts">
   import { ref } from 'vue';
 
+  import type { ConfigProviderDatePicker } from '../../../../../web-vue/components/config-provider/context';
+
   const dateValue = ref('2026-04-16 08:00:00');
   const rangeValue = ref(['2026-04-16 08:00:00', '2026-04-18 18:00:00']);
   const monthRangeValue = ref(['2026-04', '2026-09']);
@@ -44,7 +46,7 @@
     showNowBtn: false,
     dayStartOfWeek: 1,
     abbreviation: false,
-  };
+  } satisfies ConfigProviderDatePicker;
 </script>
 
 <style scoped>
