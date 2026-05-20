@@ -4,23 +4,22 @@ import { existsSync, readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import path from 'node:path';
 
-export interface SDataComponentMeta {
+export interface SdDesignComponentMeta {
   importName: string;
   from: string;
   sideEffects?: string;
 }
 
-export interface SDataResolverOptions {
+export interface SdDesignResolverOptions {
   prefix?: string;
   sideEffect?: boolean;
-  importStyle?: boolean;
-  resolve?: (meta: SDataComponentMeta, type: 'component') => ComponentResolveResult | undefined;
+  resolve?: (meta: SdDesignComponentMeta, type: 'component') => ComponentResolveResult | undefined;
 }
 
 const DEFAULT_PREFIX = 'Sd';
 const PACKAGE_NAME = '@sdata/web-vue';
 
-let cachedComponentMap: Record<string, SDataComponentMeta> | undefined;
+let cachedComponentMap: Record<string, SdDesignComponentMeta> | undefined;
 
 const getName = (name: string, prefix: string) => {
   if (!prefix) {
@@ -82,7 +81,7 @@ const getPackageRoot = () => {
   return path.dirname(require.resolve(`${PACKAGE_NAME}/package.json`));
 };
 
-const getComponentMetaMap = (): Record<string, SDataComponentMeta> => {
+const getComponentMetaMap = (): Record<string, SdDesignComponentMeta> => {
   if (cachedComponentMap) {
     return cachedComponentMap;
   }
@@ -114,7 +113,7 @@ const getComponentMetaMap = (): Record<string, SDataComponentMeta> => {
     .split(',')
     .map((item) => item.trim())
     .filter(Boolean);
-  const componentMap: Record<string, SDataComponentMeta> = {};
+  const componentMap: Record<string, SdDesignComponentMeta> = {};
 
   for (const exportSpecifier of exportSpecifiers) {
     const [localName, exportedName] = exportSpecifier.split(/\s+as\s+/i).map((item) => item.trim());
@@ -146,17 +145,17 @@ const getComponentMetaMap = (): Record<string, SDataComponentMeta> => {
   return componentMap;
 };
 
-const resolveSideEffects = (meta: SDataComponentMeta, options: SDataResolverOptions) => {
-  const importStyle = options.sideEffect ?? options.importStyle ?? false;
+const resolveSideEffects = (meta: SdDesignComponentMeta, options: SdDesignResolverOptions) => {
+  const shouldIncludeSideEffects = options.sideEffect ?? false;
 
-  if (!importStyle || !meta.sideEffects) {
+  if (!shouldIncludeSideEffects || !meta.sideEffects) {
     return;
   }
 
   return meta.sideEffects;
 };
 
-export function SDataResolver(options: SDataResolverOptions = {}): ComponentResolver[] {
+export function SdDesignResolver(options: SdDesignResolverOptions = {}): ComponentResolver[] {
   const prefix = options.prefix ?? DEFAULT_PREFIX;
 
   return [
@@ -186,5 +185,3 @@ export function SDataResolver(options: SDataResolverOptions = {}): ComponentReso
     },
   ];
 }
-
-export const SDResolver = SDataResolver;
