@@ -10,6 +10,8 @@ import SwitchChangeInterceptDemo from '../../../../components/generated/switch/c
 import switchChangeInterceptSource from '../../../../components/generated/switch/change-intercept.vue?raw';
 import SwitchColorDemo from '../../../../components/generated/switch/color.vue';
 import switchColorSource from '../../../../components/generated/switch/color.vue?raw';
+import SwitchAutoLoadingDemo from '../../../../components/generated/switch/auto-loading.vue';
+import switchAutoLoadingSource from '../../../../components/generated/switch/auto-loading.vue?raw';
 import SwitchDisabledDemo from '../../../../components/generated/switch/disabled.vue';
 import switchDisabledSource from '../../../../components/generated/switch/disabled.vue?raw';
 import SwitchIconDemo from '../../../../components/generated/switch/icon.vue';
@@ -42,6 +44,16 @@ import switchValueSource from '../../../../components/generated/switch/value.vue
 <DemoBlock source={switchChangeInterceptSource} mainFile="src/switch-change-intercept.vue">
 
 <SwitchChangeInterceptDemo client:only="vue" />
+
+</DemoBlock>
+
+### 自动 loading
+
+设置 `auto-loading` 后，开关会在触发切换后自动进入加载中状态，并在外部 `v-model` 值回写后结束。
+
+<DemoBlock source={switchAutoLoadingSource} mainFile="src/switch-auto-loading.vue">
+
+<SwitchAutoLoadingDemo client:only="vue" />
 
 </DemoBlock>
 
@@ -135,6 +147,7 @@ import switchValueSource from '../../../../components/generated/switch/value.vue
 | default-checked | 默认选中状态（非受控状态） | `boolean` | `false` |  |
 | disabled | 是否禁用 | `boolean` | `false` |  |
 | loading | 是否为加载中状态 | `boolean` | `false` |  |
+| auto-loading | 是否在切换后自动进入加载中状态，并在外部 `v-model` 回写后结束 | `boolean` | `false` |  |
 | type | 开关的类型 | `'circle' \| 'round' \| 'line'` | `'circle'` |  |
 | size | 开关的大小 | `'small' \| 'medium'` | `'medium'` |  |
 | checked-value | 选中时的值 | `string\|number\|boolean` | `true` | 2.12.0 |

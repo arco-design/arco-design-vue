@@ -41,7 +41,7 @@
 
 <script lang="ts">
   import type { PropType } from 'vue';
-  import { computed, defineComponent, ref, toRefs, watch } from 'vue';
+  import { computed, defineComponent, getCurrentInstance, ref, toRefs, watch } from 'vue';
 
   import { useFormItem } from '../_hooks/use-form-item';
   import { useSize } from '../_hooks/use-size';
@@ -84,6 +84,14 @@
        * @en Whether it is loading state
        */
       loading: {
+        type: Boolean,
+        default: false,
+      },
+      /**
+       * @zh 是否在切换后自动进入加载中状态，并在外部 `v-model` 回写后结束
+       * @en Whether to automatically enter the loading state after switching and stop after the external `v-model` value is updated
+       */
+      autoLoading: {
         type: Boolean,
         default: false,
       },
@@ -208,6 +216,7 @@
      * @slot unchecked-icon
      */
     setup(props, { emit }) {
+      const instance = getCurrentInstance();
       const { disabled, size, modelValue } = toRefs(props);
       const prefixCls = getPrefixCls('switch');
       const { mergedSize: configSize } = useSize(size);
@@ -220,11 +229,51 @@
       const computedCheck = computed<boolean>(
         () => (props.modelValue ?? _checked.value) === props.checkedValue,
       );
-      const _loading = ref(false);
-      const computedLoading = computed(() => _loading.value || props.loading);
+      const beforeChangeLoading = ref(false);
+      const autoChangeLoading = ref(false);
+      const hasLoadingProp = computed(() => {
+        const rawProps = instance?.vnode.props;
+
+        if (!rawProps) {
+          return false;
+        }
+
+        return Object.hasOwn(rawProps, 'loading');
+      });
+      const hasModelValueProp = computed(() => {
+        const rawProps = instance?.vnode.props;
+
+        if (!rawProps) {
+          return false;
+        }
+
+        return Object.hasOwn(rawProps, 'modelValue');
+      });
+      const computedLoading = computed(
+        () => beforeChangeLoading.value || props.loading || autoChangeLoading.value,
+      );
+
+      watch(
+        modelValue,
+        () => {
+          if (!hasModelValueProp.value) {
+            return;
+          }
+
+          autoChangeLoading.value = false;
+        },
+        {
+          flush: 'post',
+        },
+      );
 
       const handleChange = (checked: boolean, ev: Event) => {
         _checked.value = checked ? props.checkedValue : props.uncheckedValue;
+
+        if (props.autoLoading && !hasLoadingProp.value && hasModelValueProp.value) {
+          autoChangeLoading.value = true;
+        }
+
         emit('update:modelValue', _checked.value);
         emit('change', _checked.value, ev);
         eventHandlers.value?.onChange?.(ev);
@@ -239,14 +288,14 @@
         const shouldChange = props.beforeChange;
 
         if (isFunction(shouldChange)) {
-          _loading.value = true;
+          beforeChangeLoading.value = true;
           try {
             const result = await shouldChange(checkedValue);
             if (result ?? true) {
               handleChange(checked, ev);
             }
           } finally {
-            _loading.value = false;
+            beforeChangeLoading.value = false;
           }
         } else {
           handleChange(checked, ev);

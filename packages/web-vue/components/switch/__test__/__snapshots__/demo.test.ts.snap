@@ -1,5 +1,22 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`<switch> demo: > render [auto-loading] correctly 1`] = `
+<div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 24px; row-gap: 24px;">
+  <!---->
+  <div class="sd-space-item"><button type="button" role="switch" aria-checked="false" class="sd-switch sd-switch-type-circle"><span class="sd-switch-handle"><span class="sd-switch-handle-icon"></span></span><!--  prettier-ignore  -->
+      <!--v-if-->
+    </button></div>
+  <!---->
+  <div class="sd-space-item"><button type="button" role="switch" aria-checked="false" class="sd-switch sd-switch-type-round"><span class="sd-switch-handle"><span class="sd-switch-handle-icon"></span></span><!--  prettier-ignore  -->
+      <!--v-if-->
+    </button></div>
+  <!---->
+  <div class="sd-space-item"><button type="button" role="switch" aria-checked="false" class="sd-switch sd-switch-type-line"><span class="sd-switch-handle"><span class="sd-switch-handle-icon"></span></span><!--  prettier-ignore  -->
+      <!--v-if-->
+    </button></div>
+</div>
+`;
+
 exports[`<switch> demo: > render [basic] correctly 1`] = `
 <button type="button" role="switch" aria-checked="false" class="sd-switch sd-switch-type-circle"><span class="sd-switch-handle"><span class="sd-switch-handle-icon"></span></span><!--  prettier-ignore  -->
   <!--v-if-->
