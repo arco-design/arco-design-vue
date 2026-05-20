@@ -175,6 +175,30 @@ export type {
   ValidateStatus,
   ValidateTrigger,
 } from './form';
+export { default as JsonForm } from './json-form';
+export { A2UI_0_8 } from './json-form';
+export type {
+  JsonFormA2UIBoundValue,
+  JsonFormA2UI_0_8BoundValue,
+  JsonFormA2UIChoiceOption,
+  JsonFormA2UI_0_8ChoiceOption,
+  JsonFormA2UIComponentNode,
+  JsonFormA2UI_0_8ComponentNode,
+  JsonFormAdapter,
+  JsonFormComponentEvents,
+  JsonFormComponentProps,
+  JsonFormComponentRegistry,
+  JsonFormComponentSlotRenderer,
+  JsonFormComponentType,
+  JsonFormExternalComponentMap,
+  JsonFormInstance,
+  JsonFormItemSlotProps,
+  JsonFormModel,
+  JsonFormProps,
+  JsonFormProviderConfig,
+  JsonFormSchema,
+} from './json-form';
+export { defineJsonFormComponents, defineJsonFormSchemas } from './json-form';
 export { default as Grid, Col, Row, GridItem } from './grid';
 export type {
   ColProps,

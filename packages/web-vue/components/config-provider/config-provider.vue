@@ -14,6 +14,7 @@
   import {
     ConfigProviderDatePicker,
     ConfigProviderDrawer,
+    type JsonFormProviderConfig,
     ConfigProviderModal,
     configProviderInjectionKey,
   } from './context';
@@ -135,6 +136,13 @@
         type: Object as PropType<ConfigProviderDrawer>,
       },
       /**
+       * @zh JsonForm 组件默认配置
+       * @en Default config for JsonForm
+       */
+      jsonForm: {
+        type: Object as PropType<JsonFormProviderConfig>,
+      },
+      /**
        * @zh 主题配置对象
        * @en Runtime theme configuration object
        */
@@ -194,6 +202,7 @@
         datePicker,
         modal,
         drawer,
+        jsonForm: toRefs(props).jsonForm,
         theme: normalizeTheme(props.theme),
       });
 

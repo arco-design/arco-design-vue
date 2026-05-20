@@ -1,0 +1,123 @@
+---
+title: JSON 表单 JsonForm
+description: 用声明式 schema 快速生成表单，同时支持 A2UI 配置翻译和通过 ConfigProvider 注入业务自定义字段组件。
+---
+
+import DemoBlock from "../../../../components/docs/DemoBlock.astro";
+import JsonFormBasicDemo from "../../../../components/generated/json-form/basic.vue";
+import jsonFormBasicSource from "../../../../components/generated/json-form/basic.vue?raw";
+import JsonFormA2uiDemo from "../../../../components/generated/json-form/a2ui.vue";
+import jsonFormA2uiSource from "../../../../components/generated/json-form/a2ui.vue?raw";
+import JsonFormCustomComponentDemo from "../../../../components/generated/json-form/custom-component.vue";
+import jsonFormCustomComponentSource from "../../../../components/generated/json-form/custom-component.vue?raw";
+
+### 基本用法
+
+默认不传 `adapter` 时，`JsonForm` 直接消费组件库自己的 schema 结构，适合业务表单、后台配置页和低代码配置面板。
+
+<DemoBlock source={jsonFormBasicSource} mainFile="src/json-form-basic.vue">
+
+<JsonFormBasicDemo client:only="vue" />
+
+</DemoBlock>
+
+### A2UI 适配
+
+传入 `adapter={A2UI_0_8}` 后，组件会严格按 A2UI 0.8 的组件节点包装格式接收数据，再翻译成 `JsonForm` 内部 schema。除了 Basic Catalog 里的 `TextField`、`DateTimeInput`、`CheckBox`、`MultipleChoice` 和 `Row / Column`，现在也支持按同一层包装格式接入自定义 catalog 节点，例如 `Select`、`Switch`、`TreeSelect`、`Transfer` 等，覆盖 `JsonForm` 当前全部组件类型。
+
+<DemoBlock source={jsonFormA2uiSource} mainFile="src/json-form-a2ui.vue">
+
+<JsonFormA2uiDemo client:only="vue" />
+
+</DemoBlock>
+
+### 通过 ConfigProvider 注入业务组件
+
+如果业务里已经有脚本输入框、地图选点器、审批人选择器等字段组件，可以通过 `ConfigProvider` 的 `json-form.components` 统一注入。下面的示例里没有引入业务真实组件，而是用组件库里的 `Textarea` 模拟了一个业务自定义字段。推荐配合 `defineJsonFormComponents` 和 `defineJsonFormSchemas` 一起使用，这样 schema 里的 `type` 和 `componentProps` 都能保留 TypeScript 推导。
+
+<DemoBlock source={jsonFormCustomComponentSource} mainFile="src/json-form-custom-component.vue">
+
+<JsonFormCustomComponentDemo client:only="vue" />
+
+</DemoBlock>
+
+## API
+
+### `<json-form>` Props
+
+| 参数名        | 描述                                                                                                  | 类型                                                  |   默认值    |
+| ------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | :---------: |
+| schemas       | 表单 schema。默认模式下使用 `JsonFormSchema[]`，A2UI 0.8 模式下使用 `JsonFormA2UI_0_8ComponentNode[]` | `JsonFormSchema[] \| JsonFormA2UI_0_8ComponentNode[]` |    `[]`     |
+| adapter       | schema 适配器。不传时使用组件库原生格式，传入 `A2UI_0_8` 时按 A2UI 0.8 节点结构解析                   | `'default' \| 'a2ui-0.8'`                             | `'default'` |
+| v-model       | 表单数据对象                                                                                          | `Record<string, unknown>`                             |    `{}`     |
+| model         | 非受控场景下的兼容数据对象                                                                            | `Record<string, unknown>`                             |     `-`     |
+| hide-label    | 是否隐藏 label                                                                                        | `boolean`                                             |   `false`   |
+| hide-asterisk | 是否隐藏必填星号                                                                                      | `boolean`                                             |   `false`   |
+| show-colon    | 是否显示冒号                                                                                          | `boolean`                                             |   `false`   |
+| component     | 用来自定义外层表单容器，默认使用 `<sd-form>`                                                          | `string \| Component`                                 |   `Form`    |
+
+### `JsonFormSchema`
+
+| 字段            | 描述                                                                                        | 类型                                                 |
+| --------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| field           | 表单字段路径。默认模式使用点路径，例如 `user.name`                                          | `string`                                             |
+| label           | 表单项标题                                                                                  | `string`                                             |
+| type            | 字段组件类型，内置支持 `input`、`select`、`datePicker`、`switch` 等，也可以接入自定义组件名 | `string`                                             |
+| required        | 是否生成默认必填规则                                                                        | `boolean`                                            |
+| componentProps  | 透传给字段组件的 props                                                                      | `JsonFormComponentProps<T>`                          |
+| componentEvents | 透传给字段组件的事件                                                                        | `JsonFormComponentEvents<T>`                         |
+| componentSlots  | 透传给字段组件的具名 slot 渲染器                                                            | `Record<string, Component \| (() => VNodeChild)>`    |
+| formItemProps   | 透传给 `<sd-form-item>` 的 props                                                            | `Omit<FormItemProps, 'field' \| 'label' \| 'rules'>` |
+| formItemRules   | 自定义校验规则                                                                              | `FieldRule \| FieldRule[]`                           |
+| slotName        | 使用外部 slot 渲染当前字段                                                                  | `string`                                             |
+| render          | 直接提供渲染函数                                                                            | `() => VNodeChild`                                   |
+| children        | 当 `type="row"` 时的子字段列表                                                              | `JsonFormSchema[]`                                   |
+
+### `ConfigProvider` 里的 `json-form`
+
+| 字段       | 描述                               | 类型                        |
+| ---------- | ---------------------------------- | --------------------------- |
+| adapter    | 当前作用域下 JsonForm 的默认适配器 | `JsonFormAdapter`           |
+| components | 自定义字段组件注册表               | `JsonFormComponentRegistry` |
+
+## FAQ
+
+### 什么时候该用 `adapter="a2ui"`？
+
+当你的表单配置直接来自 A2UI Agent、Surface JSON 或 Basic Catalog 组件列表时，优先使用 `A2UI_0_8`。这样可以保留 A2UI 原始节点结构，减少中间层手写 schema 的工作量，也避免业务代码里散落魔法字符串。
+
+### A2UI 模式支持哪些字段？
+
+A2UI 0.8 的标准 Basic Catalog 里，表单相关节点主要是 `TextField`、`CheckBox`、`Slider`、`DateTimeInput`、`MultipleChoice`，以及 `Row / Column` 布局。对于业务自己的 A2UI 0.8 custom catalog，只要仍然遵守同样的 `{"id": "...", "component": { "ComponentName": { ... }}}` 包装格式，就可以映射到 `JsonForm` 的全部内置组件类型。
+
+未来会补 `A2UI 0.9` 适配，但 0.9 目前仍是草稿协议，当前版本只实现并验证了 0.8。
+
+### 自定义组件怎么获得类型推导？
+
+推荐在业务代码里先声明组件注册表，再用它创建 schema：
+
+```ts
+import {
+  A2UI_0_8,
+  defineJsonFormComponents,
+  defineJsonFormSchemas,
+} from '@sdata/web-vue';
+
+const components = defineJsonFormComponents({
+  scriptField: ScriptField,
+});
+
+const createSchemas = defineJsonFormSchemas<typeof components>();
+
+const schemas = createSchemas([
+  {
+    field: 'script',
+    type: 'scriptField',
+    componentProps: {
+      placeholder: '例如：const start = true;',
+    },
+  },
+]);
+
+<sd-json-form :adapter="A2UI_0_8" :schemas="schemasFromAgent" />
+```

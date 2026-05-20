@@ -57,6 +57,7 @@ declare module 'vue' {
     SdEmpty: SDVue['Empty'];
     SdForm: SDVue['Form'];
     SdFormItem: SDVue['FormItem'];
+    SdJsonForm: SDVue['JsonForm'];
     SdGrid: SDVue['Grid'];
     SdGridItem: SDVue['GridItem'];
     SdCol: SDVue['Col'];

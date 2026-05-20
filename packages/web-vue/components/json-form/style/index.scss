@@ -1,0 +1,25 @@
+@use 'sass:string';
+@use '@style/theme/index.scss' as theme;
+@use '@components/json-form/style/token.scss' as *;
+
+$json-form-prefix-cls: string.unquote('#{theme.$prefix}-json-form');
+
+.#{$json-form-prefix-cls} {
+  &-row {
+    gap: $json-form-spacing-row-gap $json-form-spacing-col-gap;
+  }
+
+  &-control {
+    width: 100%;
+    min-width: 0;
+    border-radius: $json-form-border-radius-control;
+  }
+
+  &-control--inline {
+    min-width: 0;
+  }
+
+  .sd-form-item {
+    margin-bottom: $json-form-spacing-item-gap;
+  }
+}

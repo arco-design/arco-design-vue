@@ -1,5 +1,7 @@
 import { CSSProperties, InjectionKey, Ref, Slots } from 'vue';
 
+import type { JsonFormProviderConfig } from '../json-form/types';
+
 import { VirtualListProps } from '../_components/virtual-list/interface';
 import { Size } from '../_utils/constant';
 import { ButtonProps } from '../button';
@@ -68,6 +70,7 @@ export interface ConfigProvider {
   datePicker?: ConfigProviderDatePicker;
   modal?: ConfigProviderModal;
   drawer?: ConfigProviderDrawer;
+  jsonForm?: JsonFormProviderConfig;
   theme?: SDThemeNormalized;
 }
 

@@ -1,0 +1,8 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+
+$json-form-spacing-row-gap: global.$spacing-4;
+$json-form-spacing-col-gap: global.$spacing-4;
+$json-form-spacing-item-gap: global.$spacing-2;
+$json-form-border-radius-control: global.$border-radius-medium;

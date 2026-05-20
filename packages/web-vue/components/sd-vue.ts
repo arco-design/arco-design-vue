@@ -43,6 +43,7 @@ import Image, { ImagePreview, ImagePreviewAction, ImagePreviewGroup } from './im
 import Input, { InputGroup, InputSearch, InputPassword } from './input';
 import InputNumber from './input-number';
 import InputTag from './input-tag';
+import JsonForm from './json-form';
 import Layout, { LayoutHeader, LayoutContent, LayoutFooter, LayoutSider } from './layout';
 import Link from './link';
 import List, { ListItem, ListItemMeta } from './list';
@@ -127,6 +128,7 @@ const components: Record<string, Plugin> = {
   Checkbox,
   DatePicker,
   Form,
+  JsonForm,
   Input,
   InputNumber,
   InputTag,
@@ -214,6 +216,7 @@ const SDVue: Record<string, unknown> & {
   DropdownButton,
   PerformantEllipsis,
   FormItem,
+  JsonForm,
   Row,
   Col,
   GridItem,

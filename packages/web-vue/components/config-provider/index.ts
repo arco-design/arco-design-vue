@@ -22,5 +22,6 @@ export type {
   ThemeTokenMap,
   ThemeTokenValue,
 } from './theme';
+export type { JsonFormProviderConfig as ConfigProviderJsonFormConfig } from '../json-form';
 
 export default ConfigProvider;

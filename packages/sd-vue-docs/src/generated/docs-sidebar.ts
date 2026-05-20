@@ -313,6 +313,10 @@ export const docsSidebar = [
             label: '表单 Form',
           },
           {
+            slug: 'components/json-form',
+            label: 'JSON 表单 JsonForm',
+          },
+          {
             slug: 'components/input',
             label: '输入框 Input',
           },
