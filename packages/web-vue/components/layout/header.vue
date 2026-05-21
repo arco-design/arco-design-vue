@@ -141,8 +141,10 @@
     return 0;
   };
 
+  const isWindowTarget = (target: HTMLElement | Window): target is Window => 'document' in target;
+
   const getScrollMetrics = (target: HTMLElement | Window) => {
-    if (target === window) {
+    if (isWindowTarget(target)) {
       return {
         clientHeight: window.innerHeight,
         scrollHeight: document.documentElement.scrollHeight,
@@ -155,8 +157,13 @@
     };
   };
 
-  const resolveScrollTop = (target: HTMLElement | Window) =>
-    target === window ? window.pageYOffset : target.scrollTop;
+  const resolveScrollTop = (target: HTMLElement | Window) => {
+    if (isWindowTarget(target)) {
+      return window.pageYOffset;
+    }
+
+    return target.scrollTop;
+  };
 
   const resolveScopedElement = (selector: string) => {
     let scope = headerRef.value?.parentElement;
@@ -372,8 +379,9 @@
     previousScroll = currentScroll.value;
     currentScroll.value = resolveScrollTop(target);
 
-    const currentHeight =
-      target === window ? document.documentElement.scrollHeight : target.scrollHeight;
+    const currentHeight = isWindowTarget(target)
+      ? document.documentElement.scrollHeight
+      : target.scrollHeight;
     if (currentHeight > previousScrollHeight) {
       updateScrollableSpace();
     }
