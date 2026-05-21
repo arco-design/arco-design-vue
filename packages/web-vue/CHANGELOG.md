@@ -1,3 +1,9 @@
+# [1.18.0](https://github.com/liunnn1994/sd-design/compare/v1.17.0...v1.18.0) (2026-05-21)
+
+### Features
+
+- 🆕 添加了 ai 工具说明 ([19b9ada](https://github.com/liunnn1994/sd-design/commit/19b9ada07f5125e4ef79bff25ec00871d2c877a4))
+
 # [1.14.0](https://github.com/liunnn1994/sd-design/compare/v1.13.0...v1.14.0) (2026-05-19)
 
 ### Bug Fixes
