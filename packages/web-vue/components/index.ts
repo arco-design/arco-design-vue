@@ -248,9 +248,12 @@ export {
 export type {
   LayoutContentInstance,
   LayoutFooterInstance,
+  LayoutHeaderDensity,
+  LayoutHeaderProps,
   LayoutHeaderInstance,
   LayoutInstance,
   LayoutProps,
+  LayoutHeaderScrollBehavior,
   LayoutSiderInstance,
   SiderProps,
 } from './layout';

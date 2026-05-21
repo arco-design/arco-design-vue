@@ -12,6 +12,118 @@ export interface LayoutProps {
   hasSider?: boolean;
 }
 
+export type LayoutHeaderDensity = 'default' | 'prominent' | 'comfortable' | 'compact';
+
+export type LayoutHeaderScrollBehavior =
+  | 'hide'
+  | 'fully-hide'
+  | 'inverted'
+  | 'collapse'
+  | 'elevate'
+  | 'fade-image';
+
+/**
+ * @title Layout.Header
+ */
+export interface LayoutHeaderProps {
+  /**
+   * @zh 标题内容
+   * @en Header title
+   */
+  title?: string;
+  /**
+   * @zh 头图地址
+   * @en Header image url
+   */
+  image?: string;
+  /**
+   * @zh 当前是否显示
+   * @en Whether header is visible
+   */
+  modelValue?: boolean;
+  /**
+   * @zh 默认是否显示（非受控模式）
+   * @en Whether header is visible by default
+   * @defaultValue true
+   */
+  defaultVisible?: boolean;
+  /**
+   * @zh 内容区域高度
+   * @en Header content height
+   * @defaultValue 64
+   */
+  height?: number | string;
+  /**
+   * @zh 密度
+   * @en Header density
+   * @defaultValue default
+   */
+  density?: LayoutHeaderDensity;
+  /**
+   * @zh 是否启用扩展区域
+   * @en Whether extension area is enabled
+   */
+  extended?: boolean;
+  /**
+   * @zh 扩展区域高度
+   * @en Extension area height
+   * @defaultValue 48
+   */
+  extensionHeight?: number | string;
+  /**
+   * @zh 是否强制折叠扩展区域
+   * @en Whether to collapse extension area
+   */
+  collapse?: boolean;
+  /**
+   * @zh 是否移除阴影
+   * @en Whether to remove shadow
+   */
+  flat?: boolean;
+  /**
+   * @zh 是否启用浮动态
+   * @en Whether to use floating style
+   */
+  floating?: boolean;
+  /**
+   * @zh 是否固定在视口边缘
+   * @en Whether header is fixed to viewport edge
+   */
+  fixed?: boolean;
+  /**
+   * @zh 是否启用粘性定位
+   * @en Whether header uses sticky positioning
+   */
+  sticky?: boolean;
+  /**
+   * @zh 是否脱离文档流绝对定位
+   * @en Whether header uses absolute positioning
+   */
+  absolute?: boolean;
+  /**
+   * @zh 停靠位置
+   * @en Header location
+   * @defaultValue top
+   */
+  location?: 'top' | 'bottom';
+  /**
+   * @zh 滚动行为，可组合 hide、fully-hide、inverted、collapse、elevate、fade-image
+   * @en Scroll behavior tokens
+   */
+  scrollBehavior?: string;
+  /**
+   * @zh 滚动容器选择器，默认监听 window
+   * @en Scroll container selector, defaults to window
+   */
+  scrollTarget?: string;
+  /**
+   * @zh 触发滚动行为的阈值
+   * @en Scroll threshold
+   * @defaultValue 300
+   */
+  scrollThreshold?: number | string;
+}
+
 /**
  * @title Layout.Sider
  */

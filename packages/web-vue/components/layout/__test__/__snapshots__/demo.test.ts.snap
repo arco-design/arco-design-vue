@@ -1,14 +1,67 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`<layout> demo: > render [app-bar] correctly 1`] = `
+<div data-v-df2d954d="" class="layout-app-bar-demo">
+  <section data-v-df2d954d="" class="sd-layout">
+    <div data-v-df2d954d="" class="sd-layout-header-wrapper">
+      <header class="sd-layout-header sd-layout-header-flat sd-layout-header-with-image sd-layout-header-with-extension sd-layout-header-with-title" style="--sd-layout-header-content-height: 64px; --sd-layout-header-extension-height: 48px; --sd-layout-header-image-opacity: 1; height: 112px;">
+        <div class="sd-layout-header-image">
+          <div data-v-df2d954d="" class="layout-app-bar-demo__image"></div>
+        </div>
+        <div class="sd-layout-header-bar">
+          <div class="sd-layout-header-prepend"><span data-v-df2d954d="" class="layout-app-bar-demo__chip">导航</span></div>
+          <div class="sd-layout-header-title">数据工作台</div>
+          <div class="sd-layout-header-content"><span data-v-df2d954d="" class="layout-app-bar-demo__crumb">项目 / 运营看板</span></div>
+          <div class="sd-layout-header-append"><span data-v-df2d954d="" class="layout-app-bar-demo__chip layout-app-bar-demo__chip-primary">发布</span></div>
+        </div>
+        <div class="sd-layout-header-extension">
+          <div data-v-df2d954d="" class="layout-app-bar-demo__tabs"><span data-v-df2d954d="" class="layout-app-bar-demo__tab">总览</span><span data-v-df2d954d="" class="layout-app-bar-demo__tab">指标</span><span data-v-df2d954d="" class="layout-app-bar-demo__tab">告警</span><span data-v-df2d954d="" class="layout-app-bar-demo__tab">成员</span></div>
+        </div>
+      </header>
+    </div>
+    <main data-v-df2d954d="" class="sd-layout-content">
+      <div data-v-df2d954d="" class="layout-app-bar-demo__content">
+        <p data-v-df2d954d="" class="layout-app-bar-demo__paragraph"> Layout.Header 现在可以直接承担 AppBar 的内容编排、扩展区域和滚动状态样式。 </p>
+        <p data-v-df2d954d="" class="layout-app-bar-demo__paragraph"> Layout.Header 现在可以直接承担 AppBar 的内容编排、扩展区域和滚动状态样式。 </p>
+        <p data-v-df2d954d="" class="layout-app-bar-demo__paragraph"> Layout.Header 现在可以直接承担 AppBar 的内容编排、扩展区域和滚动状态样式。 </p>
+        <p data-v-df2d954d="" class="layout-app-bar-demo__paragraph"> Layout.Header 现在可以直接承担 AppBar 的内容编排、扩展区域和滚动状态样式。 </p>
+      </div>
+    </main>
+  </section>
+</div>
+`;
+
 exports[`<layout> demo: > render [basic] correctly 1`] = `
 <div data-v-45a68723="" class="layout-demo">
   <section data-v-45a68723="" class="sd-layout sd:h-100">
-    <header data-v-45a68723="" class="sd-layout-header">Header</header>
+    <div data-v-45a68723="" class="sd-layout-header-wrapper">
+      <header class="sd-layout-header" style="--sd-layout-header-content-height: 64px; --sd-layout-header-extension-height: 0px; --sd-layout-header-image-opacity: 1; height: 64px;">
+        <!--v-if-->
+        <div class="sd-layout-header-bar">
+          <!--v-if-->
+          <!--v-if-->
+          <div class="sd-layout-header-content">Header</div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </header>
+    </div>
     <main data-v-45a68723="" class="sd-layout-content">Content</main>
     <footer data-v-45a68723="" class="sd-layout-footer">Footer</footer>
   </section><br data-v-45a68723="">
   <section data-v-45a68723="" class="sd-layout sd:h-100">
-    <header data-v-45a68723="" class="sd-layout-header">Header</header>
+    <div data-v-45a68723="" class="sd-layout-header-wrapper">
+      <header class="sd-layout-header" style="--sd-layout-header-content-height: 64px; --sd-layout-header-extension-height: 0px; --sd-layout-header-image-opacity: 1; height: 64px;">
+        <!--v-if-->
+        <div class="sd-layout-header-bar">
+          <!--v-if-->
+          <!--v-if-->
+          <div class="sd-layout-header-content">Header</div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </header>
+    </div>
     <section data-v-45a68723="" class="sd-layout">
       <div data-v-45a68723="" class="sd-layout-sider sd-layout-sider-left" style="width: 200px;">
         <!--v-if-->
@@ -23,7 +76,18 @@ exports[`<layout> demo: > render [basic] correctly 1`] = `
     <footer data-v-45a68723="" class="sd-layout-footer">Footer</footer>
   </section><br data-v-45a68723="">
   <section data-v-45a68723="" class="sd-layout sd:h-100">
-    <header data-v-45a68723="" class="sd-layout-header">Header</header>
+    <div data-v-45a68723="" class="sd-layout-header-wrapper">
+      <header class="sd-layout-header" style="--sd-layout-header-content-height: 64px; --sd-layout-header-extension-height: 0px; --sd-layout-header-image-opacity: 1; height: 64px;">
+        <!--v-if-->
+        <div class="sd-layout-header-bar">
+          <!--v-if-->
+          <!--v-if-->
+          <div class="sd-layout-header-content">Header</div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </header>
+    </div>
     <section data-v-45a68723="" class="sd-layout">
       <main data-v-45a68723="" class="sd-layout-content">Content</main>
       <div data-v-45a68723="" class="sd-layout-sider sd-layout-sider-light sd-layout-sider-left" style="width: 200px;">
@@ -38,7 +102,18 @@ exports[`<layout> demo: > render [basic] correctly 1`] = `
     <footer data-v-45a68723="" class="sd-layout-footer">Footer</footer>
   </section><br data-v-45a68723="">
   <section data-v-45a68723="" class="sd-layout sd:h-100">
-    <header data-v-45a68723="" class="sd-layout-header">Header</header>
+    <div data-v-45a68723="" class="sd-layout-header-wrapper">
+      <header class="sd-layout-header" style="--sd-layout-header-content-height: 64px; --sd-layout-header-extension-height: 0px; --sd-layout-header-image-opacity: 1; height: 64px;">
+        <!--v-if-->
+        <div class="sd-layout-header-bar">
+          <!--v-if-->
+          <!--v-if-->
+          <div class="sd-layout-header-content">Header</div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </header>
+    </div>
     <section data-v-45a68723="" class="sd-layout">
       <div data-v-45a68723="" class="sd-layout-sider sd-layout-sider-light sd-layout-sider-left" style="width: 64px;">
         <!--v-if-->
@@ -158,44 +233,55 @@ exports[`<layout> demo: > render [breakpoint] correctly 1`] = `
     </div>
   </div>
   <section data-v-90594246="" class="sd-layout">
-    <header data-v-90594246="" class="sd-layout-header">
-      <div data-v-90594246="" class="sd-menu sd-menu-light sd-menu-horizontal">
-        <div class="sd-menu-inner">
-          <div class="sd-menu-overflow-wrap">
-            <div class="sd-menu-pop sd-menu-pop-header sd-menu-overflow-sub-menu-mirror" aria-haspopup="true">
-              <!-- header -->
-              <!--v-if--><span>...</span><!-- suffix --><span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+    <div data-v-90594246="" class="sd-layout-header-wrapper">
+      <header class="sd-layout-header" style="--sd-layout-header-content-height: 64px; --sd-layout-header-extension-height: 0px; --sd-layout-header-image-opacity: 1; height: 64px;">
+        <!--v-if-->
+        <div class="sd-layout-header-bar">
+          <!--v-if-->
+          <!--v-if-->
+          <div class="sd-layout-header-content">
+            <div data-v-90594246="" class="sd-menu sd-menu-light sd-menu-horizontal">
+              <div class="sd-menu-inner">
+                <div class="sd-menu-overflow-wrap">
+                  <div class="sd-menu-pop sd-menu-pop-header sd-menu-overflow-sub-menu-mirror" aria-haspopup="true">
+                    <!-- header -->
+                    <!--v-if--><span>...</span><!-- suffix --><span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+                    <!--v-if-->
+                  </div>
+                  <!---->
+                  <div data-v-90594246="" class="sd-menu-item sd-menu-disabled"><svg data-v-90594246="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-home" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                      <path d="M7 17 24 7l17 10v24H7z"></path>
+                      <path d="M20 28h8v13h-8z"></path>
+                    </svg> Menu 1
+                    <!---->
+                  </div>
+                  <div data-v-90594246="" class="sd-menu-item sd-menu-selected"><svg data-v-90594246="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                      <path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path>
+                    </svg> Menu 2 <div class="sd-menu-selected-label"></div>
+                  </div>
+                  <div class="sd-menu-pop sd-menu-pop-header" aria-haspopup="true">
+                    <!-- header -->
+                    <!--v-if--><span data-v-90594246=""><svg data-v-90594246="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path></svg>Navigation 1</span><!-- suffix --><span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+                    <!--v-if-->
+                  </div>
+                  <!---->
+                  <div class="sd-menu-pop sd-menu-pop-header" aria-haspopup="true">
+                    <!-- header -->
+                    <!--v-if--><span data-v-90594246=""><svg data-v-90594246="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path></svg>Navigation 4</span><!-- suffix --><span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+                    <!--v-if-->
+                  </div>
+                  <!---->
+                  <!---->
+                </div>
+              </div>
               <!--v-if-->
             </div>
-            <!---->
-            <div data-v-90594246="" class="sd-menu-item sd-menu-disabled"><svg data-v-90594246="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-home" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-                <path d="M7 17 24 7l17 10v24H7z"></path>
-                <path d="M20 28h8v13h-8z"></path>
-              </svg> Menu 1
-              <!---->
-            </div>
-            <div data-v-90594246="" class="sd-menu-item sd-menu-selected"><svg data-v-90594246="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-                <path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path>
-              </svg> Menu 2 <div class="sd-menu-selected-label"></div>
-            </div>
-            <div class="sd-menu-pop sd-menu-pop-header" aria-haspopup="true">
-              <!-- header -->
-              <!--v-if--><span data-v-90594246=""><svg data-v-90594246="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path></svg>Navigation 1</span><!-- suffix --><span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
-              <!--v-if-->
-            </div>
-            <!---->
-            <div class="sd-menu-pop sd-menu-pop-header" aria-haspopup="true">
-              <!-- header -->
-              <!--v-if--><span data-v-90594246=""><svg data-v-90594246="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path></svg>Navigation 4</span><!-- suffix --><span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
-              <!--v-if-->
-            </div>
-            <!---->
-            <!---->
           </div>
+          <!--v-if-->
         </div>
         <!--v-if-->
-      </div>
-    </header>
+      </header>
+    </div>
     <section data-v-90594246="" class="sd-layout">
       <div data-v-90594246="" class="sd:flex sd:flex-1 sd:flex-col sd:px-6!">
         <div data-v-90594246="" class="sd:my-4!">
@@ -324,13 +410,24 @@ exports[`<layout> demo: > render [collapsed] correctly 1`] = `
     <!--v-if-->
   </div>
   <section data-v-6f5a7cf9="" class="sd-layout">
-    <header data-v-6f5a7cf9="" class="sd-layout-header">
-      <div data-v-6f5a7cf9="" class="sd:pl-5"><button data-v-6f5a7cf9="" class="sd-btn sd-btn-secondary sd-btn-shape-round sd-btn-size-medium sd-btn-status-normal" type="button">
-          <!--v-if--><svg data-v-6f5a7cf9="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-left" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-            <path fill="currentColor" stroke="none" d="M13.171 24.937a1.2 1.2 0 0 1 0-1.874L30.051 9.56c.785-.629 1.949-.07 1.949.937v27.006c0 1.006-1.164 1.566-1.95.937z"></path>
-          </svg>
-        </button></div>
-    </header>
+    <div data-v-6f5a7cf9="" class="sd-layout-header-wrapper">
+      <header class="sd-layout-header" style="--sd-layout-header-content-height: 64px; --sd-layout-header-extension-height: 0px; --sd-layout-header-image-opacity: 1; height: 64px;">
+        <!--v-if-->
+        <div class="sd-layout-header-bar">
+          <!--v-if-->
+          <!--v-if-->
+          <div class="sd-layout-header-content">
+            <div data-v-6f5a7cf9="" class="sd:pl-5"><button data-v-6f5a7cf9="" class="sd-btn sd-btn-secondary sd-btn-shape-round sd-btn-size-medium sd-btn-status-normal" type="button">
+                <!--v-if--><svg data-v-6f5a7cf9="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-left" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                  <path fill="currentColor" stroke="none" d="M13.171 24.937a1.2 1.2 0 0 1 0-1.874L30.051 9.56c.785-.629 1.949-.07 1.949.937v27.006c0 1.006-1.164 1.566-1.95.937z"></path>
+                </svg>
+              </button></div>
+          </div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </header>
+    </div>
     <section data-v-6f5a7cf9="" class="sd-layout">
       <div data-v-6f5a7cf9="" class="sd:flex sd:flex-1 sd:flex-col sd:px-6!">
         <div data-v-6f5a7cf9="" class="sd:my-4!">
@@ -465,9 +562,20 @@ exports[`<layout> demo: > render [custom-icon] correctly 1`] = `
       </svg></div>
   </div>
   <section data-v-4bf645a2="" class="sd-layout">
-    <header data-v-4bf645a2="" class="sd-layout-header">
-      <div data-v-4bf645a2="" class="sd:pl-5"> Header </div>
-    </header>
+    <div data-v-4bf645a2="" class="sd-layout-header-wrapper">
+      <header class="sd-layout-header" style="--sd-layout-header-content-height: 64px; --sd-layout-header-extension-height: 0px; --sd-layout-header-image-opacity: 1; height: 64px;">
+        <!--v-if-->
+        <div class="sd-layout-header-bar">
+          <!--v-if-->
+          <!--v-if-->
+          <div class="sd-layout-header-content">
+            <div data-v-4bf645a2="" class="sd:pl-5"> Header </div>
+          </div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </header>
+    </div>
     <section data-v-4bf645a2="" class="sd-layout">
       <div data-v-4bf645a2="" class="sd:flex sd:flex-1 sd:flex-col sd:px-6!">
         <div data-v-4bf645a2="" class="sd:my-4!">
@@ -548,7 +656,18 @@ exports[`<layout> demo: > render [navigation-drawer] correctly 1`] = `
       <!--v-if-->
     </div>
     <section data-v-67d2c759="" class="sd-layout">
-      <header data-v-67d2c759="" class="sd-layout-header drawer-header">Layout.Sider 现在支持导航抽屉模式</header>
+      <div data-v-67d2c759="" class="sd-layout-header-wrapper drawer-header">
+        <header class="sd-layout-header" style="--sd-layout-header-content-height: 64px; --sd-layout-header-extension-height: 0px; --sd-layout-header-image-opacity: 1; height: 64px;">
+          <!--v-if-->
+          <div class="sd-layout-header-bar">
+            <!--v-if-->
+            <!--v-if-->
+            <div class="sd-layout-header-content">Layout.Sider 现在支持导航抽屉模式</div>
+            <!--v-if-->
+          </div>
+          <!--v-if-->
+        </header>
+      </div>
       <main data-v-67d2c759="" class="sd-layout-content drawer-content">
         <p data-v-67d2c759="">点击按钮打开临时抽屉，或切换停靠方向观察左右侧抽屉效果。</p>
         <p data-v-67d2c759="">默认 rail 模式会在 hover 时展开，适合桌面端收纳式导航。</p>
@@ -561,7 +680,18 @@ exports[`<layout> demo: > render [navigation-drawer] correctly 1`] = `
 exports[`<layout> demo: > render [resize] correctly 1`] = `
 <div data-v-1afafaeb="" class="layout-demo">
   <section data-v-1afafaeb="" class="sd-layout">
-    <header data-v-1afafaeb="" class="sd-layout-header">Header</header>
+    <div data-v-1afafaeb="" class="sd-layout-header-wrapper">
+      <header class="sd-layout-header" style="--sd-layout-header-content-height: 64px; --sd-layout-header-extension-height: 0px; --sd-layout-header-image-opacity: 1; height: 64px;">
+        <!--v-if-->
+        <div class="sd-layout-header-bar">
+          <!--v-if-->
+          <!--v-if-->
+          <div class="sd-layout-header-content">Header</div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </header>
+    </div>
     <section data-v-1afafaeb="" class="sd-layout">
       <div data-v-1afafaeb="" class="sd-resizebox sd-layout-sider sd-layout-sider-light sd-layout-sider-left" style="width: 200px;">
         <!--v-if-->
@@ -584,5 +714,54 @@ exports[`<layout> demo: > render [resize] correctly 1`] = `
     </section>
     <footer data-v-1afafaeb="" class="sd-layout-footer">Footer</footer>
   </section>
+</div>
+`;
+
+exports[`<layout> demo: > render [scroll-behavior] correctly 1`] = `
+<div data-v-1440c4ea="" class="layout-scroll-demo">
+  <div data-v-1440c4ea="" class="sd-layout-header-wrapper">
+    <header class="sd-layout-header sd-layout-header-flat sd-layout-header-with-extension sd-layout-header-with-title" style="--sd-layout-header-content-height: 64px; --sd-layout-header-extension-height: 48px; --sd-layout-header-image-opacity: 1; height: 112px;">
+      <!--v-if-->
+      <div class="sd-layout-header-bar">
+        <!--v-if-->
+        <div class="sd-layout-header-title">滚动隐藏 Header</div>
+        <!--v-if-->
+        <div class="sd-layout-header-append"><span data-v-1440c4ea="" class="layout-scroll-demo__hint">向下滚动内容区</span></div>
+      </div>
+      <div class="sd-layout-header-extension">
+        <div data-v-1440c4ea="" class="layout-scroll-demo__filters"><span data-v-1440c4ea="" class="layout-scroll-demo__filter">全部</span><span data-v-1440c4ea="" class="layout-scroll-demo__filter">待处理</span><span data-v-1440c4ea="" class="layout-scroll-demo__filter">已归档</span></div>
+      </div>
+    </header>
+  </div>
+  <div data-v-1440c4ea="" class="sd-scrollbar sd-scrollbar-type-embed">
+    <div class="sd-scrollbar-container layout-scroll-demo__body" data-overlayscrollbars="host">
+      <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+        <div data-v-1440c4ea="" class="layout-scroll-demo__content">
+          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 1 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 2 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 3 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 4 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 5 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 6 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 7 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 8 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 9 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 10 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 11 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 12 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+        </div>
+      </div>
+      <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+        <div class="os-scrollbar-track">
+          <div class="os-scrollbar-handle"></div>
+        </div>
+      </div>
+      <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+        <div class="os-scrollbar-track">
+          <div class="os-scrollbar-handle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;

@@ -10,6 +10,16 @@ $layout-trigger-height: 48px;
 $layout-rail-width: 56px;
 $layout-sider-mask-color: rgb(0 0 0 / 45%);
 $layout-sider-shadow: 0 12px 32px rgb(0 0 0 / 18%);
+$layout-header-background: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+$layout-header-color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$layout-header-border-color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-border-2'));
+$layout-header-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+$layout-header-floating-shadow: 0 16px 32px rgb(0 0 0 / 14%);
+$layout-header-padding-inline: 20px;
+$layout-header-gap: 16px;
+$layout-header-title-font-size: 18px;
+$layout-header-title-font-weight: 600;
+$layout-header-image-overlay: linear-gradient(180deg, rgb(0 0 0 / 18%), rgb(0 0 0 / 36%));
 
 // Layout Theme Dark(Default)
 $layout-sider-background: var(string.unquote('#{global.$sd-cssvars-prefix}-color-menu-dark-bg'));

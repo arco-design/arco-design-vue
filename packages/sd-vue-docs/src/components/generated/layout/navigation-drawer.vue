@@ -46,7 +46,7 @@
         </template>
       </sd-layout-sider>
       <sd-layout>
-        <sd-layout-header class="drawer-header">Layout.Sider 现在支持导航抽屉模式</sd-layout-header>
+        <sd-layout-header>Layout.Sider 现在支持导航抽屉模式</sd-layout-header>
         <sd-layout-content class="drawer-content">
           <p>点击按钮打开临时抽屉，或切换停靠方向观察左右侧抽屉效果。</p>
           <p>默认 rail 模式会在 hover 时展开，适合桌面端收纳式导航。</p>
@@ -114,15 +114,6 @@
     color: var(--color-text-2);
     font-size: 12px;
     line-height: 1.5;
-  }
-
-  .drawer-header {
-    display: flex;
-    align-items: center;
-    height: 64px;
-    padding: 0 20px;
-    background: var(--color-bg-2);
-    border-bottom: 1px solid var(--color-border);
   }
 
   .drawer-content {
