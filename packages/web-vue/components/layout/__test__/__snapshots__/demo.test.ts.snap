@@ -165,20 +165,20 @@ exports[`<layout> demo: > render [breakpoint] correctly 1`] = `
             </div>
             <transition-stub appear="false" persisted="false" css="true">
               <div class="sd-menu-inline-content">
-                <div data-v-90594246="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                <div data-v-90594246="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
                   <!---->
                 </div>
-                <div data-v-90594246="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                <div data-v-90594246="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
                   <!---->
                 </div>
                 <div data-v-90594246="" class="sd-menu-inline">
                   <div class="sd-menu-inline-header"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span>Navigation 2<span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span></div>
                   <transition-stub appear="false" persisted="false" css="true">
                     <div class="sd-menu-inline-content" style="display: none;">
-                      <div data-v-90594246="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                      <div data-v-90594246="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
                         <!---->
                       </div>
-                      <div data-v-90594246="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                      <div data-v-90594246="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
                         <!---->
                       </div>
                     </div>
@@ -188,13 +188,13 @@ exports[`<layout> demo: > render [breakpoint] correctly 1`] = `
                   <div class="sd-menu-inline-header"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span>Navigation 3<span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span></div>
                   <transition-stub appear="false" persisted="false" css="true">
                     <div class="sd-menu-inline-content" style="display: none;">
-                      <div data-v-90594246="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                      <div data-v-90594246="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
                         <!---->
                       </div>
-                      <div data-v-90594246="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                      <div data-v-90594246="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
                         <!---->
                       </div>
-                      <div data-v-90594246="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
+                      <div data-v-90594246="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
                         <!---->
                       </div>
                     </div>
@@ -209,13 +209,13 @@ exports[`<layout> demo: > render [breakpoint] correctly 1`] = `
             </div>
             <transition-stub appear="false" persisted="false" css="true">
               <div class="sd-menu-inline-content" style="display: none;">
-                <div data-v-90594246="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                <div data-v-90594246="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
                   <!---->
                 </div>
-                <div data-v-90594246="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                <div data-v-90594246="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
                   <!---->
                 </div>
-                <div data-v-90594246="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
+                <div data-v-90594246="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
                   <!---->
                 </div>
               </div>
@@ -345,20 +345,20 @@ exports[`<layout> demo: > render [collapsed] correctly 1`] = `
               </div>
               <transition-stub appear="false" persisted="false" css="true">
                 <div class="sd-menu-inline-content">
-                  <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                  <div data-v-6f5a7cf9="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
                     <!---->
                   </div>
-                  <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                  <div data-v-6f5a7cf9="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
                     <!---->
                   </div>
                   <div data-v-6f5a7cf9="" class="sd-menu-inline">
                     <div class="sd-menu-inline-header"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span>Navigation 2<span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span></div>
                     <transition-stub appear="false" persisted="false" css="true">
                       <div class="sd-menu-inline-content" style="display: none;">
-                        <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                        <div data-v-6f5a7cf9="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
                           <!---->
                         </div>
-                        <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                        <div data-v-6f5a7cf9="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
                           <!---->
                         </div>
                       </div>
@@ -368,13 +368,13 @@ exports[`<layout> demo: > render [collapsed] correctly 1`] = `
                     <div class="sd-menu-inline-header"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span>Navigation 3<span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span></div>
                     <transition-stub appear="false" persisted="false" css="true">
                       <div class="sd-menu-inline-content" style="display: none;">
-                        <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                        <div data-v-6f5a7cf9="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
                           <!---->
                         </div>
-                        <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                        <div data-v-6f5a7cf9="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
                           <!---->
                         </div>
-                        <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
+                        <div data-v-6f5a7cf9="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
                           <!---->
                         </div>
                       </div>
@@ -389,13 +389,13 @@ exports[`<layout> demo: > render [collapsed] correctly 1`] = `
               </div>
               <transition-stub appear="false" persisted="false" css="true">
                 <div class="sd-menu-inline-content" style="display: none;">
-                  <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                  <div data-v-6f5a7cf9="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
                     <!---->
                   </div>
-                  <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                  <div data-v-6f5a7cf9="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
                     <!---->
                   </div>
-                  <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
+                  <div data-v-6f5a7cf9="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
                     <!---->
                   </div>
                 </div>
@@ -493,20 +493,20 @@ exports[`<layout> demo: > render [custom-icon] correctly 1`] = `
               </div>
               <transition-stub appear="false" persisted="false" css="true">
                 <div class="sd-menu-inline-content">
-                  <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                  <div data-v-4bf645a2="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
                     <!---->
                   </div>
-                  <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                  <div data-v-4bf645a2="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
                     <!---->
                   </div>
                   <div data-v-4bf645a2="" class="sd-menu-inline">
                     <div class="sd-menu-inline-header"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span>Navigation 2<span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span></div>
                     <transition-stub appear="false" persisted="false" css="true">
                       <div class="sd-menu-inline-content" style="display: none;">
-                        <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                        <div data-v-4bf645a2="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
                           <!---->
                         </div>
-                        <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                        <div data-v-4bf645a2="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
                           <!---->
                         </div>
                       </div>
@@ -516,13 +516,13 @@ exports[`<layout> demo: > render [custom-icon] correctly 1`] = `
                     <div class="sd-menu-inline-header"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span>Navigation 3<span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span></div>
                     <transition-stub appear="false" persisted="false" css="true">
                       <div class="sd-menu-inline-content" style="display: none;">
-                        <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                        <div data-v-4bf645a2="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
                           <!---->
                         </div>
-                        <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                        <div data-v-4bf645a2="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
                           <!---->
                         </div>
-                        <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
+                        <div data-v-4bf645a2="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
                           <!---->
                         </div>
                       </div>
@@ -539,13 +539,13 @@ exports[`<layout> demo: > render [custom-icon] correctly 1`] = `
               </div>
               <transition-stub appear="false" persisted="false" css="true">
                 <div class="sd-menu-inline-content" style="display: none;">
-                  <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                  <div data-v-4bf645a2="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
                     <!---->
                   </div>
-                  <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                  <div data-v-4bf645a2="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
                     <!---->
                   </div>
-                  <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
+                  <div data-v-4bf645a2="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
                     <!---->
                   </div>
                 </div>

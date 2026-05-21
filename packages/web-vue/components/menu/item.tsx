@@ -3,6 +3,7 @@ import { computed, defineComponent, ref, watch, onMounted, onUnmounted } from 'v
 import scrollIntoView from 'scroll-into-view-if-needed';
 
 import { omit } from '../_utils/omit';
+import Ellipsis from '../ellipsis';
 import Tooltip from '../tooltip';
 import useLevel from './hooks/use-level';
 import useMenu from './hooks/use-menu';
@@ -93,24 +94,28 @@ export default defineComponent({
     const children = this.$slots.default?.() || [];
     const showIndent = needTextIndent && !inTrigger && !collapsed;
     const iconElement = this.$slots.icon && this.$slots.icon();
+    const titleClassNames = [
+      `${prefixCls}-item-inner`,
+      {
+        [`${prefixCls}-title`]: iconElement,
+      },
+    ];
+    const titleElement = menuContext.ellipsis ? (
+      <span class={[titleClassNames, `${prefixCls}-ellipsis-wrapper`]}>
+        <Ellipsis class={`${prefixCls}-ellipsis`} {...(menuContext.ellipsisProps || {})}>
+          {children}
+        </Ellipsis>
+      </span>
+    ) : showIndent || iconElement ? (
+      <span class={titleClassNames}>{children}</span>
+    ) : (
+      children
+    );
 
     const content = [
       showIndent && <MenuIndent level={level} />,
       iconElement && <span class={`${prefixCls}-icon`}>{iconElement}</span>,
-      showIndent || iconElement ? (
-        <span
-          class={[
-            `${prefixCls}-item-inner`,
-            {
-              [`${prefixCls}-title`]: iconElement,
-            },
-          ]}
-        >
-          {children}
-        </span>
-      ) : (
-        children
-      ),
+      titleElement,
     ].filter(Boolean);
 
     const itemElement = (
@@ -122,6 +127,7 @@ export default defineComponent({
             [`${prefixCls}-disabled`]: disabled,
             [`${prefixCls}-selected`]: isSelected,
             [`${prefixCls}-has-icon`]: iconElement,
+            [`${prefixCls}-item-indented`]: showIndent,
           },
         ]}
         {...this.$attrs}

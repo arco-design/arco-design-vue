@@ -6,6 +6,7 @@
         {
           [`${menuPrefixCls}-selected`]: isSelected,
           [`${menuPrefixCls}-has-icon`]: $slots.icon,
+          [`${menuPrefixCls}-ellipsis-enabled`]: menuContext.ellipsis,
         },
       ]"
       @click="onHeaderClick"
@@ -15,12 +16,32 @@
         <span :class="`${menuPrefixCls}-icon`">
           <slot name="icon"></slot>
         </span>
-        <span :class="`${menuPrefixCls}-title`">
+        <span
+          v-if="menuContext.ellipsis"
+          :class="[
+            `${menuPrefixCls}-item-inner`,
+            `${menuPrefixCls}-title`,
+            `${menuPrefixCls}-ellipsis-wrapper`,
+          ]"
+        >
+          <Ellipsis :class="`${menuPrefixCls}-ellipsis`" v-bind="menuContext.ellipsisProps">
+            <slot name="title">{{ title }}</slot>
+          </Ellipsis>
+        </span>
+        <span v-else :class="`${menuPrefixCls}-title`">
           <slot name="title">{{ title }}</slot>
         </span>
       </template>
       <template v-else>
-        <slot name="title">{{ title }}</slot>
+        <span
+          v-if="menuContext.ellipsis"
+          :class="[`${menuPrefixCls}-item-inner`, `${menuPrefixCls}-ellipsis-wrapper`]"
+        >
+          <Ellipsis :class="`${menuPrefixCls}-ellipsis`" v-bind="menuContext.ellipsisProps">
+            <slot name="title">{{ title }}</slot>
+          </Ellipsis>
+        </span>
+        <slot v-else name="title">{{ title }}</slot>
       </template>
       <span
         :class="[
@@ -45,6 +66,7 @@
   import { computed, defineComponent } from 'vue';
 
   import ExpandTransition from '../_components/transition/expand-transition.vue';
+  import Ellipsis from '../ellipsis';
   import useLevel from './hooks/use-level';
   import useMenu from './hooks/use-menu';
   import useMenuContext from './hooks/use-menu-context';
@@ -55,6 +77,7 @@
     components: {
       MenuIndent,
       ExpandTransition,
+      Ellipsis,
     },
     props: {
       title: {
@@ -79,6 +102,7 @@
       return {
         prefixCls,
         menuPrefixCls,
+        menuContext,
         classNames,
         level,
         isSelected,

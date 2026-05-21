@@ -40,6 +40,7 @@
   import { provideLevel } from './hooks/use-level';
   import useMenuDataCollector from './hooks/use-menu-data-collector';
   import useMenuOpenState from './hooks/use-menu-open-state';
+  import { MenuEllipsisProps } from './interface';
 
   /**
    * @displayName Menu
@@ -183,6 +184,22 @@
         type: Object,
       },
       /**
+       * @zh 是否使用 Ellipsis 组件渲染菜单标题
+       * @en Whether to render menu titles with the Ellipsis component
+       */
+      ellipsis: {
+        type: Boolean,
+        default: false,
+      },
+      /**
+       * @zh `ellipsis` 开启时透传给 Ellipsis 组件的属性
+       * @en Props passed to the Ellipsis component when `ellipsis` is enabled
+       */
+      ellipsisProps: {
+        type: Object as PropType<MenuEllipsisProps>,
+        default: undefined,
+      },
+      /**
        * @zh 默认展开选中的菜单
        * @en Expand the selected menus by default
        * @version 2.8.0
@@ -282,6 +299,8 @@
         defaultOpenKeys,
         triggerProps,
         tooltipProps,
+        ellipsis,
+        ellipsisProps,
         autoOpenSelected,
         breakpoint,
         popupMaxHeight,
@@ -385,6 +404,8 @@
         collapsed: computedCollapsed,
         triggerProps,
         tooltipProps,
+        ellipsis,
+        ellipsisProps,
         popupMaxHeight,
         expandIconDown,
         expandIconRight,

@@ -10,6 +10,8 @@ import MenuCollapseControlDemo from '../../../../components/generated/menu/colla
 import menuCollapseControlSource from '../../../../components/generated/menu/collapse-control.vue?raw';
 import MenuDarkHorizontalDemo from '../../../../components/generated/menu/dark-horizontal.vue';
 import menuDarkHorizontalSource from '../../../../components/generated/menu/dark-horizontal.vue?raw';
+import MenuEllipsisDemo from '../../../../components/generated/menu/ellipsis.vue';
+import menuEllipsisSource from '../../../../components/generated/menu/ellipsis.vue?raw';
 import MenuHorizontalDemo from '../../../../components/generated/menu/horizontal.vue';
 import menuHorizontalSource from '../../../../components/generated/menu/horizontal.vue?raw';
 import MenuPopButtonDemo from '../../../../components/generated/menu/pop-button.vue';
@@ -58,6 +60,18 @@ import menuSubMenuSource from '../../../../components/generated/menu/sub-menu.vu
 <DemoBlock source={menuHorizontalSource} mainFile="src/menu-horizontal.vue">
 
 <MenuHorizontalDemo client:only="vue" />
+
+</DemoBlock>
+
+### 标题省略增强
+
+菜单默认使用纯 CSS 方案做单行省略，性能更轻，适合大多数导航场景。
+
+当你需要在标题溢出时显示 `Tooltip`，或者复用 `Ellipsis` 组件的配置能力时，可以开启 `ellipsis`，并通过 `ellipsis-props` 透传 `lineClamp`、`expandTrigger`、`tooltip` 等属性。
+
+<DemoBlock source={menuEllipsisSource} mainFile="src/menu-ellipsis.vue">
+
+<MenuEllipsisDemo client:only="vue" />
 
 </DemoBlock>
 
@@ -124,6 +138,8 @@ import menuSubMenuSource from '../../../../components/generated/menu/sub-menu.vu
 | scroll-config | 滚动到可见区域的配置项，接收所有[scroll-into-view-if-needed](https://github.com/stipsan/scroll-into-view-if-needed)的参数 | `{ [key: string]: any }` | `-` |  |
 | trigger-props | 弹出模式下可接受所有 `Trigger` 的 `Props` | `TriggerProps` | `-` |  |
 | tooltip-props | 弹出模式下可接受所有 `ToolTip` 的 `Props` | `object` | `-` |  |
+| ellipsis | 是否使用 `Ellipsis` 组件渲染菜单标题。默认关闭，继续走现有纯 CSS 省略方案 | `boolean` | `false` |  |
+| ellipsis-props | `ellipsis` 开启后透传给 `Ellipsis` 组件的属性 | `MenuEllipsisProps` | `-` |  |
 | auto-open-selected | 默认展开选中的菜单 | `boolean` | `false` | 2.8.0 |
 | breakpoint | 响应式的断点, 详见[响应式栅格](/components/grid/) | `'xxl' \| 'xl' \| 'lg' \| 'md' \| 'sm' \| 'xs'` | `-` | 2.18.0 |
 | popup-max-height | 弹出框的最大高度 | `boolean \| number` | `true` | 2.23.0 |
@@ -186,8 +202,24 @@ import menuSubMenuSource from '../../../../components/generated/menu/sub-menu.vu
 | ------ | :--------: | ---- | :----- |
 | icon   | 菜单的图标 | -    | 2.11.0 |
 
+### MenuEllipsisProps
+
+`ellipsis-props` 会直接透传给 `Ellipsis` 组件，便于在菜单场景下复用同一套省略配置。
+
+| 参数名 | 描述 | 类型 | 默认值 |
+| --- | --- | --- | :-: |
+| lineClamp | 最大显示行数。不传时为单行省略 | `number \| string` | `-` |
+| expandTrigger | 展开的触发方式 | `'click'` | `-` |
+| tooltip | 省略时是否展示提示。可传入 Tooltip 属性对象 | `boolean \| EllipsisTooltipProps` | `true` |
+
 ## FAQ
 
 ### `<MenuItem>` 和 `<SubMenu>` 组件的 `key` 属性为必填
 
 在 `<Menu>` 组件中使用 `<MenuItem>` 和 `<SubMenu>` 组件时，请传入唯一的 `key` 属性。组件内部在进行计算时会依赖此值，如果没有赋值会导致部分场景下异常
+
+### 什么时候应该开启 `ellipsis`
+
+如果你只需要传统的单行省略效果，保持默认值 `false` 即可，渲染成本最低。
+
+如果你需要溢出后显示 Tooltip、配置多行截断，或者想统一复用 `Ellipsis` 的交互能力，再开启 `ellipsis` 并配合 `ellipsis-props` 使用。

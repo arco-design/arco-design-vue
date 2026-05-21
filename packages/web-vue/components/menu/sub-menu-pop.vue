@@ -20,6 +20,7 @@
         classNames,
         {
           [`${menuPrefixCls}-has-icon`]: $slots.icon,
+          [`${menuPrefixCls}-ellipsis-enabled`]: menuContext.ellipsis,
         },
       ]"
       aria-haspopup="true"
@@ -32,12 +33,32 @@
         <span :class="`${menuPrefixCls}-icon`">
           <slot name="icon"></slot>
         </span>
-        <span :class="`${menuPrefixCls}-title`">
+        <span
+          v-if="menuContext.ellipsis"
+          :class="[
+            `${menuPrefixCls}-item-inner`,
+            `${menuPrefixCls}-title`,
+            `${menuPrefixCls}-ellipsis-wrapper`,
+          ]"
+        >
+          <Ellipsis :class="`${menuPrefixCls}-ellipsis`" v-bind="menuContext.ellipsisProps">
+            <slot name="title">{{ title }}</slot>
+          </Ellipsis>
+        </span>
+        <span v-else :class="`${menuPrefixCls}-title`">
           <slot name="title">{{ title }}</slot>
         </span>
       </template>
       <template v-else>
-        <slot name="title">{{ title }}</slot>
+        <span
+          v-if="menuContext.ellipsis"
+          :class="[`${menuPrefixCls}-item-inner`, `${menuPrefixCls}-ellipsis-wrapper`]"
+        >
+          <Ellipsis :class="`${menuPrefixCls}-ellipsis`" v-bind="menuContext.ellipsisProps">
+            <slot name="title">{{ title }}</slot>
+          </Ellipsis>
+        </span>
+        <slot v-else name="title">{{ title }}</slot>
       </template>
       <!-- suffix -->
       <span :class="`${menuPrefixCls}-icon-suffix`">
@@ -54,6 +75,8 @@
         :selected-keys="selectedKeys"
         :theme="menuContext.theme"
         :trigger-props="menuContext.triggerProps"
+        :ellipsis="menuContext.ellipsis"
+        :ellipsis-props="menuContext.ellipsisProps"
         :style="popupMenuStyles"
         @menuItemClick="onMenuItemClick"
       >
@@ -76,13 +99,13 @@
   import { getPrefixCls } from '../_utils/global-config';
   import { isNumber } from '../_utils/is';
   import { omit } from '../_utils/omit';
+  import Ellipsis from '../ellipsis';
   import Trigger from '../trigger';
   import Menu from './base-menu.vue';
   import useLevel from './hooks/use-level';
   import useMenu from './hooks/use-menu';
   import useMenuContext from './hooks/use-menu-context';
   import MenuIndent from './indent.vue';
-  import { SubMenuPopProps } from './interface';
 
   export default defineComponent({
     name: 'SubMenuPop',
@@ -91,6 +114,7 @@
       Trigger,
       MenuIndent,
       RenderFunction,
+      Ellipsis,
     },
     inheritAttrs: false,
     props: {

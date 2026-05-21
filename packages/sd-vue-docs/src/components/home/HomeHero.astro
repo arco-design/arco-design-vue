@@ -1,4 +1,21 @@
 ---
+import { docsSidebar } from "../../generated/docs-sidebar";
+
+type SidebarItem = {
+  slug?: string;
+  items?: SidebarItem[];
+};
+
+const countComponentDocs = (items: SidebarItem[]): number => {
+  return items.reduce((total, item) => {
+    const current = item.slug?.startsWith("components/") ? 1 : 0;
+    const nested = item.items ? countComponentDocs(item.items) : 0;
+    return total + current + nested;
+  }, 0);
+};
+
+const componentCount = countComponentDocs(docsSidebar as SidebarItem[]);
+
 const quickLinks = [
   {
     title: "快速上手",
@@ -26,8 +43,8 @@ const quickLinks = [
     <p class="home-hero__eyebrow">企业级 Vue 组件文档与设计实践</p>
     <h1>SD Design</h1>
     <p class="home-hero__slogan">
-      面向真实业务场景的 Vue
-      组件库与中文文档入口，直接预览组件交互、主题切换与设计链接，不靠静态截图。
+      AI 友好的「设计系统」，让美与智能并进，让工作充满「灵感」与「快乐」。
+      现已拥有「{componentCount}」个组件。
     </p>
 
     <div class="home-hero__actions">

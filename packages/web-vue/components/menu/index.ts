@@ -12,6 +12,7 @@ import _MenuSubMenu from './sub-menu';
 export type {
   MenuData,
   MenuDataItem,
+  MenuEllipsisProps,
   MenuItemGroupProps,
   MenuItemProps,
   MenuMode,

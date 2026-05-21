@@ -1,8 +1,21 @@
 <template>
   <div :class="classNames">
-    <div :class="`${prefixCls}-group-title`">
+    <div
+      :class="[
+        `${prefixCls}-group-title`,
+        { [`${prefixCls}-ellipsis-enabled`]: menuContext.ellipsis },
+      ]"
+    >
       <MenuIndent :level="level" />
-      <slot name="title">{{ title }}</slot>
+      <span
+        v-if="menuContext.ellipsis"
+        :class="[`${prefixCls}-item-inner`, `${prefixCls}-ellipsis-wrapper`]"
+      >
+        <Ellipsis :class="`${prefixCls}-ellipsis`" v-bind="menuContext.ellipsisProps">
+          <slot name="title">{{ title }}</slot>
+        </Ellipsis>
+      </span>
+      <slot v-else name="title">{{ title }}</slot>
     </div>
     <slot />
   </div>
@@ -11,6 +24,7 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
 
+  import Ellipsis from '../ellipsis';
   import useLevel, { provideLevel } from './hooks/use-level';
   import useMenuContext from './hooks/use-menu-context';
   import MenuIndent from './indent.vue';
@@ -18,6 +32,7 @@
   export default defineComponent({
     name: 'MenuItemGroup',
     components: {
+      Ellipsis,
       MenuIndent,
     },
     props: {
@@ -47,6 +62,7 @@
         prefixCls,
         classNames,
         level,
+        menuContext,
       };
     },
   });

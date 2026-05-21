@@ -15,6 +15,8 @@ export type MenuContext = Readonly<
     | 'inTrigger'
     | 'triggerProps'
     | 'tooltipProps'
+    | 'ellipsis'
+    | 'ellipsisProps'
     | 'popupMaxHeight'
   > & {
     selectedKeys: string[];

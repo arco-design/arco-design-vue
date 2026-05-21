@@ -14,8 +14,36 @@ $trigger-menu-prefix-cls: string.unquote('#{theme.$prefix}-trigger-menu');
 
 $token-vars: map.merge(meta.module-variables('dropdownToken'), meta.module-variables('token'));
 
+@function str-replace($input, $search, $replace: '') {
+  $index: string.index($input, $search);
+
+  @if $index == null {
+    @return $input;
+  }
+
+  @return string.slice($input, 1, $index - 1) + $replace +
+    str-replace(string.slice($input, $index + string.length($search)), $search, $replace);
+}
+
 @function token-var($name, $fallback: null) {
-  $value: map.get($token-vars, $name);
+  $lookup-name: string.unquote('#{$name}');
+  $value: map.get($token-vars, $lookup-name);
+
+  @if $value == null {
+    $dash-key: str-replace($lookup-name, '_', '-');
+
+    @if $dash-key != $lookup-name {
+      $value: map.get($token-vars, $dash-key);
+    }
+  }
+
+  @if $value == null {
+    $underscore-key: str-replace($lookup-name, '-', '_');
+
+    @if $underscore-key != $lookup-name {
+      $value: map.get($token-vars, $underscore-key);
+    }
+  }
 
   @if $value == null {
     @return $fallback;
@@ -249,6 +277,17 @@ $token-vars: map.merge(meta.module-variables('dropdownToken'), meta.module-varia
     width: $menu-item-indent-spacing;
   }
 
+  &-ellipsis-wrapper {
+    display: inline-flex;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &-ellipsis {
+    width: 100%;
+    min-width: 0;
+  }
+
   @include menu-item-base();
   @include menu-theme(light);
   @include menu-theme(dark);
@@ -286,12 +325,20 @@ $token-vars: map.merge(meta.module-variables('dropdownToken'), meta.module-varia
 
     .#{$menu-prefix-cls}-item.#{$menu-prefix-cls}-item-indented {
       display: flex;
+      align-items: center;
     }
 
     // 为 header 右侧预留下放置 suffixIcon 的空间
     .#{$menu-prefix-cls}-pop-header,
     .#{$menu-prefix-cls}-inline-header {
       padding-right: $menu-vertical-item-padding-horizontal + 16;
+    }
+
+    .#{$menu-prefix-cls}-pop-header.#{$menu-prefix-cls}-ellipsis-enabled,
+    .#{$menu-prefix-cls}-inline-header.#{$menu-prefix-cls}-ellipsis-enabled,
+    .#{$menu-prefix-cls}-group-title.#{$menu-prefix-cls}-ellipsis-enabled {
+      display: flex;
+      align-items: center;
     }
   }
 

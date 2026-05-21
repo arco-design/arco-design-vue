@@ -2,6 +2,7 @@ import { StyleValue } from 'vue';
 
 import { Breakpoint } from '../_utils/responsive-observe';
 import { Data } from '../_utils/types';
+import { EllipsisTooltipProps } from '../ellipsis';
 import { TriggerProps } from '../trigger';
 
 export type MenuTheme = 'light' | 'dark';
@@ -14,6 +15,12 @@ export interface SubMenuChildDataType {
 }
 
 export type PopupMenuMaxHeightType = boolean | number;
+
+export interface MenuEllipsisProps {
+  lineClamp?: number | string;
+  expandTrigger?: 'click';
+  tooltip?: boolean | EllipsisTooltipProps;
+}
 
 export interface MenuProps {
   style: StyleValue | undefined;
@@ -34,6 +41,8 @@ export interface MenuProps {
   scrollConfig: { [key: string]: any } | undefined;
   triggerProps: TriggerProps | undefined;
   tooltipProps: Data | undefined;
+  ellipsis: boolean;
+  ellipsisProps: MenuEllipsisProps | undefined;
   autoOpenSelected: boolean;
   breakpoint: Breakpoint | undefined;
   popupMaxHeight: PopupMenuMaxHeightType;

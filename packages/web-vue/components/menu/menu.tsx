@@ -1,5 +1,6 @@
 import { computed, defineComponent, inject, PropType, provide, toRefs } from 'vue';
 
+import { EllipsisTooltipProps } from '../ellipsis';
 import { SiderInjectionKey } from '../layout/context';
 import BaseMenu from './base-menu.vue';
 import { LevelInjectionKey, MenuInjectionKey } from './context';
@@ -19,6 +20,18 @@ export default defineComponent({
     mode: {
       type: String as PropType<'vertical' | 'horizontal' | 'pop' | 'popButton'>,
       default: 'vertical',
+    },
+    ellipsis: {
+      type: Boolean,
+      default: false,
+    },
+    ellipsisProps: {
+      type: Object as PropType<{
+        lineClamp?: number | string;
+        expandTrigger?: 'click';
+        tooltip?: boolean | EllipsisTooltipProps;
+      }>,
+      default: undefined,
     },
   },
   setup(props, { attrs, slots }) {

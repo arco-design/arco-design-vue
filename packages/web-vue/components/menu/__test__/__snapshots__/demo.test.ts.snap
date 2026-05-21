@@ -2,160 +2,164 @@
 
 exports[`<menu> demo: > render [breakpoint] correctly 1`] = `
 <div data-v-15886e98="" class="menu-demo">
-  <div data-v-15886e98="" class="sd-menu sd-menu-light sd-menu-vertical sd:w-50 sd:h-full">
-    <div class="sd-menu-inner">
-      <div data-v-15886e98="" class="sd-menu-inline">
-        <div class="sd-menu-inline-header sd-menu-has-icon">
-          <!--v-if--><span class="sd-menu-icon"><svg data-v-15886e98="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-apps" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 7h13v13H7zM28 7h13v13H28zM7 28h13v13H7zM28 28h13v13H28z"></path></svg></span><span class="sd-menu-title">Navigation 1</span><span class="sd-menu-icon-suffix is-open"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
-        </div>
-        <transition-stub appear="false" persisted="false" css="true">
-          <div class="sd-menu-inline-content">
-            <div data-v-15886e98="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
-              <!---->
-            </div>
-            <div data-v-15886e98="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
-              <!---->
-            </div>
-            <div data-v-15886e98="" class="sd-menu-item sd-menu-selected"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
-              <!---->
-            </div>
-            <div data-v-15886e98="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 4</span>
-              <!---->
-            </div>
+  <div data-v-15886e98="" class="sd:w-50 sd:h-full">
+    <div data-v-15886e98="" class="sd-menu sd-menu-light sd-menu-vertical sd:h-full">
+      <div class="sd-menu-inner">
+        <div data-v-15886e98="" class="sd-menu-inline">
+          <div class="sd-menu-inline-header sd-menu-has-icon">
+            <!--v-if--><span class="sd-menu-icon"><svg data-v-15886e98="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-apps" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 7h13v13H7zM28 7h13v13H28zM7 28h13v13H7zM28 28h13v13H28z"></path></svg></span><span class="sd-menu-title">Navigation 1</span><span class="sd-menu-icon-suffix is-open"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
           </div>
-        </transition-stub>
-      </div>
-      <div data-v-15886e98="" class="sd-menu-inline">
-        <div class="sd-menu-inline-header sd-menu-has-icon">
-          <!--v-if--><span class="sd-menu-icon"><svg data-v-15886e98="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-bug" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M24 42c-6.075 0-11-4.925-11-11V18h22v13c0 6.075-4.925 11-11 11Zm0 0V23m11 4h8M5 27h8M7 14a4 4 0 0 0 4 4h26a4 4 0 0 0 4-4m0 28v-.5a6.5 6.5 0 0 0-6.5-6.5M7 42v-.5a6.5 6.5 0 0 1 6.5-6.5M17 14a7 7 0 1 1 14 0"></path></svg></span><span class="sd-menu-title">Navigation 2</span><span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+          <transition-stub appear="false" persisted="false" css="true">
+            <div class="sd-menu-inline-content">
+              <div data-v-15886e98="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                <!---->
+              </div>
+              <div data-v-15886e98="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                <!---->
+              </div>
+              <div data-v-15886e98="" class="sd-menu-item sd-menu-selected sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
+                <!---->
+              </div>
+              <div data-v-15886e98="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 4</span>
+                <!---->
+              </div>
+            </div>
+          </transition-stub>
         </div>
-        <transition-stub appear="false" persisted="false" css="true">
-          <div class="sd-menu-inline-content" style="display: none;">
-            <div data-v-15886e98="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
-              <!---->
-            </div>
-            <div data-v-15886e98="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
-              <!---->
-            </div>
-            <div data-v-15886e98="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
-              <!---->
-            </div>
+        <div data-v-15886e98="" class="sd-menu-inline">
+          <div class="sd-menu-inline-header sd-menu-has-icon">
+            <!--v-if--><span class="sd-menu-icon"><svg data-v-15886e98="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-bug" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M24 42c-6.075 0-11-4.925-11-11V18h22v13c0 6.075-4.925 11-11 11Zm0 0V23m11 4h8M5 27h8M7 14a4 4 0 0 0 4 4h26a4 4 0 0 0 4-4m0 28v-.5a6.5 6.5 0 0 0-6.5-6.5M7 42v-.5a6.5 6.5 0 0 1 6.5-6.5M17 14a7 7 0 1 1 14 0"></path></svg></span><span class="sd-menu-title">Navigation 2</span><span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
           </div>
-        </transition-stub>
-      </div>
-      <div data-v-15886e98="" class="sd-menu-inline">
-        <div class="sd-menu-inline-header sd-menu-has-icon">
-          <!--v-if--><span class="sd-menu-icon"><svg data-v-15886e98="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-bulb" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M17 42h14m6-24c0 2.823-.9 5.437-2.43 7.568-1.539 2.147-3.185 4.32-3.77 6.897l-.623 2.756A1 1 0 0 1 29.2 36H18.8a1 1 0 0 1-.976-.779l-.624-2.756c-.584-2.576-2.23-4.75-3.77-6.897A12.94 12.94 0 0 1 11 18c0-7.18 5.82-13 13-13s13 5.82 13 13Z"></path></svg></span><span class="sd-menu-title">Navigation 3</span><span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+          <transition-stub appear="false" persisted="false" css="true">
+            <div class="sd-menu-inline-content" style="display: none;">
+              <div data-v-15886e98="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                <!---->
+              </div>
+              <div data-v-15886e98="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                <!---->
+              </div>
+              <div data-v-15886e98="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
+                <!---->
+              </div>
+            </div>
+          </transition-stub>
         </div>
-        <transition-stub appear="false" persisted="false" css="true">
-          <div class="sd-menu-inline-content" style="display: none;">
-            <div data-v-15886e98="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
-              <!---->
-            </div>
-            <div data-v-15886e98="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
-              <!---->
-            </div>
-            <div data-v-15886e98="" class="sd-menu-inline">
-              <div class="sd-menu-inline-header"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span>Navigation 4<span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span></div>
-              <transition-stub appear="false" persisted="false" css="true">
-                <div class="sd-menu-inline-content" style="display: none;">
-                  <div data-v-15886e98="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
-                    <!---->
+        <div data-v-15886e98="" class="sd-menu-inline">
+          <div class="sd-menu-inline-header sd-menu-has-icon">
+            <!--v-if--><span class="sd-menu-icon"><svg data-v-15886e98="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-bulb" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M17 42h14m6-24c0 2.823-.9 5.437-2.43 7.568-1.539 2.147-3.185 4.32-3.77 6.897l-.623 2.756A1 1 0 0 1 29.2 36H18.8a1 1 0 0 1-.976-.779l-.624-2.756c-.584-2.576-2.23-4.75-3.77-6.897A12.94 12.94 0 0 1 11 18c0-7.18 5.82-13 13-13s13 5.82 13 13Z"></path></svg></span><span class="sd-menu-title">Navigation 3</span><span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+          </div>
+          <transition-stub appear="false" persisted="false" css="true">
+            <div class="sd-menu-inline-content" style="display: none;">
+              <div data-v-15886e98="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                <!---->
+              </div>
+              <div data-v-15886e98="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                <!---->
+              </div>
+              <div data-v-15886e98="" class="sd-menu-inline">
+                <div class="sd-menu-inline-header"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span>Navigation 4<span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span></div>
+                <transition-stub appear="false" persisted="false" css="true">
+                  <div class="sd-menu-inline-content" style="display: none;">
+                    <div data-v-15886e98="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                      <!---->
+                    </div>
+                    <div data-v-15886e98="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                      <!---->
+                    </div>
                   </div>
-                  <div data-v-15886e98="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
-                    <!---->
-                  </div>
-                </div>
-              </transition-stub>
+                </transition-stub>
+              </div>
             </div>
-          </div>
-        </transition-stub>
+          </transition-stub>
+        </div>
       </div>
+      <div class="sd-menu-collapse-button"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-menu-fold" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+          <path d="M42 11H6M42 24H22M42 37H6M13.66 26.912l-4.82-3.118 4.82-3.118z"></path>
+        </svg></div>
     </div>
-    <div class="sd-menu-collapse-button"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-menu-fold" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-        <path d="M42 11H6M42 24H22M42 37H6M13.66 26.912l-4.82-3.118 4.82-3.118z"></path>
-      </svg></div>
   </div>
 </div>
 `;
 
 exports[`<menu> demo: > render [collapse-control] correctly 1`] = `
-<div data-v-dd043b55="" class="menu-demo"><button data-v-dd043b55="" class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd:mb-1 sd:h-[30px] sd:px-3 sd:leading-[30px]" type="button">
+<div data-v-dd043b55="" class="menu-demo"><button data-v-dd043b55="" class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd:mb-1! sd:h-7.5 sd:px-3 sd:leading-7.5" type="button">
     <!--v-if--><svg data-v-dd043b55="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-menu-fold" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
       <path d="M42 11H6M42 24H22M42 37H6M13.66 26.912l-4.82-3.118 4.82-3.118z"></path>
     </svg>
   </button>
-  <div data-v-dd043b55="" class="sd-menu sd-menu-dark sd-menu-vertical sd:w-[200px] sd:rounded">
-    <div class="sd-menu-inner">
-      <div data-v-dd043b55="" class="sd-menu-inline">
-        <div class="sd-menu-inline-header sd-menu-has-icon">
-          <!--v-if--><span class="sd-menu-icon"><svg data-v-dd043b55="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-apps" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 7h13v13H7zM28 7h13v13H28zM7 28h13v13H7zM28 28h13v13H28z"></path></svg></span><span class="sd-menu-title">Navigation 1</span><span class="sd-menu-icon-suffix is-open"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
-        </div>
-        <transition-stub appear="false" persisted="false" css="true">
-          <div class="sd-menu-inline-content">
-            <div data-v-dd043b55="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
-              <!---->
-            </div>
-            <div data-v-dd043b55="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
-              <!---->
-            </div>
-            <div data-v-dd043b55="" class="sd-menu-item sd-menu-selected"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
-              <!---->
-            </div>
-            <div data-v-dd043b55="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 4</span>
-              <!---->
-            </div>
+  <div data-v-dd043b55="" class="sd:w-50">
+    <div data-v-dd043b55="" class="sd-menu sd-menu-dark sd-menu-vertical sd:rounded">
+      <div class="sd-menu-inner">
+        <div data-v-dd043b55="" class="sd-menu-inline">
+          <div class="sd-menu-inline-header sd-menu-has-icon">
+            <!--v-if--><span class="sd-menu-icon"><svg data-v-dd043b55="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-apps" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 7h13v13H7zM28 7h13v13H28zM7 28h13v13H7zM28 28h13v13H28z"></path></svg></span><span class="sd-menu-title">Navigation 1</span><span class="sd-menu-icon-suffix is-open"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
           </div>
-        </transition-stub>
-      </div>
-      <div data-v-dd043b55="" class="sd-menu-inline">
-        <div class="sd-menu-inline-header sd-menu-has-icon">
-          <!--v-if--><span class="sd-menu-icon"><svg data-v-dd043b55="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-bug" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M24 42c-6.075 0-11-4.925-11-11V18h22v13c0 6.075-4.925 11-11 11Zm0 0V23m11 4h8M5 27h8M7 14a4 4 0 0 0 4 4h26a4 4 0 0 0 4-4m0 28v-.5a6.5 6.5 0 0 0-6.5-6.5M7 42v-.5a6.5 6.5 0 0 1 6.5-6.5M17 14a7 7 0 1 1 14 0"></path></svg></span><span class="sd-menu-title">Navigation 2</span><span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+          <transition-stub appear="false" persisted="false" css="true">
+            <div class="sd-menu-inline-content">
+              <div data-v-dd043b55="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                <!---->
+              </div>
+              <div data-v-dd043b55="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                <!---->
+              </div>
+              <div data-v-dd043b55="" class="sd-menu-item sd-menu-selected sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
+                <!---->
+              </div>
+              <div data-v-dd043b55="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 4</span>
+                <!---->
+              </div>
+            </div>
+          </transition-stub>
         </div>
-        <transition-stub appear="false" persisted="false" css="true">
-          <div class="sd-menu-inline-content" style="display: none;">
-            <div data-v-dd043b55="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
-              <!---->
-            </div>
-            <div data-v-dd043b55="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
-              <!---->
-            </div>
-            <div data-v-dd043b55="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
-              <!---->
-            </div>
+        <div data-v-dd043b55="" class="sd-menu-inline">
+          <div class="sd-menu-inline-header sd-menu-has-icon">
+            <!--v-if--><span class="sd-menu-icon"><svg data-v-dd043b55="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-bug" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M24 42c-6.075 0-11-4.925-11-11V18h22v13c0 6.075-4.925 11-11 11Zm0 0V23m11 4h8M5 27h8M7 14a4 4 0 0 0 4 4h26a4 4 0 0 0 4-4m0 28v-.5a6.5 6.5 0 0 0-6.5-6.5M7 42v-.5a6.5 6.5 0 0 1 6.5-6.5M17 14a7 7 0 1 1 14 0"></path></svg></span><span class="sd-menu-title">Navigation 2</span><span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
           </div>
-        </transition-stub>
-      </div>
-      <div data-v-dd043b55="" class="sd-menu-inline">
-        <div class="sd-menu-inline-header sd-menu-has-icon">
-          <!--v-if--><span class="sd-menu-icon"><svg data-v-dd043b55="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-bulb" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M17 42h14m6-24c0 2.823-.9 5.437-2.43 7.568-1.539 2.147-3.185 4.32-3.77 6.897l-.623 2.756A1 1 0 0 1 29.2 36H18.8a1 1 0 0 1-.976-.779l-.624-2.756c-.584-2.576-2.23-4.75-3.77-6.897A12.94 12.94 0 0 1 11 18c0-7.18 5.82-13 13-13s13 5.82 13 13Z"></path></svg></span><span class="sd-menu-title">Navigation 3</span><span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+          <transition-stub appear="false" persisted="false" css="true">
+            <div class="sd-menu-inline-content" style="display: none;">
+              <div data-v-dd043b55="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                <!---->
+              </div>
+              <div data-v-dd043b55="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                <!---->
+              </div>
+              <div data-v-dd043b55="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
+                <!---->
+              </div>
+            </div>
+          </transition-stub>
         </div>
-        <transition-stub appear="false" persisted="false" css="true">
-          <div class="sd-menu-inline-content" style="display: none;">
-            <div data-v-dd043b55="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
-              <!---->
-            </div>
-            <div data-v-dd043b55="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
-              <!---->
-            </div>
-            <div data-v-dd043b55="" class="sd-menu-inline">
-              <div class="sd-menu-inline-header"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span>Navigation 4<span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span></div>
-              <transition-stub appear="false" persisted="false" css="true">
-                <div class="sd-menu-inline-content" style="display: none;">
-                  <div data-v-dd043b55="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
-                    <!---->
+        <div data-v-dd043b55="" class="sd-menu-inline">
+          <div class="sd-menu-inline-header sd-menu-has-icon">
+            <!--v-if--><span class="sd-menu-icon"><svg data-v-dd043b55="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-bulb" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M17 42h14m6-24c0 2.823-.9 5.437-2.43 7.568-1.539 2.147-3.185 4.32-3.77 6.897l-.623 2.756A1 1 0 0 1 29.2 36H18.8a1 1 0 0 1-.976-.779l-.624-2.756c-.584-2.576-2.23-4.75-3.77-6.897A12.94 12.94 0 0 1 11 18c0-7.18 5.82-13 13-13s13 5.82 13 13Z"></path></svg></span><span class="sd-menu-title">Navigation 3</span><span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+          </div>
+          <transition-stub appear="false" persisted="false" css="true">
+            <div class="sd-menu-inline-content" style="display: none;">
+              <div data-v-dd043b55="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                <!---->
+              </div>
+              <div data-v-dd043b55="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                <!---->
+              </div>
+              <div data-v-dd043b55="" class="sd-menu-inline">
+                <div class="sd-menu-inline-header"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span>Navigation 4<span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span></div>
+                <transition-stub appear="false" persisted="false" css="true">
+                  <div class="sd-menu-inline-content" style="display: none;">
+                    <div data-v-dd043b55="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                      <!---->
+                    </div>
+                    <div data-v-dd043b55="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                      <!---->
+                    </div>
                   </div>
-                  <div data-v-dd043b55="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
-                    <!---->
-                  </div>
-                </div>
-              </transition-stub>
+                </transition-stub>
+              </div>
             </div>
-          </div>
-        </transition-stub>
+          </transition-stub>
+        </div>
       </div>
+      <!--v-if-->
     </div>
-    <!--v-if-->
   </div>
 </div>
 `;
@@ -191,6 +195,64 @@ exports[`<menu> demo: > render [dark-horizontal] correctly 1`] = `
     </div>
     <!--v-if-->
   </div>
+</div>
+`;
+
+exports[`<menu> demo: > render [ellipsis] correctly 1`] = `
+<div data-v-659aaa35="" class="menu-demo menu-demo-grid">
+  <section data-v-659aaa35="" class="menu-demo-panel">
+    <div data-v-659aaa35="" class="menu-demo-label">默认纯 CSS 省略</div>
+    <div data-v-659aaa35="" class="sd:w-44">
+      <div data-v-659aaa35="" class="sd-menu sd-menu-light sd-menu-vertical">
+        <div class="sd-menu-inner">
+          <div data-v-659aaa35="" class="sd-menu-inline">
+            <div class="sd-menu-inline-header sd-menu-has-icon">
+              <!--v-if--><span class="sd-menu-icon"><svg data-v-659aaa35="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-apps" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 7h13v13H7zM28 7h13v13H28zM7 28h13v13H7zM28 28h13v13H28z"></path></svg></span><span class="sd-menu-title">这是一个非常长的导航分组标题，用来展示默认菜单省略效果</span><span class="sd-menu-icon-suffix is-open"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+            </div>
+            <transition-stub appear="false" persisted="false" css="true">
+              <div class="sd-menu-inline-content">
+                <div data-v-659aaa35="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">这是一个非常长的菜单项标题，默认只使用 CSS 做单行省略</span>
+                  <!---->
+                </div>
+                <div data-v-659aaa35="" class="sd-menu-item sd-menu-selected sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">切换页面时仍然保持轻量的纯 CSS 省略表现</span>
+                  <!---->
+                </div>
+              </div>
+            </transition-stub>
+          </div>
+        </div>
+        <!--v-if-->
+      </div>
+    </div>
+  </section>
+  <section data-v-659aaa35="" class="menu-demo-panel">
+    <div data-v-659aaa35="" class="menu-demo-label">开启 Ellipsis 组件</div>
+    <div data-v-659aaa35="" class="sd:w-44">
+      <div data-v-659aaa35="" class="sd-menu sd-menu-light sd-menu-vertical">
+        <div class="sd-menu-inner">
+          <div data-v-659aaa35="" class="sd-menu-inline">
+            <div class="sd-menu-inline-header sd-menu-has-icon sd-menu-ellipsis-enabled">
+              <!--v-if--><span class="sd-menu-icon"><svg data-v-659aaa35="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-apps" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 7h13v13H7zM28 7h13v13H28zM7 28h13v13H7zM28 28h13v13H28z"></path></svg></span><span class="sd-menu-item-inner sd-menu-title sd-menu-ellipsis-wrapper"><span class="sd-menu-ellipsis sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">这是一个非常长的导航分组标题，用来展示 Ellipsis 组件版本</span></span>
+              <!----></span><span class="sd-menu-icon-suffix is-open"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+            </div>
+            <transition-stub appear="false" persisted="false" css="true">
+              <div class="sd-menu-inline-content">
+                <div data-v-659aaa35="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner sd-menu-ellipsis-wrapper"><span class="sd-menu-ellipsis sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">这是一个非常长的菜单项标题，溢出后可以显示 Tooltip 内容</span></span>
+                  <!----></span>
+                  <!---->
+                </div>
+                <div data-v-659aaa35="" class="sd-menu-item sd-menu-selected sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner sd-menu-ellipsis-wrapper"><span class="sd-menu-ellipsis sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">通过 ellipsis-props 可以继续透传 tooltip 等配置</span></span>
+                  <!----></span>
+                  <!---->
+                </div>
+              </div>
+            </transition-stub>
+          </div>
+        </div>
+        <!--v-if-->
+      </div>
+    </div>
+  </section>
 </div>
 `;
 
@@ -296,13 +358,13 @@ exports[`<menu> demo: > render [size] correctly 1`] = `
         </div>
         <transition-stub appear="false" persisted="false" css="true">
           <div class="sd-menu-inline-content">
-            <div data-v-a40de55d="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+            <div data-v-a40de55d="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
               <!---->
             </div>
-            <div data-v-a40de55d="" class="sd-menu-item sd-menu-selected"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+            <div data-v-a40de55d="" class="sd-menu-item sd-menu-selected sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
               <!---->
             </div>
-            <div data-v-a40de55d="" class="sd-menu-item sd-menu-disabled"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner"> Menu 3 </span>
+            <div data-v-a40de55d="" class="sd-menu-item sd-menu-disabled sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner"> Menu 3 </span>
               <!---->
             </div>
           </div>
@@ -314,13 +376,13 @@ exports[`<menu> demo: > render [size] correctly 1`] = `
         </div>
         <transition-stub appear="false" persisted="false" css="true">
           <div class="sd-menu-inline-content" style="display: none;">
-            <div data-v-a40de55d="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+            <div data-v-a40de55d="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
               <!---->
             </div>
-            <div data-v-a40de55d="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+            <div data-v-a40de55d="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
               <!---->
             </div>
-            <div data-v-a40de55d="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
+            <div data-v-a40de55d="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
               <!---->
             </div>
           </div>
@@ -332,13 +394,13 @@ exports[`<menu> demo: > render [size] correctly 1`] = `
         </div>
         <transition-stub appear="false" persisted="false" css="true">
           <div class="sd-menu-inline-content" style="display: none;">
-            <div data-v-a40de55d="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+            <div data-v-a40de55d="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
               <!---->
             </div>
-            <div data-v-a40de55d="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+            <div data-v-a40de55d="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
               <!---->
             </div>
-            <div data-v-a40de55d="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
+            <div data-v-a40de55d="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
               <!---->
             </div>
           </div>
@@ -365,13 +427,13 @@ exports[`<menu> demo: > render [sub-menu] correctly 1`] = `
         </div>
         <transition-stub appear="false" persisted="false" css="true">
           <div class="sd-menu-inline-content">
-            <div data-v-f00ce67f="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+            <div data-v-f00ce67f="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
               <!---->
             </div>
-            <div data-v-f00ce67f="" class="sd-menu-item sd-menu-selected"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+            <div data-v-f00ce67f="" class="sd-menu-item sd-menu-selected sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
               <!---->
             </div>
-            <div data-v-f00ce67f="" class="sd-menu-item sd-menu-disabled"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
+            <div data-v-f00ce67f="" class="sd-menu-item sd-menu-disabled sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
               <!---->
             </div>
           </div>
@@ -383,13 +445,13 @@ exports[`<menu> demo: > render [sub-menu] correctly 1`] = `
         </div>
         <transition-stub appear="false" persisted="false" css="true">
           <div class="sd-menu-inline-content" style="display: none;">
-            <div data-v-f00ce67f="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+            <div data-v-f00ce67f="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
               <!---->
             </div>
-            <div data-v-f00ce67f="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+            <div data-v-f00ce67f="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
               <!---->
             </div>
-            <div data-v-f00ce67f="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
+            <div data-v-f00ce67f="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
               <!---->
             </div>
           </div>
@@ -403,19 +465,19 @@ exports[`<menu> demo: > render [sub-menu] correctly 1`] = `
           <div class="sd-menu-inline-content" style="display: none;">
             <div data-v-f00ce67f="" class="sd-menu-group">
               <div class="sd-menu-group-title"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span>Menu Group 1</div>
-              <div data-v-f00ce67f="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+              <div data-v-f00ce67f="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
                 <!---->
               </div>
-              <div data-v-f00ce67f="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+              <div data-v-f00ce67f="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
                 <!---->
               </div>
             </div>
             <div data-v-f00ce67f="" class="sd-menu-group">
               <div class="sd-menu-group-title"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span>Menu Group 2</div>
-              <div data-v-f00ce67f="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
+              <div data-v-f00ce67f="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
                 <!---->
               </div>
-              <div data-v-f00ce67f="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 4</span>
+              <div data-v-f00ce67f="" class="sd-menu-item sd-menu-item-indented"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 4</span>
                 <!---->
               </div>
             </div>

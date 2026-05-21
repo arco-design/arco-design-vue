@@ -71,7 +71,7 @@
   .menu-demo {
     position: relative;
     box-sizing: border-box;
-    width: 660px;
+    width: 100%;
     height: 300px;
     padding: 40px;
     background-color: var(--color-fill-2);
