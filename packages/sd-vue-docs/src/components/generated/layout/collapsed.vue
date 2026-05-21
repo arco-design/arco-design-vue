@@ -2,65 +2,72 @@
   <sd-layout class="layout-demo">
     <sd-layout-sider hide-trigger collapsible :collapsed="collapsed">
       <div class="logo" />
-      <sd-menu
-        :defaultOpenKeys="['1']"
-        :defaultSelectedKeys="['0_3']"
-        class="sd:w-full"
-        @menuItemClick="onClickMenuItem"
-      >
-        <sd-menu-item key="0_1" disabled>
-          <IconHome />
-          Menu 1
-        </sd-menu-item>
-        <sd-menu-item key="0_2">
-          <IconCalendar />
-          Menu 2
-        </sd-menu-item>
-        <sd-menu-item key="0_3">
-          <IconCalendar />
-          Menu 3
-        </sd-menu-item>
-        <sd-sub-menu key="1">
-          <template #title>
-            <span><IconCalendar />Navigation 1</span>
-          </template>
-          <sd-menu-item key="1_1">Menu 1</sd-menu-item>
-          <sd-menu-item key="1_2">Menu 2</sd-menu-item>
-          <sd-sub-menu key="2" title="Navigation 2">
-            <sd-menu-item key="2_1">Menu 1</sd-menu-item>
-            <sd-menu-item key="2_2">Menu 2</sd-menu-item>
+      <div class="sd:w-full">
+        <sd-menu
+          :defaultOpenKeys="['1']"
+          :defaultSelectedKeys="['0_3']"
+          @menuItemClick="onClickMenuItem"
+        >
+          <sd-menu-item key="0_1" disabled>
+            <IconHome />
+            Menu 1
+          </sd-menu-item>
+          <sd-menu-item key="0_2">
+            <IconCalendar />
+            Menu 2
+          </sd-menu-item>
+          <sd-menu-item key="0_3">
+            <IconCalendar />
+            Menu 3
+          </sd-menu-item>
+          <sd-sub-menu key="1">
+            <template #title>
+              <span><IconCalendar />Navigation 1</span>
+            </template>
+            <sd-menu-item key="1_1">Menu 1</sd-menu-item>
+            <sd-menu-item key="1_2">Menu 2</sd-menu-item>
+            <sd-sub-menu key="2" title="Navigation 2">
+              <sd-menu-item key="2_1">Menu 1</sd-menu-item>
+              <sd-menu-item key="2_2">Menu 2</sd-menu-item>
+            </sd-sub-menu>
+            <sd-sub-menu key="3" title="Navigation 3">
+              <sd-menu-item key="3_1">Menu 1</sd-menu-item>
+              <sd-menu-item key="3_2">Menu 2</sd-menu-item>
+              <sd-menu-item key="3_3">Menu 3</sd-menu-item>
+            </sd-sub-menu>
           </sd-sub-menu>
-          <sd-sub-menu key="3" title="Navigation 3">
-            <sd-menu-item key="3_1">Menu 1</sd-menu-item>
-            <sd-menu-item key="3_2">Menu 2</sd-menu-item>
-            <sd-menu-item key="3_3">Menu 3</sd-menu-item>
+          <sd-sub-menu key="4">
+            <template #title>
+              <span><IconCalendar />Navigation 4</span>
+            </template>
+            <sd-menu-item key="4_1">Menu 1</sd-menu-item>
+            <sd-menu-item key="4_2">Menu 2</sd-menu-item>
+            <sd-menu-item key="4_3">Menu 3</sd-menu-item>
           </sd-sub-menu>
-        </sd-sub-menu>
-        <sd-sub-menu key="4">
-          <template #title>
-            <span><IconCalendar />Navigation 4</span>
-          </template>
-          <sd-menu-item key="4_1">Menu 1</sd-menu-item>
-          <sd-menu-item key="4_2">Menu 2</sd-menu-item>
-          <sd-menu-item key="4_3">Menu 3</sd-menu-item>
-        </sd-sub-menu>
-      </sd-menu>
+        </sd-menu>
+      </div>
     </sd-layout-sider>
     <sd-layout>
-      <sd-layout-header class="sd:pl-5">
-        <sd-button shape="round" @click="onCollapse">
-          <IconCaretRight v-if="collapsed" />
-          <IconCaretLeft v-else />
-        </sd-button>
+      <sd-layout-header>
+        <div class="sd:pl-5">
+          <sd-button shape="round" @click="onCollapse">
+            <IconCaretRight v-if="collapsed" />
+            <IconCaretLeft v-else />
+          </sd-button>
+        </div>
       </sd-layout-header>
-      <sd-layout class="sd:px-6">
-        <sd-breadcrumb class="sd:my-4">
-          <sd-breadcrumb-item>Home</sd-breadcrumb-item>
-          <sd-breadcrumb-item>List</sd-breadcrumb-item>
-          <sd-breadcrumb-item>App</sd-breadcrumb-item>
-        </sd-breadcrumb>
-        <sd-layout-content>Content</sd-layout-content>
-        <sd-layout-footer>Footer</sd-layout-footer>
+      <sd-layout>
+        <div class="sd:flex sd:flex-1 sd:flex-col sd:px-6!">
+          <div class="sd:my-4!">
+            <sd-breadcrumb>
+              <sd-breadcrumb-item>Home</sd-breadcrumb-item>
+              <sd-breadcrumb-item>List</sd-breadcrumb-item>
+              <sd-breadcrumb-item>App</sd-breadcrumb-item>
+            </sd-breadcrumb>
+          </div>
+          <sd-layout-content>Content</sd-layout-content>
+          <sd-layout-footer>Footer</sd-layout-footer>
+        </div>
       </sd-layout>
     </sd-layout>
   </sd-layout>

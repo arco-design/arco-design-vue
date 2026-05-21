@@ -14,6 +14,8 @@ import LayoutCustomIconDemo from '../../../../components/generated/layout/custom
 import layoutCustomIconSource from '../../../../components/generated/layout/custom-icon.vue?raw';
 import LayoutResizeDemo from '../../../../components/generated/layout/resize.vue';
 import layoutResizeSource from '../../../../components/generated/layout/resize.vue?raw';
+import LayoutNavigationDrawerDemo from '../../../../components/generated/layout/navigation-drawer.vue';
+import layoutNavigationDrawerSource from '../../../../components/generated/layout/navigation-drawer.vue?raw';
 
 ### 基本用法
 
@@ -65,6 +67,16 @@ import layoutResizeSource from '../../../../components/generated/layout/resize.v
 
 </DemoBlock>
 
+### 导航抽屉模式
+
+`Layout.Sider` 现在支持临时抽屉、rail、浮动和左右停靠等导航抽屉能力，适合桌面端导航收纳与移动端临时菜单。
+
+<DemoBlock source={layoutNavigationDrawerSource} mainFile="src/layout-navigation-drawer.vue">
+
+<LayoutNavigationDrawerDemo client:only="vue" />
+
+</DemoBlock>
+
 ## API
 
 ### `<layout>` Props
@@ -96,11 +108,29 @@ import layoutResizeSource from '../../../../components/generated/layout/resize.v
 | 参数名 | 描述 | 类型 | 默认值 |
 | --- | --- | --- | :-: |
 | theme | 主题颜色 | `'dark' \| 'light'` | `'light'` |
+| model-value | 当前抽屉是否显示 | `boolean` | `-` |
+| default-visible | 默认是否显示抽屉 | `boolean` | `false` |
 | collapsed | 当前收起状态 | `boolean` | `-` |
 | default-collapsed | 默认的收起状态 | `boolean` | `false` |
 | collapsible | 是否可收起 | `boolean` | `false` |
+| rail | 是否启用 rail 模式 | `boolean` | `-` |
+| default-rail | 默认是否启用 rail 模式 | `boolean` | `false` |
+| rail-width | rail 模式下的宽度 | `number \| string` | `56` |
+| expand-on-hover | 是否在 hover 时临时展开 rail | `boolean` | `false` |
+| disable-resize-watcher | 是否禁用响应式宽度监听 | `boolean` | `false` |
+| disable-route-watcher | 是否禁用路由切换时自动关闭临时抽屉 | `boolean` | `false` |
 | width | 宽度 | `number` | `200` |
+| height | 顶部或底部抽屉的高度 | `number \| string` | `-` |
 | collapsed-width | 收缩宽度 | `number` | `48` |
+| temporary | 是否为临时抽屉模式 | `boolean` | `false` |
+| permanent | 是否始终显示抽屉 | `boolean` | `false` |
+| persistent | 临时抽屉模式下点击遮罩后是否保持显示 | `boolean` | `false` |
+| mask | 是否显示遮罩层 | `boolean` | `true` |
+| mask-closable | 点击遮罩层是否可以关闭抽屉 | `boolean` | `true` |
+| esc-to-close | 是否支持通过 ESC 键关闭临时抽屉 | `boolean` | `true` |
+| location | 抽屉停靠位置 | `'start' \| 'end' \| 'left' \| 'right' \| 'top' \| 'bottom'` | `'start'` |
+| floating | 是否启用浮动模式 | `boolean` | `false` |
+| sticky | 是否启用粘性定位 | `boolean` | `false` |
 | reverse-arrow | 翻转折叠提示箭头的方向，当 Sider 在右边时可以使用 | `boolean` | `false` |
 | breakpoint | 触发响应式布局的断点, 详见[响应式栅格](/components/grid/) | `'xxl' \| 'xl' \| 'lg' \| 'md' \| 'sm' \| 'xs'` | `-` |
 | resize-directions | 可以用 ResizeBox 替换原生的 `aside` 标签，这个参数即 ResizeBox的 `directions` 参数。详情请看 [ResizeBox](/components/resize-box/)。 | `Array<'left' \| 'right' \| 'top' \| 'bottom'>` | `-` |
@@ -110,6 +140,8 @@ import layoutResizeSource from '../../../../components/generated/layout/resize.v
 
 | 事件名 | 描述 | 参数 |
 | --- | --- | --- |
+| update:modelValue | 临时抽屉显示状态变化时触发 | visible: `boolean` |
+| update:rail | rail 状态变化时触发 | rail: `boolean` |
 | collapse | 展开-收起时的事件，有点击 trigger 以及响应式反馈两种方式可以触发 | collapsed: `boolean`<br />type: `'clickTrigger'\|'responsive'` |
 | breakpoint | 触发响应式布局断点时的事件 | collapsed: `boolean` |
 
@@ -117,4 +149,7 @@ import layoutResizeSource from '../../../../components/generated/layout/resize.v
 
 | 插槽名  |         描述         | 参数                 |
 | ------- | :------------------: | -------------------- |
+| image   |     顶部媒体区域     | -                    |
+| prepend |     内容前置区域     | -                    |
+| append  |     内容后置区域     | -                    |
 | trigger | 自定义底部折叠触发器 | collapsed: `boolean` |

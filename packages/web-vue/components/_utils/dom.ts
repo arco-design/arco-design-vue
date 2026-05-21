@@ -47,14 +47,19 @@ export const isServerRendering = (() => {
   }
 })();
 
+type DOMEventTarget = HTMLElement | Window;
+type DOMEventMap<T extends DOMEventTarget> = T extends Window
+  ? WindowEventMap
+  : HTMLElementEventMap;
+
 export const on = (() => {
   if (isServerRendering) {
     return NOOP;
   }
-  return <K extends keyof HTMLElementEventMap>(
-    element: HTMLElement | Window,
+  return <T extends DOMEventTarget, K extends Extract<keyof DOMEventMap<T>, string>>(
+    element: T,
     event: K,
-    handler: (ev: HTMLElementEventMap[K]) => void,
+    handler: (ev: DOMEventMap<T>[K]) => void,
     options: boolean | AddEventListenerOptions = false,
   ) => {
     element.addEventListener(event, handler as EventListenerOrEventListenerObject, options);
@@ -65,10 +70,10 @@ export const off = (() => {
   if (isServerRendering) {
     return NOOP;
   }
-  return <K extends keyof HTMLElementEventMap>(
-    element: HTMLElement | Window,
+  return <T extends DOMEventTarget, K extends Extract<keyof DOMEventMap<T>, string>>(
+    element: T,
     type: K,
-    handler: (ev: HTMLElementEventMap[K]) => void,
+    handler: (ev: DOMEventMap<T>[K]) => void,
     options: boolean | EventListenerOptions = false,
   ) => {
     element.removeEventListener(type, handler as EventListenerOrEventListenerObject, options);
@@ -117,7 +122,7 @@ export const getElement = (
   container?: Document | HTMLElement,
 ): HTMLElement | undefined => {
   if (isString(target)) {
-    const selector = target[0] === '#' ? `[id='${target.slice(1)}']` : target;
+    const selector = target.startsWith('#') ? `[id='${target.slice(1)}']` : target;
     return querySelector(selector, container);
   }
   return target;

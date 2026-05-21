@@ -138,8 +138,12 @@ exports[`<resize-box> demo: > render [layout] correctly 1`] = `
   <section data-v-8c775dfe="" class="sd-layout">
     <header data-v-8c775dfe="" class="sd-layout-header">Header</header>
     <section data-v-8c775dfe="" class="sd-layout">
-      <div data-v-8c775dfe="" class="sd-resizebox sd-layout-sider sd-layout-sider-light" style="width: 200px;">
+      <div data-v-8c775dfe="" class="sd-resizebox sd-layout-sider sd-layout-sider-light sd-layout-sider-left" style="width: 200px;">
+        <!--v-if-->
+        <!--v-if-->
+        <!--v-if-->
         <div class="sd-layout-sider-children"> Sider </div>
+        <!--v-if-->
         <!--v-if-->
         <div class="sd-resizebox-trigger sd-resizebox-trigger-vertical sd-resizebox-direction-right">
           <!-- @slot 自定义内容 -->

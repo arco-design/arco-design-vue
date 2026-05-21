@@ -1,7 +1,6 @@
 <template>
   <sd-layout class="layout-demo">
     <sd-layout-sider
-      theme="dark"
       breakpoint="lg"
       :width="220"
       collapsible
@@ -85,14 +84,18 @@
           </sd-sub-menu>
         </sd-menu>
       </sd-layout-header>
-      <sd-layout class="sd:px-6">
-        <sd-breadcrumb class="sd:my-4">
-          <sd-breadcrumb-item>Home</sd-breadcrumb-item>
-          <sd-breadcrumb-item>List</sd-breadcrumb-item>
-          <sd-breadcrumb-item>App</sd-breadcrumb-item>
-        </sd-breadcrumb>
-        <sd-layout-content>Content</sd-layout-content>
-        <sd-layout-footer>Footer</sd-layout-footer>
+      <sd-layout>
+        <div class="sd:flex sd:flex-1 sd:flex-col sd:px-6!">
+          <div class="sd:my-4!">
+            <sd-breadcrumb>
+              <sd-breadcrumb-item>Home</sd-breadcrumb-item>
+              <sd-breadcrumb-item>List</sd-breadcrumb-item>
+              <sd-breadcrumb-item>App</sd-breadcrumb-item>
+            </sd-breadcrumb>
+          </div>
+          <sd-layout-content>Content</sd-layout-content>
+          <sd-layout-footer>Footer</sd-layout-footer>
+        </div>
       </sd-layout>
     </sd-layout>
   </sd-layout>

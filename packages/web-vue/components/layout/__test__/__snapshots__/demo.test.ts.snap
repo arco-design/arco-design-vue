@@ -10,8 +10,12 @@ exports[`<layout> demo: > render [basic] correctly 1`] = `
   <section data-v-45a68723="" class="sd-layout sd:h-100">
     <header data-v-45a68723="" class="sd-layout-header">Header</header>
     <section data-v-45a68723="" class="sd-layout">
-      <div data-v-45a68723="" class="sd-layout-sider" style="width: 200px;">
+      <div data-v-45a68723="" class="sd-layout-sider sd-layout-sider-left" style="width: 200px;">
+        <!--v-if-->
+        <!--v-if-->
+        <!--v-if-->
         <div class="sd-layout-sider-children">Sider</div>
+        <!--v-if-->
         <!--v-if-->
       </div>
       <main data-v-45a68723="" class="sd-layout-content">Content</main>
@@ -22,8 +26,12 @@ exports[`<layout> demo: > render [basic] correctly 1`] = `
     <header data-v-45a68723="" class="sd-layout-header">Header</header>
     <section data-v-45a68723="" class="sd-layout">
       <main data-v-45a68723="" class="sd-layout-content">Content</main>
-      <div data-v-45a68723="" class="sd-layout-sider sd-layout-sider-light" style="width: 200px;">
+      <div data-v-45a68723="" class="sd-layout-sider sd-layout-sider-light sd-layout-sider-left" style="width: 200px;">
+        <!--v-if-->
+        <!--v-if-->
+        <!--v-if-->
         <div class="sd-layout-sider-children">Sider</div>
+        <!--v-if-->
         <!--v-if-->
       </div>
     </section>
@@ -32,12 +40,20 @@ exports[`<layout> demo: > render [basic] correctly 1`] = `
   <section data-v-45a68723="" class="sd-layout sd:h-100">
     <header data-v-45a68723="" class="sd-layout-header">Header</header>
     <section data-v-45a68723="" class="sd-layout">
-      <div data-v-45a68723="" class="sd-layout-sider sd-layout-sider-light" style="width: 64px;">
+      <div data-v-45a68723="" class="sd-layout-sider sd-layout-sider-light sd-layout-sider-left" style="width: 64px;">
+        <!--v-if-->
+        <!--v-if-->
+        <!--v-if-->
         <div class="sd-layout-sider-children">Sider</div>
         <!--v-if-->
+        <!--v-if-->
       </div>
-      <div data-v-45a68723="" class="sd-layout-sider sd-layout-sider-light sd:ml-px" style="width: 206px;">
+      <div data-v-45a68723="" class="sd-layout-sider sd-layout-sider-light sd-layout-sider-left sd:ml-px" style="width: 206px;">
+        <!--v-if-->
+        <!--v-if-->
+        <!--v-if-->
         <div class="sd-layout-sider-children">Sider</div>
+        <!--v-if-->
         <!--v-if-->
       </div>
       <main data-v-45a68723="" class="sd-layout-content">Content</main>
@@ -49,10 +65,13 @@ exports[`<layout> demo: > render [basic] correctly 1`] = `
 
 exports[`<layout> demo: > render [breakpoint] correctly 1`] = `
 <section data-v-90594246="" class="sd-layout layout-demo">
-  <div data-v-90594246="" class="sd-layout-sider sd-layout-sider-has-trigger" style="width: 220px;">
+  <div data-v-90594246="" class="sd-layout-sider sd-layout-sider-light sd-layout-sider-has-trigger sd-layout-sider-left" style="width: 220px;">
+    <!--v-if-->
+    <!--v-if-->
+    <!--v-if-->
     <div class="sd-layout-sider-children">
       <div data-v-90594246="" class="logo"></div>
-      <div data-v-90594246="" class="sd-menu sd-menu-dark sd-menu-vertical">
+      <div data-v-90594246="" class="sd-menu sd-menu-light sd-menu-vertical">
         <div class="sd-menu-inner">
           <div data-v-90594246="" class="sd-menu-item sd-menu-disabled"><svg data-v-90594246="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-home" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
               <path d="M7 17 24 7l17 10v24H7z"></path>
@@ -131,7 +150,8 @@ exports[`<layout> demo: > render [breakpoint] correctly 1`] = `
         <!--v-if-->
       </div>
     </div>
-    <div class="sd-layout-sider-trigger" style="width: 220px;">
+    <!--v-if-->
+    <div class="sd-layout-sider-trigger sd-layout-sider-trigger-light" style="width: 220px;">
       <div><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-left" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
           <path d="M32 8.4 16.444 23.956 32 39.513"></path>
         </svg></div>
@@ -176,27 +196,31 @@ exports[`<layout> demo: > render [breakpoint] correctly 1`] = `
         <!--v-if-->
       </div>
     </header>
-    <section data-v-90594246="" class="sd-layout sd:px-6">
-      <div data-v-90594246="" role="list" class="sd-breadcrumb sd:my-4">
-        <div role="listitem" class="sd-breadcrumb-item">Home
-          <!---->
+    <section data-v-90594246="" class="sd-layout">
+      <div data-v-90594246="" class="sd:flex sd:flex-1 sd:flex-col sd:px-6!">
+        <div data-v-90594246="" class="sd:my-4!">
+          <div data-v-90594246="" role="list" class="sd-breadcrumb">
+            <div role="listitem" class="sd-breadcrumb-item">Home
+              <!---->
+            </div>
+            <div aria-hidden="true" class="sd-breadcrumb-item-separator"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-oblique-line" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                <path d="M29.506 6.502 18.493 41.498"></path>
+              </svg></div>
+            <div role="listitem" class="sd-breadcrumb-item">List
+              <!---->
+            </div>
+            <div aria-hidden="true" class="sd-breadcrumb-item-separator"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-oblique-line" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                <path d="M29.506 6.502 18.493 41.498"></path>
+              </svg></div>
+            <div role="listitem" class="sd-breadcrumb-item">App
+              <!---->
+            </div>
+            <!---->
+          </div>
         </div>
-        <div aria-hidden="true" class="sd-breadcrumb-item-separator"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-oblique-line" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-            <path d="M29.506 6.502 18.493 41.498"></path>
-          </svg></div>
-        <div role="listitem" class="sd-breadcrumb-item">List
-          <!---->
-        </div>
-        <div aria-hidden="true" class="sd-breadcrumb-item-separator"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-oblique-line" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-            <path d="M29.506 6.502 18.493 41.498"></path>
-          </svg></div>
-        <div role="listitem" class="sd-breadcrumb-item">App
-          <!---->
-        </div>
-        <!---->
+        <main data-v-90594246="" class="sd-layout-content">Content</main>
+        <footer data-v-90594246="" class="sd-layout-footer">Footer</footer>
       </div>
-      <main data-v-90594246="" class="sd-layout-content">Content</main>
-      <footer data-v-90594246="" class="sd-layout-footer">Footer</footer>
     </section>
   </section>
 </section>
@@ -204,122 +228,134 @@ exports[`<layout> demo: > render [breakpoint] correctly 1`] = `
 
 exports[`<layout> demo: > render [collapsed] correctly 1`] = `
 <section data-v-6f5a7cf9="" class="sd-layout layout-demo">
-  <div data-v-6f5a7cf9="" class="sd-layout-sider sd-layout-sider-light" style="width: 200px;">
+  <div data-v-6f5a7cf9="" class="sd-layout-sider sd-layout-sider-light sd-layout-sider-left" style="width: 200px;">
+    <!--v-if-->
+    <!--v-if-->
+    <!--v-if-->
     <div class="sd-layout-sider-children">
       <div data-v-6f5a7cf9="" class="logo"></div>
-      <div data-v-6f5a7cf9="" class="sd-menu sd-menu-light sd-menu-vertical sd:w-full">
-        <div class="sd-menu-inner">
-          <div data-v-6f5a7cf9="" class="sd-menu-item sd-menu-disabled"><svg data-v-6f5a7cf9="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-home" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-              <path d="M7 17 24 7l17 10v24H7z"></path>
-              <path d="M20 28h8v13h-8z"></path>
-            </svg> Menu 1
-            <!---->
-          </div>
-          <div data-v-6f5a7cf9="" class="sd-menu-item"><svg data-v-6f5a7cf9="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-              <path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path>
-            </svg> Menu 2
-            <!---->
-          </div>
-          <div data-v-6f5a7cf9="" class="sd-menu-item sd-menu-selected"><svg data-v-6f5a7cf9="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-              <path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path>
-            </svg> Menu 3
-            <!---->
-          </div>
-          <div data-v-6f5a7cf9="" class="sd-menu-inline">
-            <div class="sd-menu-inline-header">
-              <!--v-if--><span data-v-6f5a7cf9=""><svg data-v-6f5a7cf9="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path></svg>Navigation 1</span><span class="sd-menu-icon-suffix is-open"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+      <div data-v-6f5a7cf9="" class="sd:w-full">
+        <div data-v-6f5a7cf9="" class="sd-menu sd-menu-light sd-menu-vertical">
+          <div class="sd-menu-inner">
+            <div data-v-6f5a7cf9="" class="sd-menu-item sd-menu-disabled"><svg data-v-6f5a7cf9="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-home" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                <path d="M7 17 24 7l17 10v24H7z"></path>
+                <path d="M20 28h8v13h-8z"></path>
+              </svg> Menu 1
+              <!---->
             </div>
-            <transition-stub appear="false" persisted="false" css="true">
-              <div class="sd-menu-inline-content">
-                <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
-                  <!---->
-                </div>
-                <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
-                  <!---->
-                </div>
-                <div data-v-6f5a7cf9="" class="sd-menu-inline">
-                  <div class="sd-menu-inline-header"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span>Navigation 2<span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span></div>
-                  <transition-stub appear="false" persisted="false" css="true">
-                    <div class="sd-menu-inline-content" style="display: none;">
-                      <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
-                        <!---->
-                      </div>
-                      <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
-                        <!---->
-                      </div>
-                    </div>
-                  </transition-stub>
-                </div>
-                <div data-v-6f5a7cf9="" class="sd-menu-inline">
-                  <div class="sd-menu-inline-header"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span>Navigation 3<span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span></div>
-                  <transition-stub appear="false" persisted="false" css="true">
-                    <div class="sd-menu-inline-content" style="display: none;">
-                      <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
-                        <!---->
-                      </div>
-                      <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
-                        <!---->
-                      </div>
-                      <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
-                        <!---->
-                      </div>
-                    </div>
-                  </transition-stub>
-                </div>
-              </div>
-            </transition-stub>
-          </div>
-          <div data-v-6f5a7cf9="" class="sd-menu-inline">
-            <div class="sd-menu-inline-header">
-              <!--v-if--><span data-v-6f5a7cf9=""><svg data-v-6f5a7cf9="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path></svg>Navigation 4</span><span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+            <div data-v-6f5a7cf9="" class="sd-menu-item"><svg data-v-6f5a7cf9="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                <path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path>
+              </svg> Menu 2
+              <!---->
             </div>
-            <transition-stub appear="false" persisted="false" css="true">
-              <div class="sd-menu-inline-content" style="display: none;">
-                <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
-                  <!---->
-                </div>
-                <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
-                  <!---->
-                </div>
-                <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
-                  <!---->
-                </div>
+            <div data-v-6f5a7cf9="" class="sd-menu-item sd-menu-selected"><svg data-v-6f5a7cf9="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                <path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path>
+              </svg> Menu 3
+              <!---->
+            </div>
+            <div data-v-6f5a7cf9="" class="sd-menu-inline">
+              <div class="sd-menu-inline-header">
+                <!--v-if--><span data-v-6f5a7cf9=""><svg data-v-6f5a7cf9="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path></svg>Navigation 1</span><span class="sd-menu-icon-suffix is-open"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
               </div>
-            </transition-stub>
+              <transition-stub appear="false" persisted="false" css="true">
+                <div class="sd-menu-inline-content">
+                  <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                    <!---->
+                  </div>
+                  <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                    <!---->
+                  </div>
+                  <div data-v-6f5a7cf9="" class="sd-menu-inline">
+                    <div class="sd-menu-inline-header"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span>Navigation 2<span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span></div>
+                    <transition-stub appear="false" persisted="false" css="true">
+                      <div class="sd-menu-inline-content" style="display: none;">
+                        <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                          <!---->
+                        </div>
+                        <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                          <!---->
+                        </div>
+                      </div>
+                    </transition-stub>
+                  </div>
+                  <div data-v-6f5a7cf9="" class="sd-menu-inline">
+                    <div class="sd-menu-inline-header"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span>Navigation 3<span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span></div>
+                    <transition-stub appear="false" persisted="false" css="true">
+                      <div class="sd-menu-inline-content" style="display: none;">
+                        <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                          <!---->
+                        </div>
+                        <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                          <!---->
+                        </div>
+                        <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
+                          <!---->
+                        </div>
+                      </div>
+                    </transition-stub>
+                  </div>
+                </div>
+              </transition-stub>
+            </div>
+            <div data-v-6f5a7cf9="" class="sd-menu-inline">
+              <div class="sd-menu-inline-header">
+                <!--v-if--><span data-v-6f5a7cf9=""><svg data-v-6f5a7cf9="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path></svg>Navigation 4</span><span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+              </div>
+              <transition-stub appear="false" persisted="false" css="true">
+                <div class="sd-menu-inline-content" style="display: none;">
+                  <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                    <!---->
+                  </div>
+                  <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                    <!---->
+                  </div>
+                  <div data-v-6f5a7cf9="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
+                    <!---->
+                  </div>
+                </div>
+              </transition-stub>
+            </div>
           </div>
+          <!--v-if-->
         </div>
-        <!--v-if-->
       </div>
     </div>
     <!--v-if-->
+    <!--v-if-->
   </div>
   <section data-v-6f5a7cf9="" class="sd-layout">
-    <header data-v-6f5a7cf9="" class="sd-layout-header sd:pl-5"><button data-v-6f5a7cf9="" class="sd-btn sd-btn-secondary sd-btn-shape-round sd-btn-size-medium sd-btn-status-normal" type="button">
-        <!--v-if--><svg data-v-6f5a7cf9="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-left" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-          <path fill="currentColor" stroke="none" d="M13.171 24.937a1.2 1.2 0 0 1 0-1.874L30.051 9.56c.785-.629 1.949-.07 1.949.937v27.006c0 1.006-1.164 1.566-1.95.937z"></path>
-        </svg>
-      </button></header>
-    <section data-v-6f5a7cf9="" class="sd-layout sd:px-6">
-      <div data-v-6f5a7cf9="" role="list" class="sd-breadcrumb sd:my-4">
-        <div role="listitem" class="sd-breadcrumb-item">Home
-          <!---->
+    <header data-v-6f5a7cf9="" class="sd-layout-header">
+      <div data-v-6f5a7cf9="" class="sd:pl-5"><button data-v-6f5a7cf9="" class="sd-btn sd-btn-secondary sd-btn-shape-round sd-btn-size-medium sd-btn-status-normal" type="button">
+          <!--v-if--><svg data-v-6f5a7cf9="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-left" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+            <path fill="currentColor" stroke="none" d="M13.171 24.937a1.2 1.2 0 0 1 0-1.874L30.051 9.56c.785-.629 1.949-.07 1.949.937v27.006c0 1.006-1.164 1.566-1.95.937z"></path>
+          </svg>
+        </button></div>
+    </header>
+    <section data-v-6f5a7cf9="" class="sd-layout">
+      <div data-v-6f5a7cf9="" class="sd:flex sd:flex-1 sd:flex-col sd:px-6!">
+        <div data-v-6f5a7cf9="" class="sd:my-4!">
+          <div data-v-6f5a7cf9="" role="list" class="sd-breadcrumb">
+            <div role="listitem" class="sd-breadcrumb-item">Home
+              <!---->
+            </div>
+            <div aria-hidden="true" class="sd-breadcrumb-item-separator"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-oblique-line" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                <path d="M29.506 6.502 18.493 41.498"></path>
+              </svg></div>
+            <div role="listitem" class="sd-breadcrumb-item">List
+              <!---->
+            </div>
+            <div aria-hidden="true" class="sd-breadcrumb-item-separator"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-oblique-line" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                <path d="M29.506 6.502 18.493 41.498"></path>
+              </svg></div>
+            <div role="listitem" class="sd-breadcrumb-item">App
+              <!---->
+            </div>
+            <!---->
+          </div>
         </div>
-        <div aria-hidden="true" class="sd-breadcrumb-item-separator"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-oblique-line" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-            <path d="M29.506 6.502 18.493 41.498"></path>
-          </svg></div>
-        <div role="listitem" class="sd-breadcrumb-item">List
-          <!---->
-        </div>
-        <div aria-hidden="true" class="sd-breadcrumb-item-separator"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-oblique-line" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-            <path d="M29.506 6.502 18.493 41.498"></path>
-          </svg></div>
-        <div role="listitem" class="sd-breadcrumb-item">App
-          <!---->
-        </div>
-        <!---->
+        <main data-v-6f5a7cf9="" class="sd-layout-content">Content</main>
+        <footer data-v-6f5a7cf9="" class="sd-layout-footer">Footer</footer>
       </div>
-      <main data-v-6f5a7cf9="" class="sd-layout-content">Content</main>
-      <footer data-v-6f5a7cf9="" class="sd-layout-footer">Footer</footer>
     </section>
   </section>
 </section>
@@ -327,127 +363,199 @@ exports[`<layout> demo: > render [collapsed] correctly 1`] = `
 
 exports[`<layout> demo: > render [custom-icon] correctly 1`] = `
 <section data-v-4bf645a2="" class="sd-layout layout-demo">
-  <div data-v-4bf645a2="" class="sd-layout-sider sd-layout-sider-light sd-layout-sider-has-trigger" style="width: 200px;">
+  <div data-v-4bf645a2="" class="sd-layout-sider sd-layout-sider-light sd-layout-sider-has-trigger sd-layout-sider-left" style="width: 200px;">
+    <!--v-if-->
+    <!--v-if-->
+    <!--v-if-->
     <div class="sd-layout-sider-children">
       <div data-v-4bf645a2="" class="logo"></div>
-      <div data-v-4bf645a2="" class="sd-menu sd-menu-light sd-menu-vertical sd:w-full">
-        <div class="sd-menu-inner">
-          <div data-v-4bf645a2="" class="sd-menu-item sd-menu-disabled"><svg data-v-4bf645a2="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-home" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-              <path d="M7 17 24 7l17 10v24H7z"></path>
-              <path d="M20 28h8v13h-8z"></path>
-            </svg> Menu 1
-            <!---->
-          </div>
-          <div data-v-4bf645a2="" class="sd-menu-item"><svg data-v-4bf645a2="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-              <path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path>
-            </svg> Menu 2
-            <!---->
-          </div>
-          <div data-v-4bf645a2="" class="sd-menu-item sd-menu-selected"><svg data-v-4bf645a2="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-              <path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path>
-            </svg> Menu 3
-            <!---->
-          </div>
-          <div data-v-4bf645a2="" class="sd-menu-inline">
-            <div class="sd-menu-inline-header">
-              <!--v-if--><svg data-v-4bf645a2="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-                <path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path>
-              </svg> Navigation 1 <span class="sd-menu-icon-suffix is-open"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+      <div data-v-4bf645a2="" class="sd:w-full">
+        <div data-v-4bf645a2="" class="sd-menu sd-menu-light sd-menu-vertical">
+          <div class="sd-menu-inner">
+            <div data-v-4bf645a2="" class="sd-menu-item sd-menu-disabled"><svg data-v-4bf645a2="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-home" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                <path d="M7 17 24 7l17 10v24H7z"></path>
+                <path d="M20 28h8v13h-8z"></path>
+              </svg> Menu 1
+              <!---->
             </div>
-            <transition-stub appear="false" persisted="false" css="true">
-              <div class="sd-menu-inline-content">
-                <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
-                  <!---->
-                </div>
-                <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
-                  <!---->
-                </div>
-                <div data-v-4bf645a2="" class="sd-menu-inline">
-                  <div class="sd-menu-inline-header"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span>Navigation 2<span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span></div>
-                  <transition-stub appear="false" persisted="false" css="true">
-                    <div class="sd-menu-inline-content" style="display: none;">
-                      <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
-                        <!---->
-                      </div>
-                      <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
-                        <!---->
-                      </div>
-                    </div>
-                  </transition-stub>
-                </div>
-                <div data-v-4bf645a2="" class="sd-menu-inline">
-                  <div class="sd-menu-inline-header"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span>Navigation 3<span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span></div>
-                  <transition-stub appear="false" persisted="false" css="true">
-                    <div class="sd-menu-inline-content" style="display: none;">
-                      <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
-                        <!---->
-                      </div>
-                      <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
-                        <!---->
-                      </div>
-                      <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
-                        <!---->
-                      </div>
-                    </div>
-                  </transition-stub>
-                </div>
-              </div>
-            </transition-stub>
-          </div>
-          <div data-v-4bf645a2="" class="sd-menu-inline">
-            <div class="sd-menu-inline-header">
-              <!--v-if--><svg data-v-4bf645a2="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+            <div data-v-4bf645a2="" class="sd-menu-item"><svg data-v-4bf645a2="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
                 <path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path>
-              </svg> Navigation 4 <span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+              </svg> Menu 2
+              <!---->
             </div>
-            <transition-stub appear="false" persisted="false" css="true">
-              <div class="sd-menu-inline-content" style="display: none;">
-                <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
-                  <!---->
-                </div>
-                <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
-                  <!---->
-                </div>
-                <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
-                  <!---->
-                </div>
+            <div data-v-4bf645a2="" class="sd-menu-item sd-menu-selected"><svg data-v-4bf645a2="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                <path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path>
+              </svg> Menu 3
+              <!---->
+            </div>
+            <div data-v-4bf645a2="" class="sd-menu-inline">
+              <div class="sd-menu-inline-header">
+                <!--v-if--><svg data-v-4bf645a2="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                  <path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path>
+                </svg> Navigation 1 <span class="sd-menu-icon-suffix is-open"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
               </div>
-            </transition-stub>
+              <transition-stub appear="false" persisted="false" css="true">
+                <div class="sd-menu-inline-content">
+                  <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                    <!---->
+                  </div>
+                  <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                    <!---->
+                  </div>
+                  <div data-v-4bf645a2="" class="sd-menu-inline">
+                    <div class="sd-menu-inline-header"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span>Navigation 2<span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span></div>
+                    <transition-stub appear="false" persisted="false" css="true">
+                      <div class="sd-menu-inline-content" style="display: none;">
+                        <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                          <!---->
+                        </div>
+                        <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                          <!---->
+                        </div>
+                      </div>
+                    </transition-stub>
+                  </div>
+                  <div data-v-4bf645a2="" class="sd-menu-inline">
+                    <div class="sd-menu-inline-header"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span>Navigation 3<span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span></div>
+                    <transition-stub appear="false" persisted="false" css="true">
+                      <div class="sd-menu-inline-content" style="display: none;">
+                        <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                          <!---->
+                        </div>
+                        <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                          <!---->
+                        </div>
+                        <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
+                          <!---->
+                        </div>
+                      </div>
+                    </transition-stub>
+                  </div>
+                </div>
+              </transition-stub>
+            </div>
+            <div data-v-4bf645a2="" class="sd-menu-inline">
+              <div class="sd-menu-inline-header">
+                <!--v-if--><svg data-v-4bf645a2="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                  <path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path>
+                </svg> Navigation 4 <span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-down" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M39.6 17.443 24.043 33 8.487 17.443"></path></svg></span>
+              </div>
+              <transition-stub appear="false" persisted="false" css="true">
+                <div class="sd-menu-inline-content" style="display: none;">
+                  <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 1</span>
+                    <!---->
+                  </div>
+                  <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 2</span>
+                    <!---->
+                  </div>
+                  <div data-v-4bf645a2="" class="sd-menu-item"><span class="sd-menu-indent-list"><span class="sd-menu-indent" style=""></span></span><span class="sd-menu-item-inner">Menu 3</span>
+                    <!---->
+                  </div>
+                </div>
+              </transition-stub>
+            </div>
           </div>
+          <!--v-if-->
         </div>
-        <!--v-if-->
       </div>
     </div>
+    <!--v-if-->
     <div class="sd-layout-sider-trigger sd-layout-sider-trigger-light" style="width: 200px;"><svg data-v-4bf645a2="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-caret-left" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
         <path fill="currentColor" stroke="none" d="M13.171 24.937a1.2 1.2 0 0 1 0-1.874L30.051 9.56c.785-.629 1.949-.07 1.949.937v27.006c0 1.006-1.164 1.566-1.95.937z"></path>
       </svg></div>
   </div>
   <section data-v-4bf645a2="" class="sd-layout">
-    <header data-v-4bf645a2="" class="sd-layout-header sd:pl-5"> Header </header>
-    <section data-v-4bf645a2="" class="sd-layout sd:px-6">
-      <div data-v-4bf645a2="" role="list" class="sd-breadcrumb sd:my-4">
-        <div role="listitem" class="sd-breadcrumb-item">Home
-          <!---->
+    <header data-v-4bf645a2="" class="sd-layout-header">
+      <div data-v-4bf645a2="" class="sd:pl-5"> Header </div>
+    </header>
+    <section data-v-4bf645a2="" class="sd-layout">
+      <div data-v-4bf645a2="" class="sd:flex sd:flex-1 sd:flex-col sd:px-6!">
+        <div data-v-4bf645a2="" class="sd:my-4!">
+          <div data-v-4bf645a2="" role="list" class="sd-breadcrumb">
+            <div role="listitem" class="sd-breadcrumb-item">Home
+              <!---->
+            </div>
+            <div aria-hidden="true" class="sd-breadcrumb-item-separator"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-oblique-line" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                <path d="M29.506 6.502 18.493 41.498"></path>
+              </svg></div>
+            <div role="listitem" class="sd-breadcrumb-item">List
+              <!---->
+            </div>
+            <div aria-hidden="true" class="sd-breadcrumb-item-separator"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-oblique-line" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                <path d="M29.506 6.502 18.493 41.498"></path>
+              </svg></div>
+            <div role="listitem" class="sd-breadcrumb-item">App
+              <!---->
+            </div>
+            <!---->
+          </div>
         </div>
-        <div aria-hidden="true" class="sd-breadcrumb-item-separator"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-oblique-line" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-            <path d="M29.506 6.502 18.493 41.498"></path>
-          </svg></div>
-        <div role="listitem" class="sd-breadcrumb-item">List
-          <!---->
-        </div>
-        <div aria-hidden="true" class="sd-breadcrumb-item-separator"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-oblique-line" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
-            <path d="M29.506 6.502 18.493 41.498"></path>
-          </svg></div>
-        <div role="listitem" class="sd-breadcrumb-item">App
-          <!---->
-        </div>
-        <!---->
+        <main data-v-4bf645a2="" class="sd-layout-content">Content</main>
+        <footer data-v-4bf645a2="" class="sd-layout-footer">Footer</footer>
       </div>
-      <main data-v-4bf645a2="" class="sd-layout-content">Content</main>
-      <footer data-v-4bf645a2="" class="sd-layout-footer">Footer</footer>
     </section>
   </section>
 </section>
+`;
+
+exports[`<layout> demo: > render [navigation-drawer] correctly 1`] = `
+<div data-v-67d2c759="" class="layout-navigation-drawer-demo">
+  <div data-v-67d2c759="" class="toolbar"><button data-v-67d2c759="" class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button">
+      <!--v-if-->切换临时抽屉
+    </button><button data-v-67d2c759="" class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button">
+      <!--v-if--> 切换到右侧
+    </button></div>
+  <section data-v-67d2c759="" class="sd-layout drawer-layout-demo">
+    <div data-v-67d2c759="" class="sd-layout-sider sd-layout-sider-light sd-layout-sider-temporary sd-layout-sider-rail sd-layout-sider-expand-on-hover sd-layout-sider-floating sd-layout-sider-left" style="width: 56px; left: 0px;">
+      <!--v-if-->
+      <div class="sd-layout-sider-image">
+        <div data-v-67d2c759="" class="hero"></div>
+      </div>
+      <div class="sd-layout-sider-prepend">
+        <div data-v-67d2c759="" class="section-title">快捷导航</div>
+      </div>
+      <div class="sd-layout-sider-children">
+        <div data-v-67d2c759="" class="sd:w-full">
+          <div data-v-67d2c759="" class="sd-menu sd-menu-light sd-menu-vertical sd-menu-collapsed sd-menu-pop">
+            <div class="sd-menu-inner">
+              <div class="sd-menu-item sd-menu-selected"><svg data-v-67d2c759="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-home" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                  <path d="M7 17 24 7l17 10v24H7z"></path>
+                  <path d="M20 28h8v13h-8z"></path>
+                </svg> 仪表盘
+                <!---->
+              </div>
+              <!---->
+              <div class="sd-menu-item"><svg data-v-67d2c759="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
+                  <path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path>
+                </svg> 日程
+                <!---->
+              </div>
+              <!---->
+              <div class="sd-menu-pop sd-menu-pop-header" aria-haspopup="true">
+                <!-- header -->
+                <!--v-if--><span data-v-67d2c759=""><svg data-v-67d2c759="" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path></svg>工作区</span><!-- suffix --><span class="sd-menu-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-right" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="m16 39.513 15.556-15.557L16 8.4"></path></svg></span>
+                <!--v-if-->
+              </div>
+              <!---->
+            </div>
+            <!--v-if-->
+          </div>
+        </div>
+      </div>
+      <div class="sd-layout-sider-append">
+        <div data-v-67d2c759="" class="drawer-tip">支持遮罩关闭与 ESC 关闭，rail 模式可在 hover 时展开。</div>
+      </div>
+      <!--v-if-->
+    </div>
+    <section data-v-67d2c759="" class="sd-layout">
+      <header data-v-67d2c759="" class="sd-layout-header drawer-header">Layout.Sider 现在支持导航抽屉模式</header>
+      <main data-v-67d2c759="" class="sd-layout-content drawer-content">
+        <p data-v-67d2c759="">点击按钮打开临时抽屉，或切换停靠方向观察左右侧抽屉效果。</p>
+        <p data-v-67d2c759="">默认 rail 模式会在 hover 时展开，适合桌面端收纳式导航。</p>
+      </main>
+    </section>
+  </section>
+</div>
 `;
 
 exports[`<layout> demo: > render [resize] correctly 1`] = `
@@ -455,8 +563,12 @@ exports[`<layout> demo: > render [resize] correctly 1`] = `
   <section data-v-1afafaeb="" class="sd-layout">
     <header data-v-1afafaeb="" class="sd-layout-header">Header</header>
     <section data-v-1afafaeb="" class="sd-layout">
-      <div data-v-1afafaeb="" class="sd-resizebox sd-layout-sider sd-layout-sider-light" style="width: 200px;">
+      <div data-v-1afafaeb="" class="sd-resizebox sd-layout-sider sd-layout-sider-light sd-layout-sider-left" style="width: 200px;">
+        <!--v-if-->
+        <!--v-if-->
+        <!--v-if-->
         <div class="sd-layout-sider-children"> Sider </div>
+        <!--v-if-->
         <!--v-if-->
         <div class="sd-resizebox-trigger sd-resizebox-trigger-vertical sd-resizebox-direction-right">
           <!-- @slot 自定义内容 -->

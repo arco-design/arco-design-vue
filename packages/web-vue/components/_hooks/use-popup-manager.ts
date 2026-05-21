@@ -1,10 +1,12 @@
 import { onMounted, onBeforeUnmount, readonly, Ref, ref, watch } from 'vue';
 
-export type PopupType = 'popup' | 'dialog' | 'message';
+import {
+  MESSAGE_STACK_BASE_Z_INDEX,
+  POPUP_STACK_BASE_Z_INDEX,
+  Z_INDEX_STEP,
+} from '../style/theme/z-index';
 
-const POPUP_BASE_Z_INDEX = 1000;
-const MESSAGE_BASE_Z_INDEX = 5000;
-const Z_INDEX_STEP = 1;
+export type PopupType = 'popup' | 'dialog' | 'message';
 
 class PopupManager {
   private popupStack = {
@@ -16,8 +18,8 @@ class PopupManager {
   private getNextZIndex = (type: PopupType) => {
     const current =
       type === 'message'
-        ? Array.from(this.popupStack.message).pop() || MESSAGE_BASE_Z_INDEX
-        : Array.from(this.popupStack.popup).pop() || POPUP_BASE_Z_INDEX;
+        ? Array.from(this.popupStack.message).pop() || MESSAGE_STACK_BASE_Z_INDEX
+        : Array.from(this.popupStack.popup).pop() || POPUP_STACK_BASE_Z_INDEX;
     return current + Z_INDEX_STEP;
   };
 

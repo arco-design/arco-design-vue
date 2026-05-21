@@ -7,6 +7,9 @@
 @use '@style/theme/index.scss' as *;
 
 $layout-trigger-height: 48px;
+$layout-rail-width: 56px;
+$layout-sider-mask-color: rgb(0 0 0 / 45%);
+$layout-sider-shadow: 0 12px 32px rgb(0 0 0 / 18%);
 
 // Layout Theme Dark(Default)
 $layout-sider-background: var(string.unquote('#{global.$sd-cssvars-prefix}-color-menu-dark-bg'));
