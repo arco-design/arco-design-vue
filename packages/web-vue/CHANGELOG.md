@@ -1,3 +1,9 @@
+# [1.19.0](https://github.com/liunnn1994/sd-design/compare/v1.18.0...v1.19.0) (2026-05-21)
+
+### Features
+
+- 🆕 去掉首页的侧边栏 ([c0ee6c3](https://github.com/liunnn1994/sd-design/commit/c0ee6c3f9c9a7d3e2001e3ce262b42ae09da1f46))
+
 # [1.18.0](https://github.com/liunnn1994/sd-design/compare/v1.17.0...v1.18.0) (2026-05-21)
 
 ### Features
