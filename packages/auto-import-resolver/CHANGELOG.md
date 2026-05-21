@@ -1,3 +1,15 @@
+# [1.17.0](https://github.com/liunnn1994/sd-design/compare/v1.16.0...v1.17.0) (2026-05-21)
+
+### Bug Fixes
+
+- 🐛 修复 ts 报错 ([287a3a9](https://github.com/liunnn1994/sd-design/commit/287a3a9c727e028e6d5ccc669dfae9c7e32208f5))
+
+### Features
+
+- 🆕 menu 新增 ellipsis 功能 ([6fcb95f](https://github.com/liunnn1994/sd-design/commit/6fcb95f92b44a5bfa858dd65f795527c4a5d3e28))
+- 🆕 新增 layout-header ([435d2a6](https://github.com/liunnn1994/sd-design/commit/435d2a6a9850aa6a8e685cccdbf53bd97b81c05d))
+- 🆕 更新 sider 组件 ([1829fe2](https://github.com/liunnn1994/sd-design/commit/1829fe2abff4cb8a0e043d51dd0b9425be2d52e7))
+
 # [1.16.0](https://github.com/liunnn1994/sd-design/compare/v1.15.0...v1.16.0) (2026-05-21)
 
 ### Features
