@@ -1,7 +1,7 @@
 import { ref, reactive, inject, computed } from 'vue';
 import { isString } from '../_utils/is';
 import { configProviderInjectionKey } from '../config-provider/context';
-import type { ArcoI18nMessages, ArcoLang } from './interface';
+import type { ArcoI18nKey, ArcoI18nMessages, ArcoLang } from './interface';
 import zhCN from './lang/zh-cn';
 
 const LOCALE = ref('zh-CN');
@@ -55,7 +55,7 @@ export const useI18n = () => {
   );
   const locale = computed(() => i18nMessage.value.locale);
 
-  const transform = (key: string, ...args: any[]): string => {
+  const transform = (key: ArcoI18nKey, ...args: any[]): string => {
     const keyArray = key.split('.');
     let temp: any = i18nMessage.value;
 
