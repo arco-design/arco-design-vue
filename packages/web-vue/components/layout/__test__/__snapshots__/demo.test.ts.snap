@@ -656,7 +656,7 @@ exports[`<layout> demo: > render [navigation-drawer] correctly 1`] = `
       <!--v-if-->
     </div>
     <section data-v-67d2c759="" class="sd-layout">
-      <div data-v-67d2c759="" class="sd-layout-header-wrapper drawer-header">
+      <div data-v-67d2c759="" class="sd-layout-header-wrapper">
         <header class="sd-layout-header" style="--sd-layout-header-content-height: 64px; --sd-layout-header-extension-height: 0px; --sd-layout-header-image-opacity: 1; height: 64px;">
           <!--v-if-->
           <div class="sd-layout-header-bar">
@@ -718,6 +718,7 @@ exports[`<layout> demo: > render [resize] correctly 1`] = `
 `;
 
 exports[`<layout> demo: > render [scroll-behavior] correctly 1`] = `
+<span data-v-1440c4ea="" class="sd-radio-group sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="自定义滚动"><span class="sd-icon-hover sd-icon-hover-disabled sd-radio-icon-hover"><span class="sd-radio-icon"></span></span><span class="sd-radio-label">自定义滚动</span></label><label class="sd-radio"><input type="radio" class="sd-radio-target" value="系统滚动"><span class="sd-icon-hover sd-radio-icon-hover"><span class="sd-radio-icon"></span></span><span class="sd-radio-label">系统滚动</span></label></span>
 <div data-v-1440c4ea="" class="layout-scroll-demo">
   <div data-v-1440c4ea="" class="sd-layout-header-wrapper">
     <header class="sd-layout-header sd-layout-header-flat sd-layout-header-with-extension sd-layout-header-with-title" style="--sd-layout-header-content-height: 64px; --sd-layout-header-extension-height: 48px; --sd-layout-header-image-opacity: 1; height: 112px;">
@@ -733,32 +734,34 @@ exports[`<layout> demo: > render [scroll-behavior] correctly 1`] = `
       </div>
     </header>
   </div>
-  <div data-v-1440c4ea="" class="sd-scrollbar sd-scrollbar-type-embed">
-    <div class="sd-scrollbar-container layout-scroll-demo__body" data-overlayscrollbars="host">
-      <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
-        <div data-v-1440c4ea="" class="layout-scroll-demo__content">
-          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 1 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
-          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 2 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
-          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 3 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
-          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 4 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
-          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 5 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
-          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 6 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
-          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 7 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
-          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 8 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
-          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 9 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
-          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 10 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
-          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 11 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
-          <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 12 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+  <div data-v-1440c4ea="" class="layout-scroll-demo__body">
+    <div data-v-1440c4ea="" class="sd-scrollbar sd-scrollbar-type-embed">
+      <div class="sd-scrollbar-container sd:h-full sd:overflow-auto" data-overlayscrollbars="host">
+        <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
+          <div data-v-1440c4ea="" class="layout-scroll-demo__content">
+            <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 1 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+            <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 2 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+            <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 3 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+            <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 4 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+            <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 5 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+            <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 6 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+            <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 7 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+            <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 8 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+            <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 9 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+            <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 10 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+            <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 11 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+            <div data-v-1440c4ea="" class="layout-scroll-demo__card"><strong data-v-1440c4ea="">第 12 条</strong><span data-v-1440c4ea="">继续滚动可以看到 Header 自动折叠并隐藏，再向上滚动即可恢复。</span></div>
+          </div>
         </div>
-      </div>
-      <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-        <div class="os-scrollbar-track">
-          <div class="os-scrollbar-handle"></div>
+        <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+          <div class="os-scrollbar-track">
+            <div class="os-scrollbar-handle"></div>
+          </div>
         </div>
-      </div>
-      <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
-        <div class="os-scrollbar-track">
-          <div class="os-scrollbar-handle"></div>
+        <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+          <div class="os-scrollbar-track">
+            <div class="os-scrollbar-handle"></div>
+          </div>
         </div>
       </div>
     </div>

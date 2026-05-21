@@ -136,7 +136,18 @@ exports[`<resize-box> demo: > render [custom-triggers] correctly 1`] = `
 exports[`<resize-box> demo: > render [layout] correctly 1`] = `
 <div data-v-8c775dfe="" class="layout-demo">
   <section data-v-8c775dfe="" class="sd-layout">
-    <header data-v-8c775dfe="" class="sd-layout-header">Header</header>
+    <div data-v-8c775dfe="" class="sd-layout-header-wrapper">
+      <header class="sd-layout-header" style="--sd-layout-header-content-height: 64px; --sd-layout-header-extension-height: 0px; --sd-layout-header-image-opacity: 1; height: 64px;">
+        <!--v-if-->
+        <div class="sd-layout-header-bar">
+          <!--v-if-->
+          <!--v-if-->
+          <div class="sd-layout-header-content">Header</div>
+          <!--v-if-->
+        </div>
+        <!--v-if-->
+      </header>
+    </div>
     <section data-v-8c775dfe="" class="sd-layout">
       <div data-v-8c775dfe="" class="sd-resizebox sd-layout-sider sd-layout-sider-light sd-layout-sider-left" style="width: 200px;">
         <!--v-if-->
