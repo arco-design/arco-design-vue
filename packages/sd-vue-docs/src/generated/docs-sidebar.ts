@@ -46,6 +46,15 @@ export const docsSidebar = [
     ],
   },
   {
+    label: 'AI 工具',
+    items: [
+      {
+        slug: 'llms_txt',
+        label: 'LLMs.txt',
+      },
+    ],
+  },
+  {
     label: '组件文档',
     items: [
       {

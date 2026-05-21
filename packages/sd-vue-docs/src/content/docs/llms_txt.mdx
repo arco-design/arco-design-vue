@@ -1,0 +1,220 @@
+---
+title: LLMs.txt
+description: 面向大语言模型的文档入口与推荐使用方式。
+---
+
+<style is:global>{`
+	.llms-intro {
+		margin: 1.5rem 0 2rem;
+		padding: 1.5rem;
+		border: 1px solid var(--sl-color-gray-5);
+		border-radius: 1.25rem;
+		background:
+			radial-gradient(circle at top right, rgb(20 118 255 / 10%), transparent 32%),
+			linear-gradient(180deg, rgb(255 255 255 / 96%), rgb(248 251 255 / 92%));
+		box-shadow: 0 18px 40px rgb(15 23 42 / 0.06);
+	}
+
+	.llms-intro p {
+		margin-bottom: 0;
+	}
+
+	.llms-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 1rem;
+		margin: 1.5rem 0 2rem;
+	}
+
+	.llms-card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.9rem;
+		padding: 1.15rem;
+		min-height: 100%;
+		border: 1px solid var(--sl-color-gray-5);
+		border-radius: 1rem;
+		background: var(--sl-color-bg-nav);
+	}
+
+	.llms-card h3 {
+		margin: 0;
+		font-size: 1.05rem;
+	}
+
+	.llms-card p {
+		margin: 0;
+		color: var(--sl-color-text-accent);
+	}
+
+	.llms-card-actions {
+		margin-top: auto;
+	}
+
+	.llms-best-practices {
+		padding: 1.25rem 1.25rem 0.25rem;
+		border-left: 4px solid var(--sl-color-accent);
+		border-radius: 0 1rem 1rem 0;
+		background: color-mix(in srgb, var(--sl-color-accent-low) 42%, white);
+	}
+
+	:root[data-theme='dark'] .llms-intro {
+		background:
+			radial-gradient(circle at top right, rgb(97 168 255 / 14%), transparent 34%),
+			linear-gradient(180deg, rgb(11 18 32 / 92%), rgb(7 17 31 / 94%));
+		box-shadow: none;
+	}
+
+	:root[data-theme='dark'] .llms-card {
+		background: rgb(11 18 32 / 0.86);
+	}
+
+	:root[data-theme='dark'] .llms-best-practices {
+		background: color-mix(in srgb, var(--sl-color-accent-low) 34%, transparent);
+	}
+`}</style>
+
+LLMs.txt 是一组面向大语言模型优化过的文档入口，适合在 AI 助手、代码代理或内部知识检索场景中直接引用。
+
+它的目标不是替代正常的文档阅读体验，而是让模型更快定位 SD Design Vue 文档中的有效信息，减少无关页面抓取和上下文浪费。
+
+<div class="llms-intro not-content">
+  <h2>给 AI 的文档入口</h2>
+  <p>
+    先给模型一个合适的入口，再决定是否继续补充全量文本或单组件
+    Markdown。这样更省上下文，也更容易得到稳定回答。
+  </p>
+</div>
+
+<div class="llms-grid not-content">
+	<section class="llms-card">
+		<h3>/llms/llms.txt</h3>
+		<p>轻量索引，适合让模型快速理解文档结构并决定下一步阅读路径。</p>
+		<div class="llms-card-actions">
+			<sd-button type="primary" href="/llms/llms.txt">打开 llms.txt</sd-button>
+		</div>
+	</section>
+
+    <section class="llms-card">
+    	<h3>/llms/llms-full.txt</h3>
+    	<p>完整聚合文本，适合整站总结、RAG 预处理或一次性建立全局上下文。</p>
+    	<div class="llms-card-actions">
+    		<sd-button type="secondary" href="/llms/llms-full.txt">打开 llms-full.txt</sd-button>
+    	</div>
+    </section>
+
+    <section class="llms-card">
+    	<h3>组件 .md 入口</h3>
+    	<p>针对单个组件提问时，优先给对应 Markdown 页面，减少模型读取无关内容。</p>
+    	<div class="llms-card-actions">
+    		<sd-button type="outline" href="/llms/components/button.md">打开 /button.md</sd-button>
+    	</div>
+    </section>
+
+</div>
+
+## 可用入口
+
+当前文档站提供以下 3 类入口：
+
+- [/llms/llms.txt](/llms/llms.txt)：轻量索引，列出主要页面和推荐阅读入口。
+- [/llms/llms-full.txt](/llms/llms-full.txt)：完整聚合文本，适合一次性提供整站上下文。
+- [/llms/components/button.md](/llms/components/button.md)：组件级 Markdown 文档，适合按需投喂单个组件信息。
+
+## 什么时候用哪个
+
+如果你只是想让模型先了解文档结构，优先给它 llms.txt。
+
+如果你希望模型在一次对话里理解更多全站内容，例如组件库能力边界、指南和组件说明，可以使用 llms-full.txt。
+
+如果你的问题只和某一个组件相关，优先使用对应的组件 Markdown 页面，例如 Button、Select、Table。这样上下文更短，回答也通常更稳定。
+
+## 推荐用法
+
+### 1. 先给索引，再按需追文档
+
+这是最稳妥的方式。先把 [/llms/llms.txt](/llms/llms.txt) 发给模型，让它知道有哪些文档入口，再根据问题继续补充单个组件文档或 llms-full.txt。
+
+适合场景：
+
+- 让 AI 助手先理解 SD Design Vue 的文档结构
+- 让代码代理决定下一步该读哪个组件页面
+- 在知识库系统里做第一跳导航
+
+### 2. 问单个组件时直接给组件 Markdown
+
+例如要问 Button 组件的能力、示例或 API，可以直接提供：
+
+- [/llms/components/button.md](/llms/components/button.md)
+
+适合场景：
+
+- 生成某个组件的使用示例
+- 对比组件能力或迁移写法
+- 让模型只围绕一个组件回答，避免被全站信息干扰
+
+### 3. 做全局问答时使用完整文本
+
+如果你正在做站内 AI 问答、离线索引、RAG 预处理或一次性分析整套文档，可以使用：
+
+- [/llms/llms-full.txt](/llms/llms-full.txt)
+
+适合场景：
+
+- 给聊天机器人建立基础知识上下文
+- 做全文检索切片
+- 让模型总结整套组件库能力
+
+## 提示词示例
+
+你可以直接把这些链接放进提示词或系统上下文里。
+
+```text
+请先阅读 https://sd.design/vue/llms/llms.txt，
+如果问题涉及 Button，再继续阅读 https://sd.design/vue/llms/components/button.md。
+回答时优先依据文档内容，不要臆测不存在的 API。
+```
+
+```text
+请基于 https://sd.design/vue/llms/llms-full.txt 总结 SD Design Vue 的核心能力，
+并给出适合新项目接入的学习顺序。
+```
+
+## 使用建议
+
+- 优先给最小必要上下文，不要默认把全站文本一次性塞给模型。
+- 针对组件问题，优先选择对应的 components/[slug].md。
+- 如果模型需要做跨组件对比、迁移建议或全局总结，再补充 llms-full.txt。
+- 回答要求严格时，明确要求模型“仅依据提供的文档链接回答”。
+
+## 给 AI 的最佳实践
+
+<div class="llms-best-practices">
+
+1. 先给索引，不要一开始就塞完整文档。大多数问题只需要 llms.txt 加 1 到 2 个组件页。
+2. 问题越具体，给的文档越应该窄。例如只问 Select 的远程搜索行为，就只补充对应组件 Markdown。
+3. 做迁移、对比、全局总结时，再给 llms-full.txt，避免模型在小问题上消耗过多上下文。
+4. 在提示词里明确约束回答来源，例如“仅根据提供的 SD Design Vue 文档链接回答”。
+5. 如果你在做 RAG，优先把 llms-full.txt 用作基础切片，再用组件级 Markdown 做高精度补充召回。
+
+</div>
+
+### 推荐投喂顺序
+
+1. 先提供 [/llms/llms.txt](/llms/llms.txt)，让模型知道站内结构。
+2. 如果问题落到具体组件，再补充对应的 [/llms/components/button.md](/llms/components/button.md) 这类组件页。
+3. 只有在需要全站理解时，才追加 [/llms/llms-full.txt](/llms/llms-full.txt)。
+
+### RAG 与知识库建议
+
+- 检索入口页时，把 llms.txt 当成目录索引，而不是最终答案正文。
+- 建立组件知识切片时，优先按 components/[slug].md 维度存储，便于精准召回。
+- 做高层综述、培训材料或新手引导时，再把 llms-full.txt 作为补充语料。
+- 如果回答需要可追溯性，保留返回内容对应的原始文档 URL。
+
+## 适合接入的场景
+
+- IDE 内的 AI 编码助手
+- 文档站内嵌聊天助手
+- 企业内部组件库知识库
+- RAG、搜索增强问答、自动代码生成辅助流程
