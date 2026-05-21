@@ -17,19 +17,7 @@
 </template>
 
 <script setup lang="ts">
-  import type {
-    TableChangeExtra,
-    TableColumnData,
-    TableData,
-    TableExpandable,
-    TableLoadMore,
-    TableRowKey,
-    TableRowSelection,
-    TableSpanMethod,
-    TableSpanMethodContext,
-    TableSummary,
-    TableSummaryContext,
-  } from '@sdata/web-vue';
+  import type { TableChangeExtra, TableColumnData, TableData } from '@sdata/web-vue';
 
   import { h, reactive } from 'vue';
 

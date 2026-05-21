@@ -34,8 +34,6 @@
 </template>
 
 <script setup lang="ts">
-  import type { Size } from '@sdata/web-vue';
-
   import { ref } from 'vue';
 
   const options = ref(['Option1', 'Option2', 'Option3']);

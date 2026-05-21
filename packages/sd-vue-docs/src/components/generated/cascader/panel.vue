@@ -3,14 +3,7 @@
 </template>
 
 <script setup lang="ts">
-  import type {
-    CascaderChangeHandler,
-    CascaderFallback,
-    CascaderFormatLabel,
-    CascaderLoadMore,
-    CascaderOption,
-    CascaderPathValue,
-  } from '@sdata/web-vue';
+  import type { CascaderOption } from '@sdata/web-vue';
 
   import { ref } from 'vue';
 

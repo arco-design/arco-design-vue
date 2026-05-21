@@ -15,13 +15,9 @@
 
 <script setup lang="ts">
   import type {
-    TableChangeExtra,
     TableColumnData,
     TableData,
     TableExpandable,
-    TableLoadMore,
-    TableRowKey,
-    TableRowSelection,
     TableSpanMethod,
     TableSpanMethodContext,
     TableSummary,

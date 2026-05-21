@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-  import type { DescData, Size } from '@sdata/web-vue';
+  import type { DescData } from '@sdata/web-vue';
 
   const data: DescData[] = [
     {

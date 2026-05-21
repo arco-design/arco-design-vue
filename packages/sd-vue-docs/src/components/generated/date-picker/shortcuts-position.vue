@@ -10,15 +10,6 @@
   <sd-range-picker class="sd:w-75" shortcuts-position="right" :shortcuts="rangeShortcuts" />
 </template>
 <script setup lang="ts">
-  import type {
-    DatePickerChangeHandler,
-    DisabledDate,
-    DisabledTime,
-    DisabledTimeProps,
-    FormatFunc,
-    RangeDisabledTime,
-  } from '@sdata/web-vue';
-
   import dayjs from 'dayjs';
 
   const shortcuts = [

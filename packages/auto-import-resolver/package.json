@@ -18,8 +18,9 @@
   "module": "./index.ts",
   "types": "./index.ts",
   "publishConfig": {
-    "access": "public",
-    "directory": "dist",
+    "main": "./index.js",
+    "module": "./index.js",
+    "types": "./index.d.ts",
     "exports": {
       ".": {
         "types": "./index.d.ts",
@@ -27,10 +28,9 @@
         "default": "./index.js"
       }
     },
-    "linkDirectory": false,
-    "main": "./index.js",
-    "module": "./index.js",
-    "types": "./index.d.ts"
+    "access": "public",
+    "directory": "dist",
+    "linkDirectory": false
   },
   "scripts": {
     "build": "pnpm run build:package",

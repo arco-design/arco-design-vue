@@ -7,18 +7,7 @@
   ></sd-tree-select>
 </template>
 <script setup lang="ts">
-  import type {
-    CheckedStrategy,
-    LabelValue,
-    Size,
-    TreeNodeData,
-    TreeNodeKey,
-    TreeSelectChangeHandler,
-    TreeSelectFallbackOption,
-    TreeSelectFilterTreeNode,
-    TreeSelectLoadMore,
-    TreeSelectSearchHandler,
-  } from '@sdata/web-vue';
+  import type { TreeNodeData } from '@sdata/web-vue';
 
   import { h, ref } from 'vue';
 

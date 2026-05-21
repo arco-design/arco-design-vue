@@ -5,15 +5,6 @@
   </sd-space>
 </template>
 <script setup lang="ts">
-  import type {
-    DatePickerChangeHandler,
-    DisabledDate,
-    DisabledTime,
-    DisabledTimeProps,
-    FormatFunc,
-    RangeDisabledTime,
-  } from '@sdata/web-vue';
-
   import { ref, shallowRef } from 'vue';
 
   const value = shallowRef('2026-04-16');

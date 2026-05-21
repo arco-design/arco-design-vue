@@ -20,8 +20,6 @@
 </template>
 
 <script setup lang="ts">
-  import type { Size } from '@sdata/web-vue';
-
   import { computed, ref } from 'vue';
 
   const preset = ref<'default' | 'explicit'>('default');

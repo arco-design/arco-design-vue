@@ -1,5 +1,6 @@
 import { CSSProperties, InjectionKey, Ref, Slots } from 'vue';
 
+export type { JsonFormProviderConfig } from '../json-form/types';
 import type { JsonFormProviderConfig } from '../json-form/types';
 
 import { VirtualListProps } from '../_components/virtual-list/interface';

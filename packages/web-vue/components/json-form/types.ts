@@ -1,5 +1,3 @@
-import type { Merge, Simplify } from 'type-fest';
-
 import type { Component, HTMLAttributes, VNodeChild } from 'vue';
 
 import type { AutoCompleteInstance } from '../auto-complete';
@@ -161,7 +159,9 @@ export type JsonFormComponentType<TExternal extends JsonFormExternalComponentMap
 export type JsonFormComponentProps<
   TType extends string,
   TExternal extends JsonFormExternalComponentMap = {},
-> = Simplify<Merge<HTMLAttributes, JsonFormResolvedComponentProps<TType, TExternal>>>;
+> = string extends TType
+  ? Record<string, unknown> & HTMLAttributes
+  : JsonFormResolvedComponentProps<TType, TExternal> & HTMLAttributes;
 
 export type JsonFormComponentEvents<
   TType extends string,

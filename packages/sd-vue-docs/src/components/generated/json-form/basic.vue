@@ -16,7 +16,6 @@
   });
 
   const createSchemas = defineJsonFormSchemas();
-
   const schemas = createSchemas([
     {
       field: 'name',

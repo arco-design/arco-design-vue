@@ -8,15 +8,6 @@
 </template>
 
 <script setup lang="ts">
-  import type {
-    CascaderChangeHandler,
-    CascaderFallback,
-    CascaderFormatLabel,
-    CascaderLoadMore,
-    CascaderOption,
-    CascaderPathValue,
-  } from '@sdata/web-vue';
-
   import { reactive } from 'vue';
 
   const fieldNames = { value: 'city', label: 'text' };

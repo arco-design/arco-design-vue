@@ -129,6 +129,37 @@ exports[`<config-provider> demo: > render [basic] correctly 1`] = `
 </div>
 `;
 
+exports[`<config-provider> demo: > render [date-picker-defaults] correctly 1`] = `
+<div data-v-f326bdd8="" class="config-provider-date-picker-demo">
+  <div class="sd-picker sd-picker-size-medium sd:w-52" visible="false">
+    <!--v-if-->
+    <div class="sd-picker-input"><input placeholder="请选择日期" class="sd-picker-start-time" value="2026-04-16 08:00:00"></div>
+    <div class="sd-picker-suffix"><span class="sd-icon-hover sd-picker-icon-hover sd-picker-clear-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span><span class="sd-picker-suffix-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path></svg></span>
+      <!--v-if-->
+    </div>
+  </div>
+  <!---->
+  <div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-88" visible="false">
+    <!--v-if-->
+    <div class="sd-picker-input sd-picker-input-active"><input placeholder="开始日期" value="2026-04-16 08:00:00"></div><span class="sd-picker-separator">-</span>
+    <div class="sd-picker-input"><input placeholder="结束日期" value="2026-04-18 18:00:00"></div>
+    <div class="sd-picker-suffix"><span class="sd-icon-hover sd-picker-icon-hover sd-picker-clear-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span><span class="sd-picker-suffix-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path></svg></span>
+      <!--v-if-->
+    </div>
+  </div>
+  <!---->
+  <div class="sd-picker sd-picker-range sd-picker-size-medium sd:w-88" visible="false">
+    <!--v-if-->
+    <div class="sd-picker-input sd-picker-input-active"><input placeholder="开始月份" value="2026-04"></div><span class="sd-picker-separator">-</span>
+    <div class="sd-picker-input"><input placeholder="结束月份" value="2026-09"></div>
+    <div class="sd-picker-suffix"><span class="sd-icon-hover sd-picker-icon-hover sd-picker-clear-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span><span class="sd-picker-suffix-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-calendar" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M7 22h34M14 5v8m20-8v8M8 41h32a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v30a1 1 0 0 0 1 1Z"></path></svg></span>
+      <!--v-if-->
+    </div>
+  </div>
+  <!---->
+</div>
+`;
+
 exports[`<config-provider> demo: > render [empty] correctly 1`] = `
 <div class="sd-space sd-space-vertical sd-space-fill" style="column-gap: 8px; row-gap: 8px;">
   <!---->

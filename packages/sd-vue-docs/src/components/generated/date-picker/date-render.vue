@@ -10,15 +10,6 @@
   </sd-date-picker>
 </template>
 <script setup lang="ts">
-  import type {
-    DatePickerChangeHandler,
-    DisabledDate,
-    DisabledTime,
-    DisabledTimeProps,
-    FormatFunc,
-    RangeDisabledTime,
-  } from '@sdata/web-vue';
-
   const highlightDates = [6, 14, 22];
   const highlightClass = 'sd:border sd:border-[rgb(var(--sdblue-6))]';
 

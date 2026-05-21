@@ -17,7 +17,7 @@ describe('Switch', () => {
     const handleUpdate = vi.fn();
     const Demo = defineComponent({
       setup() {
-        const value = ref(false);
+        const value = ref<boolean | string | number>(false);
 
         const onUpdate = (nextValue: boolean | string | number) => {
           handleUpdate(nextValue);

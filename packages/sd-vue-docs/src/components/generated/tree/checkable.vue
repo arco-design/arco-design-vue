@@ -18,17 +18,7 @@
   />
 </template>
 <script setup lang="ts">
-  import type {
-    CheckedStrategy,
-    LoadMore,
-    Size,
-    TreeCheckHandler,
-    TreeDropHandler,
-    TreeExpandHandler,
-    TreeNodeData,
-    TreeNodeKey,
-    TreeSelectHandler,
-  } from '@sdata/web-vue';
+  import type { TreeNodeData, TreeNodeKey } from '@sdata/web-vue';
 
   import { ref } from 'vue';
 

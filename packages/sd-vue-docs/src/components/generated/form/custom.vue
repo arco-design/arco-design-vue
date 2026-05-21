@@ -18,14 +18,6 @@
 </template>
 
 <script setup lang="ts">
-  import type {
-    FieldRule,
-    FormInstance,
-    Size,
-    ValidateStatus,
-    ValidatedError,
-  } from '@sdata/web-vue';
-
   import { defineComponent, h, reactive, ref, type SetupContext } from 'vue';
 
   import { Form, FormItem, useFormItem } from '@sdata/web-vue';

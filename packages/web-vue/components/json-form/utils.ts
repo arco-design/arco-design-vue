@@ -242,15 +242,16 @@ function resolveA2UIComponent(node: JsonFormA2UI_0_8ComponentNode) {
     };
   }
 
-  const [name] = Object.keys(node.component) as JsonFormA2UIComponentName[];
+  const component = node.component as Record<string, Record<string, unknown>>;
+  const [name] = Object.keys(component) as JsonFormA2UIComponentName[];
 
   return {
     name,
-    props: node.component[name],
+    props: component[name] ?? {},
   };
 }
 
-function resolveA2UIBoundValue(value?: unknown) {
+function resolveA2UIBoundValue(value?: unknown): unknown {
   if (typeof value === 'string') {
     return value;
   }
@@ -264,7 +265,7 @@ function resolveA2UIBoundValue(value?: unknown) {
   }
 
   if (Array.isArray(value)) {
-    return value.map((item) => resolveA2UIBoundValue(item));
+    return value.map((item): unknown => resolveA2UIBoundValue(item));
   }
 
   return value;
@@ -501,7 +502,7 @@ export function translateA2UI_0_8ToJsonFormSchemas(nodes: JsonFormA2UI_0_8Compon
     }
   }
 
-  const expandNode = (node: JsonFormA2UIComponentNode): JsonFormSchema<string>[] => {
+  const expandNode = (node: JsonFormA2UI_0_8ComponentNode): JsonFormSchema<string>[] => {
     if (visitedIds.has(node.id)) {
       return [];
     }

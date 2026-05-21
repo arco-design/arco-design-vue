@@ -10,19 +10,7 @@
 </template>
 
 <script setup lang="ts">
-  import type {
-    TableChangeExtra,
-    TableColumnData,
-    TableData,
-    TableExpandable,
-    TableLoadMore,
-    TableRowKey,
-    TableRowSelection,
-    TableSpanMethod,
-    TableSpanMethodContext,
-    TableSummary,
-    TableSummaryContext,
-  } from '@sdata/web-vue';
+  import type { TableColumnData, TableData } from '@sdata/web-vue';
 
   import { reactive, ref } from 'vue';
 

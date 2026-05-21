@@ -10,17 +10,7 @@
   <sd-tree class="sd:mr-5" :blockNode="true" :checkable="true" :size="size" :data="treeData" />
 </template>
 <script setup lang="ts">
-  import type {
-    CheckedStrategy,
-    LoadMore,
-    Size,
-    TreeCheckHandler,
-    TreeDropHandler,
-    TreeExpandHandler,
-    TreeNodeData,
-    TreeNodeKey,
-    TreeSelectHandler,
-  } from '@sdata/web-vue';
+  import type { Size, TreeNodeData } from '@sdata/web-vue';
 
   import { ref } from 'vue';
 

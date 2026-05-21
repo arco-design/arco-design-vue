@@ -31,14 +31,7 @@
 </template>
 
 <script setup lang="ts">
-  import type {
-    CustomIcon,
-    FileItem,
-    FileStatus,
-    RequestOption,
-    UploadInstance,
-    UploadRequest,
-  } from '@sdata/web-vue';
+  import type { CustomIcon, FileItem } from '@sdata/web-vue';
 
   import { h, ref } from 'vue';
 

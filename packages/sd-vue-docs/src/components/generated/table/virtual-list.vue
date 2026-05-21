@@ -55,17 +55,10 @@
 
 <script setup lang="ts">
   import type {
-    TableChangeExtra,
     TableColumnData,
     TableData,
     TableExpandable,
-    TableLoadMore,
-    TableRowKey,
     TableRowSelection,
-    TableSpanMethod,
-    TableSpanMethodContext,
-    TableSummary,
-    TableSummaryContext,
   } from '@sdata/web-vue';
 
   import { computed, nextTick, reactive, ref } from 'vue';

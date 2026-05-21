@@ -20,11 +20,7 @@
 </template>
 <script setup lang="ts">
   import type {
-    CheckedStrategy,
-    LoadMore,
-    Size,
     TreeCheckHandler,
-    TreeDropHandler,
     TreeExpandHandler,
     TreeNodeData,
     TreeNodeKey,

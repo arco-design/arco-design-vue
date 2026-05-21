@@ -23,8 +23,6 @@
 </template>
 
 <script setup lang="ts">
-  import type { TransferItem, TreeNodeData } from '@sdata/web-vue';
-
   import { IconDelete } from '@sdata/web-vue/es/icon/index.js';
 
   const data = Array(8)

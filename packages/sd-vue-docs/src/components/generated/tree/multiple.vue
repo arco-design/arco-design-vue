@@ -16,17 +16,7 @@
   <sd-tree v-model:selected-keys="selectedKeys" :multiple="multiple" :data="treeData" />
 </template>
 <script setup lang="ts">
-  import type {
-    CheckedStrategy,
-    LoadMore,
-    Size,
-    TreeCheckHandler,
-    TreeDropHandler,
-    TreeExpandHandler,
-    TreeNodeData,
-    TreeNodeKey,
-    TreeSelectHandler,
-  } from '@sdata/web-vue';
+  import type { TreeNodeData, TreeNodeKey } from '@sdata/web-vue';
 
   import { ref } from 'vue';
 

@@ -9,14 +9,7 @@
 </template>
 
 <script setup lang="ts">
-  import type {
-    CascaderChangeHandler,
-    CascaderFallback,
-    CascaderFormatLabel,
-    CascaderLoadMore,
-    CascaderOption,
-    CascaderPathValue,
-  } from '@sdata/web-vue';
+  import type { CascaderFormatLabel, CascaderOption } from '@sdata/web-vue';
 
   const options: CascaderOption[] = [
     {

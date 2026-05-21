@@ -21,12 +21,7 @@
 </template>
 
 <script setup lang="ts">
-  import type {
-    AutoCompleteData,
-    AutoCompleteDropdownReachBottomHandler,
-    AutoCompleteDropdownScrollHandler,
-    AutoCompleteSearchHandler,
-  } from '@sdata/web-vue';
+  import type { AutoCompleteData, AutoCompleteSearchHandler } from '@sdata/web-vue';
 
   import { computed, ref } from 'vue';
 

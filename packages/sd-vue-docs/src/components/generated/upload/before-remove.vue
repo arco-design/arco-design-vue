@@ -20,14 +20,7 @@
 </template>
 
 <script setup lang="ts">
-  import type {
-    CustomIcon,
-    FileItem,
-    FileStatus,
-    RequestOption,
-    UploadInstance,
-    UploadRequest,
-  } from '@sdata/web-vue';
+  import type { FileItem } from '@sdata/web-vue';
 
   import { Modal } from '@sdata/web-vue';
 

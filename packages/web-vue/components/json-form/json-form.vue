@@ -33,6 +33,8 @@
   import type { Component } from 'vue';
   import { Comment, computed, inject, shallowRef, useSlots, watch } from 'vue';
 
+  import type { FormInstance } from '../form';
+
   import { getPrefixCls } from '../_utils/global-config';
   import { configProviderInjectionKey } from '../config-provider/context';
   import DefaultForm from '../form/form.vue';
@@ -60,7 +62,7 @@
   });
 
   const modelValue = defineModel<JsonFormModel | undefined>();
-  const formRef = shallowRef<InstanceType<typeof DefaultForm> | null>(null);
+  const formRef = shallowRef<FormInstance | null>(null);
   const internalModel = shallowRef<JsonFormModel>(props.model ?? {});
   const configProvider = inject(configProviderInjectionKey, undefined);
   const slots = useSlots();
@@ -108,12 +110,19 @@
 
   const rootClass = computed(() => [prefixCls, `${prefixCls}--${resolvedAdapter.value}`]);
 
+  type ValidateArgs = Parameters<FormInstance['validate']>;
+  type ValidateFieldArgs = Parameters<FormInstance['validateField']>;
+  type ResetFieldsArgs = Parameters<FormInstance['resetFields']>;
+  type ClearValidateArgs = Parameters<FormInstance['clearValidate']>;
+  type SetFieldsArgs = Parameters<FormInstance['setFields']>;
+  type ScrollToFieldArgs = Parameters<FormInstance['scrollToField']>;
+
   defineExpose({
-    validate: (...args: unknown[]) => formRef.value?.validate(...args),
-    validateField: (...args: unknown[]) => formRef.value?.validateField(...args),
-    resetFields: (...args: unknown[]) => formRef.value?.resetFields(...args),
-    clearValidate: (...args: unknown[]) => formRef.value?.clearValidate(...args),
-    setFields: (...args: unknown[]) => formRef.value?.setFields(...args),
-    scrollToField: (...args: unknown[]) => formRef.value?.scrollToField(...args),
+    validate: (...args: ValidateArgs) => formRef.value?.validate(...args),
+    validateField: (...args: ValidateFieldArgs) => formRef.value?.validateField(...args),
+    resetFields: (...args: ResetFieldsArgs) => formRef.value?.resetFields(...args),
+    clearValidate: (...args: ClearValidateArgs) => formRef.value?.clearValidate(...args),
+    setFields: (...args: SetFieldsArgs) => formRef.value?.setFields(...args),
+    scrollToField: (...args: ScrollToFieldArgs) => formRef.value?.scrollToField(...args),
   });
 </script>

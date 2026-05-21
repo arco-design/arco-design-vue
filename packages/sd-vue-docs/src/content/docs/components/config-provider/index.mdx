@@ -3,25 +3,25 @@ title: 全局配置 ConfigProvider
 description: 在应用的最外层进行配置，一次设置，全局生效。一般用于设置国际化语言等功能。
 ---
 
-import DemoBlock from "../../../../components/docs/DemoBlock.astro";
-import ConfigProviderBasicDemo from "../../../../components/generated/config-provider/basic.vue";
-import configProviderBasicSource from "../../../../components/generated/config-provider/basic.vue?raw";
-import ConfigProviderEmptyDemo from "../../../../components/generated/config-provider/empty.vue";
-import configProviderEmptySource from "../../../../components/generated/config-provider/empty.vue?raw";
-import ConfigProviderRtlDemo from "../../../../components/generated/config-provider/rtl.vue";
-import configProviderRtlSource from "../../../../components/generated/config-provider/rtl.vue?raw";
-import ConfigProviderAllowClearDemo from "../../../../components/generated/config-provider/allow-clear.vue";
-import configProviderAllowClearSource from "../../../../components/generated/config-provider/allow-clear.vue?raw";
-import ConfigProviderAllowSearchDemo from "../../../../components/generated/config-provider/allow-search.vue";
-import configProviderAllowSearchSource from "../../../../components/generated/config-provider/allow-search.vue?raw";
-import ConfigProviderVirtualListPropsDemo from "../../../../components/generated/config-provider/virtual-list-props.vue";
-import configProviderVirtualListPropsSource from "../../../../components/generated/config-provider/virtual-list-props.vue?raw";
-import ConfigProviderThemeModeDemo from "../../../../components/generated/config-provider/theme-mode.vue";
-import configProviderThemeModeSource from "../../../../components/generated/config-provider/theme-mode.vue?raw";
-import ConfigProviderModalDrawerDefaultsDemo from "../../../../components/generated/config-provider/modal-drawer-defaults.vue";
-import configProviderModalDrawerDefaultsSource from "../../../../components/generated/config-provider/modal-drawer-defaults.vue?raw";
-import ConfigProviderDatePickerDefaultsDemo from "../../../../components/generated/config-provider/date-picker-defaults.vue";
-import configProviderDatePickerDefaultsSource from "../../../../components/generated/config-provider/date-picker-defaults.vue?raw";
+import DemoBlock from '../../../../components/docs/DemoBlock.astro';
+import ConfigProviderBasicDemo from '../../../../components/generated/config-provider/basic.vue';
+import configProviderBasicSource from '../../../../components/generated/config-provider/basic.vue?raw';
+import ConfigProviderEmptyDemo from '../../../../components/generated/config-provider/empty.vue';
+import configProviderEmptySource from '../../../../components/generated/config-provider/empty.vue?raw';
+import ConfigProviderRtlDemo from '../../../../components/generated/config-provider/rtl.vue';
+import configProviderRtlSource from '../../../../components/generated/config-provider/rtl.vue?raw';
+import ConfigProviderAllowClearDemo from '../../../../components/generated/config-provider/allow-clear.vue';
+import configProviderAllowClearSource from '../../../../components/generated/config-provider/allow-clear.vue?raw';
+import ConfigProviderAllowSearchDemo from '../../../../components/generated/config-provider/allow-search.vue';
+import configProviderAllowSearchSource from '../../../../components/generated/config-provider/allow-search.vue?raw';
+import ConfigProviderVirtualListPropsDemo from '../../../../components/generated/config-provider/virtual-list-props.vue';
+import configProviderVirtualListPropsSource from '../../../../components/generated/config-provider/virtual-list-props.vue?raw';
+import ConfigProviderThemeModeDemo from '../../../../components/generated/config-provider/theme-mode.vue';
+import configProviderThemeModeSource from '../../../../components/generated/config-provider/theme-mode.vue?raw';
+import ConfigProviderModalDrawerDefaultsDemo from '../../../../components/generated/config-provider/modal-drawer-defaults.vue';
+import configProviderModalDrawerDefaultsSource from '../../../../components/generated/config-provider/modal-drawer-defaults.vue?raw';
+import ConfigProviderDatePickerDefaultsDemo from '../../../../components/generated/config-provider/date-picker-defaults.vue';
+import configProviderDatePickerDefaultsSource from '../../../../components/generated/config-provider/date-picker-defaults.vue?raw';
 
 ### 基本用法
 
@@ -123,25 +123,25 @@ import configProviderDatePickerDefaultsSource from "../../../../components/gener
 
 ### `<config-provider>` Props
 
-| 参数名             | 描述                               | 类型                       | 默认值  | 版本   |
-| ------------------ | ---------------------------------- | -------------------------- | :-----: | :----- |
-| prefix-cls         | 组件类名前缀                       | `string`                   | `'sd'`  |        |
-| locale             | 配置语言包                         | `SDLang`                   |   `-`   |        |
-| size               | 大小                               | `Size`                     |   `-`   | 2.14.0 |
-| allow-clear        | 是否默认开启清除按钮               | `boolean`                  | `false` |        |
-| allow-search       | 是否默认开启搜索                   | `boolean`                  | `false` |        |
-| virtual-list-props | 下拉类组件默认虚拟滚动参数         | `VirtualListProps`         |   `-`   |        |
-| global             | 是否全局生效                       | `boolean`                  | `false` | 2.25.0 |
-| update-at-scroll   | 是否在容器滚动时更新弹出框的位置   | `boolean`                  | `false` | 2.25.0 |
-| scroll-to-close    | 是否在滚动时关闭弹出框             | `boolean`                  | `false` | 2.46.0 |
-| exchange-time      | 是否交换时间                       | `boolean`                  | `true`  | 2.48.0 |
-| rtl                | 视图的表现形式是从右开始向左结束   | `boolean`                  | `false` |        |
-| date-picker        | DatePicker 组件默认配置            | `ConfigProviderDatePicker` |   `-`   |        |
-| modal              | Modal 组件默认配置                 | `ConfigProviderModal`      |   `-`   |        |
-| drawer             | Drawer 组件默认配置                | `ConfigProviderDrawer`     |   `-`   |        |
-| json-form          | JsonForm 组件默认配置              | `JsonFormProviderConfig`   |   `-`   |        |
-| theme              | 运行时主题对象                     | `SDThemeConfig`            |   `-`   |        |
-| theme-mode         | 当前 ConfigProvider 子树的主题模式 | `'light' \| 'dark'`        |   `-`   |        |
+| 参数名 | 描述 | 类型 | 默认值 | 版本 |
+| --- | --- | --- | :-: | :-- |
+| prefix-cls | 组件类名前缀 | `string` | `'sd'` |  |
+| locale | 配置语言包 | `SDLang` | `-` |  |
+| size | 大小 | `Size` | `-` | 2.14.0 |
+| allow-clear | 是否默认开启清除按钮 | `boolean` | `false` |  |
+| allow-search | 是否默认开启搜索 | `boolean` | `false` |  |
+| virtual-list-props | 下拉类组件默认虚拟滚动参数 | `VirtualListProps` | `-` |  |
+| global | 是否全局生效 | `boolean` | `false` | 2.25.0 |
+| update-at-scroll | 是否在容器滚动时更新弹出框的位置 | `boolean` | `false` | 2.25.0 |
+| scroll-to-close | 是否在滚动时关闭弹出框 | `boolean` | `false` | 2.46.0 |
+| exchange-time | 是否交换时间 | `boolean` | `true` | 2.48.0 |
+| rtl | 视图的表现形式是从右开始向左结束 | `boolean` | `false` |  |
+| date-picker | DatePicker 组件默认配置 | `ConfigProviderDatePicker` | `-` |  |
+| modal | Modal 组件默认配置 | `ConfigProviderModal` | `-` |  |
+| drawer | Drawer 组件默认配置 | `ConfigProviderDrawer` | `-` |  |
+| json-form | JsonForm 组件默认配置 | `JsonFormProviderConfig` | `-` |  |
+| theme | 运行时主题对象 | `SDThemeConfig` | `-` |  |
+| theme-mode | 当前 ConfigProvider 子树的主题模式 | `'light' \| 'dark'` | `-` |  |
 
 ### `<config-provider>` Slots
 

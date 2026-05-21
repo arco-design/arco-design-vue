@@ -47,18 +47,7 @@
 </template>
 
 <script setup lang="ts">
-  import type {
-    CheckedStrategy,
-    LabelValue,
-    Size,
-    TreeNodeData,
-    TreeNodeKey,
-    TreeSelectChangeHandler,
-    TreeSelectFallbackOption,
-    TreeSelectFilterTreeNode,
-    TreeSelectLoadMore,
-    TreeSelectSearchHandler,
-  } from '@sdata/web-vue';
+  import type { TreeNodeData, TreeNodeKey } from '@sdata/web-vue';
 
   const treeData: TreeNodeData[] = [
     {

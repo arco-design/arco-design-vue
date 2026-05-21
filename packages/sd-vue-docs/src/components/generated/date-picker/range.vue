@@ -20,15 +20,6 @@
   />
 </template>
 <script setup lang="ts">
-  import type {
-    DatePickerChangeHandler,
-    DisabledDate,
-    DisabledTime,
-    DisabledTimeProps,
-    FormatFunc,
-    RangeDisabledTime,
-  } from '@sdata/web-vue';
-
   function onSelect(dateString: unknown, date: unknown) {
     console.log('onSelect', dateString, date);
   }

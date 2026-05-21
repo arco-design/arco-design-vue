@@ -39,8 +39,6 @@
 </template>
 
 <script setup lang="ts">
-  import type { LabelPositionType, ModeType } from '@sdata/web-vue';
-
   import { ref } from 'vue';
 
   import { IconFire } from '@sdata/web-vue/es/icon/index.js';

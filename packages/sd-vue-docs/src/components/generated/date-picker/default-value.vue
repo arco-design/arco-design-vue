@@ -53,14 +53,7 @@
   />
 </template>
 <script setup lang="ts">
-  import type {
-    DatePickerChangeHandler,
-    DisabledDate,
-    DisabledTime,
-    DisabledTimeProps,
-    FormatFunc,
-    RangeDisabledTime,
-  } from '@sdata/web-vue';
+  import type { FormatFunc } from '@sdata/web-vue';
 
   import dayjs from 'dayjs';
 

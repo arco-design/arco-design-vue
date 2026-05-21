@@ -19,8 +19,6 @@
 </template>
 
 <script setup lang="ts">
-  import type { ScrollPosition, TabTriggerEvent, TabsPosition, TabsType } from '@sdata/web-vue';
-
   import { ref } from 'vue';
 
   let count = 5;

@@ -47,29 +47,33 @@
     const type = props.schema.type ?? JSON_FORM_COMPONENT_TYPES.input;
 
     if (
-      [
-        JSON_FORM_COMPONENT_TYPES.input,
-        JSON_FORM_COMPONENT_TYPES.inputSearch,
-        JSON_FORM_COMPONENT_TYPES.inputNumber,
-        JSON_FORM_COMPONENT_TYPES.inputPassword,
-        JSON_FORM_COMPONENT_TYPES.textarea,
-        JSON_FORM_COMPONENT_TYPES.autoComplete,
-        JSON_FORM_COMPONENT_TYPES.inputTag,
-        JSON_FORM_COMPONENT_TYPES.mention,
-      ].includes(type)
+      (
+        [
+          JSON_FORM_COMPONENT_TYPES.input,
+          JSON_FORM_COMPONENT_TYPES.inputSearch,
+          JSON_FORM_COMPONENT_TYPES.inputNumber,
+          JSON_FORM_COMPONENT_TYPES.inputPassword,
+          JSON_FORM_COMPONENT_TYPES.textarea,
+          JSON_FORM_COMPONENT_TYPES.autoComplete,
+          JSON_FORM_COMPONENT_TYPES.inputTag,
+          JSON_FORM_COMPONENT_TYPES.mention,
+        ] as string[]
+      ).includes(type)
     ) {
       return props.schema.label ? `请输入${props.schema.label}` : undefined;
     }
 
     if (
-      [
-        JSON_FORM_COMPONENT_TYPES.select,
-        JSON_FORM_COMPONENT_TYPES.cascader,
-        JSON_FORM_COMPONENT_TYPES.treeSelect,
-        JSON_FORM_COMPONENT_TYPES.datePicker,
-        JSON_FORM_COMPONENT_TYPES.rangePicker,
-        JSON_FORM_COMPONENT_TYPES.timePicker,
-      ].includes(type)
+      (
+        [
+          JSON_FORM_COMPONENT_TYPES.select,
+          JSON_FORM_COMPONENT_TYPES.cascader,
+          JSON_FORM_COMPONENT_TYPES.treeSelect,
+          JSON_FORM_COMPONENT_TYPES.datePicker,
+          JSON_FORM_COMPONENT_TYPES.rangePicker,
+          JSON_FORM_COMPONENT_TYPES.timePicker,
+        ] as string[]
+      ).includes(type)
     ) {
       return props.schema.label ? `请选择${props.schema.label}` : undefined;
     }

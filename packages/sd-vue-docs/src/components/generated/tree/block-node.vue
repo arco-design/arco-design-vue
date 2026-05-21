@@ -2,17 +2,7 @@
   <sd-tree blockNode :data="treeData" />
 </template>
 <script setup lang="ts">
-  import type {
-    CheckedStrategy,
-    LoadMore,
-    Size,
-    TreeCheckHandler,
-    TreeDropHandler,
-    TreeExpandHandler,
-    TreeNodeData,
-    TreeNodeKey,
-    TreeSelectHandler,
-  } from '@sdata/web-vue';
+  import type { TreeNodeData } from '@sdata/web-vue';
 
   const treeData: TreeNodeData[] = [
     {

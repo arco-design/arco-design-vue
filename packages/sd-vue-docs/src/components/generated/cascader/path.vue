@@ -19,14 +19,7 @@
 </template>
 
 <script setup lang="ts">
-  import type {
-    CascaderChangeHandler,
-    CascaderFallback,
-    CascaderFormatLabel,
-    CascaderLoadMore,
-    CascaderOption,
-    CascaderPathValue,
-  } from '@sdata/web-vue';
+  import type { CascaderChangeHandler, CascaderOption } from '@sdata/web-vue';
 
   const handleChange: CascaderChangeHandler = (path) => {
     console.log(path);
