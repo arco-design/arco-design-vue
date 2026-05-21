@@ -7,6 +7,7 @@ import { defineConfig } from 'astro/config';
 import { fileURLToPath } from 'node:url';
 
 import { docsSidebar } from './src/generated/docs-sidebar';
+import { sdDocsLlmsIntegration } from './src/integrations/llms/index.mjs';
 
 const themeBridgeScript = String.raw`
 (() => {
@@ -74,6 +75,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   integrations: [
+    sdDocsLlmsIntegration(),
     starlight({
       title: 'SD Design',
       description: 'SD Design 组件文档站。',
