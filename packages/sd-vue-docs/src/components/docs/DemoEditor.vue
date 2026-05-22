@@ -25,6 +25,7 @@
   const replStore = shallowRef<ReplStore | null>(null);
   const themeObserver = shallowRef<MutationObserver | null>(null);
   const vendorDependencyImports = shallowRef<Record<string, string>>({});
+  const previewEnvironmentScriptCloseTag = '</scr' + 'ipt>';
   const previewThemeScriptCloseTag = '</scr' + 'ipt>';
 
   const normalizedCode = computed(() => props.source.trim());
@@ -35,6 +36,7 @@
       '<link rel="stylesheet" href="/vendor/sd-web-vue/dist/sd.css">',
       `<link rel="stylesheet" href="${demoStylesheetHref}">`,
       '<style>body{margin:0;padding:16px;font-family:Inter,Segoe UI,sans-serif;}body[sd-theme="dark"]{background:#141414;color:#f2f3f5;}#app{min-height:40px;}</style>',
+      `<script>globalThis.process??={env:{NODE_ENV:'production'}};globalThis.global??=globalThis;${previewEnvironmentScriptCloseTag}`,
       `<script>document.addEventListener('DOMContentLoaded',function(){if(${JSON.stringify(replTheme.value)}==='dark'){document.body.setAttribute('sd-theme','dark');}else{document.body.removeAttribute('sd-theme');}});${previewThemeScriptCloseTag}`,
     ].join(''),
     customCode: {
@@ -66,6 +68,26 @@
 
     const manifest = (await response.json()) as { imports?: Record<string, string> };
     vendorDependencyImports.value = manifest.imports ?? {};
+  }
+
+  function installBrowserProcessShim() {
+    const shimTarget = globalThis as Record<string, unknown>;
+    const processShim =
+      (shimTarget.process as
+        | {
+            env?: Record<string, string>;
+            argv?: string[];
+            cwd?: () => string;
+            versions?: Record<string, string>;
+          }
+        | undefined) ?? {};
+
+    shimTarget.global ??= globalThis;
+    processShim.env ??= {};
+    processShim.env.NODE_ENV ??= 'production';
+    processShim.argv ??= [];
+    processShim.cwd ??= () => '/';
+    shimTarget.process = processShim;
   }
 
   function applySafeVirtualFs(store: ReplStore) {
@@ -131,6 +153,7 @@
     loadError.value = '';
 
     try {
+      installBrowserProcessShim();
       await ensureVendorImportMapLoaded();
       const store = useStore({}, '');
 
@@ -162,6 +185,7 @@
   }
 
   onMounted(() => {
+    installBrowserProcessShim();
     syncTheme();
 
     const observer = new MutationObserver(syncTheme);

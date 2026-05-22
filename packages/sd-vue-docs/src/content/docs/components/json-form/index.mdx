@@ -13,7 +13,7 @@ import jsonFormCustomComponentSource from '../../../../components/generated/json
 
 ### 基本用法
 
-默认不传 `adapter` 时，`JsonForm` 直接消费组件库自己的 schema 结构，适合业务表单、后台配置页和低代码配置面板。
+默认不传 `adapter` 时，`JsonForm` 直接消费组件库自己的 schema 结构，适合业务表单、后台配置页和低代码配置面板。下面示例演示了通过一个 `computed` 同时处理 checkbox 控制显示/禁用、以及下拉分支字段切换。
 
 <DemoBlock source={jsonFormBasicSource} mainFile="src/json-form-basic.vue">
 
@@ -23,7 +23,7 @@ import jsonFormCustomComponentSource from '../../../../components/generated/json
 
 ### A2UI 适配
 
-传入 `adapter={A2UI_0_8}` 后，组件会严格按 A2UI 0.8 的组件节点包装格式接收数据，再翻译成 `JsonForm` 内部 schema。除了 Basic Catalog 里的 `TextField`、`DateTimeInput`、`CheckBox`、`MultipleChoice` 和 `Row / Column`，现在也支持按同一层包装格式接入自定义 catalog 节点，例如 `Select`、`Switch`、`TreeSelect`、`Transfer` 等，覆盖 `JsonForm` 当前全部组件类型。
+传入 `adapter={A2UI_0_8}` 后，组件会严格按 A2UI 0.8 的组件节点包装格式接收数据，再翻译成 `JsonForm` 内部 schema。除了 Basic Catalog 里的 `TextField`、`DateTimeInput`、`CheckBox`、`MultipleChoice` 和 `Row / Column`，现在也支持按同一层包装格式接入自定义 catalog 节点，例如 `Select`、`Switch`、`TreeSelect`、`Transfer` 等，覆盖 `JsonForm` 当前全部组件类型。示例同样使用一个 `computed` 输出动态节点列表，实现开关控制和分支表单。
 
 <DemoBlock source={jsonFormA2uiSource} mainFile="src/json-form-a2ui.vue">
 
@@ -33,7 +33,7 @@ import jsonFormCustomComponentSource from '../../../../components/generated/json
 
 ### 通过 ConfigProvider 注入业务组件
 
-如果业务里已经有脚本输入框、地图选点器、审批人选择器等字段组件，可以通过 `ConfigProvider` 的 `json-form.components` 统一注入。下面的示例里没有引入业务真实组件，而是用组件库里的 `Textarea` 模拟了一个业务自定义字段。推荐配合 `defineJsonFormComponents` 和 `defineJsonFormSchemas` 一起使用，这样 schema 里的 `type` 和 `componentProps` 都能保留 TypeScript 推导。
+如果业务里已经有脚本输入框、地图选点器、审批人选择器等字段组件，可以通过 `ConfigProvider` 的 `json-form.components` 统一注入。下面示例里用组件库的 `Textarea` 模拟了业务自定义字段，并结合一个 `computed` 统一处理模式切换、字段显示/隐藏与禁用状态。推荐配合 `defineJsonFormComponents` 和 `defineJsonFormSchemas` 一起使用，这样 schema 里的 `type` 和 `componentProps` 都能保留 TypeScript 推导。
 
 <DemoBlock source={jsonFormCustomComponentSource} mainFile="src/json-form-custom-component.vue">
 
@@ -64,6 +64,7 @@ import jsonFormCustomComponentSource from '../../../../components/generated/json
 | label | 表单项标题 | `string` |
 | type | 字段组件类型，内置支持 `input`、`select`、`datePicker`、`switch` 等，也可以接入自定义组件名 | `string` |
 | required | 是否生成默认必填规则 | `boolean` |
+| hidden | 是否隐藏当前字段（隐藏后不渲染表单项） | `boolean` |
 | componentProps | 透传给字段组件的 props | `JsonFormComponentProps<T>` |
 | componentEvents | 透传给字段组件的事件 | `JsonFormComponentEvents<T>` |
 | componentSlots | 透传给字段组件的具名 slot 渲染器 | `Record<string, Component \| (() => VNodeChild)>` |

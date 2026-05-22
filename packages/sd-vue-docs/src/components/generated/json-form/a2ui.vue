@@ -8,77 +8,154 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue';
+  import { computed, ref } from 'vue';
 
   import { A2UI_0_8, type JsonFormA2UI_0_8ComponentNode } from '@sdata/web-vue';
 
   const formState = ref({
     booking: {
       name: '',
-      channel: [],
+      advanced: false,
+      contactType: 'email',
+      email: '',
+      phone: '',
+      wechat: '',
       time: '',
     },
   });
 
-  const schemas: JsonFormA2UI_0_8ComponentNode[] = [
-    {
-      id: 'booking-row',
-      component: {
-        Row: {
-          children: {
-            explicitList: ['booking-name', 'booking-time'],
+  const schemas = computed<JsonFormA2UI_0_8ComponentNode[]>(() => {
+    const isAdvanced = formState.value.booking.advanced;
+    const contactType = formState.value.booking.contactType;
+
+    return [
+      {
+        id: 'booking-name',
+        component: {
+          TextField: {
+            label: {
+              literalString: '预约人',
+            },
+            text: {
+              path: '/booking/name',
+            },
           },
         },
       },
-    },
-    {
-      id: 'booking-name',
-      component: {
-        TextField: {
-          label: {
-            literalString: '预约人',
-          },
-          text: {
-            path: '/booking/name',
+      {
+        id: 'booking-advanced',
+        component: {
+          CheckBox: {
+            label: {
+              literalString: '启用高级配置',
+            },
+            value: {
+              path: '/booking/advanced',
+            },
           },
         },
       },
-    },
-    {
-      id: 'booking-time',
-      component: {
-        DateTimeInput: {
-          label: {
-            literalString: '预约时间',
+      {
+        id: 'booking-time',
+        component: {
+          DateTimeInput: {
+            label: {
+              literalString: '预约时间',
+            },
+            value: {
+              path: '/booking/time',
+            },
+            enableDate: true,
+            enableTime: true,
+            disabled: !isAdvanced,
           },
-          value: {
-            path: '/booking/time',
-          },
-          enableDate: true,
-          enableTime: true,
         },
       },
-    },
-    {
-      id: 'booking-channel',
-      component: {
-        MultipleChoice: {
-          label: {
-            literalString: '通知渠道',
-          },
-          selections: {
-            path: '/booking/channel',
-          },
-          options: [
-            { label: { literalString: '短信' }, value: 'sms' },
-            { label: { literalString: '邮件' }, value: 'email' },
-            { label: { literalString: '电话' }, value: 'phone' },
-          ],
-          maxAllowedSelections: 3,
-        },
-      },
-    },
-  ];
+      ...(isAdvanced
+        ? [
+            {
+              id: 'booking-contact-type',
+              component: {
+                ChoicePicker: {
+                  label: {
+                    literalString: '通知方式',
+                  },
+                  selections: {
+                    path: '/booking/contactType',
+                  },
+                  options: [
+                    { label: { literalString: '邮件' }, value: 'email' },
+                    { label: { literalString: '短信' }, value: 'sms' },
+                    { label: { literalString: '企业微信' }, value: 'wechat' },
+                  ],
+                  maxAllowedSelections: 1,
+                },
+              },
+            },
+            ...(contactType === 'email'
+              ? [
+                  {
+                    id: 'booking-email',
+                    component: {
+                      TextField: {
+                        label: {
+                          literalString: '邮箱地址',
+                        },
+                        text: {
+                          path: '/booking/email',
+                        },
+                        placeholder: {
+                          literalString: '例如：demo@example.com',
+                        },
+                      },
+                    },
+                  },
+                ]
+              : []),
+            ...(contactType === 'sms'
+              ? [
+                  {
+                    id: 'booking-phone',
+                    component: {
+                      TextField: {
+                        label: {
+                          literalString: '手机号码',
+                        },
+                        text: {
+                          path: '/booking/phone',
+                        },
+                        placeholder: {
+                          literalString: '例如：13800000000',
+                        },
+                      },
+                    },
+                  },
+                ]
+              : []),
+            ...(contactType === 'wechat'
+              ? [
+                  {
+                    id: 'booking-wechat',
+                    component: {
+                      TextField: {
+                        label: {
+                          literalString: '企业微信账号',
+                        },
+                        text: {
+                          path: '/booking/wechat',
+                        },
+                        placeholder: {
+                          literalString: '例如：zhangsan',
+                        },
+                      },
+                    },
+                  },
+                ]
+              : []),
+          ]
+        : []),
+    ];
+  });
 </script>
 
 <style scoped>
