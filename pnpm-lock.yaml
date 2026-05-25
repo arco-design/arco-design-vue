@@ -101,7 +101,7 @@ importers:
         version: 0.51.0
       oxlint:
         specifier: ^1.66.0
-        version: 1.66.0(oxlint-tsgolint@0.22.0)
+        version: 1.66.0
       postcss-html:
         specifier: ^1.8.1
         version: 1.8.1
@@ -295,6 +295,9 @@ importers:
       '@types/clean-css':
         specifier: ^4.2.11
         version: 4.2.11
+      '@types/qrcode':
+        specifier: ^1.5.6
+        version: 1.5.6
       '@vitejs/plugin-vue':
         specifier: 'catalog:'
         version: 6.0.6(vite@8.0.13(@types/node@24.12.2)(esbuild@0.27.7)(jiti@2.6.1)(sass@1.99.0)(yaml@2.8.3))(vue@3.5.34(typescript@6.0.3))
@@ -2523,6 +2526,9 @@ packages:
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
+
+  '@types/qrcode@1.5.6':
+    resolution: {integrity: sha512-te7NQcV2BOvdj2b1hCAHzAoMNuj65kNBMz0KBaxM6c3VGBOhU0dURQKOtH8CFNI/dsKkwlv32p26qYQTWoB5bw==}
 
   '@types/sax@1.2.7':
     resolution: {integrity: sha512-rO73L89PJxeYM3s3pPPjiPgVVcymqU490g0YO5n5By0k2Erzj6tay/4lr1CHAAU4JyOWd1rpQ8bCf6cZfHU96A==}
@@ -9175,6 +9181,10 @@ snapshots:
 
   '@types/normalize-package-data@2.4.4': {}
 
+  '@types/qrcode@1.5.6':
+    dependencies:
+      '@types/node': 24.12.2
+
   '@types/sax@1.2.7':
     dependencies:
       '@types/node': 24.12.2
@@ -12457,7 +12467,7 @@ snapshots:
       '@oxlint/binding-win32-x64-msvc': 1.61.0
       oxlint-tsgolint: 0.22.0
 
-  oxlint@1.66.0(oxlint-tsgolint@0.22.0):
+  oxlint@1.66.0:
     optionalDependencies:
       '@oxlint/binding-android-arm-eabi': 1.66.0
       '@oxlint/binding-android-arm64': 1.66.0
@@ -12478,7 +12488,6 @@ snapshots:
       '@oxlint/binding-win32-arm64-msvc': 1.66.0
       '@oxlint/binding-win32-ia32-msvc': 1.66.0
       '@oxlint/binding-win32-x64-msvc': 1.66.0
-      oxlint-tsgolint: 0.22.0
 
   p-each-series@3.0.0: {}
 
