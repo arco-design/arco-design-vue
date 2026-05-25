@@ -67,19 +67,19 @@
     "type-fest": "catalog:"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.5.3",
-    "@commitlint/config-conventional": "^20.5.3",
+    "@commitlint/cli": "^21.0.1",
+    "@commitlint/config-conventional": "^21.0.1",
     "@types/node": "^24.10.0",
     "@typescript/native-preview": "beta",
-    "axios": "^1.15.0",
+    "axios": "^1.16.1",
     "confbox": "^0.2.4",
     "fast-glob": "^3.3.3",
     "git-cz": "^4.9.0",
-    "lint-staged": "^16.4.0",
+    "lint-staged": "^17.0.5",
     "npm-check-updates": "^21.0.0",
     "npm-run-all2": "^8.0.4",
-    "oxfmt": "^0.51.0",
-    "oxlint": "^1.66.0",
+    "oxfmt": "catalog:",
+    "oxlint": "catalog:",
     "postcss-html": "^1.8.1",
     "postcss-less": "^6.0.0",
     "postcss-scss": "^4.0.9",
@@ -90,7 +90,7 @@
     "stylelint-config-recommended-vue": "^1.6.1",
     "stylelint-config-standard": "^40.0.0",
     "stylelint-order": "^8.1.1",
-    "stylelint-scss": "^7.0.0",
+    "stylelint-scss": "^7.1.1",
     "typescript": "catalog:",
     "vite-plus": "^0.1.20"
   },
@@ -100,7 +100,7 @@
     "pre-push": "pnpm run typecheck"
   },
   "engines": {
-    "node": "~24.15.0"
+    "node": "~24.16.0"
   },
   "packageManager": "pnpm@11.0.9",
   "pnpm": {

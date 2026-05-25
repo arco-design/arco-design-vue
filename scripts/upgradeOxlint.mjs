@@ -1,91 +1,53 @@
-import { merge } from 'es-toolkit';
-import { execSync } from 'node:child_process';
-import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
-import { platform, tmpdir } from 'node:os';
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import axios from 'axios';
+import { parseTOML, stringifyTOML } from 'confbox';
+import { writeFileSync, readFileSync } from 'node:fs';
 import { format as oxfmtFormat } from 'oxfmt';
 
-const CONFIG_FILE = '.oxlintrc.json';
-const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
-const PROJECT_ROOT = join(SCRIPT_DIR, '..');
+const pkg = JSON.parse(readFileSync('package.json', 'utf8'));
+const mise = parseTOML(readFileSync('.mise.toml', 'utf8'));
 
-function resolveOxlintPath(isWindows) {
-  const oxlintPath = join(
-    PROJECT_ROOT,
-    'node_modules',
-    '.bin',
-    isWindows ? 'oxlint.CMD' : 'oxlint',
-  );
+const pnpmVersion = pkg.packageManager?.split('@')[1];
+const nodeVersion = await getNodeLtsVersion();
 
-  if (!existsSync(oxlintPath)) {
-    throw new Error(`未找到本地 oxlint 可执行文件: ${oxlintPath}`);
-  }
-
-  return oxlintPath;
+if (!pnpmVersion) {
+  throw new Error('packageManager not found in package.json');
 }
 
-function loadConfig(filePath = CONFIG_FILE, { warnIfMissing = true } = {}) {
-  try {
-    return JSON.parse(readFileSync(filePath, 'utf-8').toString());
-  } catch (error) {
-    if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {
-      if (warnIfMissing) {
-        console.warn(`未找到 ${filePath} 文件`);
-      }
-      return null;
-    }
-
-    throw error;
-  }
+if (!nodeVersion) {
+  throw new Error('node version not found');
 }
 
-function generateNextConfig(oxlintPath, shell) {
-  const tempDir = mkdtempSync(join(tmpdir(), 'oxlint-init-'));
-
-  try {
-    console.log('生成新配置...');
-    console.log(execSync(`"${oxlintPath}" --init`, { cwd: tempDir, shell }).toString());
-
-    const nextConfig = loadConfig(join(tempDir, CONFIG_FILE), { warnIfMissing: false });
-
-    if (!nextConfig) {
-      throw new Error('未读取到新生成的 oxlint 配置');
-    }
-
-    return nextConfig;
-  } finally {
-    rmSync(tempDir, { force: true, recursive: true });
-  }
+if (!pkg.engines) {
+  pkg.engines = {};
 }
 
-async function main() {
-  const isWindows = platform() === 'win32';
-  const shell = isWindows ? 'cmd.exe' : '/bin/bash';
-  const oxlintPath = resolveOxlintPath(isWindows);
-
-  const currentConfig = loadConfig();
-  const nextConfig = generateNextConfig(oxlintPath, shell);
-  const mergedConfig = currentConfig ? merge({}, currentConfig, nextConfig) : nextConfig;
-  const configStr = JSON.stringify(mergedConfig);
-
-  if (!configStr) {
-    return;
-  }
-
-  console.log(currentConfig ? '合并新旧配置...' : '写入新配置...');
-  console.log('格式化配置...');
-  const result = await oxfmtFormat(CONFIG_FILE, configStr);
-
-  if (result.errors.length > 0) {
-    console.warn('oxfmt 格式化失败，保留原始配置');
-    for (const error of result.errors) {
-      console.warn(error.message);
-    }
-    return;
-  }
-
-  writeFileSync(CONFIG_FILE, result.code);
+if (!mise.tools) {
+  mise.tools = {};
 }
 
-await main();
+pkg.engines.node = `~${nodeVersion}`;
+mise.tools.node = nodeVersion;
+
+console.log('格式化配置...');
+const pkgResult = await oxfmtFormat('package.json', JSON.stringify(pkg), {
+  sortPackageJson: false,
+});
+
+const miseResult = await oxfmtFormat('.mise.toml', stringifyTOML(mise), {
+  parser: 'toml',
+});
+
+const errors = [...pkgResult.errors, ...miseResult.errors];
+
+if (errors.length > 0) {
+  throw new Error(errors.map((error) => error.message).join('\n'));
+}
+
+writeFileSync('package.json', pkgResult.code, 'utf-8');
+writeFileSync('.mise.toml', miseResult.code, 'utf-8');
+
+async function getNodeLtsVersion() {
+  return (await axios.get('https://cdn.npmmirror.com/binaries/node/index.json')).data
+    .find((v) => v.lts)
+    .version.replace('v', '');
+}

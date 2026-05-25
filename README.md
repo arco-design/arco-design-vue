@@ -194,10 +194,10 @@ pnpm run dev:web-vue
 以下版本号基于当前 [Browserslist 配置](https://web.dev/baseline?hl=zh-cn)自动生成：
 
 - and_chr>=119
-- and_ff>=119
+- and_ff>=120
 - chrome>=119
 - edge>=119
-- firefox>=119
+- firefox>=120
 - ios_saf>=17.0
 - safari>=17.0
 

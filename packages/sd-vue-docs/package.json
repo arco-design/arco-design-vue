@@ -20,7 +20,7 @@
     "docs:vendor:only": "node ./scripts/sync-vendor.mjs"
   },
   "dependencies": {
-    "@astrojs/mdx": "^5.0.4",
+    "@astrojs/mdx": "^5.0.6",
     "@astrojs/starlight": "^0.39.2",
     "@astrojs/vue": "^6.0.1",
     "@sdata/web-vue": "workspace:*",

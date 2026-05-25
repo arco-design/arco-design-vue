@@ -3,17 +3,17 @@ title: 二维码 QrCode
 description: 将文本快速转换为二维码，支持状态覆盖、中心图标和 SVG 或 Canvas 两种渲染方式。
 ---
 
-import DemoBlock from "../../../../components/docs/DemoBlock.astro";
-import QrCodeBasicDemo from "../../../../components/generated/qr-code/basic.vue";
-import qrCodeBasicSource from "../../../../components/generated/qr-code/basic.vue?raw";
-import QrCodeTypeDemo from "../../../../components/generated/qr-code/type.vue";
-import qrCodeTypeSource from "../../../../components/generated/qr-code/type.vue?raw";
-import QrCodeIconDemo from "../../../../components/generated/qr-code/icon.vue";
-import qrCodeIconSource from "../../../../components/generated/qr-code/icon.vue?raw";
-import QrCodeStatusDemo from "../../../../components/generated/qr-code/status.vue";
-import qrCodeStatusSource from "../../../../components/generated/qr-code/status.vue?raw";
-import QrCodeCustomStatusDemo from "../../../../components/generated/qr-code/custom-status.vue";
-import qrCodeCustomStatusSource from "../../../../components/generated/qr-code/custom-status.vue?raw";
+import DemoBlock from '../../../../components/docs/DemoBlock.astro';
+import QrCodeBasicDemo from '../../../../components/generated/qr-code/basic.vue';
+import qrCodeBasicSource from '../../../../components/generated/qr-code/basic.vue?raw';
+import QrCodeTypeDemo from '../../../../components/generated/qr-code/type.vue';
+import qrCodeTypeSource from '../../../../components/generated/qr-code/type.vue?raw';
+import QrCodeIconDemo from '../../../../components/generated/qr-code/icon.vue';
+import qrCodeIconSource from '../../../../components/generated/qr-code/icon.vue?raw';
+import QrCodeStatusDemo from '../../../../components/generated/qr-code/status.vue';
+import qrCodeStatusSource from '../../../../components/generated/qr-code/status.vue?raw';
+import QrCodeCustomStatusDemo from '../../../../components/generated/qr-code/custom-status.vue';
+import qrCodeCustomStatusSource from '../../../../components/generated/qr-code/custom-status.vue?raw';
 
 ### 基本用法
 
@@ -69,22 +69,22 @@ import qrCodeCustomStatusSource from "../../../../components/generated/qr-code/c
 
 ### `<qr-code>` Props
 
-| 参数名        | 描述                     | 类型                                              |      默认值      |
-| ------------- | ------------------------ | ------------------------------------------------- | :--------------: |
-| value         | 扫描后的文本             | `string \| string[]`                              |       `-`        |
-| type          | 渲染类型                 | `'canvas' \| 'svg'`                               |    `'canvas'`    |
-| icon          | 中心图标地址             | `string`                                          |       `''`       |
-| icon-alt      | 中心图标替代文本         | `string`                                          | `'qr-code-icon'` |
-| size          | 二维码尺寸               | `number`                                          |      `160`       |
-| icon-size     | 中心图标尺寸             | `number \| { width: number; height: number }`     |       `40`       |
-| color         | 二维码前景色             | `string`                                          |   `'#1D2129'`    |
-| bg-color      | 二维码背景色             | `string`                                          | `'transparent'`  |
-| bordered      | 是否显示边框             | `boolean`                                         |      `true`      |
-| error-level   | 二维码纠错等级           | `'L' \| 'M' \| 'Q' \| 'H'`                        |      `'M'`       |
-| boost-level   | 是否启用增强纠错         | `boolean`                                         |      `true`      |
-| margin-size   | 安静区大小，单位为模块数 | `number`                                          |       `0`        |
-| status        | 二维码状态               | `'active' \| 'expired' \| 'loading' \| 'scanned'` |    `'active'`    |
-| status-render | 自定义状态渲染函数       | `(info: StatusRenderInfo) => VNodeChild`          |       `-`        |
+| 参数名 | 描述 | 类型 | 默认值 |
+| --- | --- | --- | :-: |
+| value | 扫描后的文本 | `string \| string[]` | `-` |
+| type | 渲染类型 | `'canvas' \| 'svg'` | `'canvas'` |
+| icon | 中心图标地址 | `string` | `''` |
+| icon-alt | 中心图标替代文本 | `string` | `'qr-code-icon'` |
+| size | 二维码尺寸 | `number` | `160` |
+| icon-size | 中心图标尺寸 | `number \| { width: number; height: number }` | `40` |
+| color | 二维码前景色 | `string` | `'#1D2129'` |
+| bg-color | 二维码背景色 | `string` | `'transparent'` |
+| bordered | 是否显示边框 | `boolean` | `true` |
+| error-level | 二维码纠错等级 | `'L' \| 'M' \| 'Q' \| 'H'` | `'M'` |
+| boost-level | 是否启用增强纠错 | `boolean` | `true` |
+| margin-size | 安静区大小，单位为模块数 | `number` | `0` |
+| status | 二维码状态 | `'active' \| 'expired' \| 'loading' \| 'scanned'` | `'active'` |
+| status-render | 自定义状态渲染函数 | `(info: StatusRenderInfo) => VNodeChild` | `-` |
 
 ### `<qr-code>` Events
 
@@ -94,16 +94,16 @@ import qrCodeCustomStatusSource from "../../../../components/generated/qr-code/c
 
 ### `<qr-code>` Slots
 
-| 插槽名 | 描述             | 参数                                                                       |
-| ------ | ---------------- | -------------------------------------------------------------------------- |
-| icon   | 自定义中心图标   | `-`                                                                        |
+| 插槽名 | 描述 | 参数 |
+| --- | --- | --- |
+| icon | 自定义中心图标 | `-` |
 | status | 自定义状态覆盖层 | `status: 'expired' \| 'loading' \| 'scanned'`<br />`onRefresh: () => void` |
 
 ### `StatusRenderInfo`
 
 ```ts
 type StatusRenderInfo = {
-  status: "expired" | "loading" | "scanned";
+  status: 'expired' | 'loading' | 'scanned';
   onRefresh: () => void;
 };
 ```
