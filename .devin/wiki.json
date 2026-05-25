@@ -1,0 +1,303 @@
+{
+  "repo_notes": [
+    {
+      "content": ""
+    }
+  ],
+  "pages": [
+    {
+      "title": "SD Design Vue — Project Overview",
+      "purpose": "High-level introduction to the sd-design monorepo: what it is, its packages, key design goals, and how the major subsystems relate. Links to child pages for deeper coverage.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Getting Started & Installation",
+      "purpose": "How to install @sdata/web-vue, full vs. on-demand import, global configuration options, browser compatibility, and the auto-import resolver package.",
+      "parent": "SD Design Vue — Project Overview",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Monorepo Structure & Workspace Setup",
+      "purpose": "Explains the pnpm workspace layout (web-vue, sd-vue-docs, web-vue-debug, auto-import-resolver), pnpm catalog dependency management, and root-level task orchestration scripts.",
+      "parent": "SD Design Vue — Project Overview",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Contributing Guide & Developer Workflow",
+      "purpose": "Local development setup (dev, dev:all, dev:web-vue commands), debug sandbox vs. docs path, code style rules (oxlint, oxfmt, stylelint), lint-staged, and the create-component skill.",
+      "parent": "SD Design Vue — Project Overview",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Build System & Release Pipeline",
+      "purpose": "Overview of how the library is compiled, packaged, and published. Links to child pages covering the Vite build configuration, icon generation, TypeScript declarations, and CI/CD.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Vite Build Configuration",
+      "purpose": "Deep dive into packages/web-vue/vite.config.ts: build modes (build-module, build-umd-component, build-style), vite-plus task graph, custom plugins (cssjs, external, vue-export-helper), and SCSS style artifact generation.",
+      "parent": "Build System & Release Pipeline",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Icon Generation System",
+      "purpose": "How SVG assets in packages/web-vue/icon/_svgs/ are processed by gen-icons.mjs using svgo into Vue functional components, the write-icon-compat-entry step, and the icon sub-path export.",
+      "parent": "Build System & Release Pipeline",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "TypeScript Declarations & IDE Metadata",
+      "purpose": "How build-dts.mjs generates .d.ts files, gen-web-types.mjs produces web-types.json and vetur tags/attributes for JetBrains and VS Code IDE support.",
+      "parent": "Build System & Release Pipeline",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "CI/CD & Release Automation",
+      "purpose": "GitHub Actions release workflow, semantic-release configuration, prepare-release-package.mjs, NPM publishing to @sdata scope, and Netlify documentation deployment webhook.",
+      "parent": "Build System & Release Pipeline",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Theming & Style Architecture",
+      "purpose": "Overview of the SD Design theming system: CSS variables, SCSS token layer, ConfigProvider theme object, and ThemeProvider. Links to child pages for details.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "ConfigProvider & Global Configuration",
+      "purpose": "The ConfigProvider component: prefixCls, locale, size, allowClear, allowSearch, virtualListProps, RTL, updateAtScroll, component-specific defaults (modal, drawer, datePicker, jsonForm), and the global vs. local scope distinction.",
+      "parent": "Theming & Style Architecture",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Theme System: Tokens, CSS Variables & ThemeProvider",
+      "purpose": "SDThemeConfig structure (tokens, components, meta), normalizeTheme pipeline, CSS variable injection via ThemeProvider, local vs. global theme scoping, dark/light mode (sd-theme attribute), and the theme editor in the docs site.",
+      "parent": "Theming & Style Architecture",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "SCSS Style Architecture & Migration",
+      "purpose": "The SCSS token/mixin/function base layer in components/style/, legacy Less-to-SCSS migration, fix-scss-legacy-props.mjs, per-component style/index.ts side-effect entries, and the style build pipeline.",
+      "parent": "Theming & Style Architecture",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Core Architecture & Shared Infrastructure",
+      "purpose": "Overview of the internal utilities, hooks, and sub-components that power all UI components. Links to child pages for utilities, hooks, and the Trigger/VirtualList primitives.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Utility Functions (_utils)",
+      "purpose": "Reference for all shared utilities: dom.ts (DOM helpers), is.ts (type guards), date.ts (dayjs wrappers), vue-utils.ts (VNode helpers), keyboard.ts, debounce/throttle, color.ts, get-value-by-path.ts, and other helpers in components/_utils/.",
+      "parent": "Core Architecture & Shared Infrastructure",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Shared Hooks (_hooks)",
+      "purpose": "All reusable Vue composables: useFormItem (form integration), usePopupManager (z-index stacking), useTeleportContainer, useOverflow (scroll lock), useResizeObserver, useConfigProviderProp, useAllowClear, useAllowSearch, useScrollbar, and others.",
+      "parent": "Core Architecture & Shared Infrastructure",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Trigger Component & Popup Positioning",
+      "purpose": "The Trigger component (trigger.tsx): how it manages popup visibility, positioning calculations (utils.ts), nested trigger context, resize observer integration, and its role as the foundation for Select, Cascader, DatePicker, Tooltip, Dropdown, etc.",
+      "parent": "Core Architecture & Shared Infrastructure",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "VirtualList & Scrollbar",
+      "purpose": "The VirtualList internal component (virtual-list.vue, interface.ts): how it renders only visible items for large datasets. The Scrollbar component and useScrollbar hook. Used by Table, Tree, Select, Cascader, and TreeSelect.",
+      "parent": "Core Architecture & Shared Infrastructure",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Component Library — Data Entry",
+      "purpose": "Overview of all form and data-entry components. Links to child pages covering input primitives, selection components, date/time pickers, and the Form system.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Input Components (Input, InputNumber, InputTag, Textarea)",
+      "purpose": "Architecture of the core text-entry components: Input (IME composition, cursor management, prefix/suffix/prepend/append slots), InputNumber (NP precision, embed vs. button mode, formatter/parser), InputTag (responsive tag measurement), Textarea (autoSize mirror), and SelectView abstraction.",
+      "parent": "Component Library — Data Entry",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Select, AutoComplete, Mention & TreeSelect",
+      "purpose": "The selection component family: Select (useSelect hook, OptionInfoMap, VirtualList dropdown, filterOption), AutoComplete (SDInput trigger), Mention (cursor measurement, prefix detection), TreeSelect (useTreeData, useSelectedState, CheckedStrategy), and shared SelectDropdown/Panel.",
+      "parent": "Component Library — Data Entry",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Cascader Component",
+      "purpose": "Cascader and CascaderPanel: data normalization (getOptionInfos, optionMap, leafOptionMap), selection modes (multiple, checkStrictly, pathMode), lazy loading lifecycle, search panel, keyboard navigation, and the cascaderInjectionKey context.",
+      "parent": "Component Library — Data Entry",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Date Picker & Time Picker",
+      "purpose": "Picker, RangePicker, and TimePicker: selection state hierarchy (selected/process/preview/panel values), panel modes (date/week/month/quarter/year), header navigation hooks, shortcut system, showTime integration, disabledDate validation, and valueFormat conversion.",
+      "parent": "Component Library — Data Entry",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Form System (Form, FormItem, Validation)",
+      "purpose": "Form and FormItem components: field binding, validation rules (FieldRule), form context injection, FormItemLabel, FormItemMessage, get-value-by-path utility, and integration with useFormItem hook used by all data-entry components.",
+      "parent": "Component Library — Data Entry",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Checkbox, Radio, Switch, Slider, Rate & Upload",
+      "purpose": "Remaining data-entry components: Checkbox/CheckboxGroup (context-based group), Radio/RadioGroup, Switch (async loading), Slider (drag handle), Rate, Upload (file list, progress, picture mode, upload context), and VerificationCode.",
+      "parent": "Component Library — Data Entry",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "JsonForm — Schema-Driven Forms",
+      "purpose": "The JsonForm component: JsonFormSchema type, built-in component type registry (JSON_FORM_COMPONENT_TYPES), adapter system (default vs. a2ui-0.8), external component map, defineJsonFormSchemas/defineJsonFormComponents helpers, and ConfigProvider jsonForm defaults.",
+      "parent": "Component Library — Data Entry",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Component Library — Data Display",
+      "purpose": "Overview of all data-display and visualization components. Links to child pages for Table, Tree, and other display components.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Table Component",
+      "purpose": "Full deep-dive into the Table component: data pipeline (processedData → validData → sortedData → flattenData), TableColumn declarative API, TableContext injection, fixed columns, multi-level headers (getGroupColumns), row selection (useRowSelection), expand (useExpand), sort/filter hooks, virtual scrolling, column resize, drag-and-drop rows, and summary rows.",
+      "parent": "Component Library — Data Display",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Tree Component",
+      "purpose": "Tree component architecture: generateTreeData/getFlattenTreeData pipeline, key2TreeNode map, useCheckedState (indeterminate logic, checkedStrategy), useTreeData, VirtualList rendering, NodeSwitcher, TransitionNodeList, drag-and-drop (dropPosition), and lazy loading.",
+      "parent": "Component Library — Data Display",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "List, Transfer, Descriptions & Card",
+      "purpose": "List and ListItem components, Transfer (transfer-view, transfer-list-item, context), Descriptions and DescriptionsItem (layout calculation), Card and CardMeta, and the vue-utils.ts getAllElements helper used by List.",
+      "parent": "Component Library — Data Display",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    }
+  ]
+}
