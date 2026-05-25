@@ -204,6 +204,10 @@ export const docsSidebar = [
             label: '气泡卡片 Popover',
           },
           {
+            slug: 'components/qr-code',
+            label: '二维码 QrCode',
+          },
+          {
             slug: 'components/statistic',
             label: '数值显示 Statistic',
           },

@@ -59,6 +59,7 @@ import Pagination from './pagination';
 import Popconfirm from './popconfirm';
 import Popover from './popover';
 import Progress from './progress';
+import QrCode from './qr-code';
 import Radio, { RadioGroup } from './radio';
 import Rate from './rate';
 import ResizeBox from './resize-box';
@@ -152,6 +153,7 @@ const components: Record<string, Plugin> = {
   Notification,
   Popconfirm,
   Progress,
+  QrCode,
   Result,
   Spin,
   Skeleton,

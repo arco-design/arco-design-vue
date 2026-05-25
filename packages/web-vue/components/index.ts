@@ -302,6 +302,8 @@ export { default as Popover } from './popover';
 export type { PopoverInstance } from './popover';
 export { default as Progress } from './progress';
 export type { ProgressInstance } from './progress';
+export { default as QrCode } from './qr-code';
+export type { QrCodeInstance } from './qr-code';
 export { default as Radio, RadioGroup } from './radio';
 export type {
   RadioGroupChangeHandler,
