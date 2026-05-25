@@ -1,0 +1,109 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<qr-code> demo: > render [basic] correctly 1`] = `
+<div class="sd:flex sd:flex-col sd:items-center sd:gap-4">
+  <div class="sd-qr-code" style="width: 160px; height: 160px; background-color: transparent;">
+    <!--v-if--><canvas class="sd-qr-code-canvas"></canvas>
+    <!--v-if-->
+  </div><span class="sd-input-wrapper sd:w-80"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="请输入二维码内容" value="https://sd.design/vue"><!----><!----></span>
+</div>
+`;
+
+exports[`<qr-code> demo: > render [custom-status] correctly 1`] = `
+<div class="sd:flex sd:flex-wrap sd:gap-6">
+  <div class="sd-qr-code sd-qr-code-has-status" style="width: 160px; height: 160px; background-color: transparent;">
+    <div class="sd-qr-code-cover">
+      <div class="sd:flex sd:flex-col sd:items-center sd:gap-2">
+        <div class="sd-spin">
+          <div class="sd-spin-icon" style="font-size: 20px;">
+            <div class="sd-dot-loading" style="width: 140px; height: 20px;">
+              <div class="sd-dot-loading-item" style="width: 20px; height: 20px;"></div>
+              <div class="sd-dot-loading-item" style="width: 20px; height: 20px;"></div>
+              <div class="sd-dot-loading-item" style="width: 20px; height: 20px;"></div>
+              <div class="sd-dot-loading-item" style="width: 20px; height: 20px;"></div>
+              <div class="sd-dot-loading-item" style="width: 20px; height: 20px;"></div>
+            </div>
+          </div>
+          <!---->
+        </div><span class="sd:text-sm">正在生成中</span>
+      </div>
+    </div><canvas class="sd-qr-code-canvas"></canvas>
+    <!--v-if-->
+  </div>
+  <div class="sd-qr-code sd-qr-code-has-status" style="width: 160px; height: 160px; background-color: transparent;">
+    <div class="sd-qr-code-cover">
+      <div class="sd:flex sd:flex-col sd:items-center sd:gap-2"><span class="sd:text-sm sd:text-(--sd-color-danger-6)">登录码已失效</span><button class="sd-btn sd-btn-text sd-btn-shape-square sd-btn-size-small sd-btn-status-normal" type="button">
+          <!--v-if-->立即刷新
+        </button></div>
+    </div><canvas class="sd-qr-code-canvas"></canvas>
+    <!--v-if-->
+  </div>
+</div>
+`;
+
+exports[`<qr-code> demo: > render [icon] correctly 1`] = `
+<div class="sd-qr-code" style="width: 160px; height: 160px; background-color: transparent;">
+  <!--v-if--><canvas class="sd-qr-code-canvas"></canvas>
+  <div class="sd-qr-code-icon"><img src="https://sd.design/favicon.ico" alt="qr-code-icon" style="width: 40px; height: 40px;"></div>
+</div>
+`;
+
+exports[`<qr-code> demo: > render [status] correctly 1`] = `
+<div class="sd:flex sd:flex-wrap sd:gap-6">
+  <div class="sd-qr-code sd-qr-code-has-status" style="width: 160px; height: 160px; background-color: transparent;">
+    <div class="sd-qr-code-cover">
+      <div class="sd-qr-code-status">
+        <div class="sd-spin">
+          <div class="sd-spin-icon" style="font-size: 20px;">
+            <div class="sd-dot-loading" style="width: 140px; height: 20px;">
+              <div class="sd-dot-loading-item" style="width: 20px; height: 20px;"></div>
+              <div class="sd-dot-loading-item" style="width: 20px; height: 20px;"></div>
+              <div class="sd-dot-loading-item" style="width: 20px; height: 20px;"></div>
+              <div class="sd-dot-loading-item" style="width: 20px; height: 20px;"></div>
+              <div class="sd-dot-loading-item" style="width: 20px; height: 20px;"></div>
+            </div>
+          </div>
+          <!---->
+        </div>
+      </div>
+    </div><canvas class="sd-qr-code-canvas"></canvas>
+    <!--v-if-->
+  </div>
+  <div class="sd-qr-code sd-qr-code-has-status" style="width: 160px; height: 160px; background-color: transparent;">
+    <div class="sd-qr-code-cover">
+      <div class="sd-qr-code-status">
+        <p class="sd-qr-code-expired">二维码已过期</p><button type="button" class="sd-qr-code-refresh-btn"> 刷新 </button>
+      </div>
+    </div><canvas class="sd-qr-code-canvas"></canvas>
+    <!--v-if-->
+  </div>
+  <div class="sd-qr-code sd-qr-code-has-status" style="width: 160px; height: 160px; background-color: transparent;">
+    <div class="sd-qr-code-cover">
+      <div class="sd-qr-code-status">
+        <p class="sd-qr-code-scanned">二维码已扫码</p>
+      </div>
+    </div><canvas class="sd-qr-code-canvas"></canvas>
+    <!--v-if-->
+  </div>
+</div>
+`;
+
+exports[`<qr-code> demo: > render [type] correctly 1`] = `
+<div class="sd:flex sd:flex-wrap sd:gap-6">
+  <div class="sd:flex sd:flex-col sd:items-center sd:gap-3">
+    <div class="sd:text-sm" style="color: var(--sd-color-text-2);">Canvas</div>
+    <div class="sd-qr-code" style="width: 160px; height: 160px; background-color: transparent;">
+      <!--v-if--><canvas class="sd-qr-code-canvas"></canvas>
+      <!--v-if-->
+    </div>
+  </div>
+  <div class="sd:flex sd:flex-col sd:items-center sd:gap-3">
+    <div class="sd:text-sm" style="color: var(--sd-color-text-2);">SVG</div>
+    <div class="sd-qr-code" style="width: 160px; height: 160px; background-color: transparent;">
+      <!--v-if-->
+      <div class="sd-qr-code-svg"></div>
+      <!--v-if-->
+    </div>
+  </div>
+</div>
+`;

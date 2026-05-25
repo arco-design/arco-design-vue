@@ -1,0 +1,109 @@
+---
+title: 二维码 QrCode
+description: 将文本快速转换为二维码，支持状态覆盖、中心图标和 SVG 或 Canvas 两种渲染方式。
+---
+
+import DemoBlock from "../../../../components/docs/DemoBlock.astro";
+import QrCodeBasicDemo from "../../../../components/generated/qr-code/basic.vue";
+import qrCodeBasicSource from "../../../../components/generated/qr-code/basic.vue?raw";
+import QrCodeTypeDemo from "../../../../components/generated/qr-code/type.vue";
+import qrCodeTypeSource from "../../../../components/generated/qr-code/type.vue?raw";
+import QrCodeIconDemo from "../../../../components/generated/qr-code/icon.vue";
+import qrCodeIconSource from "../../../../components/generated/qr-code/icon.vue?raw";
+import QrCodeStatusDemo from "../../../../components/generated/qr-code/status.vue";
+import qrCodeStatusSource from "../../../../components/generated/qr-code/status.vue?raw";
+import QrCodeCustomStatusDemo from "../../../../components/generated/qr-code/custom-status.vue";
+import qrCodeCustomStatusSource from "../../../../components/generated/qr-code/custom-status.vue?raw";
+
+### 基本用法
+
+输入文本后渲染二维码。
+
+<DemoBlock source={qrCodeBasicSource} mainFile="src/qr-code-basic.vue">
+
+<QrCodeBasicDemo client:only="vue" />
+
+</DemoBlock>
+
+### 渲染类型
+
+支持 `canvas` 与 `svg` 两种渲染方式，便于按场景选择。
+
+<DemoBlock source={qrCodeTypeSource} mainFile="src/qr-code-type.vue">
+
+<QrCodeTypeDemo client:only="vue" />
+
+</DemoBlock>
+
+### 中心图标
+
+通过 `icon` 与 `icon-size` 在二维码中心展示图标。
+
+<DemoBlock source={qrCodeIconSource} mainFile="src/qr-code-icon.vue">
+
+<QrCodeIconDemo client:only="vue" />
+
+</DemoBlock>
+
+### 状态覆盖层
+
+通过 `status` 控制加载中、过期、已扫码等状态，过期态可通过 `refresh` 事件触发重新获取。
+
+<DemoBlock source={qrCodeStatusSource} mainFile="src/qr-code-status.vue">
+
+<QrCodeStatusDemo client:only="vue" />
+
+</DemoBlock>
+
+### 自定义状态渲染
+
+使用 `status` 插槽覆盖默认状态内容。
+
+<DemoBlock source={qrCodeCustomStatusSource} mainFile="src/qr-code-custom-status.vue">
+
+<QrCodeCustomStatusDemo client:only="vue" />
+
+</DemoBlock>
+
+## API
+
+### `<qr-code>` Props
+
+| 参数名        | 描述                     | 类型                                              |      默认值      |
+| ------------- | ------------------------ | ------------------------------------------------- | :--------------: |
+| value         | 扫描后的文本             | `string \| string[]`                              |       `-`        |
+| type          | 渲染类型                 | `'canvas' \| 'svg'`                               |    `'canvas'`    |
+| icon          | 中心图标地址             | `string`                                          |       `''`       |
+| icon-alt      | 中心图标替代文本         | `string`                                          | `'qr-code-icon'` |
+| size          | 二维码尺寸               | `number`                                          |      `160`       |
+| icon-size     | 中心图标尺寸             | `number \| { width: number; height: number }`     |       `40`       |
+| color         | 二维码前景色             | `string`                                          |   `'#1D2129'`    |
+| bg-color      | 二维码背景色             | `string`                                          | `'transparent'`  |
+| bordered      | 是否显示边框             | `boolean`                                         |      `true`      |
+| error-level   | 二维码纠错等级           | `'L' \| 'M' \| 'Q' \| 'H'`                        |      `'M'`       |
+| boost-level   | 是否启用增强纠错         | `boolean`                                         |      `true`      |
+| margin-size   | 安静区大小，单位为模块数 | `number`                                          |       `0`        |
+| status        | 二维码状态               | `'active' \| 'expired' \| 'loading' \| 'scanned'` |    `'active'`    |
+| status-render | 自定义状态渲染函数       | `(info: StatusRenderInfo) => VNodeChild`          |       `-`        |
+
+### `<qr-code>` Events
+
+| 事件名  | 描述               | 参数 |
+| ------- | ------------------ | ---- |
+| refresh | 点击刷新按钮时触发 | `-`  |
+
+### `<qr-code>` Slots
+
+| 插槽名 | 描述             | 参数                                                                       |
+| ------ | ---------------- | -------------------------------------------------------------------------- |
+| icon   | 自定义中心图标   | `-`                                                                        |
+| status | 自定义状态覆盖层 | `status: 'expired' \| 'loading' \| 'scanned'`<br />`onRefresh: () => void` |
+
+### `StatusRenderInfo`
+
+```ts
+type StatusRenderInfo = {
+  status: "expired" | "loading" | "scanned";
+  onRefresh: () => void;
+};
+```

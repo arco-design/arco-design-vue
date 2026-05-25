@@ -92,6 +92,7 @@ declare module 'vue' {
     SdPopconfirm: SDVue['Popconfirm'];
     SdPopover: SDVue['Popover'];
     SdProgress: SDVue['Progress'];
+    SdQrCode: SDVue['QrCode'];
     SdRadio: SDVue['Radio'];
     SdRadioGroup: SDVue['RadioGroup'];
     SdRate: SDVue['Rate'];

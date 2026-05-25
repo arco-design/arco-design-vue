@@ -1,0 +1,111 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+@use '@components/qr-code/style/token.scss' as *;
+
+$qr-code-prefix-cls: string.unquote('#{theme.$prefix}-qr-code');
+
+.#{$qr-code-prefix-cls} {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: $qr-code-padding;
+  overflow: hidden;
+  background-color: $qr-code-color-bg;
+  border: theme.$border-1 theme.$border-solid $qr-code-color-border;
+  border-radius: $qr-code-border-radius;
+
+  &-borderless {
+    padding: 0;
+    border-color: transparent;
+  }
+
+  &-canvas,
+  &-svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &-svg {
+    line-height: 0;
+
+    svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: $qr-code-icon-padding;
+    background-color: $qr-code-color-bg;
+    border-radius: $qr-code-border-radius;
+    transform: translate(-50%, -50%);
+
+    img {
+      display: block;
+    }
+  }
+
+  &-cover {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: $qr-code-color-mask-bg;
+  }
+
+  &-status {
+    display: inline-flex;
+    flex-direction: column;
+    gap: $qr-code-status-gap;
+    align-items: center;
+    color: $qr-code-color-text;
+    font-size: $qr-code-font-size;
+    line-height: theme.$line-height-base;
+  }
+
+  &-expired,
+  &-scanned {
+    margin: 0;
+    font-weight: $qr-code-font-weight;
+  }
+
+  &-expired {
+    color: $qr-code-color-expired;
+  }
+
+  &-scanned {
+    color: $qr-code-color-scanned;
+  }
+
+  &-refresh-btn {
+    padding: 0;
+    color: $qr-code-color-refresh;
+    font-size: $qr-code-font-size-secondary;
+    line-height: theme.$line-height-base;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  &-refresh-btn:hover {
+    color: theme.$color-primary-7;
+  }
+
+  &-refresh-btn:focus-visible {
+    outline: theme.$border-1 theme.$border-solid theme.$color-primary-6;
+    outline-offset: theme.$spacing-2;
+  }
+}

@@ -1,0 +1,36 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+
+@use 'sass:string';
+@use '@style/theme/index.scss' as *;
+
+$qr-code-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-border-2'));
+
+$qr-code-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2'));
+
+$qr-code-color-mask-bg: rgb(255 255 255 / 88%);
+
+$qr-code-color-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+
+$qr-code-color-text-secondary: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+
+$qr-code-color-refresh: $color-primary-6;
+
+$qr-code-color-scanned: $color-success-6;
+
+$qr-code-color-expired: $color-danger-6;
+
+$qr-code-border-radius: global.$radius-medium;
+
+$qr-code-padding: global.$spacing-5;
+
+$qr-code-icon-padding: global.$spacing-3;
+
+$qr-code-status-gap: global.$spacing-4;
+
+$qr-code-font-size: global.$font-size-body-3;
+
+$qr-code-font-size-secondary: global.$font-size-body-2;
+
+$qr-code-font-weight: global.$font-weight-500;
