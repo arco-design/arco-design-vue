@@ -30,7 +30,7 @@ describe('Copy', () => {
 
     const wrapper = mount(Copy, {
       props: {
-        content: 'https://sd.design',
+        content: 'https://sd-design.js.org',
       },
       slots: {
         default: '复制链接',
@@ -40,9 +40,9 @@ describe('Copy', () => {
     await wrapper.find('a').trigger('click');
     await nextTick();
 
-    expect(clipboardSpy).toHaveBeenCalledWith('https://sd.design');
+    expect(clipboardSpy).toHaveBeenCalledWith('https://sd-design.js.org');
     expect(messageSpy).toHaveBeenCalledWith('复制成功');
-    expect(wrapper.emitted('copy')).toEqual([['https://sd.design']]);
+    expect(wrapper.emitted('copy')).toEqual([['https://sd-design.js.org']]);
   });
 
   test('should not copy when trigger component is disabled', async () => {

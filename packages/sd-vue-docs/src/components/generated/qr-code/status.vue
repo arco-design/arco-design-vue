@@ -1,6 +1,6 @@
 <template>
   <div class="sd:flex sd:flex-wrap sd:gap-6">
-    <QrCode :value="value" status="loading" />
+    <QrCode :value="value" status="loading" :spin-props="{ size: 10, dot: true }" />
     <QrCode :value="value" status="expired" @refresh="onRefresh" />
     <QrCode :value="value" status="scanned" />
   </div>

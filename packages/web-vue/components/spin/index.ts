@@ -15,5 +15,6 @@ const Spin = Object.assign(_Spin, {
 });
 
 export type SpinInstance = InstanceType<typeof _Spin>;
+export type SpinProps = SpinInstance['$props'];
 
 export default Spin;

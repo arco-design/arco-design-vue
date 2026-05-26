@@ -15,5 +15,15 @@ const QrCode = Object.assign(_QrCode, {
 });
 
 export type QrCodeInstance = InstanceType<typeof _QrCode>;
+export type {
+  QrCodeErrorLevel,
+  QrCodeIconSize,
+  QrCodeInactiveStatus,
+  QrCodeStatusProps,
+  QrCodeStatusRenderInfo,
+  QrCodeStatusType,
+  QrCodeType,
+  QrCodeValue,
+} from './types';
 
 export default QrCode;

@@ -3,7 +3,12 @@
     <div v-if="status !== 'active'" :class="`${prefixCls}-cover`">
       <RenderNode v-if="customStatusNode" :node="customStatusNode" />
       <slot v-else name="status" :status="status" :on-refresh="handleRefresh">
-        <qr-code-status :prefix-cls="prefixCls" :status="status" @refresh="handleRefresh" />
+        <qr-code-status
+          :prefix-cls="prefixCls"
+          :status="status"
+          :spin-props="spinProps"
+          @refresh="handleRefresh"
+        />
       </slot>
     </div>
 
@@ -24,20 +29,19 @@
 
   import QRCode from 'qrcode';
 
+  import type { SpinProps } from '../spin';
+  import type {
+    QrCodeErrorLevel,
+    QrCodeIconSize,
+    QrCodeInactiveStatus,
+    QrCodeStatusRenderInfo,
+    QrCodeStatusType,
+    QrCodeType,
+    QrCodeValue,
+  } from './types';
+
   import { getPrefixCls } from '../_utils/global-config';
   import QrCodeStatus from './qr-code-status.vue';
-
-  type QrCodeType = 'canvas' | 'svg';
-  type QrCodeErrorLevel = 'L' | 'M' | 'Q' | 'H';
-  type QrCodeStatusType = 'active' | 'expired' | 'loading' | 'scanned';
-  type QrCodeInactiveStatus = Exclude<QrCodeStatusType, 'active'>;
-  type QrCodeIconSize = number | { width: number; height: number };
-  type QrCodeValue = string | string[];
-
-  type StatusRenderInfo = {
-    status: QrCodeInactiveStatus;
-    onRefresh: () => void;
-  };
 
   const RenderNode = defineComponent({
     name: 'RenderNode',
@@ -167,7 +171,15 @@
      * @en Custom status renderer
      */
     statusRender: {
-      type: Function as PropType<(info: StatusRenderInfo) => VNodeChild>,
+      type: Function as PropType<(info: QrCodeStatusRenderInfo) => VNodeChild>,
+      default: undefined,
+    },
+    /**
+     * @zh 加载态 spin 参数
+     * @en Spin props for loading status
+     */
+    spinProps: {
+      type: Object as PropType<SpinProps>,
       default: undefined,
     },
   });
@@ -190,7 +202,7 @@
      * @zh 自定义状态覆盖层
      * @en Custom status overlay
      */
-    status?: (props: StatusRenderInfo) => VNodeChild;
+    status?: (props: QrCodeStatusRenderInfo) => VNodeChild;
   }>();
 
   const prefixCls = getPrefixCls('qr-code');

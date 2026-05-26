@@ -5,7 +5,7 @@ exports[`<qr-code> demo: > render [basic] correctly 1`] = `
   <div class="sd-qr-code" style="width: 160px; height: 160px; background-color: transparent;">
     <!--v-if--><canvas class="sd-qr-code-canvas"></canvas>
     <!--v-if-->
-  </div><span class="sd-input-wrapper sd:w-80"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="请输入二维码内容" value="https://sd.design/vue"><!----><!----></span>
+  </div><span class="sd-input-wrapper sd:w-80"><!----><input class="sd-input sd-input-size-medium" type="text" placeholder="请输入二维码内容" value="https://sd-design.js.org"><!----><!----></span>
 </div>
 `;
 
@@ -44,7 +44,7 @@ exports[`<qr-code> demo: > render [custom-status] correctly 1`] = `
 exports[`<qr-code> demo: > render [icon] correctly 1`] = `
 <div class="sd-qr-code" style="width: 160px; height: 160px; background-color: transparent;">
   <!--v-if--><canvas class="sd-qr-code-canvas"></canvas>
-  <div class="sd-qr-code-icon"><img src="https://sd.design/favicon.ico" alt="qr-code-icon" style="width: 40px; height: 40px;"></div>
+  <div class="sd-qr-code-icon"><img src="https://sd-design.js.org/logo-icon.png" alt="qr-code-icon" style="width: 40px; height: 40px;"></div>
 </div>
 `;
 
@@ -54,13 +54,13 @@ exports[`<qr-code> demo: > render [status] correctly 1`] = `
     <div class="sd-qr-code-cover">
       <div class="sd-qr-code-status">
         <div class="sd-spin">
-          <div class="sd-spin-icon" style="font-size: 20px;">
-            <div class="sd-dot-loading" style="width: 140px; height: 20px;">
-              <div class="sd-dot-loading-item" style="width: 20px; height: 20px;"></div>
-              <div class="sd-dot-loading-item" style="width: 20px; height: 20px;"></div>
-              <div class="sd-dot-loading-item" style="width: 20px; height: 20px;"></div>
-              <div class="sd-dot-loading-item" style="width: 20px; height: 20px;"></div>
-              <div class="sd-dot-loading-item" style="width: 20px; height: 20px;"></div>
+          <div class="sd-spin-icon" style="font-size: 10px;">
+            <div class="sd-dot-loading" style="width: 70px; height: 10px;">
+              <div class="sd-dot-loading-item" style="width: 10px; height: 10px;"></div>
+              <div class="sd-dot-loading-item" style="width: 10px; height: 10px;"></div>
+              <div class="sd-dot-loading-item" style="width: 10px; height: 10px;"></div>
+              <div class="sd-dot-loading-item" style="width: 10px; height: 10px;"></div>
+              <div class="sd-dot-loading-item" style="width: 10px; height: 10px;"></div>
             </div>
           </div>
           <!---->
