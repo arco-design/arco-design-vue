@@ -2001,7 +2001,8 @@ export default defineComponent({
               ))}
             {row.map((column, index) => {
               const resizable =
-                props.columnResizable &&
+                (props.columnResizable || 
+                  column.resizable) &&
                 Boolean(column.dataIndex) &&
                 index < row.length - 1;
 
