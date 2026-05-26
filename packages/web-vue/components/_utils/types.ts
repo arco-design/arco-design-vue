@@ -23,7 +23,7 @@ type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
 export type BaseType = string | number;
 export type UnionType = BaseType | Record<string, any>;
 export type Data = Record<string, any>;
-export type RenderContent = string | RenderFunction;
+export type RenderContent = string | RenderFunction | (() => JSX.Element);
 
 export type EmitFn<T> = (event: T, ...args: any[]) => void;
 
