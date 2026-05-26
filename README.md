@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-  <img height="90" src="https://raw.githubusercontent.com/liunnn1994/sd-design/refs/heads/main/packages/sd-vue-docs/public/logo-text.png">
+  <img height="40" src="https://raw.githubusercontent.com/liunnn1994/sd-design/refs/heads/main/packages/sd-vue-docs/public/logo-text.png">
 </div>
 
 <div align="center">
