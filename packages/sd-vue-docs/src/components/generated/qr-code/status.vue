@@ -9,7 +9,7 @@
 <script setup>
   import { Message, QrCode } from '@sdata/web-vue';
 
-  const value = 'https://sd.design/vue';
+  const value = 'https://sd-design.js.org';
 
   const onRefresh = () => {
     Message.info('已触发刷新事件');

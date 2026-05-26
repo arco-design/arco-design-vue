@@ -10,5 +10,5 @@
 
   import { Input, QrCode } from '@sdata/web-vue';
 
-  const text = ref('https://sd.design/vue');
+  const text = ref('https://sd-design.js.org');
 </script>

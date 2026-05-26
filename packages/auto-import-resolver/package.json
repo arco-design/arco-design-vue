@@ -2,7 +2,7 @@
   "name": "@sdata/web-vue-auto-import-resolver",
   "version": "1.17.0",
   "description": "Auto import resolver for @sdata/web-vue and unplugin-vue-components.",
-  "homepage": "https://sd.design/vue",
+  "homepage": "https://sd-design.js.org",
   "bugs": {
     "url": "https://github.com/liunnn1994/sd-design/issues"
   },

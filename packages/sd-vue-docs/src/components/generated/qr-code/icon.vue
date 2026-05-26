@@ -1,5 +1,9 @@
 <template>
-  <QrCode :value="'https://sd.design/vue'" error-level="H" icon="https://sd.design/favicon.ico" />
+  <QrCode
+    :value="'https://sd-design.js.org'"
+    error-level="H"
+    icon="https://sd-design.js.org/logo-icon.png"
+  />
 </template>
 
 <script setup>

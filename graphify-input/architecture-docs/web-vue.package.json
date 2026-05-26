@@ -2,27 +2,16 @@
   "name": "@sdata/web-vue",
   "version": "1.7.0",
   "description": "SD Design Vue: A Vue.js 3 UI Library",
-  "keywords": [
-    "sd",
-    "vue"
-  ],
-  "homepage": "https://sd.design/vue",
+  "keywords": ["sd", "vue"],
+  "homepage": "https://sd-design.js.org",
   "license": "AGPL-3.0-only",
   "author": "SData FE Team",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/liunnn1994/sd-design.git"
   },
-  "files": [
-    "es",
-    "dist",
-    "json"
-  ],
-  "sideEffects": [
-    "dist/*",
-    "es/**/style/*",
-    "*.scss"
-  ],
+  "files": ["es", "dist", "json"],
+  "sideEffects": ["dist/*", "es/**/style/*", "*.scss"],
   "module": "es/index.js",
   "types": "es/index.d.ts",
   "unpkg": "dist/sd-vue.min.js",
