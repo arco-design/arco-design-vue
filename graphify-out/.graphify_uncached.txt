@@ -1,2 +1,4 @@
 D:\work\sd-design\graphify-input\architecture-docs\ARCHITECTURE.md
 D:\work\sd-design\graphify-input\architecture-docs\README.md
+D:\work\sd-design\graphify-input\architecture-docs\sd-vue-docs-package.md
+D:\work\sd-design\graphify-input\architecture-docs\web-vue-package.md
