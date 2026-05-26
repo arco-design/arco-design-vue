@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/liunnn1994/sd-design/compare/v1.19.0...v1.20.0) (2026-05-26)
+
+### Features
+
+- 🆕 二维码组件 ([fa93361](https://github.com/liunnn1994/sd-design/commit/fa93361be00b16f7d028b9f2ddc337b7059681f4))
+- 🆕 更新域名 ([e0d4b6c](https://github.com/liunnn1994/sd-design/commit/e0d4b6c0a7b135760414764448726278447fd172))
+
 # [1.17.0](https://github.com/liunnn1994/sd-design/compare/v1.16.0...v1.17.0) (2026-05-21)
 
 ### Bug Fixes
