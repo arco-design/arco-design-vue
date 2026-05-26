@@ -24,7 +24,7 @@ description: Used to replace the browser default scroll bar style.
 
 |Event Name|Description|Parameters|
 |---|---|---|
-|scroll|Triggered when scroll|-|
+|scroll|Triggered when scroll|ev: Event|
 ### `<scrollbar>` Methods
 
 |Method|Description|Parameters|Return|version|
