@@ -36,6 +36,19 @@ describe('Image', () => {
     expect(wrapper.find('.arco-image-error').exists()).toBe(true);
   });
 
+  test('image Props img-class should work', async () => {
+    const wrapper = await mount(Image, {
+      props: {
+        src: imgSrc,
+        imgClass: 'img-class-test',
+      },
+    });
+    await wrapper.vm.onImgLoaded();
+    expect(wrapper.find('img').attributes('class').split(' ')).toContainEqual(
+      'img-class-test'
+    );
+  });
+
   test('Footer should work', async () => {
     const wrapper = await mount(Image, {
       props: {
