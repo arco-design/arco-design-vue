@@ -88,3 +88,7 @@ Use `ts7` by default, and use `type-fest` whenever possible for type combination
 ## style
 
 Using scss for styles, and follow the existing style conventions in the codebase. Do not introduce new patterns or libraries unless explicitly required.
+
+## Update Notes
+
+If you make changes to the project architecture, be sure to update README.md, QUICK-START.md, and ARCHITECTURE.md accordingly.
