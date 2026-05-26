@@ -10,21 +10,17 @@
 
 <div align="center">
 
-基于 [Arco Design](https://arco.design/) 的 Vue UI 组件库。
-
 </div>
 
 # 特性
 
 ## 全面
 
-60 多个开箱即用的高质量组件, 可以覆盖绝大部份的业务场景。
+80+ 多个开箱即用的高质量组件, 可以覆盖绝大部份的业务场景。
 
 ## 主题配置
 
-海量的样式 tokens, 支持全局以及组件级别的主题配置。有以下 2 种方式可以定制主题：
-
-- [风格配置平台](https://arco.design/themes) - 推荐!
+海量的样式 tokens, 支持全局以及组件级别的主题配置。
 
 ## TypeScript 友好
 

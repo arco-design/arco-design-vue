@@ -3,9 +3,9 @@
 exports[`<carousel> demo: > render [auto] correctly 1`] = `
 <div class="sd-carousel sd-carousel-indicator-position-bottom sd:w-150 sd:h-60">
   <div class="sd-carousel-slide sd-carousel-horizontal">
-    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp" class="sd:w-full"></div>
-    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp" class="sd:w-full"></div>
-    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp" class="sd:w-full"></div>
+    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://picsum.photos/1200/480" class="sd:w-full"></div>
+    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://picsum.photos/1200/480" class="sd:w-full"></div>
+    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://picsum.photos/1200/480" class="sd:w-full"></div>
   </div>
   <!---->
   <!---->
@@ -15,9 +15,9 @@ exports[`<carousel> demo: > render [auto] correctly 1`] = `
 exports[`<carousel> demo: > render [basic] correctly 1`] = `
 <div class="sd-carousel sd-carousel-indicator-position-bottom sd:w-150 sd:h-60">
   <div class="sd-carousel-slide sd-carousel-horizontal">
-    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp" class="sd:w-full"></div>
-    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp" class="sd:w-full"></div>
-    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp" class="sd:w-full"></div>
+    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://picsum.photos/1200/480" class="sd:w-full"></div>
+    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://picsum.photos/1200/480" class="sd:w-full"></div>
+    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://picsum.photos/1200/480" class="sd:w-full"></div>
   </div>
   <!---->
   <!---->
@@ -27,10 +27,10 @@ exports[`<carousel> demo: > render [basic] correctly 1`] = `
 exports[`<carousel> demo: > render [card] correctly 1`] = `
 <div class="sd-carousel sd-carousel-indicator-position-outer sd:w-full sd:h-60">
   <div class="sd-carousel-card sd-carousel-horizontal">
-    <div aria-hidden="true" class="sd:w-[60%]" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp" class="sd:w-full"></div>
-    <div aria-hidden="true" class="sd:w-[60%]" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp" class="sd:w-full"></div>
-    <div aria-hidden="true" class="sd:w-[60%]" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp" class="sd:w-full"></div>
-    <div aria-hidden="true" class="sd:w-[60%]" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/24e0dd27418d2291b65db1b21aa62254.png~tplv-uwbnlip3yd-webp.webp" class="sd:w-full"></div>
+    <div aria-hidden="true" class="sd:w-[60%]" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://picsum.photos/1200/480" class="sd:w-full"></div>
+    <div aria-hidden="true" class="sd:w-[60%]" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://picsum.photos/1200/480" class="sd:w-full"></div>
+    <div aria-hidden="true" class="sd:w-[60%]" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://picsum.photos/1200/480" class="sd:w-full"></div>
+    <div aria-hidden="true" class="sd:w-[60%]" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://picsum.photos/1200/480" class="sd:w-full"></div>
   </div>
   <!---->
   <!---->
@@ -40,9 +40,9 @@ exports[`<carousel> demo: > render [card] correctly 1`] = `
 exports[`<carousel> demo: > render [direction] correctly 1`] = `
 <div class="sd-carousel sd-carousel-indicator-position-right sd:w-150 sd:h-60">
   <div class="sd-carousel-slide sd-carousel-vertical">
-    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp" class="sd:w-full"></div>
-    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp" class="sd:w-full"></div>
-    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp" class="sd:w-full"></div>
+    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://picsum.photos/1200/480" class="sd:w-full"></div>
+    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://picsum.photos/1200/480" class="sd:w-full"></div>
+    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://picsum.photos/1200/480" class="sd:w-full"></div>
   </div>
   <!---->
   <!---->
@@ -52,9 +52,9 @@ exports[`<carousel> demo: > render [direction] correctly 1`] = `
 exports[`<carousel> demo: > render [fade] correctly 1`] = `
 <div class="sd-carousel sd-carousel-indicator-position-bottom sd:w-150 sd:h-60">
   <div class="sd-carousel-fade sd-carousel-horizontal">
-    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp" class="sd:w-full"></div>
-    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp" class="sd:w-full"></div>
-    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp" class="sd:w-full"></div>
+    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://picsum.photos/1200/480" class="sd:w-full"></div>
+    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://picsum.photos/1200/480" class="sd:w-full"></div>
+    <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://picsum.photos/1200/480" class="sd:w-full"></div>
   </div>
   <!---->
   <!---->
@@ -71,9 +71,9 @@ exports[`<carousel> demo: > render [indicator] correctly 1`] = `
   <div class="sd-space-item">
     <div class="sd-carousel sd-carousel-indicator-position-bottom sd:w-150 sd:h-60">
       <div class="sd-carousel-slide sd-carousel-horizontal">
-        <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp" alt="carousel" class="sd:w-full"></div>
-        <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp" alt="carousel" class="sd:w-full"></div>
-        <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp" alt="carousel" class="sd:w-full"></div>
+        <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://picsum.photos/1200/480" alt="carousel" class="sd:w-full"></div>
+        <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://picsum.photos/1200/480" alt="carousel" class="sd:w-full"></div>
+        <div aria-hidden="true" class="" style="transition-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); transition-duration: 500ms; animation-timing-function: cubic-bezier(0.34, 0.69, 0.1, 1); animation-duration: 500ms;"><img src="https://picsum.photos/1200/480" alt="carousel" class="sd:w-full"></div>
       </div>
       <!---->
       <!---->

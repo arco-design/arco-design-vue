@@ -79,6 +79,7 @@ export default defineConfig({
     starlight({
       title: 'SD Design',
       description: 'SD Design 组件文档站。',
+      favicon: '/favicon.ico',
       defaultLocale: 'root',
       locales: {
         root: {
@@ -95,7 +96,42 @@ export default defineConfig({
       ],
       sidebar: docsSidebar,
       customCss: ['./src/styles/site.css'],
-      head: [{ tag: 'script', content: themeBridgeScript }],
+      head: [
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'apple-touch-icon',
+            href: '/apple-touch-icon.png',
+            sizes: '180x180',
+          },
+        },
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'icon',
+            type: 'image/png',
+            sizes: '32x32',
+            href: '/favicon-32x32.png',
+          },
+        },
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'icon',
+            type: 'image/png',
+            sizes: '16x16',
+            href: '/favicon-16x16.png',
+          },
+        },
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'manifest',
+            href: '/site.webmanifest',
+          },
+        },
+        { tag: 'script', content: themeBridgeScript },
+      ],
       disable404Route: true,
       lastUpdated: true,
       tableOfContents: {

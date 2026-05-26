@@ -15,15 +15,10 @@
   <sd-image
     width="200"
     height="200"
-    :src="`https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp?timestamp=${timestamp}`"
+    :src="`https://picsum.photos/1000/1000?timestamp=${timestamp}`"
   >
     <template #loader>
-      <img
-        alt=""
-        width="200"
-        src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp"
-        class="sd:blur-[5px]"
-      />
+      <img alt="" width="200" src="https://picsum.photos/1000/1000" class="sd:blur-[5px]" />
     </template>
   </sd-image>
 </template>

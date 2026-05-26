@@ -3,7 +3,7 @@
 exports[`<comment> demo: > render [align] correctly 1`] = `
 <div data-v-7291f90d="" class="sd-comment">
   <div class="sd-comment-avatar">
-    <div data-v-7291f90d="" class="sd-avatar sd-avatar-circle"><span class="sd-avatar-text"><img data-v-7291f90d="" alt="avatar" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"></span>
+    <div data-v-7291f90d="" class="sd-avatar sd-avatar-circle"><span class="sd-avatar-text"><img data-v-7291f90d="" alt="avatar" src="https://picsum.photos/1000/1000"></span>
       <!--v-if-->
     </div>
   </div>
@@ -23,7 +23,7 @@ exports[`<comment> demo: > render [align] correctly 1`] = `
 exports[`<comment> demo: > render [basic] correctly 1`] = `
 <div data-v-dd814e99="" class="sd-comment">
   <div class="sd-comment-avatar">
-    <div data-v-dd814e99="" class="sd-avatar sd-avatar-circle"><span class="sd-avatar-text"><img data-v-dd814e99="" alt="avatar" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"></span>
+    <div data-v-dd814e99="" class="sd-avatar sd-avatar-circle"><span class="sd-avatar-text"><img data-v-dd814e99="" alt="avatar" src="https://picsum.photos/1000/1000"></span>
       <!--v-if-->
     </div>
   </div>
@@ -40,7 +40,7 @@ exports[`<comment> demo: > render [basic] correctly 1`] = `
 
 exports[`<comment> demo: > render [editor] correctly 1`] = `
 <div data-v-21899ee2="" class="sd-comment">
-  <div class="sd-comment-avatar"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp" alt="comment-avatar"></div>
+  <div class="sd-comment-avatar"><img src="https://picsum.photos/1000/1000" alt="comment-avatar"></div>
   <div class="sd-comment-inner">
     <div class="sd-comment-inner-content">
       <div class="sd-comment-title sd-comment-title-align-right"><span class="sd-comment-author"><span>Balzac</span></span><span class="sd-comment-datetime"><span>1 hour</span></span></div>
@@ -52,7 +52,7 @@ exports[`<comment> demo: > render [editor] correctly 1`] = `
     </div>
     <div class="sd-comment-inner-comment">
       <div data-v-21899ee2="" class="sd-comment">
-        <div class="sd-comment-avatar"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp" alt="comment-avatar"></div>
+        <div class="sd-comment-avatar"><img src="https://picsum.photos/1000/1000" alt="comment-avatar"></div>
         <div class="sd-comment-inner">
           <div class="sd-comment-inner-content">
             <!--v-if-->
@@ -73,7 +73,7 @@ exports[`<comment> demo: > render [editor] correctly 1`] = `
 
 exports[`<comment> demo: > render [nest] correctly 1`] = `
 <div data-v-da1a0152="" class="sd-comment">
-  <div class="sd-comment-avatar"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp" alt="comment-avatar"></div>
+  <div class="sd-comment-avatar"><img src="https://picsum.photos/1000/1000" alt="comment-avatar"></div>
   <div class="sd-comment-inner">
     <div class="sd-comment-inner-content">
       <div class="sd-comment-title sd-comment-title-align-left"><span class="sd-comment-author"><span>Socrates</span></span><span class="sd-comment-datetime"><span>1 hour</span></span></div>
@@ -82,7 +82,7 @@ exports[`<comment> demo: > render [nest] correctly 1`] = `
     </div>
     <div class="sd-comment-inner-comment">
       <div data-v-da1a0152="" class="sd-comment">
-        <div class="sd-comment-avatar"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/9eeb1800d9b78349b24682c3518ac4a3.png~tplv-uwbnlip3yd-webp.webp" alt="comment-avatar"></div>
+        <div class="sd-comment-avatar"><img src="https://picsum.photos/1000/1000" alt="comment-avatar"></div>
         <div class="sd-comment-inner">
           <div class="sd-comment-inner-content">
             <div class="sd-comment-title sd-comment-title-align-left"><span class="sd-comment-author"><span>Balzac</span></span><span class="sd-comment-datetime"><span>1 hour</span></span></div>
@@ -91,7 +91,7 @@ exports[`<comment> demo: > render [nest] correctly 1`] = `
           </div>
           <div class="sd-comment-inner-comment">
             <div data-v-da1a0152="" class="sd-comment">
-              <div class="sd-comment-avatar"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/8361eeb82904210b4f55fab888fe8416.png~tplv-uwbnlip3yd-webp.webp" alt="comment-avatar"></div>
+              <div class="sd-comment-avatar"><img src="https://picsum.photos/1000/1000" alt="comment-avatar"></div>
               <div class="sd-comment-inner">
                 <div class="sd-comment-inner-content">
                   <div class="sd-comment-title sd-comment-title-align-left"><span class="sd-comment-author"><span>Austen</span></span><span class="sd-comment-datetime"><span>1 hour</span></span></div>
@@ -102,7 +102,7 @@ exports[`<comment> demo: > render [nest] correctly 1`] = `
               </div>
             </div>
             <div data-v-da1a0152="" class="sd-comment">
-              <div class="sd-comment-avatar"><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp" alt="comment-avatar"></div>
+              <div class="sd-comment-avatar"><img src="https://picsum.photos/1000/1000" alt="comment-avatar"></div>
               <div class="sd-comment-inner">
                 <div class="sd-comment-inner-content">
                   <div class="sd-comment-title sd-comment-title-align-left"><span class="sd-comment-author"><span>Plato</span></span><span class="sd-comment-datetime"><span>1 hour</span></span></div>

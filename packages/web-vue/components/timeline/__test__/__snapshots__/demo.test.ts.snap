@@ -80,8 +80,8 @@ exports[`<timeline> demo: > render [direction] correctly 1`] = `
       </div>
       <div class="sd-timeline-item-content-wrapper">
         <div class="sd-timeline-item-content">
-          <div class="sd-row sd-row-align-start sd-row-justify-start sd:inline-flex sd:items-center"><img width="40" class="sd:mr-4 sd:mb-3" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/b5d834b83708a269b4562924436eac48.png~tplv-uwbnlip3yd-png.png">
-            <div class="sd:mb-3"> Toutiao <div class="sd:text-xs sd:text-[#4e5969]"> Founded in 2012 </div>
+          <div class="sd-row sd-row-align-start sd-row-justify-start sd:inline-flex sd:items-center"><img width="40" class="sd:mr-4 sd:mb-3" src="https://picsum.photos/240/240">
+            <div class="sd:mb-3"> Foo <div class="sd:text-xs sd:text-[#4e5969]"> Founded in 2012 </div>
             </div>
           </div>
         </div>
@@ -98,8 +98,8 @@ exports[`<timeline> demo: > render [direction] correctly 1`] = `
       </div>
       <div class="sd-timeline-item-content-wrapper">
         <div class="sd-timeline-item-content">
-          <div class="sd-row sd-row-align-start sd-row-justify-start sd:inline-flex sd:items-center"><img width="40" class="sd:mr-4 sd:mb-3" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/385ed540c359ec8a9b9ce2b5fe89b098.png~tplv-uwbnlip3yd-png.png">
-            <div class="sd:mb-3"> Xigua Video <div class="sd:text-xs sd:text-[#4e5969]"> Founded in 2017 </div>
+          <div class="sd-row sd-row-align-start sd-row-justify-start sd:inline-flex sd:items-center"><img width="40" class="sd:mr-4 sd:mb-3" src="https://picsum.photos/240/240">
+            <div class="sd:mb-3"> Bar <div class="sd:text-xs sd:text-[#4e5969]"> Founded in 2017 </div>
             </div>
           </div>
         </div>
@@ -116,8 +116,8 @@ exports[`<timeline> demo: > render [direction] correctly 1`] = `
       </div>
       <div class="sd-timeline-item-content-wrapper">
         <div class="sd-timeline-item-content">
-          <div class="sd-row sd-row-align-start sd-row-justify-start sd:inline-flex sd:items-center"><img width="40" class="sd:mr-4 sd:mb-3" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/385ed540c359ec8a9b9ce2b5fe89b098.png~tplv-uwbnlip3yd-png.png">
-            <div class="sd:mb-3"> Pipidance <div class="sd:text-xs sd:text-[#4e5969]"> Founded in 2018 </div>
+          <div class="sd-row sd-row-align-start sd-row-justify-start sd:inline-flex sd:items-center"><img width="40" class="sd:mr-4 sd:mb-3" src="https://picsum.photos/240/240">
+            <div class="sd:mb-3"> Baz <div class="sd:text-xs sd:text-[#4e5969]"> Founded in 2018 </div>
             </div>
           </div>
         </div>
@@ -605,8 +605,8 @@ exports[`<timeline> demo: > render [vertical] correctly 1`] = `
       </div>
       <div class="sd-timeline-item-content-wrapper">
         <div class="sd-timeline-item-content">
-          <div class="sd-row sd-row-align-start sd-row-justify-start sd:inline-flex sd:items-center"><img alt="" width="40" class="sd:mr-4 sd:mb-3" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/b5d834b83708a269b4562924436eac48.png~tplv-uwbnlip3yd-png.png">
-            <div class="sd:mb-3"> Toutiao <div class="sd:text-xs sd:text-[#4e5969]"> Founded in 2012 </div>
+          <div class="sd-row sd-row-align-start sd-row-justify-start sd:inline-flex sd:items-center"><img alt="" width="40" class="sd:mr-4 sd:mb-3" src="https://picsum.photos/240/240">
+            <div class="sd:mb-3"> Foo <div class="sd:text-xs sd:text-[#4e5969]"> Founded in 2012 </div>
             </div>
           </div>
         </div>
@@ -623,8 +623,8 @@ exports[`<timeline> demo: > render [vertical] correctly 1`] = `
       </div>
       <div class="sd-timeline-item-content-wrapper">
         <div class="sd-timeline-item-content">
-          <div class="sd-row sd-row-align-start sd-row-justify-start sd:inline-flex sd:items-center"><img alt="" width="40" class="sd:mr-4 sd:mb-3" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/385ed540c359ec8a9b9ce2b5fe89b098.png~tplv-uwbnlip3yd-png.png">
-            <div class="sd:mb-3"> Xigua Video <div class="sd:text-xs sd:text-[#4e5969]"> Founded in 2017 </div>
+          <div class="sd-row sd-row-align-start sd-row-justify-start sd:inline-flex sd:items-center"><img alt="" width="40" class="sd:mr-4 sd:mb-3" src="https://picsum.photos/240/240">
+            <div class="sd:mb-3"> Bar <div class="sd:text-xs sd:text-[#4e5969]"> Founded in 2017 </div>
             </div>
           </div>
         </div>
@@ -641,8 +641,8 @@ exports[`<timeline> demo: > render [vertical] correctly 1`] = `
       </div>
       <div class="sd-timeline-item-content-wrapper">
         <div class="sd-timeline-item-content">
-          <div class="sd-row sd-row-align-start sd-row-justify-start sd:inline-flex sd:items-center"><img alt="" width="40" class="sd:mr-4 sd:mb-3" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/385ed540c359ec8a9b9ce2b5fe89b098.png~tplv-uwbnlip3yd-png.png">
-            <div class="sd:mb-3"> Pipidance <div class="sd:text-xs sd:text-[#4e5969]"> Founded in 2018 </div>
+          <div class="sd-row sd-row-align-start sd-row-justify-start sd:inline-flex sd:items-center"><img alt="" width="40" class="sd:mr-4 sd:mb-3" src="https://picsum.photos/240/240">
+            <div class="sd:mb-3"> Baz <div class="sd:text-xs sd:text-[#4e5969]"> Founded in 2018 </div>
             </div>
           </div>
         </div>

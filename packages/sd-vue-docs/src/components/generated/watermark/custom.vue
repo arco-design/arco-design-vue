@@ -61,11 +61,7 @@
           developing a design.
         </sd-typography-paragraph>
       </sd-typography>
-      <img
-        alt="watermark demo"
-        class="sd:relative sd:z-[7]"
-        src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/24e0dd27418d2291b65db1b21aa62254.png~tplv-uwbnlip3yd-webp.webp"
-      />
+      <img alt="watermark demo" class="sd:relative sd:z-[7]" src="https://picsum.photos/1200/480" />
     </div>
   </sd-watermark>
 </template>

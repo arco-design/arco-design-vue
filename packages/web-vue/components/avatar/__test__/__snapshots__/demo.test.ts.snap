@@ -28,7 +28,7 @@ exports[`<avatar> demo: > render [basic] correctly 1`] = `
   </div>
   <!---->
   <div class="sd-space-item">
-    <div class="sd-avatar sd-avatar-circle"><span class="sd-avatar-text"><img alt="avatar" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"></span>
+    <div class="sd-avatar sd-avatar-circle"><span class="sd-avatar-text"><img alt="avatar" src="https://picsum.photos/1000/1000"></span>
       <!--v-if-->
     </div>
   </div>
@@ -137,7 +137,7 @@ exports[`<avatar> demo: > render [icon] correctly 1`] = `
   </div>
   <!---->
   <div class="sd-space-item">
-    <div class="sd-avatar sd-avatar-circle sd-avatar-with-trigger-icon"><span class="sd-avatar-text"><img alt="avatar" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"></span>
+    <div class="sd-avatar sd-avatar-circle sd-avatar-with-trigger-icon"><span class="sd-avatar-text"><img alt="avatar" src="https://picsum.photos/1000/1000"></span>
       <div class="sd-avatar-trigger-icon-mask"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-edit" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter">
           <path d="m30.48 19.038 5.733-5.734a1 1 0 0 0 0-1.414l-5.586-5.586a1 1 0 0 0-1.414 0l-5.734 5.734m7 7L15.763 33.754a1 1 0 0 1-.59.286l-6.048.708a1 1 0 0 1-1.113-1.069l.477-6.31a1 1 0 0 1 .29-.631l14.7-14.7m7 7-7-7M6 42h36"></path>
         </svg></div>
@@ -150,7 +150,7 @@ exports[`<avatar> demo: > render [image-url] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 24px; row-gap: 24px;">
   <!---->
   <div class="sd-space-item">
-    <div class="sd-avatar sd-avatar-circle"><span class="sd-avatar-image"><!--v-if--><div class="sd-avatar-image-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-loading" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path></svg></div><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp" alt="avatar"></span>
+    <div class="sd-avatar sd-avatar-circle"><span class="sd-avatar-image"><!--v-if--><div class="sd-avatar-image-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-loading" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path></svg></div><img src="https://picsum.photos/1000/1000" alt="avatar"></span>
       <!--v-if-->
     </div>
   </div>
@@ -158,7 +158,7 @@ exports[`<avatar> demo: > render [image-url] correctly 1`] = `
   <div class="sd-space-item"> 加载失败: </div>
   <!---->
   <div class="sd-space-item">
-    <div class="sd-avatar sd-avatar-circle"><span class="sd-avatar-image"><!--v-if--><div class="sd-avatar-image-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-loading" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path></svg></div><img src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9123.png~tplv-uwbnlip3yd-webp.webp" alt="avatar"></span>
+    <div class="sd-avatar sd-avatar-circle"><span class="sd-avatar-image"><!--v-if--><div class="sd-avatar-image-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-loading" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M42 24c0 9.941-8.059 18-18 18S6 33.941 6 24 14.059 6 24 6"></path></svg></div><img src="https://foo.bar.com/non-existent-avatar.png" alt="avatar"></span>
       <!--v-if-->
     </div>
   </div>

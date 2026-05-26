@@ -4,7 +4,7 @@ exports[`<card> demo: > render [actions] correctly 1`] = `
 <div data-v-da4ba0ec="" class="sd-card sd-card-size-medium sd-card-bordered sd:w-90">
   <!---->
   <div class="sd-card-cover">
-    <div data-v-da4ba0ec="" class="sd:h-51 sd:overflow-hidden"><img data-v-da4ba0ec="" class="sd:w-full sd:-translate-y-5" alt="dessert" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a20012a2d4d5b9db43dfc6a01fe508c0.png~tplv-uwbnlip3yd-webp.webp"></div>
+    <div data-v-da4ba0ec="" class="sd:h-51 sd:overflow-hidden"><img data-v-da4ba0ec="" class="sd:w-full sd:-translate-y-5" alt="dessert" src="https://picsum.photos/1260/840"></div>
   </div>
   <div class="sd-card-body">
     <div data-v-da4ba0ec="" class="sd-card-meta">
@@ -279,7 +279,7 @@ exports[`<card> demo: > render [meta] correctly 1`] = `
 <div class="sd-card sd-card-size-medium sd-card-bordered sd-card-hoverable sd:w-90">
   <!---->
   <div class="sd-card-cover">
-    <div class="sd:h-51 sd:overflow-hidden"><img class="sd:w-full sd:-translate-y-5" alt="dessert" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a20012a2d4d5b9db43dfc6a01fe508c0.png~tplv-uwbnlip3yd-webp.webp"></div>
+    <div class="sd:h-51 sd:overflow-hidden"><img class="sd:w-full sd:-translate-y-5" alt="dessert" src="https://picsum.photos/1260/840"></div>
   </div>
   <div class="sd-card-body">
     <div class="sd-card-meta">

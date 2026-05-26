@@ -15,13 +15,13 @@
   <sd-image
     width="200"
     height="200"
-    :src="`https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp?timestamp=${timestamp}`"
+    :src="`https://picsum.photos/1000/1000?timestamp=${timestamp}`"
     show-loader
   />
   <sd-image
     width="200"
     height="200"
-    :src="`https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp?timestamp=${timestamp}`"
+    :src="`https://picsum.photos/1000/1000?timestamp=${timestamp}`"
     class="sd:ml-[67px]"
   >
     <template #loader>

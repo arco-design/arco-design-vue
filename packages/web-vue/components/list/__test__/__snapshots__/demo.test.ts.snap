@@ -15,7 +15,7 @@ exports[`<list> demo: > render [actions] correctly 1`] = `
                   <div class="sd-list-item-content">
                     <div class="sd-list-item-meta">
                       <div class="sd-list-item-meta-avatar">
-                        <div class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img alt="avatar" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"></span>
+                        <div class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img alt="avatar" src="https://picsum.photos/1000/1000"></span>
                           <!--v-if-->
                         </div>
                       </div>
@@ -43,7 +43,7 @@ exports[`<list> demo: > render [actions] correctly 1`] = `
                   <div class="sd-list-item-content">
                     <div class="sd-list-item-meta">
                       <div class="sd-list-item-meta-avatar">
-                        <div class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img alt="avatar" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"></span>
+                        <div class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img alt="avatar" src="https://picsum.photos/1000/1000"></span>
                           <!--v-if-->
                         </div>
                       </div>
@@ -71,7 +71,7 @@ exports[`<list> demo: > render [actions] correctly 1`] = `
                   <div class="sd-list-item-content">
                     <div class="sd-list-item-meta">
                       <div class="sd-list-item-meta-avatar">
-                        <div class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img alt="avatar" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"></span>
+                        <div class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img alt="avatar" src="https://picsum.photos/1000/1000"></span>
                           <!--v-if-->
                         </div>
                       </div>
@@ -99,7 +99,7 @@ exports[`<list> demo: > render [actions] correctly 1`] = `
                   <div class="sd-list-item-content">
                     <div class="sd-list-item-meta">
                       <div class="sd-list-item-meta-avatar">
-                        <div class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img alt="avatar" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"></span>
+                        <div class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img alt="avatar" src="https://picsum.photos/1000/1000"></span>
                           <!--v-if-->
                         </div>
                       </div>
@@ -159,7 +159,7 @@ exports[`<list> demo: > render [actions-layout] correctly 1`] = `
                   <div class="sd-list-item-content">
                     <div data-v-b8853180="" class="sd-list-item-meta">
                       <div class="sd-list-item-meta-avatar">
-                        <div data-v-b8853180="" class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img data-v-b8853180="" alt="avatar" src="//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/a8c8cdb109cb051163646151a4a5083b.png~tplv-uwbnlip3yd-webp.webp"></span>
+                        <div data-v-b8853180="" class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img data-v-b8853180="" alt="avatar" src="//picsum.photos/1000/1000"></span>
                           <!--v-if-->
                         </div>
                       </div>
@@ -177,7 +177,7 @@ exports[`<list> demo: > render [actions-layout] correctly 1`] = `
                 </div>
                 <!---->
                 <div class="sd-list-item-extra">
-                  <div data-v-b8853180="" class="image-area"><img data-v-b8853180="" alt="sd-design" src="//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/29c1f9d7d17c503c5d7bf4e538cb7c4f.png~tplv-uwbnlip3yd-webp.webp"></div>
+                  <div data-v-b8853180="" class="image-area"><img data-v-b8853180="" alt="sd-design" src="//picsum.photos/1200/840"></div>
                 </div>
               </div>
               <div data-v-b8853180="" role="listitem" class="sd-list-item list-demo-item">
@@ -186,7 +186,7 @@ exports[`<list> demo: > render [actions-layout] correctly 1`] = `
                   <div class="sd-list-item-content">
                     <div data-v-b8853180="" class="sd-list-item-meta">
                       <div class="sd-list-item-meta-avatar">
-                        <div data-v-b8853180="" class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img data-v-b8853180="" alt="avatar" src="//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/e278888093bef8910e829486fb45dd69.png~tplv-uwbnlip3yd-webp.webp"></span>
+                        <div data-v-b8853180="" class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img data-v-b8853180="" alt="avatar" src="//picsum.photos/1000/1000"></span>
                           <!--v-if-->
                         </div>
                       </div>
@@ -204,7 +204,7 @@ exports[`<list> demo: > render [actions-layout] correctly 1`] = `
                 </div>
                 <!---->
                 <div class="sd-list-item-extra">
-                  <div data-v-b8853180="" class="image-area"><img data-v-b8853180="" alt="sd-design" src="//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/04d7bc31dd67dcdf380bc3f6aa07599f.png~tplv-uwbnlip3yd-webp.webp"></div>
+                  <div data-v-b8853180="" class="image-area"><img data-v-b8853180="" alt="sd-design" src="//picsum.photos/1200/840"></div>
                 </div>
               </div>
               <div data-v-b8853180="" role="listitem" class="sd-list-item list-demo-item">
@@ -213,7 +213,7 @@ exports[`<list> demo: > render [actions-layout] correctly 1`] = `
                   <div class="sd-list-item-content">
                     <div data-v-b8853180="" class="sd-list-item-meta">
                       <div class="sd-list-item-meta-avatar">
-                        <div data-v-b8853180="" class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img data-v-b8853180="" alt="avatar" src="//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/9eeb1800d9b78349b24682c3518ac4a3.png~tplv-uwbnlip3yd-webp.webp"></span>
+                        <div data-v-b8853180="" class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img data-v-b8853180="" alt="avatar" src="//picsum.photos/1000/1000"></span>
                           <!--v-if-->
                         </div>
                       </div>
@@ -231,7 +231,7 @@ exports[`<list> demo: > render [actions-layout] correctly 1`] = `
                 </div>
                 <!---->
                 <div class="sd-list-item-extra">
-                  <div data-v-b8853180="" class="image-area"><img data-v-b8853180="" alt="sd-design" src="//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/1f61854a849a076318ed527c8fca1bbf.png~tplv-uwbnlip3yd-webp.webp"></div>
+                  <div data-v-b8853180="" class="image-area"><img data-v-b8853180="" alt="sd-design" src="//picsum.photos/1200/840"></div>
                 </div>
               </div>
               <!---->
@@ -667,7 +667,7 @@ exports[`<list> demo: > render [meta] correctly 1`] = `
                   <div class="sd-list-item-content">
                     <div class="sd-list-item-meta">
                       <div class="sd-list-item-meta-avatar">
-                        <div class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img alt="avatar" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"></span>
+                        <div class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img alt="avatar" src="https://picsum.photos/1000/1000"></span>
                           <!--v-if-->
                         </div>
                       </div>
@@ -688,7 +688,7 @@ exports[`<list> demo: > render [meta] correctly 1`] = `
                   <div class="sd-list-item-content">
                     <div class="sd-list-item-meta">
                       <div class="sd-list-item-meta-avatar">
-                        <div class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img alt="avatar" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"></span>
+                        <div class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img alt="avatar" src="https://picsum.photos/1000/1000"></span>
                           <!--v-if-->
                         </div>
                       </div>
@@ -709,7 +709,7 @@ exports[`<list> demo: > render [meta] correctly 1`] = `
                   <div class="sd-list-item-content">
                     <div class="sd-list-item-meta">
                       <div class="sd-list-item-meta-avatar">
-                        <div class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img alt="avatar" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"></span>
+                        <div class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img alt="avatar" src="https://picsum.photos/1000/1000"></span>
                           <!--v-if-->
                         </div>
                       </div>
@@ -730,7 +730,7 @@ exports[`<list> demo: > render [meta] correctly 1`] = `
                   <div class="sd-list-item-content">
                     <div class="sd-list-item-meta">
                       <div class="sd-list-item-meta-avatar">
-                        <div class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img alt="avatar" src="https://p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/3ee5f13fb09879ecb5185e440cef6eb9.png~tplv-uwbnlip3yd-webp.webp"></span>
+                        <div class="sd-avatar sd-avatar-square"><span class="sd-avatar-text"><img alt="avatar" src="https://picsum.photos/1000/1000"></span>
                           <!--v-if-->
                         </div>
                       </div>
