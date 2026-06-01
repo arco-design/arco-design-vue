@@ -1,4 +1,6 @@
 /* stylelint-disable-next-line import-notation */
-@import 'tailwindcss' prefix(sd);
+@import 'tailwindcss/theme' prefix(sd);
+/* stylelint-disable-next-line import-notation */
+@import 'tailwindcss/utilities' prefix(sd);
 /* stylelint-disable-next-line import-notation, scss/at-rule-no-unknown */
 @source '../components/generated/**/*.vue';

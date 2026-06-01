@@ -1,5 +1,5 @@
 <template>
-  <div class="sd:mb-4">
+  <div class="sd:mb-2">
     <sd-button
       type="primary"
       @click="
@@ -7,7 +7,6 @@
           timestamp = Date.now();
         }
       "
-      class="sd:mb-5"
     >
       reload
     </sd-button>
@@ -22,7 +21,7 @@
     width="200"
     height="200"
     :src="`https://picsum.photos/id/10/1000/1000?timestamp=${timestamp}`"
-    class="sd:ml-[67px]"
+    class="sd:ml-4"
   >
     <template #loader>
       <div class="loader-animate" />

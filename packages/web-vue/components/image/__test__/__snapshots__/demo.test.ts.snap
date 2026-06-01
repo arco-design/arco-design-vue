@@ -20,7 +20,7 @@ exports[`<image> demo: > render [caption] correctly 1`] = `
   <!--v-if-->
   <!--v-if-->
 </div>
-<div class="sd-image sd-image-with-footer-outer sd:ml-[67px] sd:align-top" style="width: 200px;"><img class="sd-image-img" style="width: 200px;" title="A user’s avatar">
+<div class="sd-image sd-image-with-footer-outer sd:ml-4 sd:align-top" style="width: 200px;"><img class="sd-image-img" style="width: 200px;" title="A user’s avatar">
   <div class="sd-image-overlay">
     <!--v-if-->
     <!--v-if-->
@@ -104,7 +104,7 @@ exports[`<image> demo: > render [extra] correctly 1`] = `
 `;
 
 exports[`<image> demo: > render [loader] correctly 1`] = `
-<div data-v-27935e85=""><button data-v-27935e85="" class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd:mb-5" type="button">
+<div data-v-27935e85="" class="sd:mb-2"><button data-v-27935e85="" class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button">
     <!--v-if--> reload
   </button></div>
 <div data-v-27935e85="" class="sd-image sd-image-with-footer-inner" style="width: 200px; height: 200px;"><img class="sd-image-img" style="width: 200px; height: 200px;">
@@ -115,7 +115,7 @@ exports[`<image> demo: > render [loader] correctly 1`] = `
   <!--v-if-->
   <!--v-if-->
 </div>
-<div data-v-27935e85="" class="sd-image sd-image-with-footer-inner sd:ml-[67px]" style="width: 200px; height: 200px;"><img class="sd-image-img" style="width: 200px; height: 200px;">
+<div data-v-27935e85="" class="sd-image sd-image-with-footer-inner sd:ml-4" style="width: 200px; height: 200px;"><img class="sd-image-img" style="width: 200px; height: 200px;">
   <div class="sd-image-overlay">
     <!--v-if-->
     <!--v-if-->

@@ -6,7 +6,7 @@
     :title="title"
     :description="description"
     footerPosition="outer"
-    class="sd:ml-[67px] sd:align-top"
+    class="sd:ml-4 sd:align-top"
   />
 </template>
 
