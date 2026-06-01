@@ -3,7 +3,8 @@
     <sd-split
       component="div"
       direction="horizontal"
-      class="sd:h-50 sd:w-full sd:min-w-125 sd:border sd:border-solid sd:border-(--color-border)"
+      class="sd:h-50 sd:w-full sd:min-w-125 sd:border sd:border-solid"
+      :style="{ borderColor: `var(${getCssVarToken('--color-border')})` }"
       :size="undefined"
       :default-size="0.5"
       :min="undefined"
@@ -33,3 +34,7 @@
     </sd-split>
   </div>
 </template>
+
+<script setup>
+  import { getCssVarToken } from '@sdata/web-vue';
+</script>

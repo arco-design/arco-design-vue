@@ -1,5 +1,5 @@
 @use 'sass:string';
-$sd-vars-prefix: string.unquote('');
+$sd-vars-prefix: string.unquote('sd');
 $sd-cssvars-prefix: string.unquote('-');
 
 @if $sd-vars-prefix != string.unquote('') {

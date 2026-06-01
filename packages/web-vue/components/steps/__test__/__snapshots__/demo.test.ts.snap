@@ -116,7 +116,7 @@ exports[`<steps> demo: > render [changeable] correctly 1`] = `
       </div>
     </div>
   </div>
-  <div class="sd:w-full sd:h-50 sd:text-center sd:bg-(--color-bg-2) sd:text-[#c2c7cc]">
+  <div class="sd:w-full sd:h-50 sd:text-center" style="background-color: var(--sd-color-bg-2); color: rgb(194, 199, 204);">
     <div class="sd:leading-40">Step1 Content</div>
     <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 24px; row-gap: 24px;">
       <!---->

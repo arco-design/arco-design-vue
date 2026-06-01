@@ -5,7 +5,10 @@
       <sd-step description="This is a description">Processing</sd-step>
       <sd-step description="This is a description">Pending</sd-step>
     </sd-steps>
-    <div class="sd:w-full sd:h-50 sd:text-center sd:bg-(--color-bg-2) sd:text-[#c2c7cc]">
+    <div
+      class="sd:w-full sd:h-50 sd:text-center"
+      :style="{ backgroundColor: `var(${getCssVarToken('--color-bg-2')})`, color: '#c2c7cc' }"
+    >
       <div class="sd:leading-40">Step{{ current }} Content</div>
       <sd-space size="large">
         <sd-button type="secondary" :disabled="current <= 1" @click="onPrev">
@@ -22,6 +25,8 @@
   import type { StepsChangeHandler } from '@sdata/web-vue';
 
   import { shallowRef } from 'vue';
+
+  import { getCssVarToken } from '@sdata/web-vue';
 
   const current = shallowRef(1);
 

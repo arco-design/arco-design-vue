@@ -2,7 +2,7 @@
   <sd-space direction="vertical" size="large" fill>
     <div>
       <div class="sd:mb-2 sd:font-semibold">先兼容迁移</div>
-      <div class="sd:mb-3 sd:text-(--sd-color-text-3)">
+      <div class="sd:mb-3" :style="{ color: `var(${getCssVarToken('--color-text-3')})` }">
         保留 `value`、`show`、`filterable`、`clearable`，先把页面替换到当前组件库。
       </div>
       <sd-space direction="vertical" size="small" fill>
@@ -23,7 +23,7 @@
 
     <div>
       <div class="sd:mb-2 sd:font-semibold">再统一到本地命名</div>
-      <div class="sd:mb-3 sd:text-(--sd-color-text-3)">
+      <div class="sd:mb-3" :style="{ color: `var(${getCssVarToken('--color-text-3')})` }">
         新代码建议改成 `model-value`、`popup-visible`、`allow-search`、`allow-clear`。
       </div>
       <sd-space direction="vertical" size="small" fill>
@@ -48,6 +48,8 @@
   import type { CascaderOption } from '@sdata/web-vue';
 
   import { ref } from 'vue';
+
+  import { getCssVarToken } from '@sdata/web-vue';
 
   const legacyValue = ref('chaoyang');
   const legacyVisible = ref(false);

@@ -12,7 +12,9 @@
     <sd-qr-code :value="value" status="expired">
       <template #status="{ onRefresh }">
         <div class="sd:flex sd:flex-col sd:items-center sd:gap-2">
-          <span class="sd:text-sm sd:text-(--sd-color-danger-6)">登录码已失效</span>
+          <span class="sd:text-sm" :style="{ color: `var(${getCssVarToken('--color-danger-6')})` }"
+            >登录码已失效</span
+          >
           <sd-button type="text" size="small" @click="onRefresh">立即刷新</sd-button>
         </div>
       </template>
@@ -21,5 +23,7 @@
 </template>
 
 <script setup>
+  import { getCssVarToken } from '@sdata/web-vue';
+
   const value = 'https://sd-design.js.org';
 </script>

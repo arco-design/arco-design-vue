@@ -8,7 +8,10 @@
     <template #extra>
       <sd-button type="primary">Refresh</sd-button>
     </template>
-    <sd-typography class="sd:p-6 sd:bg-(--color-fill-2)">
+    <sd-typography
+      class="sd:p-6"
+      :style="{ backgroundColor: `var(${getCssVarToken('--color-fill-2')})` }"
+    >
       <sd-typography-paragraph>Try:</sd-typography-paragraph>
       <ul>
         <li> Checking the network cables, modem, and router </li>
@@ -19,5 +22,6 @@
 </template>
 
 <script setup lang="ts">
+  import { getCssVarToken } from '@sdata/web-vue';
   import { IconFaceFrownFill } from '@sdata/web-vue/es/icon/index.js';
 </script>

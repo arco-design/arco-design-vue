@@ -7,20 +7,12 @@
 @use '@style/theme/global.scss' as *;
 @use '@style/theme/component.scss' as *;
 
-colors.$sd-vars-prefix: string.unquote('');
-colors.$sd-cssvars-prefix: string.unquote('-');
-
-@if colors.$sd-vars-prefix != string.unquote('') {
-  colors.$sd-cssvars-prefix: string.unquote('--#{colors.$sd-vars-prefix}');
-}
+colors.$sd-vars-prefix: string.unquote('sd');
+colors.$sd-cssvars-prefix: string.unquote('--sd');
 
 $sd-theme-tag: ':where(body, [sd-theme])';
-$sd-vars-prefix: string.unquote('');
-$sd-cssvars-prefix: string.unquote('-');
-
-@if $sd-vars-prefix != string.unquote('') {
-  $sd-cssvars-prefix: string.unquote('--#{$sd-vars-prefix}');
-}
+$sd-vars-prefix: string.unquote('sd');
+$sd-cssvars-prefix: string.unquote('--sd');
 
 $prefix: sd;
 

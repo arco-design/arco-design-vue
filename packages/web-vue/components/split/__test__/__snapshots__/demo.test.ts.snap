@@ -2,7 +2,7 @@
 
 exports[`<split> demo: > render [basic] correctly 1`] = `
 <div>
-  <div class="sd-split sd-split-horizontal sd:h-50 sd:w-full sd:min-w-125 sd:border sd:border-solid sd:border-(--color-border)">
+  <div class="sd-split sd-split-horizontal sd:h-50 sd:w-full sd:min-w-125 sd:border sd:border-solid" style="border-color: var(--sd-color-border);">
     <div class="sd-split-pane sd-split-pane-first" style="flex: 0 0 calc(50% - 0px);">
       <div class="sd-typography">Left
         <!---->
@@ -34,7 +34,7 @@ exports[`<split> demo: > render [basic] correctly 1`] = `
 
 exports[`<split> demo: > render [nested] correctly 1`] = `
 <div>
-  <div class="sd-split sd-split-horizontal sd:h-50 sd:w-full sd:min-w-125 sd:border sd:border-solid sd:border-(--color-border)">
+  <div class="sd-split sd-split-horizontal sd:h-50 sd:w-full sd:min-w-125 sd:border sd:border-solid" style="border-color: var(--sd-color-border);">
     <div class="sd-split-pane sd-split-pane-first" style="flex: 0 0 calc(50% - 0px);">
       <div class="sd-typography">Left
         <!---->

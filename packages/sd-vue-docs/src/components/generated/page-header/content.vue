@@ -1,6 +1,9 @@
 <template>
-  <div class="sd:bg-(--color-fill-2) sd:p-7">
-    <sd-page-header class="sd:bg-(--color-bg-2)" title="SD Design">
+  <div class="sd:p-7" :style="{ backgroundColor: `var(${getCssVarToken('--color-fill-2')})` }">
+    <sd-page-header
+      :style="{ backgroundColor: `var(${getCssVarToken('--color-bg-2')})` }"
+      title="SD Design"
+    >
       <template #breadcrumb>
         <sd-breadcrumb>
           <sd-breadcrumb-item>Home</sd-breadcrumb-item>
@@ -37,3 +40,7 @@
     </sd-page-header>
   </div>
 </template>
+
+<script setup>
+  import { getCssVarToken } from '@sdata/web-vue';
+</script>

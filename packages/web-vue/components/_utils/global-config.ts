@@ -35,3 +35,17 @@ export const getPrefixCls = (componentName?: string): string => {
   }
   return prefix;
 };
+
+type CssVarToken<T extends string> = T extends `--${infer Rest}`
+  ? `--${typeof CLASS_PREFIX}-${Rest}`
+  : `--${typeof CLASS_PREFIX}-${T}`;
+
+/**
+ * 生成带组件库前缀的 CSS 变量名
+ * @example getCssVarToken('--color-text-2') // type: '--sd-color-text-2'
+ * @example getCssVarToken('color-text-2')   // type: '--sd-color-text-2'
+ */
+export const getCssVarToken = <T extends string>(token: T): CssVarToken<T> => {
+  const name = (token as string).replace(/^--/, '');
+  return `--${CLASS_PREFIX}-${name}` as CssVarToken<T>;
+};

@@ -3,11 +3,11 @@
 
 $sd-theme-tag: ':where(body, [sd-theme])'; // css 变量定义的选择器
 
-$sd-vars-prefix: ''; // css 变量的前缀
+$sd-vars-prefix: 'sd'; // css 变量的前缀
 
-$sd-cssvars-prefix: '-';
+$sd-cssvars-prefix: '--sd';
 
-@if $sd-vars-prefix != '' {
+@if $sd-vars-prefix != 'sd' {
   $sd-cssvars-prefix: '--#{$sd-vars-prefix}';
 }
 

@@ -176,7 +176,7 @@ exports[`<menu> demo: > render [dark-horizontal] correctly 1`] = `
         </div>
         <!---->
         <div data-v-db121378="" class="sd-menu-item sd-menu-disabled sd:mr-[38px] sd:p-0">
-          <div data-v-db121378="" class="sd:h-[30px] sd:w-20 sd:bg-(--color-fill-3) sd:cursor-text"></div>
+          <div data-v-db121378="" class="sd:h-[30px] sd:w-20 sd:cursor-text" style="background-color: var(--sd-color-fill-3);"></div>
           <!---->
         </div>
         <div data-v-db121378="" class="sd-menu-item sd-menu-selected">Home<div class="sd-menu-selected-label"></div>

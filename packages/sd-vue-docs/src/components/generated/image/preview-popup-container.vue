@@ -1,7 +1,8 @@
 <template>
   <div
     id="image-demo-preview-popup-container"
-    class="sd:relative sd:h-100 sd:w-full sd:overflow-hidden sd:bg-(--color-fill-2) sd:text-center sd:leading-100"
+    class="sd:relative sd:h-100 sd:w-full sd:overflow-hidden sd:text-center sd:leading-100"
+    :style="{ backgroundColor: `var(${getCssVarToken('--color-fill-2')})` }"
   >
     <sd-image
       width="200"
@@ -13,3 +14,7 @@
     />
   </div>
 </template>
+
+<script setup>
+  import { getCssVarToken } from '@sdata/web-vue';
+</script>

@@ -50,29 +50,79 @@ exports[`<card> demo: > render [basic] correctly 1`] = `
 `;
 
 exports[`<card> demo: > render [bordered] correctly 1`] = `
-<div class="sd:flex sd:w-full sd:box-border sd:p-10 sd:bg-(--color-fill-2)">
-  <div class="sd-card sd-card-size-medium sd:w-90">
-    <div class="sd-card-header">
-      <div class="sd-card-header-title">SD Card</div>
-      <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
-          <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
-        </a></div>
+<div class="sd:box-border sd:w-full sd:p-10" style="background-color: var(--sd-color-fill-2);">
+  <div class="sd-row sd-row-align-start sd-row-justify-start sd:mb-5" style="margin-left: -10px; margin-right: -10px;">
+    <div class="sd-col sd-col-8" style="padding-left: 10px; padding-right: 10px;">
+      <div class="sd-card sd-card-size-medium sd:w-full">
+        <div class="sd-card-header">
+          <div class="sd-card-header-title">SD Card</div>
+          <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
+              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
+            </a></div>
+        </div>
+        <!---->
+        <div class="sd-card-body"> Card content
+          <!---->
+        </div>
+      </div>
     </div>
-    <!---->
-    <div class="sd-card-body"> Card content <br> Card content
-      <!---->
+    <div class="sd-col sd-col-8" style="padding-left: 10px; padding-right: 10px;">
+      <div class="sd-card sd-card-size-medium sd:w-full">
+        <div class="sd-card-header">
+          <div class="sd-card-header-title">SD Card</div>
+          <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
+              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
+            </a></div>
+        </div>
+        <!---->
+        <div class="sd-card-body"> Card content
+          <!---->
+        </div>
+      </div>
+    </div>
+    <div class="sd-col sd-col-8" style="padding-left: 10px; padding-right: 10px;">
+      <div class="sd-card sd-card-size-medium sd:w-full">
+        <div class="sd-card-header">
+          <div class="sd-card-header-title">SD Card</div>
+          <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
+              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
+            </a></div>
+        </div>
+        <!---->
+        <div class="sd-card-body"> Card content
+          <!---->
+        </div>
+      </div>
     </div>
   </div>
-  <div class="sd-card sd-card-size-medium sd-card-hoverable sd:w-90 sd:ml-6">
-    <div class="sd-card-header">
-      <div class="sd-card-header-title">Hover me</div>
-      <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
-          <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
-        </a></div>
+  <div class="sd-row sd-row-align-start sd-row-justify-start" style="margin-left: -10px; margin-right: -10px;">
+    <div class="sd-col sd-col-16" style="padding-left: 10px; padding-right: 10px;">
+      <div class="sd-card sd-card-size-medium sd:w-full">
+        <div class="sd-card-header">
+          <div class="sd-card-header-title">SD Card</div>
+          <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
+              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
+            </a></div>
+        </div>
+        <!---->
+        <div class="sd-card-body"> Card content
+          <!---->
+        </div>
+      </div>
     </div>
-    <!---->
-    <div class="sd-card-body"> Card content <br> Card content
-      <!---->
+    <div class="sd-col sd-col-8" style="padding-left: 10px; padding-right: 10px;">
+      <div class="sd-card sd-card-size-medium sd:w-full">
+        <div class="sd-card-header">
+          <div class="sd-card-header-title">SD Card</div>
+          <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
+              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
+            </a></div>
+        </div>
+        <!---->
+        <div class="sd-card-body"> Card content
+          <!---->
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -295,79 +345,29 @@ exports[`<card> demo: > render [meta] correctly 1`] = `
 `;
 
 exports[`<card> demo: > render [row] correctly 1`] = `
-<div class="sd:box-border sd:w-full sd:p-10 sd:bg-(--color-fill-2)">
-  <div class="sd-row sd-row-align-start sd-row-justify-start sd:mb-5" style="margin-left: -10px; margin-right: -10px;">
-    <div class="sd-col sd-col-8" style="padding-left: 10px; padding-right: 10px;">
-      <div class="sd-card sd-card-size-medium sd:w-full">
-        <div class="sd-card-header">
-          <div class="sd-card-header-title">SD Card</div>
-          <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
-              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
-            </a></div>
-        </div>
-        <!---->
-        <div class="sd-card-body"> Card content
-          <!---->
-        </div>
-      </div>
+<div class="sd:flex sd:w-full sd:box-border sd:p-10" style="background-color: var(--sd-color-fill-2);">
+  <div class="sd-card sd-card-size-medium sd:w-90">
+    <div class="sd-card-header">
+      <div class="sd-card-header-title">SD Card</div>
+      <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
+          <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
+        </a></div>
     </div>
-    <div class="sd-col sd-col-8" style="padding-left: 10px; padding-right: 10px;">
-      <div class="sd-card sd-card-size-medium sd:w-full">
-        <div class="sd-card-header">
-          <div class="sd-card-header-title">SD Card</div>
-          <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
-              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
-            </a></div>
-        </div>
-        <!---->
-        <div class="sd-card-body"> Card content
-          <!---->
-        </div>
-      </div>
-    </div>
-    <div class="sd-col sd-col-8" style="padding-left: 10px; padding-right: 10px;">
-      <div class="sd-card sd-card-size-medium sd:w-full">
-        <div class="sd-card-header">
-          <div class="sd-card-header-title">SD Card</div>
-          <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
-              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
-            </a></div>
-        </div>
-        <!---->
-        <div class="sd-card-body"> Card content
-          <!---->
-        </div>
-      </div>
+    <!---->
+    <div class="sd-card-body"> Card content <br> Card content
+      <!---->
     </div>
   </div>
-  <div class="sd-row sd-row-align-start sd-row-justify-start" style="margin-left: -10px; margin-right: -10px;">
-    <div class="sd-col sd-col-16" style="padding-left: 10px; padding-right: 10px;">
-      <div class="sd-card sd-card-size-medium sd:w-full">
-        <div class="sd-card-header">
-          <div class="sd-card-header-title">SD Card</div>
-          <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
-              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
-            </a></div>
-        </div>
-        <!---->
-        <div class="sd-card-body"> Card content
-          <!---->
-        </div>
-      </div>
+  <div class="sd-card sd-card-size-medium sd-card-hoverable sd:w-90 sd:ml-6">
+    <div class="sd-card-header">
+      <div class="sd-card-header-title">Hover me</div>
+      <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
+          <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
+        </a></div>
     </div>
-    <div class="sd-col sd-col-8" style="padding-left: 10px; padding-right: 10px;">
-      <div class="sd-card sd-card-size-medium sd:w-full">
-        <div class="sd-card-header">
-          <div class="sd-card-header-title">SD Card</div>
-          <div class="sd-card-header-extra"><a class="sd-link sd-link-status-normal sd-link-hoverless">
-              <!--v-if--><span class="sd-link-content sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">More</span></span>
-            </a></div>
-        </div>
-        <!---->
-        <div class="sd-card-body"> Card content
-          <!---->
-        </div>
-      </div>
+    <!---->
+    <div class="sd-card-body"> Card content <br> Card content
+      <!---->
     </div>
   </div>
 </div>

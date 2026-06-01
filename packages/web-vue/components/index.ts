@@ -519,4 +519,6 @@ export { default as Watermark } from './watermark';
 export type { WatermarkInstance } from './watermark';
 // hooks
 export { useFormItem } from './_hooks/use-form-item';
+// utils
+export { getCssVarToken } from './_utils/global-config';
 // components.d.ts

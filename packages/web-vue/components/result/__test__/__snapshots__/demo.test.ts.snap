@@ -693,7 +693,7 @@ exports[`<result> demo: > render [all] correctly 1`] = `
       <!--v-if-->Refresh
     </button></div>
   <div class="sd-result-content">
-    <article class="sd-typography sd:p-6 sd:bg-(--color-fill-2)">
+    <article class="sd-typography sd:p-6" style="background-color: var(--sd-color-fill-2);">
       <div class="sd-typography">Try:
         <!---->
         <!--v-if-->

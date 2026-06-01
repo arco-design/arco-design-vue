@@ -166,7 +166,7 @@ exports[`<cascader> demo: > render [migration] correctly 1`] = `
   <div class="sd-space-item">
     <div>
       <div class="sd:mb-2 sd:font-semibold">先兼容迁移</div>
-      <div class="sd:mb-3 sd:text-(--sd-color-text-3)"> 保留 \`value\`、\`show\`、\`filterable\`、\`clearable\`，先把页面替换到当前组件库。 </div>
+      <div class="sd:mb-3" style="color: var(--sd-color-text-3);"> 保留 \`value\`、\`show\`、\`filterable\`、\`clearable\`，先把页面替换到当前组件库。 </div>
       <div class="sd-space sd-space-vertical sd-space-fill" style="column-gap: 8px; row-gap: 8px;">
         <!---->
         <div class="sd-space-item"><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-small sd-btn-status-normal" type="button">
@@ -185,7 +185,7 @@ exports[`<cascader> demo: > render [migration] correctly 1`] = `
   <div class="sd-space-item">
     <div>
       <div class="sd:mb-2 sd:font-semibold">再统一到本地命名</div>
-      <div class="sd:mb-3 sd:text-(--sd-color-text-3)"> 新代码建议改成 \`model-value\`、\`popup-visible\`、\`allow-search\`、\`allow-clear\`。 </div>
+      <div class="sd:mb-3" style="color: var(--sd-color-text-3);"> 新代码建议改成 \`model-value\`、\`popup-visible\`、\`allow-search\`、\`allow-clear\`。 </div>
       <div class="sd-space sd-space-vertical sd-space-fill" style="column-gap: 8px; row-gap: 8px;">
         <!---->
         <div class="sd-space-item"><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-small sd-btn-status-normal" type="button">

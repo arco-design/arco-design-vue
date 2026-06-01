@@ -1,17 +1,17 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`<scrollbar> demo: > render [basic] correctly 1`] = `
-<div class="sd-scrollbar sd-scrollbar-type-embed">
+<div class="sd-scrollbar sd-scrollbar-type-track">
   <div class="sd-scrollbar-container sd:h-50 sd:overflow-auto" data-overlayscrollbars="host">
     <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
-      <div class="sd:w-500 sd:h-500 sd:bg-(--color-primary-light-4)">Content</div>
+      <div class="sd:w-500 sd:h-500" style="background-color: var(--sd-color-primary-light-4);"> Content </div>
     </div>
-    <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+    <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-track os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-visible os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
       <div class="os-scrollbar-track">
         <div class="os-scrollbar-handle"></div>
       </div>
     </div>
-    <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+    <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-track os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-visible os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
       <div class="os-scrollbar-track">
         <div class="os-scrollbar-handle"></div>
       </div>
@@ -87,17 +87,17 @@ exports[`<scrollbar> demo: > render [overlay-options] correctly 1`] = `
 `;
 
 exports[`<scrollbar> demo: > render [type] correctly 1`] = `
-<div class="sd-scrollbar sd-scrollbar-type-track">
+<div class="sd-scrollbar sd-scrollbar-type-embed">
   <div class="sd-scrollbar-container sd:h-50 sd:overflow-auto" data-overlayscrollbars="host">
     <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; right: auto; left: 0px; width: calc(100% + 0px); padding: 0px;">
-      <div class="sd:w-500 sd:h-500 sd:bg-(--color-primary-light-4)"> Content </div>
+      <div class="sd:w-500 sd:h-500" style="background-color: var(--sd-color-primary-light-4);">Content</div>
     </div>
-    <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-track os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-visible os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+    <div class="os-scrollbar os-scrollbar-horizontal sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
       <div class="os-scrollbar-track">
         <div class="os-scrollbar-handle"></div>
       </div>
     </div>
-    <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-track os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-visible os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
+    <div class="os-scrollbar os-scrollbar-vertical sd-scrollbar-theme-embed os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">
       <div class="os-scrollbar-track">
         <div class="os-scrollbar-handle"></div>
       </div>

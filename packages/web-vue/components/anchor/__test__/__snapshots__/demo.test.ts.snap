@@ -4,7 +4,7 @@ exports[`<anchor> demo: > render [affix] correctly 1`] = `
 <div>
   <!--v-if-->
   <div class="">
-    <div class="sd-anchor sd:bg-(--color-bg-1)">
+    <div class="sd-anchor" style="background-color: var(--sd-color-bg-1);">
       <div class="sd-anchor-line-slider"></div>
       <ul class="sd-anchor-list">
         <li class="sd-anchor-link-item"><a class="sd-anchor-link" href="#basic">Basic</a>

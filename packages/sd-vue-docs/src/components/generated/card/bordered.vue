@@ -1,20 +1,55 @@
 <template>
-  <div class="sd:flex sd:w-full sd:box-border sd:p-10 sd:bg-(--color-fill-2)">
-    <sd-card class="sd:w-90" title="SD Card" :bordered="false">
-      <template #extra>
-        <sd-link>More</sd-link>
-      </template>
-      Card content
-      <br />
-      Card content
-    </sd-card>
-    <sd-card class="sd:w-90 sd:ml-6" title="Hover me" hoverable :bordered="false">
-      <template #extra>
-        <sd-link>More</sd-link>
-      </template>
-      Card content
-      <br />
-      Card content
-    </sd-card>
+  <div
+    class="sd:box-border sd:w-full sd:p-10"
+    :style="{ backgroundColor: `var(${getCssVarToken('--color-fill-2')})` }"
+  >
+    <sd-row :gutter="20" class="sd:mb-5">
+      <sd-col :span="8">
+        <sd-card title="SD Card" :bordered="false" class="sd:w-full">
+          <template #extra>
+            <sd-link>More</sd-link>
+          </template>
+          Card content
+        </sd-card>
+      </sd-col>
+      <sd-col :span="8">
+        <sd-card title="SD Card" :bordered="false" class="sd:w-full">
+          <template #extra>
+            <sd-link>More</sd-link>
+          </template>
+          Card content
+        </sd-card>
+      </sd-col>
+      <sd-col :span="8">
+        <sd-card title="SD Card" :bordered="false" class="sd:w-full">
+          <template #extra>
+            <sd-link>More</sd-link>
+          </template>
+          Card content
+        </sd-card>
+      </sd-col>
+    </sd-row>
+    <sd-row :gutter="20">
+      <sd-col :span="16">
+        <sd-card title="SD Card" :bordered="false" class="sd:w-full">
+          <template #extra>
+            <sd-link>More</sd-link>
+          </template>
+          Card content
+        </sd-card>
+      </sd-col>
+      <sd-col :span="8">
+        <sd-card title="SD Card" :bordered="false" class="sd:w-full">
+          <template #extra>
+            <sd-link>More</sd-link>
+          </template>
+          Card content
+        </sd-card>
+      </sd-col>
+    </sd-row>
   </div>
 </template>
+
+<script setup>
+  import { getCssVarToken } from '@sdata/web-vue';
+</script>

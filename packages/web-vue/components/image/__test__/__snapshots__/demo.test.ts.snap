@@ -177,7 +177,7 @@ exports[`<image> demo: > render [preview-group] correctly 1`] = `
 `;
 
 exports[`<image> demo: > render [preview-popup-container] correctly 1`] = `
-<div id="image-demo-preview-popup-container" class="sd:relative sd:h-100 sd:w-full sd:overflow-hidden sd:bg-(--color-fill-2) sd:text-center sd:leading-100">
+<div id="image-demo-preview-popup-container" class="sd:relative sd:h-100 sd:w-full sd:overflow-hidden sd:text-center sd:leading-100" style="background-color: var(--sd-color-fill-2);">
   <div class="sd-image sd-image-with-footer-inner" style="width: 200px;"><img class="sd-image-img" style="width: 200px;">
     <div class="sd-image-overlay">
       <!--v-if-->
