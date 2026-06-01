@@ -5,10 +5,10 @@
     v-model:current="current"
     infinite
     :srcList="[
-      'https://picsum.photos/1200/480',
-      'https://picsum.photos/1200/480',
-      'https://picsum.photos/1200/480',
-      'https://picsum.photos/1200/480',
+      'https://picsum.photos/id/10/1200/480',
+      'https://picsum.photos/id/10/1200/480',
+      'https://picsum.photos/id/10/1200/480',
+      'https://picsum.photos/id/10/1200/480',
     ]"
   />
 </template>

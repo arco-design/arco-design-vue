@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="sd:mb-4">
     <sd-button
       type="primary"
       @click="
@@ -15,13 +15,13 @@
   <sd-image
     width="200"
     height="200"
-    :src="`https://picsum.photos/1000/1000?timestamp=${timestamp}`"
+    :src="`https://picsum.photos/id/10/1000/1000?timestamp=${timestamp}`"
     show-loader
   />
   <sd-image
     width="200"
     height="200"
-    :src="`https://picsum.photos/1000/1000?timestamp=${timestamp}`"
+    :src="`https://picsum.photos/id/10/1000/1000?timestamp=${timestamp}`"
     class="sd:ml-[67px]"
   >
     <template #loader>
