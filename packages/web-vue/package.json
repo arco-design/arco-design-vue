@@ -86,7 +86,7 @@
     "resize-observer-polyfill": "^1.5.1",
     "scroll-into-view-if-needed": "^3.1.0",
     "vue": "catalog:",
-    "vue-virtual-scroller": "^3.0.3"
+    "vue-virtual-scroller": "^3.0.4"
   },
   "devDependencies": {
     "@babel/types": "^7.29.0",
@@ -107,16 +107,16 @@
     "glob": "^13.0.6",
     "jest-serializer-vue": "^3.1.0",
     "jsdom": "^29.1.1",
-    "sass": "^1.99.0",
+    "sass": "^1.100.0",
     "semantic-release": "^25.0.3",
     "svgo": "^4.0.1",
     "type-fest": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
-    "vite-plus": "^0.1.20",
-    "vitest": "^4.1.5",
+    "vite-plus": "catalog:",
+    "vitest": "^4.1.7",
     "vue-docgen-api": "4.79.2",
-    "vue-tsc": "^3.2.6"
+    "vue-tsc": "^3.3.1"
   },
   "peerDependencies": {
     "vue": "catalog:"

@@ -26,7 +26,7 @@
     "@sdata/web-vue": "workspace:*",
     "@tailwindcss/vite": "^4.3.0",
     "@vue/repl": "^4.7.2",
-    "astro": "^6.1.6",
+    "astro": "^6.3.7",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.3.0",
     "unist-util-visit": "^5.1.0",
@@ -34,7 +34,7 @@
     "vue": "catalog:"
   },
   "devDependencies": {
-    "rolldown": "^1.0.0",
-    "vue-tsc": "^3.2.6"
+    "rolldown": "^1.0.2",
+    "vue-tsc": "^3.3.1"
   }
 }

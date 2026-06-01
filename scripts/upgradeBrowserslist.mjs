@@ -3,12 +3,12 @@ import { execFileSync } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const README_PATH = 'README.md';
+const README_PATH = resolve(process.cwd(), 'README.md');
 const DOCS_START_PATH = resolve(
   process.cwd(),
   'packages/sd-vue-docs/src/content/docs/guides/start.mdx',
 );
-const SECTION_TITLE = '## 浏览器兼容性';
+const SECTION_TITLE_PATTERN = /^## .*浏览器兼容性$/m;
 // 注释的开头和结尾，md 和 mdx 不一样
 const [MD_COMMENT_START, MD_COMMENT_END, MDX_COMMENT_START, MDX_COMMENT_END] = [
   '<!-- ',
@@ -34,6 +34,7 @@ function main() {
     `${MDX_COMMENT_START}${GENERATED_START}${MDX_COMMENT_END}`,
     `${MDX_COMMENT_START}${GENERATED_END}${MDX_COMMENT_END}`,
   );
+  console.log('生成的浏览器支持版本列表:', README_PATH);
   const readmeContent = readFileSync(README_PATH, 'utf8');
   const docsStartContent = readFileSync(DOCS_START_PATH, 'utf8');
   const nextReadmeContent = upsertSupportSection(
@@ -188,10 +189,10 @@ function buildMarkdown(browsers, generateStart, generateEnd) {
 }
 
 function upsertSupportSection(readmeContent, markdown, generateStart, generateEnd) {
-  const headingIndex = readmeContent.indexOf(SECTION_TITLE);
+  const headingMatch = SECTION_TITLE_PATTERN.exec(readmeContent);
 
-  if (headingIndex === -1) {
-    throw new Error(`README 中未找到标题: ${SECTION_TITLE}`);
+  if (!headingMatch || headingMatch.index === undefined) {
+    throw new Error('README 中未找到浏览器兼容性标题');
   }
 
   const markerPattern = new RegExp(
@@ -202,7 +203,7 @@ function upsertSupportSection(readmeContent, markdown, generateStart, generateEn
     return readmeContent.replace(markerPattern, markdown);
   }
 
-  const sectionStart = headingIndex + SECTION_TITLE.length;
+  const sectionStart = headingMatch.index + headingMatch[0].length;
   const nextHeadingIndex = readmeContent.indexOf('\n## ', sectionStart);
   const sectionEnd = nextHeadingIndex === -1 ? readmeContent.length : nextHeadingIndex;
   const beforeSection = readmeContent.slice(0, sectionStart).replace(/\s*$/, '');

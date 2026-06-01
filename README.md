@@ -70,6 +70,7 @@ pnpm run check:ci
 - firefox>=120
 - ios_saf>=17.0
 - safari>=17.0
+
 <!-- browserslist:end -->
 
 ## 📜 许可与规范

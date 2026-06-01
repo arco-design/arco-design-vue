@@ -47,7 +47,7 @@
     "@semantic-release/release-notes-generator": "^14.1.1",
     "semantic-release": "^25.0.3",
     "tsup": "^8.5.1",
-    "unplugin-vue-components": "^0.27.0"
+    "unplugin-vue-components": "^32.1.0"
   },
   "peerDependencies": {
     "@sdata/web-vue": "*"
