@@ -27,7 +27,7 @@ const resolveExistingPath = async (basePath) => {
 const getComponentsFromIndexes = async () => {
   const indexes = (
     await fg('components/*/index.ts', { ignore: ['components/locale/index.ts'] })
-  ).sort();
+  ).sort((left, right) => left.localeCompare(right));
   const components = [];
   const seen = new Set();
 
@@ -57,9 +57,15 @@ const getComponentsFromIndexes = async () => {
 
 const isLanguageTag = (title) => ['zh', 'en'].includes(title);
 
+const resolveTagName = (displayName) => {
+  const normalizedName = displayName.includes('-') ? displayName : toKebabCase(displayName);
+
+  return normalizedName.startsWith('sd-') ? normalizedName : `sd-${normalizedName}`;
+};
+
 const resolveComponent = (doc) => {
   return {
-    name: toKebabCase(`sd${doc.displayName}`),
+    name: resolveTagName(doc.displayName),
     props:
       doc.props
         ?.map((descriptor) => {
