@@ -7,6 +7,7 @@
   "workspaces": [
     "packages/*"
   ],
+  "type": "module",
   "scripts": {
     "cz": "git-cz",
     "simple-git-hooks": "simple-git-hooks",
