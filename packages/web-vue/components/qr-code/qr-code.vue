@@ -43,6 +43,8 @@
   import { getPrefixCls } from '../_utils/global-config';
   import QrCodeStatus from './qr-code-status.vue';
 
+  defineOptions({ name: 'QrCode' });
+
   const RenderNode = defineComponent({
     name: 'RenderNode',
     props: {

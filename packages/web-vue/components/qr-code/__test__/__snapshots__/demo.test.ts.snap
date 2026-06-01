@@ -91,14 +91,14 @@ exports[`<qr-code> demo: > render [status] correctly 1`] = `
 exports[`<qr-code> demo: > render [type] correctly 1`] = `
 <div class="sd:flex sd:flex-wrap sd:gap-6">
   <div class="sd:flex sd:flex-col sd:items-center sd:gap-3">
-    <div class="sd:text-sm" style="color: var(--sd-color-text-2);">Canvas</div>
+    <div class="sd:text-sm sd:text-(--sd-color-text-2)">Canvas</div>
     <div class="sd-qr-code" style="width: 160px; height: 160px; background-color: transparent;">
       <!--v-if--><canvas class="sd-qr-code-canvas"></canvas>
       <!--v-if-->
     </div>
   </div>
   <div class="sd:flex sd:flex-col sd:items-center sd:gap-3">
-    <div class="sd:text-sm" style="color: var(--sd-color-text-2);">SVG</div>
+    <div class="sd:text-sm sd:text-(--sd-color-text-2)">SVG</div>
     <div class="sd-qr-code" style="width: 160px; height: 160px; background-color: transparent;">
       <!--v-if-->
       <div class="sd-qr-code-svg"></div>
