@@ -130,6 +130,7 @@ declare module 'vue' {
     SdTimeline: SDVue['Timeline'];
     SdTimelineItem: SDVue['TimelineItem'];
     SdTooltip: SDVue['Tooltip'];
+    SdTour: SDVue['Tour'];
     SdTransfer: SDVue['Transfer'];
     SdTree: SDVue['Tree'];
     SdTreeSelect: SDVue['TreeSelect'];

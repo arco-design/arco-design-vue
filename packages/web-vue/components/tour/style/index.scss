@@ -1,0 +1,218 @@
+@use '@style/theme/index.scss' as theme;
+@use '@style/theme/index.scss' as global;
+@use '@components/tour/style/token.scss' as *;
+@use 'sass:string';
+
+$tour-prefix-cls: string.unquote('#{theme.$prefix}-tour');
+
+.#{$tour-prefix-cls}-overlay {
+  z-index: $tour-z-index-overlay;
+  pointer-events: none;
+}
+
+body.#{$tour-prefix-cls}-active .#{$tour-prefix-cls}-overlay {
+  pointer-events: none;
+}
+
+body.#{$tour-prefix-cls}-active * {
+  pointer-events: none;
+}
+
+body.#{$tour-prefix-cls}-active .#{$tour-prefix-cls}-active-element,
+body.#{$tour-prefix-cls}-active .#{$tour-prefix-cls}-active-element *,
+body.#{$tour-prefix-cls}-active .#{$tour-prefix-cls}-popover-shell,
+body.#{$tour-prefix-cls}-active .#{$tour-prefix-cls}-popover-shell *,
+body.#{$tour-prefix-cls}-active .#{$tour-prefix-cls}-popover,
+body.#{$tour-prefix-cls}-active .#{$tour-prefix-cls}-popover * {
+  pointer-events: auto;
+}
+
+.#{$tour-prefix-cls}-overlay path {
+  cursor: auto;
+  pointer-events: auto;
+}
+
+.#{$tour-prefix-cls}-popover {
+  position: fixed;
+  z-index: $tour-z-index-popover;
+  box-sizing: border-box;
+  min-width: 280px;
+  max-width: 360px;
+}
+
+.#{$tour-prefix-cls}-popover-shell {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  background: transparent;
+  border: 0;
+}
+
+.#{$tour-prefix-cls}-popover {
+  padding: $tour-padding-vertical $tour-padding-horizontal;
+  color: $tour-color-text;
+  background-color: $tour-color-bg;
+  border: global.$border-1 solid $tour-color-border;
+  border-radius: $tour-border-radius;
+  box-shadow: $tour-shadow;
+}
+
+.#{$tour-prefix-cls}-popover .#{$tour-prefix-cls}-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.#{$tour-prefix-cls}-popover .#{$tour-prefix-cls}-popover-title {
+  color: $tour-color-text;
+  font-size: $tour-font-size-title;
+  line-height: theme.$line-height-base;
+}
+
+.#{$tour-prefix-cls}-popover .#{$tour-prefix-cls}-popover-description {
+  color: $tour-color-description;
+  font-size: $tour-font-size-body;
+}
+
+.#{$tour-prefix-cls}-popover
+  .#{$tour-prefix-cls}-popover-title[style*='block']
+  + .#{$tour-prefix-cls}-popover-description {
+  margin-top: $tour-gap-title;
+}
+
+.#{$tour-prefix-cls}-popover .#{$tour-prefix-cls}-popover-progress-text {
+  color: $tour-color-description;
+  font-size: $tour-font-size-progress;
+}
+
+.#{$tour-prefix-cls}-popover .#{$tour-prefix-cls}-popover-close-btn {
+  color: $tour-color-description;
+}
+
+.#{$tour-prefix-cls}-popover .#{$tour-prefix-cls}-popover-close-btn:hover,
+.#{$tour-prefix-cls}-popover .#{$tour-prefix-cls}-popover-close-btn:focus {
+  color: $tour-color-text;
+}
+
+.#{$tour-prefix-cls}-popover .#{$tour-prefix-cls}-popover-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: $tour-gap-footer;
+}
+
+.#{$tour-prefix-cls}-popover .#{$tour-prefix-cls}-popover-navigation-btns {
+  display: inline-flex;
+  gap: $tour-gap-buttons;
+}
+
+.#{$tour-prefix-cls}-popover .#{$tour-prefix-cls}-popover-progress-text {
+  min-height: 24px;
+}
+
+.#{$tour-prefix-cls}-popover .#{$tour-prefix-cls}-popover-next-btn,
+.#{$tour-prefix-cls}-popover .#{$tour-prefix-cls}-popover-prev-btn {
+  min-width: 72px;
+}
+
+.#{$tour-prefix-cls}-popover .#{$tour-prefix-cls}-popover-close-btn {
+  position: absolute;
+  top: global.$spacing-3;
+  right: global.$spacing-3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  color: $tour-color-description;
+  font-size: 20px;
+  line-height: 1;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.#{$tour-prefix-cls}-popover .#{$tour-prefix-cls}-popover-close-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.#{$tour-prefix-cls}-popover-arrow {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: $tour-color-bg;
+  border-top: global.$border-1 solid $tour-color-border;
+  border-left: global.$border-1 solid $tour-color-border;
+  transform: rotate(45deg);
+}
+
+.#{$tour-prefix-cls}-popover-arrow-side-top {
+  bottom: -7px;
+  border-top: 0;
+  border-right: global.$border-1 solid $tour-color-border;
+  border-bottom: global.$border-1 solid $tour-color-border;
+  border-left: 0;
+}
+
+.#{$tour-prefix-cls}-popover-arrow-side-bottom {
+  top: -7px;
+}
+
+.#{$tour-prefix-cls}-popover-arrow-side-left {
+  right: -7px;
+  border-top: 0;
+  border-right: global.$border-1 solid $tour-color-border;
+  border-bottom: global.$border-1 solid $tour-color-border;
+  border-left: 0;
+}
+
+.#{$tour-prefix-cls}-popover-arrow-side-right {
+  left: -7px;
+}
+
+.#{$tour-prefix-cls}-popover-arrow-align-start.#{$tour-prefix-cls}-popover-arrow-side-top,
+.#{$tour-prefix-cls}-popover-arrow-align-start.#{$tour-prefix-cls}-popover-arrow-side-bottom {
+  left: 24px;
+}
+
+.#{$tour-prefix-cls}-popover-arrow-align-center.#{$tour-prefix-cls}-popover-arrow-side-top,
+.#{$tour-prefix-cls}-popover-arrow-align-center.#{$tour-prefix-cls}-popover-arrow-side-bottom {
+  left: calc(50% - 6px);
+}
+
+.#{$tour-prefix-cls}-popover-arrow-align-end.#{$tour-prefix-cls}-popover-arrow-side-top,
+.#{$tour-prefix-cls}-popover-arrow-align-end.#{$tour-prefix-cls}-popover-arrow-side-bottom {
+  right: 24px;
+}
+
+.#{$tour-prefix-cls}-popover-arrow-align-start.#{$tour-prefix-cls}-popover-arrow-side-left,
+.#{$tour-prefix-cls}-popover-arrow-align-start.#{$tour-prefix-cls}-popover-arrow-side-right {
+  top: 24px;
+}
+
+.#{$tour-prefix-cls}-popover-arrow-align-center.#{$tour-prefix-cls}-popover-arrow-side-left,
+.#{$tour-prefix-cls}-popover-arrow-align-center.#{$tour-prefix-cls}-popover-arrow-side-right {
+  top: calc(50% - 6px);
+}
+
+.#{$tour-prefix-cls}-popover-arrow-align-end.#{$tour-prefix-cls}-popover-arrow-side-left,
+.#{$tour-prefix-cls}-popover-arrow-align-end.#{$tour-prefix-cls}-popover-arrow-side-right {
+  bottom: 24px;
+}
+
+.#{$tour-prefix-cls}-popover-arrow-none,
+.#{$tour-prefix-cls}-popover-arrow-side-over {
+  display: none;
+}
+
+.#{$tour-prefix-cls}-active-element {
+  position: relative;
+  z-index: var(--sd-tour-active-z-index, #{$tour-z-index-popover});
+}
+
+.#{$tour-prefix-cls}-no-interaction,
+.#{$tour-prefix-cls}-no-interaction * {
+  pointer-events: none !important;
+}

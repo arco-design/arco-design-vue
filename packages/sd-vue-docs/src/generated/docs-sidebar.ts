@@ -284,6 +284,10 @@ export const docsSidebar = [
             slug: 'components/spin',
             label: '加载中 Spin',
           },
+          {
+            slug: 'components/tour',
+            label: '漫游式引导 Tour',
+          },
         ],
       },
       {

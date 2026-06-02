@@ -1,0 +1,119 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<tour> demo: > render [basic] correctly 1`] = `
+<div class="sd:flex sd:flex-col sd:gap-4"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button">
+    <!--v-if-->开始导览
+  </button>
+  <div class="sd:grid sd:grid-cols-1 sd:gap-3 md:sd:grid-cols-2">
+    <div id="tour-basic-step-1" class="sd:rounded-xl sd:border sd:border-solid sd:border-[var(--color-border-2)] sd:bg-[var(--color-bg-2)] sd:p-4">
+      <div class="sd:mb-2 sd:text-base sd:font-medium">筛选条件</div>
+      <div class="sd:text-[var(--color-text-2)]">先确定查询范围，再开始处理数据。</div>
+    </div>
+    <div id="tour-basic-step-2" class="sd:rounded-xl sd:border sd:border-solid sd:border-[var(--color-border-2)] sd:bg-[var(--color-bg-2)] sd:p-4">
+      <div class="sd:mb-2 sd:text-base sd:font-medium">结果面板</div>
+      <div class="sd:text-[var(--color-text-2)]">这里会展示导览完成后的关键结果。</div>
+    </div>
+  </div>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>
+`;
+
+exports[`<tour> demo: > render [buttons] correctly 1`] = `
+<div class="sd:flex sd:flex-col sd:gap-4"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button">
+    <!--v-if-->查看自定义按钮
+  </button>
+  <div class="sd:grid sd:grid-cols-1 sd:gap-3 md:sd:grid-cols-2">
+    <div id="tour-buttons-step-1" class="sd:rounded-xl sd:border sd:border-solid sd:border-(--color-border-2) sd:bg-(--color-fill-1) sd:p-4">
+      <div class="sd:font-medium">欢迎卡片</div>
+      <div class="sd:mt-2 sd:text-(--color-text-2)">第一步使用组件化标题和按钮。</div>
+    </div>
+    <div id="tour-buttons-step-2" class="sd:rounded-xl sd:border sd:border-solid sd:border-(--color-border-2) sd:bg-(--color-fill-1) sd:p-4">
+      <div class="sd:font-medium">操作完成</div>
+      <div class="sd:mt-2 sd:text-(--color-text-2)">第二步切换成更大的表格内容，观察浮层自动放大。</div>
+    </div>
+  </div>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>
+`;
+
+exports[`<tour> demo: > render [controlled] correctly 1`] = `
+<div class="sd:flex sd:flex-col sd:gap-4"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal sd:self-start" type="button">
+    <!--v-if-->打开受控导览
+  </button>
+  <div class="sd:grid sd:grid-cols-1 sd:gap-3 lg:sd:grid-cols-3">
+    <div id="tour-controlled-step-1" class="sd:rounded-xl sd:border sd:border-solid sd:border-(--color-border-2) sd:p-4">
+      <div class="sd:font-medium">创建任务</div>
+      <div class="sd:mt-2 sd:text-(--color-text-2)">第一步说明当前流程从哪里发起。</div>
+      <div class="sd-space sd-space-horizontal sd-space-align-center sd-space-wrap sd:mt-4" style="column-gap: 8px; row-gap: 8px;">
+        <!---->
+        <div class="sd-space-item"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-small sd-btn-status-normal" type="button">
+            <!--v-if-->下一步
+          </button></div>
+        <!---->
+        <div class="sd-space-item"><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-small sd-btn-status-danger" type="button">
+            <!--v-if-->关闭
+          </button></div>
+      </div>
+    </div>
+    <div id="tour-controlled-step-2" class="sd:rounded-xl sd:border sd:border-solid sd:border-(--color-border-2) sd:p-4">
+      <div class="sd:font-medium">分配成员</div>
+      <div class="sd:mt-2 sd:text-(--color-text-2)">第二步强调团队协作入口。</div>
+      <div class="sd-space sd-space-horizontal sd-space-align-center sd-space-wrap sd:mt-4" style="column-gap: 8px; row-gap: 8px;">
+        <!---->
+        <div class="sd-space-item"><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-small sd-btn-status-normal" type="button">
+            <!--v-if-->上一步
+          </button></div>
+        <!---->
+        <div class="sd-space-item"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-small sd-btn-status-normal" type="button">
+            <!--v-if-->下一步
+          </button></div>
+        <!---->
+        <div class="sd-space-item"><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-small sd-btn-status-danger" type="button">
+            <!--v-if-->关闭
+          </button></div>
+      </div>
+    </div>
+    <div id="tour-controlled-step-3" class="sd:rounded-xl sd:border sd:border-solid sd:border-(--color-border-2) sd:p-4">
+      <div class="sd:font-medium">确认发布</div>
+      <div class="sd:mt-2 sd:text-(--color-text-2)">第三步提醒最终确认动作由外部状态接管。</div>
+      <div class="sd-space sd-space-horizontal sd-space-align-center sd-space-wrap sd:mt-4" style="column-gap: 8px; row-gap: 8px;">
+        <!---->
+        <div class="sd-space-item"><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-small sd-btn-status-normal" type="button">
+            <!--v-if-->上一步
+          </button></div>
+        <!---->
+        <div class="sd-space-item"><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-small sd-btn-status-danger" type="button">
+            <!--v-if-->关闭
+          </button></div>
+      </div>
+    </div>
+  </div>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>
+`;
+
+exports[`<tour> demo: > render [non-modal] correctly 1`] = `
+<div class="sd:flex sd:flex-col sd:gap-4"><button class="sd-btn sd-btn-primary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button">
+    <!--v-if-->打开非模态导览
+  </button>
+  <div class="sd:grid sd:grid-cols-1 sd:gap-3 md:sd:grid-cols-3">
+    <div id="tour-non-modal-step-1" class="sd:rounded-xl sd:border sd:border-dashed sd:border-(--color-border-3) sd:bg-(--color-bg-2) sd:p-4">
+      <div class="sd:font-medium">实时指标</div>
+      <div class="sd:mt-2 sd:text-(--color-text-2)">背景不会被遮罩完全盖住，适合边看边操作。</div>
+    </div>
+    <div id="tour-non-modal-step-2" class="sd:rounded-xl sd:border sd:border-dashed sd:border-(--color-border-3) sd:bg-(--color-bg-2) sd:p-4">
+      <div class="sd:font-medium">快捷入口</div>
+      <div class="sd:mt-2 sd:text-(--color-text-2)">可以保留页面上下文，降低遮挡感。</div>
+    </div>
+    <div id="tour-non-modal-step-3" class="sd:rounded-xl sd:border sd:border-dashed sd:border-(--color-border-3) sd:bg-(--color-bg-2) sd:p-4">
+      <div class="sd:font-medium">当前状态</div>
+      <div class="sd:mt-2 sd:text-(--color-text-2)">适合需要连续观察页面数据变化的场景。</div>
+    </div>
+  </div>
+  <!--teleport start-->
+  <!--teleport end-->
+</div>
+`;

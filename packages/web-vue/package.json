@@ -80,6 +80,7 @@
     "cropperjs": "^2.1.1",
     "dayjs": "^1.11.20",
     "es-toolkit": "catalog:",
+    "motion-v": "^2.2.1",
     "number-precision": "^1.6.0",
     "overlayscrollbars": "^2.16.0",
     "qrcode": "^1.5.4",

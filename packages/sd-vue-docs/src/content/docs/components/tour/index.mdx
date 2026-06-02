@@ -1,0 +1,143 @@
+---
+title: 漫游式引导 Tour
+description: 组件库内置实现的页面导览组件，支持插槽、组件化按钮和顶层配置定制。
+---
+
+import DemoBlock from '../../../../components/docs/DemoBlock.astro';
+import TourBasicDemo from '../../../../components/generated/tour/basic.vue';
+import tourBasicSource from '../../../../components/generated/tour/basic.vue?raw';
+import TourButtonsDemo from '../../../../components/generated/tour/buttons.vue';
+import tourButtonsSource from '../../../../components/generated/tour/buttons.vue?raw';
+import TourControlledDemo from '../../../../components/generated/tour/controlled.vue';
+import tourControlledSource from '../../../../components/generated/tour/controlled.vue?raw';
+import TourNonModalDemo from '../../../../components/generated/tour/non-modal.vue';
+import tourNonModalSource from '../../../../components/generated/tour/non-modal.vue?raw';
+
+### 基本用法
+
+`Tour` 是一个无渲染包装组件，负责管理步骤状态、高亮区域、浮层定位和按钮流转。
+
+<DemoBlock source={tourBasicSource} mainFile="src/tour-basic.vue">
+
+<TourBasicDemo client:only="vue" />
+
+</DemoBlock>
+
+### 受控模式
+
+通过 `visible`、`current` 以及对应的更新事件，可以把导览步骤完全交给业务状态控制。示例里把业务按钮放进当前高亮卡片，避免被遮罩挡住后无法点击。
+
+<DemoBlock source={tourControlledSource} mainFile="src/tour-controlled.vue">
+
+<TourControlledDemo client:only="vue" />
+
+</DemoBlock>
+
+### 按钮、插槽和自动布局动画
+
+Tour 的行为配置已经直接平铺到组件顶层 props，同时支持 `buttonProps`，让前进、后退、完成、关闭按钮直接使用组件库里的 `Button` props。
+
+`title`、`description`、`progress`、`footer` 以及各个按钮都支持 slot。示例里第一步展示组件化标题，第二步把描述区切换成更大的表格内容，popover 会通过 Motion 自动做平滑布局动画。
+
+<DemoBlock source={tourButtonsSource} mainFile="src/tour-buttons.vue">
+
+<TourButtonsDemo client:only="vue" />
+
+</DemoBlock>
+
+### 非模态导览
+
+通过调低遮罩透明度等 Tour 配置，可以做成保留页面上下文的轻量导览。
+
+如果你的页面里还存在抽屉、弹窗、吸顶层或第三方浮层，可以通过 `zIndex` 直接声明 Tour 的层级基准值；遮罩会使用该值，浮层和高亮元素会使用该值加 `1`。未传时会跟随组件库统一的 popup/dialog 层级管理，而不是从固定的 `10000` 开始。
+
+<DemoBlock source={tourNonModalSource} mainFile="src/tour-non-modal.vue">
+
+<TourNonModalDemo client:only="vue" />
+
+</DemoBlock>
+
+## API
+
+### `<tour>` Props
+
+| 参数名 | 描述 | 类型 | 默认值 |
+| --- | --- | --- | :-: |
+| visible **(v-model)** | 导览是否可见 | `boolean` | `-` |
+| default-visible | 导览默认是否可见（非受控模式） | `boolean` | `false` |
+| current **(v-model)** | 当前步骤下标 | `number` | `-` |
+| default-current | 默认步骤下标（非受控模式） | `number` | `0` |
+| steps | 导览步骤配置 | `TourStep[]` | `[]` |
+| z-index | 导览层级基准值；遮罩使用该值，浮层和高亮元素使用该值加 `1` | `number` | `自动分配` |
+| animate | 是否启用过渡和 Motion 布局动画 | `boolean` | `true` |
+| allow-close | 是否允许显示并触发关闭行为 | `boolean` | `true` |
+| allow-keyboard-control | 是否启用键盘控制，支持 `Esc`、左右方向键 | `boolean` | `true` |
+| overlay-click-behavior | 点击遮罩时的行为，可关闭、前进一步或自定义 hook | `'close' \| 'nextStep' \| TourStepHook` | `'close'` |
+| overlay-opacity | 遮罩透明度 | `number` | `0.7` |
+| overlay-color | 遮罩颜色 | `string` | `'#000'` |
+| smooth-scroll | 步骤切换时是否平滑滚动到目标元素 | `boolean` | `false` |
+| disable-active-interaction | 是否禁止当前高亮元素交互 | `boolean` | `false` |
+| show-progress | 是否显示步骤进度 | `boolean` | `false` |
+| stage-padding | 高亮区域额外留白 | `number` | `10` |
+| stage-radius | 高亮区域圆角 | `number` | `5` |
+| popover-offset | 浮层与目标元素之间的偏移量 | `number` | `10` |
+| show-buttons | 默认显示哪些内置按钮 | `TourAllowedButton[]` | `['next', 'previous', 'close']` |
+| disable-buttons | 默认禁用哪些内置按钮 | `TourAllowedButton[]` | `[]` |
+| prev-btn-text | “上一步”按钮文案 | `string` | `'上一步'` |
+| next-btn-text | “下一步”按钮文案 | `string` | `'下一步'` |
+| done-btn-text | 最后一步“完成”按钮文案 | `string` | `'完成'` |
+| progress-text | 进度文案模板，支持 `{{current}}`、`{{total}}`、`{current}`、`{total}` | `string` | `'{{current}} / {{total}}'` |
+| popover-class | 额外挂载到浮层容器上的 class | `string` | `-` |
+| button-props | 内置按钮的组件库按钮 props | `TourButtonProps` | `-` |
+| on-highlight-started | 步骤高亮开始前触发 | `TourStepHook` | `-` |
+| on-highlighted | 步骤高亮完成后触发 | `TourStepHook` | `-` |
+| on-deselected | 当前步骤取消高亮时触发 | `TourStepHook` | `-` |
+| on-destroyed | 导览销毁完成后触发 | `TourStepHook` | `-` |
+| on-destroy-started | 请求销毁导览时触发，可用于接管关闭流程 | `TourStepHook` | `-` |
+| on-popover-render | 浮层内容渲染后触发，可拿到浮层 DOM 引用 | `TourPopoverRenderHook` | `-` |
+| on-next-click | 点击“下一步/完成”按钮时触发；提供时将接管默认前进行为 | `TourStepHook` | `-` |
+| on-prev-click | 点击“上一步”按钮时触发；提供时将接管默认回退行为 | `TourStepHook` | `-` |
+| on-close-click | 点击关闭按钮时触发；提供时将接管默认关闭行为 | `TourStepHook` | `-` |
+
+### `<tour>` Events
+
+| 事件名         | 描述                   | 参数                                |
+| -------------- | ---------------------- | ----------------------------------- |
+| update:visible | 导览显隐状态变化时触发 | `visible: boolean`                  |
+| visible-change | 导览显隐状态变化时触发 | `visible: boolean`                  |
+| update:current | 当前步骤变化时触发     | `current: number`                   |
+| change         | 当前步骤变化时触发     | `current: number, previous: number` |
+| close          | 导览关闭时触发         | `current: number \| undefined`      |
+
+### `<tour>` Exposes
+
+| 名称          | 描述                     | 类型                                    |
+| ------------- | ------------------------ | --------------------------------------- |
+| drive         | 从指定步骤开始启动导览   | `(stepIndex?: number) => Promise<void>` |
+| moveNext      | 前进到下一步             | `() => void`                            |
+| movePrevious  | 回到上一步               | `() => void`                            |
+| moveTo        | 跳转到指定步骤           | `(stepIndex: number) => void`           |
+| highlight     | 高亮单个步骤             | `(step: TourStep) => void`              |
+| destroy       | 销毁当前导览             | `() => void`                            |
+| refresh       | 刷新浮层和高亮位置       | `() => void`                            |
+| isActive      | 当前导览是否处于激活状态 | `() => boolean`                         |
+| getController | 获取底层导览控制器       | `() => TourController \| null`          |
+| getState      | 获取底层导览状态         | `() => TourState \| undefined`          |
+
+### `<tour>` Slots
+
+| 插槽名 | 描述 | 参数 |
+| --- | --- | --- |
+| title | 自定义标题区域，可传入任意组件 | `step`、`current`、`title`、`controller`、`state` |
+| description | 自定义描述区域，可传入任意组件 | `step`、`current`、`description`、`controller`、`state` |
+| progress | 自定义进度文案区域 | `step`、`current`、`total`、`text`、`controller`、`state` |
+| footer | 完整接管底部区域 | `step`、`current`、`isFirst`、`isLast`、`moveNext`、`movePrevious`、`close`、`controller`、`state` |
+| previous-button | 自定义“上一步”按钮内容 | `step`、`current`、`text`、`controller`、`state` |
+| next-button | 自定义“下一步/完成”按钮内容 | `step`、`current`、`isLast`、`text`、`controller`、`state` |
+| close-button | 自定义关闭按钮内容 | `step`、`current`、`controller`、`state` |
+
+### 类型说明
+
+`TourStep`、`TourConfig`、`TourController`、`TourState` 等类型均从组件库导出，可直接在业务侧复用。
+
+其中 `TourConfig` 用于声明导览级别配置，`TourPopover` 也支持在单个步骤内覆盖按钮 props、标题/描述属性和 footer 属性。

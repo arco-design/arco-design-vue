@@ -447,6 +447,20 @@ export type {
 } from './timeline';
 export { default as Tooltip } from './tooltip';
 export type { TooltipInstance } from './tooltip';
+export { default as Tour } from './tour';
+export type {
+  TourAlignment,
+  TourAllowedButton,
+  TourConfig,
+  TourController,
+  TourExpose,
+  TourInstance,
+  TourPopover,
+  TourProps,
+  TourSide,
+  TourState,
+  TourStep,
+} from './tour';
 export { default as Transfer } from './transfer';
 export type { TransferInstance, TransferItem } from './transfer';
 export { default as Tree } from './tree';

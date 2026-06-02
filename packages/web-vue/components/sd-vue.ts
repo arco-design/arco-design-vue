@@ -84,6 +84,7 @@ import ThemeProvider from './theme-provider';
 import TimePicker from './time-picker';
 import Timeline, { TimelineItem } from './timeline';
 import Tooltip from './tooltip';
+import Tour from './tour';
 import Transfer from './transfer';
 import Tree from './tree';
 import TreeSelect from './tree-select';
@@ -124,6 +125,7 @@ const components: Record<string, Plugin> = {
   TagGroup,
   Timeline,
   Tooltip,
+  Tour,
   AutoComplete,
   Cascader,
   Checkbox,
@@ -255,6 +257,7 @@ const SDVue: Record<string, unknown> & {
   TypographyParagraph,
   TypographyTitle,
   TypographyText,
+  Tour,
   install,
   addI18nMessages,
   useLocale,

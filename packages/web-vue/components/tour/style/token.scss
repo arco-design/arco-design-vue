@@ -1,0 +1,27 @@
+@use '@style/theme/index.scss' as global;
+
+@forward '@style/theme/index.scss';
+@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
+
+@use 'sass:string';
+
+$tour-color-bg: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-popup'));
+$tour-color-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
+$tour-color-description: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
+$tour-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+$tour-color-primary-text: var(string.unquote('#{global.$sd-cssvars-prefix}-color-white'));
+
+$tour-border-radius: global.$radius-medium;
+$tour-shadow: global.$shadow2-down;
+$tour-font-size-title: global.$font-size-title-1;
+$tour-font-size-body: global.$font-size-body-3;
+$tour-font-size-progress: global.$font-size-body-1;
+$tour-padding-vertical: global.$spacing-6;
+$tour-padding-horizontal: global.$spacing-7;
+$tour-gap-title: global.$spacing-2;
+$tour-gap-footer: global.$spacing-5;
+$tour-gap-buttons: global.$spacing-2;
+$tour-button-padding-y: global.$spacing-1;
+$tour-button-padding-x: global.$spacing-4;
+$tour-z-index-overlay: global.$z-index-popup;
+$tour-z-index-popover: global.$z-index-drawer;
