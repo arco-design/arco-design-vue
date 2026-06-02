@@ -7,6 +7,7 @@ import { VirtualListProps } from '../_components/virtual-list/interface';
 import { Size } from '../_utils/constant';
 import { ButtonProps } from '../button';
 import { ShortcutType, WeekStart } from '../date-picker/interface';
+import { EllipsisTooltipProps } from '../ellipsis';
 import { SDLang } from '../locale/interface';
 import { SDThemeNormalized } from './theme';
 
@@ -19,6 +20,7 @@ export interface ConfigProviderModal {
   draggable?: boolean;
   closable?: boolean;
   titleAlign?: 'start' | 'center';
+  titleEllipsisTooltip?: boolean | EllipsisTooltipProps;
   top?: number | string;
   footer?: boolean;
   hideCancel?: boolean;
@@ -37,6 +39,7 @@ export interface ConfigProviderDrawer {
   closable?: boolean;
   header?: boolean;
   footer?: boolean;
+  titleEllipsisTooltip?: boolean | EllipsisTooltipProps;
   hideCancel?: boolean;
   okText?: string;
   cancelText?: string;

@@ -37,12 +37,18 @@
             >
               <div
                 v-if="!hideTitle && ($slots.title || title || mergedClosable)"
-                :class="`${prefixCls}-header`"
+                :class="headerCls"
                 @mousedown="handleMoveDown"
               >
                 <div
                   v-if="$slots.title || title"
-                  :class="[`${prefixCls}-title`, `${prefixCls}-title-align-${mergedTitleAlign}`]"
+                  :class="[
+                    `${prefixCls}-title`,
+                    `${prefixCls}-title-align-${mergedTitleAlign}`,
+                    {
+                      [`${prefixCls}-title-with-close`]: showCloseButton,
+                    },
+                  ]"
                 >
                   <div v-if="messageType" :class="`${prefixCls}-title-icon`">
                     <icon-info-circle-fill v-if="messageType === 'info'" />
@@ -50,7 +56,12 @@
                     <icon-exclamation-circle-fill v-if="messageType === 'warning'" />
                     <icon-close-circle-fill v-if="messageType === 'error'" />
                   </div>
-                  <slot name="title">{{ title }}</slot>
+                  <Ellipsis
+                    :class="`${prefixCls}-title-text`"
+                    :tooltip="mergedTitleEllipsisTooltip"
+                  >
+                    <slot name="title">{{ title }}</slot>
+                  </Ellipsis>
                 </div>
                 <div
                   v-if="!simple && mergedClosable"
@@ -99,6 +110,8 @@
   import type { CSSProperties, PropType, StyleValue } from 'vue';
   import { defineComponent, computed, ref, watch, onMounted, onBeforeUnmount, toRefs } from 'vue';
 
+  import type { EllipsisTooltipProps } from '../ellipsis';
+
   import ClientOnly from '../_components/client-only';
   import IconHover from '../_components/icon-hover.vue';
   import { useConfigProviderProp } from '../_hooks/use-config-provider-prop';
@@ -111,6 +124,7 @@
   import { isBoolean, isFunction, isNumber, isPromise } from '../_utils/is';
   import { KEYBOARD_KEY } from '../_utils/keyboard';
   import SDButton, { ButtonProps } from '../button';
+  import Ellipsis from '../ellipsis';
   import IconCheckCircleFill from '../icon/icon-check-circle-fill';
   import IconClose from '../icon/icon-close';
   import IconCloseCircleFill from '../icon/icon-close-circle-fill';
@@ -123,6 +137,7 @@
     name: 'Modal',
     components: {
       ClientOnly,
+      Ellipsis,
       SDButton,
       IconHover,
       IconClose,
@@ -180,6 +195,15 @@
        */
       title: {
         type: String,
+      },
+      /**
+       * @zh 标题省略时的提示方式，默认使用组件 Tooltip，传 `false` 时使用浏览器原生 title。
+       * @en Tooltip behavior when the title is ellipsized. Uses the component tooltip by default, or falls back to the native browser title when set to false.
+       * @version 2.58.0
+       */
+      titleEllipsisTooltip: {
+        type: [Boolean, Object] as PropType<boolean | EllipsisTooltipProps>,
+        default: true,
       },
       /**
        * @zh 标题的水平对齐方向
@@ -486,6 +510,7 @@
         cancelText,
         okButtonProps,
         cancelButtonProps,
+        titleEllipsisTooltip,
         width,
       } = toRefs(props);
       const prefixCls = getPrefixCls('modal');
@@ -553,6 +578,13 @@
         propNames: ['cancelButtonProps', 'cancel-button-props'],
         getGlobalValue: (configProviderCtx) => configProviderCtx?.modal?.cancelButtonProps,
       });
+      const { mergedValue: mergedTitleEllipsisTooltip } = useConfigProviderProp(
+        titleEllipsisTooltip,
+        {
+          propNames: ['titleEllipsisTooltip', 'title-ellipsis-tooltip'],
+          getGlobalValue: (configProviderCtx) => configProviderCtx?.modal?.titleEllipsisTooltip,
+        },
+      );
       const { mergedValue: mergedWidth } = useConfigProviderProp(width, {
         propNames: ['width'],
         getGlobalValue: (configProviderCtx) => configProviderCtx?.modal?.width,
@@ -566,6 +598,7 @@
         () => Boolean(mergedDraggableBase.value) && !props.fullscreen,
       );
       const mergedAlignCenterBoolean = computed(() => Boolean(mergedAlignCenter.value));
+      const showCloseButton = computed(() => !props.simple && mergedClosable.value);
 
       const { teleportContainer, containerRef } = useTeleportContainer({
         popupContainer,
@@ -755,6 +788,13 @@
         },
       ]);
 
+      const headerCls = computed(() => [
+        `${prefixCls}-header`,
+        {
+          [`${prefixCls}-header-with-close`]: showCloseButton.value,
+        },
+      ]);
+
       const modalCls = computed(() => [
         `${prefixCls}`,
         props.modalClass,
@@ -800,6 +840,7 @@
         mergedHideCancel,
         mergedOkButtonProps,
         mergedCancelButtonProps,
+        mergedTitleEllipsisTooltip,
         zIndex,
         handleOk,
         handleCancel,
@@ -810,7 +851,9 @@
         mergedOkLoading,
         modalRef,
         wrapperCls,
+        headerCls,
         modalCls,
+        showCloseButton,
         teleportContainer,
         handleMoveDown,
       };

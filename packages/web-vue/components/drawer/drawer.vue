@@ -26,7 +26,12 @@
             <div v-if="mergedHeader" :class="`${prefixCls}-header`">
               <slot name="header">
                 <div v-if="$slots.title || title" :class="`${prefixCls}-title`">
-                  <slot name="title">{{ title }}</slot>
+                  <Ellipsis
+                    :class="`${prefixCls}-title-text`"
+                    :tooltip="mergedTitleEllipsisTooltip"
+                  >
+                    <slot name="title">{{ title }}</slot>
+                  </Ellipsis>
                 </div>
                 <div
                   v-if="mergedClosable"
@@ -75,6 +80,8 @@
   import type { CSSProperties, PropType, StyleValue } from 'vue';
   import { computed, defineComponent, onBeforeUnmount, onMounted, ref, toRefs, watch } from 'vue';
 
+  import type { EllipsisTooltipProps } from '../ellipsis';
+
   import ClientOnly from '../_components/client-only';
   import IconHover from '../_components/icon-hover.vue';
   import { useConfigProviderProp } from '../_hooks/use-config-provider-prop';
@@ -86,6 +93,7 @@
   import { isBoolean, isFunction, isNumber, isPromise } from '../_utils/is';
   import { KEYBOARD_KEY } from '../_utils/keyboard';
   import SDButton, { ButtonProps } from '../button';
+  import Ellipsis from '../ellipsis';
   import IconClose from '../icon/icon-close';
   import { useI18n } from '../locale';
 
@@ -96,6 +104,7 @@
     name: 'Drawer',
     components: {
       ClientOnly,
+      Ellipsis,
       SDButton,
       IconHover,
       IconClose,
@@ -134,6 +143,15 @@
        * @en Title
        */
       title: String,
+      /**
+       * @zh 标题省略时的提示方式，默认使用组件 Tooltip，传 `false` 时使用浏览器原生 title。
+       * @en Tooltip behavior when the title is ellipsized. Uses the component tooltip by default, or falls back to the native browser title when set to false.
+       * @version 2.58.0
+       */
+      titleEllipsisTooltip: {
+        type: [Boolean, Object] as PropType<boolean | EllipsisTooltipProps>,
+        default: true,
+      },
       /**
        * @zh 是否显示遮罩层
        * @en Whether to show the mask
@@ -374,6 +392,7 @@
         cancelText,
         okButtonProps,
         cancelButtonProps,
+        titleEllipsisTooltip,
         width,
         height,
       } = toRefs(props);
@@ -428,6 +447,13 @@
         propNames: ['cancelButtonProps', 'cancel-button-props'],
         getGlobalValue: (configProviderCtx) => configProviderCtx?.drawer?.cancelButtonProps,
       });
+      const { mergedValue: mergedTitleEllipsisTooltip } = useConfigProviderProp(
+        titleEllipsisTooltip,
+        {
+          propNames: ['titleEllipsisTooltip', 'title-ellipsis-tooltip'],
+          getGlobalValue: (configProviderCtx) => configProviderCtx?.drawer?.titleEllipsisTooltip,
+        },
+      );
       const { mergedValue: mergedWidth } = useConfigProviderProp(width, {
         propNames: ['width'],
         getGlobalValue: (configProviderCtx) => configProviderCtx?.drawer?.width,
@@ -629,6 +655,7 @@
         mergedCancelText,
         mergedOkButtonProps,
         mergedCancelButtonProps,
+        mergedTitleEllipsisTooltip,
         mergedOkLoading,
         zIndex,
         handleOk,

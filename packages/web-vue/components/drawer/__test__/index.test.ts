@@ -2,6 +2,7 @@ import { mount } from '@vue/test-utils';
 import { defineComponent, nextTick } from 'vue';
 
 import ConfigProvider from '../../config-provider';
+import Ellipsis from '../../ellipsis';
 import Drawer from '../drawer.vue';
 
 describe('Drawer', () => {
@@ -19,6 +20,7 @@ describe('Drawer', () => {
 
     await nextTick();
     expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.findComponent(Ellipsis).props('tooltip')).toBe(true);
   });
 
   test('should emit ok/cancel event', async () => {
@@ -58,6 +60,7 @@ describe('Drawer', () => {
               hideCancel: true,
               placement: 'bottom',
               escToClose: false,
+              titleEllipsisTooltip: false,
             }"
           >
             <drawer title="Title" default-visible :render-to-body="false">
@@ -75,6 +78,7 @@ describe('Drawer', () => {
     expect(wrapper.text()).not.toContain('取消');
     expect(wrapper.find('.sd-drawer').attributes('style')).toContain('height: 360px');
     expect(wrapper.find('.sd-drawer').attributes('style')).toContain('bottom: 0px');
+    expect(wrapper.findComponent(Ellipsis).props('tooltip')).toBe(false);
 
     document.documentElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
     await nextTick();
@@ -89,8 +93,15 @@ describe('Drawer', () => {
           Drawer,
         },
         template: `
-          <config-provider :drawer="{ closable: false, okText: '全局确认' }">
-            <drawer title="Title" default-visible :render-to-body="false" closable ok-text="本地确认">
+          <config-provider :drawer="{ closable: false, okText: '全局确认', titleEllipsisTooltip: false }">
+            <drawer
+              title="Title"
+              default-visible
+              :render-to-body="false"
+              closable
+              ok-text="本地确认"
+              :title-ellipsis-tooltip="true"
+            >
               <div>Drawer Body</div>
             </drawer>
           </config-provider>
@@ -102,5 +113,6 @@ describe('Drawer', () => {
     expect(wrapper.find('.sd-drawer-close-btn').exists()).toBe(true);
     expect(wrapper.text()).toContain('本地确认');
     expect(wrapper.text()).not.toContain('全局确认');
+    expect(wrapper.findComponent(Ellipsis).props('tooltip')).toBe(true);
   });
 });

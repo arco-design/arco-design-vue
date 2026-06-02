@@ -38,11 +38,17 @@ $drawer-prefix-cls: string.unquote('#{theme.$prefix}-drawer');
     border-bottom: global.$border-1 solid $drawer-color-border;
 
     .#{$drawer-prefix-cls}-title {
+      flex: 1;
+      min-width: 0;
       margin-right: auto;
       color: $drawer-color-header-text;
       font-weight: $drawer-font-header-weight;
       font-size: $drawer-font-header-size;
       text-align: left;
+    }
+
+    .#{$drawer-prefix-cls}-title-text {
+      min-width: 0;
     }
 
     .#{$drawer-prefix-cls}-close-btn {

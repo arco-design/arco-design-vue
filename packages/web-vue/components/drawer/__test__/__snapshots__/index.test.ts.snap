@@ -9,7 +9,10 @@ exports[`Drawer > should render Drawer 1`] = `
   <transition-stub name="slide-right-drawer" appear="true" persisted="true" css="true">
     <div class="sd-drawer" style="right: 0px; width: 250px; display: none;">
       <div class="sd-drawer-header">
-        <div class="sd-drawer-title">Title</div>
+        <div class="sd-drawer-title"><span class="sd-drawer-title-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Title</span></span>
+          <!--teleport start-->
+          <!--teleport end-->
+        </div>
         <div tabindex="-1" role="button" aria-label="Close" class="sd-drawer-close-btn"><span class="sd-icon-hover"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span></div>
       </div>
       <div class="sd-drawer-body">

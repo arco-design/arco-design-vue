@@ -22,6 +22,8 @@ import ModalFunctionDemo from '../../../../components/generated/modal/function.v
 import modalFunctionSource from '../../../../components/generated/modal/function.vue?raw';
 import ModalNoticeDemo from '../../../../components/generated/modal/notice.vue';
 import modalNoticeSource from '../../../../components/generated/modal/notice.vue?raw';
+import ModalLongTitleDemo from '../../../../components/generated/modal/long-title.vue';
+import modalLongTitleSource from '../../../../components/generated/modal/long-title.vue?raw';
 import ModalWidthDemo from '../../../../components/generated/modal/width.vue';
 import modalWidthSource from '../../../../components/generated/modal/width.vue?raw';
 
@@ -107,6 +109,16 @@ import modalWidthSource from '../../../../components/generated/modal/width.vue?r
 
 </DemoBlock>
 
+### 超长标题
+
+标题内容过长时会自动省略，避免遮挡右侧关闭按钮。默认使用组件 Tooltip，传入 `title-ellipsis-tooltip="false"` 时会回退到浏览器原生 `title`。
+
+<DemoBlock source={modalLongTitleSource} mainFile="src/modal-long-title.vue">
+
+<ModalLongTitleDemo client:only="vue" />
+
+</DemoBlock>
+
 ### 消息提示
 
 有**info**, **success**, **warning**, **error**四种类型的消息提示，仅提供一个确认按钮用于关闭消息提示对话框。消息默认会默认开启 `simple` 和 `hideCancel`，如果想要取消可以再次设置。
@@ -135,10 +147,11 @@ import modalWidthSource from '../../../../components/generated/modal/width.vue?r
 | --- | --- | --- | :-: | :-- |
 | visible **(v-model)** | 对话框是否可见 | `boolean` | `-` |  |
 | default-visible | 对话框默认是否可见（非受控状态） | `boolean` | `false` |  |
-| width | 对话框的宽度，不设置的情况下会使用样式中的宽度值 | `number\|string` | `-` | 2.12.0 |
-| top | 对话框的距离顶部的高度，居中显示开启的情况下不生效 | `number\|string` | `-` | 2.12.0 |
+| width | 对话框的宽度，不设置的情况下会使用样式中的宽度值 | `number \| string` | `-` | 2.12.0 |
+| top | 对话框的距离顶部的高度，居中显示开启的情况下不生效 | `number \| string` | `-` | 2.12.0 |
 | mask | 是否显示遮罩层 | `boolean` | `true` |  |
 | title | 标题 | `string` | `-` |  |
+| title-ellipsis-tooltip | 标题省略时的提示方式，默认使用组件 Tooltip，传 `false` 时使用浏览器原生 `title` | `boolean \| EllipsisTooltipProps` | `true` | 2.58.0 |
 | title-align | 标题的水平对齐方向 | `'start' \| 'center'` | `'center'` | 2.17.0 |
 | align-center | 对话框是否居中显示 | `boolean` | `true` |  |
 | unmount-on-close | 关闭时是否卸载节点 | `boolean` | `false` |  |
@@ -157,7 +170,7 @@ import modalWidthSource from '../../../../components/generated/modal/width.vue?r
 | mask-style | 蒙层的样式 | `CSSProperties` | `-` |  |
 | modal-class | 对话框的类名 | `string \| any[]` | `-` |  |
 | modal-style | 对话框的样式 | `CSSProperties` | `-` |  |
-| on-before-ok | 触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。 | `(  done: (closed: boolean) => void) => void \| boolean \| Promise<void \| boolean>` | `-` | 2.7.0 |
+| on-before-ok | 触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。 | `(done: (closed: boolean) => void) => void \| boolean \| Promise<void \| boolean>` | `-` | 2.7.0 |
 | on-before-cancel | 触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。 | `() => boolean` | `-` | 2.7.0 |
 | esc-to-close | 是否支持 ESC 键关闭对话框 | `boolean` | `true` | 2.15.0 |
 | draggable | 是否支持拖动 | `boolean` | `false` | 2.19.0 |
@@ -228,7 +241,7 @@ Modal._context = app._context;
 | fullscreen | 是否开启全屏 | `boolean` | `false` | 2.19.0 |
 | onOk | 点击确定按钮的回调函数 | `(e?: Event) => void` | `-` |  |
 | onCancel | 点击取消按钮的回调函数 | `(e?: Event) => void` | `-` |  |
-| onBeforeOk | 触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。 | `(    done: (closed: boolean) => void  ) => void \| boolean \| Promise<void \| boolean>` | `-` | 2.7.0 |
+| onBeforeOk | 触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。 | `(done: (closed: boolean) => void) => void \| boolean \| Promise<void \| boolean>` | `-` | 2.7.0 |
 | onBeforeCancel | 触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。 | `() => boolean` | `-` | 2.7.0 |
 | onOpen | 对话框打开后（动画结束）触发 | `() => void` | `-` |  |
 | onClose | 对话框关闭后（动画结束）触发 | `() => void` | `-` |  |

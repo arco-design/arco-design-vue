@@ -2,6 +2,7 @@ import { mount } from '@vue/test-utils';
 import { defineComponent, getCurrentInstance, nextTick } from 'vue';
 
 import ConfigProvider from '../../config-provider';
+import Ellipsis from '../../ellipsis';
 import Modal from '../index';
 import ModalComponent from '../modal.vue';
 
@@ -20,6 +21,7 @@ describe('Modal', () => {
 
     await nextTick();
     expect(wrapper.html()).toMatchSnapshot();
+    expect(wrapper.findComponent(Ellipsis).props('tooltip')).toBe(true);
     const buttons = wrapper.findAll('.sd-btn');
     await buttons[0].trigger('click');
     expect(wrapper.emitted('cancel')).toHaveLength(1);
@@ -110,6 +112,7 @@ describe('Modal', () => {
               draggable: true,
               escToClose: false,
               top: '10vh',
+              titleEllipsisTooltip: false,
             }"
           >
             <modal-component title="Title" default-visible :render-to-body="false">
@@ -133,6 +136,7 @@ describe('Modal', () => {
     expect(wrapper.find('.sd-modal-mask').attributes('style')).toContain(
       'background-color: rgb(1, 2, 3);',
     );
+    expect(wrapper.findComponent(Ellipsis).props('tooltip')).toBe(false);
 
     document.documentElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
     await nextTick();
@@ -147,8 +151,15 @@ describe('Modal', () => {
           ModalComponent,
         },
         template: `
-          <config-provider :modal="{ closable: false, okText: '全局确认' }">
-            <modal-component default-visible :render-to-body="false" closable ok-text="本地确认">
+          <config-provider :modal="{ closable: false, okText: '全局确认', titleEllipsisTooltip: false }">
+            <modal-component
+              title="Title"
+              default-visible
+              :render-to-body="false"
+              closable
+              ok-text="本地确认"
+              :title-ellipsis-tooltip="true"
+            >
               Modal Body
             </modal-component>
           </config-provider>
@@ -160,5 +171,6 @@ describe('Modal', () => {
     expect(wrapper.find('.sd-modal-close-btn').exists()).toBe(true);
     expect(wrapper.text()).toContain('本地确认');
     expect(wrapper.text()).not.toContain('全局确认');
+    expect(wrapper.findComponent(Ellipsis).props('tooltip')).toBe(true);
   });
 });

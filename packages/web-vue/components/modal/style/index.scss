@@ -89,11 +89,22 @@ $modal-prefix-cls: string.unquote('#{theme.$prefix}-modal');
     padding: 0 $modal-default-padding-horizontal;
     border-bottom: global.$border-1 solid $modal-color-border;
 
+    &-with-close {
+      .#{$modal-prefix-cls}-title-with-close {
+        padding-right: $modal-font-size-close-icon + 8px;
+      }
+
+      .#{$modal-prefix-cls}-close-btn {
+        margin-left: 8px;
+      }
+    }
+
     .#{$modal-prefix-cls}-title {
       display: flex;
       flex: 1;
       align-items: center;
       justify-content: resolve-header-justify-content();
+      min-width: 0;
 
       &-align-start {
         justify-content: flex-start;
@@ -102,6 +113,18 @@ $modal-prefix-cls: string.unquote('#{theme.$prefix}-modal');
       &-align-center {
         justify-content: center;
       }
+    }
+
+    .#{$modal-prefix-cls}-title-text {
+      min-width: 0;
+    }
+
+    .#{$modal-prefix-cls}-title-align-center .#{$modal-prefix-cls}-title-text {
+      text-align: center;
+    }
+
+    .#{$modal-prefix-cls}-title-align-start .#{$modal-prefix-cls}-title-text {
+      text-align: left;
     }
   }
 

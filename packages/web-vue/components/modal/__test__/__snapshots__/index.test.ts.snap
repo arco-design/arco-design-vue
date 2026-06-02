@@ -9,9 +9,11 @@ exports[`Modal > should render modal and emit ok/cancel event 1`] = `
   <div class="sd-modal-wrapper sd-modal-wrapper-align-center">
     <transition-stub name="zoom-modal" appear="true" persisted="true" css="true">
       <div class="sd-modal">
-        <div class="sd-modal-header">
-          <div class="sd-modal-title sd-modal-title-align-center">
-            <!--v-if-->Title
+        <div class="sd-modal-header sd-modal-header-with-close">
+          <div class="sd-modal-title sd-modal-title-align-center sd-modal-title-with-close">
+            <!--v-if--><span class="sd-modal-title-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Title</span></span>
+            <!--teleport start-->
+            <!--teleport end-->
           </div>
           <div tabindex="-1" role="button" aria-label="Close" class="sd-modal-close-btn"><span class="sd-icon-hover"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span></div>
         </div>
@@ -41,7 +43,9 @@ exports[`Modal > should render simple modal 1`] = `
       <div class="sd-modal sd-modal-simple">
         <div class="sd-modal-header">
           <div class="sd-modal-title sd-modal-title-align-center">
-            <!--v-if-->Title
+            <!--v-if--><span class="sd-modal-title-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">Title</span></span>
+            <!--teleport start-->
+            <!--teleport end-->
           </div>
           <!--v-if-->
         </div>
@@ -68,8 +72,8 @@ exports[`Modal > should show modal and call cb 1`] = `
       </transition-stub>
       <div class="sd-modal-wrapper sd-modal-wrapper-align-center"><transition-stub name="zoom-modal" appear="true" persisted="true" css="true">
           <div class="sd-modal">
-            <div class="sd-modal-header">
-              <div class="sd-modal-title sd-modal-title-align-center"><!--v-if-->title</div>
+            <div class="sd-modal-header sd-modal-header-with-close">
+              <div class="sd-modal-title sd-modal-title-align-center sd-modal-title-with-close"><!--v-if--><span class="sd-modal-title-text sd-ellipsis sd-ellipsis--single-line" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="sd-ellipsis-content">title</span></span><!--teleport start--><!--teleport end--></div>
               <div tabindex="-1" role="button" aria-label="Close" class="sd-modal-close-btn"><span class="sd-icon-hover"><svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 48 48" class="sd-icon sd-icon-close" stroke-width="4" stroke-linecap="butt" stroke-linejoin="miter"><path d="M9.857 9.858 24 24m0 0 14.142 14.142M24 24 38.142 9.858M24 24 9.857 38.142"></path></svg></span></div>
             </div>
             <div class="sd-modal-body">content</div>
@@ -77,6 +81,6 @@ exports[`Modal > should show modal and call cb 1`] = `
           </div>
         </transition-stub></div>
     </div><!--teleport end-->
-  </div>
+  </div><!---->
 </body>
 `;

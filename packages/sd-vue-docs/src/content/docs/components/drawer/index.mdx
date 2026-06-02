@@ -14,6 +14,8 @@ import DrawerFunctionDemo from '../../../../components/generated/drawer/function
 import drawerFunctionSource from '../../../../components/generated/drawer/function.vue?raw';
 import DrawerNestedDemo from '../../../../components/generated/drawer/nested.vue';
 import drawerNestedSource from '../../../../components/generated/drawer/nested.vue?raw';
+import DrawerLongTitleDemo from '../../../../components/generated/drawer/long-title.vue';
+import drawerLongTitleSource from '../../../../components/generated/drawer/long-title.vue?raw';
 import DrawerPopupContainerDemo from '../../../../components/generated/drawer/popup-container.vue';
 import drawerPopupContainerSource from '../../../../components/generated/drawer/popup-container.vue?raw';
 import DrawerPositionDemo from '../../../../components/generated/drawer/position.vue';
@@ -71,6 +73,16 @@ $END$
 
 </DemoBlock>
 
+### 超长标题
+
+标题内容过长时会自动省略，避免挤压关闭按钮与操作区。默认使用组件 Tooltip，传入 `title-ellipsis-tooltip="false"` 时会回退到浏览器原生 `title`。
+
+<DemoBlock source={drawerLongTitleSource} mainFile="src/drawer-long-title.vue">
+
+<DrawerLongTitleDemo client:only="vue" />
+
+</DemoBlock>
+
 ### 挂载位置
 
 通过 `popup-container` 可以设置弹出层节点的挂载位置
@@ -101,6 +113,7 @@ $END$
 | default-visible | 抽屉默认是否可见（非受控模式） | `boolean` | `false` |  |
 | placement | 抽屉放置的位置 | `'top' \| 'right' \| 'bottom' \| 'left'` | `'right'` |  |
 | title | 标题 | `string` | `-` |  |
+| title-ellipsis-tooltip | 标题省略时的提示方式，默认使用组件 Tooltip，传 `false` 时使用浏览器原生 `title` | `boolean \| EllipsisTooltipProps` | `true` | 2.58.0 |
 | mask | 是否显示遮罩层 | `boolean` | `true` |  |
 | mask-closable | 点击遮罩层是否可以关闭 | `boolean` | `true` |  |
 | closable | 是否展示关闭按钮 | `boolean` | `true` |  |
@@ -116,7 +129,7 @@ $END$
 | drawer-style | 抽屉的样式 | `CSSProperties` | `-` |  |
 | body-class | 抽屉内容部分的类名 | `string \| any[]` | `-` | 2.57.0 |
 | body-style | 抽屉内容部分的样式 | `StyleValue` | `-` | 2.57.0 |
-| on-before-ok | 触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。 | `(  done: (closed: boolean) => void) => void \| boolean \| Promise<void \| boolean>` | `-` |  |
+| on-before-ok | 触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。 | `(done: (closed: boolean) => void) => void \| boolean \| Promise<void \| boolean>` | `-` |  |
 | on-before-cancel | 触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。 | `() => boolean` | `-` |  |
 | esc-to-close | 是否支持 ESC 键关闭抽屉 | `boolean` | `true` | 2.15.0 |
 | render-to-body | 抽屉是否挂载在 `body` 元素下 | `boolean` | `true` |  |
@@ -182,7 +195,7 @@ Drawer._context = app._context;
 | drawerStyle | 抽屉的样式 | `CSSProperties` | `-` |  |
 | onOk | 点击确定按钮时触发 | `(e?: Event) => void` | `-` |  |
 | onCancel | 点击取消、关闭按钮时触发 | `(e?: Event) => void` | `-` |  |
-| onBeforeOk | 触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。 | `(    done: (closed: boolean) => void  ) => void \| boolean \| Promise<void \| boolean>` | `-` |  |
+| onBeforeOk | 触发 ok 事件前的回调函数。如果返回 false 则不会触发后续事件，也可使用 done 进行异步关闭。 | `(done: (closed: boolean) => void) => void \| boolean \| Promise<void \| boolean>` | `-` |  |
 | onBeforeCancel | 触发 cancel 事件前的回调函数。如果返回 false 则不会触发后续事件。 | `() => boolean` | `-` |  |
 | onOpen | 抽屉打开后（动画结束）触发 | `() => void` | `-` |  |
 | onClose | 抽屉关闭后（动画结束）触发 | `() => void` | `-` |  |
