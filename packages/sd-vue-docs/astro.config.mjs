@@ -95,6 +95,9 @@ export default defineConfig({
         },
       ],
       sidebar: docsSidebar,
+      components: {
+        MarkdownContent: './src/components/starlight/MarkdownContent.astro',
+      },
       customCss: ['./src/styles/site.css'],
       head: [
         {

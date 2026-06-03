@@ -376,7 +376,6 @@ describe('Table', () => {
       props: {
         columns,
         data,
-        scrollbar: false,
         scroll: {
           x: 700,
           y: 240,
@@ -386,7 +385,8 @@ describe('Table', () => {
 
     await nextTick();
 
-    const body = wrapper.find('.sd-table-body').element as HTMLElement;
+    const body = wrapper.find('.sd-table-body').find('[data-overlayscrollbars-viewport]')
+      .element as HTMLElement;
     const header = wrapper.find('.sd-table-header').element as HTMLElement;
 
     Object.defineProperty(body, 'clientWidth', {

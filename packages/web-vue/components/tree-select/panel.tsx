@@ -43,7 +43,7 @@ export default defineComponent({
   emits: ['change'],
   setup(props, { emit }) {
     const { showCheckable, selectedKeys, treeProps, scrollbar } = toRefs(props);
-    const { displayScrollbar, scrollbarProps } = useScrollbar(scrollbar);
+    const { scrollbarProps } = useScrollbar(scrollbar);
     const prefixCls = getPrefixCls('tree-select');
     const refTree = ref();
 
@@ -86,15 +86,10 @@ export default defineComponent({
       );
     };
 
-    return () => {
-      if (displayScrollbar.value) {
-        return (
-          <Scrollbar class={treeWrapperClassName.value} {...scrollbarProps.value}>
-            {renderTree()}
-          </Scrollbar>
-        );
-      }
-      return <div class={treeWrapperClassName.value}>{renderTree()}</div>;
-    };
+    return () => (
+      <Scrollbar class={treeWrapperClassName.value} {...scrollbarProps.value}>
+        {renderTree()}
+      </Scrollbar>
+    );
   },
 }) as TreeSelectPanelComponent;

@@ -18,9 +18,9 @@
 
 <script setup lang="ts">
   const handleScroll = (ev: Event) => {
-    console.log('scroll', ev);
+    console.log('滚动', ev);
   };
   const handleReachBottom = (ev: Event) => {
-    console.log('reach the bottom', ev);
+    console.log('滚动到底部', ev);
   };
 </script>

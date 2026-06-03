@@ -57,7 +57,7 @@
           :selected-keys="transferCtx?.selected"
           :on-select="transferCtx?.onSelect"
         >
-          <list :class="`${prefixCls}-list`" :bordered="false" :scrollbar="false">
+          <list :class="`${prefixCls}-list`" :bordered="false">
             <transfer-list-item
               v-for="item of filteredData"
               :key="item.value"

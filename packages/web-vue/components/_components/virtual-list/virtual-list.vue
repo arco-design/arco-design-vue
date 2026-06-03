@@ -341,11 +341,7 @@
         );
       });
 
-      const resolvedScrollbarProps = computed<ScrollbarProps | undefined>(() => {
-        if (!props.scrollbar) {
-          return undefined;
-        }
-
+      const resolvedScrollbarProps = computed<ScrollbarProps>(() => {
         if (typeof props.scrollbar === 'boolean') {
           return {
             type: 'embed',
@@ -360,10 +356,9 @@
 
       const hostClassNames = computed(() => [
         prefixCls,
-        resolvedScrollbarProps.value && 'sd-scrollbar',
-        resolvedScrollbarProps.value &&
-          `sd-scrollbar-type-${resolvedScrollbarProps.value.type ?? 'embed'}`,
-        resolvedScrollbarProps.value && `${prefixCls}-scrollbar`,
+        'sd-scrollbar',
+        `sd-scrollbar-type-${resolvedScrollbarProps.value.type ?? 'embed'}`,
+        `${prefixCls}-scrollbar`,
       ]);
 
       const containerOuterStyle = computed(() => {
@@ -502,13 +497,11 @@
         };
 
         if (resolvedHeightValue.value !== undefined) {
-          const shouldFillHeight =
-            resolvedScrollbarProps.value && resolvedHeightValue.value !== 'auto';
+          const shouldFillHeight = resolvedHeightValue.value !== 'auto';
           style.height = shouldFillHeight ? '100%' : resolvedHeightValue.value;
         }
 
-        const shouldUseNativeViewport =
-          !resolvedScrollbarProps.value || !overlayViewportReadyRef.value;
+        const shouldUseNativeViewport = !overlayViewportReadyRef.value;
 
         if (shouldUseNativeViewport) {
           if (props.direction === 'horizontal') {
@@ -648,11 +641,10 @@
         };
 
         if (resolvedHeightValue.value !== undefined) {
-          style.height = resolvedScrollbarProps.value ? '100%' : resolvedHeightValue.value;
+          style.height = '100%';
         }
 
-        const shouldUseNativeViewport =
-          !resolvedScrollbarProps.value || !overlayViewportReadyRef.value;
+        const shouldUseNativeViewport = !overlayViewportReadyRef.value;
 
         if (shouldUseNativeViewport) {
           if (props.direction === 'horizontal') {
@@ -667,12 +659,8 @@
         return style;
       });
 
-      const resolvedOverlayOptions = computed<OverlayScrollbarsPartialOptions | null>(() => {
+      const resolvedOverlayOptions = computed<OverlayScrollbarsPartialOptions>(() => {
         const scrollbarProps = resolvedScrollbarProps.value;
-        if (!scrollbarProps) {
-          return null;
-        }
-
         const overlayOptions = scrollbarProps.overlayOptions ?? {};
         const isTrackType = scrollbarProps.type === 'track';
 
@@ -794,10 +782,6 @@
       const initOverlayScrollbar = async (waitForDom = true) => {
         destroyOverlayScrollbar();
 
-        if (!resolvedOverlayOptions.value) {
-          return;
-        }
-
         if (waitForDom) {
           await nextTick();
         }
@@ -846,11 +830,6 @@
       watch(
         [currentScroller, resolvedOverlayOptions],
         async () => {
-          if (!resolvedOverlayOptions.value) {
-            destroyOverlayScrollbar();
-            return;
-          }
-
           await nextTick();
 
           const viewport = getScrollerElement();

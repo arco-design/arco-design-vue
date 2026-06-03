@@ -1,9 +1,10 @@
 <script setup lang="ts">
-  import { Repl, useStore } from '@vue/repl';
+  import { File, Repl, useStore } from '@vue/repl';
   import type { ReplStore } from '@vue/repl';
   import Monaco from '@vue/repl/monaco-editor';
   import { computed, onBeforeUnmount, onMounted, shallowRef, watch } from 'vue';
 
+  import overlayScrollbarsStylesheetHref from 'overlayscrollbars/overlayscrollbars.css?url';
   import vueRuntimeSource from 'vue/dist/vue.runtime.esm-browser.js?raw';
 
   import demoStylesheetHref from '../../styles/demo.css?url';
@@ -24,6 +25,17 @@
     tags: Record<string, string>;
   }
 
+  interface BrowserTypeReferenceManifestEntry {
+    code: string;
+    kind: string;
+    modulePath: string;
+  }
+
+  interface BrowserTypeReferenceManifest {
+    packageName: string;
+    types: Record<string, BrowserTypeReferenceManifestEntry>;
+  }
+
   interface ParsedImportSpecifier {
     importedName: string;
     isType: boolean;
@@ -34,6 +46,8 @@
   let cachedVendorDependencyImportsPromise: Promise<Record<string, string>> | null = null;
   let cachedComponentManifest: BrowserComponentManifest | null = null;
   let cachedComponentManifestPromise: Promise<BrowserComponentManifest> | null = null;
+  let cachedTypeReferenceManifest: BrowserTypeReferenceManifest | null = null;
+  let cachedTypeReferenceManifestPromise: Promise<BrowserTypeReferenceManifest> | null = null;
 
   function parseNamedImportSpecifiers(clause: string) {
     const trimmedClause = clause.trim();
@@ -221,6 +235,30 @@
     return cachedComponentManifestPromise;
   }
 
+  async function loadTypeReferenceManifest() {
+    if (cachedTypeReferenceManifest) {
+      return cachedTypeReferenceManifest;
+    }
+
+    cachedTypeReferenceManifestPromise ??= fetch(
+      '/vendor/sd-web-vue/deps/type-reference-manifest.json',
+    )
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`类型索引加载失败: ${response.status}`);
+        }
+
+        cachedTypeReferenceManifest = (await response.json()) as BrowserTypeReferenceManifest;
+        return cachedTypeReferenceManifest;
+      })
+      .catch((error) => {
+        cachedTypeReferenceManifestPromise = null;
+        throw error;
+      });
+
+    return cachedTypeReferenceManifestPromise;
+  }
+
   const vueModuleUrl = createJavaScriptDataUrl(vueRuntimeSource);
 
   const props = defineProps<{
@@ -254,6 +292,7 @@
   const previewOptions = computed(() => ({
     headHTML: [
       '<link rel="stylesheet" href="/vendor/sd-web-vue/dist/sd.css">',
+      `<link rel="stylesheet" href="${overlayScrollbarsStylesheetHref}">`,
       `<link rel="stylesheet" href="${demoStylesheetHref}">`,
       '<style>body{margin:0;padding:16px;font-family:Inter,Segoe UI,sans-serif;}body[sd-theme="dark"]{background:#141414;color:#f2f3f5;}#app{min-height:40px;}</style>',
       `<script>globalThis.process??={env:{NODE_ENV:'production'}};globalThis.global??=globalThis;${previewEnvironmentScriptCloseTag}`,
@@ -273,17 +312,143 @@
   }));
 
   async function ensureVendorImportMapLoaded() {
-    if (Object.keys(vendorDependencyImports.value).length > 0 && browserComponentManifest.value) {
+    if (
+      Object.keys(vendorDependencyImports.value).length > 0 &&
+      browserComponentManifest.value &&
+      cachedTypeReferenceManifest
+    ) {
       return;
     }
 
-    const [imports, manifest] = await Promise.all([
+    const [imports, manifest, typeManifest] = await Promise.all([
       loadVendorDependencyImports(),
       loadComponentManifest(),
+      loadTypeReferenceManifest(),
     ]);
 
     vendorDependencyImports.value = imports;
     browserComponentManifest.value = manifest;
+    cachedTypeReferenceManifest = typeManifest;
+  }
+
+  function indentLines(source: string, indent = '  ') {
+    return source
+      .split('\n')
+      .map((line) => `${indent}${line}`)
+      .join('\n');
+  }
+
+  function buildModuleDeclarations(manifest: BrowserComponentManifest) {
+    const modules = new Map<string, { defaultExport: boolean; namedExports: Set<string> }>();
+
+    for (const [exportName, exportEntry] of Object.entries(manifest.exports)) {
+      const bucket = modules.get(exportEntry.specifier) ?? {
+        defaultExport: false,
+        namedExports: new Set<string>(),
+      };
+
+      if (exportEntry.importMode === 'default') {
+        bucket.defaultExport = true;
+      }
+
+      if (exportEntry.importMode === 'named') {
+        bucket.namedExports.add(exportEntry.importedName ?? exportName);
+      }
+
+      modules.set(exportEntry.specifier, bucket);
+    }
+
+    return Array.from(modules.entries())
+      .sort(([left], [right]) => left.localeCompare(right))
+      .map(([specifier, exports]) => {
+        const lines = [`declare module '${specifier}' {`];
+
+        if (exports.defaultExport) {
+          lines.push('  const component: any;');
+          lines.push('  export default component;');
+        }
+
+        for (const namedExport of Array.from(exports.namedExports).sort((left, right) =>
+          left.localeCompare(right),
+        )) {
+          lines.push(`  export const ${namedExport}: any;`);
+        }
+
+        lines.push('}');
+        return lines.join('\n');
+      })
+      .join('\n\n');
+  }
+
+  function buildTypeReferenceDeclarationFile(
+    typeManifest: BrowserTypeReferenceManifest,
+    componentManifest: BrowserComponentManifest,
+  ) {
+    const typeLines = Object.entries(typeManifest.types)
+      .sort(([left], [right]) => left.localeCompare(right))
+      .map(([, entry]) => indentLines(entry.code))
+      .join('\n\n');
+    const valueExports = Object.keys(componentManifest.exports)
+      .sort((left, right) => left.localeCompare(right))
+      .map((exportName) => `  export const ${exportName}: any;`)
+      .join('\n');
+    const moduleDeclarations = buildModuleDeclarations(componentManifest);
+
+    return [
+      "declare module '@sdata/web-vue' {",
+      valueExports,
+      '  const plugin: { install(...args: any[]): void };',
+      '  export default plugin;',
+      typeLines,
+      '}',
+      '',
+      "declare module '@sdata/web-vue/es/icon.js' {",
+      '  const iconPlugin: any;',
+      '  export default iconPlugin;',
+      '}',
+      '',
+      moduleDeclarations,
+    ]
+      .filter(Boolean)
+      .join('\n');
+  }
+
+  function applyHiddenTypeFiles(
+    store: ReplStore,
+    componentManifest: BrowserComponentManifest,
+    typeManifest: BrowserTypeReferenceManifest,
+  ) {
+    const declarationFileName = 'src/types/sd-web-vue.generated.d.ts';
+    const declarationFile = new File(
+      declarationFileName,
+      buildTypeReferenceDeclarationFile(typeManifest, componentManifest),
+      true,
+    );
+    const tsconfigFile = new File(
+      'tsconfig.json',
+      JSON.stringify(
+        {
+          compilerOptions: {
+            allowJs: true,
+            checkJs: false,
+            jsx: 'preserve',
+            module: 'ESNext',
+            moduleResolution: 'Bundler',
+            strict: true,
+            target: 'ES2022',
+            types: [],
+          },
+          include: ['src/**/*'],
+        },
+        null,
+        2,
+      ),
+      true,
+    );
+
+    store.files[declarationFileName] = declarationFile;
+    store.files['tsconfig.json'] = tsconfigFile;
+    store.reloadLanguageTools?.();
   }
 
   function installBrowserProcessShim() {
@@ -365,6 +530,10 @@
       store.outputMode = 'preview';
 
       await store.setFiles(editorFiles.value, props.mainFile);
+
+      if (browserComponentManifest.value && cachedTypeReferenceManifest) {
+        applyHiddenTypeFiles(store, browserComponentManifest.value, cachedTypeReferenceManifest);
+      }
 
       applySafeVirtualFs(store);
 

@@ -20,26 +20,29 @@
       <div v-if="title || $slots.title" :class="`${prefixCls}-title`">
         <slot name="title">{{ title }}</slot>
       </div>
-      <div :class="`${prefixCls}-content`">
+      <Scrollbar :class="`${prefixCls}-content`" v-bind="scrollbarProps">
         <slot name="content">{{ content }}</slot>
-      </div>
+      </Scrollbar>
     </template>
   </trigger>
 </template>
 
 <script lang="ts">
   import type { PropType } from 'vue';
-  import { computed, CSSProperties, defineComponent, ref } from 'vue';
+  import { computed, CSSProperties, defineComponent, ref, toRefs } from 'vue';
 
   import type { TriggerEvent, TriggerPosition } from '../_utils/constant';
 
+  import { useScrollbar } from '../_hooks/use-scrollbar';
   import { getPrefixCls } from '../_utils/global-config';
-  import { ClassName, EmitType } from '../_utils/types';
+  import { ClassName } from '../_utils/types';
+  import Scrollbar, { ScrollbarProps } from '../scrollbar';
   import Trigger from '../trigger';
 
   export default defineComponent({
     name: 'Popover',
     components: {
+      Scrollbar,
       Trigger,
     },
     props: {
@@ -102,6 +105,10 @@
       contentStyle: {
         type: Object as PropType<CSSProperties>,
       },
+      scrollbar: {
+        type: [Boolean, Object] as PropType<boolean | ScrollbarProps>,
+        default: true,
+      },
       /**
        * @zh 弹出框箭头的类名
        * @en The class name of the popup arrow
@@ -147,6 +154,8 @@
       const prefixCls = getPrefixCls('popover');
       const _popupVisible = ref(props.defaultPopupVisible);
       const computedPopupVisible = computed(() => props.popupVisible ?? _popupVisible.value);
+      const { scrollbar } = toRefs(props);
+      const { scrollbarProps } = useScrollbar(scrollbar);
 
       const handlePopupVisibleChange = (visible: boolean) => {
         _popupVisible.value = visible;
@@ -164,6 +173,7 @@
         contentCls,
         arrowCls,
         handlePopupVisibleChange,
+        scrollbarProps,
       };
     },
   });

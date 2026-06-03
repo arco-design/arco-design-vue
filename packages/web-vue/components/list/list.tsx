@@ -185,7 +185,7 @@ export default defineComponent({
     const configCtx = inject(configProviderInjectionKey, undefined);
     const { componentRef, elementRef: listRef } = useComponentRef('containerRef');
     const isVirtualList = computed(() => props.virtualListProps);
-    const { displayScrollbar, scrollbarProps } = useScrollbar(scrollbar);
+    const { scrollbarProps } = useScrollbar(scrollbar);
     let preScrollTop = 0;
 
     const handleScroll = (e: Event) => {
@@ -417,12 +417,12 @@ export default defineComponent({
     };
 
     const render = () => {
-      const Component = displayScrollbar.value && !isVirtualList.value ? Scrollbar : 'div';
+      const ContentComponent = Scrollbar;
 
       return (
         <div class={`${prefixCls}-wrapper`} style={wrapperStyle.value}>
           <Spin class={`${prefixCls}-spin`} loading={props.loading}>
-            <Component
+            <ContentComponent
               ref={componentRef}
               class={cls.value}
               style={contentStyle.value}
@@ -444,7 +444,7 @@ export default defineComponent({
                 )}
                 {slots.footer && <div class={`${prefixCls}-footer`}>{slots.footer()}</div>}
               </div>
-            </Component>
+            </ContentComponent>
             {renderPagination()}
           </Spin>
         </div>

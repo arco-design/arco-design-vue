@@ -3,6 +3,8 @@ import path from 'node:path';
 import { build as rolldownBuild } from 'rolldown';
 import { build as viteBuild } from 'vite';
 
+import { buildTypeReferenceManifest } from './build-type-reference-manifest.mjs';
+
 const docsNextRoot = path.resolve(import.meta.dirname, '..');
 const workspaceRoot = path.resolve(docsNextRoot, '..', '..');
 const webVueRoot = path.resolve(workspaceRoot, 'packages', 'web-vue');
@@ -41,6 +43,10 @@ async function syncVendorAssets() {
 
   const vendorDependencyOutputs = await collectVendorDependencyOutputs(webVueEsRoot);
   const componentManifest = await collectBrowserComponentManifest(webVueEsRoot);
+  const typeReferenceManifest = await buildTypeReferenceManifest({
+    workspaceRoot,
+    webVueRoot,
+  });
 
   await fs.cp(webVueEsRoot, path.resolve(publicVendorRoot, 'es'), {
     recursive: true,
@@ -50,6 +56,7 @@ async function syncVendorAssets() {
   await bundleVendorDependencies(vendorDependencyOutputs);
   await writeVendorImportMap(vendorDependencyOutputs);
   await writeComponentManifest(componentManifest);
+  await writeTypeReferenceManifest(typeReferenceManifest);
 
   await bundleVendorStyles(styleEntryPath);
 }
@@ -340,6 +347,13 @@ async function writeComponentManifest(componentManifest) {
   await fs.writeFile(
     path.resolve(publicVendorRoot, 'deps', 'component-manifest.json'),
     JSON.stringify(componentManifest, null, 2),
+  );
+}
+
+async function writeTypeReferenceManifest(typeReferenceManifest) {
+  await fs.writeFile(
+    path.resolve(publicVendorRoot, 'deps', 'type-reference-manifest.json'),
+    JSON.stringify(typeReferenceManifest, null, 2),
   );
 }
 

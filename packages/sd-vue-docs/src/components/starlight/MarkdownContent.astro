@@ -1,0 +1,11 @@
+---
+import StarlightMarkdownContent from "@astrojs/starlight/components/MarkdownContent.astro";
+
+import TypeReferenceEnhancer from "../docs/TypeReferenceEnhancer.vue";
+---
+
+<StarlightMarkdownContent {...Astro.props}>
+  <slot />
+</StarlightMarkdownContent>
+
+<TypeReferenceEnhancer client:load />

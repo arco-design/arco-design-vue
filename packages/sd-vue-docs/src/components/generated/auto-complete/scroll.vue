@@ -9,19 +9,19 @@
 </template>
 
 <script setup lang="ts">
-  import type {
-    AutoCompleteDropdownReachBottomHandler,
-    AutoCompleteDropdownScrollHandler,
-  } from '@sdata/web-vue';
-
   import { ref } from 'vue';
+
+  import {
+    type AutoCompleteDropdownReachBottomHandler,
+    type AutoCompleteDropdownScrollHandler,
+  } from '@sdata/web-vue';
 
   const data = ref([...Array(100)].map((_, index) => `option-${index}`));
 
   const handleScroll: AutoCompleteDropdownScrollHandler = (ev) => {
-    console.log('scroll', ev);
+    console.log('滚动', ev);
   };
   const handleReachBottom: AutoCompleteDropdownReachBottomHandler = (ev) => {
-    console.log('reach the bottom', ev);
+    console.log('滚动到底部', ev);
   };
 </script>

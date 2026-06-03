@@ -1,5 +1,5 @@
 <template>
-  <div :class="cls" :style="outerStyle">
+  <div ref="outerRef" :class="cls" :style="outerStyle">
     <div ref="containerRef" :class="`${prefixCls}-container`" v-bind="$attrs">
       <slot />
     </div>
@@ -24,6 +24,7 @@
     watch,
   } from 'vue';
 
+  import { useResizeObserver } from '@vueuse/core';
   import { OverlayScrollbars } from 'overlayscrollbars';
 
   import type { ScrollbarEventListener, ScrollbarPlugin, ScrollbarProps } from './interface';
@@ -129,9 +130,76 @@
     },
     setup(props, { emit }) {
       const prefixCls = getPrefixCls('scrollbar');
+      const outerRef = ref<HTMLElement>();
       const containerRef = ref<HTMLElement>();
       const osInstanceRef = ref<OverlayScrollbarsInstance | null>(null);
       const removeExternalListenersRef = ref<(() => void) | null>(null);
+      const autoSizeStyleRef = ref<Record<string, string>>({});
+
+      const normalizeStyleValue = (styleValue: StyleValue | undefined) => {
+        if (!styleValue) {
+          return {} as Record<string, unknown>;
+        }
+
+        if (Array.isArray(styleValue)) {
+          return styleValue.reduce<Record<string, unknown>>((accumulator, item) => {
+            Object.assign(accumulator, normalizeStyleValue(item));
+            return accumulator;
+          }, {});
+        }
+
+        if (typeof styleValue === 'string') {
+          return {} as Record<string, unknown>;
+        }
+
+        return styleValue;
+      };
+
+      const normalizedOuterStyle = computed(() => normalizeStyleValue(props.outerStyle));
+
+      const parseComputedPx = (value: string) => {
+        if (!value || value === 'none') {
+          return null;
+        }
+
+        const parsedValue = Number.parseFloat(value);
+        return Number.isFinite(parsedValue) ? parsedValue : null;
+      };
+
+      const updateAutoSizeStyle = () => {
+        const outerElement = outerRef.value;
+        const containerElement = containerRef.value;
+
+        if (!outerElement || !containerElement) {
+          autoSizeStyleRef.value = {};
+          return;
+        }
+
+        const nextStyle: Record<string, string> = {};
+        const styleObject = normalizedOuterStyle.value;
+        const computedStyle = window.getComputedStyle(outerElement);
+        const hasExplicitHeight = 'height' in styleObject || 'blockSize' in styleObject;
+        const hasExplicitWidth = 'width' in styleObject || 'inlineSize' in styleObject;
+
+        if (!hasExplicitHeight && ('maxHeight' in styleObject || 'maxBlockSize' in styleObject)) {
+          const maxHeight = parseComputedPx(computedStyle.maxHeight);
+
+          if (maxHeight !== null) {
+            nextStyle.height = `${Math.min(containerElement.scrollHeight, maxHeight)}px`;
+          }
+        }
+
+        if (!hasExplicitWidth && ('maxWidth' in styleObject || 'maxInlineSize' in styleObject)) {
+          const maxWidth = parseComputedPx(computedStyle.maxWidth);
+
+          if (maxWidth !== null) {
+            nextStyle.width = `${Math.min(containerElement.scrollWidth, maxWidth)}px`;
+          }
+        }
+
+        autoSizeStyleRef.value = nextStyle;
+        resolveOSInstance()?.update(true);
+      };
 
       const resolveOSInstance = () => {
         const osInstance = osInstanceRef.value;
@@ -221,7 +289,7 @@
         removeExternalListenersRef.value = osInstance.on(eventListeners);
       };
 
-      const outerStyle = computed(() => props.outerStyle);
+      const outerStyle = computed(() => [props.outerStyle, autoSizeStyleRef.value]);
 
       const cls = computed(() => [
         `${prefixCls}`,
@@ -249,6 +317,15 @@
 
       onMounted(() => {
         initScrollbar();
+        updateAutoSizeStyle();
+      });
+
+      useResizeObserver(containerRef, () => {
+        updateAutoSizeStyle();
+      });
+
+      useResizeObserver(outerRef, () => {
+        updateAutoSizeStyle();
       });
 
       watch(
@@ -282,6 +359,7 @@
         prefixCls,
         cls,
         outerStyle,
+        outerRef,
         containerRef,
         mergedOptions,
         resolveOSInstance,

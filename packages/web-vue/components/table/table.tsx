@@ -700,7 +700,7 @@ export default defineComponent({
     const { children, components } = useChildrenComponents('TableColumn');
     const checkStrictly = computed(() => rowSelection.value?.checkStrictly ?? true);
 
-    const { displayScrollbar, scrollbarProps } = useScrollbar(scrollbar);
+    const { scrollbarProps } = useScrollbar(scrollbar);
     const containerClientWidth = ref(0);
     const containerScrollWidth = ref(0);
     const autoScrollX = ref(false);
@@ -2282,7 +2282,6 @@ export default defineComponent({
       if (splitTable.value) {
         const top = isNumber(props.stickyHeader) ? `${props.stickyHeader}px` : undefined;
 
-        const BodyComponent = displayScrollbar.value ? Scrollbar : 'div';
         const bodyContent =
           isVirtualList.value && flattenData.value.length ? (
             <div class={`${prefixCls}-element`} style={elementStyle.value}>
@@ -2313,24 +2312,28 @@ export default defineComponent({
               </div>
             </div>
           ) : (
-            <BodyComponent
+            <Scrollbar
               ref={tbodyComRef}
               class={`${prefixCls}-body`}
               style={{
                 maxHeight: isNumber(props.scroll?.y) ? `${props.scroll?.y}px` : '100%',
               }}
-              {...(scrollbar.value
-                ? {
-                    outerStyle: { display: 'flex', minHeight: '0' },
-                    ...scrollbarProps.value,
-                  }
-                : undefined)}
+              {...{
+                ...scrollbarProps.value,
+                outerStyle: {
+                  display: 'flex',
+                  minHeight: '0',
+                  ...(Array.isArray(scrollbarProps.value.outerStyle)
+                    ? Object.assign({}, ...scrollbarProps.value.outerStyle)
+                    : scrollbarProps.value.outerStyle),
+                },
+              }}
               onScroll={onTbodyScroll}
             >
               <div class={`${prefixCls}-element`} style={elementStyle.value}>
                 {renderBody()}
               </div>
-            </BodyComponent>
+            </Scrollbar>
           );
 
         return (
@@ -2346,7 +2349,7 @@ export default defineComponent({
                 ]}
                 style={{
                   overflowX: 'hidden',
-                  overflowY: hasScrollBar.value && !displayScrollbar.value ? 'scroll' : 'hidden',
+                  overflowY: 'hidden',
                   top,
                 }}
               >
@@ -2361,7 +2364,7 @@ export default defineComponent({
                 ref={summaryRef}
                 class={`${prefixCls}-tfoot`}
                 style={{
-                  overflowY: hasScrollBar.value ? 'scroll' : 'hidden',
+                  overflowY: 'hidden',
                 }}
               >
                 <div class={`${prefixCls}-element`} style={elementStyle.value}>
@@ -2389,12 +2392,10 @@ export default defineComponent({
     const renderTable = (content?: Slot) => {
       const style = props.scroll?.maxHeight ? { maxHeight: props.scroll.maxHeight } : undefined;
 
-      const ContentComponent = !splitTable.value && displayScrollbar.value ? Scrollbar : 'div';
-
       return (
         <>
           <div class={[`${prefixCls}-container`, tableCls.value]}>
-            <ContentComponent
+            <Scrollbar
               ref={contentComRef}
               class={[
                 `${prefixCls}-content`,
@@ -2403,9 +2404,7 @@ export default defineComponent({
                 },
               ]}
               style={style}
-              {...(!splitTable.value && scrollbar.value
-                ? { outerStyle: { height: '100%' }, ...scrollbarProps.value }
-                : undefined)}
+              {...{ ...scrollbarProps.value, outerStyle: { height: '100%' } }}
               onScroll={handleScroll}
             >
               {content ? (
@@ -2415,7 +2414,7 @@ export default defineComponent({
               ) : (
                 renderContent()
               )}
-            </ContentComponent>
+            </Scrollbar>
           </div>
           {slots.footer && <div class={`${prefixCls}-footer`}>{slots.footer()}</div>}
         </>

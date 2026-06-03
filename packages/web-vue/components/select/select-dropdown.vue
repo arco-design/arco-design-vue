@@ -10,8 +10,7 @@
       </slot>
     </div>
     <slot v-if="virtualList && !loading && !empty" name="virtual-list" />
-    <component
-      :is="displayScrollbar ? 'ScrollbarComponent' : 'div'"
+    <Scrollbar
       v-if="!virtualList"
       v-show="!loading && !empty"
       ref="wrapperComRef"
@@ -22,7 +21,7 @@
       <ul :class="`${prefixCls}-list`">
         <slot />
       </ul>
-    </component>
+    </Scrollbar>
     <div v-if="$slots.footer && (!empty || showFooterOnEmpty)" :class="`${prefixCls}-footer`">
       <slot name="footer" />
     </div>
@@ -46,8 +45,8 @@
   export default defineComponent({
     name: 'SelectDropdown',
     components: {
-      ScrollbarComponent: Scrollbar,
       Empty,
+      Scrollbar,
       Spin,
     },
     props: {
@@ -86,7 +85,7 @@
 
       const { componentRef: wrapperComRef, elementRef: wrapperRef } =
         useComponentRef('containerRef');
-      const { displayScrollbar, scrollbarProps } = useScrollbar(scrollbar);
+      const { scrollbarProps } = useScrollbar(scrollbar);
 
       const handleScroll = (e: Event) => {
         const { scrollTop, scrollHeight, offsetHeight } = e.target as HTMLElement;
@@ -112,7 +111,6 @@
         wrapperRef,
         wrapperComRef,
         handleScroll,
-        displayScrollbar,
         scrollbarProps,
       };
     },
