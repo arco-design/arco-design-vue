@@ -2,11 +2,17 @@ export interface SDCalendarLang {
   formatYear: string;
   formatMonth: string;
   today: string;
+  allDay: string;
+  noEvent: string;
+  deleteEvent: string;
+  createEvent: string;
   view: {
     month: string;
     year: string;
     week: string;
     day: string;
+    days: string;
+    years: string;
   };
   month: {
     long: {

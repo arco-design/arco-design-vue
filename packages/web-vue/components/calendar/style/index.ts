@@ -1,5 +1,3 @@
 import '../../style/index.scss';
+import '../../scrollbar/style';
 import './index.scss';
-import '../../button/style';
-import '../../select/style';
-import '../../radio/style';

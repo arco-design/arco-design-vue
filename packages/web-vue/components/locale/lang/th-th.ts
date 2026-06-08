@@ -4,11 +4,17 @@ const calendarLang: SDCalendarLang = {
   formatYear: 'YYYY',
   formatMonth: 'MMM YYYY',
   today: 'วันนี้',
+  allDay: 'ตลอดวัน',
+  noEvent: 'ไม่มีกิจกรรม',
+  deleteEvent: 'ลบ',
+  createEvent: 'สร้างกิจกรรม',
   view: {
     month: 'เดือน',
     year: 'ปี',
     week: 'สัปดาห์',
     day: 'วัน',
+    days: 'หลายวัน',
+    years: 'หลายปี',
   },
   month: {
     long: {

@@ -1,0 +1,104 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+
+$calendar-prefix-cls: string.unquote('#{theme.$prefix}-calendar');
+$calendar-css-prefix: string.unquote('--#{theme.$prefix}-calendar');
+
+// Styles from header.vue
+.#{$calendar-prefix-cls}__header {
+  position: relative;
+  user-select: none;
+}
+
+.#{$calendar-prefix-cls}__views-bar {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+}
+
+.#{$calendar-prefix-cls}__title-bar {
+  display: flex;
+}
+
+.#{$calendar-prefix-cls}__header .#{$calendar-prefix-cls}__transition-wrap {
+  position: relative;
+  flex-grow: 1;
+  min-height: 1px; // Fix the famous issue of the container overflowing the flex parent.
+
+  & > div {
+    position: absolute;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    inset: 0;
+  }
+}
+
+.#{$calendar-prefix-cls}__title {
+  position: relative;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  margin: auto; // If the title is a button (when navigation is enabled), better have it fit to the content.
+  font-weight: bold;
+  font-size: 1.05em;
+  font-family: inherit;
+
+  // The week number label.
+  small {
+    display: inline-flex;
+    padding: 2px 6px;
+    font-weight: normal;
+    font-size: 0.8em;
+    background: color-mix(in srgb, var(#{$calendar-css-prefix}-base-color) 15%, transparent);
+    border-radius: 4px;
+  }
+}
+
+.#{$calendar-prefix-cls}__header nav {
+  background-color: color-mix(
+    in srgb,
+    var(#{$calendar-css-prefix}-contrast-color) 20%,
+    transparent
+  );
+}
+
+.#{$calendar-prefix-cls}__nav {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &--today {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &[disabled] {
+      cursor: default;
+    }
+
+    &.#{$calendar-prefix-cls}__nav--default {
+      text-transform: uppercase;
+    }
+  }
+
+  &--prev.#{$calendar-prefix-cls}__nav--default::before,
+  &--next.#{$calendar-prefix-cls}__nav--default::before {
+    padding: 0.25em;
+    border: solid currentcolor;
+    border-width: 0 2px 2px 0;
+    transform: translateX(-1px) rotate(-45deg);
+    content: '';
+  }
+
+  &--prev.#{$calendar-prefix-cls}__nav--default::before {
+    border-width: 2px 0 0 2px;
+    transform: translateX(1px) rotate(-45deg);
+  }
+}

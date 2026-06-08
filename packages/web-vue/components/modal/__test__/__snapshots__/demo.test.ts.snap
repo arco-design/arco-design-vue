@@ -48,6 +48,13 @@ exports[`<modal> demo: > render [function] correctly 1`] = `
 </button>
 `;
 
+exports[`<modal> demo: > render [long-title] correctly 1`] = `
+<span class="sd-radio-group sd-radio-group-size-medium sd-radio-group-direction-horizontal"><label class="sd-radio sd-radio-checked"><input type="radio" checked="" class="sd-radio-target" value="component"><span class="sd-icon-hover sd-icon-hover-disabled sd-radio-icon-hover"><span class="sd-radio-icon"></span></span><span class="sd-radio-label">组件 Tooltip</span></label><label class="sd-radio"><input type="radio" class="sd-radio-target" value="native"><span class="sd-icon-hover sd-radio-icon-hover"><span class="sd-radio-icon"></span></span><span class="sd-radio-label">浏览器原生 title</span></label></span>
+<div class="sd:mt-5"><button class="sd-btn sd-btn-secondary sd-btn-shape-square sd-btn-size-medium sd-btn-status-normal" type="button">
+    <!--v-if-->Open Modal
+  </button></div>
+`;
+
 exports[`<modal> demo: > render [notice] correctly 1`] = `
 <div class="sd-space sd-space-horizontal sd-space-align-center" style="column-gap: 8px; row-gap: 8px;">
   <!---->

@@ -57,3 +57,4 @@ declare module '../../icon/*' {
 
 declare module 'b-tween';
 declare module 'clean-css';
+declare module 'chroma-js';

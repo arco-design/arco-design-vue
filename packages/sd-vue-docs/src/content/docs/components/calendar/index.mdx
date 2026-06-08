@@ -1,15 +1,43 @@
 ---
 title: 日历 Calendar
-description: 日历组件。
+description: 功能完整的日历组件，支持日、周、月、年等多种视图，支持事件管理、时间网格、排班系统和丰富的自定义插槽。
 ---
 
 import DemoBlock from '../../../../components/docs/DemoBlock.astro';
 import CalendarBasicDemo from '../../../../components/generated/calendar/basic.vue';
 import calendarBasicSource from '../../../../components/generated/calendar/basic.vue?raw';
+import CalendarViewsDemo from '../../../../components/generated/calendar/views.vue';
+import calendarViewsSource from '../../../../components/generated/calendar/views.vue?raw';
+import CalendarDatePickerDemo from '../../../../components/generated/calendar/date-picker.vue';
+import calendarDatePickerSource from '../../../../components/generated/calendar/date-picker.vue?raw';
+import CalendarSchedulesDemo from '../../../../components/generated/calendar/schedules.vue';
+import calendarSchedulesSource from '../../../../components/generated/calendar/schedules.vue?raw';
+import CalendarStackEventsDemo from '../../../../components/generated/calendar/stack-events.vue';
+import calendarStackEventsSource from '../../../../components/generated/calendar/stack-events.vue?raw';
+import CalendarCustomEventDemo from '../../../../components/generated/calendar/custom-event.vue';
+import calendarCustomEventSource from '../../../../components/generated/calendar/custom-event.vue?raw';
+import CalendarViewLayoutDemo from '../../../../components/generated/calendar/view-layout.vue';
+import calendarViewLayoutSource from '../../../../components/generated/calendar/view-layout.vue?raw';
+import CalendarDateTimeDemo from '../../../../components/generated/calendar/date-time.vue';
+import calendarDateTimeSource from '../../../../components/generated/calendar/date-time.vue?raw';
+import CalendarEventsDisplayDemo from '../../../../components/generated/calendar/events-display.vue';
+import calendarEventsDisplaySource from '../../../../components/generated/calendar/events-display.vue?raw';
+import CalendarEventsInteractionsDemo from '../../../../components/generated/calendar/events-interactions.vue';
+import calendarEventsInteractionsSource from '../../../../components/generated/calendar/events-interactions.vue?raw';
+import CalendarCustomizationDemo from '../../../../components/generated/calendar/customization.vue';
+import calendarCustomizationSource from '../../../../components/generated/calendar/customization.vue?raw';
+import CalendarDomEventsDemo from '../../../../components/generated/calendar/dom-events.vue';
+import calendarDomEventsSource from '../../../../components/generated/calendar/dom-events.vue?raw';
+import CalendarSchedulesExtDemo from '../../../../components/generated/calendar/schedules-demo.vue';
+import calendarSchedulesExtSource from '../../../../components/generated/calendar/schedules-demo.vue?raw';
 
-### 基本用法
+`Calendar` 迁移自 `vue-cal`，保留了多视图、事件渲染、时间网格、排班等核心能力，并对齐了 `@sdata/web-vue` 的主题与全局注册方式。
 
-展示和选择日历
+---
+
+## 完整功能演示
+
+支持日/周/月视图切换，可通过拖拽创建新事件，双击事件后点击删除按钮移除，拖拽事件移动时间，拖拽底部边缘调整时长。
 
 <DemoBlock source={calendarBasicSource} mainFile="src/calendar-basic.vue">
 
@@ -17,28 +45,579 @@ import calendarBasicSource from '../../../../components/generated/calendar/basic
 
 </DemoBlock>
 
-## API
+---
 
-### `<calendar>` Props
+## 视图与布局
 
-| 参数名                    | 描述                 | 类型                    |       默认值        |
-| ------------------------- | -------------------- | ----------------------- | :-----------------: |
-| model-value **(v-model)** | 绑定值               | `date`                  |         `-`         |
-| default-value             | 默认值（非受控状态） | `date`                  |         `-`         |
-| mode                      | 模式                 | `'month' \| 'year'`     |         `-`         |
-| default-mode              | 默认模式             | `'month' \| 'year'`     |      `'month'`      |
-| modes                     | 显示的模式           | `('month' \| 'year')[]` | `['month', 'year']` |
+日历支持多种视图模式和布局尺寸，从紧凑的日期选择器到完整的时间轴日历均覆盖。
 
-### `<calendar>` Events
+### 多视图切换
 
-| 事件名       | 描述                 | 参数         |
-| ------------ | -------------------- | ------------ |
-| change       | 选择的日期改变时触发 | date: `Date` |
-| panel-change | 日期面板改变时触发   | date: `Date` |
+通过外部按钮或内置视图栏切换日、周、月、年视图，观察同一组事件在不同视图下的呈现方式。
 
-### `<calendar>` Slots
+<DemoBlock source={calendarViewsSource} mainFile="src/calendar-views.vue">
 
-| 插槽名  |       描述       | 参数                                                    | 版本   |
-| ------- | :--------------: | ------------------------------------------------------- | :----- |
-| header  |  自定义头部内容  | year: `number`<br />month: `number`                     | 2.53.0 |
-| default | 自定义单元格内容 | year: `number`<br />month: `number`<br />date: `number` | 2.53.0 |
+<CalendarViewsDemo client:only="vue" />
+
+</DemoBlock>
+
+### 视图全面控制
+
+布局尺寸、视图集合、界面元素显隐、水平布局、国际化、暗色模式——所有可控选项一览。
+
+<DemoBlock source={calendarViewLayoutSource} mainFile="src/calendar-view-layout.vue">
+
+<CalendarViewLayoutDemo client:only="vue" />
+
+</DemoBlock>
+
+#### 布局尺寸
+
+日历提供四种尺寸模式：
+
+| 模式 | 等价配置 | 说明 |
+| --- | --- | --- |
+| `normal`（默认） | `{}` | 标准尺寸，适合完整页面展示 |
+| `sm` | `sm` | 紧凑模式，文字截断 + 特定样式 |
+| `xs` | `xs` | 超小模式，适合日期选择器场景 |
+| `date-picker` | `date-picker` | 等同于 `xs: true, views: [month, year, years], clickToNavigate: true` |
+
+#### 界面元素控制
+
+通过布尔属性可以灵活控制以下界面元素的显隐：
+
+- `today-button` — "今天"导航按钮
+- `views-bar` — 视图切换栏
+- `title-bar` — 标题栏
+- `time` — 时间轴列
+- `hide-weekends` — 隐藏周末（周六/周日）
+- `week-numbers` — 周数显示
+
+#### 水平布局
+
+通过 `horizontal` 属性将时间轴改为水平流向，适合甘特图式布局。适用于 `day`、`days`、`week` 视图。
+
+#### 国际化
+
+通过 `locale` 属性切换语言，支持 `zh-cn`（简体中文）、`en`（英文）、`ja`（日文）、`ko`（韩文）、`fr`（法文）等。
+
+---
+
+## 日期与时间
+
+灵活控制时间轴显示、限制可选日期范围、自定义时间格式等。
+
+<DemoBlock source={calendarDateTimeSource} mainFile="src/calendar-date-time.vue">
+
+<CalendarDateTimeDemo client:only="vue" />
+
+</DemoBlock>
+
+### 时间轴控制
+
+| 属性               | 类型      | 默认值  | 说明                                               |
+| ------------------ | --------- | ------- | -------------------------------------------------- |
+| `time-from`        | `number`  | `0`     | 时间轴起始时刻（分钟），如 `8 * 60` = 08:00        |
+| `time-to`          | `number`  | `1440`  | 时间轴结束时刻（分钟），如 `20 * 60` = 20:00       |
+| `time-step`        | `number`  | `60`    | 时间轴刻度间隔（分钟），如 `30` 为每半小时一个标记 |
+| `time-cell-height` | `number`  | `40`    | 时间格子高度（像素）                               |
+| `twelve-hour`      | `boolean` | `false` | 是否使用 12 小时制                                 |
+
+### 当前时间线
+
+当时间轴可见时，今天的当前时间会以一条红线标记。通过 `watch-real-time` 可让此线与实时时钟保持同步。
+
+### 日期范围控制
+
+| 属性 | 类型 | 说明 |
+| --- | --- | --- |
+| `min-date` | `string \| Date` | 最小可选日期，之前的单元格会被禁用 |
+| `max-date` | `string \| Date` | 最大可选日期，之后的单元格会被禁用 |
+| `disable-days` | `Array<string \| Date>` | 指定禁用的日期列表 |
+| `hide-weekdays` | `string[]` | 隐藏指定星期列，可选值：`mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun` |
+
+禁用的单元格外层分别带有 `.before-min`、`.after-max`、`.sd-calendar__cell--disabled` 类名，便于 CSS 定制。
+
+---
+
+## 事件显示
+
+### 事件类型全景
+
+覆盖基础事件、背景事件、不计时事件、月视图事件、重叠堆叠、全天事件、多天事件等所有显示模式。
+
+<DemoBlock source={calendarEventsDisplaySource} mainFile="src/calendar-events-display.vue">
+
+<CalendarEventsDisplayDemo client:only="vue" />
+
+</DemoBlock>
+
+#### 事件数据结构
+
+事件由 `start` 和 `end`（Date 对象或 `YYYY-MM-DD HH:mm` 格式字符串）定义，可选属性：
+
+| 属性              | 类型               | 说明                                  |
+| ----------------- | ------------------ | ------------------------------------- |
+| `start`           | `Date \| string`   | **必填**。事件开始时间                |
+| `end`             | `Date \| string`   | **必填**。事件结束时间                |
+| `title`           | `string`           | 事件标题                              |
+| `content`         | `string`           | 事件内容（支持 HTML）                 |
+| `class`           | `string`           | 自定义 CSS 类名                       |
+| `backgroundColor` | `string`           | 动态背景色                            |
+| `color`           | `string`           | 动态文字颜色                          |
+| `background`      | `boolean`          | `true` 时为背景事件（不参与重叠推挤） |
+| `allDay`          | `boolean`          | `true` 时为全天事件                   |
+| `schedule`        | `string \| number` | 关联的排班 ID                         |
+| `deletable`       | `boolean`          | `false` 时禁止删除                    |
+| `draggable`       | `boolean`          | `false` 时禁止拖拽                    |
+| `resizable`       | `boolean`          | `false` 时禁止缩放                    |
+
+#### 背景事件
+
+设置 `background: true` 的事件会退到背景层，不会被其他事件推挤，适合展示午餐时间、节假日等背景信息。
+
+#### 不计时事件
+
+当 `:time="false"` 时，整个日历变为"不计时"模式，事件不再显示精确时间，也无法调整大小，仅按天展示。
+
+#### 全天事件
+
+通过 `allDay: true` 标记全天事件，配合 `all-day-events` 属性将这些事件展示在日历顶部的固定全天事件栏中。可通过 CSS 变量 `--vuecal-all-day-bar-size` 调整栏高度。
+
+#### 月视图事件与计数
+
+- `events-on-month-view` — 在月视图单元格中显示完整事件卡片
+- `event-count` — 显示每格的事件计数，可配合 CSS 实现多种样式（圆点、横线、标题、自定义插槽等）
+- `#event-count` 插槽 — 按自定义逻辑过滤和渲染计数（如"只统计 leisure 类事件"）
+
+#### 重叠事件堆叠
+
+开启 `stack-events` 后，时间上重叠的事件以堆叠方式展示，各自获得 `.sd-calendar__event--stack-N-M` 类名（N=当前第几个，M=总共几个），便于 CSS 精确控制。
+
+<DemoBlock source={calendarStackEventsSource} mainFile="src/calendar-stack-events.vue">
+
+<CalendarStackEventsDemo client:only="vue" />
+
+</DemoBlock>
+
+#### 多天事件
+
+`start` 和 `end` 跨越多天时自动成为多天事件。开启 `editable-events="{ resizeX: true }"` 可水平拖拽调整跨天数。
+
+---
+
+## 事件交互
+
+### 增删改查与拖拽全流程
+
+事件的创建、编辑、删除、拖拽、缩放，以及与外部数据的双向绑定。
+
+<DemoBlock source={calendarEventsInteractionsSource} mainFile="src/calendar-events-interactions.vue">
+
+<CalendarEventsInteractionsDemo client:only="vue" />
+
+</DemoBlock>
+
+### 事件权限控制
+
+`editable-events` 可以是一个布尔值，也可以是一个细粒度权限对象：
+
+```js
+{
+  create: true,   // 允许创建事件（默认：点击拖拽单元格）
+  resize: true,   // 允许拖动事件底部边缘调整时长
+  resizeX: true,  // 允许水平拖拽调整跨天数
+  drag: true,     // 允许拖拽移动事件
+  delete: true    // 允许删除事件（默认：双击事件 → 点击删除按钮）
+}
+```
+
+也可以通过事件自身属性进行个体级覆盖：`deletable: false`、`draggable: false`、`resizable: false`。
+
+### 事件创建
+
+- **默认方式**：在单元格上点击并拖动（`@event-create`）
+- **自定义方式**：监听 `@cell-dblclick`、`@cell-contextmenu`、`@cell-hold` 等在回调中调用 `view.createEvent()`
+- **编程方式**：通过 `ref` 获取日历实例，调用 `ref.view.createEvent({ start, end, title })`
+- **创建对话框**：在 `@event-create` 回调中通过 `resolve` 控制确认/取消流程
+- **snap-to-interval**（分钟）：事件开始/结束自动对齐到指定间隔
+
+### 事件删除
+
+- **默认**：双击事件 → 显示删除按钮 → 点击删除按钮
+- **自定义**：`@event-dblclick="({ event }) => event.delete()"`
+- **跳过按钮**：`@event-dblclick="({ event }) => event.delete(3)"`（参数 1=显示按钮, 2=仅从视图删除, 3=同时从数据源删除）
+- 通过 `@event-hold`、`@event-contextmenu` 等绑定其他触发方式
+
+### 事件拖拽
+
+- 单天前景事件支持 HTML5 原生拖拽
+- 拖拽幽灵元素获得 `.sd-calendar__event--dragging-ghost` 类，原元素获得 `.sd-calendar__event--dragging-original` 类
+- `@event-drop` 回调接收 `{ event, cell, overlaps, e }`，返回 `false` 可拒绝放置
+- 支持从外部 HTML5 可拖拽源拖入事件
+
+### 事件缩放
+
+- `resize`: 拖拽事件底部边缘调整时长
+- `resizeX`: 拖拽事件侧边水平调整跨天数
+- `@event-resize` / `@event-resize-end` 返回 `false` 可拒绝缩放
+
+### 事件 v-model
+
+通过 `v-model:events` 实现事件数组的双向绑定。外部修改事件数组会实时反映到日历中，日历内的 UI 操作也会同步回数组。
+
+---
+
+## 插槽与自定义
+
+日历提供了丰富的插槽系统，可深度定制各个部分的渲染。
+
+<DemoBlock source={calendarCustomizationSource} mainFile="src/calendar-customization.vue">
+
+<CalendarCustomizationDemo client:only="vue" />
+
+</DemoBlock>
+
+### 可用插槽一览
+
+#### 头部插槽
+
+| 插槽名 | 参数 | 说明 |
+| --- | --- | --- |
+| `header` | `{ view, availableViews }` | 完全接管头部区域 |
+| `title` | `{ title, view }` | 自定义标题文本 |
+| `title.day` / `title.days` / `title.week` / `title.month` / `title.year` / `title.years` | `{ title, view }` | 按视图自定义标题 |
+| `previous-button` | `{ navigate, active }` | 自定义上一个按钮 |
+| `next-button` | `{ navigate, active }` | 自定义下一个按钮 |
+| `today-button` | `{ navigate, active }` | 自定义今天按钮 |
+
+#### 内容插槽
+
+| 插槽名 | 参数 | 说明 |
+| --- | --- | --- |
+| `weekday-heading` | `{ label, id, view }` | 自定义列头（周一～周日） |
+| `schedule-heading` | `{ schedule, view, cell }` | 自定义排班列头 |
+| `cell` | `{ cell, view }` | 自定义整个单元格 |
+| `cell-date` | `{ cell, view }` | 自定义日期数字显示 |
+| `cell-content` | `{ cell, view, events, goNarrower }` | 自定义单元格内容 |
+| `cell-events` | `{ cell, view, events }` | 自定义事件容器 |
+| `time-cell` | `{ hours, minutes, minutesSum, format12, format24 }` | 自定义时间轴格子 |
+| `current-time-label` | `{ view }` | 自定义当前时间标签 |
+| `now-line` | `{ now, timeFormatted }` | 自定义当前时间线 |
+| `week-number-cell` | `{ weekNumber }` | 自定义周数单元格 |
+
+#### 事件插槽
+
+| 插槽名 | 参数 | 说明 |
+| --- | --- | --- |
+| `event` | `{ event }` | 统一自定义事件渲染 |
+| `event.all-day` | `{ event }` | 自定义全天事件渲染 |
+| `event.day` / `event.days` / `event.week` / `event.month` / `event.year` / `event.years` | `{ event }` | 按视图自定义事件渲染 |
+| `event-count` | `{ events }` | 自定义事件计数渲染 |
+
+### 自定义事件渲染
+
+<DemoBlock source={calendarCustomEventSource} mainFile="src/calendar-custom-event.vue">
+
+<CalendarCustomEventDemo client:only="vue" />
+
+</DemoBlock>
+
+通过 `#event` 插槽完全接管事件卡片渲染。插槽参数 `{ event }` 中：
+
+- 用户定义的属性（如 `event.title`、`event.location`）可直接访问
+- `event._` 提供元信息：`startTimeFormatted24`、`endTimeFormatted24`、`duration` 等格式化值
+
+---
+
+## 外部联动
+
+### DOM 事件全览
+
+<DemoBlock source={calendarDomEventsSource} mainFile="src/calendar-dom-events.vue">
+
+<CalendarDomEventsDemo client:only="vue" />
+
+</DemoBlock>
+
+#### 日历发出的事件列表
+
+**生命周期事件：**
+
+| 事件名        | 参数                                | 说明                 |
+| ------------- | ----------------------------------- | -------------------- |
+| `ready`       | `{ config, view }`                  | 日历初始化完成时触发 |
+| `view-change` | `{ id, title, start, end, events }` | 视图变化时触发       |
+
+**单元格事件：**
+
+| 事件名 | 参数 | 说明 |
+| --- | --- | --- |
+| `cell-click` | `{ cell, view, e }` | 点击单元格 |
+| `cell-dblclick` | `{ cell, view, e }` | 双击单元格 |
+| `cell-hold` | `{ cell, view, e }` | 长按单元格 |
+| `cell-contextmenu` | `{ cell, view, e }` | 右键单元格 |
+| `cell-drag-start` / `cell-drag` / `cell-drag-end` | `{ cursor, view, e }` | 单元格拖拽 |
+| `cell-mousedown` / `cell-mouseup` | `{ cell, view, e }` | 鼠标按下/抬起 |
+| `cell-mousemove` / `cell-mouseenter` / `cell-mouseleave` | `{ cell, view, e }` | 鼠标移动/进入/离开 |
+
+**事件卡片事件：**
+
+| 事件名 | 参数 | 说明 |
+| --- | --- | --- |
+| `event-click` | `{ event, e }` | 点击事件 |
+| `event-dblclick` | `{ event, e }` | 双击事件（默认显示删除按钮） |
+| `event-hold` | `{ event, e }` | 长按事件 |
+| `event-contextmenu` | `{ event, e }` | 右键事件 |
+| `event-create` | `{ event, resolve, e }` | 创建事件（拖拽结束时） |
+| `event-created` | `{ event }` | 事件创建完成 |
+| `event-drag-start` / `event-drag` / `event-drag-end` | `{ event, cell, view, e }` | 拖拽事件 |
+| `event-drop` | `{ event, cell, overlaps, e }` | 事件放置 |
+| `event-dropped` | `{ event, oldDate, newDate }` | 事件放置完成 |
+| `event-resize` / `event-resize-end` | `{ event, overlaps, e }` | 事件缩放/缩放完成 |
+| `event-delete` | `{ event }` | 事件删除 |
+
+**v-model 事件：**
+
+| 事件名                | 参数            | 说明                 |
+| --------------------- | --------------- | -------------------- |
+| `update:view`         | `view: string`  | `view` 变更          |
+| `update:viewDate`     | `date: Date`    | `view-date` 变更     |
+| `update:selectedDate` | `date: Date`    | `selected-date` 变更 |
+| `update:events`       | `events: Array` | `events` 变更        |
+
+### 从后端加载事件
+
+监听 `@view-change`，根据视图的 `start` / `end` 日期范围，从后端 API 获取事件并刷新列表。这是处理大量远程数据的最佳实践。
+
+### 外部控件
+
+通过 Vue `ref` 获取日历实例，可调用：
+
+- `view.previous()` — 切换到上一个视图
+- `view.next()` — 切换到下一个视图
+- `view.goToToday()` — 回到今天
+- `view.switch(viewId, date)` — 切换到指定视图和日期
+- `view.scrollToCurrentTime()` — 滚动到当前时间
+- `view.scrollToTime(minutes)` — 滚动到指定分钟
+- `view.createEvent({ start, end, title })` — 编程创建事件
+
+同时支持 `v-model:view`、`v-model:view-date`、`v-model:selected-date` 双向绑定。
+
+### 同步两个日历实例
+
+通过 v-model 绑定共享 `selected-date` 和 `view-date`，可实现日期选择器 + 主日历的联动效果。
+
+<DemoBlock source={calendarDatePickerSource} mainFile="src/calendar-date-picker.vue">
+
+<CalendarDatePickerDemo client:only="vue" />
+
+</DemoBlock>
+
+---
+
+## 排班与特殊时段
+
+### 特殊时段（营业时间 / 轮班时段）
+
+通过 `special-hours` 在日/周视图中高亮指定的日常时段。
+
+<DemoBlock source={calendarSchedulesExtSource} mainFile="src/calendar-schedules-ext.vue">
+
+<CalendarSchedulesExtDemo client:only="vue" />
+
+</DemoBlock>
+
+`special-hours` 结构为以星期几为 key 的对象，每个值可以是一个时间块或时间块数组：
+
+```js
+const specialHours = {
+  mon: { from: 9 * 60, to: 18 * 60, class: 'business-hours', label: '营业中' },
+  wed: [
+    { from: 9 * 60, to: 12 * 60, class: 'business-hours', label: '上午' },
+    { from: 14 * 60, to: 18 * 60, class: 'business-hours', label: '下午' },
+  ],
+};
+```
+
+每个时间块支持以下字段：
+
+| 字段          | 类型      | 说明                                |
+| ------------- | --------- | ----------------------------------- |
+| `from`        | `number`  | 开始分钟（必需）                    |
+| `to`          | `number`  | 结束分钟（必需）                    |
+| `class`       | `string`  | CSS 类名                            |
+| `label`       | `string`  | 显示标签（支持 HTML）               |
+| `allowEvents` | `boolean` | 为 `false` 时阻止该时段内的事件操作 |
+
+### 排班（资源列）
+
+通过 `schedules` 将一天拆分为多个资源列（如医生、会议室），事件通过 `schedule` 属性指定所属列。
+
+<DemoBlock source={calendarSchedulesSource} mainFile="src/calendar-schedules.vue">
+
+<CalendarSchedulesDemo client:only="vue" />
+
+</DemoBlock>
+
+`schedules` 数组每项结构：
+
+```js
+{ id: 'dr-lee', label: '李医生', class: 'doctor--lee' }
+```
+
+排班可与 `special-hours` 结合，通过 `default` 定义共用时段、`schedules` 定义按排班区分的时段：
+
+```js
+const specialHours = {
+  mon: {
+    default: { from: 8 * 60, to: 18 * 60, class: 'clinic-hours' },
+    schedules: {
+      'dr-lee': [
+        { from: 8 * 60, to: 12 * 60, class: 'doctor-1', label: '李医生 上午班' },
+        { from: 13 * 60, to: 17 * 60, class: 'doctor-1', label: '李医生 下午班' },
+      ],
+      'dr-kim': { from: 10 * 60, to: 19 * 60, class: 'doctor-2', label: '金医生 晚班' },
+    },
+  },
+};
+```
+
+布局宽度可通过 CSS 变量控制：
+
+| CSS 变量                          | 说明           |
+| --------------------------------- | -------------- |
+| `--sd-calendar-min-cell-size`     | 单元格最小宽度 |
+| `--sd-calendar-min-schedule-size` | 排班列最小宽度 |
+
+---
+
+## API 参考
+
+### `calendar` Props
+
+| 参数名 | 描述 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| view | 当前视图 | `'day' \| 'days' \| 'week' \| 'month' \| 'year' \| 'years'` | `'week'` |
+| view-date | 当前视图聚焦日期 | `string \| Date` | — |
+| views | 可切换视图集合 | `string[] \| Record<string, unknown>` | 全部视图 |
+| events | 事件数据源 | `Array<CalendarEvent>` | `[]` |
+| schedules | 排班列定义 | `Array<{ id: string; label?: string; class?: string }>` | `[]` |
+| special-hours | 特殊时段/营业时段 | `Record<string, SpecialHourBlock \| SpecialHourBlock[]>` | `{}` |
+| business-hours | `special-hours` 的别名（语义化） | 同上 | `{}` |
+| stack-events | 重叠事件是否堆叠显示 | `boolean` | `false` |
+| editable-events | 事件交互权限 | `boolean \| EditableEventsConfig` | `false` |
+| snap-to-interval | 事件创建/缩放对齐间隔（分钟） | `number` | `0` |
+| event-create-min-drag | 创建事件的最小拖拽距离（像素） | `number` | `15` |
+| date-picker | 日期选择器模式 | `boolean` | `false` |
+| click-to-navigate | 点击日期导航到更窄视图 | `boolean` | — |
+| selected-date | 受控选中日期 | `string \| Date` | — |
+| time | 是否显示时间轴 | `boolean` | `true` |
+| time-from | 时间轴起始（分钟） | `number` | `0` |
+| time-to | 时间轴结束（分钟） | `number` | `1440` |
+| time-step | 时间轴刻度间隔（分钟） | `number` | `60` |
+| time-cell-height | 时间格子高度（像素） | `number` | `40` |
+| time-format | 自定义时间格式 | `string` | — |
+| time-at-cursor | 是否在光标处显示时间 | `boolean` | `false` |
+| twelve-hour | 是否使用 12 小时制 | `boolean` | `false` |
+| watch-real-time | 是否实时更新当前时间线 | `boolean` | `false` |
+| current-time-label | 是否显示当前时间标签 | `boolean` | `false` |
+| hide-weekends | 是否隐藏周末 | `boolean` | `false` |
+| hide-weekdays | 隐藏指定星期 | `string[]` | `[]` |
+| disable-days | 禁用指定日期 | `Array<string \| Date>` | `[]` |
+| min-date | 最小可选日期 | `string \| Date` | — |
+| max-date | 最大可选日期 | `string \| Date` | — |
+| start-week-on-sunday | 周起始于周日 | `boolean` | `false` |
+| locale | 语言设置 | `string` | — |
+| theme | 主题（`'default'` 或 `false` 关闭） | `string \| boolean` | `'default'` |
+| sm | 紧凑尺寸 | `boolean` | `false` |
+| xs | 超小尺寸 | `boolean` | `false` |
+| horizontal | 水平时间轴布局 | `boolean` | `false` |
+| today-button | 是否显示"今天"按钮 | `boolean` | `true` |
+| title-bar | 是否显示标题栏 | `boolean` | `true` |
+| views-bar | 是否显示视图切换栏 | `boolean` | `true` |
+| week-numbers | 是否显示周数 | `boolean` | `false` |
+| all-day-events | 是否显示全天事件栏 | `boolean` | `false` |
+| events-on-month-view | 月视图完整显示事件 | `boolean` | `false` |
+| event-count | 是否显示事件计数 | `boolean \| string[]` | `false` |
+
+### `calendar` Events
+
+| 事件名              | 描述                            | 参数                                |
+| ------------------- | ------------------------------- | ----------------------------------- |
+| ready               | 日历初始化完成                  | `{ config, view }`                  |
+| view-change         | 视图变化                        | `{ id, title, start, end, events }` |
+| update:view         | `view` 双向绑定                 | `view: string`                      |
+| update:viewDate     | `view-date` 双向绑定            | `date: Date`                        |
+| update:selectedDate | `selected-date` 双向绑定        | `date: Date`                        |
+| update:events       | 事件源变化                      | `events: CalendarEvent[]`           |
+| cell-click          | 点击单元格                      | `{ cell, view, e }`                 |
+| cell-dblclick       | 双击单元格                      | `{ cell, view, e }`                 |
+| cell-hold           | 长按单元格                      | `{ cell, view, e }`                 |
+| cell-contextmenu    | 右键单元格                      | `{ cell, view, e }`                 |
+| cell-drag-start     | 单元格开始拖拽                  | `{ cursor, view, e }`               |
+| cell-drag           | 单元格拖拽中                    | `{ cursor, view, e }`               |
+| cell-drag-end       | 单元格拖拽结束                  | `{ cursor, view, e }`               |
+| cell-mousedown      | 单元格鼠标按下                  | `{ cell, view, e }`                 |
+| cell-mouseup        | 单元格鼠标抬起                  | `{ cell, view, e }`                 |
+| cell-mousemove      | 鼠标在单元格移动                | `{ cell, view, e }`                 |
+| cell-mouseenter     | 鼠标进入单元格                  | `{ cell, view, e }`                 |
+| cell-mouseleave     | 鼠标离开单元格                  | `{ cell, view, e }`                 |
+| cell-touchstart     | 单元格触摸开始                  | `{ cell, view, e }`                 |
+| event-click         | 点击事件                        | `{ event, e }`                      |
+| event-dblclick      | 双击事件                        | `{ event, e }`                      |
+| event-hold          | 长按事件                        | `{ event, e }`                      |
+| event-contextmenu   | 右键事件                        | `{ event, e }`                      |
+| event-mousedown     | 事件卡片鼠标按下                | `{ event, e }`                      |
+| event-mouseup       | 事件卡片鼠标抬起                | `{ event, e }`                      |
+| event-drag-start    | 事件开始拖拽                    | `{ event, cell, view, e }`          |
+| event-drag          | 事件拖拽中                      | `{ event, cell, view, e }`          |
+| event-drag-end      | 事件拖拽结束                    | `{ event, cell, view, e }`          |
+| event-drop          | 事件放置（可返回 false 拒绝）   | `{ event, cell, overlaps, e }`      |
+| event-dropped       | 事件放置完成                    | `{ event, oldDate, newDate }`       |
+| event-create        | 创建事件（拖拽结束触发）        | `{ event, resolve, e }`             |
+| event-created       | 事件创建完成                    | `{ event }`                         |
+| event-delete        | 事件删除                        | `{ event }`                         |
+| event-resize        | 事件缩放中（可返回 false 拒绝） | `{ event, overlaps, e }`            |
+| event-resize-end    | 事件缩放完成                    | `{ event, overlaps, e }`            |
+
+### `calendar` Slots
+
+| 插槽名 | 描述 | 参数 |
+| --- | --- | --- |
+| header | 完全自定义头部区域 | `{ view, availableViews }` |
+| title | 自定义标题 | `{ title, view }` |
+| title.day / title.days / title.week / title.month / title.year / title.years | 按视图自定义标题 | `{ title, view }` |
+| previous-button | 自定义上一个按钮 | `{ navigate, active }` |
+| next-button | 自定义下一个按钮 | `{ navigate, active }` |
+| today-button | 自定义今天按钮 | `{ navigate, active }` |
+| weekday-heading | 自定义星期标题 | `{ label, id, view }` |
+| schedule-heading | 自定义排班列头 | `{ schedule, view, cell }` |
+| cell | 自定义单元格整体 | `{ cell, view }` |
+| cell-date | 自定义日期数字 | `{ cell, view }` |
+| cell-content | 自定义单元格内容 | `{ cell, view, events, goNarrower }` |
+| cell-events | 自定义事件容器 | `{ cell, view, events }` |
+| time-cell | 自定义时间格子 | `{ hours, minutes, minutesSum, format12, format24 }` |
+| current-time-label | 自定义当前时间标签 | `{ view }` |
+| now-line | 自定义当前时间线 | `{ now, timeFormatted }` |
+| week-number-cell | 自定义周数单元格 | `{ weekNumber }` |
+| event | 统一自定义事件渲染 | `{ event }` |
+| event.all-day | 自定义全天事件 | `{ event }` |
+| event.day / event.days / event.week / event.month / event.year / event.years | 按视图自定义事件 | `{ event }` |
+| event-count | 自定义事件计数 | `{ events }` |
+
+### `view` 实例方法
+
+通过 `ref` 获取日历实例后，可调用 `ref.view.*` 方法：
+
+| 方法 | 参数 | 说明 |
+| --- | --- | --- |
+| `previous()` | — | 切换到上一个视图 |
+| `next()` | — | 切换到下一个视图 |
+| `goToToday()` | — | 切换到今天所在视图 |
+| `switch(viewId, date)` | `viewId: string, date: Date` | 切换到指定视图和日期 |
+| `scrollTop()` | — | 滚动到时间轴顶部 |
+| `scrollToTime(minutes)` | `minutes: number` | 滚动到指定分钟 |
+| `scrollToCurrentTime()` | — | 滚动到当前时间 |
+| `createEvent(event)` | `event: object` | 编程创建事件 |
+| `deleteEvent(idOrQuery, stage)` | `idOrQuery: string \| object, stage: 1\|2\|3` | 编程删除事件 |

@@ -1,0 +1,153 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+
+$calendar-prefix-cls: string.unquote('#{theme.$prefix}-calendar');
+$calendar-css-prefix: string.unquote('--#{theme.$prefix}-calendar');
+
+// Styles from cell.vue
+.#{$calendar-prefix-cls}__cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  // touch-action: none; // Prevents browser default touch handling.
+
+  // Always use .#{$calendar-prefix-cls}__scrollable for view specific override for Vue transition to be smooth.
+  .#{$calendar-prefix-cls}__scrollable--day-view &,
+  .#{$calendar-prefix-cls}__scrollable--days-view &,
+  .#{$calendar-prefix-cls}__scrollable--week-view & {
+    min-width: var(#{$calendar-css-prefix}-min-cell-size, 0);
+  }
+  // Min-size overrides for horizontal layout (min-height instead of min-width in vertical).
+  .#{$calendar-prefix-cls}__scrollable--horizontal.#{$calendar-prefix-cls}__scrollable--day-view &,
+  .#{$calendar-prefix-cls}__scrollable--horizontal.#{$calendar-prefix-cls}__scrollable--days-view &,
+  .#{$calendar-prefix-cls}__scrollable--horizontal.#{$calendar-prefix-cls}__scrollable--week-view
+    & {
+    min-width: 0;
+    min-height: var(#{$calendar-css-prefix}-min-cell-size, 0);
+  }
+
+  .#{$calendar-prefix-cls}__scrollable--day-view &--has-schedules,
+  .#{$calendar-prefix-cls}__scrollable--days-view &--has-schedules,
+  .#{$calendar-prefix-cls}__scrollable--week-view &--has-schedules {
+    min-width: max(
+      var(#{$calendar-css-prefix}-min-cell-size),
+      calc(
+        var(#{$calendar-css-prefix}-min-schedule-size, 0px) *
+          var(#{$calendar-css-prefix}-schedules-count, 0)
+      )
+    );
+  }
+
+  .#{$calendar-prefix-cls}__scrollable--horizontal.#{$calendar-prefix-cls}__scrollable--day-view
+    &--has-schedules,
+  .#{$calendar-prefix-cls}__scrollable--horizontal.#{$calendar-prefix-cls}__scrollable--days-view
+    &--has-schedules,
+  .#{$calendar-prefix-cls}__scrollable--horizontal.#{$calendar-prefix-cls}__scrollable--week-view
+    &--has-schedules {
+    min-width: 0;
+    min-height: max(
+      var(#{$calendar-css-prefix}-min-cell-size),
+      calc(
+        var(#{$calendar-css-prefix}-min-schedule-size, 0px) *
+          var(#{$calendar-css-prefix}-schedules-count, 0)
+      )
+    );
+  }
+
+  &--has-schedules {
+    align-items: stretch;
+  }
+
+  &--out-of-range {
+    opacity: 0.4;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+  }
+
+  // The lines must stay in the cell when there's a min-cell-size for them to fill up the whole body.
+  .#{$calendar-prefix-cls}--view-has-time &::before {
+    position: absolute;
+    background-image: linear-gradient(
+      0deg,
+      var(#{$calendar-css-prefix}-border-color) 0,
+      transparent 1px var(#{$calendar-css-prefix}-time-cell-size)
+    );
+    background-position: 0 1px;
+    background-size: 100% var(#{$calendar-css-prefix}-time-cell-size);
+    content: '';
+    inset: 0;
+  }
+
+  .#{$calendar-prefix-cls}--view-has-time.#{$calendar-prefix-cls}--horizontal &::before {
+    background-image: linear-gradient(
+      90deg,
+      var(#{$calendar-css-prefix}-border-color) 0,
+      transparent 1px var(#{$calendar-css-prefix}-time-cell-size)
+    );
+    background-position: 0 1px;
+    background-size: var(#{$calendar-css-prefix}-time-cell-size) 100%;
+  }
+}
+
+.#{$calendar-prefix-cls}__special-hours {
+  position: absolute;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; // Under the day schedules if enabled.
+
+  .#{$calendar-prefix-cls}--horizontal & {
+    inset: 0 auto;
+    flex-direction: row;
+  }
+}
+
+.#{$calendar-prefix-cls}__now-line {
+  position: absolute;
+  left: 0;
+  z-index: 3; // Keep above the hovered events.
+  width: 100%;
+  height: 0;
+  border-color: rgb(255 0 0 / 60%);
+  border-top: 1px solid;
+
+  &::before {
+    position: absolute;
+    top: -6px;
+    left: 0;
+    border: 5px solid transparent;
+    border-left-color: inherit;
+    content: '';
+  }
+
+  span {
+    position: absolute;
+    right: 1px;
+    font-size: 10px;
+    opacity: 0.7;
+    pointer-events: none; // Let interactions go through on events.
+  }
+}
+
+.#{$calendar-prefix-cls}__event-placeholder {
+  position: absolute;
+  right: 0;
+  left: 0;
+  padding-top: 2px;
+  padding-left: 4px;
+  font-size: 11px;
+  line-height: 1;
+  background-color: rgb(35 181 181);
+  border-radius: 4px;
+
+  .#{$calendar-prefix-cls}--horizontal & {
+    inset: 0 auto;
+  }
+}

@@ -1,0 +1,51 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+
+$calendar-prefix-cls: string.unquote('#{theme.$prefix}-calendar');
+$calendar-css-prefix: string.unquote('--#{theme.$prefix}-calendar');
+
+// Styles from body.vue
+.#{$calendar-prefix-cls}__body {
+  position: relative;
+  display: grid;
+  grid-template-rows: repeat(var(#{$calendar-css-prefix}-grid-rows), 1fr);
+  grid-template-columns: repeat(var(#{$calendar-css-prefix}-grid-columns), 1fr);
+  height: 100%;
+}
+
+.#{$calendar-prefix-cls}__time-at-cursor {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  border-top: 1px dashed var(#{$calendar-css-prefix}-border-color);
+  pointer-events: none;
+
+  label {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    display: block;
+    margin-right: 4px;
+    padding: 0 3px;
+    font-size: 0.7rem;
+    letter-spacing: -0.04em;
+    border-radius: 99em;
+    transform: translateY(-50%);
+    backdrop-filter: blur(10px);
+  }
+
+  // Always use .#{$calendar-prefix-cls}__scrollable for view specific override for Vue transition to be smooth.
+  .#{$calendar-prefix-cls}__scrollable--horizontal & {
+    inset: 0 auto;
+    border-top: none;
+    border-left: 1px dashed var(#{$calendar-css-prefix}-border-color);
+
+    label {
+      inset: auto auto 100% 50%;
+      margin-right: 0;
+      margin-bottom: 4px;
+      transform: translateX(-50%);
+    }
+  }
+}

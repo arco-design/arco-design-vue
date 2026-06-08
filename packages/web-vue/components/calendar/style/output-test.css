@@ -1,0 +1,19 @@
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 1 | @use '@style/theme/index.scss' as global;
+ *   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *   '
+ *   packages\web-vue\components\calendar\style\token.scss 1:1  @use
+ *   packages\web-vue\components\calendar\style\index.scss 1:1  root stylesheet */
+
+body::before {
+  display: block;
+  margin-bottom: 1em;
+  padding: 1em;
+  font-family:
+    'Source Code Pro', 'SF Mono', Monaco, Inconsolata, 'Fira Mono', 'Droid Sans Mono', monospace,
+    monospace;
+  white-space: pre;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @use '@style/theme/index.scss' as global;\a   \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   packages\\web-vue\\components\\calendar\\style\\token.scss 1:1  @use\a   packages\\web-vue\\components\\calendar\\style\\index.scss 1:1  root stylesheet";
+}

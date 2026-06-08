@@ -1,0 +1,69 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+
+$calendar-prefix-cls: string.unquote('#{theme.$prefix}-calendar');
+$calendar-css-prefix: string.unquote('--#{theme.$prefix}-calendar');
+
+// Styles from event.vue
+.#{$calendar-prefix-cls}__event {
+  position: absolute;
+  right: 0;
+  left: 0;
+
+  &--resizing {
+    z-index: 100;
+  }
+
+  &--dragging-ghost {
+    z-index: 100;
+  } // The clone at cursor.
+
+  &--dragging-original {
+    opacity: 0;
+    transition: opacity 0.1s;
+  } // The original event at original position.
+
+  .#{$calendar-prefix-cls}__scrollable--month-view &,
+  .#{$calendar-prefix-cls}__all-day & {
+    position: relative;
+  }
+
+  &-resizer {
+    position: absolute;
+    height: 8px;
+    background-color: var(#{$calendar-css-prefix}-contrast-color);
+    cursor: ns-resize;
+    opacity: 0.1;
+    transition: 0.25s;
+    inset: auto 0 0;
+
+    &:hover {
+      opacity: 0.25;
+    }
+
+    .#{$calendar-prefix-cls}--horizontal &,
+    [class*='-calendar--horizontal'] & {
+      width: 8px;
+      height: auto;
+      cursor: ew-resize;
+      inset: 0 0 0 auto;
+    }
+  }
+}
+
+[class*='-calendar-delete-btn-enter-active'] {
+  transition: 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+[class*='-calendar-delete-btn-enter-from'] {
+  transform: scale(0) rotate(-90deg);
+}
+
+[class*='-calendar-delete-btn-enter-to'] {
+  transform: scale(1);
+}
+
+[class*='-calendar-delete-btn-leave-active'] {
+  transform: scale(0);
+  transition: 0.3s ease-in-out;
+}

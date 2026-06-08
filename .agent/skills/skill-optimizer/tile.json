@@ -1,0 +1,11 @@
+{
+  "name": "mcollina/skill-optimizer",
+  "version": "0.1.0",
+  "private": false,
+  "summary": "Optimizes AI skills for activation, clarity, and cross-model reliability. Use when creating or editing skill packs, diagnosing weak skill uptake, reducing regressions, tuning instruction salience, improving examples, shrinking context cost, or setting benchmark and release gates for skills. Trigger terms: skill optimization, activation gap, benchmark skill, with/without skill delta, regression, context budget, prompt salience.",
+  "skills": {
+    "skill-optimizer": {
+      "path": "SKILL.md"
+    }
+  }
+}

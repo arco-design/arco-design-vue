@@ -75,10 +75,11 @@
     "@arco-design/color": "^0.4.0",
     "b-tween": "^0.3.3",
     "b-validate": "^1.5.3",
+    "chroma-js": "^3.2.0",
     "compute-scroll-into-view": "^3.1.1",
     "copy-to-clipboard": "^4.0.2",
     "cropperjs": "^2.1.1",
-    "dayjs": "^1.11.20",
+    "dayjs": "^1.11.21",
     "es-toolkit": "catalog:",
     "motion-v": "^2.2.1",
     "number-precision": "^1.6.0",
@@ -90,7 +91,7 @@
     "vue-virtual-scroller": "^3.0.4"
   },
   "devDependencies": {
-    "@babel/types": "^7.29.0",
+    "@babel/types": "^7.29.7",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^13.0.1",
     "@semantic-release/exec": "^7.1.0",
@@ -115,9 +116,9 @@
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plus": "catalog:",
-    "vitest": "^4.1.7",
+    "vitest": "^4.1.8",
     "vue-docgen-api": "4.79.2",
-    "vue-tsc": "^3.3.1"
+    "vue-tsc": "^3.3.3"
   },
   "peerDependencies": {
     "vue": "catalog:"

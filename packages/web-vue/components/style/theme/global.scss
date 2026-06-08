@@ -299,11 +299,11 @@ $dark-color-menu-dark-hover: var(string.unquote('#{$sd-cssvars-prefix}-color-fil
 // variables
 $color-border: rgb(var(string.unquote('#{$sd-cssvars-prefix}-gray-3')));
 $color-bg-popup: var(string.unquote('#{$sd-cssvars-prefix}-color-bg-5'));
-$color-bg-1: #fff;
-$color-bg-2: #fff;
-$color-bg-3: #fff;
-$color-bg-4: #fff;
-$color-bg-5: #fff;
+$color-bg-1: $gray-1; // Overall page background
+$color-bg-2: #fff; // Primary container background
+$color-bg-3: $gray-1; // Secondary container background
+$color-bg-4: $gray-2; // Three-level container background
+$color-bg-5: #fff; // Popup, dropdown background
 $color-bg-white: #fff;
 $color-text-1: var(string.unquote('#{$sd-cssvars-prefix}-color-neutral-10')); // Title, body
 $color-text-2: var(string.unquote('#{$sd-cssvars-prefix}-color-neutral-8')); // Statement

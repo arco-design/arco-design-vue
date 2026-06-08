@@ -14,6 +14,8 @@ import TagCloseableDemo from '../../../../components/generated/tag/closeable.vue
 import tagCloseableSource from '../../../../components/generated/tag/closeable.vue?raw';
 import TagColorDemo from '../../../../components/generated/tag/color.vue';
 import tagColorSource from '../../../../components/generated/tag/color.vue?raw';
+import TagCustomColorDemo from '../../../../components/generated/tag/custom-color.vue';
+import tagCustomColorSource from '../../../../components/generated/tag/custom-color.vue?raw';
 import TagDynamicallyDemo from '../../../../components/generated/tag/dynamically.vue';
 import tagDynamicallySource from '../../../../components/generated/tag/dynamically.vue?raw';
 import TagEllipsisDemo from '../../../../components/generated/tag/ellipsis.vue';
@@ -75,6 +77,16 @@ import tagSizeSource from '../../../../components/generated/tag/size.vue?raw';
 
 </DemoBlock>
 
+### 自定义颜色的自动适配
+
+使用自定义颜色（非预设色值）时，组件会根据背景色自动计算合适的文字颜色：深色背景使用白色文字，浅色背景自动生成同色系深色文字。你也可以通过 `text-color` 手动指定文字颜色，或通过 `background-alpha` 调整背景透明度。
+
+<DemoBlock source={tagCustomColorSource} mainFile="src/tag-custom-color.vue">
+
+<TagCustomColorDemo client:only="vue" />
+
+</DemoBlock>
+
 ### 动态编辑标签
 
 可动态添加和删除标签。
@@ -131,9 +143,11 @@ import tagSizeSource from '../../../../components/generated/tag/size.vue?raw';
 
 | 参数名 | 描述 | 类型 | 默认值 | 版本 |
 | --- | --- | --- | :-: | :-- |
-| color | 标签的颜色 | `'red' \| 'orangered' \| 'orange' \| 'gold' \| 'lime' \| 'green' \| 'cyan' \| 'blue' \| 'sdblue' \| 'purple' \| 'pinkpurple' \| 'magenta' \| 'gray'` | `-` |  |
+| color | 标签的颜色 | `'red' \| 'orangered' \| 'orange' \| 'gold' \| 'lime' \| 'green' \| 'cyan' \| 'blue' \| 'sdblue' \| 'purple' \| 'pinkpurple' \| 'magenta' \| 'gray' \| string` | `-` |  |
 | size | 标签的大小 | `'small' \| 'medium' \| 'large'` | `'medium'` |  |
 | bordered | 是否显示边框 | `boolean` | `false` | 2.33.0 |
+| text-color | 自定义颜色的文字颜色，仅在自定义颜色时生效 | `string` | `-` |  |
+| background-alpha | 自定义颜色的背景透明度，仅在自定义颜色时生效 | `number` | `0.2` |  |
 | visible **(v-model)** | 标签是否可见 | `boolean` | `-` |  |
 | default-visible | 标签默认是否可见 | `boolean` | `true` |  |
 | loading | 标签是否为加载中状态 | `boolean` | `false` |  |

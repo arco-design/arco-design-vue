@@ -150,9 +150,27 @@ $colors:
   }
 
   .#{$tag-prefix-cls}.#{$tag-prefix-cls}-custom-color {
-    color: $tag-custom-color-text;
+    color: var(--#{$tag-prefix-cls}-color, $tag-custom-color-text);
+    background-color: var(--#{$tag-prefix-cls}-bg-color, $tag-default-color-bg);
 
     @include icon-hover.icon-hover-bg($tag-prefix-cls, $tag-custom-color-icon-bg_hover);
+  }
+
+  .#{$tag-prefix-cls}.#{$tag-prefix-cls}-custom-color.#{$tag-prefix-cls}-checked {
+    color: var(--#{$tag-prefix-cls}-color, $tag-custom-color-text);
+    background-color: var(--#{$tag-prefix-cls}-bg-color, $tag-default-color-bg);
+  }
+
+  .#{$tag-prefix-cls}.#{$tag-prefix-cls}-custom-color.#{$tag-prefix-cls}-bordered {
+    border-color: var(--#{$tag-prefix-cls}-border-color, $tag-default-bordered-color-border);
+  }
+
+  .#{$tag-prefix-cls}-custom-color {
+    .#{$tag-prefix-cls}-icon,
+    .#{$tag-prefix-cls}-close-btn,
+    .#{$tag-prefix-cls}-loading-icon {
+      color: var(--#{$tag-prefix-cls}-color, $tag-custom-color-text);
+    }
   }
 
   & &-close-btn {

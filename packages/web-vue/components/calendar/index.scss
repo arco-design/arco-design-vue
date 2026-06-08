@@ -1,0 +1,331 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+
+$calendar-prefix-cls: string.unquote('#{theme.$prefix}-calendar');
+$calendar-css-prefix: string.unquote('--#{theme.$prefix}-calendar');
+
+.#{$calendar-prefix-cls} {
+  #{$calendar-css-prefix}-grid-columns: 7; // Default value, overridden dynamically on view change.
+  #{$calendar-css-prefix}-grid-rows: 6; // Default value, overridden dynamically on view change.
+  // Size variables: applied as height in vertical mode, width in horizontal mode.
+  #{$calendar-css-prefix}-weekday-bar-size: 1.7rem;
+  #{$calendar-css-prefix}-schedules-bar-size: 1.7rem;
+  #{$calendar-css-prefix}-all-day-bar-size: 2rem;
+  #{$calendar-css-prefix}-time-cell-size: 50px; // Default value, can be overridden from props.
+  // When there are too many day cells to fit in the view, setting a min cell size will help
+  // visualizing and a scrollbar will be added.
+  #{$calendar-css-prefix}-min-cell-size: 0;
+  #{$calendar-css-prefix}-min-schedule-size: 0;
+  #{$calendar-css-prefix}-transition-duration: 0.25s;
+  z-index: 0; // Default minimal z-index to at least have visible cells :before.
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+
+  &--date-picker {
+    #{$calendar-css-prefix}-weekday-bar-size: 1.3rem;
+  }
+
+  &--timeless {
+    #{$calendar-css-prefix}-all-day-bar-size: 0;
+  }
+
+  &,
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+  }
+
+  .grow {
+    flex-grow: 1;
+  }
+
+  &__body-wrap {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: max(
+      calc(
+        var(#{$calendar-css-prefix}-grid-columns) * var(#{$calendar-css-prefix}-min-cell-size, 0px)
+      ),
+      calc(
+        var(#{$calendar-css-prefix}-grid-columns) *
+          var(#{$calendar-css-prefix}-schedules-count, 0) *
+          var(#{$calendar-css-prefix}-min-schedule-size, 0px)
+      ),
+      100%
+    );
+    // Crucial for the content not to overflow when using min-cell/schedule width/height variables.
+    min-width: 0;
+
+    // Always use .#{$calendar-prefix-cls}__scrollable for view specific override for Vue transition to be smooth.
+    .#{$calendar-prefix-cls}__scrollable--horizontal & {
+      flex-direction: row;
+      width: auto;
+      height: max(
+        calc(
+          var(#{$calendar-css-prefix}-grid-rows) * var(#{$calendar-css-prefix}-min-cell-size, 0px)
+        ),
+        calc(
+          var(#{$calendar-css-prefix}-grid-rows) * var(#{$calendar-css-prefix}-schedules-count, 0) *
+            var(#{$calendar-css-prefix}-min-schedule-size, 0px)
+        ),
+        100%
+      );
+    }
+  }
+
+  &__scrollable-wrap {
+    position: relative;
+    display: flex;
+    flex: 1;
+    min-height: 1px; // Fix the famous issue of the container overflowing the flex parent.
+  }
+
+  &__scrollable {
+    position: relative; // For the time cells lines to fill up the whole calendar width.
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    &--row {
+      flex-direction: row;
+    }
+
+    &--has-week-numbers {
+      flex-direction: row;
+    }
+  }
+
+  &__week-numbers {
+    display: flex;
+    flex-direction: column;
+    padding-top: calc(
+      var(#{$calendar-css-prefix}-weekday-bar-size) +
+        var(#{$calendar-css-prefix}-schedules-bar-size) +
+        var(#{$calendar-css-prefix}-all-day-bar-size)
+    );
+  }
+
+  &__week-number {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    width: 1.4em;
+  }
+
+  &__schedules-headings {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  // Shared in headers and cells.
+  &__schedule {
+    position: relative;
+    display: flex;
+    flex-basis: 0;
+    flex-grow: 1;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  &__scrollable--day-view &__schedule,
+  &__scrollable--days-view &__schedule,
+  &__scrollable--week-view &__schedule {
+    min-width: var(#{$calendar-css-prefix}-min-schedule-size, 0);
+  }
+
+  // Horizontal layout - critical structural styles.
+  // --------------------------------------------------------
+  // Always use .#{$calendar-prefix-cls}__scrollable for view specific override for Vue transition to be smooth.
+  &__scrollable--horizontal {
+    &.#{$calendar-prefix-cls}__scrollable--day-view,
+    &.#{$calendar-prefix-cls}__scrollable--days-view,
+    &.#{$calendar-prefix-cls}__scrollable--week-view {
+      [data-overlayscrollbars-viewport] {
+        display: grid;
+        grid-template-rows: 0fr 1fr;
+        grid-template-columns: auto;
+      }
+
+      .#{$calendar-prefix-cls}__schedules-headings {
+        flex-direction: column;
+        width: var(#{$calendar-css-prefix}-schedules-bar-size);
+      }
+
+      .#{$calendar-prefix-cls}__schedule {
+        min-width: 0;
+        min-height: var(#{$calendar-css-prefix}-min-schedule-size, 0);
+      }
+
+      .#{$calendar-prefix-cls}__time-column {
+        flex-direction: row;
+        align-self: flex-start;
+        padding-top: 0;
+        padding-left: calc(
+          var(#{$calendar-css-prefix}-weekday-bar-size) +
+            var(#{$calendar-css-prefix}-schedules-bar-size) +
+            var(#{$calendar-css-prefix}-all-day-bar-size)
+        );
+      }
+
+      .#{$calendar-prefix-cls}__time-column-inner {
+        flex-direction: row;
+        .#{$calendar-prefix-cls}__time-cell {
+          &:first-child {
+            margin-inline-start: 1.5em;
+            margin-block-start: 0;
+          }
+        }
+      }
+
+      .#{$calendar-prefix-cls}__all-day-label {
+        width: calc(
+          var(#{$calendar-css-prefix}-weekday-bar-size) +
+            var(#{$calendar-css-prefix}-schedules-bar-size) +
+            var(#{$calendar-css-prefix}-all-day-bar-size)
+        );
+        height: 100%;
+        margin-top: 0;
+        margin-left: calc(
+          (
+              var(#{$calendar-css-prefix}-weekday-bar-size) +
+                var(#{$calendar-css-prefix}-schedules-bar-size) +
+                var(#{$calendar-css-prefix}-all-day-bar-size)
+            ) *
+            -1
+        );
+        padding-top: 0;
+        padding-left: calc(
+          var(#{$calendar-css-prefix}-weekday-bar-size) +
+            var(#{$calendar-css-prefix}-schedules-bar-size)
+        );
+      }
+
+      .#{$calendar-prefix-cls}__time-cell {
+        align-items: center;
+        width: var(#{$calendar-css-prefix}-time-cell-size);
+        height: 100%;
+      }
+
+      .#{$calendar-prefix-cls}__body {
+        #{$calendar-css-prefix}-grid-columns: 1;
+        #{$calendar-css-prefix}-grid-rows: 7;
+        display: grid;
+        flex: 1;
+        grid-template-rows: repeat(var(#{$calendar-css-prefix}-grid-rows), 1fr);
+        grid-template-columns: repeat(var(#{$calendar-css-prefix}-grid-columns), 1fr);
+        width: 100%;
+        height: auto;
+      }
+
+      .#{$calendar-prefix-cls}__weekdays-headings {
+        flex-direction: column;
+        flex-shrink: 0;
+        width: var(#{$calendar-css-prefix}-weekday-bar-size);
+      }
+
+      .#{$calendar-prefix-cls}__all-day {
+        flex-direction: column;
+        width: var(#{$calendar-css-prefix}-all-day-bar-size);
+        height: 100%;
+      }
+
+      .#{$calendar-prefix-cls}__now-line {
+        top: 0;
+        left: auto;
+        width: 0;
+        height: 100%;
+        border-top: none;
+        border-left: 1px solid;
+      }
+
+      .#{$calendar-prefix-cls}__cell--has-schedules {
+        flex-direction: column;
+      }
+
+      .#{$calendar-prefix-cls}__schedule--cell {
+        flex-direction: row;
+        height: 100%;
+      }
+
+      // Events positioned horizontally.
+      .#{$calendar-prefix-cls}__event {
+        inset: 0 auto;
+        width: auto;
+      }
+    }
+  }
+}
+
+// Transitions.
+// --------------------------------------------------------
+.#{$calendar-prefix-cls}-slide-fade--left-enter-active,
+[class*='-calendar-slide-fade--left-enter-active'],
+.#{$calendar-prefix-cls}-slide-fade--left-leave-active,
+[class*='-calendar-slide-fade--left-leave-active'],
+.#{$calendar-prefix-cls}-slide-fade--right-enter-active,
+[class*='-calendar-slide-fade--right-enter-active'],
+.#{$calendar-prefix-cls}-slide-fade--right-leave-active,
+[class*='-calendar-slide-fade--right-leave-active'] {
+  transition: var(#{$calendar-css-prefix}-transition-duration) ease-in-out;
+}
+
+.#{$calendar-prefix-cls}-slide-fade--left-enter-from,
+.#{$calendar-prefix-cls}-slide-fade--right-leave-to,
+[class*='-calendar-slide-fade--left-enter-from'],
+[class*='-calendar-slide-fade--right-leave-to'] {
+  transform: translateX(-12px);
+  opacity: 0;
+}
+
+.#{$calendar-prefix-cls}-slide-fade--left-leave-to,
+.#{$calendar-prefix-cls}-slide-fade--right-enter-from,
+[class*='-calendar-slide-fade--left-leave-to'],
+[class*='-calendar-slide-fade--right-enter-from'] {
+  transform: translateX(12px);
+  opacity: 0;
+}
+
+.#{$calendar-prefix-cls}-slide-fade--left-enter-active,
+.#{$calendar-prefix-cls}-slide-fade--right-enter-active,
+// When navigating hyper fast, make sure that any left-over 3rd animated container is positioned absolute
+// so it does not briefly appear below the calendar.
+.#{$calendar-prefix-cls}-slide-fade--left-leave-active ~ .#{$calendar-prefix-cls}-slide-fade--left-leave-active,
+.#{$calendar-prefix-cls}-slide-fade--right-leave-active ~ .#{$calendar-prefix-cls}-slide-fade--right-leave-active,
+[class*='-calendar-slide-fade--left-enter-active'],
+[class*='-calendar-slide-fade--right-enter-active'],
+[class*='-calendar-slide-fade--left-leave-active'] ~ [class*='-calendar-slide-fade--left-leave-active'],
+[class*='-calendar-slide-fade--right-leave-active'] ~ [class*='-calendar-slide-fade--right-leave-active'] {
+  position: absolute !important;
+  inset: 0;
+}
+
+.#{$calendar-prefix-cls}-event-delete-leave-active,
+[class*='-calendar-event-delete-leave-active'] {
+  transition: 0.15s ease-out;
+}
+
+.#{$calendar-prefix-cls}-event-delete-leave-to,
+[class*='-calendar-event-delete-leave-to'] {
+  transform: translateY(0.5rem);
+  opacity: 0;
+}
+
+.#{$calendar-prefix-cls}-shrink-enter-active,
+.#{$calendar-prefix-cls}-shrink-leave-active,
+[class*='-calendar-shrink-enter-active'],
+[class*='-calendar-shrink-leave-active'] {
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
+}
+
+.#{$calendar-prefix-cls}-shrink-enter-from,
+.#{$calendar-prefix-cls}-shrink-leave-to,
+[class*='-calendar-shrink-enter-from'],
+[class*='-calendar-shrink-leave-to'] {
+  opacity: 0;
+}

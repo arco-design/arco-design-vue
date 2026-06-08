@@ -68,15 +68,15 @@
     "type-fest": "catalog:"
   },
   "devDependencies": {
-    "@commitlint/cli": "^21.0.1",
-    "@commitlint/config-conventional": "^21.0.1",
+    "@commitlint/cli": "^21.0.2",
+    "@commitlint/config-conventional": "^21.0.2",
     "@types/node": "^25.9.1",
     "@typescript/native-preview": "beta",
     "axios": "^1.16.1",
     "confbox": "^0.2.4",
     "fast-glob": "^3.3.3",
     "git-cz": "^4.9.0",
-    "lint-staged": "^17.0.5",
+    "lint-staged": "^17.0.7",
     "npm-run-all2": "^9.0.1",
     "oxfmt": "catalog:",
     "oxlint": "catalog:",

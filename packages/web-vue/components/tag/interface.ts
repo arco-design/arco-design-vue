@@ -102,4 +102,14 @@ export interface TagProps {
    * @en Whether to use the performant ellipsis implementation
    */
   ellipsisPerformant?: boolean;
+  /**
+   * @zh 自定义颜色的文字颜色，仅在自定义颜色时生效
+   * @en Text color for custom color tags, only effective when using a custom color
+   */
+  textColor?: string;
+  /**
+   * @zh 自定义颜色的背景透明度，仅在自定义颜色时生效，默认 0.2
+   * @en Background opacity for custom color tags, only effective when using a custom color, default 0.2
+   */
+  backgroundAlpha?: number;
 }

@@ -41,6 +41,41 @@ const themeBridgeScript = String.raw`
 })();
 `;
 
+const demoLazyLoadScript = String.raw`
+(function () {
+  function initLazyDemos() {
+    var blocks = document.querySelectorAll('.demo-block[data-deferred]');
+    for (var i = 0; i < blocks.length; i++) {
+      var block = blocks[i];
+      var tmpl = block.querySelector('.demo-block__deferred-island');
+      var mount = block.querySelector('.demo-block__preview-content');
+      if (!tmpl || !mount || tmpl.content.childNodes.length === 0) continue;
+
+      (function (b, t, m) {
+        var io = new IntersectionObserver(
+          function (entries) {
+            for (var j = 0; j < entries.length; j++) {
+              if (!entries[j].isIntersecting) continue;
+              io.disconnect();
+              customElements.whenDefined('astro-island').then(function () {
+                m.appendChild(t.content);
+                b.removeAttribute('data-deferred');
+                b.setAttribute('data-loaded', '');
+              });
+              return;
+            }
+          },
+          { rootMargin: '300px 0px' },
+        );
+        io.observe(b);
+      })(block, tmpl, mount);
+    }
+  }
+
+  document.addEventListener('astro:after-swap', initLazyDemos);
+})();
+`;
+
 export default defineConfig({
   site: 'https://sd-design.js.org/',
   vite: {
@@ -134,6 +169,7 @@ export default defineConfig({
           },
         },
         { tag: 'script', content: themeBridgeScript },
+        { tag: 'script', content: demoLazyLoadScript },
       ],
       disable404Route: true,
       lastUpdated: true,

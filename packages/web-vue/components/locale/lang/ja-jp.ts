@@ -4,11 +4,17 @@ const calendarLang: SDCalendarLang = {
   formatYear: 'YYYY 年',
   formatMonth: 'YYYY 年 MM 月',
   today: '今日',
+  allDay: '終日',
+  noEvent: '予定なし',
+  deleteEvent: '削除',
+  createEvent: '予定を作成',
   view: {
     month: '月',
     year: '年',
     week: '週',
     day: '日',
+    days: '複数日',
+    years: '複数年',
   },
   month: {
     long: {

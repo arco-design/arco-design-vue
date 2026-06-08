@@ -10,7 +10,7 @@ interface Props {
 const { source, mainFile } = Astro.props;
 ---
 
-<div class="demo-block not-content">
+<div class="demo-block not-content" data-deferred>
   <div class="demo-block__preview">
     <div class="demo-block__preview-skeleton" aria-hidden="true">
       <span
@@ -23,11 +23,38 @@ const { source, mainFile } = Astro.props;
         class="demo-block__preview-skeleton-bar demo-block__preview-skeleton-bar--medium"
       ></span>
     </div>
-    <div class="demo-block__preview-content">
-      <slot />
-    </div>
+    <div class="demo-block__preview-content"></div>
   </div>
   <DemoEditor client:only="vue" source={source} mainFile={mainFile} />
+  <template class="demo-block__deferred-island">
+    <slot />
+  </template>
+  <script is:inline>
+    (function () {
+      var block = document.currentScript.parentElement;
+      var tmpl = block.querySelector(".demo-block__deferred-island");
+      var mount = block.querySelector(".demo-block__preview-content");
+      if (!tmpl || !mount) return;
+
+      var io = new IntersectionObserver(
+        function (entries) {
+          for (var i = 0; i < entries.length; i++) {
+            if (!entries[i].isIntersecting) continue;
+            io.disconnect();
+            customElements.whenDefined("astro-island").then(function () {
+              mount.appendChild(tmpl.content);
+              block.removeAttribute("data-deferred");
+              block.setAttribute("data-loaded", "");
+            });
+            return;
+          }
+        },
+        { rootMargin: "300px 0px" },
+      );
+
+      io.observe(block);
+    })();
+  </script>
 </div>
 
 <style>
@@ -100,12 +127,27 @@ const { source, mainFile } = Astro.props;
     width: min(12rem, 72%);
   }
 
+  /* Deferred state: skeleton visible for lazy-loaded demos */
+  .demo-block[data-deferred] .demo-block__preview {
+    min-height: 9.5rem;
+  }
+
+  .demo-block[data-deferred] .demo-block__preview-skeleton {
+    opacity: 1;
+  }
+
+  /* Hydrating state: skeleton visible while Astro hydrates */
   .demo-block__preview:has(astro-island[ssr]) {
     min-height: 9.5rem;
   }
 
   .demo-block__preview:has(astro-island[ssr]) .demo-block__preview-skeleton {
     opacity: 1;
+  }
+
+  /* Loaded state: hide skeleton after hydration completes */
+  .demo-block[data-loaded] .demo-block__preview-skeleton {
+    opacity: 0;
   }
 
   :root[data-theme="dark"] .demo-block {

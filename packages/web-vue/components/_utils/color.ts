@@ -1,3 +1,64 @@
+import { isString } from './is';
+
+export const gradientType = {
+  linearGradient: 'linear-gradient',
+  repeatingLinearGradient: 'repeating-linear-gradient',
+  radialGradient: 'radial-gradient',
+  repeatingRadialGradient: 'repeating-radial-gradient',
+} as const;
+
+export type GradientType = (typeof gradientType)[keyof typeof gradientType];
+
+/**
+ * 检查是否为 CSS 渐变字符串
+ * @param gradientString CSS 渐变字符串
+ * @returns 是否为 CSS 渐变字符串
+ */
+export function isGradientString(gradientString?: string): boolean {
+  if (!isString(gradientString)) {
+    return false;
+  }
+  const trimmed = gradientString.trim();
+  const types = Object.values(gradientType);
+  return types.some((type) => trimmed.startsWith(`${type}(`));
+}
+
+/**
+ * 从 CSS 渐变字符串中提取颜色
+ * @param gradientString CSS 渐变字符串
+ * @returns 颜色数组
+ */
+export function extractColorsFromGradient(gradientString?: string): string[] {
+  if (!isGradientString(gradientString)) return [];
+  const trimmed = gradientString!.trim();
+
+  const types = Object.values(gradientType);
+  const matchedType = types.find((type) => trimmed.startsWith(`${type}(`));
+
+  if (!matchedType) {
+    return [];
+  }
+
+  const startIndex = matchedType.length + 1;
+  if (!trimmed.endsWith(')')) {
+    return [];
+  }
+  const content = trimmed.slice(startIndex, -1);
+
+  // 匹配十六进制、rgb/rgba、hsl/hsla、hwb、lab、lch、oklab、oklch 等颜色格式
+  const colorStopRegex =
+    /(#[0-9A-Fa-f]{3,8}|rgba?\([^)]+\)|hsla?\([^)]+\)|hwb\([^)]+\)|lab\([^)]+\)|lch\([^)]+\)|oklab\([^)]+\)|oklch\([^)]+\))(?:\s+([\d.]+%?))?/g;
+
+  const colors: string[] = [];
+  let match: RegExpExecArray | null;
+
+  while ((match = colorStopRegex.exec(content)) !== null) {
+    colors.push(match[1]);
+  }
+
+  return colors;
+}
+
 // https://github.com/scttcper/tinycolor
 export const hsvToRgb = (h: number, s: number, v: number) => {
   const i = Math.floor(h * 6);

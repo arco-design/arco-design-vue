@@ -31,6 +31,7 @@ export { default as Button, ButtonGroup } from './button';
 export type { ButtonInstance, ButtonGroupInstance, ButtonProps } from './button';
 export { default as Card, CardGrid, CardMeta } from './card';
 export { default as Calendar } from './calendar';
+export type { CalendarInstance } from './calendar';
 export type { CardGridInstance, CardInstance, CardMetaInstance } from './card';
 export { default as Carousel, CarouselItem } from './carousel';
 export type {

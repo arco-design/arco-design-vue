@@ -2,8 +2,8 @@ import type { App } from 'vue';
 
 import type { SDOptions } from '../_utils/types';
 
-import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
-import _Calendar from './calendar';
+import { getComponentPrefix, setGlobalConfig } from '../_utils/global-config';
+import _Calendar from './components/index.vue';
 
 const Calendar = Object.assign(_Calendar, {
   install: (app: App, options?: SDOptions) => {

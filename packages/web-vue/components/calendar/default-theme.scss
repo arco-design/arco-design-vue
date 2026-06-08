@@ -1,0 +1,1012 @@
+@use '@style/theme/index.scss' as global;
+@use 'sass:string';
+
+$calendar-prefix-cls: string.unquote('#{global.$prefix}-calendar');
+$calendar-css-prefix: string.unquote('--#{global.$prefix}-calendar');
+
+.#{$calendar-prefix-cls}--default-theme,
+[class$='-calendar--default-theme'] {
+  position: relative;
+  height: var(#{$calendar-css-prefix}-height);
+  color: var(#{$calendar-css-prefix}-base-color);
+  border-radius: var(#{$calendar-css-prefix}-border-radius);
+
+  &.#{$calendar-prefix-cls}--dragging-event,
+  &[class*='-calendar--dragging-event'] {
+    cursor: grabbing;
+  }
+
+  &.#{$calendar-prefix-cls}--resizing-event,
+  &[class*='-calendar--resizing-event'] {
+    cursor: ns-resize;
+  }
+
+  &.#{$calendar-prefix-cls}--horizontal.#{$calendar-prefix-cls}--resizing-event,
+  &[class*='-calendar--horizontal'][class*='-calendar--resizing-event'] {
+    cursor: ew-resize;
+  }
+
+  // Calendar Header.
+  // ------------------------------------------------------
+  .#{$calendar-prefix-cls}__header {
+    color: var(#{$calendar-css-prefix}-header-color);
+    border-top-left-radius: var(#{$calendar-css-prefix}-border-radius);
+    border-top-right-radius: var(#{$calendar-css-prefix}-border-radius);
+  }
+
+  .#{$calendar-prefix-cls}__views-bar {
+    background-color: var(#{$calendar-css-prefix}-primary-color);
+  }
+
+  .#{$calendar-prefix-cls}__views-bar,
+  .#{$calendar-prefix-cls}__title-bar {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  .#{$calendar-prefix-cls}__title-bar {
+    position: relative;
+    padding-right: 0.6em;
+    padding-left: 0.6em;
+    background-color: var(#{$calendar-css-prefix}-primary-sub-color);
+  }
+
+  .#{$calendar-prefix-cls}__view-button,
+  .#{$calendar-prefix-cls}__nav,
+  button.#{$calendar-prefix-cls}__title {
+    color: inherit;
+    background: none;
+    border: none;
+
+    &:not([disabled]) {
+      cursor: pointer;
+    }
+  }
+
+  .#{$calendar-prefix-cls}__view-button,
+  .#{$calendar-prefix-cls}__nav,
+  button.#{$calendar-prefix-cls}__title,
+  .#{$calendar-prefix-cls}__nav--today {
+    align-self: center;
+    padding: 2px 12px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: color-mix(
+        in srgb,
+        var(#{$calendar-css-prefix}-contrast-color) 12%,
+        transparent
+      );
+    }
+
+    &--active,
+    &--active:hover {
+      background-color: color-mix(
+        in srgb,
+        var(#{$calendar-css-prefix}-contrast-color) 25%,
+        transparent
+      );
+    }
+
+    &:active {
+      background-color: color-mix(
+        in srgb,
+        var(#{$calendar-css-prefix}-contrast-color) 25%,
+        transparent
+      );
+    }
+
+    &:focus-visible {
+      border-color: color-mix(
+        in srgb,
+        var(#{$calendar-css-prefix}-contrast-color) 75%,
+        transparent
+      );
+    }
+  }
+
+  .#{$calendar-prefix-cls}__view-button {
+    font-size: 0.9em;
+    text-transform: uppercase;
+  }
+
+  button.#{$calendar-prefix-cls}__title {
+    line-height: 0.9;
+  }
+
+  .#{$calendar-prefix-cls}__nav--prev,
+  .#{$calendar-prefix-cls}__nav--next {
+    width: 2em;
+    aspect-ratio: 1;
+    border-radius: 99em;
+
+    &:dir(rtl) {
+      transform: rotate(180deg);
+    }
+  }
+
+  .#{$calendar-prefix-cls}__nav--today {
+    margin-right: 3px;
+    padding-right: 8px;
+    padding-left: 8px;
+    font-size: 0.85em;
+  }
+
+  // Calendar scrollable.
+  // ------------------------------------------------------
+  .#{$calendar-prefix-cls}__scrollable-wrap {
+    // Cut off any content inside to respect the outer border radius.
+    // a tooltip inside the body would be truncated, but can be teleported with Vue.
+    overflow: hidden;
+    background-color: color-mix(
+      in srgb,
+      var(#{$calendar-css-prefix}-primary-color) 4%,
+      transparent
+    );
+    border: 1px solid var(#{$calendar-css-prefix}-border-color);
+    border-top: none;
+    border-bottom-right-radius: var(#{$calendar-css-prefix}-border-radius);
+    border-bottom-left-radius: var(#{$calendar-css-prefix}-border-radius);
+
+    // If the header is hidden apply the border radius all around.
+    &:first-child {
+      border-top-left-radius: var(#{$calendar-css-prefix}-border-radius);
+      border-top-right-radius: var(#{$calendar-css-prefix}-border-radius);
+    }
+  }
+
+  .#{$calendar-prefix-cls}__scrollable {
+    // The grid layout is applied to the overlayscrollbars viewport since the Scrollbar
+    // component wraps content inside a viewport element.
+    [data-overlayscrollbars-viewport] {
+      display: grid;
+      grid-template-columns: 1fr 0fr;
+    }
+
+    // Always use .#{$calendar-prefix-cls}__scrollable for view specific override for Vue transition to be smooth.
+    &--no-schedules {
+      #{$calendar-css-prefix}-schedules-bar-size: 0;
+    }
+
+    &--day-view {
+      #{$calendar-css-prefix}-weekday-bar-size: 0;
+    }
+
+    &--month-view,
+    &--no-all-day-bar {
+      #{$calendar-css-prefix}-all-day-bar-size: 0;
+    }
+
+    &--row [data-overlayscrollbars-viewport] {
+      grid-template-columns: 0fr 1fr;
+    }
+
+    &--year-view [data-overlayscrollbars-viewport],
+    &--years-view [data-overlayscrollbars-viewport] {
+      overflow: hidden;
+    } // Useful while transitioning.
+
+    &--horizontal [data-overlayscrollbars-viewport] {
+      grid-template-rows: 1fr 0fr;
+      grid-template-columns: auto;
+    }
+
+    &--horizontal.#{$calendar-prefix-cls}__scrollable--row [data-overlayscrollbars-viewport] {
+      grid-template-rows: 0fr 1fr;
+      grid-template-columns: auto;
+    }
+  }
+
+  .#{$calendar-prefix-cls}__scrollable--day-view .#{$calendar-prefix-cls}__body,
+  .#{$calendar-prefix-cls}__scrollable--days-view .#{$calendar-prefix-cls}__body,
+  .#{$calendar-prefix-cls}__scrollable--week-view .#{$calendar-prefix-cls}__body {
+    max-height: var(#{$calendar-css-prefix}-body-max-height, initial);
+  }
+
+  // Calendar Weekdays Headers.
+  // ------------------------------------------------------
+  .#{$calendar-prefix-cls}__week-number small {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.4em;
+    color: color-mix(in srgb, var(#{$calendar-css-prefix}-base-color) 70%, transparent);
+    font-size: 0.8em;
+    background-color: color-mix(in srgb, var(#{$calendar-css-prefix}-base-color) 8%, transparent);
+    border-radius: 4px;
+    aspect-ratio: 1;
+  }
+
+  .#{$calendar-prefix-cls}__weekday {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    padding: 2px 1px;
+    overflow: hidden;
+    font-size: 0.95em;
+    letter-spacing: -0.03em;
+    text-overflow: ellipsis;
+    background-color: var(#{$calendar-css-prefix}-secondary-color);
+
+    &--today {
+      font-weight: bold;
+    }
+
+    &-day {
+      display: inline-block; // For ellipsis.
+      overflow: hidden;
+      text-overflow: ellipsis;
+      opacity: 0.8;
+    }
+
+    &-date {
+      display: inline-flex;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      width: 1.7em;
+      overflow: hidden;
+      font-size: 0.9em;
+      line-height: 1;
+      letter-spacing: -0.1em;
+      text-indent: -0.15em;
+      background: color-mix(in srgb, var(#{$calendar-css-prefix}-base-color) 15%, transparent);
+      border-radius: 99em;
+      aspect-ratio: 1;
+    }
+
+    &--today .#{$calendar-prefix-cls}__weekday-date {
+      color: var(#{$calendar-css-prefix}-contrast-color);
+      background-color: color-mix(
+        in srgb,
+        var(#{$calendar-css-prefix}-primary-color) 80%,
+        transparent
+      );
+    }
+  }
+
+  &.#{$calendar-prefix-cls}--light,
+  :not([sd-theme]) &,
+  [sd-theme='light']
+    &
+    .#{$calendar-prefix-cls}__weekday:not(.#{$calendar-prefix-cls}__weekday--today)
+    .#{$calendar-prefix-cls}__weekday-date {
+    background-color: color-mix(
+      in srgb,
+      var(#{$calendar-css-prefix}-primary-color) 20%,
+      transparent
+    );
+  }
+
+  // Always use .#{$calendar-prefix-cls}__scrollable for view specific override for Vue transition to be smooth.
+  .#{$calendar-prefix-cls}__scrollable--has-schedules .#{$calendar-prefix-cls}__weekday-date {
+    width: 1.5em;
+  }
+
+  .#{$calendar-prefix-cls}__schedule--heading {
+    align-items: center;
+    font-size: 12px;
+  }
+
+  // Calendar Body > Calendar Cell.
+  // ------------------------------------------------------
+  .#{$calendar-prefix-cls}__cell {
+    overflow: hidden;
+    box-shadow: 0 0 0 0.5px var(#{$calendar-css-prefix}-border-color) inset;
+  }
+  // Always use .#{$calendar-prefix-cls}__scrollable for view specific override for Vue transition to be smooth.
+  &.#{$calendar-prefix-cls}--lg
+    .#{$calendar-prefix-cls}__scrollable--month-view
+    .#{$calendar-prefix-cls}__cell {
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+
+  .#{$calendar-prefix-cls}__cell::before {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    inset: 0;
+  }
+
+  &.#{$calendar-prefix-cls}--light .#{$calendar-prefix-cls}__cell::before,
+  :not([sd-theme]) & .#{$calendar-prefix-cls}__cell::before,
+  [sd-theme='light'] & .#{$calendar-prefix-cls}__cell::before {
+    filter: saturate(2);
+  }
+
+  .#{$calendar-prefix-cls}__cell--today::before,
+  .#{$calendar-prefix-cls}__cell--current-month::before,
+  .#{$calendar-prefix-cls}__cell--current-year::before {
+    background-color: color-mix(
+      in srgb,
+      var(#{$calendar-css-prefix}-primary-color) 10%,
+      transparent
+    );
+  }
+
+  .#{$calendar-prefix-cls}__cell--selected::before {
+    background-color: color-mix(
+      in srgb,
+      var(#{$calendar-css-prefix}-primary-color) 25%,
+      transparent
+    );
+  }
+
+  &.#{$calendar-prefix-cls}--light,
+  :not([sd-theme]) &,
+  [sd-theme='light'] & {
+    .#{$calendar-prefix-cls}__cell--today::before,
+    .#{$calendar-prefix-cls}__cell--current-month::before,
+    .#{$calendar-prefix-cls}__cell--current-year::before {
+      background-color: color-mix(
+        in srgb,
+        var(#{$calendar-css-prefix}-primary-color) 5%,
+        transparent
+      );
+    }
+
+    .#{$calendar-prefix-cls}__cell--selected::before {
+      background-color: color-mix(
+        in srgb,
+        var(#{$calendar-css-prefix}-primary-color) 10%,
+        transparent
+      );
+    }
+  }
+
+  .#{$calendar-prefix-cls}__cell-date {
+    position: sticky;
+    top: 0;
+    font-weight: bold;
+  }
+
+  .#{$calendar-prefix-cls}__cell--disabled .#{$calendar-prefix-cls}__cell-date {
+    opacity: 0.5;
+  }
+
+  // Always use .#{$calendar-prefix-cls}__scrollable for view specific override for Vue transition to be smooth.
+  &:is(.#{$calendar-prefix-cls}--sm, .#{$calendar-prefix-cls}--lg)
+    .#{$calendar-prefix-cls}__scrollable--month-view {
+    .#{$calendar-prefix-cls}__cell::before {
+      display: none;
+    }
+
+    .#{$calendar-prefix-cls}__cell-date {
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      width: 2em;
+      margin: 4px;
+      padding: 4px;
+      overflow: hidden;
+      font-size: 13px;
+      letter-spacing: -0.5px;
+      background-color: color-mix(
+        in srgb,
+        var(#{$calendar-css-prefix}-primary-color) 25%,
+        transparent
+      );
+      border-radius: 99em;
+      aspect-ratio: 1;
+    }
+
+    .#{$calendar-prefix-cls}__cell--today .#{$calendar-prefix-cls}__cell-date {
+      background-color: color-mix(
+        in srgb,
+        var(#{$calendar-css-prefix}-primary-color) 60%,
+        transparent
+      );
+    }
+
+    .#{$calendar-prefix-cls}__cell--selected .#{$calendar-prefix-cls}__cell-date {
+      background-color: var(#{$calendar-css-prefix}-primary-color);
+    }
+  }
+
+  &.#{$calendar-prefix-cls}--light:is(.#{$calendar-prefix-cls}--sm, .#{$calendar-prefix-cls}--lg),
+  :not([sd-theme]) &:is(.#{$calendar-prefix-cls}--sm, .#{$calendar-prefix-cls}--lg),
+  [sd-theme='light']
+    &:is(.#{$calendar-prefix-cls}--sm, .#{$calendar-prefix-cls}--lg)
+    .#{$calendar-prefix-cls}__scrollable--month-view {
+    .#{$calendar-prefix-cls}__cell-date {
+      background-color: color-mix(
+        in srgb,
+        var(#{$calendar-css-prefix}-primary-color) 8%,
+        transparent
+      );
+    }
+
+    .#{$calendar-prefix-cls}__cell--today .#{$calendar-prefix-cls}__cell-date {
+      background-color: color-mix(
+        in srgb,
+        var(#{$calendar-css-prefix}-primary-color) 22%,
+        transparent
+      );
+    }
+
+    .#{$calendar-prefix-cls}__cell--selected .#{$calendar-prefix-cls}__cell-date {
+      background-color: color-mix(
+        in srgb,
+        var(#{$calendar-css-prefix}-primary-color) 40%,
+        transparent
+      );
+    }
+  }
+
+  .#{$calendar-prefix-cls}__cell--out-of-scope .#{$calendar-prefix-cls}__cell-date {
+    opacity: 0.4;
+  }
+
+  .#{$calendar-prefix-cls}__scrollable--month-view .#{$calendar-prefix-cls}__cell-events {
+    flex-grow: 1;
+    width: 100%;
+    padding-left: 4px;
+    overflow: hidden;
+  }
+
+  &.#{$calendar-prefix-cls}--timeless .#{$calendar-prefix-cls}__cell-events {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    padding: 4px;
+  }
+
+  .#{$calendar-prefix-cls}__scrollable--no-schedules.#{$calendar-prefix-cls}__scrollable--day-view
+    .#{$calendar-prefix-cls}__cell-events,
+  .#{$calendar-prefix-cls}__scrollable--no-schedules.#{$calendar-prefix-cls}__scrollable--days-view
+    .#{$calendar-prefix-cls}__cell-events,
+  .#{$calendar-prefix-cls}__scrollable--no-schedules.#{$calendar-prefix-cls}__scrollable--week-view
+    .#{$calendar-prefix-cls}__cell-events {
+    position: absolute;
+    inset: 0 8px 0 0;
+
+    &:dir(rtl) {
+      inset: 0 0 0 8px;
+    }
+  }
+
+  .#{$calendar-prefix-cls}__all-day .#{$calendar-prefix-cls}__cell-events {
+    width: 100%;
+    inset: 0;
+  }
+
+  // Calendar Body > Time column.
+  // ------------------------------------------------------
+  .#{$calendar-prefix-cls}__time-cell {
+    display: flex;
+    justify-content: flex-end;
+    min-width: fit-content;
+    white-space: nowrap;
+  }
+
+  .#{$calendar-prefix-cls}__time-cell-label {
+    z-index: 1;
+    align-self: flex-start;
+    width: 98%;
+    margin-top: -7.5px;
+    padding-right: 2px;
+    color: color-mix(in srgb, var(#{$calendar-css-prefix}-base-color) 50%, transparent);
+    font-size: 11px;
+    letter-spacing: -0.5px;
+    background: var(#{$calendar-css-prefix}-secondary-color);
+  }
+
+  .#{$calendar-prefix-cls}__time-cell:nth-child(1) .#{$calendar-prefix-cls}__time-cell-label {
+    margin-top: -1px;
+    font-size: 10px;
+    background: none;
+  }
+
+  .#{$calendar-prefix-cls}__current-time {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 4px;
+    font-size: 10px;
+    line-height: 1;
+    border-radius: 99em;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(8px);
+    pointer-events: none; // Let interactions go through on events.
+  }
+
+  // Calendar events.
+  // ------------------------------------------------------
+  .#{$calendar-prefix-cls}__event {
+    z-index: 1;
+    display: flex;
+    width: 90%;
+    color: var(#{$calendar-css-prefix}-event-color);
+    line-height: 1;
+    background-color: var(#{$calendar-css-prefix}-primary-extra-color);
+    border: 1px solid var(#{$calendar-css-prefix}-event-border-color);
+    border-radius: 4px;
+
+    &--background {
+      z-index: 0;
+      width: 100%;
+      overflow: visible;
+      border: none;
+      border-radius: 0;
+    }
+
+    &--cut-top {
+      border-top: none;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    &--cut-bottom {
+      border-bottom: none;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &--cut-left {
+      border-left: none;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    &--cut-right {
+      border-right: none;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    // Bring to front on hover, but under the headings bar and time column.
+    &:not(.#{$calendar-prefix-cls}__event--background):hover {
+      z-index: 3;
+    }
+
+    &-details {
+      flex-grow: 1;
+      padding: 2px;
+      overflow: hidden;
+      font-size: 12px;
+    }
+
+    &-time {
+      font-size: 11px;
+      line-height: 1;
+      letter-spacing: -0.5px;
+      white-space: nowrap;
+    }
+
+    &-comma {
+      padding-right: 4px;
+    }
+
+    &-resizer {
+      border-bottom-right-radius: inherit;
+      border-bottom-left-radius: inherit;
+      // Over border (so there's no risk of triggering the event drag instead).
+      inset: auto -1px -1px;
+    }
+
+    &-delete {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      width: 1.5em;
+      padding: 2px;
+      color: transparent;
+      font-size: 0.8em;
+      background-color: #{global.$color-danger-6};
+      border: 1px solid
+        color-mix(in srgb, var(#{$calendar-css-prefix}-contrast-color) 50%, transparent);
+      border-radius: 99em;
+      cursor: pointer;
+      aspect-ratio: 1;
+
+      &::before,
+      &::after {
+        position: absolute;
+        top: 50%;
+        right: 20%;
+        left: 20%;
+        height: 2px;
+        background-color: var(#{$calendar-css-prefix}-event-color);
+        border-radius: 99em;
+        content: '';
+      }
+
+      &::before {
+        transform: translateY(-50%) rotate(45deg);
+      }
+
+      &::after {
+        transform: translateY(-50%) rotate(-45deg);
+      }
+    }
+  }
+
+  &.#{$calendar-prefix-cls}--timeless .#{$calendar-prefix-cls}__event {
+    position: relative;
+    width: 100%;
+  }
+
+  .#{$calendar-prefix-cls}__scrollable--month-view .#{$calendar-prefix-cls}__event {
+    width: 100%;
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+
+  .#{$calendar-prefix-cls}__scrollable--month-view .#{$calendar-prefix-cls}__event-details {
+    display: flex;
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+
+  // Horizontal layout - cosmetic styles only.
+  // Structural layout styles are in index.scss.
+  // ------------------------------------------------------
+  // Always use .#{$calendar-prefix-cls}__scrollable for view specific override for Vue transition to be smooth.
+  .#{$calendar-prefix-cls}__scrollable--horizontal {
+    // Override size variables for horizontal layout.
+    #{$calendar-css-prefix}-weekday-bar-size: 6rem;
+    #{$calendar-css-prefix}-schedules-bar-size: 4rem;
+    #{$calendar-css-prefix}-all-day-bar-size: 8rem;
+    #{$calendar-css-prefix}-min-cell-size: 20rem;
+
+    // Always use .#{$calendar-prefix-cls}__scrollable for view specific override for Vue transition to be smooth.
+    &.#{$calendar-prefix-cls}__scrollable--no-schedules {
+      #{$calendar-css-prefix}-schedules-bar-size: 0;
+    }
+
+    &.#{$calendar-prefix-cls}__scrollable--day-view {
+      #{$calendar-css-prefix}-weekday-bar-size: 0;
+    }
+
+    &.#{$calendar-prefix-cls}__scrollable--month-view,
+    &.#{$calendar-prefix-cls}__scrollable--no-all-day-bar {
+      #{$calendar-css-prefix}-all-day-bar-size: 0;
+    }
+
+    .#{$calendar-prefix-cls}__time-column {
+      height: 25px;
+      border-right: none;
+      border-bottom: 0.5px solid var(#{$calendar-css-prefix}-border-color);
+    }
+
+    .#{$calendar-prefix-cls}__all-day-label {
+      border-right: 0.5px solid var(#{$calendar-css-prefix}-border-color);
+      border-bottom: none;
+    }
+
+    .#{$calendar-prefix-cls}__time-cell {
+      justify-content: flex-start;
+    }
+
+    .#{$calendar-prefix-cls}__time-cell::before {
+      top: auto;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 5px;
+      border-top: none;
+      border-left: 0.5px solid var(#{$calendar-css-prefix}-border-color);
+    }
+
+    .#{$calendar-prefix-cls}__time-cell label {
+      padding: 0;
+      line-height: 1;
+      transform: translateX(-50%);
+    }
+
+    // Always use .#{$calendar-prefix-cls}__scrollable for view specific override for Vue transition to be smooth.
+    &.#{$calendar-prefix-cls}__scrollable--day-view.#{$calendar-prefix-cls}__scrollable--no-schedules
+      .#{$calendar-prefix-cls}__time-cell:first-child
+      label,
+    &.#{$calendar-prefix-cls}__scrollable--has-all-day-bar
+      .#{$calendar-prefix-cls}__time-cell:not(
+        .#{$calendar-prefix-cls}__time-cell + .#{$calendar-prefix-cls}__time-cell
+      )
+      label {
+      display: none;
+    }
+
+    .#{$calendar-prefix-cls}__weekdays-headings {
+      text-align: right;
+    }
+
+    .#{$calendar-prefix-cls}__weekday {
+      justify-content: flex-end;
+      padding: 0 6px;
+      box-shadow: 0 0 0 0.5px var(#{$calendar-css-prefix}-border-color) inset;
+    }
+
+    .#{$calendar-prefix-cls}__all-day-resizer {
+      right: 0;
+      bottom: 0;
+      width: 1px;
+      height: 100%;
+      cursor: col-resize;
+
+      &::before {
+        inset: 0 -5px;
+      }
+    }
+
+    .#{$calendar-prefix-cls}__now-line {
+      z-index: 3;
+      border-color: color-mix(in srgb, #{global.$color-danger-6} 60%, transparent);
+
+      &::before {
+        top: auto;
+        bottom: 0;
+        left: -6px;
+        border-bottom-color: inherit;
+        border-left-color: transparent;
+      }
+
+      span {
+        left: 2px;
+      }
+    }
+
+    // Always use .#{$calendar-prefix-cls}__scrollable for view specific override for Vue transition to be smooth.
+    &.#{$calendar-prefix-cls}__scrollable--no-schedules.#{$calendar-prefix-cls}__scrollable--day-view
+      .#{$calendar-prefix-cls}__cell-events,
+    &.#{$calendar-prefix-cls}__scrollable--no-schedules.#{$calendar-prefix-cls}__scrollable--days-view
+      .#{$calendar-prefix-cls}__cell-events,
+    &.#{$calendar-prefix-cls}__scrollable--no-schedules.#{$calendar-prefix-cls}__scrollable--week-view
+      .#{$calendar-prefix-cls}__cell-events {
+      inset: 0 0 8px;
+    }
+
+    .#{$calendar-prefix-cls}__all-day .#{$calendar-prefix-cls}__cell-events {
+      width: 90%;
+      margin: 1px auto 0 1px;
+    }
+
+    .#{$calendar-prefix-cls}__event {
+      width: auto;
+      height: 90%;
+
+      &-resizer {
+        border-top-right-radius: inherit;
+        border-bottom-right-radius: inherit;
+        border-bottom-left-radius: 0;
+        inset: -1px -1px -1px auto;
+      }
+    }
+
+    .#{$calendar-prefix-cls}__all-day .#{$calendar-prefix-cls}__event {
+      height: auto;
+    }
+
+    .#{$calendar-prefix-cls}__schedule--heading {
+      justify-content: flex-end;
+      padding-right: 6px;
+      box-shadow: 0 0 0 0.5px var(#{$calendar-css-prefix}-border-color) inset;
+    }
+  }
+
+  // Sm and xs layouts.
+  // ------------------------------------------------------
+  &.#{$calendar-prefix-cls}--sm {
+    .#{$calendar-prefix-cls}__view-button,
+    .#{$calendar-prefix-cls}__nav,
+    .#{$calendar-prefix-cls}__title button,
+    .#{$calendar-prefix-cls}__nav--today {
+      padding-right: 8px;
+      padding-left: 8px;
+    }
+  }
+
+  &.#{$calendar-prefix-cls}--xs {
+    width: 350px;
+    height: 250px;
+
+    .#{$calendar-prefix-cls}__view-button,
+    .#{$calendar-prefix-cls}__nav,
+    .#{$calendar-prefix-cls}__title button,
+    .#{$calendar-prefix-cls}__nav--today {
+      padding-right: 4px;
+      padding-left: 4px;
+    }
+
+    .#{$calendar-prefix-cls}__title {
+      gap: 4px;
+    }
+
+    .#{$calendar-prefix-cls}__title small {
+      padding-right: 3px;
+      padding-left: 3px;
+    }
+
+    .#{$calendar-prefix-cls}__body {
+      width: 100%;
+    }
+    // Always use .#{$calendar-prefix-cls}__scrollable for view specific override for Vue transition to be smooth.
+    .#{$calendar-prefix-cls}__scrollable--year-view .#{$calendar-prefix-cls}__body,
+    .#{$calendar-prefix-cls}__scrollable--years-view .#{$calendar-prefix-cls}__body {
+      margin: auto;
+    }
+  }
+
+  // Date picker.
+  // ------------------------------------------------------
+  &.#{$calendar-prefix-cls}--date-picker {
+    width: 210px;
+    font-size: 12px;
+
+    &:has(.#{$calendar-prefix-cls}__views-bar) {
+      height: 260px;
+    }
+
+    .#{$calendar-prefix-cls}__views-bar,
+    .#{$calendar-prefix-cls}__title-bar {
+      height: 2em; // Fixed height for taller character locales like ja and cn.
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+
+    .#{$calendar-prefix-cls}__title-bar {
+      padding-right: 0.3em;
+      padding-left: 0.3em;
+    }
+
+    .#{$calendar-prefix-cls}__nav--today,
+    .#{$calendar-prefix-cls}__view-button {
+      font-size: 0.9em;
+    }
+
+    .#{$calendar-prefix-cls}__nav--prev,
+    .#{$calendar-prefix-cls}__nav--next {
+      width: 1.6em;
+    }
+
+    .#{$calendar-prefix-cls}__nav--prev::before,
+    .#{$calendar-prefix-cls}__nav--next::before {
+      padding: 0.22em;
+    }
+
+    .#{$calendar-prefix-cls}__weekday {
+      font-size: 0.95em;
+    }
+
+    .#{$calendar-prefix-cls}__body {
+      gap: 2px;
+      padding: 2px;
+    }
+    // Always use .#{$calendar-prefix-cls}__scrollable for view specific override for Vue transition to be smooth.
+    .#{$calendar-prefix-cls}__scrollable--year-view .#{$calendar-prefix-cls}__body {
+      gap: 0.8em;
+      padding: 0.6em;
+    }
+
+    .#{$calendar-prefix-cls}__scrollable--month-view .#{$calendar-prefix-cls}__body,
+    .#{$calendar-prefix-cls}__scrollable--year-view .#{$calendar-prefix-cls}__body,
+    .#{$calendar-prefix-cls}__scrollable--years-view .#{$calendar-prefix-cls}__body {
+      align-items: center;
+    }
+
+    .#{$calendar-prefix-cls}__cell {
+      font-weight: bold;
+      font-size: 1em;
+      border-radius: 99em;
+      box-shadow: none;
+      aspect-ratio: 1;
+    }
+
+    .#{$calendar-prefix-cls}__scrollable--day-view .#{$calendar-prefix-cls}__cell,
+    .#{$calendar-prefix-cls}__scrollable--days-view .#{$calendar-prefix-cls}__cell,
+    .#{$calendar-prefix-cls}__scrollable--week-view .#{$calendar-prefix-cls}__cell {
+      font-weight: normal;
+      border-radius: 0;
+      aspect-ratio: initial;
+    }
+    // Always use .#{$calendar-prefix-cls}__scrollable for view specific override for Vue transition to be smooth.
+    .#{$calendar-prefix-cls}__scrollable--years-view .#{$calendar-prefix-cls}__cell {
+      padding: 6px;
+    }
+
+    .#{$calendar-prefix-cls}__scrollable--month-view .#{$calendar-prefix-cls}__cell,
+    .#{$calendar-prefix-cls}__scrollable--years-view .#{$calendar-prefix-cls}__cell {
+      font-size: 0.9em;
+    }
+
+    .#{$calendar-prefix-cls}__cell-date {
+      font-weight: bold;
+    }
+
+    &.#{$calendar-prefix-cls}--dark .#{$calendar-prefix-cls}__cell--today::before,
+    &.#{$calendar-prefix-cls}--dark .#{$calendar-prefix-cls}__cell--current-month::before,
+    &.#{$calendar-prefix-cls}--dark .#{$calendar-prefix-cls}__cell--current-year::before,
+    [sd-theme='dark'] & .#{$calendar-prefix-cls}__cell--today::before,
+    [sd-theme='dark'] & .#{$calendar-prefix-cls}__cell--current-month::before,
+    [sd-theme='dark'] & .#{$calendar-prefix-cls}__cell--current-year::before {
+      background-color: color-mix(
+        in srgb,
+        var(#{$calendar-css-prefix}-primary-color) 50%,
+        transparent
+      );
+    }
+
+    &.#{$calendar-prefix-cls}--dark
+      .#{$calendar-prefix-cls}__scrollable--month-view
+      .#{$calendar-prefix-cls}__cell--selected::before,
+    &.#{$calendar-prefix-cls}--dark
+      .#{$calendar-prefix-cls}__scrollable--year-view
+      .#{$calendar-prefix-cls}__cell--selected::before,
+    &.#{$calendar-prefix-cls}--dark
+      .#{$calendar-prefix-cls}__scrollable--years-view
+      .#{$calendar-prefix-cls}__cell--selected::before,
+    [sd-theme='dark']
+      &
+      .#{$calendar-prefix-cls}__scrollable--month-view
+      .#{$calendar-prefix-cls}__cell--selected::before,
+    [sd-theme='dark']
+      &
+      .#{$calendar-prefix-cls}__scrollable--year-view
+      .#{$calendar-prefix-cls}__cell--selected::before,
+    [sd-theme='dark']
+      &
+      .#{$calendar-prefix-cls}__scrollable--years-view
+      .#{$calendar-prefix-cls}__cell--selected::before {
+      background-color: var(#{$calendar-css-prefix}-primary-color);
+    }
+  }
+
+  &.#{$calendar-prefix-cls}--date-picker.#{$calendar-prefix-cls}--light,
+  &.#{$calendar-prefix-cls}--date-picker:not([class*='--dark']):not([sd-theme='dark'] *) {
+    .#{$calendar-prefix-cls}__cell--today::before,
+    .#{$calendar-prefix-cls}__cell--current-month::before,
+    .#{$calendar-prefix-cls}__cell--current-year::before {
+      background-color: color-mix(
+        in srgb,
+        var(#{$calendar-css-prefix}-primary-color) 12%,
+        transparent
+      );
+    }
+
+    .#{$calendar-prefix-cls}--dark
+      .#{$calendar-prefix-cls}__scrollable--month-view
+      .#{$calendar-prefix-cls}__cell--selected::before,
+    .#{$calendar-prefix-cls}--dark
+      .#{$calendar-prefix-cls}__scrollable--year-view
+      .#{$calendar-prefix-cls}__cell--selected::before,
+    .#{$calendar-prefix-cls}--dark
+      .#{$calendar-prefix-cls}__scrollable--years-view
+      .#{$calendar-prefix-cls}__cell--selected::before,
+    [sd-theme='dark']
+      .#{$calendar-prefix-cls}__scrollable--month-view
+      .#{$calendar-prefix-cls}__cell--selected::before,
+    [sd-theme='dark']
+      .#{$calendar-prefix-cls}__scrollable--year-view
+      .#{$calendar-prefix-cls}__cell--selected::before,
+    [sd-theme='dark']
+      .#{$calendar-prefix-cls}__scrollable--years-view
+      .#{$calendar-prefix-cls}__cell--selected::before {
+      background-color: color-mix(
+        in srgb,
+        var(#{$calendar-css-prefix}-primary-color) 28%,
+        transparent
+      );
+    }
+  }
+}
+
+// Media queries.
+// --------------------------------------------------------
+@media (width <= 500px) {
+  .#{$calendar-prefix-cls}--default-theme .#{$calendar-prefix-cls}__view-button,
+  .#{$calendar-prefix-cls}--default-theme .#{$calendar-prefix-cls}__nav,
+  .#{$calendar-prefix-cls}--default-theme button.#{$calendar-prefix-cls}__title,
+  .#{$calendar-prefix-cls}--default-theme .#{$calendar-prefix-cls}__nav--today {
+    padding-right: 6px;
+    padding-left: 6px;
+  }
+}

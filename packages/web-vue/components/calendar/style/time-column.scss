@@ -1,0 +1,109 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+
+$calendar-prefix-cls: string.unquote('#{theme.$prefix}-calendar');
+$calendar-css-prefix: string.unquote('--#{theme.$prefix}-calendar');
+
+// Styles from time-column.vue
+.#{$calendar-prefix-cls}__time-column {
+  position: sticky;
+  top: 0; // For horizontal layout.
+  left: 0;
+  z-index: 5; // Above the cells, headings bar and hovered events.
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start; // Fill height.
+  padding-top: calc(
+    var(#{$calendar-css-prefix}-weekday-bar-size) +
+      var(#{$calendar-css-prefix}-schedules-bar-size) +
+      var(#{$calendar-css-prefix}-all-day-bar-size)
+  );
+  background-color: var(#{$calendar-css-prefix}-secondary-color);
+  border-right: 0.5px solid var(#{$calendar-css-prefix}-border-color);
+}
+
+.#{$calendar-prefix-cls}__time-column-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  .#{$calendar-prefix-cls}__time-cell {
+    &:first-child {
+      margin-block-start: 0.5em;
+    }
+  }
+}
+
+.#{$calendar-prefix-cls}__all-day-label {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(
+    var(#{$calendar-css-prefix}-weekday-bar-size) +
+      var(#{$calendar-css-prefix}-schedules-bar-size) +
+      var(#{$calendar-css-prefix}-all-day-bar-size)
+  );
+  margin-top: calc(
+    (
+        var(#{$calendar-css-prefix}-weekday-bar-size) +
+          var(#{$calendar-css-prefix}-schedules-bar-size) +
+          var(#{$calendar-css-prefix}-all-day-bar-size)
+      ) *
+      -1
+  );
+  padding-top: calc(
+    var(#{$calendar-css-prefix}-weekday-bar-size) + var(#{$calendar-css-prefix}-schedules-bar-size)
+  );
+  font-size: 0.85em;
+  line-height: 1;
+  background: var(#{$calendar-css-prefix}-secondary-color);
+  border-bottom: 1px solid var(#{$calendar-css-prefix}-border-color);
+}
+
+.#{$calendar-prefix-cls}__time-cell {
+  position: relative;
+  display: flex;
+  flex: 1 0 auto;
+  height: var(#{$calendar-css-prefix}-time-cell-size);
+  font-size: 0.85em;
+
+  &::before {
+    position: absolute;
+    top: 0.5px;
+    right: 0;
+    width: 5px;
+    border-top: 0.5px solid var(#{$calendar-css-prefix}-border-color);
+    content: '';
+  }
+
+  label {
+    padding-right: 8px;
+    padding-left: 4px;
+    line-height: 0;
+    opacity: 0.5;
+  }
+  // If there's an all-day bar, the first label is always smaller to fit.
+  // If there's no all-day bar, and no schedules on day view, the first label is also smaller.
+  // Always use .#{$calendar-prefix-cls}__scrollable for view specific override for Vue transition to be smooth.
+  .#{$calendar-prefix-cls}__scrollable--day-view.#{$calendar-prefix-cls}__scrollable--no-schedules
+    &:first-child
+    label,
+  .#{$calendar-prefix-cls}__scrollable--has-all-day-bar &:not(& + &) label {
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    opacity: 0.4;
+  }
+}
+
+.#{$calendar-prefix-cls}__current-time {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

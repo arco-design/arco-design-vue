@@ -4,11 +4,17 @@ const calendarLang: SDCalendarLang = {
   formatYear: 'YYYY',
   formatMonth: 'MMM YYYY',
   today: 'hari ini',
+  allDay: 'sepanjang hari',
+  noEvent: 'tiada acara',
+  deleteEvent: 'padam',
+  createEvent: 'cipta acara',
   view: {
     month: 'bulan',
     year: 'tahun',
     week: 'minggu',
     day: 'hari',
+    days: 'beberapa hari',
+    years: 'beberapa tahun',
   },
   month: {
     long: {

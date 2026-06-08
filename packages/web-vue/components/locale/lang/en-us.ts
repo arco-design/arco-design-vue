@@ -7,11 +7,17 @@ const calendarLang: SDCalendarLang = {
   formatYear: 'YYYY',
   formatMonth: 'MMM YYYY',
   today: 'Today',
+  allDay: 'All Day',
+  noEvent: 'No Event',
+  deleteEvent: 'Delete',
+  createEvent: 'Create an event',
   view: {
     month: 'Month',
     year: 'Year',
     week: 'Week',
     day: 'Day',
+    days: 'Days',
+    years: 'Years',
   },
   month: {
     long: {

@@ -1,0 +1,94 @@
+@use '@style/theme/index.scss' as theme;
+@use 'sass:string';
+
+$calendar-prefix-cls: string.unquote('#{theme.$prefix}-calendar');
+$calendar-css-prefix: string.unquote('--#{theme.$prefix}-calendar');
+
+// Styles from headings-bar.vue
+.#{$calendar-prefix-cls}__headings {
+  position: sticky;
+  top: 0;
+  z-index: 4; // Keep it above the now-line and hovered events.
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  height: calc(
+    var(#{$calendar-css-prefix}-weekday-bar-size) +
+      var(#{$calendar-css-prefix}-schedules-bar-size) +
+      var(#{$calendar-css-prefix}-all-day-bar-size)
+  );
+  white-space: nowrap;
+  background-color: var(#{$calendar-css-prefix}-secondary-color);
+
+  // Always use .#{$calendar-prefix-cls}__scrollable for view specific override for Vue transition to be smooth.
+  .#{$calendar-prefix-cls}__scrollable--horizontal & {
+    left: 0; // For horizontal layout.
+    flex-direction: row;
+    width: calc(
+      var(#{$calendar-css-prefix}-weekday-bar-size) +
+        var(#{$calendar-css-prefix}-schedules-bar-size) +
+        var(#{$calendar-css-prefix}-all-day-bar-size)
+    );
+    height: 100%;
+  }
+}
+
+.#{$calendar-prefix-cls}__weekdays-headings {
+  display: flex;
+}
+
+.#{$calendar-prefix-cls}__weekday {
+  flex: 1 1 0;
+  align-items: center;
+  background-color: inherit;
+
+  // Always use .#{$calendar-prefix-cls}__scrollable for view specific override for Vue transition to be smooth.
+  .#{$calendar-prefix-cls}__scrollable--day-view &,
+  .#{$calendar-prefix-cls}__scrollable--days-view &,
+  .#{$calendar-prefix-cls}__scrollable--week-view & {
+    min-width: var(#{$calendar-css-prefix}-min-cell-size, 0);
+  }
+
+  .#{$calendar-prefix-cls}__scrollable--horizontal.#{$calendar-prefix-cls}__scrollable--day-view &,
+  .#{$calendar-prefix-cls}__scrollable--horizontal.#{$calendar-prefix-cls}__scrollable--days-view &,
+  .#{$calendar-prefix-cls}__scrollable--horizontal.#{$calendar-prefix-cls}__scrollable--week-view
+    & {
+    min-width: 0;
+    min-height: var(#{$calendar-css-prefix}-min-cell-size, 0);
+  }
+}
+
+.#{$calendar-prefix-cls}__all-day {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  height: var(#{$calendar-css-prefix}-all-day-bar-size);
+}
+
+.#{$calendar-prefix-cls}__all-day-cell {
+  display: flex;
+  flex: 1 1 0;
+  background-color: var(#{$calendar-css-prefix}-secondary-color);
+}
+
+.#{$calendar-prefix-cls}__all-day-resizer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  width: 100%;
+  height: 1px;
+  background-color: var(#{$calendar-css-prefix}-secondary-color);
+  cursor: row-resize;
+
+  &:hover {
+    height: 2px;
+    background-color: var(#{$calendar-css-prefix}-primary-color);
+  }
+
+  &::before {
+    position: absolute;
+    content: '';
+    inset: -5px 0;
+  }
+}

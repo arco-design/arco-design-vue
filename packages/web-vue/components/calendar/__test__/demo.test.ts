@@ -1,3 +1,6 @@
 import demoTest from '../../../scripts/demo-test';
 
-demoTest('calendar');
+demoTest('calendar', {
+  attachTo: () => document.body,
+  waitTicks: 2,
+});

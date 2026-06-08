@@ -4,11 +4,17 @@ const calendarLang: SDCalendarLang = {
   formatYear: 'YYYY',
   formatMonth: 'MM-YYYY',
   today: 'Vandaag',
+  allDay: 'Hele dag',
+  noEvent: 'Geen afspraak',
+  deleteEvent: 'Verwijderen',
+  createEvent: 'Afspraak maken',
   view: {
     month: 'Maand',
     year: 'Jaar',
     week: 'Week',
     day: 'Dag',
+    days: 'Dagen',
+    years: 'Jaren',
   },
   month: {
     long: {

@@ -1,65 +1,69 @@
 @use '@style/theme/index.scss' as global;
-
-@forward '@style/theme/index.scss';
-@forward '@style/color/colors.scss' hide $sd-vars-prefix, $sd-cssvars-prefix;
-
 @use 'sass:string';
-@use '@style/theme/index.scss' as *;
 
-$calendar-color-border: var(string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3'));
+$calendar-prefix-cls: string.unquote('#{global.$prefix}-calendar');
+$calendar-css-prefix: string.unquote('--#{global.$prefix}-calendar');
 
-$calendar-header-padding-horizontal: 24px;
-$calendar-header-padding-vertical: 24px;
+.#{$calendar-prefix-cls}--default-theme,
+[class$='-calendar--default-theme'] {
+  #{$calendar-css-prefix}-primary-color: #{global.$color-primary-6};
+  #{$calendar-css-prefix}-primary-sub-color: #{global.$color-primary-5};
+  #{$calendar-css-prefix}-primary-extra-color: #{global.$color-primary-4};
+  #{$calendar-css-prefix}-secondary-color: var(
+    string.unquote('#{global.$sd-cssvars-prefix}-color-bg-2')
+  );
+  #{$calendar-css-prefix}-base-color: var(
+    string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+  );
+  #{$calendar-css-prefix}-contrast-color: var(
+    string.unquote('#{global.$sd-cssvars-prefix}-color-white')
+  );
+  #{$calendar-css-prefix}-border-color: var(
+    string.unquote('#{global.$sd-cssvars-prefix}-color-neutral-3')
+  );
+  #{$calendar-css-prefix}-header-color: var(
+    string.unquote('#{global.$sd-cssvars-prefix}-color-white')
+  );
+  #{$calendar-css-prefix}-event-color: var(
+    string.unquote('#{global.$sd-cssvars-prefix}-color-white')
+  );
+  #{$calendar-css-prefix}-event-border-color: color-mix(
+    in srgb,
+    var(#{$calendar-css-prefix}-base-color) 12%,
+    transparent
+  );
+  #{$calendar-css-prefix}-border-radius: #{global.$radius-medium};
+  #{$calendar-css-prefix}-height: 500px;
+  #{$calendar-css-prefix}-min-cell-size: 1rem;
 
-$calendar-panel-date-cell-padding-vertical: 4px;
-$calendar-panel-date-cell-circle-height: 24px;
-$calendar-panel-year-cell-padding-vertical: 4px;
-$calendar-panel-year-cell-circle-height: 24px;
-
-$calendar-color-switch-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
-$calendar-color-bg-switch-icon: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-5'));
-$calendar-color-bg-switch-icon_hover: var(
-  string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3')
-);
-
-$calendar-color-text-title: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
-$calendar-color-cell-text-in-view: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
-$calendar-color-cell-text-not-in-view: var(
-  string.unquote('#{global.$sd-cssvars-prefix}-color-text-4')
-);
-$calendar-color-bg-circle_selected: global.$color-primary-6;
-$calendar-color-bg-cell-in-range: var(
-  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-1')
-);
-$calendar-color-bg-cell-disabled: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-1'));
-$calendar-color-text-cell-range-boundary: var(
-  string.unquote('#{global.$sd-cssvars-prefix}-color-white')
-);
-$calendar-color-bg-cell-range-boundary: global.$color-primary-6;
-$calendar-color-bg-cell-hover-in-range: var(
-  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-1')
-);
-$calendar-color-text-cell-hover-range-boundary: var(
-  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
-);
-$calendar-color-bg-cell-hover-range-boundary: var(
-  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-2')
-);
-
-$calendar-panel-color-text-cell_hover: global.$color-primary-6;
-$calendar-panel-color-bg-cell_hover: var(
-  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-1')
-);
-$calendar-panel-color-text-cell_selected: var(
-  string.unquote('#{global.$sd-cssvars-prefix}-color-white')
-);
-$calendar-panel-color-bg-cell_selected: global.$color-primary-6;
-$calendar-panel-color-current-time-dot: global.$color-primary-6;
-
-// 不放到风格配置平台
-$calendar-panel-cell-boundary-border-radius: (
-  ($calendar-panel-date-cell-circle-height + $calendar-panel-date-cell-padding-vertical * 2) * 0.5
-);
-$calendar-color-box-shadow: var(
-  string.unquote('#{global.$sd-cssvars-prefix}-color-primary-light-3')
-);
+  &.#{$calendar-prefix-cls}--dark,
+  &[class*='-calendar--dark'],
+  [sd-theme='dark'] & {
+    #{$calendar-css-prefix}-primary-color: color-mix(
+      in srgb,
+      #{global.$color-primary-6} 78%,
+      #0f172a
+    );
+    #{$calendar-css-prefix}-secondary-color: var(
+      string.unquote('#{global.$sd-cssvars-prefix}-color-fill-2')
+    );
+    #{$calendar-css-prefix}-base-color: var(
+      string.unquote('#{global.$sd-cssvars-prefix}-color-white')
+    );
+    #{$calendar-css-prefix}-contrast-color: var(
+      string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+    );
+    #{$calendar-css-prefix}-border-color: color-mix(
+      in srgb,
+      var(#{$calendar-css-prefix}-base-color) 16%,
+      transparent
+    );
+    #{$calendar-css-prefix}-header-color: var(#{$calendar-css-prefix}-base-color);
+    #{$calendar-css-prefix}-event-color: var(#{$calendar-css-prefix}-base-color);
+    #{$calendar-css-prefix}-event-border-color: color-mix(
+      in srgb,
+      var(#{$calendar-css-prefix}-base-color) 40%,
+      transparent
+    );
+  }
+}

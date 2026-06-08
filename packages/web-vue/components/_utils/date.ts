@@ -7,7 +7,28 @@ import weekOfYear from 'dayjs/plugin/weekOfYear';
 import weekYear from 'dayjs/plugin/weekYear';
 
 import { isDayjs, isArray, isQuarter } from './is';
-import 'dayjs/locale/zh-cn';
+
+const localeLoaders: Record<string, () => Promise<unknown>> = {
+  'ar': () => import('dayjs/locale/ar'),
+  'de': () => import('dayjs/locale/de'),
+  'es': () => import('dayjs/locale/es'),
+  'fr': () => import('dayjs/locale/fr'),
+  'id': () => import('dayjs/locale/id'),
+  'it': () => import('dayjs/locale/it'),
+  'ja': () => import('dayjs/locale/ja'),
+  'km': () => import('dayjs/locale/km'),
+  'ko': () => import('dayjs/locale/ko'),
+  'ms': () => import('dayjs/locale/ms'),
+  'nl': () => import('dayjs/locale/nl'),
+  'pt': () => import('dayjs/locale/pt'),
+  'ru': () => import('dayjs/locale/ru'),
+  'th': () => import('dayjs/locale/th'),
+  'vi': () => import('dayjs/locale/vi'),
+  'zh-cn': () => import('dayjs/locale/zh-cn'),
+  'zh-tw': () => import('dayjs/locale/zh-tw'),
+};
+
+const loadedLocales = new Set<string>();
 
 const overwriteIsDayjs = (_: any, Dayjs: any, dayjs: any) => {
   // oxlint-disable-next-line func-names
@@ -41,6 +62,27 @@ originDayjs.extend(weekYear);
 originDayjs.extend(QuarterOfYear);
 
 export const dayjs = originDayjs;
+
+const DAYJS_LOCALE_MAP: Record<string, string> = {
+  'ar-eg': 'ar',
+  'de-de': 'de',
+  'en-us': 'en',
+  'es-es': 'es',
+  'fr-fr': 'fr',
+  'id-id': 'id',
+  'it-it': 'it',
+  'ja-jp': 'ja',
+  'km-kh': 'km',
+  'ko-kr': 'ko',
+  'ms-my': 'ms',
+  'nl-nl': 'nl',
+  'pt-pt': 'pt',
+  'ru-ru': 'ru',
+  'th-th': 'th',
+  'vi-vn': 'vi',
+  'zh-cn': 'zh-cn',
+  'zh-tw': 'zh-tw',
+};
 
 export const methods = {
   add(time: Dayjs, value: number, unit: UnitType) {
@@ -201,8 +243,20 @@ export function getDateValue(value: Dayjs | Dayjs[] | (Dayjs | undefined)[] | un
   return formatValue(value);
 }
 
-export function initializeDateLocale(localeName: string, weekStart: number) {
-  dayjs.locale({ ...dayjs.Ls[localeName.toLocaleLowerCase()], weekStart });
+export async function initializeDateLocale(localeName: string, weekStart: number) {
+  const normalizedLocale = localeName.toLowerCase();
+  const dayjsLocaleName = DAYJS_LOCALE_MAP[normalizedLocale] ?? normalizedLocale;
+
+  if (dayjsLocaleName !== 'en' && !loadedLocales.has(dayjsLocaleName)) {
+    const loader = localeLoaders[dayjsLocaleName];
+    if (loader) {
+      await loader();
+    }
+    loadedLocales.add(dayjsLocaleName);
+  }
+
+  const baseLocale = dayjs.Ls[dayjsLocaleName] ?? dayjs.Ls.en;
+  dayjs.locale({ ...baseLocale, name: dayjsLocaleName, weekStart });
 }
 
 export function pickDataAttributes<T extends Record<string, unknown>>(

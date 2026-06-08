@@ -1,8 +1,8 @@
 <template>
   <sd-date-picker>
     <template #cell="{ date }">
-      <div class="sd:picker-date">
-        <div class="sd:picker-date-value" :class="getCellClass(date)">
+      <div class="sd-picker-date">
+        <div class="sd-picker-date-value" :class="getCellClass(date)">
           {{ date.getDate() }}
         </div>
       </div>
@@ -11,7 +11,7 @@
 </template>
 <script setup lang="ts">
   const highlightDates = [6, 14, 22];
-  const highlightClass = 'sd:border sd:border-[rgb(var(--sdblue-6))]';
+  const highlightClass = 'sd:border';
 
   function getCellClass(date: Date) {
     return highlightDates.includes(date.getDate()) ? highlightClass : undefined;
