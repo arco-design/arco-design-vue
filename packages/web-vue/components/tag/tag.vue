@@ -206,12 +206,12 @@
       default: undefined,
     },
     /**
-     * @zh 自定义颜色的背景透明度，仅在自定义颜色时生效，默认 0.2
-     * @en Background opacity for custom color tags, only effective when using a custom color, default 0.2
+     * @zh 自定义颜色的背景透明度，仅在自定义颜色时生效，默认 0.8
+     * @en Background opacity for custom color tags, only effective when using a custom color, default 0.8
      */
     backgroundAlpha: {
       type: Number,
-      default: 0.2,
+      default: 0.8,
     },
   });
 

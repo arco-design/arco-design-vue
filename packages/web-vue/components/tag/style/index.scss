@@ -59,13 +59,15 @@ $colors:
     border-color: $tag-default-color-border;
   }
 
-  .#{$tag-prefix-cls}-checkable.#{$tag-prefix-cls}-checked:hover {
-    background-color: $tag-default-color-bg_hover;
-    border-color: $tag-default-color-border_hover;
+  &-checkable {
+    &.#{$tag-prefix-cls}-checked:hover {
+      background-color: $tag-default-color-bg_hover;
+      border-color: $tag-default-color-border_hover;
+    }
   }
 
   &-bordered,
-  .#{$tag-prefix-cls}-checkable.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-bordered:hover {
+  &.#{$tag-prefix-cls}-checkable.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-bordered:hover {
     border-color: $tag-default-bordered-color-border;
   }
 
@@ -121,7 +123,7 @@ $colors:
   }
 
   @each $value in $colors {
-    .#{$tag-prefix-cls}.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value} {
+    &.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value} {
       color: token-var('tag-#{$value}-color-text');
       background-color: token-var('tag-#{$value}-color-bg');
       border: $tag-border-width $tag-border-type token-var('tag-#{$value}-color-border');
@@ -132,40 +134,40 @@ $colors:
       );
     }
 
-    .#{$tag-prefix-cls}-checkable.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value}:hover {
+    &.#{$tag-prefix-cls}-checkable.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value}:hover {
       background-color: token-var('tag-#{$value}-color-bg_hover');
       border-color: token-var('tag-#{$value}-color-border_hover');
     }
 
-    .#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value}.#{$tag-prefix-cls}-bordered,
-    .#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value}.#{$tag-prefix-cls}-bordered:hover {
+    &.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value}.#{$tag-prefix-cls}-bordered,
+    &.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value}.#{$tag-prefix-cls}-bordered:hover {
       border-color: token-var('tag-#{$value}-bordered-color-border');
     }
 
-    .#{$tag-prefix-cls}.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value} &-icon,
-    .#{$tag-prefix-cls}.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value} &-close-btn,
-    .#{$tag-prefix-cls}.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value} &-loading-icon {
+    &.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value} &-icon,
+    &.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value} &-close-btn,
+    &.#{$tag-prefix-cls}-checked.#{$tag-prefix-cls}-#{$value} &-loading-icon {
       color: token-var('tag-#{$value}-color-icon');
     }
   }
 
-  .#{$tag-prefix-cls}.#{$tag-prefix-cls}-custom-color {
+  &.#{$tag-prefix-cls}-custom-color {
     color: var(--#{$tag-prefix-cls}-color, $tag-custom-color-text);
     background-color: var(--#{$tag-prefix-cls}-bg-color, $tag-default-color-bg);
 
     @include icon-hover.icon-hover-bg($tag-prefix-cls, $tag-custom-color-icon-bg_hover);
   }
 
-  .#{$tag-prefix-cls}.#{$tag-prefix-cls}-custom-color.#{$tag-prefix-cls}-checked {
+  &.#{$tag-prefix-cls}-custom-color.#{$tag-prefix-cls}-checked {
     color: var(--#{$tag-prefix-cls}-color, $tag-custom-color-text);
     background-color: var(--#{$tag-prefix-cls}-bg-color, $tag-default-color-bg);
   }
 
-  .#{$tag-prefix-cls}.#{$tag-prefix-cls}-custom-color.#{$tag-prefix-cls}-bordered {
+  &.#{$tag-prefix-cls}-custom-color.#{$tag-prefix-cls}-bordered {
     border-color: var(--#{$tag-prefix-cls}-border-color, $tag-default-bordered-color-border);
   }
 
-  .#{$tag-prefix-cls}-custom-color {
+  &-custom-color {
     .#{$tag-prefix-cls}-icon,
     .#{$tag-prefix-cls}-close-btn,
     .#{$tag-prefix-cls}-loading-icon {

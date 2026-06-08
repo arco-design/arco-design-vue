@@ -1,10 +1,11 @@
 <template>
   <sd-space wrap>
+    <h3 class="sd:py-2">内置颜色：</h3>
     <sd-tag v-for="(color, index) of colors" :key="index" :color="color" closable>{{
       color
     }}</sd-tag>
   </sd-space>
-  <h3>Custom Color:</h3>
+  <h3 class="sd:py-2">自定义颜色：</h3>
   <sd-space wrap>
     <sd-tag v-for="(color, index) of custom" :key="index" :color="color" closable>{{
       color
