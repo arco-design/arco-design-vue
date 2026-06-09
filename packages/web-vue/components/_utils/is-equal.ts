@@ -46,8 +46,7 @@ export const isEqual = (a: unknown, b: unknown) => {
     if (a === b) {
       return true;
     }
-    // @ts-ignore
-    return a.toString() === b.toString();
+    return String(a) === String(b);
   }
   return a === b;
 };

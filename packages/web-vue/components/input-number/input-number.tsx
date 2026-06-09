@@ -577,15 +577,15 @@ export default defineComponent({
       return (
         <SDButton
           size={mergedSize.value}
-          // @ts-ignore
-          tabindex="-1"
           v-slots={{ icon: () => <IconMinus /> }}
           class={`${prefixCls}-step-button`}
           disabled={mergedDisabled.value || isMin.value}
-          // @ts-ignore
-          onMousedown={(ev: MouseEvent) => handleStepButton(ev, 'minus', true)}
-          onMouseup={clearRepeatTimer}
-          onMouseleave={clearRepeatTimer}
+          {...{
+            tabindex: '-1',
+            onMousedown: (ev: MouseEvent) => handleStepButton(ev, 'minus', true),
+            onMouseup: clearRepeatTimer,
+            onMouseleave: clearRepeatTimer,
+          }}
         />
       );
     };
@@ -594,15 +594,15 @@ export default defineComponent({
       return (
         <SDButton
           size={mergedSize.value}
-          // @ts-ignore
-          tabindex="-1"
           v-slots={{ icon: () => <IconPlus /> }}
           class={`${prefixCls}-step-button`}
           disabled={mergedDisabled.value || isMax.value}
-          // @ts-ignore
-          onMousedown={(ev: MouseEvent) => handleStepButton(ev, 'plus', true)}
-          onMouseup={clearRepeatTimer}
-          onMouseleave={clearRepeatTimer}
+          {...{
+            tabindex: '-1',
+            onMousedown: (ev: MouseEvent) => handleStepButton(ev, 'plus', true),
+            onMouseup: clearRepeatTimer,
+            onMouseleave: clearRepeatTimer,
+          }}
         />
       );
     };
@@ -649,8 +649,7 @@ export default defineComponent({
           onBlur={handleBlur}
           onClear={handleClear}
           onChange={handleChange}
-          // @ts-ignore
-          onKeydown={onKeyDown}
+          {...{ onKeydown: onKeyDown }}
         />
       );
     };

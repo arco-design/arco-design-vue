@@ -309,19 +309,17 @@ export const getColumnsFromSlot = (vns: VNode[]) => {
           column.children = getColumnsFromSlot(vn.children.default());
         }
         if (vn.children.cell) {
-          // @ts-ignore
-          column.render = vn.children.cell;
+          column.render = vn.children.cell as unknown as TableColumnData['render'];
         }
         if (vn.children.title) {
-          // @ts-ignore
-          column.title = vn.children.title;
+          column.title = vn.children.title as unknown as TableColumnData['title'];
         }
       }
       columns.push(column);
     } else if (isArrayChildren(vn, vn.children)) {
       columns.push(...getColumnsFromSlot(vn.children));
     } else if (isArray(vn)) {
-      columns.push(...getColumnsFromSlot(vn));
+      columns.push(...getColumnsFromSlot(vn as unknown as VNode[]));
     }
   }
   return columns;

@@ -70,7 +70,6 @@ const open = (config: DrawerConfig, appContext?: AppContext) => {
     onClose: handleClose,
   };
 
-  // @ts-ignore
   const vm = createVNode(
     _Drawer,
     {
@@ -84,10 +83,10 @@ const open = (config: DrawerConfig, appContext?: AppContext) => {
         'onOk',
         'onCancel',
         'onClose',
-      ]),
+      ] as (keyof DrawerConfig)[]),
       header: typeof config.header === 'boolean' ? config.header : undefined,
       footer: typeof config.footer === 'boolean' ? config.footer : undefined,
-    },
+    } as Record<string, unknown>,
     {
       default: getSlotFunction(config.content),
       header: typeof config.header !== 'boolean' ? getSlotFunction(config.header) : undefined,

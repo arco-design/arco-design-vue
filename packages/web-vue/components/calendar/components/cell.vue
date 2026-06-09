@@ -476,7 +476,20 @@
    * The special hours of the current cell day.
    * returns an array if the view is day, days, week and the specialHours prop is set correctly.
    */
-  const getPositionedSpecialHours = (ranges: any[]) => {
+  type SpecialHourRange = {
+    from: number;
+    to: number;
+    class?: string;
+    label?: string;
+  };
+
+  type PositionedSpecialHour = {
+    style: Record<string, string>;
+    class?: string;
+    label?: string;
+  };
+
+  const getPositionedSpecialHours = (ranges: SpecialHourRange[]) => {
     const list = ranges || [];
     const isHzl = config.horizontal;
     const { timeFrom, timeTo } = config;
@@ -519,13 +532,12 @@
 
     return {
       default: getPositionedSpecialHours(daySpecialHours.default),
-      schedules: Object.entries(daySpecialHours.schedules || {}).reduce<Record<string, any>>(
-        (obj, [scheduleId, ranges]) => {
-          obj[scheduleId] = getPositionedSpecialHours(ranges as any[]);
-          return obj;
-        },
-        {},
-      ),
+      schedules: Object.entries(daySpecialHours.schedules || {}).reduce<
+        Record<string, PositionedSpecialHour[]>
+      >((obj, [scheduleId, ranges]) => {
+        obj[scheduleId] = getPositionedSpecialHours(ranges as SpecialHourRange[]);
+        return obj;
+      }, {}),
     };
   });
 
@@ -535,7 +547,11 @@
     if (!schedules?.length) return [];
 
     const sh = specialHours.value;
-    if (!sh) return schedules.map((schedule: any) => ({ schedule, ranges: [] as any[] }));
+    if (!sh)
+      return schedules.map((schedule: any) => ({
+        schedule,
+        ranges: [] as PositionedSpecialHour[],
+      }));
 
     const { default: defaultRanges, schedules: byScheduleId } = sh;
 

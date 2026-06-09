@@ -339,9 +339,10 @@
   // On mousedown OR TOUCHSTART on the event.
   const onMousedown = (e: MouseEvent | TouchEvent) => {
     const domEvent = (e as TouchEvent).touches?.[0] || e; // Handle click or touch event.
+    const eventTarget = domEvent.target as Element | null;
 
     // If the event target is the resizer, set the resizing flag.
-    touch.fromResizer = !!(domEvent as any).target?.closest(`.${prefixCls}__event-resizer`);
+    touch.fromResizer = !!eventTarget?.closest(`.${prefixCls}__event-resizer`);
 
     // Cache getBoundingClientRect calls for better performance.
     const now = Date.now();

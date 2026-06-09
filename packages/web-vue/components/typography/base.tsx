@@ -374,7 +374,7 @@ export default defineComponent({
     const ellipsisConfig = computed<EllipsisInternalConfig>(() =>
       normalizeEllipsisConfig((isObject(ellipsis.value) && ellipsis.value) || {}),
     );
-    let rafId: number = null as any;
+    let rafId: number | null = null;
 
     function onExpandClick() {
       const newVal = !expanded.value;

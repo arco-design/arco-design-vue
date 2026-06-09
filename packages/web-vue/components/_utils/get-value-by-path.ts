@@ -1,7 +1,7 @@
 import { isArray, isObject, isUndefined } from './is';
 import { Data } from './types';
 
-export const getValueByPath = <T = any>(
+export const getValueByPath = <T = Data>(
   obj: Data | undefined,
   path: string | undefined,
 ): T | undefined => {
@@ -21,7 +21,7 @@ export const getValueByPath = <T = any>(
       return undefined;
     }
     if (i !== keys.length - 1) {
-      temp = temp[keys[i]] as any;
+      temp = temp[keys[i]] as Data;
     } else {
       return temp[keys[i]] as T;
     }
@@ -33,7 +33,7 @@ export const getValueByPath = <T = any>(
 export const setValueByPath = (
   obj: Data | undefined,
   path: string | undefined,
-  value: any,
+  value: Data[keyof Data],
   { addPath }: { addPath?: boolean } = {},
 ) => {
   if (!obj || !path) {
@@ -55,7 +55,7 @@ export const setValueByPath = (
       if (addPath && isUndefined(temp[keys[i]])) {
         temp[keys[i]] = {};
       }
-      temp = temp[keys[i]] as any;
+      temp = temp[keys[i]] as Data;
     } else {
       temp[keys[i]] = value;
     }

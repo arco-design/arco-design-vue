@@ -239,7 +239,7 @@ export interface TreeProps {
     e: DragEvent;
     dragNode: TreeNodeData;
     dropNode: TreeNodeData;
-    dropPosition: DropPosition;
+    dropPosition: number;
   }) => void;
   filterTreeNode?: (node: TreeNodeData) => boolean;
 }

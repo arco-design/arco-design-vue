@@ -101,8 +101,7 @@ export default defineComponent({
               disabled={Boolean(props.record.disabled)}
               uninjectGroupContext
               onChange={(checked) => tableCtx.onSelectAllLeafs?.(props.record, checked as boolean)}
-              // @ts-ignore
-              onClick={(ev: Event) => ev.stopPropagation()}
+              {...{ onClick: (ev: Event) => ev.stopPropagation() }}
             />
           );
         }
@@ -113,8 +112,7 @@ export default defineComponent({
             disabled={Boolean(props.record.disabled)}
             uninjectGroupContext
             onChange={(checked) => tableCtx.onSelect?.(checked as boolean, props.record)}
-            // @ts-ignore
-            onClick={(ev: Event) => ev.stopPropagation()}
+            {...{ onClick: (ev: Event) => ev.stopPropagation() }}
           />
         );
       }
@@ -126,8 +124,7 @@ export default defineComponent({
             disabled={Boolean(props.record.disabled)}
             uninjectGroupContext
             onChange={(checked) => tableCtx.onSelect?.(checked as boolean, props.record)}
-            // @ts-ignore
-            onClick={(ev: Event) => ev.stopPropagation()}
+            {...{ onClick: (ev: Event) => ev.stopPropagation() }}
           />
         );
       }

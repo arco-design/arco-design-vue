@@ -65,9 +65,11 @@ export function getFormattedValue(
   time: Dayjs | Array<Dayjs | undefined> | undefined,
   format: string,
 ): string | Array<string | undefined> | undefined {
-  const formatValue = (time: any): any => {
+  const formatValue = (
+    time: Dayjs | Array<Dayjs | undefined> | undefined,
+  ): string | Array<string | undefined> | undefined => {
     if (isArray(time)) {
-      return time.map((t) => formatValue(t));
+      return time.map((t) => formatValue(t)) as Array<string | undefined>;
     }
 
     if (isUndefined(time)) return undefined;
@@ -78,7 +80,7 @@ export function getFormattedValue(
   return formatValue(time);
 }
 
-export function isValidRangeValue(value: any): value is undefined | Dayjs[] {
+export function isValidRangeValue(value: unknown): value is undefined | Dayjs[] {
   if (isUndefined(value)) return true;
   if (!isArray(value)) return false;
   return value.length === 0 || (value.length === 2 && isDayjs(value[0]) && isDayjs(value[1]));

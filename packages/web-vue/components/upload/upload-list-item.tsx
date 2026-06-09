@@ -118,10 +118,7 @@ export default defineComponent({
         </div>
         {uploadCtx?.showRemoveButton && (
           <span class={`${itemCls}-operation`}>
-            <IconHover
-              // @ts-ignore
-              onClick={() => uploadCtx?.onRemove?.(props.file)}
-            >
+            <IconHover onClick={() => uploadCtx?.onRemove?.(props.file)}>
               <span class={[uploadCtx?.iconCls, `${uploadCtx?.iconCls}-remove`]}>
                 {uploadCtx?.slots['remove-icon']?.() ?? uploadCtx?.customIcon?.removeIcon?.() ?? (
                   <IconDelete />

@@ -1,4 +1,3 @@
-// @ts-ignore
 import { DefaultValidateMessage } from 'b-validate';
 
 import { SDCalendarLang, SDLang } from '../interface';

@@ -12,8 +12,8 @@ describe('Tag', () => {
     });
     await wrapper.trigger('click');
 
-    // @ts-ignore
-    expect(wrapper.emitted('check')?.[0][0]).toEqual(false);
+    const checkEvent = wrapper.emitted('check') as Array<[boolean]> | undefined;
+    expect(checkEvent?.[0][0]).toEqual(false);
   });
 
   test('should enable ellipsis by default and forward ellipsis props', () => {

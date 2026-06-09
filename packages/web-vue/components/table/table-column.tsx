@@ -273,7 +273,6 @@ export default defineComponent({
 
     if (instance) {
       if (tableColumnCtx) {
-        // @ts-ignore
         tableColumnCtx.addChild(instance.uid, column);
       } else {
         tableCtx.addColumn?.(instance.uid, column);

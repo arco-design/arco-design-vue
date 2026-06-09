@@ -66,7 +66,6 @@
     toRefs,
   } from 'vue';
 
-  // @ts-ignore
   import { Schema } from 'b-validate';
 
   import { getValueByPath, setValueByPath } from '../_utils/get-value-by-path';
@@ -324,7 +323,7 @@
       const { i18nMessage } = useI18n();
 
       const mergedLabelCol = computed(() => {
-        const colProps = { ...(props.labelColProps ?? formCtx.labelColProps) };
+        const colProps: Record<string, any> = { ...(props.labelColProps ?? formCtx.labelColProps) };
         if (props.labelColFlex) {
           colProps.flex = props.labelColFlex;
         } else if (formCtx.autoLabelWidth) {
@@ -334,7 +333,7 @@
       });
 
       const mergedWrapperCol = computed(() => {
-        const colProps = {
+        const colProps: Record<string, any> = {
           ...(props.wrapperColProps ?? formCtx.wrapperColProps),
         };
         if (field.value) {
@@ -433,7 +432,7 @@
         );
 
         return new Promise((resolve) => {
-          schema.validate({ [_field]: _value }, (err: Data) => {
+          schema.validate({ [_field]: _value }, (err: Record<string, any> | undefined) => {
             const isError = Boolean(err?.[_field]);
             updateValidateState(_field, {
               status: isError ? 'error' : '',
@@ -444,10 +443,10 @@
               ? {
                   label: props.label,
                   field: field.value,
-                  value: err[_field].value,
-                  type: err[_field].type,
-                  isRequiredError: Boolean(err[_field].requiredError),
-                  message: err[_field].message,
+                  value: err![_field].value,
+                  type: err![_field].type,
+                  isRequiredError: Boolean(err![_field].requiredError),
+                  message: err![_field].message,
                 }
               : undefined;
 

@@ -80,13 +80,14 @@ export default defineComponent({
       <TransitionGroup
         tag="div"
         name="cascader-slide"
-        // @ts-ignore
-        class={[
-          `${prefixCls}-panel`,
-          {
-            [`${prefixCls}-dropdown-panel`]: props.dropdown,
-          },
-        ]}
+        {...{
+          class: [
+            `${prefixCls}-panel`,
+            {
+              [`${prefixCls}-dropdown-panel`]: props.dropdown,
+            },
+          ],
+        }}
       >
         {renderContent()}
       </TransitionGroup>

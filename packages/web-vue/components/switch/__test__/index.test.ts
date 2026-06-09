@@ -7,8 +7,8 @@ describe('Switch', () => {
   test('should emit change event', async () => {
     const wrapper = mount(Switch);
     await wrapper.find('button').trigger('click');
-    // @ts-ignore
-    expect(wrapper.emitted('change')?.[0]?.[0]).toEqual(true);
+    const changeEvent = wrapper.emitted('change') as Array<[boolean]> | undefined;
+    expect(changeEvent?.[0]?.[0]).toEqual(true);
   });
 
   test('should auto enter loading until controlled modelValue updates', async () => {

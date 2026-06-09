@@ -14,7 +14,7 @@
   import { RowContextInjectionKey } from './context';
   import { useResponsiveState } from './hook/use-responsive-state';
   import { useResponsiveValue } from './hook/use-responsive-value';
-  import { FlexType } from './interface';
+  import { FlexType, ColResponsiveConfig } from './interface';
 
   function getAllowableFlexValue(flexValue: FlexType | undefined) {
     if (
@@ -60,7 +60,7 @@
        * @en <576px responsive grid
        */
       xs: {
-        type: [Number, Object] as PropType<number | { [key: string]: any }>,
+        type: [Number, Object] as PropType<number | ColResponsiveConfig>,
       },
       /**
        * @zh >= 576px 响应式栅格
@@ -121,7 +121,7 @@
         };
 
         const screenList: {
-          [key: string]: number | { [key: string]: any } | undefined;
+          [key: string]: number | ColResponsiveConfig | undefined;
         } = { xs, sm, md, lg, xl, xxl };
 
         Object.keys(screenList).forEach((screen) => {

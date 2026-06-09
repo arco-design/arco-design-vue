@@ -7,6 +7,7 @@ import { INPUT_EVENTS, Size } from '../../_utils/constant';
 import { getPrefixCls } from '../../_utils/global-config';
 import { omit } from '../../_utils/omit';
 import pick from '../../_utils/pick';
+import { EmitFn } from '../../_utils/types';
 import Ellipsis from '../../ellipsis';
 import { SelectViewValue } from '../select-view/interface';
 
@@ -59,7 +60,7 @@ export default defineComponent({
       handleMousedown,
     } = useInput({
       modelValue: inputValue,
-      emit,
+      emit: emit as EmitFn<string>,
       eventName: 'inputValueChange',
       updateEventName: 'update:inputValue',
       eventHandlers,

@@ -1,5 +1,7 @@
 import type { InjectionKey, Ref } from 'vue';
 
+import type { EmitFn } from '../_utils/types';
+
 /**
  * The calendar state provided/injected across all calendar sub-components.
  * The core is written in JS, so this interface captures the shape used by the Vue templates.
@@ -7,7 +9,7 @@ import type { InjectionKey, Ref } from 'vue';
 export interface CalendarState {
   uid: string | number;
   prefixCls: string;
-  emit: (event: string, ...args: any[]) => void;
+  emit: EmitFn<string>;
   texts: Record<string, any>;
   dateUtils: Record<string, any>;
   now: Date;

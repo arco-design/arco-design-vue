@@ -34,7 +34,7 @@ export interface ImagePreviewProps {
   wheelZoom?: boolean;
   defaultScale?: number;
   zoomRate?: number;
-  groupArrowProps?: Record<string, any>;
+  groupArrowProps?: Record<string, unknown>;
   onClose?: () => void;
 }
 

@@ -187,7 +187,7 @@ export const getFirstComponent = (children: VNode[] | undefined): VNode | undefi
         if (result) return result;
       }
     } else if (isArray(child)) {
-      const result = getFirstComponent(child);
+      const result = getFirstComponent(child as unknown as VNode[]);
       if (result) return result;
     }
   }
@@ -290,7 +290,7 @@ export const getChildrenArray = (vn: VNode): VNode[] | undefined => {
     return vn.children;
   }
   if (isArray(vn)) {
-    return vn;
+    return vn as unknown as VNode[];
   }
   return undefined;
 };
@@ -364,7 +364,7 @@ export const getAllElements = (children: VNode[] | undefined, includeText = fals
     } else if (isSlotsChildren(item, item.children)) {
       results.push(...getAllElements(item.children.default?.(), includeText));
     } else if (isArray(item)) {
-      results.push(...getAllElements(item, includeText));
+      results.push(...getAllElements(item as unknown as VNode[], includeText));
     }
   }
   return results;
@@ -403,14 +403,14 @@ export function unFragment(nodeList: VNode[]) {
 
 export const resolveProps = (vn: VNode) => {
   const props: Data = {};
-  // @ts-ignore
-  const options = vn.type?.props ?? {};
+  const options = (vn.type as Component & { props?: Record<string, unknown> })?.props ?? {};
   for (const key of Object.keys(vn.props ?? {})) {
     const rawValue = vn.props?.[key];
     const camelKey = toCamelCase(key);
     let resolveValue = rawValue;
     if (rawValue === '' || rawValue === toKebabCase(camelKey)) {
-      const type = isObject(options[camelKey]) ? options[camelKey].type : options[camelKey];
+      const val = options[camelKey];
+      const type = isObject(val) ? (val as Record<string, unknown>).type : val;
       if (type === Boolean) {
         resolveValue = true;
       }

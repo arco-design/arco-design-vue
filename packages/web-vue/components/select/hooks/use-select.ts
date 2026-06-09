@@ -95,8 +95,7 @@ export const useSelect = ({
       virtualListRef.value.scrollTo({ key });
     }
     const optionInfo = optionInfoMap.get(key);
-    // @ts-ignore
-    const wrapperEle = dropdownRef?.value?.wrapperRef as HTMLElement | undefined;
+    const wrapperEle = (dropdownRef?.value as { wrapperRef?: HTMLElement } | undefined)?.wrapperRef;
     const optionEle = (optionRefs?.value[key] ?? optionInfo?.ref) as HTMLElement | undefined;
 
     if (!wrapperEle || !optionEle) {
@@ -142,8 +141,7 @@ export const useSelect = ({
       [
         KEYBOARD_KEY.ENTER,
         (e: Event) => {
-          // @ts-ignore
-          if (!loading?.value && !e.isComposing) {
+          if (!loading?.value && !(e as KeyboardEvent).isComposing) {
             if (popupVisible.value) {
               if (activeKey.value) {
                 onSelect(activeKey.value, e);

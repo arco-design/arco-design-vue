@@ -1,4 +1,3 @@
-// @ts-ignore
 import BTween from 'b-tween';
 
 import { isFunction } from '../_utils/is';
@@ -13,7 +12,7 @@ export function slide(el: HTMLElement, top: number, cb: () => void): void {
     },
     easing: 'quartOut',
     duration: 300,
-    onUpdate: (keys: any) => {
+    onUpdate: (keys: Record<string, number>) => {
       el.scrollTop = keys.scrollTop;
     },
     onFinish: () => {

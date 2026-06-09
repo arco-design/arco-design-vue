@@ -16,9 +16,9 @@ describe('Steps', () => {
 
     const steps = wrapper.findAllComponents({ name: 'Step' });
     steps[1].trigger('click');
-    const emitted = wrapper.emitted('change');
+    const emitted = wrapper.emitted<[number]>('change');
     expect(emitted).toBeTruthy();
-    expect((emitted as any[][])[0][0]).toEqual(2);
+    expect(emitted![0][0]).toEqual(2);
   });
 
   test('nested step can have correct index', () => {
@@ -35,8 +35,9 @@ describe('Steps', () => {
     });
 
     const steps = wrapper.findAllComponents({ name: 'Step' });
-    expect((steps[0].vm.$ as any).setupState.stepNumber).toEqual(1);
-    expect((steps[1].vm.$ as any).setupState.stepNumber).toEqual(2);
-    expect((steps[2].vm.$ as any).setupState.stepNumber).toEqual(3);
+    type StepInternalState = { setupState: { stepNumber: number } };
+    expect((steps[0].vm.$ as unknown as StepInternalState).setupState.stepNumber).toEqual(1);
+    expect((steps[1].vm.$ as unknown as StepInternalState).setupState.stepNumber).toEqual(2);
+    expect((steps[2].vm.$ as unknown as StepInternalState).setupState.stepNumber).toEqual(3);
   });
 });

@@ -14,7 +14,6 @@
   import type { PropType } from 'vue';
   import { defineComponent, onMounted, onUnmounted, ref } from 'vue';
 
-  // @ts-ignore
   import BTween from 'b-tween';
 
   import { on, off } from '../_utils/dom';

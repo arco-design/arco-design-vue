@@ -41,8 +41,8 @@ export default function usePopupOverflowHidden(props: PopupOverflowHiddenProps) 
     if (container.value && needResetContainerStyle) {
       const originStyle = originContainerStyle;
       Object.keys(originStyle).forEach((i) => {
-        // @ts-ignore-next-line
-        container.value.style[i] = originStyle[i];
+        (container.value!.style as unknown as Record<string, string>)[i] =
+          (originStyle as unknown as Record<string, string>)[i] ?? '';
       });
     }
     needResetContainerStyle = false;

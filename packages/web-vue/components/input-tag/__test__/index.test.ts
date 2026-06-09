@@ -12,8 +12,8 @@ describe('InputTag', () => {
     const emits = wrapper.emitted('change');
     expect(emits).toHaveLength(1);
 
-    // @ts-ignore
-    expect(emits?.[0][0][0]).toEqual('test');
+    const emit = (emits as Array<Array<unknown[]>>)?.[0]?.[0];
+    expect(emit?.[0]).toEqual('test');
   });
 
   test('should clear content', async () => {

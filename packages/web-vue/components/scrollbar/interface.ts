@@ -93,7 +93,7 @@ export type ScrollbarPlugin = InstancePlugin;
 
 export interface ScrollbarProps {
   type?: ScrollbarType;
-  outerClass?: string | Record<string, any> | unknown[];
+  outerClass?: string | Record<string, unknown> | unknown[];
   outerStyle?: CSSProperties | CSSProperties[];
   paddingAbsolute?: OverlayScrollbarPartialOptions['paddingAbsolute'];
   showNativeOverlaidScrollbars?: OverlayScrollbarPartialOptions['showNativeOverlaidScrollbars'];

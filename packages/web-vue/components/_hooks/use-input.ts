@@ -14,7 +14,7 @@ export const useInput = ({
 }: {
   defaultValue?: Ref<string>;
   modelValue?: Ref<string>;
-  emit: EmitFn<any>;
+  emit: EmitFn<string>;
   eventName?: string;
   updateEventName?: string;
   eventHandlers?: Ref<FormItemEventHandler>;

@@ -55,9 +55,9 @@ export const useI18n = () => {
   const i18nMessage = computed<SDLang>(() => configProvider?.locale ?? I18N_MESSAGES[LOCALE.value]);
   const locale = computed(() => i18nMessage.value.locale);
 
-  const transform = (key: string, ...args: any[]): string => {
+  const transform = (key: string, ...args: unknown[]): string => {
     const keyArray = key.split('.');
-    let temp: any = i18nMessage.value;
+    let temp: Record<string, any> = i18nMessage.value as unknown as Record<string, any>;
 
     for (const keyItem of keyArray) {
       if (!temp[keyItem]) {
@@ -67,12 +67,12 @@ export const useI18n = () => {
     }
     if (isString(temp)) {
       if (args.length > 0) {
-        return temp.replace(/{(\d+)}/g, (sub, index) => args[index] ?? sub);
+        return (temp as string).replace(/{(\d+)}/g, (sub, index) => String(args[index] ?? sub));
       }
 
-      return temp;
+      return temp as string;
     }
-    return temp;
+    return temp as unknown as string;
   };
 
   return {

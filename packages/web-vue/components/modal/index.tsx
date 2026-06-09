@@ -71,7 +71,6 @@ const open = (config: ModalConfig, appContext?: AppContext) => {
     onClose: handleClose,
   };
 
-  // @ts-ignore
   const vm = createVNode(
     _Modal,
     {
@@ -85,9 +84,9 @@ const open = (config: ModalConfig, appContext?: AppContext) => {
         'onOk',
         'onCancel',
         'onClose',
-      ]),
+      ] as (keyof ModalConfig)[]),
       footer: typeof config.footer === 'boolean' ? config.footer : undefined,
-    },
+    } as Record<string, unknown>,
     {
       default: getSlotFunction(config.content),
       title: getSlotFunction(config.title),

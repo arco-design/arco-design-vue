@@ -1,8 +1,8 @@
 const target = typeof window === 'undefined' ? global : window;
 
-export function debounce(callback: (...args: any[]) => void, delay: number) {
+export function debounce<T extends unknown[]>(callback: (...args: T) => void, delay: number) {
   let timer = 0;
-  return (...args: any[]) => {
+  return (...args: T) => {
     if (timer) {
       target.clearTimeout(timer);
     }

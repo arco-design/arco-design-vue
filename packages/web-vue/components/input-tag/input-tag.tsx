@@ -737,14 +737,15 @@ export default defineComponent({
         <TransitionGroup
           tag="span"
           name="input-tag-zoom"
-          // @ts-ignore
-          class={[
-            `${prefixCls}-inner`,
-            {
-              [`${prefixCls}-inner-responsive`]: isResponsiveMaxTagCount.value,
-              [`${prefixCls}-nowrap`]: props.tagNowrap,
-            },
-          ]}
+          {...{
+            class: [
+              `${prefixCls}-inner`,
+              {
+                [`${prefixCls}-inner-responsive`]: isResponsiveMaxTagCount.value,
+                [`${prefixCls}-nowrap`]: props.tagNowrap,
+              },
+            ],
+          }}
         >
           {tags.value.map((item, index) => (
             <Tag
@@ -787,9 +788,7 @@ export default defineComponent({
         {showClearBtn.value && (
           <IconHover
             class={`${prefixCls}-clear-btn`}
-            // @ts-ignore
-            onClick={handleClear}
-            onMousedown={(e: MouseEvent) => e.stopPropagation()}
+            {...{ onClick: handleClear, onMousedown: (e: MouseEvent) => e.stopPropagation() }}
           >
             <IconClose />
           </IconHover>

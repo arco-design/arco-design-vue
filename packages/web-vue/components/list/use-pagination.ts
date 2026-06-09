@@ -1,8 +1,13 @@
 import { computed, ref } from 'vue';
 
+import type { PaginationProps } from '../pagination/interface';
+
 import { isObject } from '../_utils/is';
 
-export const usePagination = (props: any, { emit }: { emit: any }) => {
+export const usePagination = (
+  props: { paginationProps?: PaginationProps },
+  { emit }: { emit: (event: string, ...args: unknown[]) => void },
+) => {
   const _current = ref(
     isObject(props.paginationProps) ? (props.paginationProps.defaultCurrent ?? 1) : 1,
   );

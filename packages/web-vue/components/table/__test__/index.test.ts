@@ -1,10 +1,12 @@
 import { mount } from '@vue/test-utils';
-import { h, nextTick, reactive, ref } from 'vue';
+import { type Component, h, nextTick, reactive, ref } from 'vue';
 
 import VirtualList from '../../_components/virtual-list';
 import { useColumnResize } from '../hooks/use-column-resize';
 import { TableChangeExtra, TableColumnData, TableData } from '../interface';
 import Table from '../table';
+
+const TableComponent = Table as unknown as Component;
 
 const demoData = [
   {
@@ -57,7 +59,7 @@ describe('Table', () => {
       onChange: handleChange,
       pageSize: 1,
     });
-    const wrapper = mount(Table as any, {
+    const wrapper = mount(TableComponent, {
       props: {
         columns,
         data,
@@ -91,7 +93,7 @@ describe('Table', () => {
     ) => {
       testSortRes = { data, extra, currentDataSource };
     };
-    const wrapper = mount(Table as any, {
+    const wrapper = mount(TableComponent, {
       props: {
         columns,
         data,
@@ -127,7 +129,7 @@ describe('Table', () => {
       expand: `展开内容 ${index + 1}`,
     }));
 
-    const wrapper = mount(Table as any, {
+    const wrapper = mount(TableComponent, {
       attachTo: document.body,
       props: {
         columns: JSONCopy(demoColumns),
@@ -168,7 +170,7 @@ describe('Table', () => {
       age: index + 1,
     }));
 
-    const wrapper = mount(Table as any, {
+    const wrapper = mount(TableComponent, {
       attachTo: document.body,
       props: {
         columns: JSONCopy(demoColumns),
@@ -216,7 +218,7 @@ describe('Table', () => {
       },
     ];
 
-    const wrapper = mount(Table as any, {
+    const wrapper = mount(TableComponent, {
       attachTo: document.body,
       props: {
         columns,
@@ -293,7 +295,7 @@ describe('Table', () => {
       },
     ];
 
-    const wrapper = mount(Table as any, {
+    const wrapper = mount(TableComponent, {
       attachTo: document.body,
       props: {
         columns: JSONCopy(demoColumns),
@@ -322,7 +324,7 @@ describe('Table', () => {
   });
 
   test('table renders append slot after body content', () => {
-    const wrapper = mount(Table as any, {
+    const wrapper = mount(TableComponent, {
       props: {
         columns: JSONCopy(demoColumns),
         data: JSONCopy(demoData),
@@ -371,7 +373,7 @@ describe('Table', () => {
       email: `jane${index + 1}@example.com`,
     }));
 
-    const wrapper = mount(Table as any, {
+    const wrapper = mount(TableComponent, {
       attachTo: document.body,
       props: {
         columns,

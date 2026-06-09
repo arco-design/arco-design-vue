@@ -1,3 +1,5 @@
+import type { Simplify } from 'type-fest';
+
 import type { PropType, CSSProperties, Ref } from 'vue';
 import {
   defineComponent,
@@ -52,6 +54,17 @@ const TRIGGER_EVENTS = [
   'onFocusout',
   'onContextmenu',
 ];
+
+type TriggerEventAttrs = Simplify<{
+  onClick?: (e: MouseEvent) => void;
+  onMouseenter?: (e: MouseEvent) => void;
+  onMouseleave?: (e: MouseEvent) => void;
+  onFocusin?: (e: FocusEvent) => void;
+  onFocusout?: (e: FocusEvent) => void;
+  onContextmenu?: (e: MouseEvent) => void;
+}>;
+
+type ChildRef = Ref<HTMLElement | undefined> | HTMLElement;
 
 export default defineComponent({
   name: 'Trigger',
@@ -372,6 +385,7 @@ export default defineComponent({
    * @slot content
    */
   setup(props, { emit, slots, attrs }) {
+    const triggerEventAttrs = attrs as TriggerEventAttrs;
     const prefixCls = getPrefixCls('trigger');
     const popupAttrs = computed(() => omit(attrs, TRIGGER_EVENTS));
     const configCtx = inject(configProviderInjectionKey, undefined);
@@ -382,7 +396,7 @@ export default defineComponent({
 
     const triggerMethods = computed(() => ([] as Array<TriggerEvent>).concat(props.trigger));
     // 用于多个trigger嵌套时，保持打开状态
-    const childrenRefs = new Set<Ref<HTMLElement>>();
+    const childrenRefs = new Set<ChildRef>();
     const triggerCtx = inject(triggerInjectionKey, undefined);
     // trigger相关变量
     const { children, firstElement } = useFirstElement();
@@ -453,9 +467,7 @@ export default defineComponent({
             height: 0,
           }
         : getElementScrollRect(firstElement.value, containerRect);
-      const getPopupRect = () =>
-        // @ts-ignore
-        getElementScrollRect(popupRef.value, containerRect);
+      const getPopupRect = () => getElementScrollRect(popupRef.value as HTMLElement, containerRect);
       const popupRect = getPopupRect();
       const { style, position } = getPopupStyle(
         props.position,
@@ -525,7 +537,7 @@ export default defineComponent({
     };
 
     const handleClick = (e: MouseEvent) => {
-      (attrs as any).onClick?.(e);
+      triggerEventAttrs.onClick?.(e);
       if (props.disabled || (computedVisible.value && !props.clickToClose)) {
         return;
       }
@@ -538,7 +550,7 @@ export default defineComponent({
     };
 
     const handleMouseEnter = (e: MouseEvent) => {
-      (attrs as any).onMouseenter?.(e);
+      triggerEventAttrs.onMouseenter?.(e);
       if (props.disabled || !triggerMethods.value.includes('hover')) {
         return;
       }
@@ -552,7 +564,7 @@ export default defineComponent({
     };
 
     const handleMouseLeave = (e: MouseEvent) => {
-      (attrs as any).onMouseleave?.(e);
+      triggerEventAttrs.onMouseleave?.(e);
       if (props.disabled || !triggerMethods.value.includes('hover')) {
         return;
       }
@@ -565,7 +577,7 @@ export default defineComponent({
     };
 
     const handleFocusin = (e: FocusEvent) => {
-      (attrs as any).onFocusin?.(e);
+      triggerEventAttrs.onFocusin?.(e);
       if (props.disabled || !triggerMethods.value.includes('focus')) {
         return;
       }
@@ -573,7 +585,7 @@ export default defineComponent({
     };
 
     const handleFocusout = (e: FocusEvent) => {
-      (attrs as any).onFocusout?.(e);
+      triggerEventAttrs.onFocusout?.(e);
       if (props.disabled || !triggerMethods.value.includes('focus')) {
         return;
       }
@@ -584,7 +596,7 @@ export default defineComponent({
     };
 
     const handleContextmenu = (e: MouseEvent) => {
-      (attrs as any).onContextmenu?.(e);
+      triggerEventAttrs.onContextmenu?.(e);
       if (
         props.disabled ||
         !triggerMethods.value.includes('contextMenu') ||
@@ -597,11 +609,11 @@ export default defineComponent({
       e.preventDefault();
     };
 
-    const addChildRef = (ref: any) => {
+    const addChildRef = (ref: ChildRef) => {
       childrenRefs.add(ref);
       triggerCtx?.addChildRef(ref);
     };
-    const removeChildRef = (ref: any) => {
+    const removeChildRef = (ref: ChildRef) => {
       childrenRefs.delete(ref);
       triggerCtx?.removeChildRef(ref);
     };
@@ -638,7 +650,8 @@ export default defineComponent({
       }
 
       for (const item of childrenRefs) {
-        if (item.value?.contains(e.target as HTMLElement)) {
+        const element = 'value' in item ? item.value : item;
+        if (element?.contains(e.target as HTMLElement)) {
           return;
         }
       }
@@ -656,7 +669,7 @@ export default defineComponent({
       );
     };
 
-    const handleScroll = throttleByRaf((e) => {
+    const handleScroll = throttleByRaf((e: Event) => {
       if (computedVisible.value) {
         if (props.scrollToClose || configCtx?.scrollToClose) {
           const element = e.target as HTMLElement;
@@ -679,8 +692,8 @@ export default defineComponent({
       windowListener = false;
     };
 
-    const onWindowScroll = throttleByRaf((e) => {
-      const element = e.target.documentElement;
+    const onWindowScroll = throttleByRaf((e: Event) => {
+      const element = (e.target as Document).documentElement;
       if (!windowScrollPosition) {
         windowScrollPosition = [element.scrollTop, element.scrollLeft];
       }
@@ -707,7 +720,7 @@ export default defineComponent({
       }
     };
 
-    triggerCtx?.addChildRef(popupRef);
+    triggerCtx?.addChildRef(popupRef.value as HTMLElement);
 
     const triggerCls = computed(() => {
       return computedVisible.value ? props.openedClass : undefined;
@@ -795,7 +808,7 @@ export default defineComponent({
     });
 
     onBeforeUnmount(() => {
-      triggerCtx?.removeChildRef(popupRef);
+      triggerCtx?.removeChildRef(popupRef.value as HTMLElement);
       destroyResizeObserver();
       if (outsideListener) {
         removeOutsideListener();

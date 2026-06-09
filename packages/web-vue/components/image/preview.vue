@@ -304,7 +304,7 @@
       );
 
       const scaleValueVisible = ref(false);
-      let hideScaleTimer: any = null;
+      let hideScaleTimer: ReturnType<typeof setTimeout> | null = null;
       const showScaleValue = () => {
         !scaleValueVisible.value && (scaleValueVisible.value = true);
         hideScaleTimer && clearTimeout(hideScaleTimer);

@@ -1,9 +1,9 @@
-import { computed, defineComponent, inject, PropType, provide, toRefs } from 'vue';
+import { computed, defineComponent, inject, InjectionKey, PropType, provide, toRefs } from 'vue';
 
 import { EllipsisTooltipProps } from '../ellipsis';
 import { SiderInjectionKey } from '../layout/context';
 import BaseMenu from './base-menu.vue';
-import { LevelInjectionKey, MenuInjectionKey } from './context';
+import { LevelContext, LevelInjectionKey, MenuContext, MenuInjectionKey } from './context';
 import OverflowWrap from './overflow-wrap';
 
 export default defineComponent({
@@ -42,8 +42,8 @@ export default defineComponent({
     const theme = computed(() => propTheme?.value || siderContext?.theme || 'light');
 
     // 截断上下文
-    provide(MenuInjectionKey, undefined as any);
-    provide(LevelInjectionKey, undefined as any);
+    provide(MenuInjectionKey as InjectionKey<MenuContext | undefined>, undefined);
+    provide(LevelInjectionKey as InjectionKey<LevelContext | undefined>, undefined);
 
     return () => (
       <BaseMenu
@@ -56,7 +56,7 @@ export default defineComponent({
               ? () => <OverflowWrap>{slots.default?.()}</OverflowWrap>
               : slots.default,
         }}
-        theme={theme.value as any}
+        theme={theme.value}
         inTrigger={false}
         siderCollapsed={siderCollapsed.value}
         isRoot

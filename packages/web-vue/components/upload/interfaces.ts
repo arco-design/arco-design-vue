@@ -29,7 +29,7 @@ export interface FileItem {
    * @zh 当前文件上传请求返回的响应
    * @en The response returned by the current file upload request
    */
-  response?: any;
+  response?: unknown;
   /**
    * @zh 文件地址
    * @en The file address
@@ -133,12 +133,12 @@ export interface RequestOption {
    * @zh 上传成功后，调用onSuccess方法，传入的response参数将会附加到当前上传文件的response字段上
    * @en After the upload is successful, call the onSuccess method, the incoming response parameter will be appended to the response field of the currently uploaded file
    * */
-  onSuccess: (response?: any) => void;
+  onSuccess: (response?: unknown) => void;
   /**
    * @zh 上传失败后，调用onError方法，传入的response参数将会附加到当前上传文件的response字段上
    * @en After the upload fails, call the onError method, and the response parameter passed in will be appended to the response field of the currently uploaded file
    * */
-  onError: (response?: any) => void;
+  onError: (response?: unknown) => void;
 }
 
 export interface UploadRequest extends Record<string, unknown> {

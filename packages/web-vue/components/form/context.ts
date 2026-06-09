@@ -1,4 +1,6 @@
-import { InjectionKey } from 'vue';
+import type { CSSProperties, InjectionKey } from 'vue';
+
+import type { ColProps } from '../grid/interface';
 
 import { Size } from '../_utils/constant';
 import { Data } from '../_utils/types';
@@ -14,10 +16,10 @@ export interface FormContext {
   layout: string;
   disabled?: boolean;
   labelAlign: string;
-  labelColProps?: any;
-  wrapperColProps?: any;
-  labelColStyle?: any;
-  wrapperColStyle?: any;
+  labelColProps?: ColProps;
+  wrapperColProps?: ColProps;
+  labelColStyle?: CSSProperties;
+  wrapperColStyle?: CSSProperties;
   model: Data;
   size: Size;
   rules?: Record<string, FieldRule | FieldRule[]>;
@@ -53,7 +55,7 @@ export interface FormItemInfo {
   disabled: boolean;
   error: boolean;
   labelWidth?: number;
-  validate: () => Promise<any>;
+  validate: () => Promise<undefined | Record<string, ValidatedError>>;
   clearValidate: () => void;
   resetField: () => void;
   setField: (data: FieldData) => void;

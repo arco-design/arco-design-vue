@@ -488,9 +488,11 @@
 
       function onPanelSelect(value: Dayjs | Array<Dayjs | undefined>) {
         // 先触发 select 事件
-        const formattedValue = getFormattedValue(value, computedFormat.value);
-        const dateValue = getDateValue(value);
-        emit('select', formattedValue as any, dateValue);
+        const formattedValue = getFormattedValue(value, computedFormat.value) as
+          | string
+          | Array<string | undefined>;
+        const dateValue = getDateValue(value) as Date | Array<Date | undefined>;
+        emit('select', formattedValue, dateValue);
 
         if (disableConfirm.value && (!isRange.value || isValidRangeValue(value))) {
           confirm(value, true);
@@ -629,7 +631,7 @@
         inputProps,
         panelProps,
         mergedDisabled,
-        onPanelVisibleChange: onPanelVisibleChange as any,
+        onPanelVisibleChange,
         onInputClear: onClear,
         onPanelSelect,
         onPanelConfirm,

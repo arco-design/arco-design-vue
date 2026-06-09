@@ -90,10 +90,7 @@ export default defineComponent({
           {props.loading ? (
             <IconLoading />
           ) : (
-            <IconHover
-              // @ts-ignore
-              onClick={handleClick}
-            >
+            <IconHover onClick={handleClick}>
               <IconSearch />
             </IconHover>
           )}

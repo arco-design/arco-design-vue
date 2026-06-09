@@ -182,7 +182,7 @@ export interface ModalConfig {
    * @zh 对话框的类名
    * @en The classname of the modal
    */
-  modalClass?: string | any[];
+  modalClass?: string | string[];
   /**
    * @zh 对话框的样式
    * @en Modal style
@@ -211,7 +211,7 @@ export interface ModalConfig {
    * @zh 对话框内容部分的类名
    * @en The classname of the modal
    */
-  bodyClass?: string | any[];
+  bodyClass?: string | string[];
   /**
    * @zh 对话框内容部分的样式
    * @en Modal style

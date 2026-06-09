@@ -55,6 +55,5 @@ declare module '../../icon/*' {
   export default component;
 }
 
-declare module 'b-tween';
 declare module 'clean-css';
 declare module 'chroma-js';

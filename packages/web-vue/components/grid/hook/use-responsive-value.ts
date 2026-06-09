@@ -1,19 +1,20 @@
 import { computed, Ref } from 'vue';
 
+import type { ColResponsiveConfig, ResponsiveValue } from '../interface';
+
 import { isNumber, isObject } from '../../_utils/is';
 import { responsiveArray } from '../../_utils/responsive-observe';
-import { ResponsiveValue } from '../interface';
 
 export function useResponsiveValue(
   props: Ref<{
     val: number;
     key: string;
-    xs?: number | { [key: string]: any };
-    sm?: number | { [key: string]: any };
-    md?: number | { [key: string]: any };
-    lg?: number | { [key: string]: any };
-    xl?: number | { [key: string]: any };
-    xxl?: number | { [key: string]: any };
+    xs?: number | ColResponsiveConfig;
+    sm?: number | ColResponsiveConfig;
+    md?: number | ColResponsiveConfig;
+    lg?: number | ColResponsiveConfig;
+    xl?: number | ColResponsiveConfig;
+    xxl?: number | ColResponsiveConfig;
   }>,
 ) {
   const value = computed(() => {
@@ -26,8 +27,8 @@ export function useResponsiveValue(
       const config = props.value[breakpoint];
       if (isNumber(config)) {
         result[breakpoint] = config;
-      } else if (isObject(config) && isNumber(config[key])) {
-        result[breakpoint] = config[key];
+      } else if (isObject(config) && isNumber((config as Record<string, any>)[key])) {
+        result[breakpoint] = (config as Record<string, any>)[key];
       }
     });
     return result;

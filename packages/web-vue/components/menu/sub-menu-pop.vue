@@ -166,10 +166,11 @@
         {
           [`${prefixCls.value}-trigger-dark`]: menuContext.theme === 'dark',
         },
-        // @ts-ignore
-        menuContext.triggerProps?.class,
+        (menuContext.triggerProps as Record<string, unknown> | undefined)?.class,
       ]);
-      const triggerProps = computed(() => omit(menuContext.triggerProps || {}, ['class']));
+      const triggerProps = computed(() =>
+        omit((menuContext.triggerProps || {}) as Record<string, unknown>, ['class']),
+      );
 
       return {
         menuPrefixCls,

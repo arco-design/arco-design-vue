@@ -396,8 +396,7 @@ export default defineComponent({
           disabled={mergedDisabled.value}
           onInput={handleInputValueChange}
           onClear={handleClear}
-          // @ts-ignore
-          onKeydown={handleKeyDown}
+          {...{ onKeydown: handleKeyDown }}
         />
       </Trigger>
     );

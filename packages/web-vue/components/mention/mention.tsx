@@ -281,10 +281,9 @@ export default defineComponent({
     const mirrorStyle = ref();
 
     onMounted(() => {
-      // @ts-ignore
-      if (props.type === 'textarea' && inputRef.value?.textareaRef) {
-        // @ts-ignore
-        styleDeclaration = window.getComputedStyle(inputRef.value.textareaRef);
+      const textareaEl = (inputRef.value as { textareaRef?: HTMLElement } | undefined)?.textareaRef;
+      if (props.type === 'textarea' && textareaEl) {
+        styleDeclaration = window.getComputedStyle(textareaEl);
         mirrorStyle.value = getSizeStyles(styleDeclaration);
       }
     });
@@ -355,14 +354,10 @@ export default defineComponent({
     watch(computedPopupVisible, (visible) => {
       if (props.type === 'textarea' && visible) {
         nextTick(() => {
-          if (
-            // @ts-ignore
-            inputRef.value?.textareaRef &&
-            // @ts-ignore
-            inputRef.value.textareaRef.scrollTop > 0
-          ) {
-            // @ts-ignore
-            mirrorRef.value?.scrollTo(0, inputRef.value.textareaRef.scrollTop);
+          const textareaEl = (inputRef.value as { textareaRef?: HTMLElement } | undefined)
+            ?.textareaRef;
+          if (textareaEl && textareaEl.scrollTop > 0) {
+            mirrorRef.value?.scrollTo(0, textareaEl.scrollTop);
           }
         });
       }
@@ -390,8 +385,7 @@ export default defineComponent({
                 onClear={handleClear}
                 onFocus={onFocus}
                 onBlur={onBlur}
-                // @ts-ignore
-                onKeydown={handleKeyDown}
+                {...{ onKeydown: handleKeyDown }}
               />
             </ResizeObserver>
             {measureInfo.value.measuring && validOptionInfos.value.length > 0 && (
@@ -441,8 +435,7 @@ export default defineComponent({
             onClear={handleClear}
             onFocus={onFocus}
             onBlur={onBlur}
-            // @ts-ignore
-            onKeydown={handleKeyDown}
+            {...{ onKeydown: handleKeyDown }}
           />
         </Trigger>
       );

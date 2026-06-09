@@ -809,11 +809,9 @@ export default defineComponent({
             bordered={props.bordered}
             size={mergedSize.value}
             tagNowrap={props.tagNowrap}
-            // @ts-ignore
-            onInputValueChange={handleInputValueChange}
+            {...{ onInputValueChange: handleInputValueChange, onKeydown: handleKeyDown }}
             onRemove={handleRemove}
             onClear={handleClear}
-            onKeydown={handleKeyDown}
             {...attrs}
           />
         )}

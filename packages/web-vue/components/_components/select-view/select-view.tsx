@@ -104,8 +104,9 @@ export default defineComponent({
 
     const componentRef = ref<ComponentPublicInstance>();
     const inputRef = computed<HTMLInputElement>(
-      // @ts-ignore
-      () => componentRef.value?.inputRef,
+      () =>
+        (componentRef.value as { inputRef?: HTMLInputElement } | undefined)
+          ?.inputRef as HTMLInputElement,
     );
 
     const isEmptyValue = computed(() => props.modelValue.length === 0);

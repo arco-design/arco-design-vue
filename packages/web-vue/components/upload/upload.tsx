@@ -736,8 +736,7 @@ export default defineComponent({
               visible={imagePreviewVisible.value}
               current={imagePreviewCurrent.value}
               onChange={handleImagePreviewChange}
-              // @ts-ignore
-              onVisibleChange={handleImagePreviewVisibleChange}
+              {...{ onVisibleChange: handleImagePreviewVisibleChange }}
             />
           )}
           {props.listType !== 'picture-card' && props.showUploadButton && renderButton()}

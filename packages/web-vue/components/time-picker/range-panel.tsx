@@ -58,14 +58,15 @@ export default defineComponent({
     };
   },
   render() {
-    const _props = {
-      ...this.$attrs,
-      isRange: true,
-      value: this.displayValue,
-      onSelect: this.onSelect,
-      onConfirm: this.onConfirm,
-    } as any;
-
-    return <Panel {..._props} v-slots={this.$slots} />;
+    return (
+      <Panel
+        {...this.$attrs}
+        isRange
+        value={this.displayValue}
+        onSelect={this.onSelect}
+        onConfirm={this.onConfirm}
+        v-slots={this.$slots}
+      />
+    );
   },
 });

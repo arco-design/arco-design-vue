@@ -75,11 +75,7 @@ export default defineComponent({
           </Checkbox>
         )}
         {props.allowClear && !props.disabled && (
-          <IconHover
-            class={`${prefixCls}-remove-btn`}
-            // @ts-ignore
-            onClick={handleRemove}
-          >
+          <IconHover class={`${prefixCls}-remove-btn`} {...{ onClick: handleRemove }}>
             <IconClose />
           </IconHover>
         )}

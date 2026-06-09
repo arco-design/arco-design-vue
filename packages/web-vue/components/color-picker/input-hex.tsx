@@ -70,8 +70,7 @@ export default defineComponent({
           onChange={onInputChange}
           onBlur={() => handlerChange}
           onPressEnter={() => handlerChange}
-          // @ts-ignore
-          onPaste={onPaste}
+          {...{ onPaste: onPaste }}
         />
         {!props.disabledAlpha && (
           <InputAlpha

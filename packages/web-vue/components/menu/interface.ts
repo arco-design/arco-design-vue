@@ -38,7 +38,7 @@ export interface MenuProps {
   defaultSelectedKeys: string[];
   openKeys: string[] | undefined;
   defaultOpenKeys: string[];
-  scrollConfig: { [key: string]: any } | undefined;
+  scrollConfig: Record<string, unknown> | undefined;
   triggerProps: TriggerProps | undefined;
   tooltipProps: Data | undefined;
   ellipsis: boolean;

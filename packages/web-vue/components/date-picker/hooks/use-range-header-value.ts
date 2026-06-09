@@ -4,7 +4,7 @@ import { Dayjs } from 'dayjs';
 
 import { getSortedDayjsArray, methods } from '../../_utils/date';
 import pick from '../../_utils/pick';
-import { CalendarValue, Mode } from '../interface';
+import { CalendarValue, HeaderOperations, Mode } from '../interface';
 import useHeaderValue from './use-header-value';
 import usePanelSpan from './use-panel-span';
 
@@ -165,19 +165,19 @@ export default function useRangeHeaderValue(props: RangeHeaderValueProps) {
   );
 
   const computedStartHeaderOperations = computed(() => {
-    const operations = ['onSuperPrev'];
+    const operations: Array<keyof HeaderOperations> = ['onSuperPrev'];
     if (isDateOrWeek.value) operations.push('onPrev');
     if (canShortenMonth.value && isDateOrWeek) operations.push('onNext');
     if (canShortenYear.value) operations.push('onSuperNext');
-    return pick(startHeaderOperations.value as any, operations);
+    return pick(startHeaderOperations.value, operations);
   });
 
   const computedEndHeaderOperations = computed(() => {
-    const operations = ['onSuperNext'];
+    const operations: Array<keyof HeaderOperations> = ['onSuperNext'];
     if (isDateOrWeek.value) operations.push('onNext');
     if (canShortenMonth.value && isDateOrWeek.value) operations.push('onPrev');
     if (canShortenYear.value) operations.push('onSuperPrev');
-    return pick(endHeaderOperations.value as any, operations);
+    return pick(endHeaderOperations.value, operations);
   });
 
   return {

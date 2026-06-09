@@ -27,8 +27,7 @@ describe('Affix Render', () => {
   };
 
   beforeEach(() => {
-    // @ts-ignore
-    raf.mockClear();
+    (raf as ReturnType<typeof vi.fn>).mockClear();
   });
   beforeAll(() => {
     vi.useFakeTimers();

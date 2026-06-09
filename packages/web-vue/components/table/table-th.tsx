@@ -60,18 +60,11 @@ export default defineComponent({
       return tableCtx.filterIconAlignLeft;
     });
 
-    const {
-      sortOrder,
-      hasSorter,
-      hasAscendBtn,
-      hasDescendBtn,
-      nextSortOrder,
-      handleClickSorter,
-      // @ts-ignore
-    } = useColumnSorter({
-      column,
-      tableCtx,
-    });
+    const { sortOrder, hasSorter, hasAscendBtn, hasDescendBtn, nextSortOrder, handleClickSorter } =
+      useColumnSorter({
+        column,
+        tableCtx,
+      });
 
     const {
       filterPopupVisible,
@@ -130,7 +123,6 @@ export default defineComponent({
                       value={item.value}
                       modelValue={columnFilterValue.value}
                       uninjectGroupContext
-                      // @ts-ignore
                       onChange={handleCheckboxFilterChange}
                     >
                       {item.text}
@@ -140,7 +132,6 @@ export default defineComponent({
                       value={item.value}
                       modelValue={columnFilterValue.value[0] ?? ''}
                       uninjectGroupContext
-                      // @ts-ignore
                       onChange={handleRadioFilterChange}
                     >
                       {item.text}
@@ -189,8 +180,7 @@ export default defineComponent({
               },
             ]}
             disabled={!filterIconAlignLeft.value}
-            // @ts-ignore
-            onClick={(ev: Event) => ev.stopPropagation()}
+            {...{ onClick: (ev: Event) => ev.stopPropagation() }}
           >
             {props.column.slots?.['filter-icon']?.() ?? filterable.icon?.() ?? <IconFilter />}
           </IconHover>

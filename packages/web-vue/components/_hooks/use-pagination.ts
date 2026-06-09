@@ -1,8 +1,13 @@
 import { computed, ref } from 'vue';
 
+import type { PaginationProps } from '../pagination/interface';
+
 import { isObject } from '../_utils/is';
 
-export const usePagination = (props: any, { emit }: { emit: any }) => {
+export const usePagination = (
+  props: { pagination?: PaginationProps },
+  { emit }: { emit: (event: string, ...args: unknown[]) => void },
+) => {
   const _current = ref(isObject(props.pagination) ? (props.pagination.defaultCurrent ?? 1) : 1);
   const _pageSize = ref(isObject(props.pagination) ? (props.pagination.defaultPageSize ?? 10) : 10);
 

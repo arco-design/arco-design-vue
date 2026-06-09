@@ -7,6 +7,12 @@ import Scrollbar, { ScrollbarProps } from '../scrollbar';
 import Tree from '../tree';
 import { TreeProps, TreeNodeKey } from '../tree/interface';
 
+type TreeInstance = {
+  toggleCheck?: (key: TreeNodeKey, e: Event) => void;
+};
+
+type TreeComponentProps = InstanceType<typeof Tree>['$props'];
+
 type TreeSelectPanelComponent = DefineComponent<{
   treeProps: Partial<TreeProps> | undefined;
   selectedKeys: TreeNodeKey[] | undefined;
@@ -45,11 +51,11 @@ export default defineComponent({
     const { showCheckable, selectedKeys, treeProps, scrollbar } = toRefs(props);
     const { scrollbarProps } = useScrollbar(scrollbar);
     const prefixCls = getPrefixCls('tree-select');
-    const refTree = ref();
+    const refTree = ref<TreeInstance>();
 
-    const computedTreeProps = computed(() => {
+    const computedTreeProps = computed<Partial<TreeComponentProps>>(() => {
       return {
-        ...treeProps.value,
+        ...(treeProps.value as Partial<TreeComponentProps>),
         disableSelectActionOnly: true,
         checkedKeys: showCheckable.value ? selectedKeys.value : [],
         selectedKeys: showCheckable.value ? [] : selectedKeys.value,
@@ -61,15 +67,17 @@ export default defineComponent({
       computedTreeProps.value.virtualListProps && `${prefixCls}-tree-wrapper-virtual`,
     ]);
 
-    const onSelect = (newVal: TreeNodeKey[], e: Event) => {
+    const onSelect: NonNullable<TreeProps['onSelect']> = (newVal, event) => {
       if (showCheckable.value) {
-        refTree.value?.toggleCheck?.(newVal[0], e);
+        if (newVal[0] !== undefined && event.e) {
+          refTree.value?.toggleCheck?.(newVal[0], event.e);
+        }
       } else {
         emit('change', newVal);
       }
     };
 
-    const onCheck = (newVal: TreeNodeKey[]) => {
+    const onCheck: NonNullable<TreeProps['onCheck']> = (newVal) => {
       emit('change', newVal);
     };
 
@@ -78,7 +86,6 @@ export default defineComponent({
         <Tree
           ref={refTree}
           {...computedTreeProps.value}
-          // @ts-ignore
           onSelect={onSelect}
           onCheck={onCheck}
           v-slots={props.treeSlots}

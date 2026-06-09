@@ -230,9 +230,10 @@ export default defineComponent({
                 readonly={props.readonly}
                 onFocus={() => focusFirstEmptyInput(i)}
                 onInput={(v, e) => handleInput(i, v, e)}
-                // @ts-ignore
-                onKeydown={(e) => handleKeydown(i, e)}
-                onPaste={(e: ClipboardEvent) => handlePaste(e, i)}
+                {...{
+                  onKeydown: (e: KeyboardEvent) => handleKeydown(i, e),
+                  onPaste: (e: ClipboardEvent) => handlePaste(e, i),
+                }}
               />
               {props.separator?.(i, c)}
             </>

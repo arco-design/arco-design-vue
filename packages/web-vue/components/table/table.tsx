@@ -1905,8 +1905,7 @@ export default defineComponent({
             `${prefixCls}-tr-summary`,
             isFunction(props.rowClass) ? props.rowClass(record.raw, rowIndex) : props.rowClass,
           ]}
-          // @ts-ignore
-          onClick={(ev: Event) => handleRowClick(record, ev)}
+          {...{ onClick: (ev: Event) => handleRowClick(record, ev) }}
         >
           {operations.value.map((operation, index) => {
             const cellId = `${rowIndex}-${index}-${record.key}`;
@@ -1950,12 +1949,13 @@ export default defineComponent({
                 rowSpan={rowspan}
                 colSpan={colspan}
                 summary
-                // @ts-ignore
-                onClick={(ev: Event) => handleCellClick(record, column, ev)}
-                onDblclick={(ev: Event) => handleCellDblclick(record, column, ev)}
-                onMouseenter={(ev: Event) => handleCellMouseEnter(record, column, ev)}
-                onMouseleave={(ev: Event) => handleCellMouseLeave(record, column, ev)}
-                onContextmenu={(ev: Event) => handleCellContextmenu(record, column, ev)}
+                {...{
+                  onClick: (ev: Event) => handleCellClick(record, column, ev),
+                  onDblclick: (ev: Event) => handleCellDblclick(record, column, ev),
+                  onMouseenter: (ev: Event) => handleCellMouseEnter(record, column, ev),
+                  onMouseleave: (ev: Event) => handleCellMouseLeave(record, column, ev),
+                  onContextmenu: (ev: Event) => handleCellContextmenu(record, column, ev),
+                }}
               />
             );
           })}
@@ -2112,10 +2112,11 @@ export default defineComponent({
             rowIndex={rowIndex}
             record={record}
             checked={props.rowSelection && selectedRowKeys.value?.includes(currentKey)}
-            // @ts-ignore
-            onClick={(ev: Event) => handleRowClick(record, ev)}
-            onDblclick={(ev: Event) => handleRowDblclick(record, ev)}
-            onContextmenu={(ev: Event) => handleRowContextMenu(record, ev)}
+            {...{
+              onClick: (ev: Event) => handleRowClick(record, ev),
+              onDblclick: (ev: Event) => handleRowDblclick(record, ev),
+              onContextmenu: (ev: Event) => handleRowContextMenu(record, ev),
+            }}
             {...(dragType.value === 'row' ? dragSourceEvent : {})}
             {...dragTargetEvent}
           >
@@ -2180,12 +2181,13 @@ export default defineComponent({
                   renderExpandBtn={renderExpandBtn}
                   colSpan={colspan}
                   {...extraProps}
-                  // @ts-ignore
-                  onClick={(ev: Event) => handleCellClick(record, column, ev)}
-                  onDblclick={(ev: Event) => handleCellDblclick(record, column, ev)}
-                  onMouseenter={(ev: Event) => handleCellMouseEnter(record, column, ev)}
-                  onMouseleave={(ev: Event) => handleCellMouseLeave(record, column, ev)}
-                  onContextmenu={(ev: Event) => handleCellContextmenu(record, column, ev)}
+                  {...{
+                    onClick: (ev: Event) => handleCellClick(record, column, ev),
+                    onDblclick: (ev: Event) => handleCellDblclick(record, column, ev),
+                    onMouseenter: (ev: Event) => handleCellMouseEnter(record, column, ev),
+                    onMouseleave: (ev: Event) => handleCellMouseLeave(record, column, ev),
+                    onContextmenu: (ev: Event) => handleCellContextmenu(record, column, ev),
+                  }}
                 />
               );
             })}
@@ -2237,11 +2239,13 @@ export default defineComponent({
               operations.value.map((operation, index) => (
                 <OperationTh
                   key={`operation-th-${index}`}
-                  // @ts-ignore
-                  ref={(ins: ComponentPublicInstance) => {
-                    if (ins?.$el && operation.name) {
-                      thRefs.value[operation.name] = ins.$el;
-                    }
+                  {...{
+                    ref: (ins: unknown) => {
+                      const instance = ins as ComponentPublicInstance | null;
+                      if (instance?.$el && operation.name) {
+                        thRefs.value[operation.name] = instance.$el;
+                      }
+                    },
                   }}
                   operationColumn={operation}
                   operations={operations.value}
@@ -2258,18 +2262,20 @@ export default defineComponent({
               return (
                 <Th
                   key={`th-${index}`}
-                  // @ts-ignore
-                  ref={(ins: ComponentPublicInstance) => {
-                    if (ins?.$el && column.dataIndex) {
-                      thRefs.value[column.dataIndex] = ins.$el;
-                    }
+                  {...{
+                    ref: (ins: unknown) => {
+                      const instance = ins as ComponentPublicInstance | null;
+                      if (instance?.$el && column.dataIndex) {
+                        thRefs.value[column.dataIndex] = instance.$el;
+                      }
+                    },
                   }}
                   v-slots={{ th: slots.th }}
                   column={column}
                   operations={operations.value}
                   dataColumns={dataColumns.value}
                   resizable={resizable}
-                  onClick={(ev: Event) => handleHeaderClick(column, ev)}
+                  {...{ onClick: (ev: Event) => handleHeaderClick(column, ev) }}
                 />
               );
             })}

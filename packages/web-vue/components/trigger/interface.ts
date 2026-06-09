@@ -1,5 +1,7 @@
 import { CSSProperties } from 'vue';
 
+import type { ClassName } from '../_utils/types';
+
 import { TriggerEvent, TriggerPosition } from '../_utils/constant';
 
 export type TriggerPopupTranslate =
@@ -21,9 +23,9 @@ export interface TriggerProps {
   clickToClose?: boolean;
   clickOutsideToClose?: boolean;
   unmountOnClose?: boolean;
-  contentClass?: any;
+  contentClass?: ClassName;
   contentStyle?: CSSProperties;
-  arrowClass?: any;
+  arrowClass?: ClassName;
   arrowStyle?: CSSProperties;
   popupStyle?: CSSProperties;
   animationName?: string;

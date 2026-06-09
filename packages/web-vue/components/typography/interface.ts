@@ -30,7 +30,7 @@ export interface EllipsisConfig {
    * @en Pop-up box when configuration is omitted
    * @defaultValue false
    * */
-  showTooltip?: boolean | { type: 'tooltip' | 'popover'; props: Record<string, any> };
+  showTooltip?: boolean | { type: 'tooltip' | 'popover'; props: Record<string, unknown> };
   /**
    * @zh 是否使用 CSS 省略（此模式暂不支持展开、自定义省略号和后缀）
    * @en Whether to use CSS ellipsis (expansion, custom ellipsis and suffix are not supported in this mode)

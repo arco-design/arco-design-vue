@@ -27,7 +27,8 @@ export function isChildrenSelected(children: VNode[] | undefined, keys: string[]
     if (isVNodeComponent(child)) {
       const { name } = child.type as Component;
       if (name === 'MenuItem' || name === 'SubMenu') {
-        if (keys.includes(child.key as any)) {
+        const key = child.key;
+        if (typeof key === 'string' && keys.includes(key)) {
           return true;
         }
       }

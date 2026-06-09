@@ -449,8 +449,7 @@ export default defineComponent({
           <IconHover
             prefix={prefixCls}
             class={`${prefixCls}-clear-btn`}
-            // @ts-ignore
-            onClick={handleClear}
+            {...{ onClick: handleClear }}
           >
             <IconClose />
           </IconHover>

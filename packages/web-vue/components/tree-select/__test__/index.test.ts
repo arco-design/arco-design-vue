@@ -1,9 +1,9 @@
 import { mount } from '@vue/test-utils';
-import { h, nextTick } from 'vue';
+import { type Component, h, nextTick } from 'vue';
 
 import TreeSelect from '../index';
 
-const TreeSelectComponent = TreeSelect as any;
+const TreeSelectComponent = TreeSelect as unknown as Component;
 
 const options = [
   {

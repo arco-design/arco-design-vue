@@ -157,7 +157,7 @@ export interface HeaderIcons {
 
 export interface StartHeaderProps {
   headerValue: Dayjs;
-  headerOperations: Pick<any, string>;
+  headerOperations: HeaderOperations;
   headerIcons: {
     prev: Slot | undefined;
     prevDouble: Slot | undefined;

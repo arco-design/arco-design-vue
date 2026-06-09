@@ -89,12 +89,12 @@ export interface FieldRule<FieldValue = any> {
    * @zh 数组中是否包含给定值（array）
    * @en Does the array contain the given value (array)
    */
-  includes?: any[];
+  includes?: FieldValue[];
   /**
    * @zh 数组元素是否相等（array）
    * @en Are array elements equal (array)
    */
-  deepEqual?: any;
+  deepEqual?: FieldValue;
   /**
    * @zh 是否为空（object）
    * @en Is it empty (object)

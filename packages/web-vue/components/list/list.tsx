@@ -208,7 +208,7 @@ export default defineComponent({
     });
 
     const { current, pageSize, handlePageChange, handlePageSizeChange } = usePagination(props, {
-      emit,
+      emit: emit as (event: string, ...args: unknown[]) => void,
     });
 
     const getCurrentPageItems = (data: unknown[]) => {

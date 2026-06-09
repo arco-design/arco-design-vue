@@ -115,7 +115,7 @@
        * @param {string | number | Record<string, any> | undefined } value
        * @param {Event} ev
        */
-      'select': (_value: string | number | Record<string, any> | undefined, _ev: Event) => true,
+      'select': (_value: string | number | Record<string, unknown> | undefined, _ev: Event) => true,
     },
     /**
      * @zh 内容

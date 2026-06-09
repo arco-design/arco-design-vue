@@ -38,15 +38,15 @@ export const getProgressStatus = (status?: FileStatus) => {
  */
 export const processFileList = (fileList?: FileItem[]): FileItem[] => {
   if (isArray(fileList)) {
-    return fileList.map((file, index) => {
-      return {
-        // @ts-ignore
-        uid: `${Date.now()}${index}`,
-        status: 'done',
-        percent: 1,
-        ...file,
-      };
-    });
+    return fileList.map(
+      (file, index) =>
+        ({
+          status: 'done' as const,
+          percent: 1,
+          ...file,
+          uid: `${Date.now()}${index}`,
+        }) as FileItem,
+    );
   }
   return [];
 };

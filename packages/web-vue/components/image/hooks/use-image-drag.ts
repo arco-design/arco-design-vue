@@ -63,21 +63,21 @@ export default function useImageDrag(props: ImageDragProps) {
     startPageY = e.pageY;
     startTranslate = [...translate.value];
 
-    on(window, 'mousemove', onMoving as any, false);
-    on(window, 'mouseup', onMoveEnd as any, false);
+    on(window, 'mousemove', onMoving as EventListener, false);
+    on(window, 'mouseup', onMoveEnd as EventListener, false);
   };
 
   function offEvents() {
-    off(window, 'mousemove', onMoving as any, false);
-    off(window, 'mouseup', onMoveEnd as any, false);
+    off(window, 'mousemove', onMoving as EventListener, false);
+    off(window, 'mouseup', onMoveEnd as EventListener, false);
   }
 
   // Initialization, each time the image changes will be re-initialized
   watchEffect((onInvalidate) => {
-    imageEl.value && on(imageEl.value, 'mousedown', onMoveStart as any);
+    imageEl.value && on(imageEl.value, 'mousedown', onMoveStart as EventListener);
 
     onInvalidate(() => {
-      imageEl.value && off(imageEl.value, 'mousedown', onMoveStart as any);
+      imageEl.value && off(imageEl.value, 'mousedown', onMoveStart as EventListener);
       offEvents();
     });
   });

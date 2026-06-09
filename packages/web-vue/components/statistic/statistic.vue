@@ -49,7 +49,6 @@
     watch,
   } from 'vue';
 
-  // @ts-ignore
   import BTween from 'b-tween';
   import dayjs from 'dayjs';
   import NP from 'number-precision';
@@ -183,9 +182,12 @@
           return props.value;
         }
         return 0;
+        type TweenController = InstanceType<typeof BTween> & {
+          stop?: () => void;
+        };
       });
       const innerValue = ref(props.valueFrom ?? props.value);
-      const tween = ref(null);
+      const tween = ref<TweenController | null>(null);
       const { value } = toRefs(props);
 
       const showPlaceholder = computed(() => isUndefined(props.value));
@@ -208,7 +210,7 @@
               innerValue.value = to;
             },
           });
-          (tween.value as any)?.start();
+          tween.value?.start();
         }
       };
 
@@ -255,7 +257,7 @@
 
       watch(value, (value) => {
         if (tween.value) {
-          (tween.value as any)?.stop();
+          tween.value.stop?.();
           tween.value = null;
         }
         innerValue.value = value;

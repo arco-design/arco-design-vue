@@ -17,7 +17,7 @@ export interface DOption {
   value: string | number;
   disabled?: boolean;
 
-  _props?: Record<string, any>;
+  _props?: Record<string, unknown>;
   _slots?: Slots;
 }
 
@@ -26,7 +26,7 @@ export interface DGroup {
   options: DropdownOption[];
   title?: string;
 
-  _props?: Record<string, any>;
+  _props?: Record<string, unknown>;
   _slots?: Slots;
 }
 

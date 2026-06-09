@@ -1,9 +1,9 @@
 import { raf, caf } from './raf';
 
-export function throttleByRaf(cb: (...args: any[]) => void) {
+export function throttleByRaf<T extends unknown[]>(cb: (...args: T) => void) {
   let timer = 0;
 
-  const throttle = (...args: any[]): void => {
+  const throttle = (...args: T): void => {
     if (timer) {
       caf(timer);
     }

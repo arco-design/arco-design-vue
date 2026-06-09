@@ -80,7 +80,7 @@ export const travelDropDownChildren = (children: VNode[]): DropdownOption[] => {
         options.push(...travelDropDownChildren(_children));
       }
     } else if (isArray(child)) {
-      options.push(...travelDropDownChildren(child));
+      options.push(...travelDropDownChildren(child as unknown as VNode[]));
     }
   }
 

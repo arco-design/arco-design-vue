@@ -31,6 +31,12 @@ export interface ResponsiveValue {
   xs?: number;
 }
 
+export interface ColResponsiveConfig {
+  span?: number;
+  offset?: number;
+  order?: number;
+}
+
 export type FlexType = number | string | 'initial' | 'auto' | 'none';
 
 export interface RowProps {
@@ -45,12 +51,12 @@ export interface ColProps {
   span?: number;
   offset?: number | undefined;
   order?: number | undefined;
-  xs?: number | { [key: string]: any } | undefined;
-  sm?: number | { [key: string]: any } | undefined;
-  md?: number | { [key: string]: any } | undefined;
-  lg?: number | { [key: string]: any } | undefined;
-  xl?: number | { [key: string]: any } | undefined;
-  xxl?: number | { [key: string]: any } | undefined;
+  xs?: number | ColResponsiveConfig | undefined;
+  sm?: number | ColResponsiveConfig | undefined;
+  md?: number | ColResponsiveConfig | undefined;
+  lg?: number | ColResponsiveConfig | undefined;
+  xl?: number | ColResponsiveConfig | undefined;
+  xxl?: number | ColResponsiveConfig | undefined;
   flex?: number | string | 'initial' | 'auto' | 'none' | undefined;
 }
 

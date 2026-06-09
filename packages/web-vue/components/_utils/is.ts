@@ -5,7 +5,7 @@ import { Dayjs } from 'dayjs';
 
 const opt = Object.prototype.toString;
 
-export function isArray(obj: any): obj is any[] {
+export function isArray(obj: any): obj is unknown[] {
   return opt.call(obj) === '[object Array]';
 }
 
@@ -41,19 +41,19 @@ export function isDate(obj: any) {
   return opt.call(obj) === '[object Date]';
 }
 
-function isHex(color: any) {
+function isHex(color: string) {
   return /^#[a-fA-F0-9]{3}$|#[a-fA-F0-9]{6}$/.test(color);
 }
 
-function isRgb(color: any) {
+function isRgb(color: string) {
   return /^rgb\((\s*\d+\s*,?){3}\)$/.test(color);
 }
 
-function isRgba(color: any) {
+function isRgba(color: string) {
   return /^rgba\((\s*\d+\s*,\s*){3}\s*\d(\.\d+)?\s*\)$/.test(color);
 }
 
-export function isColor(color: any): boolean {
+export function isColor(color: string): boolean {
   return isHex(color) || isRgb(color) || isRgba(color);
 }
 
@@ -69,8 +69,8 @@ export function isEmptyObject(obj: any): boolean {
   return isObject(obj) && Object.keys(obj).length === 0;
 }
 
-export function isExist(obj: any): boolean {
-  return obj || obj === 0;
+export function isExist(obj: unknown): boolean {
+  return obj !== undefined && obj !== null;
 }
 
 export function isWindow(el: any): el is Window {

@@ -1,16 +1,11 @@
 import type { Data } from './types';
 
-export const omit = <T extends Data, K extends keyof any>(
-  object: T,
-  path: Array<K>,
-): Omit<T, K> => {
-  const result = { ...object };
+export const omit = <T extends Data, K extends keyof T>(object: T, path: Array<K>): Omit<T, K> => {
+  const result = { ...object } as Omit<T, K>;
 
   for (const item of path) {
-    // @ts-ignore
     if (item in result) {
-      // @ts-ignore
-      delete result[item];
+      delete (result as Record<string, any>)[item as string];
     }
   }
 

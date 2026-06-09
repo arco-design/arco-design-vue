@@ -115,7 +115,7 @@ describe('checkUtils', () => {
 
   test('Stop updating the parent node when the node is disabled', () => {
     let [checkedResult, indeterminateResult] = getCheckedStateByCheck({
-      node: key2TreeNode.get('0-0-2-1') as any,
+      node: key2TreeNode.get('0-0-2-1') as unknown as Node,
       checked: true,
       checkedKeys: [],
       indeterminateKeys: [],
