@@ -1,3 +1,9 @@
+# [2.1.0](https://github.com/liunnn1994/sd-design/compare/v2.0.0...v2.1.0) (2026-06-09)
+
+### Features
+
+- 🆕 去掉option组件 ([74283d9](https://github.com/liunnn1994/sd-design/commit/74283d9adfb312c241509a035dd85511e04f716c))
+
 # [1.19.0](https://github.com/liunnn1994/sd-design/compare/v1.18.0...v1.19.0) (2026-05-21)
 
 ### Features
