@@ -39,7 +39,9 @@ export default defineComponent({
 
     const siderContext = inject(SiderInjectionKey, undefined);
     const siderCollapsed = computed(() => siderContext?.collapsed || false);
-    const theme = computed(() => propTheme?.value || siderContext?.theme || 'light');
+    const theme = computed(
+      () => (propTheme?.value || siderContext?.theme || 'light') as 'light' | 'dark',
+    );
 
     // 截断上下文
     provide(MenuInjectionKey as InjectionKey<MenuContext | undefined>, undefined);

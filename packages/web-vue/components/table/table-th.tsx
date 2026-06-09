@@ -123,7 +123,13 @@ export default defineComponent({
                       value={item.value}
                       modelValue={columnFilterValue.value}
                       uninjectGroupContext
-                      onChange={handleCheckboxFilterChange}
+                      onChange={(value: boolean | (string | number | boolean)[]) => {
+                        if (Array.isArray(value)) {
+                          handleCheckboxFilterChange(value.map(String));
+                          return;
+                        }
+                        throw new Error('Checkbox filter value should be an array');
+                      }}
                     >
                       {item.text}
                     </Checkbox>
@@ -132,7 +138,13 @@ export default defineComponent({
                       value={item.value}
                       modelValue={columnFilterValue.value[0] ?? ''}
                       uninjectGroupContext
-                      onChange={handleRadioFilterChange}
+                      onChange={(value: string | number | boolean) => {
+                        if (typeof value === 'string') {
+                          handleRadioFilterChange(value);
+                          return;
+                        }
+                        throw new Error('Radio filter value should be a string');
+                      }}
                     >
                       {item.text}
                     </Radio>

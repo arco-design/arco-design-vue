@@ -1,5 +1,7 @@
 import { DefaultValidateMessage } from 'b-validate';
 
+import type { ValidateMessage } from '../interface';
+
 import { SDCalendarLang, SDLang } from '../interface';
 
 const calendarLang: SDCalendarLang = {
@@ -155,7 +157,7 @@ const lang: SDLang = {
     edit: 'Edit',
   },
   form: {
-    validateMessages: DefaultValidateMessage,
+    validateMessages: DefaultValidateMessage as unknown as ValidateMessage,
   },
   colorPicker: {
     history: 'History Colors',

@@ -1,6 +1,6 @@
 import type { Simplify } from 'type-fest';
 
-import type { PropType, CSSProperties, Ref } from 'vue';
+import type { PropType, CSSProperties, Ref, ComponentPublicInstance } from 'vue';
 import {
   defineComponent,
   ref,
@@ -611,11 +611,11 @@ export default defineComponent({
 
     const addChildRef = (ref: ChildRef) => {
       childrenRefs.add(ref);
-      triggerCtx?.addChildRef(ref);
+      triggerCtx?.addChildRef(ref as HTMLElement | ComponentPublicInstance);
     };
     const removeChildRef = (ref: ChildRef) => {
       childrenRefs.delete(ref);
-      triggerCtx?.removeChildRef(ref);
+      triggerCtx?.removeChildRef(ref as HTMLElement | ComponentPublicInstance);
     };
 
     // 添加triggerCtx，用于嵌套时保持状态
@@ -624,8 +624,8 @@ export default defineComponent({
       reactive({
         onMouseenter: handleMouseEnterWithContext,
         onMouseleave: handleMouseLeaveWithContext,
-        addChildRef,
-        removeChildRef,
+        addChildRef: addChildRef as (ref: HTMLElement | ComponentPublicInstance) => void,
+        removeChildRef: removeChildRef as (ref: HTMLElement | ComponentPublicInstance) => void,
       }),
     );
 

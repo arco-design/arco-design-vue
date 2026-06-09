@@ -1084,6 +1084,7 @@ export default defineComponent({
                 });
               }
 
+              if (valueA == null || valueB == null) return 0;
               const result = valueA > valueB ? 1 : -1;
               return direction === 'descend' ? -result : result;
             });

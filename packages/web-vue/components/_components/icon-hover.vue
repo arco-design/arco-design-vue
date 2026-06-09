@@ -8,6 +8,7 @@
         [`${prefixCls}-disabled`]: disabled,
       },
     ]"
+    @click="$emit('click', $event)"
   >
     <slot />
   </span>
@@ -23,6 +24,7 @@
 
   export default defineComponent({
     name: 'IconHover',
+    emits: ['click'],
     props: {
       prefix: {
         type: String,

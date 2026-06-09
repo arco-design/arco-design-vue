@@ -456,14 +456,18 @@ export default defineComponent({
       const needCalEllipsis = ellipsis.value && !expanded.value;
       if (!needCalEllipsis) return;
 
-      caf(rafId);
+      if (rafId != null) {
+        caf(rafId);
+      }
       rafId = raf(() => {
         calEllipsis();
       });
     }
 
     onUnmounted(() => {
-      caf(rafId);
+      if (rafId != null) {
+        caf(rafId);
+      }
     });
 
     watch(

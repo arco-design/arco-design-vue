@@ -177,14 +177,14 @@
      */
     setup(props) {
       const prefixCls = getPrefixCls('statistic');
+      type TweenController = InstanceType<typeof BTween> & {
+        stop?: () => void;
+      };
       const numberValue = computed(() => {
         if (isNumber(props.value)) {
           return props.value;
         }
         return 0;
-        type TweenController = InstanceType<typeof BTween> & {
-          stop?: () => void;
-        };
       });
       const innerValue = ref(props.valueFrom ?? props.value);
       const tween = ref<TweenController | null>(null);
