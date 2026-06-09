@@ -100,8 +100,6 @@ declare module 'vue' {
     SdResult: SDVue['Result'];
     SdSelect: SDVue['Select'];
     SdSecret: SDVue['Secret'];
-    SdOption: SDVue['Option'];
-    SdOptgroup: SDVue['Optgroup'];
     SdSkeleton: SDVue['Skeleton'];
     SdSkeletonLine: SDVue['SkeletonLine'];
     SdSkeletonShape: SDVue['SkeletonShape'];

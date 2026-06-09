@@ -22,8 +22,8 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: release-web-vue-${{ github.ref }}
-  cancel-in-progress: true
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   release:

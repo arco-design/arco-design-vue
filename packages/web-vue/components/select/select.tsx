@@ -37,10 +37,9 @@ import {
   isUndefined,
 } from '../_utils/is';
 import { resolveDropdownVirtualListProps } from '../_utils/virtual-dropdown';
+import Checkbox from '../checkbox';
 import Trigger, { type TriggerProps } from '../trigger';
 import { useSelect } from './hooks/use-select';
-import OptGroup from './optgroup.vue';
-import Option from './option.vue';
 import SelectDropdown from './select-dropdown.vue';
 import { getKeyFromValue, hasEmptyStringKey, isGroupOptionInfo, isValidOption } from './utils';
 
@@ -64,6 +63,7 @@ export default defineComponent({
   components: {
     Trigger,
     SelectView,
+    Checkbox,
   },
   inheritAttrs: false,
   props: {
@@ -555,27 +555,34 @@ export default defineComponent({
       emit('dropdownReachBottom', event);
     };
 
-    const { validOptions, optionInfoMap, validOptionInfos, enabledOptionKeys, handleKeyDown } =
-      useSelect({
-        multiple,
-        options,
-        extraOptions,
-        inputValue: computedInputValue,
-        filterOption,
-        showExtraOptions,
-        component,
-        valueKey,
-        fieldNames,
-        loading,
-        popupVisible: computedPopupVisible,
-        valueKeys: computedValueKeys,
-        dropdownRef,
-        optionRefs,
-        virtualListRef,
-        defaultActiveFirstOption,
-        onSelect: handleSelect,
-        onPopupVisibleChange: handlePopupVisibleChange,
-      });
+    const {
+      validOptions,
+      optionInfoMap,
+      validOptionInfos,
+      enabledOptionKeys,
+      activeKey,
+      setActiveKey,
+      handleKeyDown,
+    } = useSelect({
+      multiple,
+      options,
+      extraOptions,
+      inputValue: computedInputValue,
+      filterOption,
+      showExtraOptions,
+      component,
+      valueKey,
+      fieldNames,
+      loading,
+      popupVisible: computedPopupVisible,
+      valueKeys: computedValueKeys,
+      dropdownRef,
+      optionRefs,
+      virtualListRef,
+      defaultActiveFirstOption,
+      onSelect: handleSelect,
+      onPopupVisibleChange: handlePopupVisibleChange,
+    });
 
     const selectViewValue = computed<SelectViewValue[]>(() => {
       const result: SelectViewValue[] = [];
@@ -609,12 +616,16 @@ export default defineComponent({
       return () => optionInfo.label;
     };
 
+    const optionPrefixCls = getPrefixCls('select-option');
+    const groupPrefixCls = getPrefixCls('select-group');
+
     const renderOption = (optionInfo: SelectOptionInfo | SelectOptionGroupInfo) => {
       if (isGroupOptionInfo(optionInfo)) {
         return (
-          <OptGroup key={optionInfo.key} label={optionInfo.label}>
+          <li key={optionInfo.key} class={groupPrefixCls}>
+            <div class={`${groupPrefixCls}-title`}>{optionInfo.label}</div>
             {optionInfo.options.map((child) => renderOption(child))}
-          </OptGroup>
+          </li>
         );
       }
 
@@ -627,24 +638,66 @@ export default defineComponent({
         return null;
       }
 
+      const isSelected = computedValueKeys.value.includes(optionInfo.key);
+      const isActive = activeKey.value === optionInfo.key;
+
+      const cls = [
+        optionPrefixCls,
+        {
+          [`${optionPrefixCls}-disabled`]: optionInfo.disabled,
+          [`${optionPrefixCls}-selected`]: isSelected,
+          [`${optionPrefixCls}-active`]: isActive,
+          [`${optionPrefixCls}-multiple`]: props.multiple,
+        },
+      ];
+
+      const handleClick = (ev: MouseEvent) => {
+        if (!optionInfo.disabled) {
+          handleSelect(optionInfo.key, ev);
+        }
+      };
+
+      const handleMouseEnter = () => {
+        if (!optionInfo.disabled) {
+          setActiveKey(optionInfo.key);
+        }
+      };
+
+      const handleMouseLeave = () => {
+        if (!optionInfo.disabled) {
+          setActiveKey();
+        }
+      };
+
+      const Tag = component.value;
+
       return (
-        <Option
-          v-slots={{
-            default: getOptionContentFunc(optionInfo),
-          }}
-          ref={(refInstance: Element | ComponentPublicInstance | null) => {
-            const element = (refInstance as (ComponentPublicInstance & { $el?: Element }) | null)
-              ?.$el;
+        <Tag
+          ref={(el: Element | ComponentPublicInstance | null) => {
+            const element = (el as (ComponentPublicInstance & { $el?: Element }) | null)?.$el ?? el;
             if (element instanceof HTMLElement) {
               optionRefs.value[optionInfo.key] = element;
             }
           }}
           key={optionInfo.key}
-          value={optionInfo.value}
-          label={optionInfo.label}
-          disabled={optionInfo.disabled}
-          internal
-        />
+          class={cls}
+          onClick={handleClick}
+          onMouseenter={handleMouseEnter}
+          onMouseleave={handleMouseLeave}
+        >
+          {props.multiple ? (
+            <Checkbox
+              class={`${optionPrefixCls}-checkbox`}
+              modelValue={isSelected}
+              disabled={optionInfo.disabled}
+              uninjectGroupContext
+            >
+              {getOptionContentFunc(optionInfo)()}
+            </Checkbox>
+          ) : (
+            <span class={`${optionPrefixCls}-content`}>{getOptionContentFunc(optionInfo)()}</span>
+          )}
+        </Tag>
       );
     };
 
@@ -652,7 +705,7 @@ export default defineComponent({
       <SelectDropdown
         ref={dropdownRef}
         v-slots={{
-          'default': () => [...(slots.default?.() ?? []), ...validOptions.value.map(renderOption)],
+          'default': () => validOptions.value.map(renderOption),
           'virtual-list': () => (
             <VirtualList
               {...resolvedVirtualListProps.value}

@@ -21,8 +21,8 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: release-auto-import-resolver-${{ github.ref }}
-  cancel-in-progress: true
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   release:
@@ -52,6 +52,9 @@ jobs:
         env:
           NODE_OPTIONS: '--max-old-space-size=4096'
         run: pnpm --filter @sdata/web-vue-auto-import-resolver run build
+
+      - name: Sync with latest main before release
+        run: git pull --rebase origin main
 
       - name: Release auto-import-resolver
         working-directory: packages/auto-import-resolver

@@ -10,14 +10,8 @@
       placeholder="Please select ..."
       multiple
       :scrollbar="scrollbar"
-    >
-      <sd-option>Beijing</sd-option>
-      <sd-option :tag-props="{ color: 'red' }">Shanghai</sd-option>
-      <sd-option>Guangzhou</sd-option>
-      <sd-option disabled>Disabled</sd-option>
-      <sd-option>Shenzhen</sd-option>
-      <sd-option>Wuhan</sd-option>
-    </sd-select>
+      :options="options"
+    />
     <sd-select
       :default-value="['Beijing', 'Shanghai', 'Guangzhou']"
       class="sd:w-90"
@@ -26,15 +20,8 @@
       :max-tag-count="2"
       allow-clear
       :scrollbar="scrollbar"
-    >
-      <sd-option>Beijing</sd-option>
-      <sd-option>Shanghai</sd-option>
-      <sd-option>Guangzhou</sd-option>
-      <sd-option disabled>Disabled</sd-option>
-      <sd-option>Shenzhen</sd-option>
-      <sd-option>Chengdu</sd-option>
-      <sd-option>Wuhan</sd-option>
-    </sd-select>
+      :options="options"
+    />
     <sd-select
       :default-value="['Beijing', 'Shanghai']"
       class="sd:w-90"
@@ -42,14 +29,8 @@
       multiple
       :limit="2"
       :scrollbar="scrollbar"
-    >
-      <sd-option>Beijing</sd-option>
-      <sd-option :tag-props="{ color: 'red' }">Shanghai</sd-option>
-      <sd-option>Guangzhou</sd-option>
-      <sd-option disabled>Disabled</sd-option>
-      <sd-option>Shenzhen</sd-option>
-      <sd-option>Wuhan</sd-option>
-    </sd-select>
+      :options="options"
+    />
   </sd-space>
 </template>
 
@@ -57,4 +38,12 @@
   import { ref } from 'vue';
 
   const scrollbar = ref(true);
+  const options = [
+    'Beijing',
+    { label: 'Shanghai', tagProps: { color: 'red' } },
+    'Guangzhou',
+    { label: 'Disabled', disabled: true },
+    'Shenzhen',
+    'Wuhan',
+  ];
 </script>

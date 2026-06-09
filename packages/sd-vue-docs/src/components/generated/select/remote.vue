@@ -3,14 +3,13 @@
     <div>Show selections after search options</div>
     <sd-select
       class="sd:w-80"
+      :options="options"
       :loading="loading"
       placeholder="Please select ..."
       multiple
       @search="handleSearch"
       :filter-option="false"
-    >
-      <sd-option v-for="item of options" :value="item">{{ item }}</sd-option>
-    </sd-select>
+    />
     <div>Hide selections after search options</div>
     <sd-select
       :options="options"

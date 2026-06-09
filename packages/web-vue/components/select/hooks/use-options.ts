@@ -3,7 +3,6 @@ import { computed, reactive, ref, watch } from 'vue';
 
 import type { FilterOption, SelectOption, SelectOptionInfo, SelectFieldNames } from '../interface';
 
-import { isNumber } from '../../_utils/is';
 import { getOptionInfos, getValidOptions, isValidOption } from '../utils';
 
 const DEFAULT_FIELD_NAMES = {
@@ -35,16 +34,6 @@ export const useOptions = ({
     ...DEFAULT_FIELD_NAMES,
     ...fieldNames?.value,
   }));
-
-  const slotOptionInfoMap = reactive(new Map<number, SelectOptionInfo>());
-  const sortedSlotOptionInfos = computed<SelectOptionInfo[]>(() =>
-    Array.from(slotOptionInfoMap.values()).sort((a, b) => {
-      if (isNumber(a.index) && isNumber(b.index)) {
-        return a.index - b.index;
-      }
-      return 0;
-    }),
-  );
 
   const propOptionData = computed(() => {
     const optionInfoMap = new Map<string, SelectOptionInfo>();
@@ -79,13 +68,10 @@ export const useOptions = ({
   const optionInfoMap = reactive(new Map<string, SelectOptionInfo>());
 
   watch(
-    [sortedSlotOptionInfos, options ?? ref([]), extraOptions ?? ref([]), valueKey ?? ref('value')],
+    [options ?? ref([]), extraOptions ?? ref([]), valueKey ?? ref('value')],
     () => {
       optionInfoMap.clear();
 
-      sortedSlotOptionInfos.value.forEach((info, index) => {
-        optionInfoMap.set(info.key, { ...info, index });
-      });
       propOptionData.value.optionInfoMap.forEach((info) => {
         if (!optionInfoMap.has(info.key)) {
           info.index = optionInfoMap.size;
@@ -134,23 +120,10 @@ export const useOptions = ({
     validOptionInfos.value.filter((optionInfo) => !optionInfo.disabled).map((info) => info.key),
   );
 
-  const getNextSlotOptionIndex = () => slotOptionInfoMap.size;
-
-  const addSlotOptionInfo = (id: number, optionInfo: SelectOptionInfo) => {
-    slotOptionInfoMap.set(id, optionInfo);
-  };
-
-  const removeSlotOptionInfo = (id: number) => {
-    slotOptionInfoMap.delete(id);
-  };
-
   return {
     validOptions,
     optionInfoMap,
     validOptionInfos,
     enabledOptionKeys,
-    getNextSlotOptionIndex,
-    addSlotOptionInfo,
-    removeSlotOptionInfo,
   };
 };

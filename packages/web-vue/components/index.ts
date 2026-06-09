@@ -336,17 +336,15 @@ export type {
   ScrollbarType,
   ScrollbarUpdatedEvent,
 } from './scrollbar';
-export { default as Select, Optgroup, Option } from './select';
+export { default as Select } from './select';
 export type {
   FilterOption,
   SelectFallbackOption,
   SelectFieldNames,
   SelectInstance,
-  SelectOptGroupInstance,
   SelectOption,
   SelectOptionData,
   SelectOptionGroup,
-  SelectOptionInstance,
   SelectProps,
 } from './select';
 export { default as Secret } from './secret';

@@ -113,7 +113,7 @@ import selectVirtualListSource from '../../../../components/generated/select/vir
 
 ### 分组
 
-使用 `optgroup` 组件添加分组选项。
+通过 `options` 中使用 `isGroup: true` 的对象添加分组选项。
 
 <DemoBlock source={selectGroupSource} mainFile="src/select-group.vue">
 
@@ -225,15 +225,13 @@ import selectVirtualListSource from '../../../../components/generated/select/vir
 
 ## 从 Arco Design 迁移
 
-`Select` 在当前组件库里仍然保持 Arco Design Vue 的主要使用习惯，但实现已经完全收敛到本地的 `Trigger`、`SelectView`、表单联动和主题体系。迁移时建议把它当作“标签名和少量扩展约定不变、交互和主题链路切到本地组件库”的替换。
+`Select` 在当前组件库里仍然保持 Arco Design Vue 的主要使用习惯，但实现已经完全收敛到本地的 `Trigger`、`SelectView`、表单联动和主题体系。迁移时建议把它当作"标签名和少量扩展约定不变、交互和主题链路切到本地组件库"的替换。
 
 ### 对应关系
 
 | Arco Design Vue | SD Design Vue | 说明 |
 | --- | --- | --- |
 | `a-select` | `sd-select` | 选择器主体 |
-| `a-option` | `sd-option` | 选项组件 |
-| `a-optgroup` | `sd-optgroup` | 选项分组 |
 | `v-model` / `model-value` | `v-model` / `model-value` | 受控写法保持一致 |
 | `popup-visible` | `popup-visible` | 下拉框显隐控制保持一致 |
 | `:options` | `:options` | 仍支持对象数组数据源 |
@@ -244,8 +242,9 @@ import selectVirtualListSource from '../../../../components/generated/select/vir
 
 1. 迁移后的下拉层、弹出容器、表单联动和主题注入都复用当前组件库内部实现，所以涉及浮层挂载、局部主题和表单校验的场景，优先使用 `popup-container`、`trigger-props` 和 `ConfigProvider`，不要再额外包一层自定义 Teleport 或独立弹层。
 2. 当前版本不再对外暴露 render function 风格的自定义入口，选择框内容、多选标签和选项内容统一使用 `label`、`tag`、`option` 插槽。旧业务如果有 JSX / `h()` 风格的渲染函数，需要改成模板插槽。
-3. `max-tag-count="responsive"` 走的是当前组件库的响应式折叠策略：除非显式传 `0`，否则会尽量保留至少一个可见标签，再把剩余数量折叠到 `+n`。如果旧页面依赖“宽度不够时全部折叠”的表现，迁移后要重新验收。
+3. `max-tag-count="responsive"` 走的是当前组件库的响应式折叠策略：除非显式传 `0`，否则会尽量保留至少一个可见标签，再把剩余数量折叠到 `+n`。如果旧页面依赖"宽度不够时全部折叠"的表现，迁移后要重新验收。
 4. `allow-clear` 在当前组件里默认就是开启的；如果旧业务显式依赖不可清空，迁移时要补上 `:allow-clear="false"`，不要假设默认行为和历史版本完全一致。
+5. 当前版本已移除 `<sd-option>` 和 `<sd-optgroup>` 子组件，所有选项统一通过 `:options` prop 传入。如需分组，在 options 数组中使用 `{ isGroup: true, label: '...', options: [...] }` 格式。
 
 ### 迁移前后示例
 
@@ -262,11 +261,17 @@ import selectVirtualListSource from '../../../../components/generated/select/vir
 
 ```vue
 <template>
-  <sd-select v-model="city" :style="{ width: '320px' }" placeholder="Please select ...">
-    <sd-option value="beijing">Beijing</sd-option>
-    <sd-option value="shanghai">Shanghai</sd-option>
-  </sd-select>
+  <sd-select
+    v-model="city"
+    :style="{ width: '320px' }"
+    placeholder="Please select ..."
+    :options="options"
+  />
 </template>
+
+<script setup>
+  const options = ['Beijing', 'Shanghai'];
+</script>
 ```
 
 #### `options` + `field-names`
@@ -309,20 +314,22 @@ import selectVirtualListSource from '../../../../components/generated/select/vir
 
 ```vue
 <template>
-  <sd-select default-value="beijing" :style="{ width: '320px' }">
+  <sd-select default-value="Beijing" :style="{ width: '320px' }" :options="options">
     <template #label="{ data }">
       <span>{{ data?.label }} city</span>
     </template>
-    <sd-option value="beijing">Beijing</sd-option>
-    <sd-option value="shanghai">Shanghai</sd-option>
   </sd-select>
 </template>
+
+<script setup>
+  const options = ['Beijing', 'Shanghai'];
+</script>
 ```
 
 ### 建议的迁移顺序
 
-1. 先替换组件标签：`a-select`、`a-option`、`a-optgroup` 分别替换为 `sd-select`、`sd-option`、`sd-optgroup`，先保证页面能渲染。
-2. 再迁移数据写法：如果原来已经使用 `options` / `field-names`，通常可以原样保留；如果历史代码混用了插槽选项和对象数组，建议先统一成一种。
+1. 先替换组件标签：`a-select` 替换为 `sd-select`，同时把 `<a-option>` / `<a-optgroup>` 改为 `:options` prop 数据源。
+2. 再迁移数据写法：如果原来已经使用 `options` / `field-names`，通常可以原样保留；如果历史代码混用了插槽选项和对象数组，建议统一成 `options` prop。
 3. 接着处理自定义展示：把旧的渲染函数或外层包装逻辑收敛到 `label`、`tag`、`option`、`header`、`footer` 等插槽。
 4. 最后验收交互细节：重点检查远程搜索、多选折叠、浮层宽度、自定义挂载容器、表单校验和局部主题，确认它们已经切到当前组件库的行为链路。
 
@@ -351,6 +358,7 @@ import selectVirtualListSource from '../../../../components/generated/select/vir
 2. 对外 render function 已经移除，原来依赖 `render-tag`、`render-label`、选项 render 回调的场景，需要改成 `tag`、`label`、`option` 插槽。
 3. 多选标签折叠走的是当前组件库的本地响应式策略，`max-tag-count="responsive"` 会尽量至少保留一个标签可见，再折叠剩余数量；如果旧页面依赖 Naive 的宽度收缩细节，需要单独回归。
 4. 弹层、滚动定位、局部主题和表单联动都接到本地实现了，所以迁移后不要继续依赖 Naive 私有 DOM、类名或外层包裹的额外定位逻辑。
+5. 当前版本已移除 `<sd-option>` 和 `<sd-optgroup>` 子组件，所有选项统一通过 `:options` prop 传入，与 Naive UI 的 `options` 写法一致。
 
 ### 迁移前后示例
 
@@ -479,29 +487,6 @@ import selectVirtualListSource from '../../../../components/generated/select/vir
 | option       |       选项内容       | data: `SelectOptionData` |        |
 | empty        | 选项为空时的显示内容 | -                        |        |
 
-### `<option>` Props
-
-| 参数名 | 描述 | 类型 | 默认值 | 版本 |
-| --- | --- | --- | :-: | :-- |
-| value | 选项值（如不填，会从内容中获取） | `string\|number\|boolean\|object` | `-` |  |
-| label | 选项标签（如不填，会从内容中获取） | `string` | `-` |  |
-| disabled | 是否禁用 | `boolean` | `false` |  |
-| tag-props | 展示的标签属性 | `TagProps` | `-` | 2.8.0 |
-| extra | 额外数据。2.18.0 版本废弃，可使用对象形式的 value 扩展数据 | `object` | `-` | 2.10.0 |
-| index | 用于手动指定选项的 index | `number` | `-` | 2.20.0 |
-
-### `<optgroup>` Props
-
-| 参数名 | 描述         | 类型     | 默认值 |
-| ------ | ------------ | -------- | :----: |
-| label  | 选项组的标题 | `string` |  `-`   |
-
-### `<optgroup>` Slots
-
-| 插槽名 |     描述     | 参数 | 版本   |
-| ------ | :----------: | ---- | :----- |
-| label  | 选项组的标题 | -    | 2.10.0 |
-
 ### Type
 
 ```ts
@@ -551,7 +536,7 @@ type FilterOption = boolean | ((inputValue: string, option: SelectOptionData) =>
 
 ### 使用 `Object` 格式作为选项的值
 
-当使用 `Object` 格式作为选项的值时，需要通过 `value-key` 属性为选择器指定获取唯一标识的字段名，默认值为 `value`. 此外 `value` 的对象值需要在 `setup` 中定义好，不能够在模版中创建对象，这样会导致 `Option` 组件的重复渲染。
+当使用 `Object` 格式作为选项的值时，需要通过 `value-key` 属性为选择器指定获取唯一标识的字段名，默认值为 `value`。此外 `value` 的对象值需要在 `setup` 中定义好，不能够在模版中创建对象，这样会导致重复渲染。
 
 例如当我需要指定 `key` 为唯一标识时：
 
@@ -562,46 +547,36 @@ type FilterOption = boolean | ((inputValue: string, option: SelectOptionData) =>
     :style="{ width: '320px' }"
     placeholder="Please select ..."
     value-key="key"
-  >
-    <sd-option v-for="item of data" :value="item" :label="item.label" />
-  </sd-select>
+    :options="options"
+  />
 </template>
 
-<script>
+<script setup>
   import { ref } from 'vue';
 
-  export default {
-    setup() {
-      const value = ref();
-      const data = [
-        {
-          value: 'beijing',
-          label: 'Beijing',
-          key: 'extra1',
-        },
-        {
-          value: 'shanghai',
-          label: 'Shanghai',
-          key: 'extra2',
-        },
-        {
-          value: 'guangzhou',
-          label: 'Guangzhou',
-          key: 'extra3',
-        },
-        {
-          value: 'chengdu',
-          label: 'Chengdu',
-          key: 'extra4',
-        },
-      ];
-
-      return {
-        value,
-        data,
-      };
+  const value = ref();
+  const options = [
+    {
+      value: 'beijing',
+      label: 'Beijing',
+      key: 'extra1',
     },
-  };
+    {
+      value: 'shanghai',
+      label: 'Shanghai',
+      key: 'extra2',
+    },
+    {
+      value: 'guangzhou',
+      label: 'Guangzhou',
+      key: 'extra3',
+    },
+    {
+      value: 'chengdu',
+      label: 'Chengdu',
+      key: 'extra4',
+    },
+  ];
 </script>
 ```
 

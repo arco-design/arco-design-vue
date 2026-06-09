@@ -9,18 +9,9 @@ exports[`Mention > mention correctly 1`] = `
     <div class="sd-scrollbar-container sd-select-dropdown-list-wrapper" data-overlayscrollbars="host">
       <div class="" data-overlayscrollbars-viewport="scrollbarHidden overflowXHidden overflowYHidden" tabindex="-1" style="top: 0px; right: auto; left: 0px; width: calc(100% + 0px); margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0px;">
         <ul class="sd-select-dropdown-list">
-          <li class="sd-select-option sd-select-option-active">
-            <!--v-if--><span class="sd-select-option-content">Bytedance</span>
-            <!--v-if-->
-          </li>
-          <li class="sd-select-option">
-            <!--v-if--><span class="sd-select-option-content">Bytedesign</span>
-            <!--v-if-->
-          </li>
-          <li class="sd-select-option">
-            <!--v-if--><span class="sd-select-option-content">Bytenumner</span>
-            <!--v-if-->
-          </li>
+          <li class="sd-select-option sd-select-option-active"><span class="sd-select-option-content">Bytedance</span></li>
+          <li class="sd-select-option"><span class="sd-select-option-content">Bytedesign</span></li>
+          <li class="sd-select-option"><span class="sd-select-option-content">Bytenumner</span></li>
         </ul>
       </div>
       <div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-auto-hide-hidden os-scrollbar-handle-interactive os-scrollbar-track-interactive os-scrollbar-cornerless os-scrollbar-unusable sd-scrollbar-theme-embed" style="--os-scroll-percent: 0; --os-viewport-percent: 0; --os-scroll-direction: 0;">

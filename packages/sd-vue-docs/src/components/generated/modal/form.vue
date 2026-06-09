@@ -11,12 +11,7 @@
         <sd-input v-model="form.name" />
       </sd-form-item>
       <sd-form-item field="post" label="Post">
-        <sd-select v-model="form.post">
-          <sd-option value="post1">Post1</sd-option>
-          <sd-option value="post2">Post2</sd-option>
-          <sd-option value="post3">Post3</sd-option>
-          <sd-option value="post4">Post4</sd-option>
-        </sd-select>
+        <sd-select v-model="form.post" :options="postOptions" />
       </sd-form-item>
     </sd-form>
   </sd-modal>
@@ -30,6 +25,13 @@
     name: '',
     post: '',
   });
+
+  const postOptions = [
+    { value: 'post1', label: 'Post1' },
+    { value: 'post2', label: 'Post2' },
+    { value: 'post3', label: 'Post3' },
+    { value: 'post4', label: 'Post4' },
+  ];
 
   const handleClick = () => {
     visible.value = true;

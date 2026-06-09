@@ -1,8 +1,6 @@
 <template>
   <sd-space>
-    <sd-select class="sd:w-50" v-model="province">
-      <sd-option v-for="value of Object.keys(data)">{{ value }}</sd-option>
-    </sd-select>
+    <sd-select class="sd:w-50" v-model="province" :options="Object.keys(data)" />
     <sd-select class="sd:w-50" :options="data[province] || []" v-model="city" />
   </sd-space>
 </template>

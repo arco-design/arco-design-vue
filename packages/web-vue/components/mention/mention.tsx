@@ -19,7 +19,6 @@ import { isFunction, isNull, isUndefined } from '../_utils/is';
 import SDInput from '../input';
 import { useSelect } from '../select/hooks/use-select';
 import { SelectOptionData, SelectOptionGroup, SelectOptionInfo } from '../select/interface';
-import Option from '../select/option.vue';
 import SelectDropdown from '../select/select-dropdown.vue';
 import { getKeyFromValue } from '../select/utils';
 import SDTextarea from '../textarea';
@@ -259,7 +258,14 @@ export default defineComponent({
       eventHandlers.value?.onChange?.();
     };
 
-    const { validOptions, optionInfoMap, validOptionInfos, handleKeyDown } = useSelect({
+    const {
+      validOptions,
+      optionInfoMap,
+      validOptionInfos,
+      activeKey,
+      setActiveKey,
+      handleKeyDown,
+    } = useSelect({
       options: data,
       inputValue: measureText,
       filterOption,
@@ -292,21 +298,47 @@ export default defineComponent({
       return () => item.label;
     };
 
+    const optionPrefixCls = getPrefixCls('select-option');
+
     const renderOption = (item: SelectOptionInfo) => {
+      const isActive = activeKey.value === item.key;
+
+      const cls = [
+        optionPrefixCls,
+        {
+          [`${optionPrefixCls}-active`]: isActive,
+          [`${optionPrefixCls}-disabled`]: item.disabled,
+        },
+      ];
+
       return (
-        <Option
-          // @ts-ignore
-          ref={(ref: ComponentPublicInstance) => {
-            if (ref?.$el) {
-              optionRefs.value[item.key] = ref.$el;
+        <li
+          ref={(el: Element | ComponentPublicInstance | null) => {
+            const element = (el as (ComponentPublicInstance & { $el?: Element }) | null)?.$el ?? el;
+            if (element instanceof HTMLElement) {
+              optionRefs.value[item.key] = element;
             }
           }}
-          v-slots={{ default: getOptionContentFunc(item) }}
           key={item.key}
-          value={item.value}
-          disabled={item.disabled}
-          internal
-        />
+          class={cls}
+          onClick={(ev: MouseEvent) => {
+            if (!item.disabled) {
+              handleSelect(item.key, ev);
+            }
+          }}
+          onMouseenter={() => {
+            if (!item.disabled) {
+              setActiveKey(item.key);
+            }
+          }}
+          onMouseleave={() => {
+            if (!item.disabled) {
+              setActiveKey();
+            }
+          }}
+        >
+          <span class={`${optionPrefixCls}-content`}>{getOptionContentFunc(item)()}</span>
+        </li>
       );
     };
 

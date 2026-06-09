@@ -4,9 +4,11 @@
       <sd-input v-model="data[rowIndex].name" />
     </template>
     <template #province="{ rowIndex }">
-      <sd-select v-model="data[rowIndex].province" @change="() => handleChange(rowIndex)">
-        <sd-option v-for="value of Object.keys(options)">{{ value }}</sd-option>
-      </sd-select>
+      <sd-select
+        v-model="data[rowIndex].province"
+        :options="Object.keys(options)"
+        @change="() => handleChange(rowIndex)"
+      />
     </template>
     <template #city="{ rowIndex }">
       <sd-select :options="options[data[rowIndex].province] || []" v-model="data[rowIndex].city" />
@@ -20,14 +22,13 @@
     <template #province="{ record, rowIndex }">
       <sd-select
         v-model="record.province"
+        :options="Object.keys(options)"
         @change="
           () => {
             record.city = '';
           }
         "
-      >
-        <sd-option v-for="value of Object.keys(options)">{{ value }}</sd-option>
-      </sd-select>
+      />
     </template>
     <template #city="{ record, rowIndex }">
       <sd-select :options="options[record.province] || []" v-model="record.city" />

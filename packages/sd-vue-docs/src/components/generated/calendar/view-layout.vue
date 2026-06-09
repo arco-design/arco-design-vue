@@ -106,9 +106,7 @@
 
     <div class="sd:flex sd:items-center sd:gap-2 sd:mb-3">
       <span class="sd:text-sm sd:text-gray-500">选择语言:</span>
-      <sd-select v-model="currentLocale" size="small" class="sd:w-40">
-        <sd-option v-for="loc in locales" :key="loc.value" :value="loc.value" :label="loc.label" />
-      </sd-select>
+      <sd-select v-model="currentLocale" size="small" class="sd:w-40" :options="locales" />
     </div>
 
     <sd-calendar

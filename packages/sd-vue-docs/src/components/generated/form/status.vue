@@ -51,11 +51,7 @@
       :validate-status="status"
       feedback
     >
-      <sd-select v-model="form.section" placeholder="Please select ...">
-        <sd-option value="section one">Section One</sd-option>
-        <sd-option value="section two">Section Two</sd-option>
-        <sd-option value="section three">Section Three</sd-option>
-      </sd-select>
+      <sd-select v-model="form.section" placeholder="Please select ..." :options="sectionOptions" />
     </sd-form-item>
     <sd-form-item label="DateRange" :validate-status="status" feedback>
       <sd-range-picker></sd-range-picker>
@@ -84,4 +80,9 @@
     tags: ['tag1'],
     section: '',
   });
+  const sectionOptions = [
+    { value: 'section one', label: 'Section One' },
+    { value: 'section two', label: 'Section Two' },
+    { value: 'section three', label: 'Section Three' },
+  ];
 </script>

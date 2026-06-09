@@ -64,7 +64,7 @@ export const createOptionInfo = (
   }: {
     valueKey: string;
     fieldNames: Required<SelectFieldNames>;
-    origin: 'slot' | 'options' | 'extraOptions';
+    origin: 'options' | 'extraOptions';
     index?: number;
   },
 ): SelectOptionInfo => {

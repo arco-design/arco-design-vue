@@ -69,7 +69,7 @@ export interface SelectOptionInfo extends SelectOptionData {
   raw: SelectOptionData;
   key: string;
   index?: number;
-  origin: 'slot' | 'options' | 'extraOptions';
+  origin: 'options' | 'extraOptions';
   value: SelectOptionValue;
   label: string;
 }

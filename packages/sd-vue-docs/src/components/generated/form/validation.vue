@@ -34,11 +34,12 @@
       label="Section"
       :rules="[{ match: /section one/, message: 'must select one' }]"
     >
-      <sd-select v-model="form.section" placeholder="Please select ..." allow-clear>
-        <sd-option value="section one">Section One</sd-option>
-        <sd-option value="section two">Section Two</sd-option>
-        <sd-option value="section three">Section Three</sd-option>
-      </sd-select>
+      <sd-select
+        v-model="form.section"
+        placeholder="Please select ..."
+        allow-clear
+        :options="sectionOptions"
+      />
     </sd-form-item>
     <sd-form-item
       field="province"
@@ -98,11 +99,12 @@
       <sd-switch v-model="form.switch" />
     </sd-form-item>
     <sd-form-item field="multiSelect" label="Multiple Select">
-      <sd-select v-model="form.multiSelect" placeholder="Please select ..." multiple>
-        <sd-option value="section one">Section One</sd-option>
-        <sd-option value="section two">Section Two</sd-option>
-        <sd-option value="section three">Section Three</sd-option>
-      </sd-select>
+      <sd-select
+        v-model="form.multiSelect"
+        placeholder="Please select ..."
+        multiple
+        :options="sectionOptions"
+      />
     </sd-form-item>
     <sd-form-item field="treeSelect" label="Tree Select">
       <sd-tree-select :data="treeData" v-model="form.treeSelect" placeholder="Please select ..." />
@@ -221,5 +223,10 @@
     },
   ];
 
+  const sectionOptions = [
+    { value: 'section one', label: 'Section One' },
+    { value: 'section two', label: 'Section Two' },
+    { value: 'section three', label: 'Section Three' },
+  ];
   const formRef = ref<FormInstance | null>(null);
 </script>

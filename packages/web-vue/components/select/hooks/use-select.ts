@@ -49,15 +49,7 @@ export const useSelect = ({
   enterToOpen?: boolean;
   defaultActiveFirstOption?: Ref<boolean>;
 }) => {
-  const {
-    validOptions,
-    optionInfoMap,
-    validOptionInfos,
-    enabledOptionKeys,
-    getNextSlotOptionIndex,
-    addSlotOptionInfo,
-    removeSlotOptionInfo,
-  } = useOptions({
+  const { validOptions, optionInfoMap, validOptionInfos, enabledOptionKeys } = useOptions({
     options,
     extraOptions,
     inputValue,
@@ -214,9 +206,6 @@ export const useSelect = ({
       activeKey,
       setActiveKey,
       onSelect,
-      getNextSlotOptionIndex,
-      addSlotOptionInfo,
-      removeSlotOptionInfo,
     }),
   );
 
@@ -227,8 +216,6 @@ export const useSelect = ({
     enabledOptionKeys,
     activeKey,
     setActiveKey,
-    addSlotOptionInfo,
-    removeSlotOptionInfo,
     getNextActiveKey,
     scrollIntoView,
     handleKeyDown,

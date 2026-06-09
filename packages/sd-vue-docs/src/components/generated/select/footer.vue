@@ -5,13 +5,8 @@
       class="sd:w-90"
       placeholder="Please select ..."
       allow-search
+      :options="options"
     >
-      <sd-option>Beijing</sd-option>
-      <sd-option>Shanghai</sd-option>
-      <sd-option>Guangzhou</sd-option>
-      <sd-option disabled>Disabled</sd-option>
-      <sd-option>Shenzhen</sd-option>
-      <sd-option>Wuhan</sd-option>
       <template #footer>
         <div class="sd:py-1.5 sd:text-center">
           <sd-button>Click Me</sd-button>
@@ -24,13 +19,8 @@
       placeholder="Please select ..."
       allow-search
       show-footer-on-empty
+      :options="options"
     >
-      <sd-option>Beijing</sd-option>
-      <sd-option>Shanghai</sd-option>
-      <sd-option>Guangzhou</sd-option>
-      <sd-option disabled>Disabled</sd-option>
-      <sd-option>Shenzhen</sd-option>
-      <sd-option>Wuhan</sd-option>
       <template #footer>
         <div class="sd:py-1.5 sd:text-center">
           <sd-button>Click Me</sd-button>
@@ -39,3 +29,14 @@
     </sd-select>
   </sd-space>
 </template>
+
+<script setup lang="ts">
+  const options = [
+    'Beijing',
+    'Shanghai',
+    'Guangzhou',
+    { label: 'Disabled', disabled: true },
+    'Shenzhen',
+    'Wuhan',
+  ];
+</script>

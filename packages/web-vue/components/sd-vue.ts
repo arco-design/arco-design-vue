@@ -66,7 +66,7 @@ import ResizeBox from './resize-box';
 import Result from './result';
 import Scrollbar from './scrollbar';
 import Secret from './secret';
-import Select, { Option, Optgroup } from './select';
+import Select from './select';
 import Skeleton, { SkeletonLine, SkeletonShape } from './skeleton';
 import Slider from './slider';
 import Space from './space';
@@ -240,8 +240,6 @@ const SDVue: Record<string, unknown> & {
   MenuItemGroup,
   SubMenu,
   RadioGroup,
-  Option,
-  Optgroup,
   SkeletonLine,
   SkeletonShape,
   Countdown,

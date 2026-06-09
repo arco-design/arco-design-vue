@@ -6,27 +6,21 @@
       <sd-radio value="medium">Medium</sd-radio>
       <sd-radio value="large">Large</sd-radio>
     </sd-radio-group>
-    <sd-select default-value="Beijing" class="sd:w-80" :size="size" placeholder="Please select ...">
-      <sd-option>Beijing</sd-option>
-      <sd-option>Shanghai</sd-option>
-      <sd-option>Guangzhou</sd-option>
-      <sd-option disabled>Disabled</sd-option>
-    </sd-select>
+    <sd-select
+      default-value="Beijing"
+      class="sd:w-80"
+      :size="size"
+      placeholder="Please select ..."
+      :options="options"
+    />
     <sd-select
       :default-value="['Beijing', 'Shanghai']"
       class="sd:w-80"
       :size="size"
       placeholder="Please select ..."
       multiple
-    >
-      <sd-option>Beijing</sd-option>
-      <sd-option>Shanghai</sd-option>
-      <sd-option>Guangzhou</sd-option>
-      <sd-option disabled>Disabled</sd-option>
-      <sd-option>Shenzhen</sd-option>
-      <sd-option>Chengdu</sd-option>
-      <sd-option>Wuhan</sd-option>
-    </sd-select>
+      :options="allOptions"
+    />
   </sd-space>
 </template>
 
@@ -36,4 +30,14 @@
   import { ref } from 'vue';
 
   const size = ref<Size>('medium');
+  const options = ['Beijing', 'Shanghai', 'Guangzhou', { label: 'Disabled', disabled: true }];
+  const allOptions = [
+    'Beijing',
+    'Shanghai',
+    'Guangzhou',
+    { label: 'Disabled', disabled: true },
+    'Shenzhen',
+    'Chengdu',
+    'Wuhan',
+  ];
 </script>
