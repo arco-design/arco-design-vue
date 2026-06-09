@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/liunnn1994/sd-design/compare/v2.1.0...v2.1.1) (2026-06-09)
+
+### Bug Fixes
+
+- 🐛 修复 ts 报错 ([cf2f1ac](https://github.com/liunnn1994/sd-design/commit/cf2f1ac4a9b9166e927255fc547a054c40930348))
+- 🐛 修复 ts 的类型 ([e76e685](https://github.com/liunnn1994/sd-design/commit/e76e68536c4a97181f3b4549c4a98a24751bb68d))
+
 # [2.1.0](https://github.com/liunnn1994/sd-design/compare/v2.0.0...v2.1.0) (2026-06-09)
 
 ### Features
