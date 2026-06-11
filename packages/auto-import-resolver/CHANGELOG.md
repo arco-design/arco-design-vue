@@ -1,3 +1,9 @@
+# [2.2.0](https://github.com/liunnn1994/sd-design/compare/v2.1.1...v2.2.0) (2026-06-11)
+
+### Features
+
+- 🆕 迁移到 composition api ([a719b6f](https://github.com/liunnn1994/sd-design/commit/a719b6f3c065ae0856bbdfde6198f86c15add1a4))
+
 # [2.0.0](https://github.com/liunnn1994/sd-design/compare/v1.20.0...v2.0.0) (2026-06-08)
 
 ### Bug Fixes
