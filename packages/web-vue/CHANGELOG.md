@@ -1,3 +1,9 @@
+## [2.2.1](https://github.com/liunnn1994/sd-design/compare/v2.2.0...v2.2.1) (2026-06-11)
+
+### Bug Fixes
+
+- 🐛 修复打包失败的问题 ([590a3cd](https://github.com/liunnn1994/sd-design/commit/590a3cd0715fa49cd2ed2e4ff55cd108a129ea3b))
+
 ## [2.1.1](https://github.com/liunnn1994/sd-design/compare/v2.1.0...v2.1.1) (2026-06-09)
 
 ### Bug Fixes
