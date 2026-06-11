@@ -6,35 +6,29 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { defineComponent, computed, PropType } from 'vue';
+<script setup lang="ts">
+  import { computed, PropType } from 'vue';
 
   import useInjectDatePickerTransform from '../hooks/use-inject-datepicker-transform';
 
-  export default defineComponent({
-    name: 'PanelWeekList',
-    props: {
-      prefixCls: {
-        type: String,
-        required: true,
-      },
-      weekList: {
-        type: Array as PropType<number[]>,
-        required: true,
-      },
-    },
-    setup() {
-      const datePickerT = useInjectDatePickerTransform();
+  defineOptions({ name: 'PanelWeekList' });
 
-      const labelList = computed<string[]>(() => {
-        return ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'].map(
-          (i) => datePickerT(`datePicker.week.short.${i}`),
-        );
-      });
-
-      return {
-        labelList,
-      };
+  const props = defineProps({
+    prefixCls: {
+      type: String,
+      required: true,
     },
+    weekList: {
+      type: Array as PropType<number[]>,
+      required: true,
+    },
+  });
+
+  const datePickerT = useInjectDatePickerTransform();
+
+  const labelList = computed<string[]>(() => {
+    return ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'].map((i) =>
+      datePickerT(`datePicker.week.short.${i}`),
+    );
   });
 </script>

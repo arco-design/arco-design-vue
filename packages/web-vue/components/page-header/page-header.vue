@@ -35,90 +35,82 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { computed, defineComponent } from 'vue';
+<script setup lang="ts">
+  import { computed, useSlots } from 'vue';
 
   import AIconHover from '../_components/icon-hover.vue';
   import { getPrefixCls } from '../_utils/global-config';
   import IconLeft from '../icon/icon-left';
 
-  export default defineComponent({
-    name: 'PageHeader',
-    components: { AIconHover, IconLeft },
-    props: {
-      /**
-       * @zh 页头的主标题
-       * @en Main title
-       */
-      title: String,
-      /**
-       * @zh 页头的次标题
-       * @en Subtitle
-       */
-      subtitle: String,
-      /**
-       * @zh 是否显示返回按钮
-       * @en Whether to show the back button
-       */
-      showBack: {
-        type: Boolean,
-        default: true,
-      },
-    },
-    emits: [
-      /**
-       * @zh 点击返回按钮时触发
-       * @en Emitted when the back button is clicked
-       * @property {Event} event
-       */
-      'back',
-    ],
+  defineOptions({ name: 'PageHeader' });
+
+  const props = defineProps({
     /**
-     * @zh 返回按钮
-     * @en Back icon
-     * @slot back-icon
-     * @version 2.36.0
-     */
-    /**
-     * @zh 主标题
+     * @zh 页头的主标题
      * @en Main title
-     * @slot title
      */
+    title: String,
     /**
-     * @zh 次标题
+     * @zh 页头的次标题
      * @en Subtitle
-     * @slot subtitle
      */
+    subtitle: String,
     /**
-     * @zh 面包屑
-     * @en Breadcrumb
-     * @slot breadcrumb
+     * @zh 是否显示返回按钮
+     * @en Whether to show the back button
      */
-    /**
-     * @zh 额外的展示内容
-     * @en Extra content
-     * @slot extra
-     */
-    setup(props, { emit, slots }) {
-      const prefixCls = getPrefixCls('page-header');
-
-      const handleBack = (e: Event) => {
-        emit('back', e);
-      };
-
-      const cls = computed(() => [
-        prefixCls,
-        {
-          [`${prefixCls}-with-breadcrumb`]: Boolean(slots.breadcrumb),
-          [`${prefixCls}-with-content`]: Boolean(slots.default),
-        },
-      ]);
-
-      return {
-        prefixCls,
-        cls,
-        handleBack,
-      };
+    showBack: {
+      type: Boolean,
+      default: true,
     },
   });
+
+  /**
+   * @zh 点击返回按钮时触发
+   * @en Emitted when the back button is clicked
+   * @property {Event} event
+   */
+  const emit = defineEmits<{ back: [_e: Event] }>();
+
+  /**
+   * @zh 返回按钮
+   * @en Back icon
+   * @slot back-icon
+   * @version 2.36.0
+   */
+  /**
+   * @zh 主标题
+   * @en Main title
+   * @slot title
+   */
+  /**
+   * @zh 次标题
+   * @en Subtitle
+   * @slot subtitle
+   */
+  /**
+   * @zh 面包屑
+   * @en Breadcrumb
+   * @slot breadcrumb
+   */
+  /**
+   * @zh 额外的展示内容
+   * @en Extra content
+   * @slot extra
+   */
+  const slots = useSlots();
+
+  const prefixCls = getPrefixCls('page-header');
+
+  const handleBack = (e: Event) => {
+    emit('back', e);
+  };
+
+  const cls = computed(() => [
+    prefixCls,
+    {
+      [`${prefixCls}-with-breadcrumb`]: Boolean(slots.breadcrumb),
+      [`${prefixCls}-with-content`]: Boolean(slots.default),
+    },
+  ]);
 </script>

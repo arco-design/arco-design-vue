@@ -25,8 +25,8 @@
   </a-input>
 </template>
 
-<script lang="ts">
-  import { defineComponent, reactive, ref, toRefs } from 'vue';
+<script setup lang="ts">
+  import { reactive, ref, toRefs } from 'vue';
 
   import AIconHover from '../_components/icon-hover.vue';
   import useMergeState from '../_hooks/use-merge-state';
@@ -34,86 +34,75 @@
   import IconEyeInvisible from '../icon/icon-eye-invisible';
   import AInput from './input';
 
-  export default defineComponent({
-    name: 'InputPassword',
-    components: {
-      IconEye,
-      IconEyeInvisible,
-      AIconHover,
-      AInput,
+  defineOptions({ name: 'InputPassword' });
+
+  const props = defineProps({
+    /**
+     * @zh 是否可见，受控属性
+     * @en Whether is visible
+     * @vModel
+     */
+    visibility: {
+      type: Boolean,
+      default: undefined,
     },
-    props: {
-      /**
-       * @zh 是否可见，受控属性
-       * @en Whether is visible
-       * @vModel
-       */
-      visibility: {
-        type: Boolean,
-        default: undefined,
-      },
-      /**
-       * @zh 默认是否可见，非受控
-       * @en Default visibility
-       */
-      defaultVisibility: {
-        type: Boolean,
-        default: true,
-      },
-      /**
-       * @zh 是否显示可见按钮
-       * @en Whether to show visible buttons
-       */
-      invisibleButton: {
-        type: Boolean,
-        default: true,
-      },
+    /**
+     * @zh 默认是否可见，非受控
+     * @en Default visibility
+     */
+    defaultVisibility: {
+      type: Boolean,
+      default: true,
     },
-    emits: [
-      /**
-       * @zh visibility 改变时触发
-       * @en Callback when visibility changes
-       * @param {boolean} visible
-       */
-      'visibility-change',
-      'update:visibility',
-    ],
-    setup(props, { emit }) {
-      const { visibility, defaultVisibility } = toRefs(props);
-      const inputRef = ref();
-
-      const handleInvisible = () => {
-        setVisible(!mergedVisible.value);
-      };
-
-      const [mergedVisible, setLocalVisible] = useMergeState(
-        defaultVisibility.value,
-        reactive({
-          value: visibility,
-        }),
-      );
-
-      const setVisible = (newVisible: boolean) => {
-        if (newVisible !== mergedVisible.value) {
-          emit('visibility-change', newVisible);
-          emit('update:visibility', newVisible);
-          setLocalVisible(newVisible);
-        }
-      };
-
-      return {
-        inputRef,
-        mergedVisible,
-        handleInvisible,
-      };
-    },
-    methods: {
-      focus() {
-        (this.inputRef as HTMLInputElement)?.focus();
-      },
-      blur() {
-        (this.inputRef as HTMLInputElement)?.blur();
-      },
+    /**
+     * @zh 是否显示可见按钮
+     * @en Whether to show visible buttons
+     */
+    invisibleButton: {
+      type: Boolean,
+      default: true,
     },
   });
+
+  const emit = defineEmits<{
+    /**
+     * @zh visibility 改变时触发
+     * @en Callback when visibility changes
+     * @param {boolean} visible
+     */
+    'visibility-change': [_visible: boolean];
+    'update:visibility': [_visible: boolean];
+  }>();
+
+  const { visibility, defaultVisibility } = toRefs(props);
+  const inputRef = ref();
+
+  const handleInvisible = () => {
+    setVisible(!mergedVisible.value);
+  };
+
+  const [mergedVisible, setLocalVisible] = useMergeState(
+    defaultVisibility.value,
+    reactive({
+      value: visibility,
+    }),
+  );
+
+  const setVisible = (newVisible: boolean) => {
+    if (newVisible !== mergedVisible.value) {
+      emit('visibility-change', newVisible);
+      emit('update:visibility', newVisible);
+      setLocalVisible(newVisible);
+    }
+  };
+
+  const focus = () => {
+    (inputRef.value as HTMLInputElement)?.focus();
+  };
+
+  const blur = () => {
+    (inputRef.value as HTMLInputElement)?.blur();
+  };
+
+  defineExpose({ focus, blur });
 </script>

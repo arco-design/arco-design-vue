@@ -45,8 +45,8 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { computed, defineComponent, PropType } from 'vue';
+<script setup lang="ts">
+  import { computed, PropType } from 'vue';
 
   import { Dayjs } from 'dayjs';
 
@@ -62,72 +62,64 @@
 
   export type HeaderLabelClickFunc = (label: 'year' | 'month') => void;
 
-  export default defineComponent({
-    name: 'PanelHeader',
-    components: {
-      IconLeft,
-      IconRight,
-      IconDoubleLeft,
-      IconDoubleRight,
-      RenderFunction,
+  defineOptions({ name: 'PanelHeader' });
+
+  const props = defineProps({
+    prefixCls: {
+      type: String,
+      required: true,
     },
-    props: {
-      prefixCls: {
-        type: String,
-        required: true,
-      },
-      title: {
-        type: String,
-        required: true,
-      },
-      mode: {
-        type: String as PropType<Mode>,
-        default: 'date',
-      },
-      value: {
-        type: Object as PropType<Dayjs>,
-      },
-      icons: {
-        type: Object as PropType<HeaderIcons>,
-      },
-      onPrev: {
-        type: Function as PropType<ClickCallbackFunc>,
-      },
-      onSuperPrev: {
-        type: Function as PropType<ClickCallbackFunc>,
-      },
-      onNext: {
-        type: Function as PropType<ClickCallbackFunc>,
-      },
-      onSuperNext: {
-        type: Function as PropType<ClickCallbackFunc>,
-      },
-      onLabelClick: {
-        type: Function as PropType<HeaderLabelClickFunc>,
-      },
+    title: {
+      type: String,
+      required: true,
     },
-    emits: ['label-click'],
-    setup(props) {
-      return {
-        showPrev: computed(() => isFunction(props.onPrev)),
-        showSuperPrev: computed(() => isFunction(props.onSuperPrev)),
-        showNext: computed(() => isFunction(props.onNext)),
-        showSuperNext: computed(() => isFunction(props.onSuperNext)),
-        year: computed(() =>
-          ['date', 'quarter', 'month', 'week'].includes(props.mode) && props.value
-            ? props.value.format('YYYY')
-            : '',
-        ),
-        month: computed(() =>
-          ['date', 'week'].includes(props.mode) && props.value ? props.value.format('MM') : '',
-        ),
-        getIconClassName: (show?: boolean) => [
-          `${props.prefixCls}-header-icon`,
-          {
-            [`${props.prefixCls}-header-icon-hidden`]: !show,
-          },
-        ],
-      };
+    mode: {
+      type: String as PropType<Mode>,
+      default: 'date',
+    },
+    value: {
+      type: Object as PropType<Dayjs>,
+    },
+    icons: {
+      type: Object as PropType<HeaderIcons>,
+    },
+    onPrev: {
+      type: Function as PropType<ClickCallbackFunc>,
+    },
+    onSuperPrev: {
+      type: Function as PropType<ClickCallbackFunc>,
+    },
+    onNext: {
+      type: Function as PropType<ClickCallbackFunc>,
+    },
+    onSuperNext: {
+      type: Function as PropType<ClickCallbackFunc>,
+    },
+    onLabelClick: {
+      type: Function as PropType<HeaderLabelClickFunc>,
     },
   });
+
+  defineEmits<{
+    'label-click': [];
+  }>();
+
+  const showPrev = computed(() => isFunction(props.onPrev));
+  const showSuperPrev = computed(() => isFunction(props.onSuperPrev));
+  const showNext = computed(() => isFunction(props.onNext));
+  const showSuperNext = computed(() => isFunction(props.onSuperNext));
+  const year = computed(() =>
+    ['date', 'quarter', 'month', 'week'].includes(props.mode) && props.value
+      ? props.value.format('YYYY')
+      : '',
+  );
+  const month = computed(() =>
+    ['date', 'week'].includes(props.mode) && props.value ? props.value.format('MM') : '',
+  );
+  const getIconClassName = (show?: boolean) => [
+    `${props.prefixCls}-header-icon`,
+    {
+      [`${props.prefixCls}-header-icon-hidden`]: !show,
+    },
+  ];
 </script>

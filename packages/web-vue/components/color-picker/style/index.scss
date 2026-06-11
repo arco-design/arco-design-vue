@@ -44,7 +44,7 @@ $token-vars: map.merge(meta.module-variables('inputToken'), meta.module-variable
   }
 
   &:hover {
-    background-color: var(--color-fill-3);
+    background-color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
     cursor: pointer;
   }
 
@@ -130,8 +130,8 @@ $token-vars: map.merge(meta.module-variables('inputToken'), meta.module-variable
     width: 18px;
     height: 18px;
     padding: 2px;
-    background: var(--color-bg-white);
-    border: 1px solid var(--color-border-2);
+    background: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-white'));
+    border: 1px solid var(string.unquote('#{global.$sd-cssvars-prefix}-color-border-2'));
     border-radius: global.$border-radius-circle;
     box-shadow: 0 1px 3px rgb(0 0 0 / 14%);
     transform: translateX(-50%);
@@ -140,7 +140,7 @@ $token-vars: map.merge(meta.module-variables('inputToken'), meta.module-variable
   }
 
   .#{$color-picker-prefix-cls}-gradient-thumb-active {
-    border-color: var(--color-primary-6);
+    border-color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-primary-6'));
     box-shadow: 0 0 0 2px rgb(22 93 255 / 16%);
   }
 
@@ -159,7 +159,7 @@ $token-vars: map.merge(meta.module-variables('inputToken'), meta.module-variable
   }
 
   .#{$color-picker-prefix-cls}-gradient-label {
-    color: var(--color-text-2);
+    color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-2'));
     font-size: global.$font-size-body-1;
   }
 
@@ -194,7 +194,8 @@ $token-vars: map.merge(meta.module-variables('inputToken'), meta.module-variable
       width: $color-palette-handle-size;
       height: $color-palette-handle-size;
       background-color: transparent;
-      border: $color-palette-handle-border-size solid var(--color-bg-white);
+      border: $color-palette-handle-border-size solid
+        var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-white'));
       border-radius: global.$border-radius-circle;
       transform: translate(-50%, -50%);
     }
@@ -253,7 +254,7 @@ $token-vars: map.merge(meta.module-variables('inputToken'), meta.module-variable
 
   .#{$color-picker-prefix-cls}-panel-colors {
     padding: $color-panel-padding;
-    border-top: 1px solid var(--color-fill-3);
+    border-top: 1px solid var(string.unquote('#{global.$sd-cssvars-prefix}-color-fill-3'));
 
     .#{$color-picker-prefix-cls}-colors-section:not(:first-child) {
       margin-top: global.$spacing-6;
@@ -267,14 +268,14 @@ $token-vars: map.merge(meta.module-variables('inputToken'), meta.module-variable
     }
 
     .#{$color-picker-prefix-cls}-colors-text {
-      color: var(--color-text-1);
+      color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-1'));
       font-weight: global.$font-weight-400;
       font-size: $color-panel-section-title-font-size;
     }
 
     .#{$color-picker-prefix-cls}-colors-action {
       padding: 0;
-      color: var(--color-primary-6);
+      color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-primary-6'));
       font-size: global.$font-size-body-1;
       background: transparent;
       border: 0;
@@ -283,7 +284,7 @@ $token-vars: map.merge(meta.module-variables('inputToken'), meta.module-variable
 
     .#{$color-picker-prefix-cls}-colors-empty {
       margin: global.$spacing-6 0;
-      color: var(--color-text-3);
+      color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-text-3'));
       font-size: $color-panel-empty-font-size;
     }
 
@@ -350,8 +351,8 @@ $token-vars: map.merge(meta.module-variables('inputToken'), meta.module-variable
       box-sizing: border-box;
       width: $color-control-bar-handle-size;
       height: $color-control-bar-handle-size;
-      background-color: var(--color-bg-white);
-      border: 1px solid var(--color-border-2);
+      background-color: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-white'));
+      border: 1px solid var(string.unquote('#{global.$sd-cssvars-prefix}-color-border-2'));
       border-radius: global.$border-radius-circle;
       transform: translateX(-50%);
 
@@ -359,7 +360,7 @@ $token-vars: map.merge(meta.module-variables('inputToken'), meta.module-variable
         display: block;
         width: 100%;
         height: 100%;
-        background: var(--color-bg-white);
+        background: var(string.unquote('#{global.$sd-cssvars-prefix}-color-bg-white'));
         border-radius: global.$border-radius-circle;
         content: '';
       }

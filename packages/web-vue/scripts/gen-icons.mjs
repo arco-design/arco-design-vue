@@ -48,75 +48,96 @@ const getIconVue = ({ name, componentName, svgHtml }) => `<template>
   ${svgHtml}
 </template>
 
-<script lang="ts">
-import { defineComponent, computed, CSSProperties } from 'vue';
-import { getPrefixCls } from '../../_utils/global-config';
-import { isNumber } from '../../_utils/is';
+<script setup lang="ts">
+  import type { CSSProperties } from 'vue';
+  import { computed } from 'vue';
 
-export default defineComponent({
-  name: '${componentName}',
-  props: {
-    size: {
-      type: [Number, String],
-    },
-    strokeWidth: {
-      type: Number,
-      default: 4
-    },
-    strokeLinecap: {
-      type: String,
-      default: 'butt',
-      validator: (value: any) => {
-        return ['butt', 'round', 'square'].includes(value);
-      }
-    },
-    strokeLinejoin: {
-      type: String,
-      default: 'miter',
-      validator: (value: any) => {
-        return ['arcs', 'bevel', 'miter', 'miter-clip', 'round'].includes(value);
-      }
-    },
-    rotate: Number,
-    spin: Boolean
-  },
-  emits: {
-    click: (ev: MouseEvent) => true,
-  },
-  setup(props, { emit }) {
-    const prefixCls = getPrefixCls('icon');
-    const cls = computed(() => [
-      prefixCls,
-      \`${'${prefixCls}'}-${name.replace('icon-', '')}\`,
-      { [\`${'${prefixCls}'}-spin\`]: props.spin },
-    ]);
-    const svgAttrs = computed<Record<string, string | number>>(() => ({
-      'stroke-width': props.strokeWidth,
-      'stroke-linecap': props.strokeLinecap,
-      'stroke-linejoin': props.strokeLinejoin,
-    }));
-    const innerStyle = computed(() => {
-      const styles: CSSProperties = {};
-      if (props.size) {
-        styles.fontSize = isNumber(props.size) ? \`${'${props.size}'}px\` : props.size;
-      }
-      if (props.rotate) {
-        styles.transform = \`rotate(${'${props.rotate}'}deg)\`;
-      }
-      return styles;
-    });
-    const onClick = (ev: MouseEvent) => {
-      emit('click', ev);
-    };
+  import { getPrefixCls } from '../../_utils/global-config';
+  import { isNumber } from '../../_utils/is';
 
-    return {
-      cls,
-      innerStyle,
-      svgAttrs,
-      onClick,
-    };
+  defineOptions({ name: '${componentName}' });
+
+  interface Props {
+    /**
+     * @zh 图标大小
+     * @en Icon size
+     */
+    size?: number | string;
+    /**
+     * @zh 描边宽度
+     * @en Stroke width
+     */
+    strokeWidth?: number;
+    /**
+     * @zh 描边端点样式
+     * @en Stroke linecap
+     * @values 'butt', 'round', 'square'
+     */
+    strokeLinecap?: 'butt' | 'round' | 'square';
+    /**
+     * @zh 描边连接样式
+     * @en Stroke linejoin
+     * @values 'arcs', 'bevel', 'miter', 'miter-clip', 'round'
+     */
+    strokeLinejoin?: 'arcs' | 'bevel' | 'miter' | 'miter-clip' | 'round';
+    /**
+     * @zh 旋转角度
+     * @en Rotate degree
+     */
+    rotate?: number;
+    /**
+     * @zh 是否开启旋转动画
+     * @en Whether to enable spin animation
+     */
+    spin?: boolean;
   }
-});
+
+  const {
+    size,
+    strokeWidth = 4,
+    strokeLinecap = 'butt',
+    strokeLinejoin = 'miter',
+    rotate,
+    spin,
+  } = defineProps<Props>();
+
+  const emit = defineEmits<{
+    /**
+     * @zh 点击图标时触发
+     * @en Triggered when icon is clicked
+     * @param {MouseEvent} ev
+     */
+    click: [_ev: MouseEvent];
+  }>();
+
+  const prefixCls = getPrefixCls('icon');
+
+  const cls = computed(() => [
+    prefixCls,
+    \`\${prefixCls}-${name.replace('icon-', '')}\`,
+    { [\`\${prefixCls}-spin\`]: spin },
+  ]);
+
+  const svgAttrs = computed<Record<string, string | number>>(() => ({
+    'stroke-width': strokeWidth,
+    'stroke-linecap': strokeLinecap,
+    'stroke-linejoin': strokeLinejoin,
+  }));
+
+  const innerStyle = computed(() => {
+    const styles: CSSProperties = {};
+    if (size) {
+      styles.fontSize = isNumber(size) ? \`\${size}px\` : size;
+    }
+    if (rotate) {
+      styles.transform = \`rotate(\${rotate}deg)\`;
+    }
+    return styles;
+  });
+
+  const onClick = (ev: MouseEvent) => {
+    emit('click', ev);
+  };
 </script>
 `;
 

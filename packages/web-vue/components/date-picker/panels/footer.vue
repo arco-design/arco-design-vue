@@ -24,46 +24,40 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { defineComponent } from 'vue';
-
+<script setup lang="ts">
   import Button from '../../button';
   import Link from '../../link';
   import useInjectDatePickerTransform from '../hooks/use-inject-datepicker-transform';
 
-  export default defineComponent({
-    name: 'PanelFooter',
-    components: {
-      Link,
-      Button,
+  defineOptions({ name: 'PanelFooter' });
+
+  const props = defineProps({
+    prefixCls: {
+      type: String,
+      required: true,
     },
-    props: {
-      prefixCls: {
-        type: String,
-        required: true,
-      },
-      showTodayBtn: {
-        type: Boolean,
-      },
-      showConfirmBtn: {
-        type: Boolean,
-      },
-      confirmBtnDisabled: {
-        type: Boolean,
-      },
+    showTodayBtn: {
+      type: Boolean,
     },
-    emits: ['today-btn-click', 'confirm-btn-click'],
-    setup(_, { emit }) {
-      const datePickerT = useInjectDatePickerTransform();
-      return {
-        datePickerT,
-        onTodayClick: () => {
-          emit('today-btn-click');
-        },
-        onConfirmBtnClick: () => {
-          emit('confirm-btn-click');
-        },
-      };
+    showConfirmBtn: {
+      type: Boolean,
+    },
+    confirmBtnDisabled: {
+      type: Boolean,
     },
   });
+
+  const emit = defineEmits<{
+    'today-btn-click': [];
+    'confirm-btn-click': [];
+  }>();
+
+  const datePickerT = useInjectDatePickerTransform();
+
+  const onTodayClick = () => {
+    emit('today-btn-click');
+  };
+  const onConfirmBtnClick = () => {
+    emit('confirm-btn-click');
+  };
 </script>

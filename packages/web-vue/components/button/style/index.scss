@@ -19,7 +19,7 @@ $token-var-aliases: (
   $value: map.get($token-var-aliases, $name);
 
   @if $value == null {
-    $value: map.get(meta.module-variables('token'), $name);
+    $value: map.get(meta.module-variables(token), $name);
   }
 
   @if $value == null {
@@ -148,8 +148,7 @@ $token-var-aliases: (
     &.#{$btn-prefix-cls}-disabled {
       color: token-var('btn-#{$type}-color-text_disabled');
       background-color: token-var('btn-#{$type}-color-bg_disabled');
-      border: $btn-size-default-border-width token-var('btn-#{$type}-border-style')
-        token-var('btn-#{$type}-color-border_disabled');
+      border-color: token-var('btn-#{$type}-color-border_disabled');
       cursor: not-allowed;
     }
   }
@@ -188,8 +187,7 @@ $token-var-aliases: (
     &.#{$btn-prefix-cls}-disabled {
       color: token-var('btn-#{$type}-color-text_#{$status}_disabled');
       background-color: token-var('btn-#{$type}-color-bg_#{$status}_disabled');
-      border: $btn-size-default-border-width token-var('btn-#{$type}-border-style')
-        token-var('btn-#{$type}-color-border_#{$status}_disabled');
+      border-color: token-var('btn-#{$type}-color-border_#{$status}_disabled');
     }
   }
 }

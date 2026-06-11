@@ -25,10 +25,9 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
   import {
     computed,
-    defineComponent,
     getCurrentInstance,
     inject,
     onBeforeUnmount,
@@ -46,134 +45,117 @@
   import { stepsInjectionKey } from './context';
   import { StepStatus, StepsType } from './interface';
 
-  export default defineComponent({
-    name: 'Step',
-    components: {
-      IconCheck,
-      IconClose,
-    },
-    props: {
-      /**
-       * @zh 步骤的标题
-       * @en Title of the step
-       */
-      title: String,
-      /**
-       * @zh 步骤的描述信息
-       * @en Description of the step
-       */
-      description: String,
-      /**
-       * @zh 步骤的状态
-       * @en Status of the step
-       * @values 'wait', 'process', 'finish', 'error'
-       */
-      status: {
-        type: String as PropType<StepStatus>,
-      },
-      /**
-       * @zh 是否禁用
-       * @en Whether to disable
-       */
-      disabled: {
-        type: Boolean,
-        default: false,
-      },
+  defineOptions({ name: 'Step' });
+
+  const props = defineProps({
+    /**
+     * @zh 步骤的标题
+     * @en Title of the step
+     */
+    title: String,
+    /**
+     * @zh 步骤的描述信息
+     * @en Description of the step
+     */
+    description: String,
+    /**
+     * @zh 步骤的状态
+     * @en Status of the step
+     * @values 'wait', 'process', 'finish', 'error'
+     */
+    status: {
+      type: String as PropType<StepStatus>,
     },
     /**
-     * @zh 节点
-     * @en Node
-     * @slot node
-     * @binding {number} step
-     * @binding {string} status
+     * @zh 是否禁用
+     * @en Whether to disable
      */
-    /**
-     * @zh 图标
-     * @en Icon
-     * @slot icon
-     * @binding {number} step
-     * @binding {string} status
-     */
-    /**
-     * @zh 描述内容
-     * @en Description
-     * @slot description
-     */
-    setup(props) {
-      const prefixCls = getPrefixCls('steps-item');
-      const instance = getCurrentInstance();
-      const iconCls = getPrefixCls('steps-icon');
-
-      const stepsCtx = inject(stepsInjectionKey, undefined);
-
-      const type = computed(() => stepsCtx?.type ?? 'default');
-
-      const itemRef = ref<HTMLElement>();
-      const { computedIndex } = useIndex({
-        itemRef,
-        selector: `.${prefixCls}`,
-        parentClassName: stepsCtx?.parentCls,
-      });
-      const stepNumber = computed(() => computedIndex.value + 1);
-
-      const computedStatus = computed(
-        () => props.status ?? stepsCtx?.getStatus(stepNumber.value) ?? 'process',
-      );
-
-      const nextStepError = computed(
-        () => stepsCtx?.errorSteps.includes(stepNumber.value + 1) ?? false,
-      );
-
-      if (instance) {
-        stepsCtx?.addItem(
-          instance.uid,
-          reactive({
-            step: stepNumber,
-            status: computedStatus,
-          }),
-        );
-      }
-
-      onBeforeUnmount(() => {
-        if (instance) {
-          stepsCtx?.removeItem(instance.uid);
-        }
-      });
-
-      const showTail = computed(
-        () =>
-          !stepsCtx?.lineLess &&
-          (stepsCtx?.labelPlacement === 'vertical' || stepsCtx?.direction === 'vertical'),
-      );
-
-      const handleClick = (ev: Event) => {
-        if (!props.disabled) {
-          stepsCtx?.onClick(stepNumber.value, ev);
-        }
-      };
-
-      const cls = computed(() => [
-        prefixCls,
-        `${prefixCls}-${computedStatus.value}`,
-        {
-          [`${prefixCls}-active`]: stepNumber.value === stepsCtx?.current,
-          [`${prefixCls}-next-error`]: nextStepError.value,
-          [`${prefixCls}-disabled`]: props.disabled,
-          // [`${prefixCls}-custom`]: !!icon,
-        },
-      ]);
-
-      return {
-        prefixCls,
-        iconCls,
-        cls,
-        itemRef,
-        showTail,
-        stepNumber,
-        computedStatus,
-        type,
-        handleClick,
-      };
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   });
+
+  /**
+   * @zh 节点
+   * @en Node
+   * @slot node
+   * @binding {number} step
+   * @binding {string} status
+   */
+  /**
+   * @zh 图标
+   * @en Icon
+   * @slot icon
+   * @binding {number} step
+   * @binding {string} status
+   */
+  /**
+   * @zh 描述内容
+   * @en Description
+   * @slot description
+   */
+
+  const prefixCls = getPrefixCls('steps-item');
+  const instance = getCurrentInstance();
+  const iconCls = getPrefixCls('steps-icon');
+
+  const stepsCtx = inject(stepsInjectionKey, undefined);
+
+  const type = computed(() => stepsCtx?.type ?? 'default');
+
+  const itemRef = ref<HTMLElement>();
+  const { computedIndex } = useIndex({
+    itemRef,
+    selector: `.${prefixCls}`,
+    parentClassName: stepsCtx?.parentCls,
+  });
+  const stepNumber = computed(() => computedIndex.value + 1);
+
+  const computedStatus = computed(
+    () => props.status ?? stepsCtx?.getStatus(stepNumber.value) ?? 'process',
+  );
+
+  const nextStepError = computed(
+    () => stepsCtx?.errorSteps.includes(stepNumber.value + 1) ?? false,
+  );
+
+  if (instance) {
+    stepsCtx?.addItem(
+      instance.uid,
+      reactive({
+        step: stepNumber,
+        status: computedStatus,
+      }),
+    );
+  }
+
+  onBeforeUnmount(() => {
+    if (instance) {
+      stepsCtx?.removeItem(instance.uid);
+    }
+  });
+
+  const showTail = computed(
+    () =>
+      !stepsCtx?.lineLess &&
+      (stepsCtx?.labelPlacement === 'vertical' || stepsCtx?.direction === 'vertical'),
+  );
+
+  const handleClick = (ev: Event) => {
+    if (!props.disabled) {
+      stepsCtx?.onClick(stepNumber.value, ev);
+    }
+  };
+
+  const cls = computed(() => [
+    prefixCls,
+    `${prefixCls}-${computedStatus.value}`,
+    {
+      [`${prefixCls}-active`]: stepNumber.value === stepsCtx?.current,
+      [`${prefixCls}-next-error`]: nextStepError.value,
+      [`${prefixCls}-disabled`]: props.disabled,
+      // [`${prefixCls}-custom`]: !!icon,
+    },
+  ]);
 </script>

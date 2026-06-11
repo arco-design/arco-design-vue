@@ -2,19 +2,12 @@
   <article :class="classNames"><slot /></article>
 </template>
 
-<script lang="ts">
-  import { defineComponent } from 'vue';
-
+<script setup lang="ts">
   import { getPrefixCls } from '../_utils/global-config';
 
-  export default defineComponent({
-    name: 'Typography',
-    setup() {
-      const prefixCls = getPrefixCls('typography');
+  defineOptions({ name: 'Typography' });
 
-      return {
-        classNames: [prefixCls],
-      };
-    },
-  });
+  const prefixCls = getPrefixCls('typography');
+
+  const classNames = [prefixCls];
 </script>

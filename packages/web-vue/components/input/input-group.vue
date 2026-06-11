@@ -4,19 +4,10 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { defineComponent } from 'vue';
-
+<script setup lang="ts">
   import { getPrefixCls } from '../_utils/global-config';
 
-  export default defineComponent({
-    name: 'InputGroup',
-    setup() {
-      const prefixCls = getPrefixCls('input-group');
+  defineOptions({ name: 'InputGroup' });
 
-      return {
-        prefixCls,
-      };
-    },
-  });
+  const prefixCls = getPrefixCls('input-group');
 </script>

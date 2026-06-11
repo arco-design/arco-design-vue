@@ -42,6 +42,20 @@
         "no-console": "error",
         "no-unused-vars": "error"
       }
+    },
+    {
+      "files": ["packages/web-vue/**/*.vue"],
+      "plugins": ["vue"],
+      "rules": {
+        "vue/no-reserved-component-names": [
+          "error",
+          {
+            // 严格区分大小写
+            // @see https://oxc.rs/docs/guide/usage/linter/rules/vue/no-reserved-component-names.html#htmlelementcasesensitive
+            "htmlElementCaseSensitive": true
+          }
+        ]
+      }
     }
   ]
 }

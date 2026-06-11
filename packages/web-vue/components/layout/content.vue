@@ -4,25 +4,15 @@
   </main>
 </template>
 
-<script>
-  import { defineComponent } from 'vue';
-
+<script setup lang="ts">
   import { getPrefixCls } from '../_utils/global-config';
 
-  export default defineComponent({
-    name: 'LayoutContent',
-    /**
-     * @zh 内容
-     * @en Content
-     * @slot default
-     */
-    setup() {
-      const prefixCls = getPrefixCls('layout-content');
-      const classNames = [prefixCls];
-
-      return {
-        classNames,
-      };
-    },
-  });
+  defineOptions({ name: 'LayoutContent' });
+  /**
+   * @zh 内容
+   * @en Content
+   * @slot default
+   */
+  const prefixCls = getPrefixCls('layout-content');
+  const classNames = [prefixCls];
 </script>

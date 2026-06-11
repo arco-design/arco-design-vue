@@ -7,8 +7,8 @@
   </span>
 </template>
 
-<script lang="ts">
-  import { computed, defineComponent } from 'vue';
+<script setup lang="ts">
+  import { computed } from 'vue';
 
   import { getPrefixCls } from '../_utils/global-config';
   import IconCheckCircleFill from '../icon/icon-check-circle-fill';
@@ -16,27 +16,15 @@
   import IconExclamationCircleFill from '../icon/icon-exclamation-circle-fill';
   import IconLoading from '../icon/icon-loading';
 
-  export default defineComponent({
-    name: 'FeedbackIcon',
-    components: {
-      IconLoading,
-      IconCheckCircleFill,
-      IconExclamationCircleFill,
-      IconCloseCircleFill,
-    },
-    props: {
-      type: {
-        type: String,
-      },
-    },
-    setup(props) {
-      const prefixCls = getPrefixCls('feedback-icon');
+  defineOptions({ name: 'FeedbackIcon' });
 
-      const cls = computed(() => [prefixCls, `${prefixCls}-status-${props.type}`]);
-
-      return {
-        cls,
-      };
+  const props = defineProps({
+    type: {
+      type: String,
     },
   });
+
+  const prefixCls = getPrefixCls('feedback-icon');
+
+  const cls = computed(() => [prefixCls, `${prefixCls}-status-${props.type}`]);
 </script>

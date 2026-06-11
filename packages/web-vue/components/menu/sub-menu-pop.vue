@@ -92,8 +92,8 @@
   </Trigger>
 </template>
 
-<script lang="ts">
-  import { computed, defineComponent, ref, toRefs } from 'vue';
+<script setup lang="ts">
+  import { computed, ref, toRefs } from 'vue';
 
   import RenderFunction from '../_components/render-function';
   import { getPrefixCls } from '../_utils/global-config';
@@ -107,101 +107,76 @@
   import useMenuContext from './hooks/use-menu-context';
   import MenuIndent from './indent.vue';
 
-  export default defineComponent({
-    name: 'SubMenuPop',
-    components: {
-      Menu,
-      Trigger,
-      MenuIndent,
-      RenderFunction,
-      Ellipsis,
+  defineOptions({ name: 'SubMenuPop', inheritAttrs: false });
+
+  const props = defineProps({
+    title: {
+      type: String,
     },
-    inheritAttrs: false,
-    props: {
-      title: {
-        type: String,
-      },
-      selectable: {
-        type: Boolean,
-      },
-      isChildrenSelected: {
-        type: Boolean,
-      },
-      popupMaxHeight: {
-        type: [Boolean, Number],
-        default: undefined,
-      },
+    selectable: {
+      type: Boolean,
     },
-    setup(props) {
-      const { key } = useMenu();
-      const { level } = useLevel();
-      const { selectable, isChildrenSelected, popupMaxHeight } = toRefs(props);
-      const menuContext = useMenuContext();
-      const { onSubMenuClick, onMenuItemClick } = menuContext;
-
-      const menuPrefixCls = computed(() => menuContext.prefixCls);
-      const mode = computed(() => menuContext.mode);
-      const selectedKeys = computed(() => menuContext.selectedKeys || []);
-
-      const prefixCls = computed(() => `${menuPrefixCls.value}-pop`);
-      const isSelected = computed(
-        () =>
-          (selectable.value && selectedKeys.value.includes(key.value)) || isChildrenSelected.value,
-      );
-      const classNames = computed(() => [
-        `${prefixCls.value}`,
-        `${prefixCls.value}-header`,
-        {
-          [`${menuPrefixCls.value}-selected`]: isSelected.value,
-        },
-      ]);
-      const needPopOnBottom = computed(() => mode.value === 'horizontal' && !menuContext.inTrigger);
-      const popVisible = ref(false);
-      const setPopVisible = (val: boolean) => {
-        popVisible.value = val;
-      };
-      const triggerPrefixCls = getPrefixCls('trigger');
-      const triggerClassNames = computed(() => [
-        `${prefixCls.value}-trigger`,
-        {
-          [`${prefixCls.value}-trigger-dark`]: menuContext.theme === 'dark',
-        },
-        (menuContext.triggerProps as Record<string, unknown> | undefined)?.class,
-      ]);
-      const triggerProps = computed(() =>
-        omit((menuContext.triggerProps || {}) as Record<string, unknown>, ['class']),
-      );
-
-      return {
-        menuPrefixCls,
-        mode,
-        level,
-        classNames,
-        isSelected,
-        selectedKeys,
-        needPopOnBottom,
-        popVisible,
-        triggerPrefixCls,
-        triggerClassNames,
-        triggerProps,
-        menuContext,
-        popupMenuStyles: computed(() => {
-          const maxHeight = popupMaxHeight.value ?? menuContext.popupMaxHeight;
-          if (isNumber(maxHeight)) return { maxHeight: `${maxHeight}px` };
-          return maxHeight ? {} : { maxHeight: 'unset' };
-        }),
-        onClick: () => {
-          onSubMenuClick && onSubMenuClick(key.value, level.value);
-          selectable.value && onMenuItemClick && onMenuItemClick(key.value);
-        },
-        onMenuItemClick: (key: string) => {
-          onMenuItemClick && onMenuItemClick(key);
-          setPopVisible(false);
-        },
-        onVisibleChange: (visible: boolean) => {
-          setPopVisible(visible);
-        },
-      };
+    isChildrenSelected: {
+      type: Boolean,
+    },
+    popupMaxHeight: {
+      type: [Boolean, Number],
+      default: undefined,
     },
   });
+
+  const { key } = useMenu();
+  const { level } = useLevel();
+  const { selectable, isChildrenSelected, popupMaxHeight } = toRefs(props);
+  const menuContext = useMenuContext();
+  const { onSubMenuClick, onMenuItemClick: contextMenuItemClick } = menuContext;
+
+  const menuPrefixCls = computed(() => menuContext.prefixCls);
+  const mode = computed(() => menuContext.mode);
+  const selectedKeys = computed(() => menuContext.selectedKeys || []);
+
+  const prefixCls = computed(() => `${menuPrefixCls.value}-pop`);
+  const isSelected = computed(
+    () => (selectable.value && selectedKeys.value.includes(key.value)) || isChildrenSelected.value,
+  );
+  const classNames = computed(() => [
+    `${prefixCls.value}`,
+    `${prefixCls.value}-header`,
+    {
+      [`${menuPrefixCls.value}-selected`]: isSelected.value,
+    },
+  ]);
+  const needPopOnBottom = computed(() => mode.value === 'horizontal' && !menuContext.inTrigger);
+  const popVisible = ref(false);
+  const setPopVisible = (val: boolean) => {
+    popVisible.value = val;
+  };
+  const triggerPrefixCls = getPrefixCls('trigger');
+  const triggerClassNames = computed(() => [
+    `${prefixCls.value}-trigger`,
+    {
+      [`${prefixCls.value}-trigger-dark`]: menuContext.theme === 'dark',
+    },
+    (menuContext.triggerProps as Record<string, unknown> | undefined)?.class,
+  ]);
+  const triggerProps = computed(() =>
+    omit((menuContext.triggerProps || {}) as Record<string, unknown>, ['class']),
+  );
+
+  const popupMenuStyles = computed(() => {
+    const maxHeight = popupMaxHeight!.value ?? menuContext.popupMaxHeight;
+    if (isNumber(maxHeight)) return { maxHeight: `${maxHeight}px` };
+    return maxHeight ? {} : { maxHeight: 'unset' };
+  });
+  const onClick = () => {
+    onSubMenuClick && onSubMenuClick(key.value, level.value);
+    selectable.value && contextMenuItemClick && contextMenuItemClick(key.value);
+  };
+  const onMenuItemClick = (key: string) => {
+    contextMenuItemClick && contextMenuItemClick(key);
+    setPopVisible(false);
+  };
+  const onVisibleChange = (visible: boolean) => {
+    setPopVisible(visible);
+  };
 </script>

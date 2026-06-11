@@ -13,9 +13,9 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
   import type { PropType } from 'vue';
-  import { computed, defineComponent, inject } from 'vue';
+  import { computed, inject } from 'vue';
 
   import type { TabData } from './interface';
 
@@ -24,64 +24,55 @@
   import IconClose from '../icon/icon-close';
   import { TabsContext, tabsInjectionKey } from './context';
 
-  export default defineComponent({
-    name: 'TabsTab',
-    components: {
-      IconHover,
-      IconClose,
+  defineOptions({ name: 'TabsTab' });
+
+  const props = defineProps({
+    tab: {
+      type: Object as PropType<TabData>,
+      required: true,
     },
-    props: {
-      tab: {
-        type: Object as PropType<TabData>,
-        required: true,
-      },
-      active: Boolean,
-      editable: Boolean,
-    },
-    emits: ['click', 'delete'],
-    setup(props, { emit }) {
-      const prefixCls = getPrefixCls('tabs-tab');
-      const tabsCtx = inject<Partial<TabsContext>>(tabsInjectionKey, {});
-      const handleClick = (e: Event) => {
-        if (!props.tab.disabled) {
-          emit('click', props.tab.key, e);
-        }
-      };
-
-      const onKeyDown = (ev: KeyboardEvent) => {
-        if (ev.key === 'Enter') {
-          handleClick(ev);
-        }
-      };
-
-      const eventHandlers = computed(() => {
-        return Object.assign(
-          tabsCtx.trigger === 'click' ? { onClick: handleClick } : { onMouseover: handleClick },
-          { onKeydown: onKeyDown },
-        );
-      });
-
-      const handleDelete = (e: Event) => {
-        if (!props.tab.disabled) {
-          emit('delete', props.tab.key, e);
-        }
-      };
-
-      const cls = computed(() => [
-        prefixCls,
-        {
-          [`${prefixCls}-active`]: props.active,
-          [`${prefixCls}-closable`]: props.editable && props.tab.closable,
-          [`${prefixCls}-disabled`]: props.tab.disabled,
-        },
-      ]);
-
-      return {
-        prefixCls,
-        cls,
-        eventHandlers,
-        handleDelete,
-      };
-    },
+    active: Boolean,
+    editable: Boolean,
   });
+
+  const emit = defineEmits<{
+    click: [_key: string | number, _e: Event];
+    delete: [_key: string | number, _e: Event];
+  }>();
+
+  const prefixCls = getPrefixCls('tabs-tab');
+  const tabsCtx = inject<Partial<TabsContext>>(tabsInjectionKey, {});
+  const handleClick = (e: Event) => {
+    if (!props.tab.disabled) {
+      emit('click', props.tab.key, e);
+    }
+  };
+
+  const onKeyDown = (ev: KeyboardEvent) => {
+    if (ev.key === 'Enter') {
+      handleClick(ev);
+    }
+  };
+
+  const eventHandlers = computed(() => {
+    return Object.assign(
+      tabsCtx.trigger === 'click' ? { onClick: handleClick } : { onMouseover: handleClick },
+      { onKeydown: onKeyDown },
+    );
+  });
+
+  const handleDelete = (e: Event) => {
+    if (!props.tab.disabled) {
+      emit('delete', props.tab.key, e);
+    }
+  };
+
+  const cls = computed(() => [
+    prefixCls,
+    {
+      [`${prefixCls}-active`]: props.active,
+      [`${prefixCls}-closable`]: props.editable && props.tab.closable,
+      [`${prefixCls}-disabled`]: props.tab.disabled,
+    },
+  ]);
 </script>

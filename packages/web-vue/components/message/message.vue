@@ -25,9 +25,9 @@
   </li>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
   import type { PropType } from 'vue';
-  import { defineComponent, onMounted, onUnmounted, onUpdated } from 'vue';
+  import { onMounted, onUnmounted, onUpdated } from 'vue';
 
   import AIconHover from '../_components/icon-hover.vue';
   import { MESSAGE_TYPES, MessageType } from '../_utils/constant';
@@ -39,97 +39,81 @@
   import IconInfoCircleFill from '../icon/icon-info-circle-fill';
   import IconLoading from '../icon/icon-loading';
 
-  export default defineComponent({
-    name: 'Message',
-    components: {
-      AIconHover,
-      IconInfoCircleFill,
-      IconCheckCircleFill,
-      IconExclamationCircleFill,
-      IconCloseCircleFill,
-      IconClose,
-      IconLoading,
+  defineOptions({ name: 'Message' });
+
+  const props = defineProps({
+    type: {
+      type: String as PropType<MessageType | 'loading' | 'normal'>,
+      default: 'info',
     },
-    props: {
-      type: {
-        type: String as PropType<MessageType | 'loading' | 'normal'>,
-        default: 'info',
-      },
-      closable: {
-        type: Boolean,
-        default: false,
-      },
-      showIcon: {
-        type: Boolean,
-        default: true,
-      },
-      duration: {
-        type: Number,
-        default: 3000,
-      },
-      resetOnUpdate: {
-        type: Boolean,
-        default: false,
-      },
-      resetOnHover: {
-        type: Boolean,
-        default: false,
-      },
+    closable: {
+      type: Boolean,
+      default: false,
     },
-    emits: ['close'],
-    setup(props, { emit }) {
-      const prefixCls = getPrefixCls('message');
-      let timer = 0;
-
-      const handleClose = () => {
-        emit('close');
-      };
-
-      const startTimer = () => {
-        if (props.duration > 0) {
-          timer = window.setTimeout(handleClose, props.duration);
-        }
-      };
-
-      const clearTimer = () => {
-        if (timer) {
-          window.clearTimeout(timer);
-          timer = 0;
-        }
-      };
-
-      onMounted(() => {
-        startTimer();
-      });
-
-      onUpdated(() => {
-        if (props.resetOnUpdate) {
-          clearTimer();
-          startTimer();
-        }
-      });
-
-      onUnmounted(() => {
-        clearTimer();
-      });
-
-      const handleMouseEnter = () => {
-        if (props.resetOnHover) {
-          clearTimer();
-        }
-      };
-
-      const handleMouseLeave = () => {
-        if (props.resetOnHover) {
-          startTimer();
-        }
-      };
-      return {
-        handleMouseEnter,
-        handleMouseLeave,
-        prefixCls,
-        handleClose,
-      };
+    showIcon: {
+      type: Boolean,
+      default: true,
+    },
+    duration: {
+      type: Number,
+      default: 3000,
+    },
+    resetOnUpdate: {
+      type: Boolean,
+      default: false,
+    },
+    resetOnHover: {
+      type: Boolean,
+      default: false,
     },
   });
+
+  const emit = defineEmits<{ close: [] }>();
+
+  const prefixCls = getPrefixCls('message');
+  let timer = 0;
+
+  const handleClose = () => {
+    emit('close');
+  };
+
+  const startTimer = () => {
+    if (props.duration > 0) {
+      timer = window.setTimeout(handleClose, props.duration);
+    }
+  };
+
+  const clearTimer = () => {
+    if (timer) {
+      window.clearTimeout(timer);
+      timer = 0;
+    }
+  };
+
+  onMounted(() => {
+    startTimer();
+  });
+
+  onUpdated(() => {
+    if (props.resetOnUpdate) {
+      clearTimer();
+      startTimer();
+    }
+  });
+
+  onUnmounted(() => {
+    clearTimer();
+  });
+
+  const handleMouseEnter = () => {
+    if (props.resetOnHover) {
+      clearTimer();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (props.resetOnHover) {
+      startTimer();
+    }
+  };
 </script>

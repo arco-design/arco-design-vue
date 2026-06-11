@@ -19,8 +19,8 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { defineComponent, PropType } from 'vue';
+<script setup lang="ts">
+  import { PropType } from 'vue';
 
   import RenderFunction from '../../_components/render-function';
   import { isFunction } from '../../_utils/is';
@@ -33,44 +33,41 @@
     shortcuts: ShortcutType[];
   }
 
-  export default defineComponent({
-    name: 'PanelShortcuts',
-    components: {
-      Button,
-      RenderFunction,
+  defineOptions({ name: 'PanelShortcuts' });
+
+  const props = defineProps({
+    prefixCls: {
+      type: String,
+      required: true,
     },
-    props: {
-      prefixCls: {
-        type: String,
-        required: true,
-      },
-      shortcuts: {
-        type: Array as PropType<ShortcutsProps['shortcuts']>,
-        default: () => [],
-      },
-      showNowBtn: {
-        type: Boolean,
-      },
+    shortcuts: {
+      type: Array as PropType<ShortcutsProps['shortcuts']>,
+      default: () => [],
     },
-    emits: ['item-click', 'item-mouse-enter', 'item-mouse-leave', 'now-click'],
-    setup(props: ShortcutsProps, { emit }) {
-      const datePickerT = useInjectDatePickerTransform();
-      return {
-        datePickerT,
-        onItemClick: (item: ShortcutType) => {
-          emit('item-click', item);
-        },
-        onItemMouseEnter: (item: ShortcutType) => {
-          emit('item-mouse-enter', item);
-        },
-        onItemMouseLeave: (item: ShortcutType) => {
-          emit('item-mouse-leave', item);
-        },
-        onNowClick: () => {
-          emit('now-click');
-        },
-        isFunction,
-      };
+    showNowBtn: {
+      type: Boolean,
     },
   });
+
+  const emit = defineEmits<{
+    'item-click': [_item: ShortcutType];
+    'item-mouse-enter': [_item: ShortcutType];
+    'item-mouse-leave': [_item: ShortcutType];
+    'now-click': [];
+  }>();
+
+  const datePickerT = useInjectDatePickerTransform();
+
+  const onItemClick = (item: ShortcutType) => {
+    emit('item-click', item);
+  };
+  const onItemMouseEnter = (item: ShortcutType) => {
+    emit('item-mouse-enter', item);
+  };
+  const onItemMouseLeave = (item: ShortcutType) => {
+    emit('item-mouse-leave', item);
+  };
+  const onNowClick = () => {
+    emit('now-click');
+  };
 </script>

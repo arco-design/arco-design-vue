@@ -75,8 +75,8 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { computed, defineComponent, inject, PropType, ref } from 'vue';
+<script setup lang="ts">
+  import { computed, inject, PropType, ref } from 'vue';
 
   import IconHover from '../_components/icon-hover.vue';
   import { getPrefixCls } from '../_utils/global-config';
@@ -90,104 +90,83 @@
   import { DataInfo, TransferItem } from './interface';
   import TransferListItem from './transfer-list-item';
 
-  export default defineComponent({
-    name: 'TransferView',
-    components: {
-      Empty,
-      Checkbox,
-      IconHover,
-      IconDelete,
-      InputSearch: Input.Search,
-      List,
-      TransferListItem,
-      Scrollbar,
+  defineOptions({ name: 'TransferView' });
+
+  const InputSearch = Input.Search;
+
+  const props = defineProps({
+    type: {
+      type: String as PropType<'source' | 'target'>,
     },
-    props: {
-      type: {
-        type: String as PropType<'source' | 'target'>,
-      },
-      dataInfo: {
-        type: Object as PropType<DataInfo>,
-        required: true,
-      },
-      title: String,
-      data: {
-        type: Array as PropType<TransferItem[]>,
-        required: true,
-      },
-      disabled: Boolean,
-      allowClear: Boolean,
-      selected: {
-        type: Array as PropType<string[]>,
-        required: true,
-      },
-      showSearch: Boolean,
-      showSelectAll: Boolean,
-      simple: Boolean,
-      inputSearchProps: {
-        type: Object,
-      },
+    dataInfo: {
+      type: Object as PropType<DataInfo>,
+      required: true,
     },
-    emits: ['search'],
-    setup(props, { emit }) {
-      const prefixCls = getPrefixCls('transfer-view');
-      const filter = ref('');
-      const transferCtx = inject(transferInjectionKey, undefined);
-      const countSelected = computed(() => props.dataInfo.selected.length);
-      const countRendered = computed(() => props.dataInfo.data.length);
-
-      const checked = computed(
-        () =>
-          props.dataInfo.selected.length > 0 &&
-          props.dataInfo.selected.length === props.dataInfo.allValidValues.length,
-      );
-      const indeterminate = computed(
-        () =>
-          props.dataInfo.selected.length > 0 &&
-          props.dataInfo.selected.length < props.dataInfo.allValidValues.length,
-      );
-
-      const handleSelectAllChange = (value: boolean | (string | number | boolean)[]) => {
-        const checked = Boolean(value);
-        if (checked) {
-          transferCtx?.onSelect([...props.selected, ...props.dataInfo.allValidValues]);
-        } else {
-          transferCtx?.onSelect(
-            props.selected.filter((value) => !props.dataInfo.allValidValues.includes(value)),
-          );
-        }
-      };
-
-      const filteredData = computed(() =>
-        props.dataInfo.data.filter((item) => {
-          if (filter.value) {
-            return item.label.includes(filter.value);
-          }
-          return true;
-        }),
-      );
-
-      const handleSearch = (value: string) => {
-        emit('search', value, props.type);
-      };
-
-      const handleClear = () => {
-        transferCtx?.moveTo(props.dataInfo.allValidValues, 'source');
-      };
-
-      return {
-        prefixCls,
-        filteredData,
-        filter,
-        checked,
-        indeterminate,
-        countSelected,
-        countRendered,
-        handleSelectAllChange,
-        handleSearch,
-        handleClear,
-        transferCtx,
-      };
+    title: String,
+    data: {
+      type: Array as PropType<TransferItem[]>,
+      required: true,
+    },
+    disabled: Boolean,
+    allowClear: Boolean,
+    selected: {
+      type: Array as PropType<string[]>,
+      required: true,
+    },
+    showSearch: Boolean,
+    showSelectAll: Boolean,
+    simple: Boolean,
+    inputSearchProps: {
+      type: Object,
     },
   });
+
+  const emit = defineEmits<{
+    search: [_value: string, _type: 'source' | 'target'];
+  }>();
+
+  const prefixCls = getPrefixCls('transfer-view');
+  const filter = ref('');
+  const transferCtx = inject(transferInjectionKey, undefined);
+  const countSelected = computed(() => props.dataInfo.selected.length);
+  const countRendered = computed(() => props.dataInfo.data.length);
+
+  const checked = computed(
+    () =>
+      props.dataInfo.selected.length > 0 &&
+      props.dataInfo.selected.length === props.dataInfo.allValidValues.length,
+  );
+  const indeterminate = computed(
+    () =>
+      props.dataInfo.selected.length > 0 &&
+      props.dataInfo.selected.length < props.dataInfo.allValidValues.length,
+  );
+
+  const handleSelectAllChange = (value: boolean | (string | number | boolean)[]) => {
+    const checked = Boolean(value);
+    if (checked) {
+      transferCtx?.onSelect([...props.selected, ...props.dataInfo.allValidValues]);
+    } else {
+      transferCtx?.onSelect(
+        props.selected.filter((value) => !props.dataInfo.allValidValues.includes(value)),
+      );
+    }
+  };
+
+  const filteredData = computed(() =>
+    props.dataInfo.data.filter((item) => {
+      if (filter.value) {
+        return item.label.includes(filter.value);
+      }
+      return true;
+    }),
+  );
+
+  const handleSearch = (value: string) => {
+    emit('search', value, props.type!);
+  };
+
+  const handleClear = () => {
+    transferCtx?.moveTo(props.dataInfo.allValidValues, 'source');
+  };
 </script>

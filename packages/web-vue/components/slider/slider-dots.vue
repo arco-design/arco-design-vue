@@ -11,43 +11,36 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { defineComponent, PropType } from 'vue';
+<script setup lang="ts">
+  import { PropType } from 'vue';
 
   import { DIRECTIONS } from '../_utils/constant';
   import { getPrefixCls } from '../_utils/global-config';
   import { getOffsetPercent, getPositionStyle } from './utils';
 
-  export default defineComponent({
-    name: 'SliderDots',
-    props: {
-      data: {
-        type: Array as PropType<Array<{ key: number; content: string; isActive: boolean }>>,
-        required: true,
-      },
-      min: {
-        type: Number,
-        required: true,
-      },
-      max: {
-        type: Number,
-        required: true,
-      },
-      direction: {
-        type: String as PropType<(typeof DIRECTIONS)[number]>,
-        default: 'horizontal',
-      },
+  defineOptions({ name: 'SliderDots' });
+
+  const props = defineProps({
+    data: {
+      type: Array as PropType<Array<{ key: number; content: string; isActive: boolean }>>,
+      required: true,
     },
-    setup(props) {
-      const prefixCls = getPrefixCls('slider');
-
-      const getStyle = (value: number) =>
-        getPositionStyle(getOffsetPercent(value, [props.min, props.max]), props.direction);
-
-      return {
-        prefixCls,
-        getStyle,
-      };
+    min: {
+      type: Number,
+      required: true,
+    },
+    max: {
+      type: Number,
+      required: true,
+    },
+    direction: {
+      type: String as PropType<(typeof DIRECTIONS)[number]>,
+      default: 'horizontal',
     },
   });
+
+  const prefixCls = getPrefixCls('slider');
+
+  const getStyle = (value: number) =>
+    getPositionStyle(getOffsetPercent(value, [props.min, props.max]), props.direction);
 </script>

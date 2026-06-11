@@ -29,8 +29,8 @@
   </Trigger>
 </template>
 
-<script lang="ts">
-  import { defineComponent, PropType, toRefs } from 'vue';
+<script setup lang="ts">
+  import { PropType, toRefs } from 'vue';
 
   import { useTrigger } from '../_hooks/use-trigger';
   import { getPrefixCls } from '../_utils/global-config';
@@ -39,129 +39,116 @@
   import DropdownOption from './dropdown-option.vue';
   import DropdownPanel from './dropdown-panel.vue';
 
-  export default defineComponent({
-    name: 'Dsubmenu',
-    components: {
-      Trigger,
-      DropdownPanel,
-      DropdownOption,
-      IconRight,
-    },
-    props: {
-      /**
-       * @zh 选项值（2.16.0 版本后暂无用处）
-       * @en Value (Not useful after version 2.16.0)
-       */
-      value: {
-        type: [String, Number],
-      },
-      /**
-       * @zh 是否禁用
-       * @en Whether to disable
-       * @version 2.10.0
-       */
-      disabled: {
-        type: Boolean,
-        default: false,
-      },
-      /**
-       * @zh 触发方式
-       * @en Trigger method
-       * @values 'hover','click'
-       * @version 2.10.0
-       */
-      trigger: {
-        type: [String, Array] as PropType<'hover' | 'click' | ('hover' | 'click')[]>,
-        default: 'click',
-      },
-      /**
-       * @zh 弹出位置
-       * @en Popup position
-       * @values 'rt','lt'
-       * @version 2.10.0
-       */
-      position: {
-        type: String as PropType<'rt' | 'lt'>,
-        default: 'rt',
-      },
-      /**
-       * @zh 弹出框是否可见
-       * @en Whether the popup is visible
-       * @vModel
-       */
-      popupVisible: {
-        type: Boolean,
-        default: undefined,
-      },
-      /**
-       * @zh 弹出框默认是否可见（非受控模式）
-       * @en Whether the popup is visible by default (uncontrolled mode)
-       */
-      defaultPopupVisible: {
-        type: Boolean,
-        default: false,
-      },
-      /**
-       * @zh 自定义选项属性
-       * @en Custom option properties
-       * @version 2.29.0
-       */
-      optionProps: {
-        type: Object,
-      },
-    },
-    emits: {
-      'update:popupVisible': (_visible: boolean) => true,
-      /**
-       * @zh 下拉框显示状态发生改变时触发
-       * @en Triggered when the display status of the drop-down box changes
-       * @property {boolean} visible
-       */
-      'popupVisibleChange': (_visible: boolean) => true,
-    },
+  defineOptions({ name: 'Dsubmenu' });
+
+  const props = defineProps({
     /**
-     * @zh 子菜单内容
-     * @en Submenu content
-     * @slot content
+     * @zh 选项值（2.16.0 版本后暂无用处）
+     * @en Value (Not useful after version 2.16.0)
      */
+    value: {
+      type: [String, Number],
+    },
     /**
-     * @zh 页脚
-     * @en Footer
-     * @slot footer
+     * @zh 是否禁用
+     * @en Whether to disable
      * @version 2.10.0
      */
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
     /**
-     * @zh 图标
-     * @en Icon
-     * @slot icon
+     * @zh 触发方式
+     * @en Trigger method
+     * @values 'hover','click'
+     * @version 2.10.0
+     */
+    trigger: {
+      type: [String, Array] as PropType<'hover' | 'click' | ('hover' | 'click')[]>,
+      default: 'click',
+    },
+    /**
+     * @zh 弹出位置
+     * @en Popup position
+     * @values 'rt','lt'
+     * @version 2.10.0
+     */
+    position: {
+      type: String as PropType<'rt' | 'lt'>,
+      default: 'rt',
+    },
+    /**
+     * @zh 弹出框是否可见
+     * @en Whether the popup is visible
+     * @vModel
+     */
+    popupVisible: {
+      type: Boolean,
+      default: undefined,
+    },
+    /**
+     * @zh 弹出框默认是否可见（非受控模式）
+     * @en Whether the popup is visible by default (uncontrolled mode)
+     */
+    defaultPopupVisible: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 自定义选项属性
+     * @en Custom option properties
      * @version 2.29.0
      */
-    setup(props, { emit }) {
-      const { defaultPopupVisible, popupVisible } = toRefs(props);
-      const prefixCls = getPrefixCls('dropdown');
-
-      const emitVisibleChange = (
-        event: 'update:popupVisible' | 'popupVisibleChange' | 'update:show' | 'showChange',
-        visible: boolean,
-      ) => {
-        if (event === 'update:popupVisible') {
-          emit('update:popupVisible', visible);
-        } else if (event === 'popupVisibleChange') {
-          emit('popupVisibleChange', visible);
-        }
-      };
-
-      const { computedPopupVisible, handlePopupVisibleChange } = useTrigger({
-        defaultPopupVisible,
-        popupVisible,
-        emit: emitVisibleChange,
-      });
-
-      return {
-        prefixCls,
-        computedPopupVisible,
-        handlePopupVisibleChange,
-      };
+    optionProps: {
+      type: Object,
     },
+  });
+
+  const emit = defineEmits<{
+    'update:popupVisible': [_visible: boolean];
+    /**
+     * @zh 下拉框显示状态发生改变时触发
+     * @en Triggered when the display status of the drop-down box changes
+     * @property {boolean} visible
+     */
+    'popupVisibleChange': [_visible: boolean];
+  }>();
+  /**
+   * @zh 子菜单内容
+   * @en Submenu content
+   * @slot content
+   */
+  /**
+   * @zh 页脚
+   * @en Footer
+   * @slot footer
+   * @version 2.10.0
+   */
+  /**
+   * @zh 图标
+   * @en Icon
+   * @slot icon
+   * @version 2.29.0
+   */
+
+  const { defaultPopupVisible, popupVisible } = toRefs(props);
+  const prefixCls = getPrefixCls('dropdown');
+
+  const emitVisibleChange = (
+    event: 'update:popupVisible' | 'popupVisibleChange' | 'update:show' | 'showChange',
+    visible: boolean,
+  ) => {
+    if (event === 'update:popupVisible') {
+      emit('update:popupVisible', visible);
+    } else if (event === 'popupVisibleChange') {
+      emit('popupVisibleChange', visible);
+    }
+  };
+
+  const { computedPopupVisible, handlePopupVisibleChange } = useTrigger({
+    defaultPopupVisible,
+    popupVisible,
+    emit: emitVisibleChange,
   });
 </script>

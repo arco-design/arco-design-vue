@@ -27,15 +27,8 @@
   </ResizeObserver>
 </template>
 
-<script lang="ts">
-  import {
-    defineComponent,
-    getCurrentInstance,
-    inject,
-    onBeforeUnmount,
-    onMounted,
-    ref,
-  } from 'vue';
+<script setup lang="ts">
+  import { getCurrentInstance, inject, onBeforeUnmount, onMounted, ref } from 'vue';
 
   import ResizeObserver from '../_components/resize-observer-v2';
   import { getPrefixCls } from '../_utils/global-config';
@@ -44,63 +37,50 @@
   import Tooltip from '../tooltip';
   import { formInjectionKey } from './context';
 
-  export default defineComponent({
-    name: 'FormItemLabel',
-    components: {
-      ResizeObserver,
-      Tooltip,
-      IconQuestionCircle,
+  defineOptions({ name: 'FormItemLabel' });
+
+  const props = defineProps({
+    required: {
+      type: Boolean,
+      default: false,
     },
-    props: {
-      required: {
-        type: Boolean,
-        default: false,
-      },
-      showColon: {
-        type: Boolean,
-        default: false,
-      },
-      component: {
-        type: String,
-        default: 'label',
-      },
-      asteriskPosition: {
-        type: String,
-        default: 'start',
-      },
-      tooltip: {
-        type: String,
-      },
-      attrs: Object,
+    showColon: {
+      type: Boolean,
+      default: false,
     },
-    setup() {
-      const prefixCls = getPrefixCls('form-item-label');
-      const formCtx = inject(formInjectionKey, undefined);
-      const instance = getCurrentInstance();
-      const labelRef = ref<HTMLElement>();
-
-      const handleResize = () => {
-        // TODO: There is no effective?
-        if (labelRef.value && isNumber(labelRef.value.offsetWidth)) {
-          formCtx?.setLabelWidth(labelRef.value.offsetWidth, instance?.uid);
-        }
-      };
-
-      onMounted(() => {
-        if (labelRef.value && isNumber(labelRef.value.offsetWidth)) {
-          formCtx?.setLabelWidth(labelRef.value.offsetWidth, instance?.uid);
-        }
-      });
-
-      onBeforeUnmount(() => {
-        formCtx?.removeLabelWidth(instance?.uid);
-      });
-
-      return {
-        prefixCls,
-        labelRef,
-        handleResize,
-      };
+    component: {
+      type: String,
+      default: 'label',
     },
+    asteriskPosition: {
+      type: String,
+      default: 'start',
+    },
+    tooltip: {
+      type: String,
+    },
+    attrs: Object,
+  });
+
+  const prefixCls = getPrefixCls('form-item-label');
+  const formCtx = inject(formInjectionKey, undefined);
+  const instance = getCurrentInstance();
+  const labelRef = ref<HTMLElement>();
+
+  const handleResize = () => {
+    // TODO: There is no effective?
+    if (labelRef.value && isNumber(labelRef.value.offsetWidth)) {
+      formCtx?.setLabelWidth(labelRef.value.offsetWidth, instance?.uid);
+    }
+  };
+
+  onMounted(() => {
+    if (labelRef.value && isNumber(labelRef.value.offsetWidth)) {
+      formCtx?.setLabelWidth(labelRef.value.offsetWidth, instance?.uid);
+    }
+  });
+
+  onBeforeUnmount(() => {
+    formCtx?.removeLabelWidth(instance?.uid);
   });
 </script>

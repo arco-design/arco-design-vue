@@ -6,7 +6,7 @@
         checked-strategy="child"
         :checked-keys="selectedKeys"
         :data="getTreeData(data)"
-        @check="onSelect"
+        @check="(keys: (string | number)[]) => onSelect?.(keys.map(String))"
       />
     </template>
   </sd-transfer>

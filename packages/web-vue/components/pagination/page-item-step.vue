@@ -7,85 +7,73 @@
   </component>
 </template>
 
-<script lang="ts">
-  import { computed, defineComponent } from 'vue';
+<script setup lang="ts">
+  import { computed } from 'vue';
 
   import { getPrefixCls } from '../_utils/global-config';
   import IconLeft from '../icon/icon-left';
   import IconRight from '../icon/icon-right';
   import { getLegalPage } from './utils';
 
-  export default defineComponent({
-    name: 'StepPager',
-    components: {
-      IconLeft,
-      IconRight,
+  defineOptions({ name: 'StepPager' });
+
+  const props = defineProps({
+    pages: {
+      type: Number,
+      required: true,
     },
-    props: {
-      pages: {
-        type: Number,
-        required: true,
-      },
-      current: {
-        type: Number,
-        required: true,
-      },
-      type: {
-        type: String,
-        required: true,
-      },
-      disabled: {
-        type: Boolean,
-        default: false,
-      },
-      simple: {
-        type: Boolean,
-        default: false,
-      },
+    current: {
+      type: Number,
+      required: true,
     },
-    emits: ['click'],
-    setup(props, { emit }) {
-      const prefixCls = getPrefixCls('pagination-item');
-      const isNext = props.type === 'next';
-      const mergedDisabled = computed(() => {
-        if (props.disabled) {
-          return props.disabled;
-        }
-        if (!props.pages) {
-          return true;
-        }
-        if (isNext && props.current === props.pages) {
-          return true;
-        }
-        return !isNext && props.current <= 1;
-      });
-      const nextPage = computed(() =>
-        getLegalPage(props.current + (isNext ? 1 : -1), {
-          min: 1,
-          max: props.pages,
-        }),
-      );
-
-      const handleClick = (e: MouseEvent) => {
-        if (!mergedDisabled.value) {
-          emit('click', nextPage.value);
-        }
-      };
-
-      const cls = computed(() => [
-        prefixCls,
-        `${prefixCls}-${props.type}`,
-        {
-          [`${prefixCls}-disabled`]: mergedDisabled.value,
-        },
-      ]);
-
-      return {
-        prefixCls,
-        cls,
-        isNext,
-        handleClick,
-      };
+    type: {
+      type: String,
+      required: true,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    simple: {
+      type: Boolean,
+      default: false,
     },
   });
+
+  const emit = defineEmits<{ click: [_nextPage: number] }>();
+
+  const prefixCls = getPrefixCls('pagination-item');
+  const isNext = props.type === 'next';
+  const mergedDisabled = computed(() => {
+    if (props.disabled) {
+      return props.disabled;
+    }
+    if (!props.pages) {
+      return true;
+    }
+    if (isNext && props.current === props.pages) {
+      return true;
+    }
+    return !isNext && props.current <= 1;
+  });
+  const nextPage = computed(() =>
+    getLegalPage(props.current + (isNext ? 1 : -1), {
+      min: 1,
+      max: props.pages,
+    }),
+  );
+
+  const handleClick = (e: MouseEvent) => {
+    if (!mergedDisabled.value) {
+      emit('click', nextPage.value);
+    }
+  };
+
+  const cls = computed(() => [
+    prefixCls,
+    `${prefixCls}-${props.type}`,
+    {
+      [`${prefixCls}-disabled`]: mergedDisabled.value,
+    },
+  ]);
 </script>

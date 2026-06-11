@@ -52,7 +52,9 @@ $select-popup-option-color-text_disabled: var(
   string.unquote('#{global.$sd-cssvars-prefix}-color-text-4')
 );
 
-$select-popup-option-color-highlight-text: var(--color-text-1);
+$select-popup-option-color-highlight-text: var(
+  string.unquote('#{global.$sd-cssvars-prefix}-color-text-1')
+);
 $select-popup-option-font-highlight-weight: global.$font-weight-500;
 
 // option group title

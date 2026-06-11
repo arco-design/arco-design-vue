@@ -19,8 +19,8 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { computed, defineComponent, PropType } from 'vue';
+<script setup lang="ts">
+  import { computed, PropType } from 'vue';
 
   import NP from 'number-precision';
 
@@ -53,82 +53,70 @@
     };
   };
 
-  export default defineComponent({
-    name: 'ProgressLine',
-    components: {
-      IconExclamationCircleFill,
+  defineOptions({ name: 'ProgressLine' });
+
+  const props = defineProps({
+    percent: {
+      type: Number,
+      default: 0,
     },
-    props: {
-      percent: {
-        type: Number,
-        default: 0,
-      },
-      animation: {
-        type: Boolean,
-        default: false,
-      },
-      size: {
-        type: String as PropType<'small' | 'medium' | 'large'>,
-        default: 'medium',
-      },
-      strokeWidth: {
-        type: Number,
-        default: 4,
-      },
-      width: {
-        type: [Number, String],
-        default: '100%',
-      },
-      color: {
-        type: [String, Object],
-        default: undefined,
-      },
-      trackColor: String,
-      formatText: {
-        type: Function,
-        default: undefined,
-      },
-      status: {
-        type: String as PropType<Status>,
-      },
-      showText: Boolean,
+    animation: {
+      type: Boolean,
+      default: false,
     },
-    setup(props) {
-      const prefixCls = getPrefixCls('progress-line');
-
-      const strokeWidth = computed(() => {
-        if (props.strokeWidth !== 4) {
-          return props.strokeWidth;
-        }
-        return DEFAULT_STROKE_WIDTH[props.size];
-      });
-
-      const text = computed(() => `${NP.times(props.percent, 100)}%`);
-
-      const style = computed(() => ({
-        width: props.width,
-        height: `${strokeWidth.value}px`,
-        backgroundColor: props.trackColor,
-      }));
-
-      // const computedText = computed(() => {
-      //   if (isFunction(props.formatText)) {
-      //     return props.formatText(props.percent);
-      //   }
-      //   return `${props.percent}%`;
-      // });
-
-      const barStyle = computed(() => ({
-        width: `${props.percent * 100}%`,
-        ...getBackground(props.color),
-      }));
-
-      return {
-        prefixCls,
-        style,
-        barStyle,
-        text,
-      };
+    size: {
+      type: String as PropType<'small' | 'medium' | 'large'>,
+      default: 'medium',
     },
+    strokeWidth: {
+      type: Number,
+      default: 4,
+    },
+    width: {
+      type: [Number, String],
+      default: '100%',
+    },
+    color: {
+      type: [String, Object],
+      default: undefined,
+    },
+    trackColor: String,
+    formatText: {
+      type: Function,
+      default: undefined,
+    },
+    status: {
+      type: String as PropType<Status>,
+    },
+    showText: Boolean,
   });
+
+  const prefixCls = getPrefixCls('progress-line');
+
+  const strokeWidth = computed(() => {
+    if (props.strokeWidth !== 4) {
+      return props.strokeWidth;
+    }
+    return DEFAULT_STROKE_WIDTH[props.size];
+  });
+
+  const text = computed(() => `${NP.times(props.percent, 100)}%`);
+
+  const style = computed(() => ({
+    width: props.width,
+    height: `${strokeWidth.value}px`,
+    backgroundColor: props.trackColor,
+  }));
+
+  // const computedText = computed(() => {
+  //   if (isFunction(props.formatText)) {
+  //     return props.formatText(props.percent);
+  //   }
+  //   return `${props.percent}%`;
+  // });
+
+  const barStyle = computed(() => ({
+    width: `${props.percent * 100}%`,
+    ...getBackground(props.color),
+  }));
 </script>

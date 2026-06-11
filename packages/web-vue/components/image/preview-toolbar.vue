@@ -12,8 +12,8 @@
     <slot />
   </div>
 </template>
-<script lang="tsx">
-  import { defineComponent, PropType, toRefs, computed } from 'vue';
+<script setup lang="tsx">
+  import { PropType, toRefs, computed } from 'vue';
 
   import RenderFunction, { RenderFunc } from '../_components/render-function';
   import { getPrefixCls } from '../_utils/global-config';
@@ -27,46 +27,35 @@
     disabled?: boolean;
   }
 
-  export default defineComponent({
-    name: 'ImagePreviewToolbar',
-    components: {
-      RenderFunction,
-      PreviewAction,
+  defineOptions({ name: 'ImagePreviewToolbar' });
+
+  const props = defineProps({
+    actions: {
+      type: Array as PropType<ActionType[]>,
+      default: () => [],
     },
-    props: {
-      actions: {
-        type: Array as PropType<ActionType[]>,
-        default: () => [],
-      },
-      /** 控制条的布局 */
-      actionsLayout: {
-        type: Array as PropType<string[]>,
-        default: () => [],
-      },
+    /** 控制条的布局 */
+    actionsLayout: {
+      type: Array as PropType<string[]>,
+      default: () => [],
     },
-    setup(props) {
-      const { actions, actionsLayout } = toRefs(props);
+  });
 
-      const prefixCls = getPrefixCls('image-preview-toolbar');
+  const { actions, actionsLayout } = toRefs(props);
 
-      const resultActions = computed(() => {
-        // 根据 layout 过滤
-        const actionsLayoutSet = new Set(actionsLayout.value);
-        const filterWithLayout = (item: ActionType) => actionsLayoutSet.has(item.key);
-        const filteredActions = actions.value.filter(filterWithLayout);
+  const prefixCls = getPrefixCls('image-preview-toolbar');
 
-        // 根据 layout 排序
-        return filteredActions.sort((pre, cur) => {
-          const preIndex = actionsLayout.value.indexOf(pre.key);
-          const curIndex = actionsLayout.value.indexOf(cur.key);
-          return preIndex > curIndex ? 1 : -1;
-        });
-      });
+  const resultActions = computed(() => {
+    // 根据 layout 过滤
+    const actionsLayoutSet = new Set(actionsLayout.value);
+    const filterWithLayout = (item: ActionType) => actionsLayoutSet.has(item.key);
+    const filteredActions = actions.value.filter(filterWithLayout);
 
-      return {
-        prefixCls,
-        resultActions,
-      };
-    },
+    // 根据 layout 排序
+    return filteredActions.sort((pre, cur) => {
+      const preIndex = actionsLayout.value.indexOf(pre.key);
+      const curIndex = actionsLayout.value.indexOf(cur.key);
+      return preIndex > curIndex ? 1 : -1;
+    });
   });
 </script>

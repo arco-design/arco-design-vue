@@ -14,50 +14,38 @@
     </div>
   </ResizeObserver>
 </template>
-<script lang="tsx">
-  import { computed, defineComponent, PropType, toRefs } from 'vue';
+<script setup lang="tsx">
+  import { computed, PropType, toRefs } from 'vue';
 
   import IconDragDot from '../icon/icon-drag-dot';
   import IconDragDotVertical from '../icon/icon-drag-dot-vertical';
   import ResizeObserver from './resize-observer';
 
-  export default defineComponent({
-    name: 'ResizeTrigger',
-    components: {
-      ResizeObserver,
-      IconDragDot,
-      IconDragDotVertical,
-    },
-    props: {
-      prefixCls: {
-        type: String,
-        required: true,
-      },
-      direction: {
-        type: String as PropType<'horizontal' | 'vertical'>,
-        default: 'horizontal',
-      },
-    },
-    emits: ['resize'],
-    setup(props, { emit }) {
-      const { direction, prefixCls } = toRefs(props);
-      const isHorizontal = computed(() => direction?.value === 'horizontal');
-      const classNames = computed(() => [
-        prefixCls.value,
-        {
-          [`${prefixCls.value}-horizontal`]: isHorizontal.value,
-          [`${prefixCls.value}-vertical`]: !isHorizontal.value,
-        },
-      ]);
-      const onResize = (entry: ResizeObserverEntry) => {
-        emit('resize', entry);
-      };
+  defineOptions({ name: 'ResizeTrigger' });
 
-      return {
-        classNames,
-        onResize,
-        isHorizontal,
-      };
+  const emit = defineEmits<{ resize: [_entry: ResizeObserverEntry] }>();
+
+  const props = defineProps({
+    prefixCls: {
+      type: String,
+      required: true,
+    },
+    direction: {
+      type: String as PropType<'horizontal' | 'vertical'>,
+      default: 'horizontal',
     },
   });
+
+  const { direction, prefixCls } = toRefs(props);
+  const isHorizontal = computed(() => direction?.value === 'horizontal');
+  const classNames = computed(() => [
+    prefixCls.value,
+    {
+      [`${prefixCls.value}-horizontal`]: isHorizontal.value,
+      [`${prefixCls.value}-vertical`]: !isHorizontal.value,
+    },
+  ]);
+  const onResize = (entry: ResizeObserverEntry) => {
+    emit('resize', entry);
+  };
 </script>

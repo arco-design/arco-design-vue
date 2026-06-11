@@ -62,8 +62,8 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { computed, defineComponent } from 'vue';
+<script setup lang="ts">
+  import { computed } from 'vue';
 
   import ExpandTransition from '../_components/transition/expand-transition.vue';
   import Ellipsis from '../ellipsis';
@@ -72,45 +72,29 @@
   import useMenuContext from './hooks/use-menu-context';
   import MenuIndent from './indent.vue';
 
-  export default defineComponent({
-    name: 'SubMenuInline',
-    components: {
-      MenuIndent,
-      ExpandTransition,
-      Ellipsis,
-    },
-    props: {
-      title: {
-        type: String,
-      },
-      isChildrenSelected: {
-        type: Boolean,
-      },
-    },
-    setup(props) {
-      const { key } = useMenu();
-      const { level } = useLevel({
-        provideNextLevel: true,
-      });
-      const menuContext = useMenuContext();
-      const menuPrefixCls = computed(() => menuContext.prefixCls);
-      const prefixCls = computed(() => `${menuPrefixCls.value}-inline`);
-      const classNames = computed(() => [prefixCls.value]);
-      const isSelected = computed(() => props.isChildrenSelected);
-      const isOpen = computed(() => (menuContext.openKeys || []).indexOf(key.value) > -1);
+  defineOptions({ name: 'SubMenuInline' });
 
-      return {
-        prefixCls,
-        menuPrefixCls,
-        menuContext,
-        classNames,
-        level,
-        isSelected,
-        isOpen,
-        onHeaderClick: () => {
-          menuContext.onSubMenuClick && menuContext.onSubMenuClick(key.value, level.value);
-        },
-      };
+  const props = defineProps({
+    title: {
+      type: String,
+    },
+    isChildrenSelected: {
+      type: Boolean,
     },
   });
+
+  const { key } = useMenu();
+  const { level } = useLevel({
+    provideNextLevel: true,
+  });
+  const menuContext = useMenuContext();
+  const menuPrefixCls = computed(() => menuContext.prefixCls);
+  const prefixCls = computed(() => `${menuPrefixCls.value}-inline`);
+  const classNames = computed(() => [prefixCls.value]);
+  const isSelected = computed(() => props.isChildrenSelected);
+  const isOpen = computed(() => (menuContext.openKeys || []).indexOf(key.value) > -1);
+
+  const onHeaderClick = () => {
+    menuContext.onSubMenuClick && menuContext.onSubMenuClick(key.value, level.value);
+  };
 </script>

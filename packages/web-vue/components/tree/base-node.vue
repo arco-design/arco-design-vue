@@ -104,8 +104,8 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { computed, defineComponent, PropType, toRefs, VNode, reactive, ref } from 'vue';
+<script setup lang="ts">
+  import { computed, PropType, toRefs, VNode, reactive, ref } from 'vue';
 
   import RenderFunction from '../_components/render-function';
   import { getPrefixCls } from '../_utils/global-config';
@@ -119,258 +119,233 @@
   import { Node } from './interface';
   import NodeSwitcher from './node-switcher.vue';
 
-  export default defineComponent({
-    name: 'BaseTreeNode',
-    components: {
-      NodeSwitcher,
-      Checkbox,
-      RenderFunction,
-      IconDragDotVertical,
+  defineOptions({ name: 'BaseTreeNode' });
+
+  const props = defineProps({
+    /** 标题 */
+    title: {
+      type: String,
     },
-    props: {
-      /** 标题 */
-      title: {
-        type: String,
-      },
-      /** 是否允许选中  */
-      selectable: {
-        type: Boolean,
-      },
-      /** 是否禁用节点 */
-      disabled: {
-        type: Boolean,
-      },
-      /** 是否禁用checkbox   */
-      disableCheckbox: {
-        type: Boolean,
-      },
-      /** 是否显示多选框   */
-      checkable: {
-        type: Boolean,
-      },
-      /** 是否可以拖拽   */
-      draggable: {
-        type: Boolean,
-      },
-      /** 是否是叶子节点。动态加载时有效 */
-      isLeaf: {
-        type: Boolean,
-      },
-      icon: {
-        type: Function as PropType<() => VNode>,
-      },
-      switcherIcon: {
-        type: Function as PropType<() => VNode>,
-      },
-      loadingIcon: {
-        type: Function as PropType<() => VNode>,
-      },
-      dragIcon: {
-        type: Function as PropType<() => VNode>,
-      },
-      isTail: {
-        type: Boolean,
-      },
-      blockNode: {
-        type: Boolean,
-      },
-      showLine: {
-        type: Boolean,
-      },
-      level: {
-        type: Number,
-        default: 0,
-      },
-      lineless: {
-        type: Array as PropType<boolean[]>,
-        default: () => [],
-      },
+    /** 是否允许选中  */
+    selectable: {
+      type: Boolean,
     },
-    setup(props) {
-      const key = useNodeKey();
-      const prefixCls = getPrefixCls('tree-node');
-      const treeContext = useTreeContext();
-      const node = computed(() => treeContext.key2TreeNode?.get(key.value) as Node);
-      const treeNodeData = computed(() => node.value.treeNodeData);
-      const children = computed(() => node.value.children);
-      const actionOnNodeClick = computed(() => {
-        const action = treeContext.treeProps?.actionOnNodeClick;
-        return action ? toArray(action) : [];
-      });
-
-      const { isLeaf, isTail, selectable, disabled, disableCheckbox, draggable } = toRefs(props);
-
-      const classNames = computed(() => [
-        `${prefixCls}`,
-        {
-          [`${prefixCls}-selected`]: selected.value,
-          [`${prefixCls}-is-leaf`]: isLeaf.value,
-          [`${prefixCls}-is-tail`]: isTail.value,
-          [`${prefixCls}-expanded`]: expanded.value,
-          [`${prefixCls}-disabled-selectable`]:
-            !selectable.value && !treeContext.treeProps?.disableSelectActionOnly,
-          [`${prefixCls}-disabled`]: disabled.value,
-        },
-      ]);
-
-      const refTitle = ref<HTMLElement>();
-      const { isDragOver, isDragging, isAllowDrop, dropPosition, setDragStatus } = useDraggable(
-        reactive({
-          key,
-          refTitle,
-        }),
-      );
-
-      const titleClassNames = computed(() => [
-        `${prefixCls}-title`,
-        {
-          [`${prefixCls}-title-draggable`]: draggable.value,
-          [`${prefixCls}-title-gap-top`]:
-            isDragOver.value && isAllowDrop.value && dropPosition.value < 0,
-          [`${prefixCls}-title-gap-bottom`]:
-            isDragOver.value && isAllowDrop.value && dropPosition.value > 0,
-          [`${prefixCls}-title-highlight`]:
-            !isDragging.value && isDragOver.value && isAllowDrop.value && dropPosition.value === 0,
-          [`${prefixCls}-title-dragging`]: isDragging.value,
-          [`${prefixCls}-title-block`]: node.value.blockNode,
-        },
-      ]);
-
-      const checked = computed(() => treeContext.checkedKeys?.includes?.(key.value));
-
-      const indeterminate = computed(() => treeContext.indeterminateKeys?.includes?.(key.value));
-
-      const selected = computed(() => treeContext.selectedKeys?.includes?.(key.value));
-
-      const expanded = computed(() => treeContext.expandedKeys?.includes?.(key.value));
-
-      const loading = computed(() => treeContext.loadingKeys?.includes?.(key.value));
-
-      const treeDragIcon = computed(() => treeContext.dragIcon);
-
-      const treeNodeIcon = computed(() => treeContext.nodeIcon);
-
-      function onSwitcherClick(e: Event) {
-        if (isLeaf.value) return;
-        if (!children.value?.length && isFunction(treeContext.onLoadMore)) {
-          treeContext.onLoadMore(key.value);
-        } else {
-          treeContext?.onExpand?.(!expanded.value, key.value, e);
-        }
-      }
-
-      const nodeStatus = reactive({
-        loading,
-        checked,
-        selected,
-        indeterminate,
-        expanded,
-        isLeaf,
-      });
-
-      const treeTitle = computed(() => {
-        if (!treeContext.nodeTitle) {
-          return undefined;
-        }
-
-        return (_attrs: Record<string, unknown>) => {
-          return treeContext.nodeTitle?.(treeNodeData.value, nodeStatus) ?? [];
-        };
-      });
-      const extra = computed(() => {
-        if (!treeContext.nodeExtra) {
-          return undefined;
-        }
-
-        return (_attrs: Record<string, unknown>) => {
-          return treeContext.nodeExtra?.(treeNodeData.value, nodeStatus) ?? [];
-        };
-      });
-
-      return {
-        nodekey: key,
-        refTitle,
-        prefixCls,
-        classNames,
-        titleClassNames,
-        indeterminate,
-        checked,
-        expanded,
-        selected,
-        treeTitle,
-        treeNodeData,
-        loading,
-        treeDragIcon,
-        treeNodeIcon,
-        extra,
-        nodeStatus,
-        onCheckboxChange(value: boolean | (string | number | boolean)[], e: Event) {
-          if (disableCheckbox.value || disabled.value) {
-            return;
-          }
-
-          if (Array.isArray(value)) {
-            return;
-          }
-
-          treeContext.onCheck?.(value, key.value, e);
-        },
-        onTitleClick(e: Event) {
-          if (actionOnNodeClick.value.includes('expand')) {
-            onSwitcherClick(e);
-          }
-          if (!selectable.value || disabled.value) return;
-          treeContext.onSelect?.(key.value, e);
-        },
-        onSwitcherClick,
-        onDragStart(e: DragEvent) {
-          if (!draggable.value) return;
-
-          e.stopPropagation();
-
-          setDragStatus('dragStart', e);
-
-          try {
-            // ie throw error
-            // firefox-need-it
-            e.dataTransfer?.setData('text/plain', '');
-          } catch (error) {
-            if (!(error instanceof DOMException)) {
-              throw error;
-            }
-          }
-        },
-        onDragEnd(e: DragEvent) {
-          if (!draggable.value) return;
-
-          e.stopPropagation();
-
-          setDragStatus('dragEnd', e);
-        },
-        onDragOver(e: DragEvent) {
-          if (!draggable) return;
-
-          e.stopPropagation();
-          e.preventDefault();
-
-          setDragStatus('dragOver', e);
-        },
-        onDragLeave(e: DragEvent) {
-          if (!draggable.value) return;
-
-          e.stopPropagation();
-
-          setDragStatus('dragLeave', e);
-        },
-        onDrop(e: DragEvent) {
-          if (!draggable.value || !isAllowDrop.value) return;
-
-          e.stopPropagation();
-          e.preventDefault();
-
-          setDragStatus('drop', e);
-        },
-      };
+    /** 是否禁用节点 */
+    disabled: {
+      type: Boolean,
+    },
+    /** 是否禁用checkbox   */
+    disableCheckbox: {
+      type: Boolean,
+    },
+    /** 是否显示多选框   */
+    checkable: {
+      type: Boolean,
+    },
+    /** 是否可以拖拽   */
+    draggable: {
+      type: Boolean,
+    },
+    /** 是否是叶子节点。动态加载时有效 */
+    isLeaf: {
+      type: Boolean,
+    },
+    icon: {
+      type: Function as PropType<() => VNode>,
+    },
+    switcherIcon: {
+      type: Function as PropType<() => VNode>,
+    },
+    loadingIcon: {
+      type: Function as PropType<() => VNode>,
+    },
+    dragIcon: {
+      type: Function as PropType<() => VNode>,
+    },
+    isTail: {
+      type: Boolean,
+    },
+    blockNode: {
+      type: Boolean,
+    },
+    showLine: {
+      type: Boolean,
+    },
+    level: {
+      type: Number,
+      default: 0,
+    },
+    lineless: {
+      type: Array as PropType<boolean[]>,
+      default: () => [],
     },
   });
+
+  const key = useNodeKey();
+  const prefixCls = getPrefixCls('tree-node');
+  const treeContext = useTreeContext();
+  const node = computed(() => treeContext.key2TreeNode?.get(key.value) as Node);
+  const treeNodeData = computed(() => node.value.treeNodeData);
+  const children = computed(() => node.value.children);
+  const actionOnNodeClick = computed(() => {
+    const action = treeContext.treeProps?.actionOnNodeClick;
+    return action ? toArray(action) : [];
+  });
+
+  const { isLeaf, isTail, selectable, disabled, disableCheckbox, draggable } = toRefs(props);
+
+  const classNames = computed(() => [
+    `${prefixCls}`,
+    {
+      [`${prefixCls}-selected`]: selected.value,
+      [`${prefixCls}-is-leaf`]: isLeaf.value,
+      [`${prefixCls}-is-tail`]: isTail.value,
+      [`${prefixCls}-expanded`]: expanded.value,
+      [`${prefixCls}-disabled-selectable`]:
+        !selectable.value && !treeContext.treeProps?.disableSelectActionOnly,
+      [`${prefixCls}-disabled`]: disabled.value,
+    },
+  ]);
+
+  const refTitle = ref<HTMLElement>();
+  const { isDragOver, isDragging, isAllowDrop, dropPosition, setDragStatus } = useDraggable(
+    reactive({
+      key,
+      refTitle,
+    }),
+  );
+
+  const titleClassNames = computed(() => [
+    `${prefixCls}-title`,
+    {
+      [`${prefixCls}-title-draggable`]: draggable.value,
+      [`${prefixCls}-title-gap-top`]:
+        isDragOver.value && isAllowDrop.value && dropPosition.value < 0,
+      [`${prefixCls}-title-gap-bottom`]:
+        isDragOver.value && isAllowDrop.value && dropPosition.value > 0,
+      [`${prefixCls}-title-highlight`]:
+        !isDragging.value && isDragOver.value && isAllowDrop.value && dropPosition.value === 0,
+      [`${prefixCls}-title-dragging`]: isDragging.value,
+      [`${prefixCls}-title-block`]: node.value.blockNode,
+    },
+  ]);
+
+  const checked = computed(() => treeContext.checkedKeys?.includes?.(key.value));
+
+  const indeterminate = computed(() => treeContext.indeterminateKeys?.includes?.(key.value));
+
+  const selected = computed(() => treeContext.selectedKeys?.includes?.(key.value));
+
+  const expanded = computed(() => treeContext.expandedKeys?.includes?.(key.value));
+
+  const loading = computed(() => treeContext.loadingKeys?.includes?.(key.value));
+
+  const treeDragIcon = computed(() => treeContext.dragIcon);
+
+  const treeNodeIcon = computed(() => treeContext.nodeIcon);
+
+  function onSwitcherClick(e: Event) {
+    if (isLeaf.value) return;
+    if (!children.value?.length && isFunction(treeContext.onLoadMore)) {
+      treeContext.onLoadMore(key.value);
+    } else {
+      treeContext?.onExpand?.(!expanded.value, key.value, e);
+    }
+  }
+
+  const nodeStatus = reactive({
+    loading,
+    checked,
+    selected,
+    indeterminate,
+    expanded,
+    isLeaf,
+  });
+
+  const treeTitle = computed(() => {
+    if (!treeContext.nodeTitle) {
+      return undefined;
+    }
+
+    return (_attrs: Record<string, unknown>) => {
+      return treeContext.nodeTitle?.(treeNodeData.value, nodeStatus) ?? [];
+    };
+  });
+  const extra = computed(() => {
+    if (!treeContext.nodeExtra) {
+      return undefined;
+    }
+
+    return (_attrs: Record<string, unknown>) => {
+      return treeContext.nodeExtra?.(treeNodeData.value, nodeStatus) ?? [];
+    };
+  });
+
+  const nodekey = key;
+
+  function onCheckboxChange(value: boolean | (string | number | boolean)[], e: Event) {
+    if (disableCheckbox.value || disabled.value) {
+      return;
+    }
+
+    if (Array.isArray(value)) {
+      return;
+    }
+
+    treeContext.onCheck?.(value, key.value, e);
+  }
+  function onTitleClick(e: Event) {
+    if (actionOnNodeClick.value.includes('expand')) {
+      onSwitcherClick(e);
+    }
+    if (!selectable.value || disabled.value) return;
+    treeContext.onSelect?.(key.value, e);
+  }
+  function onDragStart(e: DragEvent) {
+    if (!draggable.value) return;
+
+    e.stopPropagation();
+
+    setDragStatus('dragStart', e);
+
+    try {
+      // ie throw error
+      // firefox-need-it
+      e.dataTransfer?.setData('text/plain', '');
+    } catch (error) {
+      if (!(error instanceof DOMException)) {
+        throw error;
+      }
+    }
+  }
+  function onDragEnd(e: DragEvent) {
+    if (!draggable.value) return;
+
+    e.stopPropagation();
+
+    setDragStatus('dragEnd', e);
+  }
+  function onDragOver(e: DragEvent) {
+    if (!draggable) return;
+
+    e.stopPropagation();
+    e.preventDefault();
+
+    setDragStatus('dragOver', e);
+  }
+  function onDragLeave(e: DragEvent) {
+    if (!draggable.value) return;
+
+    e.stopPropagation();
+
+    setDragStatus('dragLeave', e);
+  }
+  function onDrop(e: DragEvent) {
+    if (!draggable.value || !isAllowDrop.value) return;
+
+    e.stopPropagation();
+    e.preventDefault();
+
+    setDragStatus('drop', e);
+  }
 </script>

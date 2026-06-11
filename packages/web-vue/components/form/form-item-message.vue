@@ -17,26 +17,20 @@
   </transition>
 </template>
 
-<script lang="ts">
-  import { defineComponent, PropType } from 'vue';
+<script setup lang="ts">
+  import { PropType } from 'vue';
 
   import { getPrefixCls } from '../_utils/global-config';
 
-  export default defineComponent({
-    name: 'FormItemMessage',
-    props: {
-      error: {
-        type: Array as PropType<string[]>,
-        default: () => [],
-      },
-      help: String,
-    },
-    setup() {
-      const prefixCls = getPrefixCls('form-item-message');
+  defineOptions({ name: 'FormItemMessage' });
 
-      return {
-        prefixCls,
-      };
+  const props = defineProps({
+    error: {
+      type: Array as PropType<string[]>,
+      default: () => [],
     },
+    help: String,
   });
+
+  const prefixCls = getPrefixCls('form-item-message');
 </script>

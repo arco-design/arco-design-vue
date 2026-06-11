@@ -21,8 +21,8 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { computed, CSSProperties, defineComponent, inject, PropType, ref } from 'vue';
+<script setup lang="ts">
+  import { computed, CSSProperties, inject, PropType, ref, useSlots } from 'vue';
 
   import { getPrefixCls } from '../_utils/global-config';
   import { isNumber } from '../_utils/is';
@@ -31,76 +31,68 @@
   import Scrollbar from '../scrollbar';
   import { DropdownContext, dropdownInjectionKey } from './context';
 
-  export default defineComponent({
-    name: 'DropdownPanel',
-    components: {
-      Scrollbar,
-      Empty,
+  defineOptions({ name: 'DropdownPanel' });
+
+  const props = defineProps({
+    loading: {
+      type: Boolean,
+      default: false,
     },
-    props: {
-      loading: {
-        type: Boolean,
-        default: false,
-      },
-      isEmpty: {
-        type: Boolean,
-        default: false,
-      },
-      bottomOffset: {
-        type: Number,
-        default: 0,
-      },
-      onScroll: {
-        type: [Function, Array] as PropType<EmitType<(ev: Event) => void>>,
-      },
-      onReachBottom: {
-        type: [Function, Array] as PropType<EmitType<(ev: Event) => void>>,
-      },
+    isEmpty: {
+      type: Boolean,
+      default: false,
     },
-    emits: ['scroll', 'reachBottom'],
-    setup(props, { emit, slots }) {
-      const prefixCls = getPrefixCls('dropdown');
-      const dropdownCtx = inject<Partial<DropdownContext>>(dropdownInjectionKey, {});
-      const wrapperRef = ref<HTMLElement>();
-
-      const handleScroll = (e: Event) => {
-        const { scrollTop, scrollHeight, offsetHeight } = e.target as HTMLElement;
-        const bottom = scrollHeight - (scrollTop + offsetHeight);
-        if (bottom <= props.bottomOffset) {
-          emit('reachBottom', e);
-        }
-        emit('scroll', e);
-      };
-
-      const style = computed<CSSProperties | undefined>(() => {
-        if (isNumber(dropdownCtx.popupMaxHeight)) {
-          return {
-            maxHeight: `${dropdownCtx.popupMaxHeight}px`,
-          };
-        }
-        if (!dropdownCtx.popupMaxHeight) {
-          return {
-            maxHeight: 'none',
-            overflowY: 'hidden',
-          };
-        }
-        return undefined;
-      });
-
-      const cls = computed(() => [
-        prefixCls,
-        {
-          [`${prefixCls}-has-footer`]: Boolean(slots.footer),
-        },
-      ]);
-
-      return {
-        prefixCls,
-        cls,
-        style,
-        wrapperRef,
-        handleScroll,
-      };
+    bottomOffset: {
+      type: Number,
+      default: 0,
+    },
+    onScroll: {
+      type: [Function, Array] as PropType<EmitType<(ev: Event) => void>>,
+    },
+    onReachBottom: {
+      type: [Function, Array] as PropType<EmitType<(ev: Event) => void>>,
     },
   });
+
+  const emit = defineEmits<{
+    scroll: [_e: Event];
+    reachBottom: [_e: Event];
+  }>();
+
+  const slots = useSlots();
+
+  const prefixCls = getPrefixCls('dropdown');
+  const dropdownCtx = inject<Partial<DropdownContext>>(dropdownInjectionKey, {});
+  const wrapperRef = ref<HTMLElement>();
+
+  const handleScroll = (e: Event) => {
+    const { scrollTop, scrollHeight, offsetHeight } = e.target as HTMLElement;
+    const bottom = scrollHeight - (scrollTop + offsetHeight);
+    if (bottom <= props.bottomOffset) {
+      emit('reachBottom', e);
+    }
+    emit('scroll', e);
+  };
+
+  const style = computed<CSSProperties | undefined>(() => {
+    if (isNumber(dropdownCtx.popupMaxHeight)) {
+      return {
+        maxHeight: `${dropdownCtx.popupMaxHeight}px`,
+      };
+    }
+    if (!dropdownCtx.popupMaxHeight) {
+      return {
+        maxHeight: 'none',
+        overflowY: 'hidden',
+      };
+    }
+    return undefined;
+  });
+
+  const cls = computed(() => [
+    prefixCls,
+    {
+      [`${prefixCls}-has-footer`]: Boolean(slots.footer),
+    },
+  ]);
 </script>

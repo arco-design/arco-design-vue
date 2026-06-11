@@ -14,50 +14,42 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { defineComponent } from 'vue';
+<script setup lang="ts">
+  import { useSlots } from 'vue';
 
   import { getPrefixCls } from '../_utils/global-config';
 
-  export default defineComponent({
-    name: 'ListItemMeta',
-    props: {
-      /**
-       * @zh 标题
-       * @en Title
-       */
-      title: String,
-      /**
-       * @zh 描述内容
-       * @en Description
-       */
-      description: String,
-    },
+  defineOptions({ name: 'ListItemMeta' });
+
+  const props = defineProps({
     /**
      * @zh 标题
      * @en Title
-     * @slot title
      */
+    title: String,
     /**
      * @zh 描述内容
      * @en Description
-     * @slot description
      */
-    /**
-     * @zh 头像
-     * @en Avatar
-     * @slot avatar
-     */
-    setup(props, { slots }) {
-      const prefixCls = getPrefixCls('list-item-meta');
-      const hasContent = Boolean(
-        props.title || props.description || slots.title || slots.description,
-      );
-
-      return {
-        prefixCls,
-        hasContent,
-      };
-    },
+    description: String,
   });
+  /**
+   * @zh 标题
+   * @en Title
+   * @slot title
+   */
+  /**
+   * @zh 描述内容
+   * @en Description
+   * @slot description
+   */
+  /**
+   * @zh 头像
+   * @en Avatar
+   * @slot avatar
+   */
+  const slots = useSlots();
+
+  const prefixCls = getPrefixCls('list-item-meta');
+  const hasContent = Boolean(props.title || props.description || slots.title || slots.description);
 </script>

@@ -33,8 +33,8 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { computed, defineComponent, PropType, ref, toRefs } from 'vue';
+<script setup lang="ts">
+  import { computed, PropType, ref, toRefs, useSlots } from 'vue';
 
   import { Dayjs } from 'dayjs';
 
@@ -46,109 +46,103 @@
   import FeedbackIcon from '../feedback-icon.vue';
   import IconHover from '../icon-hover.vue';
 
-  export default defineComponent({
-    name: 'DateInput',
-    components: {
-      IconHover,
-      IconClose,
-      FeedbackIcon,
+  defineOptions({ name: 'DateInput' });
+
+  const props = defineProps({
+    size: {
+      type: String as PropType<'mini' | 'small' | 'medium' | 'large'>,
     },
-    props: {
-      size: {
-        type: String as PropType<'mini' | 'small' | 'medium' | 'large'>,
-      },
-      focused: {
-        type: Boolean,
-      },
-      disabled: {
-        type: Boolean,
-      },
-      readonly: {
-        type: Boolean,
-      },
-      error: {
-        type: Boolean,
-      },
-      allowClear: {
-        type: Boolean,
-      },
-      placeholder: {
-        type: String,
-      },
-      inputValue: {
-        type: String,
-      },
-      value: {
-        type: Object as PropType<Dayjs>,
-      },
-      format: {
-        type: [String, Function] as PropType<string | ((value: Dayjs) => string)>,
-        required: true,
-      },
+    focused: {
+      type: Boolean,
     },
-    emits: ['clear', 'press-enter', 'change', 'blur'],
-    setup(props, { emit, slots }) {
-      const { error, focused, disabled, size, value, format, inputValue } = toRefs(props);
-      const {
-        mergedSize: _mergedSize,
-        mergedDisabled,
-        mergedError,
-        feedback,
-      } = useFormItem({ size, disabled, error });
-      const { mergedSize } = useSize(_mergedSize);
-
-      const prefixCls = getPrefixCls('picker');
-
-      const classNames = computed(() => [
-        prefixCls,
-        `${prefixCls}-size-${mergedSize.value}`,
-        {
-          [`${prefixCls}-focused`]: focused.value,
-          [`${prefixCls}-disabled`]: mergedDisabled.value,
-          [`${prefixCls}-error`]: mergedError.value,
-          [`${prefixCls}-has-prefix`]: slots.prefix,
-        },
-      ]);
-      const displayValue = computed(() => {
-        if (inputValue?.value) return inputValue?.value;
-        if (value?.value && isDayjs(value.value)) {
-          return isFunction(format.value)
-            ? format.value(value.value)
-            : value.value.format(format.value);
-        }
-        return undefined;
-      });
-
-      const refInput = ref<HTMLInputElement>();
-
-      return {
-        feedback,
-        prefixCls,
-        classNames,
-        displayValue,
-        mergedDisabled,
-        refInput,
-        onPressEnter() {
-          emit('press-enter');
-        },
-        onChange(e: Event) {
-          emit('change', e);
-        },
-        onClear(e: Event) {
-          emit('clear', e);
-        },
-        onBlur(e: Event) {
-          emit('blur', e);
-        },
-      };
+    disabled: {
+      type: Boolean,
     },
-    methods: {
-      focus() {
-        this.refInput && this.refInput.focus && this.refInput.focus();
-      },
-      blur() {
-        this.refInput && this.refInput.blur && this.refInput.blur();
-      },
+    readonly: {
+      type: Boolean,
+    },
+    error: {
+      type: Boolean,
+    },
+    allowClear: {
+      type: Boolean,
+    },
+    placeholder: {
+      type: String,
+    },
+    inputValue: {
+      type: String,
+    },
+    value: {
+      type: Object as PropType<Dayjs>,
+    },
+    format: {
+      type: [String, Function] as PropType<string | ((value: Dayjs) => string)>,
+      required: true,
     },
   });
+
+  const emit = defineEmits<{
+    'clear': [_e: Event];
+    'press-enter': [];
+    'change': [_e: Event];
+    'blur': [_e: Event];
+  }>();
+
+  const slots = useSlots();
+
+  const { error, focused, disabled, size, value, format, inputValue } = toRefs(props);
+  const {
+    mergedSize: _mergedSize,
+    mergedDisabled,
+    mergedError,
+    feedback,
+  } = useFormItem({ size, disabled, error });
+  const { mergedSize } = useSize(_mergedSize);
+
+  const prefixCls = getPrefixCls('picker');
+
+  const classNames = computed(() => [
+    prefixCls,
+    `${prefixCls}-size-${mergedSize.value}`,
+    {
+      [`${prefixCls}-focused`]: focused.value,
+      [`${prefixCls}-disabled`]: mergedDisabled.value,
+      [`${prefixCls}-error`]: mergedError.value,
+      [`${prefixCls}-has-prefix`]: slots.prefix,
+    },
+  ]);
+  const displayValue = computed(() => {
+    if (inputValue?.value) return inputValue?.value;
+    if (value?.value && isDayjs(value.value)) {
+      return isFunction(format.value)
+        ? format.value(value.value)
+        : value.value.format(format.value);
+    }
+    return undefined;
+  });
+
+  const refInput = ref<HTMLInputElement>();
+
+  function onPressEnter() {
+    emit('press-enter');
+  }
+  function onChange(e: Event) {
+    emit('change', e);
+  }
+  function onClear(e: Event) {
+    emit('clear', e);
+  }
+  function onBlur(e: Event) {
+    emit('blur', e);
+  }
+
+  function focus() {
+    refInput.value && refInput.value.focus && refInput.value.focus();
+  }
+  function blur() {
+    refInput.value && refInput.value.blur && refInput.value.blur();
+  }
+
+  defineExpose({ focus, blur });
 </script>

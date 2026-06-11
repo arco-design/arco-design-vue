@@ -40,8 +40,8 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { defineComponent, PropType } from 'vue';
+<script setup lang="ts">
+  import { PropType } from 'vue';
 
   import { getPrefixCls } from '../_utils/global-config';
   import IconCheck from '../icon/icon-check';
@@ -51,79 +51,62 @@
   import ResultForbidden from './403';
   import ResultNotFound from './404';
   import ResultServerError from './500';
+  import { RESULT_STATUS, type ResultStatus } from './utils';
 
-  const RESULT_STATUS = ['info', 'success', 'warning', 'error', '403', '404', '500', null] as const;
+  defineOptions({ name: 'Result' });
 
-  type ResultStatus = (typeof RESULT_STATUS)[number];
-
-  export default defineComponent({
-    name: 'Result',
-    components: {
-      IconInfo,
-      IconCheck,
-      IconExclamation,
-      IconClose,
-      ResultForbidden,
-      ResultNotFound,
-      ResultServerError,
-    },
-    props: {
-      /**
-       * @zh 结果页显示的状态
-       * @en The status displayed on the result page
-       * @values 'info','success','warning','error','403','404','500', null
-       */
-      status: {
-        type: String as PropType<ResultStatus>,
-        default: 'info',
-        validator: (value: any) => {
-          return RESULT_STATUS.includes(value);
-        },
+  const props = defineProps({
+    /**
+     * @zh 结果页显示的状态
+     * @en The status displayed on the result page
+     * @values 'info','success','warning','error','403','404','500', null
+     */
+    status: {
+      type: String as PropType<ResultStatus>,
+      default: 'info',
+      validator: (value: any) => {
+        return RESULT_STATUS.includes(value);
       },
-      /**
-       * @zh 标题内容
-       * @en Title
-       */
-      title: String,
-      /**
-       * @zh 子标题内容
-       * @en Subtitle
-       */
-      subtitle: String,
     },
     /**
-     * @zh 图标
-     * @en Icon
-     * @slot icon
-     */
-    /**
-     * @zh 标题
+     * @zh 标题内容
      * @en Title
-     * @slot title
      */
+    title: String,
     /**
-     * @zh 副标题
+     * @zh 子标题内容
      * @en Subtitle
-     * @slot subtitle
      */
-    /**
-     * @zh 操作区
-     * @en Extra
-     * @slot extra
-     * @version 2.8.0
-     */
-    /**
-     * @zh 默认插槽
-     * @en Default
-     * @slot default
-     * @version 2.8.0
-     */
-    setup() {
-      const prefixCls = getPrefixCls('result');
-
-      return {
-        prefixCls,
-      };
-    },
+    subtitle: String,
   });
+
+  /**
+   * @zh 图标
+   * @en Icon
+   * @slot icon
+   */
+  /**
+   * @zh 标题
+   * @en Title
+   * @slot title
+   */
+  /**
+   * @zh 副标题
+   * @en Subtitle
+   * @slot subtitle
+   */
+  /**
+   * @zh 操作区
+   * @en Extra
+   * @slot extra
+   * @version 2.8.0
+   */
+  /**
+   * @zh 默认插槽
+   * @en Default
+   * @slot default
+   * @version 2.8.0
+   */
+
+  const prefixCls = getPrefixCls('result');
 </script>

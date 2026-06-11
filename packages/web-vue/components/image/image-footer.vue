@@ -13,27 +13,19 @@
     </div>
   </div>
 </template>
-<script lang="ts">
-  import { defineComponent } from 'vue';
-
+<script setup lang="ts">
   import { getPrefixCls } from '../_utils/global-config';
 
-  export default defineComponent({
-    name: 'ImageFooter',
-    props: {
-      title: {
-        type: String,
-      },
-      description: {
-        type: String,
-      },
-    },
-    setup() {
-      const prefixCls = getPrefixCls('image-footer');
+  defineOptions({ name: 'ImageFooter' });
 
-      return {
-        prefixCls,
-      };
+  const props = defineProps({
+    title: {
+      type: String,
+    },
+    description: {
+      type: String,
     },
   });
+
+  const prefixCls = getPrefixCls('image-footer');
 </script>

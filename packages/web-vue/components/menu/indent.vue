@@ -8,28 +8,23 @@
     />
   </span>
 </template>
-<script>
-  import { defineComponent, toRef } from 'vue';
+<script setup lang="ts">
+  import { toRef } from 'vue';
 
   import { getPrefixCls } from '../_utils/global-config';
   import useMenuContext from './hooks/use-menu-context';
 
-  export default defineComponent({
-    name: 'MenuIndent',
-    props: {
-      level: {
-        type: Number,
-        default: 1,
-      },
-    },
-    setup() {
-      const prefixCls = getPrefixCls('menu');
-      const menuContext = useMenuContext();
+  defineOptions({ name: 'MenuIndent' });
 
-      return {
-        prefixCls,
-        levelIndent: toRef(menuContext, 'levelIndent'),
-      };
+  const props = defineProps({
+    level: {
+      type: Number,
+      default: 1,
     },
   });
+
+  const prefixCls = getPrefixCls('menu');
+  const menuContext = useMenuContext();
+
+  const levelIndent = toRef(menuContext, 'levelIndent');
 </script>

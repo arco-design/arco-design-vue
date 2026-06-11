@@ -8,7 +8,7 @@
         :disabled="disabled"
         :model-value="modelValue[0]"
         hide-button
-        @change="(value) => $emit('startChange', value)"
+        @change="handleStartChange"
       />
       <div :class="`${prefixCls}-input-hyphens`" />
     </template>
@@ -19,50 +19,51 @@
       :disabled="disabled"
       :model-value="modelValue[1]"
       hide-button
-      @change="(value) => $emit('endChange', value)"
+      @change="handleEndChange"
     />
   </div>
 </template>
 
-<script lang="ts">
-  import { defineComponent, PropType } from 'vue';
+<script setup lang="ts">
+  import { PropType } from 'vue';
+
+  import type { InputNumberValue } from '../input-number';
 
   import { getPrefixCls } from '../_utils/global-config';
   import InputNumber from '../input-number';
 
-  export default defineComponent({
-    name: 'SliderInput',
-    components: {
-      InputNumber,
-    },
-    props: {
-      modelValue: {
-        type: Array as unknown as PropType<[number, number]>,
-        required: true,
-      },
-      min: {
-        type: Number,
-      },
-      max: {
-        type: Number,
-      },
-      step: {
-        type: Number,
-      },
-      disabled: {
-        type: Boolean,
-      },
-      range: {
-        type: Boolean,
-      },
-    },
-    emits: ['startChange', 'endChange'],
-    setup(props, { emit }) {
-      const prefixCls = getPrefixCls('slider');
+  defineOptions({ name: 'SliderInput' });
 
-      return {
-        prefixCls,
-      };
+  const props = defineProps({
+    modelValue: {
+      type: Array as unknown as PropType<[number, number]>,
+      required: true,
+    },
+    min: {
+      type: Number,
+    },
+    max: {
+      type: Number,
+    },
+    step: {
+      type: Number,
+    },
+    disabled: {
+      type: Boolean,
+    },
+    range: {
+      type: Boolean,
     },
   });
+
+  const emit = defineEmits<{ startChange: [_value?: number]; endChange: [_value?: number] }>();
+
+  const handleStartChange = (value: InputNumberValue) => {
+    emit('startChange', value == null ? undefined : Number(value));
+  };
+  const handleEndChange = (value: InputNumberValue) => {
+    emit('endChange', value == null ? undefined : Number(value));
+  };
+
+  const prefixCls = getPrefixCls('slider');
 </script>

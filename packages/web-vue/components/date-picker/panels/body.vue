@@ -22,7 +22,7 @@
         <template v-else>
           <div
             :key="colIndex"
-            :class="getCellClassName(cell)"
+            :class="getCellClassNameFn(cell)"
             @mouseenter="
               () => {
                 onCellMouseEnter(cell);
@@ -56,8 +56,8 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { computed, defineComponent, PropType, reactive, toRefs } from 'vue';
+<script setup lang="ts">
+  import { computed, PropType, reactive, toRefs } from 'vue';
 
   import { Dayjs } from 'dayjs';
 
@@ -68,80 +68,77 @@
   import useCellClassName from '../hooks/use-cell-class-name';
   import { isDisabledDate } from '../utils';
 
-  export default defineComponent({
-    name: 'PanelBody',
-    components: {
-      RenderFunction,
+  defineOptions({ name: 'PanelBody' });
+
+  const props = defineProps({
+    prefixCls: {
+      type: String,
+      required: true,
     },
-    props: {
-      prefixCls: {
-        type: String,
-        required: true,
-      },
-      rows: {
-        type: Array as PropType<Cell[][]>,
-        default: () => [],
-      },
-      value: {
-        type: Object as PropType<Dayjs>,
-      },
-      disabledDate: {
-        type: Function as PropType<DisabledDate>,
-      },
-      isSameTime: {
-        type: Function as PropType<IsSameTime>,
-        required: true,
-      },
-      mode: {
-        type: String as PropType<Mode>,
-      },
-      rangeValues: {
-        type: Array as PropType<Array<Dayjs | undefined>>,
-      },
-      dateRender: {
-        type: Function as PropType<RenderFunc>,
-      },
+    rows: {
+      type: Array as PropType<Cell[][]>,
+      default: () => [],
     },
-    emits: ['cell-click', 'cell-mouse-enter'],
-    setup(props, { emit }) {
-      const { prefixCls, value, disabledDate, isSameTime, mode, rangeValues } = toRefs(props);
-
-      const { getCellClassName } = useCellClassName(
-        reactive({
-          prefixCls,
-          value,
-          isSameTime,
-          mode,
-          rangeValues,
-        }),
-      );
-
-      const isCellDisabled = (cellData: Cell) =>
-        isDisabledDate(cellData.value, disabledDate?.value, mode?.value);
-
-      return {
-        isWeek: computed(() => mode?.value === 'week'),
-        getCellClassName: (cellData: Cell) => {
-          const disabled = isCellDisabled(cellData);
-          return getCellClassName(cellData, disabled);
-        },
-        onCellClick: (cellData: Cell) => {
-          const disabled = isCellDisabled(cellData);
-          if (disabled) return;
-          emit('cell-click', cellData);
-        },
-        onCellMouseEnter: (cellData: Cell) => {
-          const disabled = isCellDisabled(cellData);
-          if (disabled) return;
-          emit('cell-mouse-enter', cellData);
-        },
-        onCellMouseLeave: (cellData: Cell) => {
-          const disabled = isCellDisabled(cellData);
-          if (disabled) return;
-          emit('cell-mouse-enter', cellData);
-        },
-        getDateValue,
-      };
+    value: {
+      type: Object as PropType<Dayjs>,
+    },
+    disabledDate: {
+      type: Function as PropType<DisabledDate>,
+    },
+    isSameTime: {
+      type: Function as PropType<IsSameTime>,
+      required: true,
+    },
+    mode: {
+      type: String as PropType<Mode>,
+    },
+    rangeValues: {
+      type: Array as PropType<Array<Dayjs | undefined>>,
+    },
+    dateRender: {
+      type: Function as PropType<RenderFunc>,
     },
   });
+
+  const emit = defineEmits<{
+    'cell-click': [_cellData: Cell];
+    'cell-mouse-enter': [_cellData: Cell];
+  }>();
+
+  const { prefixCls, value, disabledDate, isSameTime, mode, rangeValues } = toRefs(props);
+
+  const { getCellClassName } = useCellClassName(
+    reactive({
+      prefixCls,
+      value,
+      isSameTime,
+      mode,
+      rangeValues,
+    }),
+  );
+
+  const isCellDisabled = (cellData: Cell) =>
+    isDisabledDate(cellData.value, disabledDate?.value, mode?.value);
+
+  const isWeek = computed(() => mode?.value === 'week');
+
+  const getCellClassNameFn = (cellData: Cell) => {
+    const disabled = isCellDisabled(cellData);
+    return getCellClassName(cellData, disabled);
+  };
+  const onCellClick = (cellData: Cell) => {
+    const disabled = isCellDisabled(cellData);
+    if (disabled) return;
+    emit('cell-click', cellData);
+  };
+  const onCellMouseEnter = (cellData: Cell) => {
+    const disabled = isCellDisabled(cellData);
+    if (disabled) return;
+    emit('cell-mouse-enter', cellData);
+  };
+  const onCellMouseLeave = (cellData: Cell) => {
+    const disabled = isCellDisabled(cellData);
+    if (disabled) return;
+    emit('cell-mouse-enter', cellData);
+  };
 </script>

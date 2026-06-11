@@ -17,8 +17,8 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { defineComponent, computed } from 'vue';
+<script setup lang="ts">
+  import { computed } from 'vue';
 
   import { getPrefixCls } from '../_utils/global-config';
   import IconDown from '../icon/icon-down';
@@ -26,49 +26,38 @@
   import IconRight from '../icon/icon-right';
   import IconUp from '../icon/icon-up';
 
-  export default defineComponent({
-    name: 'Arrow',
-    components: {
-      IconUp,
-      IconDown,
-      IconLeft,
-      IconRight,
+  defineOptions({ name: 'Arrow' });
+
+  const props = defineProps({
+    direction: {
+      type: String,
+      default: 'horizontal',
     },
-    props: {
-      direction: {
-        type: String,
-        default: 'horizontal',
-      },
-      showArrow: {
-        type: String,
-        default: 'always',
-      },
-    },
-    emits: ['previousClick', 'nextClick'],
-    setup(props, { emit }) {
-      const prefixCls = getPrefixCls('carousel');
-
-      const onPreviousClick = (ev: MouseEvent) => {
-        emit('previousClick', ev);
-      };
-
-      const onNextClick = (ev: MouseEvent) => {
-        emit('nextClick', ev);
-      };
-
-      const cls = computed(() => [
-        `${prefixCls}-arrow`,
-        {
-          [`${prefixCls}-arrow-hover`]: props.showArrow === 'hover',
-        },
-      ]);
-
-      return {
-        prefixCls,
-        cls,
-        onPreviousClick,
-        onNextClick,
-      };
+    showArrow: {
+      type: String,
+      default: 'always',
     },
   });
+
+  const emit = defineEmits<{
+    previousClick: [_ev: MouseEvent];
+    nextClick: [_ev: MouseEvent];
+  }>();
+
+  const prefixCls = getPrefixCls('carousel');
+
+  const onPreviousClick = (ev: MouseEvent) => {
+    emit('previousClick', ev);
+  };
+
+  const onNextClick = (ev: MouseEvent) => {
+    emit('nextClick', ev);
+  };
+
+  const cls = computed(() => [
+    `${prefixCls}-arrow`,
+    {
+      [`${prefixCls}-arrow-hover`]: props.showArrow === 'hover',
+    },
+  ]);
 </script>

@@ -11,57 +11,51 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { defineComponent, onMounted, ref } from 'vue';
+<script setup lang="ts">
+  import { onMounted, ref } from 'vue';
 
   import { getPrefixCls } from '../_utils/global-config';
   import Input from '../input';
 
-  export default defineComponent({
-    name: 'TypographyEditContent',
-    components: {
-      Input,
-    },
-    props: {
-      text: {
-        type: String,
-        required: true,
-      },
-    },
-    emits: ['change', 'end', 'update:text'],
-    setup(_, { emit }) {
-      const prefixCls = getPrefixCls('typography');
-      const classNames = [`${prefixCls}-edit-content`];
-      const inputRef = ref<typeof Input>();
+  defineOptions({ name: 'TypographyEditContent' });
 
-      function onChange(value: string) {
-        emit('update:text', value);
-        emit('change', value);
-      }
-
-      function onEnd() {
-        emit('end');
-      }
-
-      onMounted(() => {
-        if (!inputRef.value || !inputRef.value.$el) return;
-
-        const inputEl = inputRef.value.$el.querySelector('input');
-        if (!inputEl) return;
-
-        inputEl.focus && inputEl.focus();
-
-        const { length } = inputEl.value;
-        inputEl.setSelectionRange(length, length);
-      });
-
-      return {
-        classNames,
-        inputRef,
-        onBlur: onEnd,
-        onChange,
-        onEnd,
-      };
+  const props = defineProps({
+    text: {
+      type: String,
+      required: true,
     },
   });
+
+  const emit = defineEmits<{
+    'change': [_value: string];
+    'end': [];
+    'update:text': [_value: string];
+  }>();
+
+  const prefixCls = getPrefixCls('typography');
+  const classNames = [`${prefixCls}-edit-content`];
+  const inputRef = ref<typeof Input>();
+
+  function onChange(value: string) {
+    emit('update:text', value);
+    emit('change', value);
+  }
+
+  function onEnd() {
+    emit('end');
+  }
+
+  onMounted(() => {
+    if (!inputRef.value || !inputRef.value.$el) return;
+
+    const inputEl = inputRef.value.$el.querySelector('input');
+    if (!inputEl) return;
+
+    inputEl.focus && inputEl.focus();
+
+    const { length } = inputEl.value;
+    inputEl.setSelectionRange(length, length);
+  });
+
+  const onBlur = onEnd;
 </script>

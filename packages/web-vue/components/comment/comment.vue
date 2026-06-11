@@ -36,110 +36,102 @@
     </div>
   </div>
 </template>
-<script>
-  import { defineComponent, computed } from 'vue';
+
+<script setup lang="ts">
+  import type { PropType } from 'vue';
+  import { computed, useSlots } from 'vue';
 
   import { getPrefixCls } from '../_utils/global-config';
   import { isString } from '../_utils/is';
   import { hasPropOrSlot } from '../_utils/use-prop-or-slot';
 
-  export default defineComponent({
-    name: 'Comment',
-    props: {
-      /**
-       * @zh 作者名
-       * @en Display as the comment author
-       */
-      author: {
-        type: String,
-      },
-      /**
-       * @zh 头像
-       * @en Display as the comment avatar
-       */
-      avatar: {
-        type: String,
-      },
-      /**
-       * @zh 评论内容
-       * @en The content of the comment
-       */
-      content: {
-        type: String,
-      },
-      /**
-       * @zh 时间描述
-       * @en Display as the comment datetime
-       */
-      datetime: {
-        type: String,
-      },
-      /**
-       * @zh 靠左/靠右 展示 datetime 和 actions
-       * @en Alignment of `datetime` and `actions`
-       * @values 'left', 'right', { datetime?: "left" | "right"; actions?: "left" | "right" }
-       * */
-      align: {
-        type: [String, Object],
-        default: 'left',
-      },
+  defineOptions({ name: 'Comment' });
+
+  const props = defineProps({
+    /**
+     * @zh 作者名
+     * @en Display as the comment author
+     */
+    author: {
+      type: String,
     },
     /**
      * @zh 头像
-     * @en Avatar
-     * @slot avatar
+     * @en Display as the comment avatar
      */
-    /**
-     * @zh 作者
-     * @en Author name
-     * @slot author
-     */
-    /**
-     * @zh 时间描述
-     * @en Datetime info
-     * @slot datetime
-     */
+    avatar: {
+      type: String,
+    },
     /**
      * @zh 评论内容
-     * @en Comment content
-     * @slot content
+     * @en The content of the comment
      */
-    /**
-     * @zh 操作列表
-     * @en Action list
-     * @slot actions
-     */
-
-    setup(props, { slots }) {
-      const prefixCls = getPrefixCls('comment');
-
-      const [hasAuthor, hasAvatar, hasContent, hasDatetime] = [
-        'author',
-        'avatar',
-        'content',
-        'datetime',
-      ].map((propName) => hasPropOrSlot(props, slots, propName));
-
-      const computedAlign = computed(() => {
-        const { align } = props;
-        return {
-          ...(isString(align)
-            ? {
-                datetime: align,
-                actions: align,
-              }
-            : align),
-        };
-      });
-
-      return {
-        prefixCls,
-        hasAuthor,
-        hasAvatar,
-        hasContent,
-        hasDatetime,
-        computedAlign,
-      };
+    content: {
+      type: String,
     },
+    /**
+     * @zh 时间描述
+     * @en Display as the comment datetime
+     */
+    datetime: {
+      type: String,
+    },
+    /**
+     * @zh 靠左/靠右 展示 datetime 和 actions
+     * @en Alignment of `datetime` and `actions`
+     * @values 'left', 'right', { datetime?: "left" | "right"; actions?: "left" | "right" }
+     * */
+    align: {
+      type: [String, Object] as PropType<
+        'left' | 'right' | { datetime?: 'left' | 'right'; actions?: 'left' | 'right' }
+      >,
+      default: 'left',
+    },
+  });
+
+  /**
+   * @zh 头像
+   * @en Avatar
+   * @slot avatar
+   */
+  /**
+   * @zh 作者
+   * @en Author name
+   * @slot author
+   */
+  /**
+   * @zh 时间描述
+   * @en Datetime info
+   * @slot datetime
+   */
+  /**
+   * @zh 评论内容
+   * @en Comment content
+   * @slot content
+   */
+  /**
+   * @zh 操作列表
+   * @en Action list
+   * @slot actions
+   */
+
+  const slots = useSlots();
+
+  const prefixCls = getPrefixCls('comment');
+
+  const [hasAuthor, hasAvatar, hasContent, hasDatetime] = (
+    ['author', 'avatar', 'content', 'datetime'] as const
+  ).map((propName) => hasPropOrSlot(props, slots, propName));
+
+  const computedAlign = computed(() => {
+    const { align } = props;
+    return {
+      ...(isString(align)
+        ? {
+            datetime: align,
+            actions: align,
+          }
+        : align),
+    };
   });
 </script>

@@ -34,32 +34,21 @@
     </div>
   </div>
 </template>
-<script lang="ts">
-  import { defineComponent } from 'vue';
-
+<script setup lang="ts">
   import { getPrefixCls } from '../_utils/global-config';
   import IconLeft from '../icon/icon-left';
   import IconRight from '../icon/icon-right';
 
-  export default defineComponent({
-    name: 'ImagePreviewArrow',
-    components: {
-      IconLeft,
-      IconRight,
+  defineOptions({ name: 'ImagePreviewArrow' });
+
+  const props = defineProps({
+    onPrev: {
+      type: Function,
     },
-    props: {
-      onPrev: {
-        type: Function,
-      },
-      onNext: {
-        type: Function,
-      },
-    },
-    setup() {
-      const prefixCls = getPrefixCls('image-preview-arrow');
-      return {
-        prefixCls,
-      };
+    onNext: {
+      type: Function,
     },
   });
+
+  const prefixCls = getPrefixCls('image-preview-arrow');
 </script>

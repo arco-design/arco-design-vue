@@ -4,36 +4,31 @@
   </transition>
 </template>
 
-<script lang="ts">
-  import { defineComponent } from 'vue';
+<script setup lang="ts">
+  defineOptions({ name: 'ExpandTransition' });
 
-  export default defineComponent({
-    name: 'ExpandTransition',
-    props: {
-      expanded: Boolean,
-    },
-    emits: ['end'],
-    setup(props, { emit }) {
-      const getElement = (el: Element) => el as HTMLDivElement;
-
-      return {
-        onEnter(el: Element) {
-          const target = getElement(el);
-          const endHeight = `${target.scrollHeight}px`;
-          target.style.height = props.expanded ? '0' : endHeight;
-          // oxlint-disable-next-line no-unused-expressions
-          target.getBoundingClientRect();
-          target.style.height = props.expanded ? endHeight : '0';
-        },
-        onAfterEnter(el: Element) {
-          const target = getElement(el);
-          target.style.height = props.expanded ? '' : '0';
-          emit('end');
-        },
-        onBeforeLeave(el: Element) {
-          getElement(el).style.display = 'none';
-        },
-      };
-    },
+  const props = defineProps({
+    expanded: Boolean,
   });
+
+  const emit = defineEmits<{ end: [] }>();
+
+  const getElement = (el: Element) => el as HTMLDivElement;
+
+  function onEnter(el: Element) {
+    const target = getElement(el);
+    const endHeight = `${target.scrollHeight}px`;
+    target.style.height = props.expanded ? '0' : endHeight;
+    // oxlint-disable-next-line no-unused-expressions
+    target.getBoundingClientRect();
+    target.style.height = props.expanded ? endHeight : '0';
+  }
+  function onAfterEnter(el: Element) {
+    const target = getElement(el);
+    target.style.height = props.expanded ? '' : '0';
+    emit('end');
+  }
+  function onBeforeLeave(el: Element) {
+    getElement(el).style.display = 'none';
+  }
 </script>

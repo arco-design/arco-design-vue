@@ -15,9 +15,9 @@ const publicVendorRoot = path.resolve(docsNextRoot, 'public', 'vendor', 'sd-web-
 const tempStyleBuildRoot = path.resolve(docsNextRoot, '.temp-vendor-style');
 const webVuePackageName = '@sdata/web-vue';
 const importLikePatterns = [
-  /\b(?:import|export)\b[^'"`]*?from\s*['"]([^./][^'"`]*)['"]/g,
-  /\bimport\s*['"]([^./][^'"`]*)['"]/g,
-  /\bimport\s*\(\s*['"]([^./][^'"`]*)['"]\s*\)/g,
+  /(?<![\w-])(?:import|export)\b[^'"`]*?from\s*['"]([^./][^'"`]*)['"]/g,
+  /(?<![\w-])import\s*['"]([^./][^'"`]*)['"]/g,
+  /(?<![\w-])import\s*\(\s*['"]([^./][^'"`]*)['"]\s*\)/g,
 ];
 const excludedSpecifiers = new Set(['vue', '@vue/shared']);
 

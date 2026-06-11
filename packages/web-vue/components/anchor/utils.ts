@@ -23,3 +23,6 @@ export function slide(el: HTMLElement, top: number, cb: () => void): void {
   });
   tween.start();
 }
+
+export const BOUNDARY_POSITIONS = ['start', 'end', 'center', 'nearest'] as const;
+export type BoundaryPosition = (typeof BOUNDARY_POSITIONS)[number];

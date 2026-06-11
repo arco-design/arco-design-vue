@@ -94,8 +94,8 @@
     <PanelShortcuts v-if="showShortcuts && shortcutsPosition === 'right'" v-bind="shortcutsProps" />
   </div>
 </template>
-<script lang="ts">
-  import { computed, defineComponent, PropType, reactive, ref, toRefs, watch } from 'vue';
+<script setup lang="ts">
+  import { computed, PropType, reactive, ref, toRefs, watch } from 'vue';
   import type { VNodeTypes } from 'vue';
 
   import { Dayjs } from 'dayjs';
@@ -124,284 +124,255 @@
   import YearPanel from './panels/year/index.vue';
   import { normalizeRangeValue } from './utils';
 
-  export default defineComponent({
-    name: 'DateRangePikerPanel',
-    components: {
-      PanelShortcuts,
-      PanelFooter,
-      RenderFunction,
-      DatePanel,
-      WeekPanel,
-      MonthPanel,
-      YearPanel,
-      QuarterPanel,
+  defineOptions({ name: 'DateRangePikerPanel' });
+
+  const props = defineProps({
+    mode: {
+      type: String as PropType<Mode>,
+      default: 'date',
     },
-    props: {
-      mode: {
-        type: String as PropType<Mode>,
-        default: 'date',
-      },
-      value: {
-        type: Array as PropType<Array<Dayjs | undefined>>,
-        default: () => [],
-      },
-      footerValue: {
-        type: Array as PropType<Array<Dayjs | undefined>>,
-      },
-      timePickerValue: {
-        type: Array as PropType<Dayjs[]>,
-      },
-      showTime: {
-        type: Boolean,
-      },
-      showConfirmBtn: {
-        type: Boolean,
-      },
-      prefixCls: {
-        type: String,
-        required: true,
-      },
-      shortcuts: {
-        type: Array as PropType<ShortcutType[]>,
-        default: () => [],
-      },
-      shortcutsPosition: {
-        type: String as PropType<RangePickerProps['shortcutsPosition']>,
-        default: 'bottom',
-      },
-      format: {
-        type: String,
-        required: true,
-      },
-      dayStartOfWeek: {
-        type: Number as PropType<WeekStart>,
-        default: 0,
-      },
-      disabledDate: {
-        type: Function as PropType<RangeDisabledDate>,
-      },
-      disabledTime: {
-        type: Function as PropType<RangeDisabledTime>,
-      },
-      timePickerProps: {
-        type: Object as PropType<RangePickerProps['timePickerProps']>,
-      },
-      extra: {
-        type: Function as PropType<RenderFunc>,
-      },
-      dateRender: {
-        type: Function as PropType<RenderFunc>,
-      },
-      hideTrigger: {
-        type: Boolean,
-      },
-      startHeaderProps: {
-        type: Object as PropType<StartHeaderProps>,
-        default: () => ({}),
-      },
-      endHeaderProps: {
-        type: Object as PropType<StartHeaderProps>,
-        default: () => ({}),
-      },
-      confirmBtnDisabled: {
-        type: Boolean,
-      },
-      disabled: {
-        type: Array as PropType<boolean[]>,
-        default: () => [false, false],
-      },
-      visible: {
-        type: Boolean,
-      },
-      startHeaderMode: {
-        type: String as PropType<'year' | 'month'>,
-      },
-      endHeaderMode: {
-        type: String as PropType<'year' | 'month'>,
-      },
-      abbreviation: {
-        type: Boolean,
-      },
+    value: {
+      type: Array as PropType<Array<Dayjs | undefined>>,
+      default: () => [],
     },
-    emits: [
-      'cell-click',
-      'cell-mouse-enter',
-      'time-picker-select',
-      'shortcut-click',
-      'shortcut-mouse-enter',
-      'shortcut-mouse-leave',
-      'confirm',
-      'start-header-label-click',
-      'end-header-label-click',
-      'start-header-select',
-      'end-header-select',
-    ],
-    setup(props, { emit }) {
-      const {
-        prefixCls,
-        shortcuts,
-        shortcutsPosition,
-        format,
-        hideTrigger,
-        value,
-        disabledDate,
-        disabledTime,
-        startHeaderProps,
-        endHeaderProps,
-        extra,
-        dateRender,
-        visible,
-        startHeaderMode,
-        endHeaderMode,
-      } = toRefs(props);
-
-      const showShortcuts = computed(() => isArray(shortcuts.value) && shortcuts.value.length);
-
-      const classNames = computed(() => [
-        `${prefixCls.value}-range-container`,
-        {
-          [`${prefixCls.value}-range-container-panel-only`]: hideTrigger.value,
-          [`${prefixCls.value}-range-container-shortcuts-placement-left`]:
-            showShortcuts.value && shortcutsPosition.value === 'left',
-          [`${prefixCls.value}-range-container-shortcuts-placement-right`]:
-            showShortcuts.value && shortcutsPosition.value === 'right',
-        },
-      ]);
-
-      const currentDateView = ref<'date' | 'time'>('date');
-
-      watch(visible, (newVal, oldVal) => {
-        if (newVal && !oldVal) {
-          currentDateView.value = 'date';
-        }
-      });
-
-      function getShortcutValue(shortcut: ShortcutType) {
-        return getDayjsValue(
-          normalizeRangeValue(
-            isFunction(shortcut.value) ? shortcut.value() : shortcut.value,
-          ) as CalendarValue[],
-          shortcut.format || format.value,
-        );
-      }
-
-      function onShortcutClick(shortcut: ShortcutType) {
-        emit('shortcut-click', getShortcutValue(shortcut), shortcut);
-      }
-      function onShortcutMouseEnter(shortcut: ShortcutType) {
-        emit('shortcut-mouse-enter', getShortcutValue(shortcut));
-      }
-      function onShortcutMouseLeave(shortcut: ShortcutType) {
-        emit('shortcut-mouse-leave', getShortcutValue(shortcut));
-      }
-
-      function onPanelCellClick(date: Dayjs) {
-        emit('cell-click', date);
-      }
-
-      function onPanelCellMouseEnter(date: Dayjs) {
-        emit('cell-mouse-enter', date);
-      }
-
-      function onConfirmBtnClick() {
-        emit('confirm');
-      }
-
-      function onStartTimePickerSelect(time: Dayjs) {
-        emit('time-picker-select', time, 'start');
-      }
-
-      function onEndTimePickerSelect(time: Dayjs) {
-        emit('time-picker-select', time, 'end');
-      }
-
-      function onStartPanelHeaderLabelClick(type: 'year' | 'month') {
-        emit('start-header-label-click', type);
-      }
-
-      function onEndPanelHeaderLabelClick(type: 'year' | 'month') {
-        emit('end-header-label-click', type);
-      }
-
-      function onStartHeaderPanelSelect(date: Dayjs) {
-        emit('start-header-select', date);
-      }
-
-      function onEndHeaderPanelSelect(date: Dayjs) {
-        emit('end-header-select', date);
-      }
-
-      function getDisabledDateFunc(index: 0 | 1) {
-        return isFunction(disabledDate?.value)
-          ? (current: Date) =>
-              disabledDate?.value?.(current, index === 0 ? 'start' : 'end') || false
-          : undefined;
-      }
-
-      function getDisabledTimeFunc(index: 0 | 1) {
-        return isFunction(disabledTime?.value)
-          ? (current: Date) => disabledTime?.value?.(current, index === 0 ? 'start' : 'end') ?? {}
-          : undefined;
-      }
-
-      function getDateRenderFunc(index: 0 | 1) {
-        return isFunction(dateRender?.value)
-          ? (props: Record<string, unknown>): VNodeTypes => {
-              const mergeProps = {
-                ...props,
-                type: index === 0 ? 'start' : 'end',
-              };
-              return dateRender.value!(mergeProps);
-            }
-          : undefined;
-      }
-
-      const resolvedExtra: RenderFunc = (slotProps) => extra.value?.(slotProps) ?? '';
-
-      const shortcutsProps = reactive({
-        prefixCls,
-        shortcuts,
-        onItemClick: onShortcutClick,
-        onItemMouseEnter: onShortcutMouseEnter,
-        onItemMouseLeave: onShortcutMouseLeave,
-      });
-
-      const startPanelProps = computed(() => ({
-        ...startHeaderProps.value,
-        rangeValues: value.value,
-        disabledDate: getDisabledDateFunc(0),
-        dateRender: getDateRenderFunc(0),
-        onSelect: startHeaderMode.value ? onStartHeaderPanelSelect : onPanelCellClick,
-        onCellMouseEnter: onPanelCellMouseEnter,
-        onHeaderLabelClick: onStartPanelHeaderLabelClick,
-      }));
-
-      const endPanelProps = computed(() => ({
-        ...endHeaderProps.value,
-        rangeValues: value.value,
-        disabledDate: getDisabledDateFunc(1),
-        dateRender: getDateRenderFunc(1),
-        onSelect: endHeaderMode.value ? onEndHeaderPanelSelect : onPanelCellClick,
-        onCellMouseEnter: onPanelCellMouseEnter,
-        onHeaderLabelClick: onEndPanelHeaderLabelClick,
-      }));
-
-      return {
-        pick,
-        classNames,
-        showShortcuts,
-        shortcutsProps,
-        resolvedExtra,
-        startPanelProps,
-        endPanelProps,
-        getDisabledTimeFunc,
-        onConfirmBtnClick,
-        currentDateView,
-        onStartTimePickerSelect,
-        onEndTimePickerSelect,
-        onStartHeaderPanelSelect,
-        onEndHeaderPanelSelect,
-      };
+    footerValue: {
+      type: Array as PropType<Array<Dayjs | undefined>>,
+    },
+    timePickerValue: {
+      type: Array as PropType<Dayjs[]>,
+    },
+    showTime: {
+      type: Boolean,
+    },
+    showConfirmBtn: {
+      type: Boolean,
+    },
+    prefixCls: {
+      type: String,
+      required: true,
+    },
+    shortcuts: {
+      type: Array as PropType<ShortcutType[]>,
+      default: () => [],
+    },
+    shortcutsPosition: {
+      type: String as PropType<RangePickerProps['shortcutsPosition']>,
+      default: 'bottom',
+    },
+    format: {
+      type: String,
+      required: true,
+    },
+    dayStartOfWeek: {
+      type: Number as PropType<WeekStart>,
+      default: 0,
+    },
+    disabledDate: {
+      type: Function as PropType<RangeDisabledDate>,
+    },
+    disabledTime: {
+      type: Function as PropType<RangeDisabledTime>,
+    },
+    timePickerProps: {
+      type: Object as PropType<RangePickerProps['timePickerProps']>,
+    },
+    extra: {
+      type: Function as PropType<RenderFunc>,
+    },
+    dateRender: {
+      type: Function as PropType<RenderFunc>,
+    },
+    hideTrigger: {
+      type: Boolean,
+    },
+    startHeaderProps: {
+      type: Object as PropType<StartHeaderProps>,
+      default: () => ({}),
+    },
+    endHeaderProps: {
+      type: Object as PropType<StartHeaderProps>,
+      default: () => ({}),
+    },
+    confirmBtnDisabled: {
+      type: Boolean,
+    },
+    disabled: {
+      type: Array as PropType<boolean[]>,
+      default: () => [false, false],
+    },
+    visible: {
+      type: Boolean,
+    },
+    startHeaderMode: {
+      type: String as PropType<'year' | 'month'>,
+    },
+    endHeaderMode: {
+      type: String as PropType<'year' | 'month'>,
+    },
+    abbreviation: {
+      type: Boolean,
     },
   });
+
+  const emit = defineEmits<{
+    'cell-click': [_date: Dayjs];
+    'cell-mouse-enter': [_date: Dayjs];
+    'time-picker-select': [_time: Dayjs, _type: 'start' | 'end'];
+    'shortcut-click': [_value: Dayjs[], _shortcut: ShortcutType];
+    'shortcut-mouse-enter': [_value: Dayjs[]];
+    'shortcut-mouse-leave': [_value: Dayjs[]];
+    'confirm': [];
+    'start-header-label-click': [_type: 'year' | 'month'];
+    'end-header-label-click': [_type: 'year' | 'month'];
+    'start-header-select': [_date: Dayjs];
+    'end-header-select': [_date: Dayjs];
+  }>();
+
+  const {
+    prefixCls,
+    shortcuts,
+    shortcutsPosition,
+    format,
+    hideTrigger,
+    value,
+    disabledDate,
+    disabledTime,
+    startHeaderProps,
+    endHeaderProps,
+    extra,
+    dateRender,
+    visible,
+    startHeaderMode,
+    endHeaderMode,
+  } = toRefs(props);
+
+  const showShortcuts = computed(() => isArray(shortcuts.value) && shortcuts.value.length);
+
+  const classNames = computed(() => [
+    `${prefixCls.value}-range-container`,
+    {
+      [`${prefixCls.value}-range-container-panel-only`]: hideTrigger.value,
+      [`${prefixCls.value}-range-container-shortcuts-placement-left`]:
+        showShortcuts.value && shortcutsPosition.value === 'left',
+      [`${prefixCls.value}-range-container-shortcuts-placement-right`]:
+        showShortcuts.value && shortcutsPosition.value === 'right',
+    },
+  ]);
+
+  const currentDateView = ref<'date' | 'time'>('date');
+
+  watch(visible, (newVal, oldVal) => {
+    if (newVal && !oldVal) {
+      currentDateView.value = 'date';
+    }
+  });
+
+  function getShortcutValue(shortcut: ShortcutType) {
+    return getDayjsValue(
+      normalizeRangeValue(
+        isFunction(shortcut.value) ? shortcut.value() : shortcut.value,
+      ) as CalendarValue[],
+      shortcut.format || format.value,
+    );
+  }
+
+  function onShortcutClick(shortcut: ShortcutType) {
+    emit('shortcut-click', getShortcutValue(shortcut), shortcut);
+  }
+  function onShortcutMouseEnter(shortcut: ShortcutType) {
+    emit('shortcut-mouse-enter', getShortcutValue(shortcut));
+  }
+  function onShortcutMouseLeave(shortcut: ShortcutType) {
+    emit('shortcut-mouse-leave', getShortcutValue(shortcut));
+  }
+
+  function onPanelCellClick(date: Dayjs) {
+    emit('cell-click', date);
+  }
+
+  function onPanelCellMouseEnter(date: Dayjs) {
+    emit('cell-mouse-enter', date);
+  }
+
+  function onConfirmBtnClick() {
+    emit('confirm');
+  }
+
+  function onStartTimePickerSelect(time: Dayjs) {
+    emit('time-picker-select', time, 'start');
+  }
+
+  function onEndTimePickerSelect(time: Dayjs) {
+    emit('time-picker-select', time, 'end');
+  }
+
+  function onStartPanelHeaderLabelClick(type: 'year' | 'month') {
+    emit('start-header-label-click', type);
+  }
+
+  function onEndPanelHeaderLabelClick(type: 'year' | 'month') {
+    emit('end-header-label-click', type);
+  }
+
+  function onStartHeaderPanelSelect(date: Dayjs) {
+    emit('start-header-select', date);
+  }
+
+  function onEndHeaderPanelSelect(date: Dayjs) {
+    emit('end-header-select', date);
+  }
+
+  function getDisabledDateFunc(index: 0 | 1) {
+    return isFunction(disabledDate?.value)
+      ? (current: Date) => disabledDate?.value?.(current, index === 0 ? 'start' : 'end') || false
+      : undefined;
+  }
+
+  function getDisabledTimeFunc(index: 0 | 1) {
+    return isFunction(disabledTime?.value)
+      ? (current: Date) => disabledTime?.value?.(current, index === 0 ? 'start' : 'end') ?? {}
+      : undefined;
+  }
+
+  function getDateRenderFunc(index: 0 | 1) {
+    return isFunction(dateRender?.value)
+      ? (props: Record<string, unknown>): VNodeTypes => {
+          const mergeProps = {
+            ...props,
+            type: index === 0 ? 'start' : 'end',
+          };
+          return dateRender.value!(mergeProps);
+        }
+      : undefined;
+  }
+
+  const resolvedExtra: RenderFunc = (slotProps) => extra?.value?.(slotProps) ?? '';
+
+  const shortcutsProps = reactive({
+    prefixCls,
+    shortcuts,
+    onItemClick: onShortcutClick,
+    onItemMouseEnter: onShortcutMouseEnter,
+    onItemMouseLeave: onShortcutMouseLeave,
+  });
+
+  const startPanelProps = computed(() => ({
+    ...startHeaderProps.value,
+    rangeValues: value.value,
+    disabledDate: getDisabledDateFunc(0),
+    dateRender: getDateRenderFunc(0),
+    onSelect: startHeaderMode?.value ? onStartHeaderPanelSelect : onPanelCellClick,
+    onCellMouseEnter: onPanelCellMouseEnter,
+    onHeaderLabelClick: onStartPanelHeaderLabelClick,
+  }));
+
+  const endPanelProps = computed(() => ({
+    ...endHeaderProps.value,
+    rangeValues: value.value,
+    disabledDate: getDisabledDateFunc(1),
+    dateRender: getDateRenderFunc(1),
+    onSelect: endHeaderMode?.value ? onEndHeaderPanelSelect : onPanelCellClick,
+    onCellMouseEnter: onPanelCellMouseEnter,
+    onHeaderLabelClick: onEndPanelHeaderLabelClick,
+  }));
 </script>

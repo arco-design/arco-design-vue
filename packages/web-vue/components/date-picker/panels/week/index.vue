@@ -13,8 +13,8 @@
   />
 </template>
 
-<script lang="ts">
-  import { defineComponent, PropType } from 'vue';
+<script setup lang="ts">
+  import { PropType } from 'vue';
 
   import { Dayjs } from 'dayjs';
 
@@ -23,46 +23,42 @@
   import { HeaderIcons, HeaderOperations, IsSameTime, WeekStart } from '../../interface';
   import DatePanel from '../date/index.vue';
 
-  export default defineComponent({
-    name: 'WeekPanel',
-    components: {
-      DatePanel,
+  defineOptions({ name: 'WeekPanel' });
+
+  const props = defineProps({
+    dayStartOfWeek: {
+      type: Number as PropType<WeekStart>,
+      default: 0,
     },
-    props: {
-      dayStartOfWeek: {
-        type: Number as PropType<WeekStart>,
-        default: 0,
-      },
-      headerValue: {
-        type: Object as PropType<Dayjs>,
-        required: true,
-      },
-      headerOperations: {
-        type: Object as PropType<HeaderOperations>,
-        default: () => ({}),
-      },
-      headerIcons: {
-        type: Object as PropType<HeaderIcons>,
-        default: () => ({}),
-      },
+    headerValue: {
+      type: Object as PropType<Dayjs>,
+      required: true,
     },
-    emits: ['select', 'cell-mouse-enter'],
-    setup(props, { emit }) {
-      const { locale } = useI18n();
-      const isSameTime: IsSameTime = (current, target) => {
-        return methods.isSameWeek(current, target, props.dayStartOfWeek);
-      };
-      return {
-        isSameTime,
-        onSelect: (value: Dayjs) => {
-          const startDateOfWeek = methods.startOfWeek(value, props.dayStartOfWeek);
-          emit('select', startDateOfWeek);
-        },
-        onCellMouseEnter: (value: Dayjs) => {
-          const startDateOfWeek = methods.startOfWeek(value, props.dayStartOfWeek);
-          emit('cell-mouse-enter', startDateOfWeek);
-        },
-      };
+    headerOperations: {
+      type: Object as PropType<HeaderOperations>,
+      default: () => ({}),
+    },
+    headerIcons: {
+      type: Object as PropType<HeaderIcons>,
+      default: () => ({}),
     },
   });
+
+  const emit = defineEmits<{
+    'select': [_value: Dayjs];
+    'cell-mouse-enter': [_value: Dayjs];
+  }>();
+
+  const { locale } = useI18n();
+  const isSameTime: IsSameTime = (current, target) => {
+    return methods.isSameWeek(current, target, props.dayStartOfWeek);
+  };
+  const onSelect = (value: Dayjs) => {
+    const startDateOfWeek = methods.startOfWeek(value, props.dayStartOfWeek);
+    emit('select', startDateOfWeek);
+  };
+  const onCellMouseEnter = (value: Dayjs) => {
+    const startDateOfWeek = methods.startOfWeek(value, props.dayStartOfWeek);
+    emit('cell-mouse-enter', startDateOfWeek);
+  };
 </script>
