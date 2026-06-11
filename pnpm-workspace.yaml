@@ -16,7 +16,7 @@ catalog:
 
 catalogs:
   astro:
-    vite: ~8.0.16
+    vite: ~7
 overrides:
   astro@<6.1.10: ^6.1.10
   axios@>=1.0.0 <1.15.1: '>=1.15.1'

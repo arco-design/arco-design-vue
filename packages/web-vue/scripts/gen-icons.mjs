@@ -57,7 +57,7 @@ const getIconVue = ({ name, componentName, svgHtml }) => `<template>
 
   defineOptions({ name: '${componentName}' });
 
-  interface Props {
+  export interface Props {
     /**
      * @zh 图标大小
      * @en Icon size
