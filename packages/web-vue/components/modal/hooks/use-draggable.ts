@@ -1,16 +1,19 @@
 import { Ref, ref } from 'vue';
 import { off, on } from '../../_utils/dom';
+import { ModalDragOptions } from '../interface';
 
 export const useDraggable = ({
   modalRef,
   wrapperRef,
   draggable,
   alignCenter,
+  dragOptions,
 }: {
   modalRef: Ref<HTMLElement | undefined>;
   wrapperRef: Ref<HTMLElement | undefined>;
   draggable: Ref<boolean>;
   alignCenter: Ref<boolean>;
+  dragOptions: ModalDragOptions;
 }) => {
   const isDragging = ref(false);
   const startMouse = ref([0, 0]);
@@ -75,15 +78,16 @@ export const useDraggable = ({
 
       let x = initialPosition.value[0] + diffX;
       let y = initialPosition.value[1] + diffY;
-
-      // eslint-disable-next-line prefer-destructuring
-      if (x < minPosition.value[0]) x = minPosition.value[0];
-      // eslint-disable-next-line prefer-destructuring
-      if (x > maxPosition.value[0]) x = maxPosition.value[0];
-      // eslint-disable-next-line prefer-destructuring
-      if (y < minPosition.value[1]) y = minPosition.value[1];
-      // eslint-disable-next-line prefer-destructuring
-      if (y > maxPosition.value[1]) y = maxPosition.value[1];
+      if (!dragOptions.outOfScreen) {
+        // eslint-disable-next-line prefer-destructuring
+        if (x < minPosition.value[0]) x = minPosition.value[0];
+        // eslint-disable-next-line prefer-destructuring
+        if (x > maxPosition.value[0]) x = maxPosition.value[0];
+        // eslint-disable-next-line prefer-destructuring
+        if (y < minPosition.value[1]) y = minPosition.value[1];
+        // eslint-disable-next-line prefer-destructuring
+        if (y > maxPosition.value[1]) y = maxPosition.value[1];
+      }
 
       position.value = [x, y];
     }
