@@ -7,9 +7,11 @@ import Button, { ButtonProps } from '../button';
 import Input from './input';
 import type { Size } from '../_utils/constant';
 import { useSize } from '../_hooks/use-size';
+import useListeners from '../_hooks/use-listeners';
 
 export default defineComponent({
   name: 'InputSearch',
+  extends: Input,
   props: {
     /**
      * @zh 是否为后置按钮模式
@@ -82,6 +84,8 @@ export default defineComponent({
       }
     };
 
+    const { listeners } = useListeners();
+
     const renderSuffix = () => {
       return (
         <>
@@ -131,6 +135,8 @@ export default defineComponent({
 
     const render = () => (
       <Input
+        {...props}
+        {...listeners.value}
         ref={inputRef}
         class={prefixCls}
         v-slots={{
