@@ -95,8 +95,12 @@
 
   // spin
   .@{prefix}-spin {
-    display: flex;
-    flex-direction: column;
+    // we will use grid layout to expend the spin space instead of using flex layout.
+    // this is because the flex layout will cause issue https://github.com/arco-design/arco-design-vue/issues/3242.
+    // root cause unknown, but grid layout works fine and resolves the issue.
+    // so we use grid layout here.
+    display: grid;
+    grid-auto-columns: minmax(0, 100%);
     height: 100%;
   }
 
