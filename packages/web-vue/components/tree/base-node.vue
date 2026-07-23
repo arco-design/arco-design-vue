@@ -354,8 +354,6 @@ export default defineComponent({
 
         e.stopPropagation();
 
-        setDragStatus('dragStart', e);
-
         try {
           // ie throw error
           // firefox-need-it
@@ -363,6 +361,8 @@ export default defineComponent({
         } catch (error) {
           // empty
         }
+
+        setDragStatus('dragStart', e);
       },
       onDragEnd(e: DragEvent) {
         if (!draggable.value) return;
