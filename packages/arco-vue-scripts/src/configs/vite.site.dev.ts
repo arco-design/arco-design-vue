@@ -38,7 +38,9 @@ export default defineConfig({
   plugins: [
     vueDocs(),
     vue(),
+    // @ts-ignore
     vueJsx(),
+    // @ts-ignore
     svgLoader({ svgoConfig: {} }),
     eslint({
       // hmr情况下cache存在问题
