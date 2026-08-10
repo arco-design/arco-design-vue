@@ -91,6 +91,7 @@ import IconRight from '../icon/icon-right';
 import { DataInfo, TransferItem } from './interface';
 import { transferInjectionKey } from './context';
 import { useFormItem } from '../_hooks/use-form-item';
+import { isFunction } from '../_utils/is';
 
 export default defineComponent({
   name: 'Transfer',
@@ -208,6 +209,20 @@ export default defineComponent({
     targetInputSearchProps: {
       type: Object,
     },
+    /**
+     * @zh 右侧列表元素的排序策略，`original`保持与数据源相同的顺序，`push`插入到最后，`unshift`插入到最前面，或使用自定义排序方法
+     * @en Sorting strategy for the right list element,`original`: No sorting, `push`: Insert at the end, `unshift`: Insert at the beginning, or use a custom sorting method
+     * @version 2.57.1
+     */
+    targetOrder: {
+      type: [String, Function] as PropType<
+        | 'original'
+        | 'push'
+        | 'unshift'
+        | ((a: TransferItem, b: TransferItem) => number)
+      >,
+      default: 'original',
+    },
   },
   emits: {
     'update:modelValue': (value: string[]) => true,
@@ -309,6 +324,50 @@ export default defineComponent({
     const sourceTitle = computed(() => props.title?.[0]);
     const targetTitle = computed(() => props.title?.[1]);
 
+    const getTargetData = () => {
+      if (isFunction(props.targetOrder)) {
+        return props.data
+          .filter((item) => computedTarget.value.includes(item.value))
+          .sort(props.targetOrder);
+      }
+      if (props.targetOrder === 'original') {
+        return props.data.filter((item) =>
+          computedTarget.value.includes(item.value)
+        );
+      }
+      return computedTarget.value.reduce((arr: TransferItem[], cur: string) => {
+        const val = props.data.find((item) => item.value === cur);
+        if (val) arr.push(val);
+        return arr;
+      }, []);
+    };
+
+    const processItems = (items: TransferItem[], selectedSet: Set<string>) => {
+      return items.reduce(
+        (acc: DataInfo, item: TransferItem) => {
+          acc.data.push(item);
+
+          if (!item.disabled) {
+            acc.allValidValues.push(item.value);
+          }
+
+          if (selectedSet.has(item.value)) {
+            acc.selected.push(item.value);
+            if (!item.disabled) {
+              acc.validSelected.push(item.value);
+            }
+          }
+          return acc;
+        },
+        {
+          data: [],
+          allValidValues: [],
+          selected: [],
+          validSelected: [],
+        }
+      );
+    };
+
     const dataInfo = computed(() => {
       const sourceInfo: DataInfo = {
         data: [],
@@ -323,32 +382,20 @@ export default defineComponent({
         selected: [],
         validSelected: [],
       };
+      const targetData = getTargetData();
+      const targetValues = new Set(targetData.map((item) => item.value));
+      const selectedSet = new Set(computedSelected.value);
+      // 处理目标数据部分
+      Object.assign(targetInfo, processItems(targetData, selectedSet));
 
-      for (const item of props.data) {
-        if (computedTarget.value.includes(item.value)) {
-          targetInfo.data.push(item);
-          if (!item.disabled) {
-            targetInfo.allValidValues.push(item.value);
-          }
-          if (computedSelected.value.includes(item.value)) {
-            targetInfo.selected.push(item.value);
-            if (!item.disabled) {
-              targetInfo.validSelected.push(item.value);
-            }
-          }
-        } else {
-          sourceInfo.data.push(item);
-          if (!item.disabled) {
-            sourceInfo.allValidValues.push(item.value);
-          }
-          if (computedSelected.value.includes(item.value)) {
-            sourceInfo.selected.push(item.value);
-            if (!item.disabled) {
-              sourceInfo.validSelected.push(item.value);
-            }
-          }
-        }
-      }
+      // 处理源数据部分（props.data 中不在 targetData 中的项）
+      Object.assign(
+        sourceInfo,
+        processItems(
+          props.data.filter((item) => !targetValues.has(item.value)),
+          selectedSet
+        )
+      );
 
       return {
         sourceInfo,
@@ -361,10 +408,33 @@ export default defineComponent({
     };
 
     const moveTo = (values: string[], target: 'target' | 'source') => {
-      const newTarget =
-        target === 'target'
-          ? [...computedTarget.value, ...values]
-          : computedTarget.value.filter((value) => !values.includes(value));
+      let newTarget: string[] = [];
+      if (target === 'target') {
+        const merged = [...computedTarget.value, ...values];
+        if (isFunction(props.targetOrder)) {
+          // 自定义排序逻辑
+          newTarget = merged
+            .map((v) => props.data.find((item) => item.value === v)) // 转换为完整对象
+            .filter(Boolean) // 过滤无效项
+            .filter((item): item is TransferItem => item !== undefined) // 过滤无效项
+            .sort(props.targetOrder) // 执行自定义排序
+            .map((item) => item.value); // 转换回值数组
+        } else {
+          newTarget =
+            props.targetOrder === 'unshift'
+              ? values.concat(computedTarget.value)
+              : computedTarget.value.concat(values);
+          if (props.targetOrder === 'original') {
+            newTarget = props.data
+              .filter((item) => newTarget.includes(item.value))
+              .map((item) => item.value);
+          }
+        }
+      } else {
+        newTarget.push(
+          ...computedTarget.value.filter((value) => !values.includes(value))
+        );
+      }
       handleSelect(
         dataInfo.value[target === 'target' ? 'targetInfo' : 'sourceInfo']
           .selected

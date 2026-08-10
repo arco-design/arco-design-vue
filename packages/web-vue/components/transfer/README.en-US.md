@@ -23,6 +23,8 @@ description: A two-column multi-select component that moves elements from one co
 
 @import ./__demo__/custom-header.md
 
+@import ./__demo__/order.md
+
 ## API
 
 
@@ -43,6 +45,7 @@ description: A two-column multi-select component that moves elements from one co
 |title|The title of the source and target selection boxes|`string[]`|`['Source', 'Target']`||
 |source-input-search-props|Search box configuration for source selection box|`object`|`-`|2.51.1|
 |target-input-search-props|Search box configuration for target selection box|`object`|`-`|2.51.1|
+|target-order|Sorting strategy for the right list element,`original`: No sorting, `push`: Insert at the end, `unshift`: Insert at the beginning, or use a custom sorting method|`'original'\| 'push'\| 'unshift'\| ((a: TransferItem, b: TransferItem) => number)`|`'original'`|2.57.1|
 ### `<transfer>` Events
 
 |Event Name|Description|Parameters|
