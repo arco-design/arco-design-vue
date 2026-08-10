@@ -24,7 +24,7 @@ export const useFormItem = ({
     () => disabled?.value || formItemCtx.disabled
   );
 
-  const mergedError = computed(() => error?.value || formItemCtx.error);
+  const mergedError = computed(() => error?.value ?? formItemCtx.error);
 
   const feedback = toRef(formItemCtx, 'feedback');
   const eventHandlers = toRef(formItemCtx, 'eventHandlers');
