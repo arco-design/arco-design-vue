@@ -50,6 +50,7 @@ description: 展示和预览图片。
 |default-preview-visible|预览的默认打开状态|`boolean`|`false`||
 |preview-props|预览的配置项（所有选项都是可选的） [ImagePreviewProps](#image-preview%20Props)|`ImagePreviewProps`|`-`||
 |footer-class|底部显示区域的类名|`string\|array\|object`|`-`|2.23.0|
+|img-class|图片的类名|`string \| any[]`|`-`||
 ### `<image>` Events
 
 |事件名|描述|参数|
