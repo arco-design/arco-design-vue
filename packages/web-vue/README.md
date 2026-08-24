@@ -97,8 +97,8 @@ Project development and contribution process please refer to the [Contributing G
 
 # Contributing
 
-Developers interested in contributing should read the [Code of Conduct](./CODE_OF_CONDUCT.md) and
-the [Contributing Guide](./CONTRIBUTING.md).
+Developers interested in contributing should read the [Code of Conduct](https://github.com/arco-design/arco-design-vue/blob/main/CODE_OF_CONDUCT.md) and
+the [Contributing Guide](https://github.com/arco-design/arco-design-vue/blob/main/CONTRIBUTING.md).
 
 Thank you to all the people who already contributed to ArcoDesign!
 
@@ -106,4 +106,4 @@ Thank you to all the people who already contributed to ArcoDesign!
 
 # License
 
-Ths project is [MIT licensed](./LICENSE).
+Ths project is [MIT licensed](https://github.com/arco-design/arco-design-vue/blob/main/LICENSE).
