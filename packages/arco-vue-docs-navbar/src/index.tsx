@@ -39,6 +39,26 @@ const ReactApp = ({
           hideSearch
           logoHref={siteBase}
           versions={[{ version, link: siteBase }]}
+          // Relative hrefs break on GitHub Pages; keep official Arco Design destinations.
+          tabs={[
+            {
+              title: '设计',
+              enTitle: 'Design',
+              href: 'https://arco.design/docs/spec/introduce',
+              dropdown: true,
+            },
+            {
+              title: '开发',
+              enTitle: 'Development',
+              href: 'https://arco.design/vue/docs/start',
+              dropdown: true,
+            },
+            {
+              title: '生态产品',
+              enTitle: 'Ecosystem',
+              dropdown: true,
+            },
+          ]}
         />
       </Navbar.NavbarThemeProvider>
     </ConfigProvider>

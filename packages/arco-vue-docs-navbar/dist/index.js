@@ -42742,7 +42742,26 @@ const u_ = "/arco-design-vue/", MZ = ({
     hideUser: !0,
     hideSearch: !0,
     logoHref: u_,
-    versions: [{ version: n, link: u_ }]
+    versions: [{ version: n, link: u_ }],
+    tabs: [
+      {
+        title: "设计",
+        enTitle: "Design",
+        href: "https://arco.design/docs/spec/introduce",
+        dropdown: !0
+      },
+      {
+        title: "开发",
+        enTitle: "Development",
+        href: "https://arco.design/vue/docs/start",
+        dropdown: !0
+      },
+      {
+        title: "生态产品",
+        enTitle: "Ecosystem",
+        dropdown: !0
+      }
+    ]
   }
 ))), DZ = (e) => {
   $a.render(
