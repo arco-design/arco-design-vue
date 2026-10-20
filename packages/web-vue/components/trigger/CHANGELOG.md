@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.59.0
+
+`2026-10-20`
+
+### 🆎 TypeScript
+
+- Add missing properties to `TriggerProps` ([#3663](https://github.com/arco-design/arco-design-vue/pull/3663))
+
+
 ## 2.55.1
 
 `2024-03-29`

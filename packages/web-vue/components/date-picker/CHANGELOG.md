@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.59.0
+
+`2026-10-20`
+
+### 🆕 Feature
+
+- Added `utcOffset`, `timezone`, `hideNotInViewDates`, `clearRangeOnReselect`, and `panelRender` for DatePicker, with related docs and demos; timezone support addresses issue #241. ([#3645](https://github.com/arco-design/arco-design-vue/pull/3645))
+
+### 🐛 BugFix
+
+- Fix year panel boundary navigation/display issues to prevent negative years and invalid date rendering in low-year scenarios. ([#3648](https://github.com/arco-design/arco-design-vue/pull/3648))
+
+### 💎 Enhancement
+
+- Added `input-props` for passing native input attributes; added `fixed-time` for `RangePicker`; support custom panel header display format via locale `yearFormat/monthFormat`. ([#3644](https://github.com/arco-design/arco-design-vue/pull/3644))
+
+
 ## 2.58.0
 
 `2026-04-16`

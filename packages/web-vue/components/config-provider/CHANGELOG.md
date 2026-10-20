@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.59.0
+
+`2026-10-20`
+
+### 🆕 Feature
+
+- Added global config `autoInsertSpaceInButton` to auto-insert spacing for two-Chinese-character button text. ([#3646](https://github.com/arco-design/arco-design-vue/pull/3646))
+
+
 ## 2.48.0
 
 `2023-06-30`

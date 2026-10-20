@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.59.0
+
+`2026-10-20`
+
+### 🐛 问题修复
+
+- 确保使用鼠标左键进行拖动 ([#3665](https://github.com/arco-design/arco-design-vue/pull/3665))
+
+
 ## 2.56.3
 
 `2024-10-25`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.59.0
+
+`2026-10-20`
+
+### 🆎 类型修正
+
+- 补全 `TriggerProps` 缺失的类型定义 ([#3663](https://github.com/arco-design/arco-design-vue/pull/3663))
+
+
 ## 2.55.1
 
 `2024-03-29`

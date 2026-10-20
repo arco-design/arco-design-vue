@@ -2,6 +2,40 @@
 changelog: true
 ```
 
+## 2.59.0
+
+`2026-10-20`
+
+### 🆕 Feature
+
+- **calendar:** Align Calendar with key React capabilities (page date control, header type/operations, disabled date, custom renderers, week mode), and fix select-header today sync/highlight behavior. ([#3651](https://github.com/arco-design/arco-design-vue/pull/3651))
+- **modal:** Add `Modal.config` and `Modal.destroyAll`, with corresponding type definitions and tests. ([#3647](https://github.com/arco-design/arco-design-vue/pull/3647))
+- **button:** Added `loadingFixedWidth` prop to keep button width unchanged during loading state. ([#3646](https://github.com/arco-design/arco-design-vue/pull/3646))
+- **config-provider:** Added global config `autoInsertSpaceInButton` to auto-insert spacing for two-Chinese-character button text. ([#3646](https://github.com/arco-design/arco-design-vue/pull/3646))
+- **date-picker:** Added `utcOffset`, `timezone`, `hideNotInViewDates`, `clearRangeOnReselect`, and `panelRender` for DatePicker, with related docs and demos; timezone support addresses issue #241. ([#3645](https://github.com/arco-design/arco-design-vue/pull/3645))
+
+### 🐛 BugFix
+
+- **image:** ensure left mouse button is used for dragging ([#3665](https://github.com/arco-design/arco-design-vue/pull/3665))
+- **textarea:** Fix reading a stale `v-model` value in Textarea `input` event handlers. ([#3659](https://github.com/arco-design/arco-design-vue/pull/3659))
+- **verification-code:** improve cursor placement and focus behavior ([#3658](https://github.com/arco-design/arco-design-vue/pull/3658))
+- Fixed missing validation message fields in several i18n locale files ([#3656](https://github.com/arco-design/arco-design-vue/pull/3656))
+- Fix watcher errors during `dev-component` development builds. ([#3654](https://github.com/arco-design/arco-design-vue/pull/3654))
+- **mention:** Fix the mention dropdown remaining visible after clearing the input with `allow-clear` following an `@` trigger. ([#3653](https://github.com/arco-design/arco-design-vue/pull/3653))
+- Normalize Vitest snapshot line endings to LF to avoid false snapshot changes on Windows. ([#3653](https://github.com/arco-design/arco-design-vue/pull/3653))
+- **anchor:** Fixed incorrect target resolution in multi-container scenarios with duplicated `id`s. ([#3649](https://github.com/arco-design/arco-design-vue/pull/3649))
+- **date-picker:** Fix year panel boundary navigation/display issues to prevent negative years and invalid date rendering in low-year scenarios. ([#3648](https://github.com/arco-design/arco-design-vue/pull/3648))
+
+### 💎 Enhancement
+
+- **anchor:** Added missing Anchor capabilities to align with React (affix, offsets, direction, target-offset), and synced demos, docs, and tests. ([#3649](https://github.com/arco-design/arco-design-vue/pull/3649))
+- **date-picker:** Added `input-props` for passing native input attributes; added `fixed-time` for `RangePicker`; support custom panel header display format via locale `yearFormat/monthFormat`. ([#3644](https://github.com/arco-design/arco-design-vue/pull/3644))
+
+### 🆎 TypeScript
+
+- **trigger:** Add missing properties to `TriggerProps` ([#3663](https://github.com/arco-design/arco-design-vue/pull/3663))
+
+
 ## 2.58.0
 
 `2026-04-16`

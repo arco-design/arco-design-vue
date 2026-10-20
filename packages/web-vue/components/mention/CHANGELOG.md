@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.59.0
+
+`2026-10-20`
+
+### 🐛 BugFix
+
+- Fix the mention dropdown remaining visible after clearing the input with `allow-clear` following an `@` trigger. ([#3653](https://github.com/arco-design/arco-design-vue/pull/3653))
+
+
 ## 2.52.1
 
 `2023-10-13`
