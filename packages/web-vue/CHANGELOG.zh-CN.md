@@ -2,6 +2,40 @@
 changelog: true
 ```
 
+## 2.59.0
+
+`2026-10-20`
+
+### 🆕 新增功能
+
+- **calendar:** 补齐 Calendar 与 React 版本的关键能力（面板日期控制、头部类型与操作、禁用日期、自定义渲染、周模式等），并修复下拉头部“今天”同步与高亮更新问题。 ([#3651](https://github.com/arco-design/arco-design-vue/pull/3651))
+- **modal:** 新增 `Modal.config` 与 `Modal.destroyAll`，并补充类型定义与测试。 ([#3647](https://github.com/arco-design/arco-design-vue/pull/3647))
+- **button:** 新增 `loadingFixedWidth` 属性，支持按钮在 loading 状态保持宽度不变。 ([#3646](https://github.com/arco-design/arco-design-vue/pull/3646))
+- **config-provider:** 新增全局配置 `autoInsertSpaceInButton`，当按钮文本为两个中文字符时自动插入空格。 ([#3646](https://github.com/arco-design/arco-design-vue/pull/3646))
+- **date-picker:** 新增 `utcOffset`、`timezone`、`hideNotInViewDates`、`clearRangeOnReselect`、`panelRender`，并补充对应文档与示例；其中时区配置用于解决 issue #241。 ([#3645](https://github.com/arco-design/arco-design-vue/pull/3645))
+
+### 🐛 问题修复
+
+- **image:** 确保使用鼠标左键进行拖动 ([#3665](https://github.com/arco-design/arco-design-vue/pull/3665))
+- **textarea:** 修复在 `input` 事件回调中读取到旧的 `v-model` 值的问题。 ([#3659](https://github.com/arco-design/arco-design-vue/pull/3659))
+- **verification-code:** 修复验证码输入框光标定位与聚焦行为 ([#3658](https://github.com/arco-design/arco-design-vue/pull/3658))
+- 修复部分国际化语言检验信息字段缺失 ([#3656](https://github.com/arco-design/arco-design-vue/pull/3656))
+- 修复 `dev-component` 开发构建中的 watcher 报错问题。 ([#3654](https://github.com/arco-design/arco-design-vue/pull/3654))
+- **mention:** 修复输入 `@` 后点击清空按钮仍显示提及下拉弹窗的问题。 ([#3653](https://github.com/arco-design/arco-design-vue/pull/3653))
+- 统一 Vitest 快照换行为 LF，避免 Windows 下快照内容未变却被标记为修改。 ([#3653](https://github.com/arco-design/arco-design-vue/pull/3653))
+- **anchor:** 修复重复 `id` 场景下多容器锚点命中错误。 ([#3649](https://github.com/arco-design/arco-design-vue/pull/3649))
+- **date-picker:** 修复年份面板在最小年份边界的导航与显示问题，避免出现负年份及低年份场景下的日期显示异常。 ([#3648](https://github.com/arco-design/arco-design-vue/pull/3648))
+
+### 💎 功能优化
+
+- **anchor:** 补齐 Anchor 与 React 对齐的能力（affix、offset、direction、target-offset），同步 demo、文档与测试。 ([#3649](https://github.com/arco-design/arco-design-vue/pull/3649))
+- **date-picker:** 新增 `input-props` 属性，支持透传原生输入框属性；`RangePicker` 新增 `fixed-time` 属性；支持通过 locale 的 `yearFormat/monthFormat` 自定义面板头部显示格式。 ([#3644](https://github.com/arco-design/arco-design-vue/pull/3644))
+
+### 🆎 类型修正
+
+- **trigger:** 补全 `TriggerProps` 缺失的类型定义 ([#3663](https://github.com/arco-design/arco-design-vue/pull/3663))
+
+
 ## 2.58.0
 
 `2026-04-16`

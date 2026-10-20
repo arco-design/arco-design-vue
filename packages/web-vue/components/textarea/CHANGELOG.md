@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.59.0
+
+`2026-10-20`
+
+### 🐛 BugFix
+
+- Fix reading a stale `v-model` value in Textarea `input` event handlers. ([#3659](https://github.com/arco-design/arco-design-vue/pull/3659))
+
+
 ## 2.56.3
 
 `2024-10-25`

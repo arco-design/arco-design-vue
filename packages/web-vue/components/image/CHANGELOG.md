@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.59.0
+
+`2026-10-20`
+
+### 🐛 BugFix
+
+- ensure left mouse button is used for dragging ([#3665](https://github.com/arco-design/arco-design-vue/pull/3665))
+
+
 ## 2.56.3
 
 `2024-10-25`

@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.59.0
+
+`2026-10-20`
+
+### 🆕 新增功能
+
+- 新增 `Modal.config` 与 `Modal.destroyAll`，并补充类型定义与测试。 ([#3647](https://github.com/arco-design/arco-design-vue/pull/3647))
+
+
 ## 2.57.0
 
 `2025-03-10`

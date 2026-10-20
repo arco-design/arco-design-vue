@@ -2,6 +2,23 @@
 changelog: true
 ```
 
+## 2.59.0
+
+`2026-10-20`
+
+### 🆕 新增功能
+
+- 新增 `utcOffset`、`timezone`、`hideNotInViewDates`、`clearRangeOnReselect`、`panelRender`，并补充对应文档与示例；其中时区配置用于解决 issue #241。 ([#3645](https://github.com/arco-design/arco-design-vue/pull/3645))
+
+### 🐛 问题修复
+
+- 修复年份面板在最小年份边界的导航与显示问题，避免出现负年份及低年份场景下的日期显示异常。 ([#3648](https://github.com/arco-design/arco-design-vue/pull/3648))
+
+### 💎 功能优化
+
+- 新增 `input-props` 属性，支持透传原生输入框属性；`RangePicker` 新增 `fixed-time` 属性；支持通过 locale 的 `yearFormat/monthFormat` 自定义面板头部显示格式。 ([#3644](https://github.com/arco-design/arco-design-vue/pull/3644))
+
+
 ## 2.58.0
 
 `2026-04-16`

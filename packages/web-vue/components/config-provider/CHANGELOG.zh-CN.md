@@ -2,6 +2,15 @@
 changelog: true
 ```
 
+## 2.59.0
+
+`2026-10-20`
+
+### 🆕 新增功能
+
+- 新增全局配置 `autoInsertSpaceInButton`，当按钮文本为两个中文字符时自动插入空格。 ([#3646](https://github.com/arco-design/arco-design-vue/pull/3646))
+
+
 ## 2.48.0
 
 `2023-06-30`
