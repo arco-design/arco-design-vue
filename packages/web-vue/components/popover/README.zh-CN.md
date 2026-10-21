@@ -23,6 +23,7 @@ description: 鼠标悬停、聚焦或点击在某个组件时，弹出的气泡�
 |---|---|---|:---:|
 |popup-visible **(v-model)**|文字气泡是否可见|`boolean`|`-`|
 |default-popup-visible|文字气泡默认是否可见（非受控模式）|`boolean`|`false`|
+|disabled|文字气泡是否禁用|`boolean`|`false`|
 |title|标题|`string`|`-`|
 |content|内容|`string`|`-`|
 |trigger|触发方式|`'hover' \| 'click' \| 'focus' \| 'contextMenu'`|`'hover'`|

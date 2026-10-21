@@ -25,6 +25,7 @@ description: When the mouse hovers, focus, or click on a component, a bubble-lik
 |---|---|---|:---:|
 |popup-visible **(v-model)**|Whether the popover is visible|`boolean`|`-`|
 |default-popup-visible|Whether the popover is visible by default (uncontrolled mode)|`boolean`|`false`|
+|disabled|Whether to disable the popover|`boolean`|`false`|
 |title|Title|`string`|`-`|
 |content|Content|`string`|`-`|
 |trigger|Trigger method|`'hover' \| 'click' \| 'focus' \| 'contextMenu'`|`'hover'`|

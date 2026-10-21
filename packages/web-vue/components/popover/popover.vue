@@ -4,6 +4,7 @@
     :trigger="trigger"
     :position="position"
     :popup-visible="computedPopupVisible"
+    :disabled="disabled"
     :popup-offset="10"
     :content-class="contentCls"
     :content-style="contentStyle"
@@ -55,6 +56,14 @@ export default defineComponent({
      * @en Whether the popover is visible by default (uncontrolled mode)
      */
     defaultPopupVisible: {
+      type: Boolean,
+      default: false,
+    },
+    /**
+     * @zh 文字气泡是否禁用
+     * @en Whether to disable the popover
+     */
+    disabled: {
       type: Boolean,
       default: false,
     },
