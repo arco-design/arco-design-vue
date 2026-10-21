@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils';
+import { nextTick } from 'vue';
 import Typography from '../index';
 
 const { Paragraph } = Typography;
@@ -102,17 +103,46 @@ describe('Typography', () => {
         default: text,
       },
     });
+    // Paragraph 只声明了 blockquote/spacing，其余 props 通过 $attrs 透传给 Base，
+    // 因此 ellipsis 不在它的公开 props 类型里（运行时仍是合法 attr），这里断言运行时行为
     await wrapper.setProps({
       ellipsis: {
         rows: 2,
         expandable: true,
       },
-    });
+    } as any);
     await sleep(200);
     const moreElement = wrapper.find('.arco-typography-operation-expand');
     expect(moreElement.exists()).toBe(true);
     expect(wrapper.text()).toContain('...');
     await moreElement.trigger('click');
     expect(wrapper.text()).not.toContain('...');
+  });
+
+  test('css ellipsis mounts the popup from the start', async () => {
+    // 弹框必须常驻挂载：一旦按溢出与否切换结构，就会在 ResizeObserver 回调里
+    // 更换被观察元素的父节点，触发 "ResizeObserver loop" 报错
+    const wrapper = mount(Paragraph as any, {
+      props: { ellipsis: { css: true, rows: 2 } },
+      slots: { default: 'A design is a plan or specification'.repeat(10) },
+    });
+    await nextTick();
+
+    const tooltip = wrapper.findComponent({ name: 'Tooltip' });
+    expect(tooltip.exists()).toBe(true);
+    // 没有检测到溢出时弹框应为禁用状态
+    expect(tooltip.props('disabled')).toBe(true);
+  });
+
+  test('css ellipsis mounts popover when showTooltip is popover', async () => {
+    const wrapper = mount(Paragraph as any, {
+      props: { ellipsis: { css: true, showTooltip: { type: 'popover' } } },
+      slots: { default: 'A design is a plan or specification'.repeat(10) },
+    });
+    await nextTick();
+
+    const popover = wrapper.findComponent({ name: 'Popover' });
+    expect(popover.exists()).toBe(true);
+    expect(popover.props('disabled')).toBe(true);
   });
 });
