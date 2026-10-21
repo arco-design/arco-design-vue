@@ -4,7 +4,7 @@
       v-for="item of operations"
       :key="`arco-col-${item.name}`"
       :class="`arco-table-${item.name}-col`"
-      :style="fixedWidth(item.width)"
+      :style="fixedWidth((columnWidth && columnWidth[item.name]) || item.width)"
     />
     <col
       v-for="item of dataColumns"
