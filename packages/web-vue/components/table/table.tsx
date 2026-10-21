@@ -8,6 +8,7 @@ import {
   computed,
   defineComponent,
   inject,
+  nextTick,
   onMounted,
   provide,
   reactive,
@@ -1524,6 +1525,19 @@ export default defineComponent({
       thWidth.value = width;
     };
 
+    // 虚拟列表的 body 表格没有 colgroup 时，`table-layout: fixed` 会用当前渲染的第一行
+    // 推断列宽。行内存在 rowspan/colspan 时每行结构不同，列宽会随滚动漂移，因此这里用
+    // 表头实测宽度补齐没有声明宽度的列，保证 body 与 header 共用同一套列宽。
+    const virtualColumnWidth = computed<Record<string, number>>(() => ({
+      ...thWidth.value,
+      ...columnWidth,
+    }));
+
+    // 列数量变化后重新测量表头，避免 colgroup 使用过期宽度
+    watch([() => dataColumns.value.length, () => operations.value.length], () =>
+      nextTick(getThWidth)
+    );
+
     const hasScrollBar = ref(false);
 
     const isTbodyHasScrollBar = () => {
@@ -1600,6 +1614,8 @@ export default defineComponent({
         columns: allColumns,
       });
 
+    // 虚拟列表的 body 表格已通过 colgroup 固定列宽，此处的内联宽度仅作为兜底
+    // （挂载前 thWidth 尚未测量，或某个 th 未被采集到）
     const getVirtualColumnStyle = (name: string | undefined) => {
       if (!isVirtualList.value || !name || !thWidth.value[name]) {
         return undefined;
@@ -2088,20 +2104,25 @@ export default defineComponent({
               {isVirtualList.value && flattenData.value.length ? (
                 <VirtualList
                   v-slots={{
-                    item: ({
+                    'item': ({
                       item,
                       index,
                     }: {
                       item: TableDataWithRaw;
                       index: number;
                     }) => renderRecord(item, index),
+                    'list-prefix': () => (
+                      <ColGroup
+                        dataColumns={dataColumns.value}
+                        operations={operations.value}
+                        columnWidth={virtualColumnWidth.value}
+                      />
+                    ),
                   }}
                   ref={(ins: any) => {
                     if (ins?.$el) tbodyRef.value = ins.$el;
                   }}
                   class={`${prefixCls}-body`}
-                  data={flattenData.value}
-                  itemKey="_key"
                   component={{
                     list: 'table',
                     content: 'tbody',
@@ -2113,6 +2134,10 @@ export default defineComponent({
                   paddingPosition="list"
                   height="auto"
                   {...props.virtualListProps}
+                  // `data` 与 `itemKey` 由表格自己决定，放在展开之后，既保证类型以表格的
+                  // 取值为准，也避免被 `virtual-list-props` 覆盖导致表格渲染错乱
+                  data={flattenData.value}
+                  itemKey="_key"
                   onScroll={onTbodyScroll}
                 />
               ) : (

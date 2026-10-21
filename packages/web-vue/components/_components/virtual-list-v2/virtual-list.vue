@@ -18,6 +18,7 @@
           : {}
       "
     >
+      <slot name="list-prefix" />
       <Component
         :is="mergedComponent.content"
         ref="contentRef"

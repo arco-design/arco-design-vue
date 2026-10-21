@@ -3770,6 +3770,12 @@ exports[`<table> demo: > render [virtual-list] correctly 1`] = `
           </div>
           <div class="arco-virtual-list arco-table-body" style="height: 400px; overflow: auto;">
             <table class="arco-table-element" style="width: 1000px; padding-top: 0px; padding-bottom: 29100px;">
+              <colgroup>
+                <col class="arco-table-selection-checkbox-col">
+                <col style="width: 140px; min-width: 140px; max-width: 140px;">
+                <col>
+                <col>
+              </colgroup>
               <tbody>
                 <tr class="arco-table-tr">
                   <td class="arco-table-td arco-table-operation arco-table-checkbox arco-table-col-fixed-left" style="left: 0px;"><span class="arco-table-cell"><label class="arco-checkbox"><input type="checkbox" class="arco-checkbox-target" value="false"><span class="arco-icon-hover arco-checkbox-icon-hover"><div class="arco-checkbox-icon"><!----></div></span>
