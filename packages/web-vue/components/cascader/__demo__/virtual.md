@@ -6,13 +6,13 @@ title:
 
 ## zh-CN
 
-虚拟列表的使用方法。
+虚拟列表的使用方法。设置 `virtual-list-props` 后，搜索面板同样会走虚拟滚动；选项数量很大时，过滤会按 `search-delay` 防抖。
 
 ---
 
 ## en-US
 
-How to use the virtual list.
+How to use the virtual list. With `virtual-list-props`, the search panel is virtualized as well; filtering is debounced by `search-delay` for large option trees.
 
 ---
 

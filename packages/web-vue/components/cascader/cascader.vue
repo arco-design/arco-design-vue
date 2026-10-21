@@ -61,6 +61,7 @@
         :check-strictly="checkStrictly"
         :loading="loading"
         :path-label="!searchOptionOnlyLabel"
+        :virtual-list-props="virtualListProps"
       >
         <template v-if="$slots.empty" #empty>
           <slot name="empty" />
@@ -655,27 +656,60 @@ export default defineComponent({
       () => props.popupVisible ?? _popupVisible.value
     );
 
-    const getFilteredStatus = (label: string) => {
-      return label
-        ?.toLocaleLowerCase()
-        .includes(computedInputValue.value?.toLocaleLowerCase());
-    };
+    // 搜索源集合：只在选项变化时物化一次，避免每次输入都 Array.from
+    const allSearchableOptions = computed<CascaderOptionInfo[]>(() =>
+      props.checkStrictly
+        ? Array.from(optionMap.values())
+        : Array.from(leafOptionSet)
+    );
+
+    // 选项数量很大时，过滤按 searchDelay 防抖；小数据量直接使用输入值，行为与之前一致
+    const FILTER_DEBOUNCE_THRESHOLD = 2000;
+    const filterInputValue = ref('');
+    const commitFilterInputValue = debounce((value: string) => {
+      // 防抖期间输入又被改动或清空时，丢弃这次提交
+      if (computedInputValue.value !== value) return;
+      filterInputValue.value = value;
+    }, props.searchDelay);
+
+    watch(
+      computedInputValue,
+      (value) => {
+        if (
+          !value ||
+          allSearchableOptions.value.length <= FILTER_DEBOUNCE_THRESHOLD
+        ) {
+          filterInputValue.value = value ?? '';
+          return;
+        }
+        commitFilterInputValue(value);
+      },
+      { immediate: true }
+    );
 
     const filteredLeafOptions = computed(() => {
-      const options = props.checkStrictly
-        ? Array.from(optionMap.values())
-        : Array.from(leafOptionSet);
+      const useDebounced =
+        allSearchableOptions.value.length > FILTER_DEBOUNCE_THRESHOLD;
+      const input = useDebounced
+        ? filterInputValue.value
+        : computedInputValue.value;
+      if (!input) {
+        return [];
+      }
+      const inputLower = input.toLocaleLowerCase();
 
-      return options.filter((item) => {
+      return allSearchableOptions.value.filter((item) => {
         if (isFunction(props.filterOption)) {
-          return props.filterOption(computedInputValue.value, item.raw);
+          return props.filterOption(input, item.raw);
         }
 
         if (props.checkStrictly) {
-          return getFilteredStatus(item.label);
+          return Boolean(item.label?.toLocaleLowerCase().includes(inputLower));
         }
 
-        return item.path?.find((leaf) => getFilteredStatus(leaf.label));
+        return item.path?.find((leaf) =>
+          leaf.label?.toLocaleLowerCase().includes(inputLower)
+        );
       });
     });
 
