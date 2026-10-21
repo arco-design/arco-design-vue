@@ -573,28 +573,26 @@ export default defineComponent({
           </Component>
         );
 
-        if (showCSSTooltip.value) {
-          return (
-            <TooltipComponent
-              {...tooltipProps}
-              onResize={() => calTooltip()}
-              v-slots={{
-                content: () => fullText.value,
+        // 始终挂载弹框组件，只用 disabled 控制是否启用。若按 showCSSTooltip 切换是否
+        // 包裹，就会在 ResizeObserver 回调里更换被观察元素的父节点，本帧内尺寸变化导致
+        // 通知投递不完，抛出 "ResizeObserver loop completed with undelivered
+        // notifications"。ResizeObserver 放在内侧，保证它观察的始终是这个文本元素。
+        return (
+          <TooltipComponent
+            {...tooltipProps}
+            disabled={!showCSSTooltip.value}
+            v-slots={{
+              content: () => fullText.value,
+            }}
+          >
+            <ResizeObserver
+              onResize={() => {
+                calTooltip();
               }}
             >
               {Outer}
-            </TooltipComponent>
-          );
-        }
-
-        return (
-          <ResizeObserver
-            onResize={() => {
-              calTooltip();
-            }}
-          >
-            {Outer}
-          </ResizeObserver>
+            </ResizeObserver>
+          </TooltipComponent>
         );
       }
 
