@@ -42,3 +42,16 @@ description: 设置组件之间的间距
 ```ts
 type SpaceSize = number | 'mini' | 'small' | 'medium' | 'large';
 ```
+
+
+## FAQ
+### 关于子元素动态渲染,未重复利用节点问题
+可通过给`space`的子元素添加`key`解决
+```vue
+<template>
+  <a-space>
+    <a-button type="primary" :key="1"> Item1</a-button>
+    <a-button type="primary" :key="2">Item2</a-button>
+  </a-space>
+</template>
+```
