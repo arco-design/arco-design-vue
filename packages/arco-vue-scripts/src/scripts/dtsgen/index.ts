@@ -46,6 +46,17 @@ export async function build(input: string, options?: { outDir?: string }) {
     });
   }
 
+  // 声明生成前先清掉上一次的声明产物：
+  // 它们会被 TypeScript 当成输入文件（TS5055「would overwrite input file」），
+  // 导致对应文件的 emit 被静默跳过，最终产包里缺 index.d.ts / 留下无类型的旧声明
+  // （见 issue #3490、#3513、#3564、#3586、#3598）。
+  const { outDir } = project.getCompilerOptions();
+  if (outDir && fs.existsSync(outDir)) {
+    glob
+      .sync('**/*.d.ts', { cwd: outDir, absolute: true })
+      .forEach((file) => fs.removeSync(file));
+  }
+
   // 包根目录的 ambient 声明（global.d.ts、b-tween.d.ts 等）也要加入项目，
   // 否则 JSX 命名空间、缺少类型声明的第三方模块都会被误报。
   glob
@@ -115,6 +126,10 @@ export async function build(input: string, options?: { outDir?: string }) {
   // 否则会产出一份带 .d.ts 的坏包。
   const errors: Diagnostic[] = [];
   const reported = new Set<string>();
+  // 声明阶段的诊断（TS2742 / TS4023 / TS4082 …）不在 getPreEmitDiagnostics 里，
+  // 它们会让 tsc 把类型“降级”成 `declare const _default;`，必须单独收集
+  const declErrors: string[] = [];
+  const program = project.getProgram().compilerObject;
 
   await Promise.all(
     sourceFiles.map(async (sourceFile) => {
@@ -140,6 +155,21 @@ export async function build(input: string, options?: { outDir?: string }) {
           }
         });
       }
+      const declarationDiagnostics = program
+        .getDeclarationDiagnostics(sourceFile.compilerNode)
+        .filter((diagnostic) => !IGNORED_DIAGNOSTIC_CODES.has(diagnostic.code));
+      if (declarationDiagnostics.length > 0) {
+        declErrors.push(
+          `${sourceFile.getFilePath()}\n${ts.formatDiagnosticsWithColorAndContext(
+            declarationDiagnostics,
+            {
+              getCanonicalFileName: (file) => file,
+              getCurrentDirectory: () => root,
+              getNewLine: () => '\n',
+            }
+          )}`
+        );
+      }
       const emitOutput = sourceFile.getEmitOutput();
       const outputFiles = emitOutput.getOutputFiles();
       await Promise.all(
@@ -154,10 +184,19 @@ export async function build(input: string, options?: { outDir?: string }) {
     })
   );
 
-  if (errors.length > 0) {
+  if (declErrors.length > 0) {
     // eslint-disable-next-line no-console
     console.error(
-      `\n[dtsgen] 声明生成失败：共 ${errors.length} 个类型错误，请修复后重试。`
+      `\n[dtsgen] 以下文件的声明无法正确生成（类型不可命名，会退化成无类型的 declare）：\n${declErrors.join(
+        '\n'
+      )}`
+    );
+  }
+
+  if (errors.length > 0 || declErrors.length > 0) {
+    // eslint-disable-next-line no-console
+    console.error(
+      `\n[dtsgen] 声明生成失败：${errors.length} 个类型错误，${declErrors.length} 个文件存在声明诊断。`
     );
     process.exit(1);
   }
