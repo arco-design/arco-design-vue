@@ -28,7 +28,7 @@
         :allow-clear="allowClear && !readonly"
         :placeholder="computedPlaceholder"
         :input-props="inputProps"
-        :input-value="inputValue"
+        :input-value="(inputValue as string[] | undefined)"
         :value="panelValue"
         :format="computedFormat"
         @clear="onInputClear"
@@ -403,9 +403,10 @@ export default defineComponent({
      * @param {(string | undefined)[]} dateString
      */
     'select': (
-      value: (CalendarValue | undefined)[],
-      date: (Date | undefined)[],
-      dateString: (string | undefined)[]
+      // 与 'change' 保持一致：值可能是 undefined（未选择时）
+      value: (CalendarValue | undefined)[] | undefined,
+      date: (Date | undefined)[] | undefined,
+      dateString: (string | undefined)[] | undefined
     ) => {
       return true;
     },
@@ -427,7 +428,11 @@ export default defineComponent({
      * @param {Date[]} date
      * @param {string[]} dateString
      */
-    'ok': (value: CalendarValue[], date: Date[], dateString: string[]) => {
+    'ok': (
+      value: (CalendarValue | undefined)[] | undefined,
+      date: (Date | undefined)[] | undefined,
+      dateString: (string | undefined)[] | undefined
+    ) => {
       return true;
     },
     /**

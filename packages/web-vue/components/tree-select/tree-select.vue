@@ -88,7 +88,6 @@
             size,
             checkable: isCheckable,
             selectable: isSelectable,
-            searchValue: searchValue,
           }"
           :tree-slots="pickSubCompSlots($slots, 'tree')"
           @change="onSelectChange"
@@ -120,6 +119,7 @@ import useMergeState from '../_hooks/use-merge-state';
 import { LabelValue } from './interface';
 import Trigger, { TriggerProps } from '../trigger';
 import SelectView from '../_components/select-view/select-view';
+// eslint-disable-next-line import/no-cycle -- 历史遗留的循环引用（panel ↔ components/index），本次只改了模板
 import Panel from './panel';
 import { getPrefixCls } from '../_utils/global-config';
 import { configProviderInjectionKey } from '../config-provider/context';

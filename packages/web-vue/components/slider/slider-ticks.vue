@@ -23,7 +23,8 @@ export default defineComponent({
   name: 'SliderTicks',
   props: {
     value: {
-      type: Array as PropType<[number, number]>,
+      // ArrayConstructor 与元组类型没有足够的重叠，需要先转成 unknown
+      type: Array as unknown as PropType<[number, number]>,
       required: true,
     },
     step: {
