@@ -36,7 +36,7 @@ export default defineComponent({
   },
   props: {
     modelValue: {
-      type: Array,
+      type: Array as PropType<number[]>,
       required: true,
     },
     min: {

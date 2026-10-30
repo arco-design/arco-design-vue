@@ -17,24 +17,26 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'ExpandTransition',
   setup() {
+    // TransitionProps 的钩子参数类型是 Element，这里统一断言为 HTMLElement
+    const html = (el: Element) => el as HTMLElement;
     return {
-      onBeforeEnter(el: HTMLDivElement) {
-        el.style.height = '0';
+      onBeforeEnter(el: Element) {
+        html(el).style.height = '0';
       },
-      onEnter(el: HTMLDivElement) {
-        el.style.height = `${el.scrollHeight}px`;
+      onEnter(el: Element) {
+        html(el).style.height = `${html(el).scrollHeight}px`;
       },
-      onAfterEnter(el: HTMLDivElement) {
-        el.style.height = '';
+      onAfterEnter(el: Element) {
+        html(el).style.height = '';
       },
-      onBeforeLeave(el: HTMLDivElement) {
-        el.style.height = `${el.scrollHeight}px`;
+      onBeforeLeave(el: Element) {
+        html(el).style.height = `${html(el).scrollHeight}px`;
       },
-      onLeave(el: HTMLDivElement) {
-        el.style.height = `0`;
+      onLeave(el: Element) {
+        html(el).style.height = `0`;
       },
-      onAfterLeave(el: HTMLElement) {
-        el.style.height = ``;
+      onAfterLeave(el: Element) {
+        html(el).style.height = ``;
       },
     };
   },

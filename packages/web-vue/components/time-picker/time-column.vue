@@ -5,7 +5,7 @@
         v-for="item in list"
         :key="item.value"
         :ref="
-          (el) => {
+          (el: any) => {
             onItemRef(el, item);
           }
         "

@@ -14,14 +14,13 @@ import {
   toRefs,
   ref,
 } from 'vue';
-import scrollIntoView, {
-  Options as ScrollIntoViewOptions,
-} from 'scroll-into-view-if-needed';
+import scrollIntoView from 'scroll-into-view-if-needed';
 import { FormItemInfo, formInjectionKey } from './context';
 import { getPrefixCls } from '../_utils/global-config';
 import { Size } from '../_utils/constant';
 import { isArray, isFunction, isBoolean } from '../_utils/is';
 import { FieldData, FieldRule, ValidatedError } from './interface';
+import type { FormScrollToFieldOptions } from './interface';
 import { useSize } from '../_hooks/use-size';
 import { getFormElementId } from './utils';
 
@@ -242,7 +241,10 @@ export default defineComponent({
       });
     };
 
-    const scrollToField = (field: string, options?: ScrollIntoViewOptions) => {
+    const scrollToField = (
+      field: string,
+      options?: FormScrollToFieldOptions
+    ) => {
       const node = formRef.value || document.body;
       const fieldNode = node.querySelector(
         `#${getFormElementId(props.id, field as string)}`

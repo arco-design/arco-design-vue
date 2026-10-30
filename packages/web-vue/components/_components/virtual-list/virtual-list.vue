@@ -133,10 +133,12 @@ export default defineComponent({
 
     function getItemKey(item: any, index: number) {
       let result: VirtualItemKey | undefined;
-      if (isString(itemKey.value)) {
-        result = item[itemKey.value];
-      } else if (isFunction(itemKey.value)) {
-        result = itemKey.value(item);
+      // 先把 computed 的值取出来，才能让 isString/isFunction 收窄到同一处
+      const _itemKey = itemKey.value;
+      if (isString(_itemKey)) {
+        result = item[_itemKey];
+      } else if (isFunction(_itemKey)) {
+        result = _itemKey(item);
       }
       return result ?? index;
     }

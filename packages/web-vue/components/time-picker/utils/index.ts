@@ -59,6 +59,11 @@ export function getFormattedValue(
   time: Array<Dayjs | undefined> | undefined,
   format: string
 ): Array<string | undefined> | undefined;
+// 实现签名不属于重载集合，调用方传联合类型时需要显式声明这一条
+export function getFormattedValue(
+  time: Dayjs | Array<Dayjs | undefined> | undefined,
+  format: string
+): string | Array<string | undefined> | undefined;
 export function getFormattedValue(
   time: Dayjs | Array<Dayjs | undefined> | undefined,
   format: string

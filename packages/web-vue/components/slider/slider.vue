@@ -274,7 +274,8 @@ export default defineComponent({
         const key = Number(index);
         return {
           key,
-          content: props.marks?.[key],
+          // 遍历的是 marks 自己的 key，取不到时兜底为空串，保持类型为非空 string
+          content: props.marks?.[key] ?? '',
           isActive:
             key >= computedValue.value[0] && key <= computedValue.value[1],
         };

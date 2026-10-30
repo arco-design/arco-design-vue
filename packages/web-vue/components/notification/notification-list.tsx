@@ -36,8 +36,12 @@ export default defineComponent({
 
     return () => (
       <TransitionGroup
-        class={[prefixCls, `${prefixCls}-${kebabPosition}`]}
-        style={{ zIndex: zIndex.value }}
+        // Vue 3.5 的 TransitionGroup 类型只声明了 $props，未合并
+        // AllowedComponentProps，class/style 需要绕过类型检查（运行期合法）
+        {...({
+          class: [prefixCls, `${prefixCls}-${kebabPosition}`],
+          style: { zIndex: zIndex.value },
+        } as any)}
         name={`slide-${isRight ? 'right' : 'left'}-notification`}
         onAfterLeave={() => context.emit('afterClose')}
         tag="ul"

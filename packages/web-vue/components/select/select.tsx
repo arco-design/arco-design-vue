@@ -930,6 +930,7 @@ export default defineComponent({
                 {...props.virtualListProps}
                 ref={virtualListRef}
                 data={validOptions.value}
+                itemKey="key"
                 v-slots={{
                   item: ({
                     item,

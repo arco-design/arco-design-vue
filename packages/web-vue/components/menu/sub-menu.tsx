@@ -106,8 +106,9 @@ export default defineComponent({
       subMenuKeys,
       menuItemKeys,
       isChildrenSelected,
-      props,
-      attrs,
+      // 不要把 props / attrs 放进 setup 的返回值：它们会让组件实例类型
+      // 依赖 SetupContext，声明生成时会退化成无类型的 `declare const _default;`
+      // render 里改用 this.$props / this.$attrs（运行时是同一个对象）
       computedKey: key,
       computedPopup,
       expandIconDown: toRef(menuContext, 'expandIconDown'),
@@ -116,8 +117,8 @@ export default defineComponent({
   },
   render() {
     const {
-      props,
-      attrs,
+      $props: props,
+      $attrs: attrs,
       computedKey,
       computedPopup,
       expandIconDown,

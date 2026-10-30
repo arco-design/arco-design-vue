@@ -17,7 +17,8 @@
           },
         ]"
         :style="{
-          backgroundColor: active ? color : trackColor,
+          // steps 模式只支持纯色，这里断言为 string
+          backgroundColor: active ? (color as string) : trackColor,
         }"
       />
     </div>

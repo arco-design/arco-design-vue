@@ -40,7 +40,9 @@ export type EmitFn2<
 
 export type EmitType<T> = T | T[];
 
-export type SFCWithInstall<T, D = Record<string, never>> = T &
+// D 的默认值不能是 Record<string, never>：那会把 T 的每个成员都交叉成 never，
+// 导致 SFCWithInstall<T> 无法被赋值。用 unknown 表示"没有额外成员"。
+export type SFCWithInstall<T, D = unknown> = T &
   D & {
     install: (app: App, opt?: ArcoOptions) => void;
   };

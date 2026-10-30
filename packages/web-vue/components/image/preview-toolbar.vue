@@ -18,7 +18,9 @@ import RenderFunction, { RenderFunc } from '../_components/render-function';
 import { getPrefixCls } from '../_utils/global-config';
 import PreviewAction from './preview-action';
 
-interface ActionType {
+// 需要导出：preview / preview-group / image 的默认导出都会间接引用它，
+// 不导出会让生成的 .d.ts 出现 TS4082「using private name 'ActionType'」
+export interface ActionType {
   key: string;
   name: string;
   content: RenderFunc;

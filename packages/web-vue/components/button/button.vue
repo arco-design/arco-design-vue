@@ -138,7 +138,8 @@ export default defineComponent({
      * @en Set the native `type` attribute of `button`, optional values refer to [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")
      */
     htmlType: {
-      type: String as PropType<HTMLButtonElement['type']>,
+      // HTMLButtonElement['type'] 在 DOM lib 里是 string，这里收窄为原生允许的三个值
+      type: String as PropType<'button' | 'reset' | 'submit'>,
       default: 'button',
     },
     /**

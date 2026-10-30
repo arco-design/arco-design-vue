@@ -107,14 +107,16 @@ export default defineComponent({
      * @en Button type
      */
     type: {
-      type: String,
+      // 透传给 Button，取值与 Button 保持一致
+      type: String as PropType<ButtonProps['type']>,
     },
     /**
      * @zh 按钮大小
      * @en Button size
      */
     size: {
-      type: String,
+      // 透传给 Button，取值与 Button 保持一致
+      type: String as PropType<ButtonProps['size']>,
     },
     /**
      * @zh 按钮属性

@@ -10,7 +10,7 @@ export interface ButtonProps {
   loading?: boolean;
   loadingFixedWidth?: boolean;
   disabled?: boolean;
-  htmlType?: string;
+  htmlType?: 'button' | 'reset' | 'submit';
   autofocus?: boolean;
   href?: string;
 }

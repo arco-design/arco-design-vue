@@ -69,8 +69,9 @@ pnpm run storybook
 
 5. Make changes to the codebase. If applicable, ensure that you have written the corresponding tests.
 6. Make sure all tests pass after running `pnpm run test`.
-7. Commit your changes, adhering to the [Commit Guidelines](#commit-guidelines).
-8. Open a new pull request, [referencing corresponding issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword) if available.
+7. Make sure type checking passes after running `pnpm run typecheck` (run `pnpm run init` first so the generated icons exist; the gate requires **zero** type errors).
+8. Commit your changes, adhering to the [Commit Guidelines](#commit-guidelines).
+9. Open a new pull request, [referencing corresponding issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword) if available.
 
 
 ## Commit Guidelines

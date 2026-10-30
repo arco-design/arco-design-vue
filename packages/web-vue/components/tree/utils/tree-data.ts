@@ -43,7 +43,7 @@ function mapObject<K, T = any>(
   obj: T,
   nameMap?: Partial<Record<keyof K, string>>
 ): K {
-  const _obj: Record<string, any> = { ...obj };
+  const _obj: Record<string, any> = { ...(obj as Record<string, any>) };
 
   if (nameMap) {
     const names = Object.keys(nameMap);

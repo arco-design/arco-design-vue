@@ -1,6 +1,7 @@
 <template>
+  <!-- headerValue 等必需 props 由父组件的 v-bind 经 $attrs 透传，无法静态推导 -->
   <DatePanel
-    v-bind="$attrs"
+    v-bind="($attrs as any)"
     mode="week"
     is-week
     :day-start-of-week="dayStartOfWeek"
