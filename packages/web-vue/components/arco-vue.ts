@@ -185,7 +185,77 @@ const install = (app: App, options?: ArcoOptions) => {
   }
 };
 
-const ArcoVue = {
+// ArcoVue 把所有组件内联进对象字面量，推断出来的类型在生成 .d.ts 时会引用
+// @vue/shared / dayjs 的内部路径（TS2742），导致 arco-vue.d.ts 根本无法产出。
+// 这里显式声明各成员类型，保证默认导出的声明文件可移植。
+type ArcoVuePlugin = Record<string, any> & {
+  Alter: typeof Alert;
+  AnchorLink: typeof AnchorLink;
+  AvatarGroup: typeof AvatarGroup;
+  BreadcrumbItem: typeof BreadcrumbItem;
+  ButtonGroup: typeof ButtonGroup;
+  Calendar: typeof Calendar;
+  CardMeta: typeof CardMeta;
+  CardGrid: typeof CardGrid;
+  CarouselItem: typeof CarouselItem;
+  CascaderPanel: typeof CascaderPanel;
+  CheckboxGroup: typeof CheckboxGroup;
+  CollapseItem: typeof CollapseItem;
+  DescriptionsItem: typeof DescriptionsItem;
+  WeekPicker: typeof WeekPicker;
+  MonthPicker: typeof MonthPicker;
+  YearPicker: typeof YearPicker;
+  QuarterPicker: typeof QuarterPicker;
+  RangePicker: typeof RangePicker;
+  Doption: typeof Doption;
+  Dgroup: typeof Dgroup;
+  Dsubmenu: typeof Dsubmenu;
+  DropdownButton: typeof DropdownButton;
+  FormItem: typeof FormItem;
+  Row: typeof Row;
+  Col: typeof Col;
+  GridItem: typeof GridItem;
+  ImagePreview: typeof ImagePreview;
+  ImagePreviewAction: typeof ImagePreviewAction;
+  ImagePreviewGroup: typeof ImagePreviewGroup;
+  InputGroup: typeof InputGroup;
+  InputSearch: typeof InputSearch;
+  InputPassword: typeof InputPassword;
+  LayoutHeader: typeof LayoutHeader;
+  LayoutContent: typeof LayoutContent;
+  LayoutFooter: typeof LayoutFooter;
+  LayoutSider: typeof LayoutSider;
+  ListItem: typeof ListItem;
+  ListItemMeta: typeof ListItemMeta;
+  MenuItem: typeof MenuItem;
+  MenuItemGroup: typeof MenuItemGroup;
+  SubMenu: typeof SubMenu;
+  RadioGroup: typeof RadioGroup;
+  Option: typeof Option;
+  Optgroup: typeof Optgroup;
+  SkeletonLine: typeof SkeletonLine;
+  SkeletonShape: typeof SkeletonShape;
+  Countdown: typeof Countdown;
+  Step: typeof Step;
+  Thead: typeof Thead;
+  Td: typeof Td;
+  Th: typeof Th;
+  Tr: typeof Tr;
+  Tbody: typeof Tbody;
+  TableColumn: typeof TableColumn;
+  TabPane: typeof TabPane;
+  TimelineItem: typeof TimelineItem;
+  TypographyParagraph: typeof TypographyParagraph;
+  TypographyTitle: typeof TypographyTitle;
+  TypographyText: typeof TypographyText;
+  install: typeof install;
+  addI18nMessages: typeof addI18nMessages;
+  useLocale: typeof useLocale;
+  getLocale: typeof getLocale;
+  useFormItem: typeof useFormItem;
+};
+
+const ArcoVue: ArcoVuePlugin = {
   ...components,
   // Historical reason
   Alter: Alert,

@@ -1112,8 +1112,8 @@ export default defineComponent({
     ) {
       const { checkStrictly, treeContext } = this;
       const { key2TreeNode } = treeContext;
-      const isBatch = isArray(key);
-      const keys = (isBatch ? key : [key]).filter((key) => {
+      // 用 isArray(key) 直接收窄，isBatch 这类布尔变量无法参与类型收窄
+      const keys = (isArray(key) ? key : [key]).filter((key) => {
         const node = key2TreeNode.get(key);
         return (
           node &&
@@ -1121,7 +1121,7 @@ export default defineComponent({
           (checkStrictly || !onlyCheckLeaf || isLeafNode(node)) // onlyCheckLeaf 仅在 checkStrictly 为 false 的时候有效
         );
       });
-      this.internalCheckNodes(keys, checked, isBatch ? undefined : key);
+      this.internalCheckNodes(keys, checked, isArray(key) ? undefined : key);
     },
     /**
      * @zh 设置全部节点的选中状态
@@ -1151,12 +1151,11 @@ export default defineComponent({
      */
     selectNode(key: TreeNodeKey | TreeNodeKey[], selected = true) {
       const { key2TreeNode } = this.treeContext;
-      const isBatch = isArray(key);
-      const keys = (isBatch ? key : [key]).filter((key) => {
+      const keys = (isArray(key) ? key : [key]).filter((key) => {
         const node = key2TreeNode.get(key);
         return node && isNodeSelectable(node);
       });
-      this.internalSelectNodes(keys, selected, isBatch ? undefined : key);
+      this.internalSelectNodes(keys, selected, isArray(key) ? undefined : key);
     },
     /**
      * @zh 设置全部节点的展开状态
@@ -1186,12 +1185,11 @@ export default defineComponent({
      */
     expandNode(key: TreeNodeKey | TreeNodeKey[], expanded = true) {
       const { key2TreeNode } = this.treeContext;
-      const isBatch = isArray(key);
-      const keys = (isBatch ? key : [key]).filter((key) => {
+      const keys = (isArray(key) ? key : [key]).filter((key) => {
         const node = key2TreeNode.get(key);
         return node && isNodeExpandable(node);
       });
-      this.internalExpandNodes(keys, expanded, isBatch ? undefined : key);
+      this.internalExpandNodes(keys, expanded, isArray(key) ? undefined : key);
     },
   },
 });

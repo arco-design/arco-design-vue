@@ -83,8 +83,9 @@ export const off = (() => {
 })();
 
 export const findDomNode = (vnode: VNode) => {
-  let node = vnode.el;
-  while (node && !node.tagName) {
+  // vnode.el 的类型是 RendererNode（可能是 Node 的任意子类型），按 Node 处理
+  let node = vnode.el as Node | null;
+  while (node && !(node as Element).tagName) {
     node = node.nextSibling;
   }
   return node as HTMLElement;
@@ -111,7 +112,7 @@ export const OVERLAY_TYPES = [
   'drawer',
 ] as const;
 
-export const getOverlay = (type: typeof OVERLAY_TYPES[number]) => {
+export const getOverlay = (type: (typeof OVERLAY_TYPES)[number]) => {
   const popper = document.createElement('div');
   popper.setAttribute('class', `arco-overlay arco-overlay-${type}`);
   return popper;

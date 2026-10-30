@@ -1,12 +1,20 @@
 import type { App } from 'vue';
-import type { ArcoOptions } from '../_utils/types';
+import type { ArcoOptions, SFCWithInstall } from '../_utils/types';
 import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
 import _Menu from './menu';
 import _MenuItem from './item';
 import _MenuItemGroup from './item-group.vue';
 import _MenuSubMenu from './sub-menu';
 
-const Menu = Object.assign(_Menu, {
+// 显式标注：推断类型会引用 @vue/shared 的内部路径，生成的 .d.ts 不可移植
+const Menu: SFCWithInstall<
+  typeof _Menu,
+  {
+    Item: typeof _MenuItem;
+    ItemGroup: typeof _MenuItemGroup;
+    SubMenu: typeof _MenuSubMenu;
+  }
+> = Object.assign(_Menu, {
   Item: _MenuItem,
   ItemGroup: _MenuItemGroup,
   SubMenu: _MenuSubMenu,
