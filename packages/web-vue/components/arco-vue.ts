@@ -102,7 +102,9 @@ import Watermark from './watermark';
 
 import { useFormItem } from './_hooks/use-form-item';
 
-const components: Record<string, Plugin> = {
+// 这里不标注 Record<string, Plugin>：标注会丢掉每个组件的具体类型，
+// 导致 ArcoVue 上的成员退化成 Plugin / any。索引遍历时再断言。
+const components = {
   Button,
   Link,
   Typography,
@@ -181,7 +183,7 @@ const components: Record<string, Plugin> = {
 
 const install = (app: App, options?: ArcoOptions) => {
   for (const key of Object.keys(components)) {
-    app.use(components[key], options);
+    app.use((components as Record<string, Plugin>)[key], options);
   }
 };
 
@@ -189,6 +191,80 @@ const install = (app: App, options?: ArcoOptions) => {
 // @vue/shared / dayjs 的内部路径（TS2742），导致 arco-vue.d.ts 根本无法产出。
 // 这里显式声明各成员类型，保证默认导出的声明文件可移植。
 type ArcoVuePlugin = Record<string, any> & {
+  // 组件（与 components 对象一一对应；仅靠 Record<string, any> 索引会退化为 any）
+  Button: typeof Button;
+  Link: typeof Link;
+  Typography: typeof Typography;
+  Divider: typeof Divider;
+  Grid: typeof Grid;
+  Layout: typeof Layout;
+  Space: typeof Space;
+  Avatar: typeof Avatar;
+  Badge: typeof Badge;
+  Card: typeof Card;
+  Carousel: typeof Carousel;
+  Collapse: typeof Collapse;
+  Comment: typeof Comment;
+  ColorPicker: typeof ColorPicker;
+  Descriptions: typeof Descriptions;
+  Empty: typeof Empty;
+  Image: typeof Image;
+  Scrollbar: typeof Scrollbar;
+  List: typeof List;
+  Popover: typeof Popover;
+  Statistic: typeof Statistic;
+  Table: typeof Table;
+  Tabs: typeof Tabs;
+  Tag: typeof Tag;
+  Timeline: typeof Timeline;
+  Tooltip: typeof Tooltip;
+  AutoComplete: typeof AutoComplete;
+  Cascader: typeof Cascader;
+  Checkbox: typeof Checkbox;
+  DatePicker: typeof DatePicker;
+  Form: typeof Form;
+  Input: typeof Input;
+  InputNumber: typeof InputNumber;
+  InputTag: typeof InputTag;
+  Mention: typeof Mention;
+  Radio: typeof Radio;
+  Rate: typeof Rate;
+  Select: typeof Select;
+  Slider: typeof Slider;
+  Switch: typeof Switch;
+  Textarea: typeof Textarea;
+  TimePicker: typeof TimePicker;
+  Transfer: typeof Transfer;
+  Tree: typeof Tree;
+  Upload: typeof Upload;
+  TreeSelect: typeof TreeSelect;
+  Alert: typeof Alert;
+  Drawer: typeof Drawer;
+  Message: typeof Message;
+  Modal: typeof Modal;
+  Notification: typeof Notification;
+  Popconfirm: typeof Popconfirm;
+  Progress: typeof Progress;
+  Result: typeof Result;
+  Spin: typeof Spin;
+  Skeleton: typeof Skeleton;
+  Breadcrumb: typeof Breadcrumb;
+  Dropdown: typeof Dropdown;
+  Menu: typeof Menu;
+  PageHeader: typeof PageHeader;
+  Pagination: typeof Pagination;
+  Steps: typeof Steps;
+  Affix: typeof Affix;
+  Anchor: typeof Anchor;
+  BackTop: typeof BackTop;
+  ConfigProvider: typeof ConfigProvider;
+  ResizeBox: typeof ResizeBox;
+  Trigger: typeof Trigger;
+  Split: typeof Split;
+  Icon: typeof Icon;
+  OverflowList: typeof OverflowList;
+  Watermark: typeof Watermark;
+  VerificationCode: typeof VerificationCode;
   Alter: typeof Alert;
   AnchorLink: typeof AnchorLink;
   AvatarGroup: typeof AvatarGroup;
