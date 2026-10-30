@@ -13,7 +13,6 @@
     "clean": "pnpm -r exec rimraf dist node_modules",
     "test": "pnpm --filter @arco-design/web-vue run test",
     "typecheck": "pnpm --filter @arco-design/web-vue run typecheck",
-    "typecheck:update": "pnpm --filter @arco-design/web-vue run typecheck:update",
     "storybook": "pnpm --filter @arco-design/web-vue-storybook run storybook"
   },
   "packageManager": "pnpm@9.5.0",

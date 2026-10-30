@@ -45,7 +45,6 @@
     "test": "vitest run --coverage",
     "test:update": "vitest run --coverage -u",
     "typecheck": "node scripts/typecheck.mjs",
-    "typecheck:update": "node scripts/typecheck.mjs --update",
     "test:screenshot": "arco-vue-scripts test:screenshot -o ./__screenshots__/",
     "changelog": "arco-vue-scripts changelog",
     "lint-staged": "npx lint-staged"

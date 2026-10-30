@@ -3,12 +3,5 @@
   "compilerOptions": {
     "noEmit": true
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "lib",
-    "es",
-    "json",
-    "components/icon"
-  ]
+  "exclude": ["node_modules", "dist", "lib", "es", "json"]
 }
