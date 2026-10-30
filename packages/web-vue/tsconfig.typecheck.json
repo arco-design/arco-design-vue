@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "lib",
+    "es",
+    "json",
+    "components/icon"
+  ]
+}

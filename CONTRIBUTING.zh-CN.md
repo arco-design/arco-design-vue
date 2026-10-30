@@ -68,7 +68,8 @@ pnpm run storybook
 
 5. 对代码库进行更改。如果适用的话，请确保写了相应的测试。
 6. 确认执行 `pnpm run test` 后所有的测试都是通过的。
-7. 提交 git commit, 请同时遵守 [Commit 规范](#commit-指南)。
+7. 确认执行 `pnpm run typecheck` 后类型检查通过（需要先跑过 `pnpm run init`；该门禁只拦截**新增**的类型错误）。
+8. 提交 git commit, 请同时遵守 [Commit 规范](#commit-指南)。
 8. 提交 pull request, 如果有对应的 issue，请进行[关联](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword)。
 
 ## Commit 指南
