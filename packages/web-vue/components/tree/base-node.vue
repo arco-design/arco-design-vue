@@ -335,7 +335,12 @@ export default defineComponent({
       treeNodeIcon,
       extra,
       nodeStatus,
-      onCheckboxChange(checked: boolean, e: Event) {
+      // Checkbox 的 change 事件参数是联合类型；这里关闭了 group context，实际一定是 boolean
+      onCheckboxChange(
+        value: boolean | (string | number | boolean)[],
+        e: Event
+      ) {
+        const checked = Array.isArray(value) ? value.length > 0 : value;
         if (disableCheckbox.value || disabled.value) {
           return;
         }

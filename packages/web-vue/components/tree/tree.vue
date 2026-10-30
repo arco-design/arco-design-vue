@@ -4,7 +4,7 @@
       v-if="virtualListProps"
       ref="virtualListRef"
       v-bind="virtualListProps"
-      :data="visibleTreeNodeList"
+      :data="(visibleTreeNodeList as Record<string, any>[])"
     >
       <template #item="{ item: node }">
         <TreeNode

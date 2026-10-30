@@ -119,7 +119,8 @@ export default defineComponent({
      * @en Expand the trigger method of the next level
      */
     expandTrigger: {
-      type: String,
+      // 与 Cascader 保持一致，取值只有 click / hover
+      type: String as PropType<'click' | 'hover'>,
       default: 'click',
     },
     /**
