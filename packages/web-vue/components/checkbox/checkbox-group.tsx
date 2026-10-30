@@ -121,7 +121,10 @@ export default defineComponent({
       });
     });
 
-    const handleChange = (value: Array<string | number>, e: Event) => {
+    const handleChange = (
+      value: Array<string | number | boolean>,
+      e: Event
+    ) => {
       _value.value = value;
       emit('update:modelValue', value);
       emit('change', value, e);
@@ -131,7 +134,8 @@ export default defineComponent({
     provide(
       checkboxGroupKey,
       reactive({
-        name: 'ArcoCheckboxGroup',
+        // reactive() 不会用 CheckboxGroupContext 做上下文推断，不加 as const 会宽化成 string
+        name: 'ArcoCheckboxGroup' as const,
         computedValue,
         disabled: mergedDisabled,
         isMaxed,

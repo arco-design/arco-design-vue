@@ -68,11 +68,8 @@ export default defineComponent({
     return () => {
       if (showTooltip.value) {
         return (
-          <Tooltip
-            content={text.value}
-            onResize={onResize}
-            {...props.tooltipProps}
-          >
+          // Tooltip 不转发 resize 事件，之前挂上的 onResize 实际不会触发，这里移除
+          <Tooltip content={text.value} {...props.tooltipProps}>
             {renderContent()}
           </Tooltip>
         );

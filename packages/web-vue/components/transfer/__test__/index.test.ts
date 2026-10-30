@@ -10,6 +10,7 @@ describe('Transfer', () => {
           .map((_, index) => ({
             value: `option${index + 1}`,
             label: `Option ${index + 1}`,
+            disabled: false,
           })),
       },
     });
@@ -20,7 +21,7 @@ describe('Transfer', () => {
     await options[0].setValue();
     const moveButton = wrapper.findComponent({ name: 'Button' });
     await moveButton.trigger('click');
-    expect(wrapper.emitted('change')[0]).toEqual([['option1']]);
+    expect(wrapper.emitted('change')?.[0]).toEqual([['option1']]);
   });
 
   test('should emit select event', async () => {
@@ -31,6 +32,7 @@ describe('Transfer', () => {
           .map((_, index) => ({
             value: `option${index + 1}`,
             label: `Option ${index + 1}`,
+            disabled: false,
           })),
       },
     });
@@ -39,7 +41,7 @@ describe('Transfer', () => {
       '.arco-transfer-view-header .arco-checkbox-target'
     );
     await checkAll.setValue();
-    expect(wrapper.emitted('select')[0]).toEqual([
+    expect(wrapper.emitted('select')?.[0]).toEqual([
       ['option1', 'option2', 'option3', 'option4'],
     ]);
   });

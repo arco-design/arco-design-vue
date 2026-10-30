@@ -413,10 +413,10 @@ export function pickDataAttributes<
     Object.keys(obj).forEach((key) => {
       const k = String(key);
       if (k.indexOf('data-') === 0) {
-        clone[k] = obj[k];
+        clone[k as K] = (obj as Record<string, any>)[k];
       }
       if (k.indexOf('aria-') === 0) {
-        clone[k] = obj[k];
+        clone[k as K] = (obj as Record<string, any>)[k];
       }
     });
 

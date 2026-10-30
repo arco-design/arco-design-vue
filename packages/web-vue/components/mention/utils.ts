@@ -1,6 +1,7 @@
 export const getTextBeforeSelection = (element: HTMLInputElement) => {
   const { value, selectionStart } = element;
-  return value.slice(0, selectionStart);
+  // selectionStart 在未聚焦时为 null，slice(0, null) 等价于 slice(0, 0)
+  return value.slice(0, selectionStart ?? 0);
 };
 
 export const getLastMeasureIndex = (

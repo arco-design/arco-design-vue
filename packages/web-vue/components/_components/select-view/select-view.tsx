@@ -118,7 +118,8 @@ export default defineComponent({
       eventHandlers.value?.onBlur?.(ev);
     };
 
-    const handleRemove = (tag: string) => {
+    // InputTag 的 remove 事件传的是 string | number
+    const handleRemove = (tag: string | number) => {
       emit('remove', tag);
     };
 
@@ -144,8 +145,11 @@ export default defineComponent({
         {showClearBtn.value && (
           <IconHover
             class={`${prefixCls}-clear-btn`}
-            onClick={handleClear}
-            onMousedown={(ev: MouseEvent) => ev.stopPropagation()}
+            // IconHover 未声明 click/mousedown 事件，但会通过 attrs 透传到根节点
+            {...({
+              onClick: handleClear,
+              onMousedown: (ev: MouseEvent) => ev.stopPropagation(),
+            } as any)}
           >
             <IconClose />
           </IconHover>

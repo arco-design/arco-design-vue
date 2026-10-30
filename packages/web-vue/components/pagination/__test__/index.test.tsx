@@ -13,10 +13,10 @@ describe('Pagination', () => {
 
     const pageButtons = wrapper.findAll('.arco-pagination-item');
     await pageButtons[2].trigger('click');
-    expect(wrapper.emitted('change')[0]).toEqual([2]);
+    expect(wrapper.emitted('change')?.[0]).toEqual([2]);
     const ellipsis = wrapper.find('.arco-pagination-item-ellipsis');
     await ellipsis.trigger('click');
-    expect(wrapper.emitted('change')[1]).toEqual([7]);
+    expect(wrapper.emitted('change')?.[1]).toEqual([7]);
   });
 
   test('`total` causes page count changes to reset `current`', async () => {
