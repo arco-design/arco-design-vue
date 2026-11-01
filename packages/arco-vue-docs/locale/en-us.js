@@ -8,6 +8,7 @@ export default {
     i18n: 'Internationalization',
     faq: 'FAQ',
     changelog: 'Changelog',
+    overview: 'Overview',
   },
   group: {
     common: 'Common',
