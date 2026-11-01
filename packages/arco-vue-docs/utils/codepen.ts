@@ -1,11 +1,11 @@
 const CSS_EXTERNAL = [
-  'https://unpkg.com/@arco-design/web-vue@2.x/dist/arco.css',
+  'https://cdn.jsdelivr.net/npm/@arco-design/web-vue@2.x/dist/arco.css',
 ];
 const JS_EXTERNAL = [
-  'https://unpkg.com/vue@3.x/dist/vue.global.prod.js',
-  'https://unpkg.com/dayjs@1.x/dayjs.min.js',
-  'https://unpkg.com/@arco-design/web-vue@2.x/dist/arco-vue.min.js',
-  'https://unpkg.com/@arco-design/web-vue@2.x/dist/arco-vue-icon.min.js',
+  'https://cdn.jsdelivr.net/npm/vue@3.x/dist/vue.global.prod.js',
+  'https://cdn.jsdelivr.net/npm/dayjs@1.x/dayjs.min.js',
+  'https://cdn.jsdelivr.net/npm/@arco-design/web-vue@2.x/dist/arco-vue.min.js',
+  'https://cdn.jsdelivr.net/npm/@arco-design/web-vue@2.x/dist/arco-vue-icon.min.js',
 ];
 
 const parseContent = (content: string) => {
