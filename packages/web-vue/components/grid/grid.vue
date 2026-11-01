@@ -79,9 +79,9 @@ export default defineComponent({
       collapsedRows,
       collapsed,
     } = toRefs(props);
-    const cols = useResponsiveState(propCols, 24);
-    const colGap = useResponsiveState(propColGap, 0);
-    const rowGap = useResponsiveState(propRowGap, 0);
+    const cols = useResponsiveState(propCols, 24, true);
+    const colGap = useResponsiveState(propColGap, 0, true);
+    const rowGap = useResponsiveState(propRowGap, 0, true);
     const prefixCls = getPrefixCls('grid');
     const classNames = computed(() => [prefixCls]);
     const style = computed(() => [
