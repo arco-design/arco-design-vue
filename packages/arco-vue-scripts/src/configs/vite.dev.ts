@@ -29,6 +29,7 @@ export default defineConfig({
   plugins: [
     external(),
     vue(),
+    // @ts-ignore
     vueJsx(),
     eslint({
       include: [

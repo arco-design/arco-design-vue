@@ -33,5 +33,6 @@ export default defineConfig({
   build: {
     target: 'es2015',
   },
+  // @ts-ignore
   plugins: [vueDocs(), vue(), vueJsx(), svgLoader({ svgoConfig: {} })],
 }) as InlineConfig;

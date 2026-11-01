@@ -53,6 +53,7 @@ const getConfig = ({
         formats: ['es'],
       },
     },
+    // @ts-ignore
     plugins: [vue(), vueJsx(), svgLoader()],
   };
 };

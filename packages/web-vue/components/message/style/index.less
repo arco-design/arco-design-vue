@@ -6,16 +6,12 @@
 .@{message-prefix-cls}-list {
   position: fixed;
   z-index: @z-index-message;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   box-sizing: border-box;
   width: 100%;
   margin: 0;
-  padding: 0 10px;
+  padding: 0;
   text-align: center;
   pointer-events: none;
-  left: 0;
 
   &-top {
     top: @message-wrapper-margin-top;
@@ -26,11 +22,17 @@
   }
 }
 
+.@{message-prefix-cls}-item-wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 10px;
+}
 .@{message-prefix-cls} {
   position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  margin-bottom: @message-margin-bottom;
+  width: fit-content;
+  margin: 0 auto @message-margin-bottom;
   padding: @message-padding-top @message-padding-right @message-padding-bottom
     @message-padding-left;
   overflow: hidden;
@@ -56,8 +58,8 @@
   }
 
   &-content {
-    font-size: @message-font-size-content;
     color: @message-normal-color-content;
+    font-size: @message-font-size-content;
     vertical-align: middle;
   }
 
@@ -140,34 +142,29 @@
 }
 
 .fade-message-enter-from,
-.fade-message-appear-from {
+.fade-message-appear-from,
+.fade-message-leave-to {
   opacity: 0;
 }
 
 .fade-message-enter-to,
-.fade-message-appear-to {
-  opacity: 1;
-}
-
-.fade-message-enter-active,
-.fade-message-appear-active {
-  transition: opacity @transition-duration-1 @transition-timing-function-linear;
-}
-
+.fade-message-appear-to,
 .fade-message-leave-from {
   opacity: 1;
 }
 
-.fade-message-leave-to {
-  opacity: 0;
+.fade-message-enter-active,
+.fade-message-appear-active,
+.fade-message-leave-active {
+  transition: opacity @transition-duration-1 @transition-timing-function-linear;
 }
 
 .fade-message-leave-active {
   position: absolute;
 }
 
-.flip-list-move {
-  transition: transform 0.8s ease;
+.fade-message-move {
+  transition: all 0.4s ease;
 }
 
 @keyframes ~ '@{prefix}-msg-fade' {
