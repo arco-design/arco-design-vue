@@ -707,9 +707,13 @@
   // stripe: true
   &-stripe {
     &:not(.@{table-prefix-cls}-dragging)
-      .@{table-cls-tr}:not(.@{table-prefix-cls}-tr-empty):not(.@{table-prefix-cls}-tr-summary):nth-child(even),
+      .@{table-cls-tr}:not(.@{table-prefix-cls}-tr-empty):not(
+        .@{table-prefix-cls}-tr-summary
+      ):nth-child(even),
     .@{table-cls-tr}-drag {
-      .@{table-cls-td}:not(.@{table-prefix-cls}-col-fixed-left):not(.@{table-prefix-cls}-col-fixed-right) {
+      .@{table-cls-td}:not(.@{table-prefix-cls}-col-fixed-left):not(
+          .@{table-prefix-cls}-col-fixed-right
+        ) {
         background-color: @table-color-bg-body-stripe-row;
       }
 
@@ -735,9 +739,13 @@
 
   &-hover {
     &:not(.@{table-prefix-cls}-dragging)
-      .@{table-cls-tr}:not(.@{table-prefix-cls}-tr-empty):not(.@{table-prefix-cls}-tr-summary):hover,
+      .@{table-cls-tr}:not(.@{table-prefix-cls}-tr-empty):not(
+        .@{table-prefix-cls}-tr-summary
+      ):hover,
     .@{table-cls-tr}-drag {
-      .@{table-cls-td}:not(.@{table-prefix-cls}-col-fixed-left):not(.@{table-prefix-cls}-col-fixed-right) {
+      .@{table-cls-td}:not(.@{table-prefix-cls}-col-fixed-left):not(
+          .@{table-prefix-cls}-col-fixed-right
+        ) {
         background-color: @table-color-bg-body-row_hover;
       }
 
@@ -757,7 +765,9 @@
     }
 
     .@{table-cls-tr}-expand:not(.@{table-prefix-cls}-tr-empty):hover {
-      .@{table-cls-td}:not(.@{table-prefix-cls}-col-fixed-left):not(.@{table-prefix-cls}-col-fixed-right) {
+      .@{table-cls-td}:not(.@{table-prefix-cls}-col-fixed-left):not(
+          .@{table-prefix-cls}-col-fixed-right
+        ) {
         background-color: @table-color-bg-expand-content_hover;
       }
     }
@@ -765,7 +775,9 @@
     // 去除嵌套子表格的 hover 效果
     .@{table-prefix-cls}-tr-expand .@{table-cls-td} & {
       .@{table-cls-tr}:not(.@{table-prefix-cls}-tr-empty) {
-        .@{table-cls-td}:not(.@{table-prefix-cls}-col-fixed-left):not(.@{table-prefix-cls}-col-fixed-right) {
+        .@{table-cls-td}:not(.@{table-prefix-cls}-col-fixed-left):not(
+            .@{table-prefix-cls}-col-fixed-right
+          ) {
           background-color: transparent;
         }
 
@@ -784,7 +796,7 @@
     z-index: 1;
     flex-shrink: 0;
     width: 100%;
-    overflow-x: auto;
+    overflow-x: hidden;
     background-color: @table-color-bg-tfoot;
     box-shadow: 0 -@table-border-width 0 @table-color-border;
     scrollbar-color: transparent transparent;
