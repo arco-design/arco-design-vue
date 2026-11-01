@@ -435,6 +435,17 @@ export default defineComponent({
       if (!firstElement.value || !popupRef.value || !containerRef.value) {
         return;
       }
+      // A hidden trigger element (e.g. `display: none` applied while the popup is
+      // still visible or fading out) measures as an all-zero rect; repositioning
+      // against it would move the popup to the viewport corner. Keep the last
+      // valid position instead.
+      if (!props.alignPoint && computedVisible.value) {
+        const { width, height, top, left } =
+          firstElement.value.getBoundingClientRect();
+        if (width === 0 && height === 0 && top === 0 && left === 0) {
+          return;
+        }
+      }
       const containerRect = containerRef.value.getBoundingClientRect();
       const triggerRect = props.alignPoint
         ? {
