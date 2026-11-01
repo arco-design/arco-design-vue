@@ -1,33 +1,30 @@
 import { computed, defineComponent, PropType, toRefs } from 'vue';
 import { BaseProps } from './interface';
 import Base from './base';
+import useListeners from '../_hooks/use-listeners';
 
 export default defineComponent({
   name: 'TypographyText',
-  inheritAttrs: false,
+  extends: Base,
   props: {
     ellipsis: {
       type: [Boolean, Object] as PropType<BaseProps['ellipsis']>,
       default: false,
     },
   },
-  setup(props) {
+  setup(props, { attrs, slots }) {
     const { ellipsis } = toRefs(props);
     const component = computed(() => (ellipsis?.value ? 'div' : 'span'));
 
-    return {
-      component,
-    };
-  },
-  render() {
-    const { ellipsis, component } = this;
+    const { listeners } = useListeners();
 
-    return (
+    return () => (
       <Base
-        {...this.$attrs}
-        ellipsis={ellipsis}
-        component={component}
-        v-slots={this.$slots}
+        {...props}
+        {...attrs}
+        {...listeners.value}
+        component={component.value}
+        v-slots={slots}
       />
     );
   },
