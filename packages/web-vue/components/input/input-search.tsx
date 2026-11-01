@@ -59,6 +59,11 @@ export default defineComponent({
     buttonProps: {
       type: Object as PropType<ButtonProps>,
     },
+      /**
+     * @zh 提示文字
+     * @en Prompt text
+     */
+    placeholder: String,
   },
   emits: {
     /**
@@ -140,6 +145,7 @@ export default defineComponent({
           append: props.searchButton ? renderButton : slots.append,
         }}
         size={mergedSize.value}
+        placeholder={props.placeholder}
         disabled={props.disabled}
       />
     );
