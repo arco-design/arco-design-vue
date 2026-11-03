@@ -735,6 +735,8 @@ export default defineComponent({
 
     // events
     const handleSelect = (key: string, ev: Event) => {
+      if (mergedDisabled.value) return;
+
       if (props.multiple) {
         if (!computedValueKeys.value.includes(key)) {
           if (enabledOptionKeys.value.includes(key)) {
