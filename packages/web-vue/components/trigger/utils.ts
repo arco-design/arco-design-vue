@@ -36,9 +36,26 @@ interface ScrollRect {
 }
 
 export const getElementScrollRect = (
-  element: HTMLElement,
+  element: HTMLElement | null | undefined,
   containerRect: DOMRect
 ) => {
+  // Defensive: callers may race with unmount (e.g. AutoTooltip remount in table
+  // editable cells). Avoid throwing on null.getBoundingClientRect.
+  if (!element) {
+    return {
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      scrollTop: 0,
+      scrollBottom: 0,
+      scrollLeft: 0,
+      scrollRight: 0,
+      width: 0,
+      height: 0,
+    };
+  }
+
   const rect = element.getBoundingClientRect();
 
   return {

@@ -808,6 +808,13 @@
       height: 0;
       background-color: transparent;
     }
+
+    // Sticky fixed cells paint above the tfoot box-shadow, so the separator
+    // above the summary disappears on fixed columns (upstream #3680).
+    .@{table-cls-td}.@{table-prefix-cls}-col-fixed-left,
+    .@{table-cls-td}.@{table-prefix-cls}-col-fixed-right {
+      border-top: @table-border-width @table-border-style @table-color-border;
+    }
   }
 
   & tfoot &-td {

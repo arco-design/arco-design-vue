@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { nextTick, reactive, ref } from 'vue';
+import { h, nextTick, reactive, ref } from 'vue';
 import Table from '../table';
 import { TableChangeExtra, TableColumnData, TableData } from '../interface';
 import { getFixedNumber } from '../utils';
@@ -311,4 +311,74 @@ describe('Table', () => {
       'arco-checkbox-disabled'
     );
   });
+
+  test('editable cell with column tooltip does not throw on edit toggle', async () => {
+    const data = reactive([{ key: '1', name: 'Alice' }]);
+    const editing = ref(false);
+    const wrapper = mount(Table as any, {
+      props: {
+        columns: [
+          {
+            title: 'Name',
+            dataIndex: 'name',
+            ellipsis: true,
+            tooltip: true,
+            slotName: 'name',
+          },
+        ],
+        data,
+        pagination: false,
+      },
+      slots: {
+        name: () =>
+          editing.value
+            ? h('input', {
+                class: 'edit-input',
+                value: data[0].name,
+              })
+            : h(
+                'span',
+                {
+                  class: 'cell-text',
+                  onClick: () => {
+                    editing.value = true;
+                  },
+                },
+                data[0].name
+              ),
+      },
+    });
+    await nextTick();
+    expect(wrapper.find('.arco-auto-tooltip').exists()).toBe(true);
+    expect(() => {
+      wrapper.find('.cell-text').trigger('click');
+    }).not.toThrow();
+    await nextTick();
+    expect(wrapper.find('.edit-input').exists()).toBe(true);
+    expect(wrapper.findComponent({ name: 'Tooltip' }).exists()).toBe(true);
+  });
+
+  test('summary with fixed column renders tfoot fixed cells', async () => {
+    const wrapper = mount(Table as any, {
+      props: {
+        columns: [
+          { title: 'Name', dataIndex: 'name', fixed: 'left', width: 120 },
+          { title: 'Age', dataIndex: 'age', width: 200 },
+        ],
+        data: [
+          { key: '1', name: 'Alice', age: 18 },
+          { key: '2', name: 'Bob', age: 22 },
+        ],
+        summary: true,
+        scroll: { x: 800, y: 120 },
+        pagination: false,
+      },
+    });
+    await nextTick();
+    expect(wrapper.find('.arco-table-tfoot').exists()).toBe(true);
+    expect(
+      wrapper.find('.arco-table-tfoot .arco-table-col-fixed-left').exists()
+    ).toBe(true);
+  });
 });
+

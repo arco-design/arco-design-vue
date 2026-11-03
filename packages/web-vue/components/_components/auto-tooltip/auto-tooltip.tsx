@@ -53,33 +53,25 @@ export default defineComponent({
       calTooltip();
     });
 
-    const renderContent = () => {
-      return (
-        <span ref={containerRef} class={prefix} {...attrs}>
-          <ResizeObserver onResize={onResize}>
-            <span ref={contentRef} class={`${prefix}-content`}>
-              {slots.default?.()}
-            </span>
-          </ResizeObserver>
-        </span>
-      );
-    };
-
     return () => {
-      if (showTooltip.value) {
-        return (
-          <Tooltip
-            content={text.value}
-            onResize={onResize}
-            {...props.tooltipProps}
-          >
-            {renderContent()}
-          </Tooltip>
-        );
-      }
-
+      // Keep Tooltip mounted and toggle `disabled` instead of swapping trees.
+      // Remounting Tooltip/Trigger while table cells switch to editors (ellipsis
+      // + tooltip) can call getBoundingClientRect on a detached node (#3681).
       return (
-        <ResizeObserver onResize={onResize}>{renderContent()}</ResizeObserver>
+        <Tooltip
+          content={text.value}
+          disabled={!showTooltip.value}
+          onResize={onResize}
+          {...props.tooltipProps}
+        >
+          <span ref={containerRef} class={prefix} {...attrs}>
+            <ResizeObserver onResize={onResize}>
+              <span ref={contentRef} class={`${prefix}-content`}>
+                {slots.default?.()}
+              </span>
+            </ResizeObserver>
+          </span>
+        </Tooltip>
       );
     };
   },
