@@ -38,8 +38,9 @@ export const useInput = ({
 
   const handleInput = (ev: Event) => {
     const { value } = ev.target as HTMLInputElement;
-
-    if (!isComposition.value) {
+    // Prefer native isComposing so a stuck internal flag cannot drop all input
+    // (IME race: late compositionupdate after compositionend). See upstream #3679.
+    if (!(ev as InputEvent).isComposing && !isComposition.value) {
       updateValue(value, ev);
 
       nextTick(() => {
@@ -70,7 +71,12 @@ export const useInput = ({
           inputRef.value.value = computedValue.value;
         }
       });
-    } else {
+      return;
+    }
+
+    // Only compositionstart flips the gate. Ignoring compositionupdate avoids a
+    // late update after compositionend locking isComposition permanently.
+    if (ev.type === 'compositionstart') {
       isComposition.value = true;
       compositionValue.value = computedValue.value + (ev.data ?? '');
     }
@@ -107,7 +113,8 @@ export const useInput = ({
   };
 
   watch(computedValue, (value) => {
-    if (inputRef.value && value !== inputRef.value.value) {
+    // Match input-tag: do not overwrite the DOM value during IME composition.
+    if (!isComposition.value && inputRef.value && value !== inputRef.value.value) {
       inputRef.value.value = value;
     }
   });
