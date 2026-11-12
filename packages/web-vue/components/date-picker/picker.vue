@@ -10,7 +10,7 @@
     :position="position"
     :disabled="mergedDisabled || readonly"
     :prevent-focus="true"
-    :popup-visible="panelVisible"
+    :popup-visible="panelVisible && !mergedDisabled"
     :unmount-on-close="unmountOnClose"
     :popup-container="popupContainer"
     @popupVisibleChange="onPanelVisibleChange"
@@ -621,6 +621,10 @@ export default defineComponent({
       }
     };
 
+    watch(mergedDisabled, (disabled) => {
+      if (disabled) setPanelVisible(false);
+    });
+
     // 生成当前面板内容
     const { headerValue, setHeaderValue, headerOperations, resetHeaderValue } =
       useHeaderValue(
@@ -702,7 +706,7 @@ export default defineComponent({
       showPanel?: boolean,
       emitOk?: boolean
     ) {
-      if (isDisabledDate(value)) {
+      if (mergedDisabled.value || isDisabledDate(value)) {
         return;
       }
 
@@ -718,6 +722,8 @@ export default defineComponent({
     }
 
     function select(value: Dayjs | undefined, emitSelect?: boolean) {
+      if (mergedDisabled.value) return;
+
       setProcessValue(value);
       setPreviewValue(undefined);
       setInputValue(undefined);
@@ -840,6 +846,8 @@ export default defineComponent({
     }
 
     function onPanelShortcutClick(value: Dayjs, shortcut: ShortcutType) {
+      if (mergedDisabled.value) return;
+
       emit('select-shortcut', shortcut);
       confirm(value, false);
     }
