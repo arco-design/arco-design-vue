@@ -653,7 +653,7 @@ export default defineComponent({
       () => props.inputValue ?? _inputValue.value
     );
     const computedPopupVisible = computed(
-      () => props.popupVisible ?? _popupVisible.value
+      () => !mergedDisabled.value && (props.popupVisible ?? _popupVisible.value)
     );
 
     // 搜索源集合：只在选项变化时物化一次，避免每次输入都 Array.from
@@ -738,13 +738,19 @@ export default defineComponent({
     });
 
     const handlePopupVisibleChange = (visible: boolean): void => {
-      if (computedPopupVisible.value !== visible) {
+      if (visible && mergedDisabled.value) return;
+      if ((props.popupVisible ?? _popupVisible.value) !== visible) {
         _popupVisible.value = visible;
         emit('popupVisibleChange', visible);
       }
     };
 
+    watch(mergedDisabled, (disabled) => {
+      if (disabled) handlePopupVisibleChange(false);
+    });
+
     const handleRemove = (key: string) => {
+      if (mergedDisabled.value) return;
       if (props.multiple) {
         const option = leafOptionMap.get(key);
         if (option) {
@@ -800,6 +806,8 @@ export default defineComponent({
       option: CascaderOptionInfo,
       checked?: boolean
     ) => {
+      if (mergedDisabled.value) return;
+
       if (props.multiple) {
         selectMultiple(option, checked ?? true);
       } else {
