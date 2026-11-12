@@ -197,8 +197,15 @@ export default defineComponent({
 
     const _popupVisible = ref(false);
     const computedPopupVisible = computed(
-      () => _popupVisible.value && validOptionInfos.value.length > 0
+      () =>
+        !mergedDisabled.value &&
+        _popupVisible.value &&
+        validOptionInfos.value.length > 0
     );
+
+    watch(mergedDisabled, (disabled) => {
+      if (disabled) _popupVisible.value = false;
+    });
 
     // VirtualList
     const virtualListRef = ref();
@@ -242,6 +249,8 @@ export default defineComponent({
 
     // Dropdown事件
     const handleSelect = (key: string, ev: Event) => {
+      if (mergedDisabled.value) return;
+
       const value = optionInfoMap.get(key)?.value as string;
       emit('select', value);
       handleChange(value);
