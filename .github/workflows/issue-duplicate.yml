@@ -2,16 +2,71 @@ name: Issue Mark Duplicate
 
 on:
   issue_comment:
-    types: [created, edited]
+    types: [created]
+
+# 原实现使用 actions-cool/issues-helper（GitHub ToS 封禁），改用 actions/github-script。
+# 触发方式保持维护者现有习惯：评论中出现 "Duplicate of #123" 或 "/duplicate #123"。
+permissions:
+  contents: read
 
 jobs:
   mark-duplicate:
     runs-on: ubuntu-latest
+    if: |
+      github.repository_owner == 'arco-design' &&
+      github.event.issue.pull_request == null
+    permissions:
+      issues: write
     steps:
-      - name: mark-duplicate
-        uses: actions-cool/issues-helper@v2
+      - uses: actions/github-script@v7
         with:
-          actions: 'mark-duplicate'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          duplicate-labels: "🔄 Duplicate"
-          close-issue: true
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const issue = context.payload.issue;
+            const comment = context.payload.comment;
+
+            const match = /(?:duplicate\s+of|duplicate:|\/duplicate)\s*#(\d+)/i.exec(comment.body || '');
+            if (!match) return;
+
+            const targetNumber = Number(match[1]);
+            if (!Number.isInteger(targetNumber) || targetNumber === issue.number) return;
+
+            const permission = await github.rest.repos.getCollaboratorPermissionLevel({
+              owner,
+              repo,
+              username: comment.user.login,
+            });
+            const level = permission.data.permission;
+            if (!['admin', 'maintain', 'write'].includes(level)) {
+              core.info(`@${comment.user.login} 权限为 ${level}，跳过标记重复`);
+              return;
+            }
+
+            const duplicateLabel = '🔄 Duplicate';
+            try {
+              await github.rest.issues.getLabel({ owner, repo, name: duplicateLabel });
+            } catch (error) {
+              await github.rest.issues.createLabel({ owner, repo, name: duplicateLabel, color: 'ededed' });
+            }
+
+            await github.rest.issues.addLabels({
+              owner,
+              repo,
+              issue_number: issue.number,
+              labels: [duplicateLabel],
+            });
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: issue.number,
+              body: `Duplicate of #${targetNumber}`,
+            });
+            await github.rest.issues.update({
+              owner,
+              repo,
+              issue_number: issue.number,
+              state: 'closed',
+              state_reason: 'not_planned',
+            });
+            core.info(`marked #${issue.number} as duplicate of #${targetNumber}`);

@@ -3,42 +3,107 @@ name: Issue Manager
 on:
   schedule:
     - cron: "0 0 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: '只打印将要执行的操作，不修改任何 issue'
+        type: boolean
+        default: true
 
+# 原实现使用 actions-cool/issues-helper，该仓库已被 GitHub 以 ToS 理由封禁
+# （403 Repository access blocked, reason=tos），导致 workflow 无法启动。
+# 这里改用 GitHub 官方的 actions/github-script 实现原有行为。
 permissions:
   contents: read
 
 jobs:
-  issue-close:
+  issue-manager:
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'arco-design'
     permissions:
       issues: write
-      pull-requests: write
-    runs-on: ubuntu-latest
-    if: ${{ github.repository_owner == 'arco-design' }}
+    env:
+      DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || 'false' }}
     steps:
-      - name: Needs more info
-        uses: actions-cool/issues-helper@v3
+      - uses: actions/github-script@v7
         with:
-          actions: 'close-issues'
-          labels: '📄 Need more info'
-          inactive-day: 7
-          body: |
-            由于该 issue 被标记为需要更多信息，却 7 天未收到回应。现关闭 issue，若有任何问题，可评论回复或点击加入[Arco Design 飞书用户群](https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=0c2qaa71-ed40-40e7-9389-9f3e182011a5)询问。
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const dryRun = String(process.env.DRY_RUN) === 'true';
+            const needLabel = '📄 Need more info';
+            const inactiveLabel = '💤 Inactive';
+            const DAY = 24 * 60 * 60 * 1000;
+            const now = Date.now();
 
-            This issue has been marked as needing more information, but there hasn’t been a response for 7 days, so we’re closing it for now. If you have any questions, feel free to comment here or join the [Arco Design Feishu user group](https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=0c2qaa71-ed40-40e7-9389-9f3e182011a5) to ask for help.
+            const needsInfoComment = [
+              '由于该 issue 被标记为需要更多信息，却 7 天未收到回应。现关闭 issue，若有任何问题，可评论回复或点击加入[Arco Design 飞书用户群](https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=0c2qaa71-ed40-40e7-9389-9f3e182011a5)询问。',
+              '',
+              'This issue has been marked as needing more information, but there hasn’t been a response for 7 days, so we’re closing it for now. If you have any questions, feel free to comment here or join the [Arco Design Feishu user group](https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=0c2qaa71-ed40-40e7-9389-9f3e182011a5) to ask for help.',
+              '',
+              '<img src="https://github.com/user-attachments/assets/65abfd92-38a4-4d34-ad3e-59b9031ca7c3" height="200" />',
+            ].join('\n');
 
-            <img src="https://github.com/user-attachments/assets/65abfd92-38a4-4d34-ad3e-59b9031ca7c3" height="200" />
+            const listIssues = async (labels) => {
+              const params = { owner, repo, state: 'open', per_page: 100 };
+              if (labels) params.labels = labels;
+              const issues = await github.paginate(github.rest.issues.listForRepo, params);
+              return issues.filter((issue) => !issue.pull_request);
+            };
 
-  check-inactive:
-    permissions:
-      issues: write
-      pull-requests: write
-    runs-on: ubuntu-latest
-    if: ${{ github.repository_owner == 'arco-design' }}
-    steps:
-      - name: check-inactive
-        uses: actions-cool/issues-helper@v3
-        with:
-          actions: 'check-inactive'
-          inactive-label: '💤 Inactive'
-          inactive-day: 30
+            const ensureLabel = async (name) => {
+              try {
+                await github.rest.issues.getLabel({ owner, repo, name });
+              } catch (error) {
+                core.info(`创建缺失的标签：${name}`);
+                await github.rest.issues.createLabel({ owner, repo, name, color: 'ededed' });
+              }
+            };
 
+            // 1) Need more info 且 7 天无更新 -> 评论并关闭
+            const needsInfo = await listIssues(needLabel);
+            for (const issue of needsInfo) {
+              const inactiveMs = now - new Date(issue.updated_at).getTime();
+              if (inactiveMs < 7 * DAY) continue;
+              if (dryRun) {
+                core.info(`[dry-run] close #${issue.number} ${issue.title}`);
+                continue;
+              }
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: issue.number,
+                body: needsInfoComment,
+              });
+              await github.rest.issues.update({
+                owner,
+                repo,
+                issue_number: issue.number,
+                state: 'closed',
+                state_reason: 'not_planned',
+              });
+              core.info(`closed #${issue.number}`);
+            }
+
+            // 2) 30 天无更新 -> 打 Inactive 标签
+            await ensureLabel(inactiveLabel);
+            const openIssues = await listIssues();
+            for (const issue of openIssues) {
+              const labels = (issue.labels || []).map((label) =>
+                typeof label === 'string' ? label : label.name
+              );
+              if (labels.includes(inactiveLabel)) continue;
+              const inactiveMs = now - new Date(issue.updated_at).getTime();
+              if (inactiveMs < 30 * DAY) continue;
+              if (dryRun) {
+                core.info(`[dry-run] add "${inactiveLabel}" to #${issue.number} ${issue.title}`);
+                continue;
+              }
+              await github.rest.issues.addLabels({
+                owner,
+                repo,
+                issue_number: issue.number,
+                labels: [inactiveLabel],
+              });
+              core.info(`labeled inactive #${issue.number}`);
+            }
