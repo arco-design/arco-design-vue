@@ -220,15 +220,15 @@ export default defineComponent({
       type: [String, Array, Object],
     },
   },
-  emits: [
+  emits: {
     /**
      * @zh 预览的打开和关闭事件
      * @en Preview opening and closing events
      * @param {boolean} visible
      */
-    'preview-visible-change',
-    'update:previewVisible',
-  ],
+    'previewVisibleChange': (visible: boolean) => true,
+    'update:previewVisible': (visible: boolean) => true,
+  },
   /**
    * @zh 自定义错误状态的图标
    * @en Customize the icon of error content.
@@ -356,13 +356,13 @@ export default defineComponent({
       if (groupContext?.preview) {
         groupContext.preview(imageId);
       } else {
-        emit('preview-visible-change', true);
+        emit('previewVisibleChange', true);
         setPreviewVisible(true);
       }
     }
 
     function onPreviewClose() {
-      emit('preview-visible-change', false);
+      emit('previewVisibleChange', false);
       setPreviewVisible(false);
     }
 

@@ -132,22 +132,22 @@ export default defineComponent({
       type: [String, Object] as PropType<string | HTMLElement>,
     },
   },
-  emits: [
+  emits: {
     /**
      * @zh 切换图片
      * @en Image switch
      * @param {number} index
      */
-    'change',
-    'update:current',
+    'change': (index: number) => true,
+    'update:current': (current: number) => true,
     /**
      * @zh 预览的打开和关闭
      * @en Preview visibility change
      * @param {boolean} visible
      */
-    'visible-change',
-    'update:visible',
-  ],
+    'visibleChange': (visible: boolean) => true,
+    'update:visible': (visible: boolean) => true,
+  },
   /**
    * @zh 自定义额外的操作项
    * @en Customize additional action items
@@ -172,7 +172,7 @@ export default defineComponent({
     );
     const setVisible = (newVisible: boolean) => {
       if (newVisible !== mergedVisible.value) {
-        emit('visible-change', newVisible);
+        emit('visibleChange', newVisible);
         emit('update:visible', newVisible);
         setLocalVisible(newVisible);
       }

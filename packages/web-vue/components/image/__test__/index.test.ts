@@ -59,7 +59,7 @@ describe('Image', () => {
     });
     await wrapper.vm.onImgLoaded();
     await wrapper.find('img').trigger('click');
-    expect(wrapper.emitted()).toHaveProperty('preview-visible-change');
+    expect(wrapper.emitted()).toHaveProperty('previewVisibleChange');
     expect(wrapper.html()).toMatchSnapshot();
   });
 
@@ -167,6 +167,27 @@ describe('Image', () => {
     const leftIcon = wrapper.find('.arco-image-preview-arrow-left');
     await leftIcon.trigger('click');
     expect(wrapper.emitted('change')![1]).toContain(0);
+  });
+
+  test('Should trigger previewVisibleChange listener with true on preview', async () => {
+    // 模板里的 @preview-visible-change 会被编译成 onPreviewVisibleChange
+    const onPreviewVisibleChange = vi.fn();
+    const wrapper = await mount(Image, {
+      props: {
+        src: imgSrc,
+        renderToBody: false,
+      },
+      attrs: {
+        onPreviewVisibleChange,
+      },
+    });
+    await wrapper.vm.onImgLoaded();
+    await wrapper.find('img').trigger('click');
+
+    // emits 已改为 camelCase 的 previewVisibleChange，kebab-case 模板监听仍然生效
+    expect(onPreviewVisibleChange).toHaveBeenCalledTimes(1);
+    expect(onPreviewVisibleChange).toHaveBeenCalledWith(true);
+    expect(wrapper.emitted('previewVisibleChange')?.[0]).toEqual([true]);
   });
 
   // Utils getScale
