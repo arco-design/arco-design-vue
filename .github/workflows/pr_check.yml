@@ -1,27 +1,37 @@
 name: pr_check
 on:
   pull_request:
-    types: [ opened, synchronize, reopened ]
+    types: [opened, synchronize, reopened]
+
+# 这里只依赖 GitHub 官方 action + corepack：
+# 原实现用的 pnpm/action-setup@v4 与 szenius/set-timezone@v1.0 在部分仓库会因
+# Actions 策略/可用性问题导致 workflow 启动失败（startup_failure，且不产生任何日志）。
+permissions:
+  contents: read
 
 jobs:
   check:
     runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Singapore
     steps:
       - uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
 
       - name: Setup node
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'pnpm'
+
+      - name: Enable pnpm via corepack
+        run: |
+          corepack enable
+          corepack prepare pnpm@9.5.0 --activate
+          node -v
+          pnpm -v
 
       - name: Get pnpm store directory
         id: pnpm-cache
-        run: |
-          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+        run: echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
 
       - uses: actions/cache@v4
         name: Setup pnpm cache
@@ -31,16 +41,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+      - name: mock time
+        run: sudo timedatectl set-timezone Asia/Singapore
+
       - run: pnpm i --frozen-lockfile
 
       - run: pnpm run init
-
-      - name: mock time
-        uses: szenius/set-timezone@v1.0
-        with:
-          timezoneLinux: 'Asia/Singapore'
-          timezoneMacos: 'Asia/Singapore'
-          timezoneWindows: 'Singapore Standard Time'
 
       - name: run test
         run: pnpm run test
