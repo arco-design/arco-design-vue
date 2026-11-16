@@ -220,31 +220,31 @@ export default defineComponent({
       type: Boolean,
     },
   },
-  emits: [
-    'update:collapsed',
-    'update:selectedKeys',
-    'update:openKeys',
+  emits: {
+    'update:collapsed': (collapsed: boolean) => true,
+    'update:selectedKeys': (keys: string[]) => true,
+    'update:openKeys': (keys: string[]) => true,
     /**
      * @zh 折叠状态改变时触发
      * @en Triggered when the collapsed state changes
      * @param {boolean} collapsed
      * @param {'clickTrigger'|'responsive'} type
      */
-    'collapse',
+    'collapse': (collapsed: boolean, type: string) => true,
     /**
      * @zh 点击菜单项时触发
      * @en Triggered when the menu item is clicked
      * @param {string} key
      */
-    'menu-item-click',
+    'menuItemClick': (key: string) => true,
     /**
      * @zh 点击子菜单时触发
      * @en Triggered when the submenu is clicked
      * @param {string} key
      * @param {string[]} openKeys
      */
-    'sub-menu-click',
-  ],
+    'subMenuClick': (key: string, openKeys: string[]) => true,
+  },
   /**
    * @zh 折叠图标
    * @en Collapse icon
@@ -404,13 +404,13 @@ export default defineComponent({
       onMenuItemClick: (key: string) => {
         setSelectedKeys([key]);
         emit('update:selectedKeys', [key]);
-        emit('menu-item-click', key);
+        emit('menuItemClick', key);
       },
       onSubMenuClick: (key: string, level: number) => {
         const newOpenKeys = open(key, level);
         setOpenKeys(newOpenKeys);
         emit('update:openKeys', newOpenKeys);
-        emit('sub-menu-click', key, newOpenKeys);
+        emit('subMenuClick', key, newOpenKeys);
       },
     });
     provide(MenuInjectionKey, menuContext);
