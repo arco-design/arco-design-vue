@@ -39,15 +39,34 @@ export async function build(input: string, options?: { outDir?: string }) {
     });
   }
 
-  // 声明生成前先清掉上一次的声明产物：
-  // 它们会被 TypeScript 当成输入文件（TS5055「would overwrite input file」），
-  // 导致对应文件的 emit 被静默跳过，最终产包里缺 index.d.ts / 留下无类型的旧声明
-  // （见 issue #3490、#3513、#3564、#3586、#3598）。
-  const { outDir } = project.getCompilerOptions();
-  if (outDir && fs.existsSync(outDir)) {
-    glob
-      .sync('**/*.d.ts', { cwd: outDir, absolute: true })
-      .forEach((file) => fs.removeSync(file));
+  const files = glob.sync(input, {
+    nodir: true,
+    ignore: /components\/icon/.test(input)
+      ? ['**/__test__/*', '**/__demo__/*']
+      : ['**/__test__/*', '**/__demo__/*', 'components/icon/**/*'],
+  });
+
+  // 只清理「本次会重新生成的声明」，不要整体清空 outDir：
+  // 1) 上一次残留的同名声明会被 TypeScript 当成输入文件（TS5055「would overwrite input file」），
+  //    导致该文件的 emit 被静默跳过，最终产包里缺 index.d.ts / 留下无类型的旧声明
+  //    （见 issue #3490、#3513、#3564、#3586、#3598）；
+  // 2) 图标声明由 build-component 从 components/icon/@types 复制到 es/icon，不在 dtsgen 的输入里，
+  //    整体清空会让产包丢掉 es/icon 的类型（消费侧报 TS7016）；子集生成（如只生成 button）同理。
+  const { outDir, rootDir } = project.getCompilerOptions();
+  if (outDir) {
+    // 输出路径 = outDir + 源文件相对 rootDir 的路径（isComponents 时 rootDir 是 components）
+    const outputBase = rootDir ? path.resolve(root, rootDir) : root;
+    files.forEach((file) => {
+      const declarationPath = path.resolve(
+        outDir,
+        path
+          .relative(outputBase, path.resolve(root, file))
+          .replace(/\.(ts|tsx|vue)$/, '.d.ts')
+      );
+      if (fs.existsSync(declarationPath)) {
+        fs.removeSync(declarationPath);
+      }
+    });
   }
 
   // 包根目录的 ambient 声明（global.d.ts、b-tween.d.ts 等）也要加入项目，
@@ -67,11 +86,6 @@ export async function build(input: string, options?: { outDir?: string }) {
     }
   });
 
-  const files = glob.sync(input, {
-    ignore: /components\/icon/.test(input)
-      ? ['**/__test__/*', '**/__demo__/*']
-      : ['**/__test__/*', '**/__demo__/*', 'components/icon/**/*'],
-  });
   const sourceFiles: SourceFile[] = [];
 
   await Promise.all(
