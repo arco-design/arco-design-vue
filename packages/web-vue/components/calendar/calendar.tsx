@@ -3,6 +3,7 @@ import { Dayjs, UnitType } from 'dayjs';
 import Month, { getAllDaysByTime } from './month';
 import Year from './year';
 import Header from './header';
+import type { CalendarDayjs, CalendarHeaderRenderProps } from './interface';
 import {
   getDayjsValue,
   getNow,
@@ -143,44 +144,35 @@ export default defineComponent({
      * @en Function that specifies the dates that cannot be selected
      */
     disabledDate: {
-      type: Function as PropType<(current: Dayjs) => boolean>,
+      type: Function as PropType<(current: CalendarDayjs) => boolean>,
     },
     /**
      * @zh 定制日期显示，会完全覆盖日期单元格
      * @en Customize the date display, which will completely cover the date cell
      */
     dateRender: {
-      type: Function as PropType<(currentDate: Dayjs) => any>,
+      type: Function as PropType<(currentDate: CalendarDayjs) => any>,
     },
     /**
      * @zh 定制日期单元格，内容会被添加到单元格内
      * @en Customize the date cell, the content will be added to the cell
      */
     dateInnerContent: {
-      type: Function as PropType<(currentDate: Dayjs) => any>,
+      type: Function as PropType<(currentDate: CalendarDayjs) => any>,
     },
     /**
      * @zh 定制月份显示，会完全覆盖月份单元格
      * @en Customize the month display, which will completely cover the month cell
      */
     monthRender: {
-      type: Function as PropType<(currentDate: Dayjs) => any>,
+      type: Function as PropType<(currentDate: CalendarDayjs) => any>,
     },
     /**
      * @zh 自定义头部渲染
      * @en Custom header renderer
      */
     headerRender: {
-      type: Function as PropType<
-        (props: {
-          value?: Dayjs;
-          pageShowDate?: Dayjs;
-          mode?: string;
-          onChange: (date: Dayjs) => void;
-          onChangePageDate: (date: Dayjs) => void;
-          onChangeMode: (mode: 'day' | 'week' | 'month' | 'year') => void;
-        }) => any
-      >,
+      type: Function as PropType<(props: CalendarHeaderRenderProps) => any>,
     },
   },
   emits: {
