@@ -39,12 +39,21 @@ export async function build(input: string, options?: { outDir?: string }) {
     });
   }
 
-  const files = glob.sync(input, {
-    nodir: true,
-    ignore: /components\/icon/.test(input)
-      ? ['**/__test__/*', '**/__demo__/*']
-      : ['**/__test__/*', '**/__demo__/*', 'components/icon/**/*'],
-  });
+  const { outDir, rootDir } = project.getCompilerOptions();
+
+  const files = glob
+    .sync(input, {
+      nodir: true,
+      ignore: /components\/icon/.test(input)
+        ? ['**/__test__/*', '**/__demo__/*']
+        : ['**/__test__/*', '**/__demo__/*', 'components/icon/**/*'],
+    })
+    // outDir 可能落在输入 glob 的范围内（例如 dtsgen:icon 的 components/icon/@types）：
+    // 这些声明是上一次的产物，稍后会被删掉再重新生成，不能当输入读
+    .filter(
+      (file) =>
+        !outDir || !path.resolve(root, file).startsWith(`${outDir}${path.sep}`)
+    );
 
   // 只清理「本次会重新生成的声明」，不要整体清空 outDir：
   // 1) 上一次残留的同名声明会被 TypeScript 当成输入文件（TS5055「would overwrite input file」），
@@ -52,7 +61,6 @@ export async function build(input: string, options?: { outDir?: string }) {
   //    （见 issue #3490、#3513、#3564、#3586、#3598）；
   // 2) 图标声明由 build-component 从 components/icon/@types 复制到 es/icon，不在 dtsgen 的输入里，
   //    整体清空会让产包丢掉 es/icon 的类型（消费侧报 TS7016）；子集生成（如只生成 button）同理。
-  const { outDir, rootDir } = project.getCompilerOptions();
   if (outDir) {
     // 输出路径 = outDir + 源文件相对 rootDir 的路径（isComponents 时 rootDir 是 components）
     const outputBase = rootDir ? path.resolve(root, rootDir) : root;
@@ -88,46 +96,50 @@ export async function build(input: string, options?: { outDir?: string }) {
 
   const sourceFiles: SourceFile[] = [];
 
-  await Promise.all(
-    files.map(async (file) => {
-      const content = await fs.promises.readFile(
-        path.resolve(root, file),
-        'utf8'
-      );
-      if (file.endsWith('.vue')) {
-        const sfc = parse(content);
-        const { script, scriptSetup } = sfc.descriptor;
-        if (script || scriptSetup) {
-          let scriptContent = '';
-          let isTSX = false;
-          if (script && script.content) {
-            scriptContent += script.content;
-            if (script.lang === 'tsx') isTSX = true;
-          }
-          const sourceFile = project.createSourceFile(
-            path.relative(root, file).replace('.vue', isTSX ? '.tsx' : '.ts'),
-            scriptContent
-          );
-          if (sourceFile) {
-            removeVueSpecifier(sourceFile);
-            sourceFiles.push(sourceFile);
-          }
+  // 按路径排序后依次创建：并发创建会让声明/JSON 的成员顺序随调度变化，
+  // 导致同样的输入每次构建产出字节不同的 .d.ts，发布产物不可复现。
+  // 文件读取并发、创建顺序固定（所以这里不直接用 await-in-loop）。
+  const sortedFiles = [...files].sort();
+  const fileContents = await Promise.all(
+    sortedFiles.map((file) =>
+      fs.promises.readFile(path.resolve(root, file), 'utf8')
+    )
+  );
+  sortedFiles.forEach((file, index) => {
+    const content = fileContents[index];
+    if (file.endsWith('.vue')) {
+      const sfc = parse(content);
+      const { script, scriptSetup } = sfc.descriptor;
+      if (script || scriptSetup) {
+        let scriptContent = '';
+        let isTSX = false;
+        if (script && script.content) {
+          scriptContent += script.content;
+          if (script.lang === 'tsx') isTSX = true;
         }
-      } else {
         const sourceFile = project.createSourceFile(
-          path.relative(root, file),
-          content,
-          {
-            overwrite: true,
-          }
+          path.relative(root, file).replace('.vue', isTSX ? '.tsx' : '.ts'),
+          scriptContent
         );
         if (sourceFile) {
           removeVueSpecifier(sourceFile);
           sourceFiles.push(sourceFile);
         }
       }
-    })
-  );
+    } else {
+      const sourceFile = project.createSourceFile(
+        path.relative(root, file),
+        content,
+        {
+          overwrite: true,
+        }
+      );
+      if (sourceFile) {
+        removeVueSpecifier(sourceFile);
+        sourceFiles.push(sourceFile);
+      }
+    }
+  });
 
   // 收集类型错误：声明生成不应在存在类型错误的情况下"静默成功"，
   // 否则会产出一份带 .d.ts 的坏包。
@@ -183,7 +195,13 @@ export async function build(input: string, options?: { outDir?: string }) {
         outputFiles.map(async (outputFile) => {
           const filepath = outputFile.getFilePath();
           await fs.ensureDir(path.dirname(filepath));
-          await fs.writeFile(filepath, outputFile.getText(), 'utf8');
+          // vue 已经 re-export 了 @vue/runtime-core 的类型；
+          // 保留 @vue/runtime-core 会让发布包出现一个未声明的依赖引用（严格解析下 TS2307）
+          const text = outputFile
+            .getText()
+            .replace(/import\("@vue\/runtime-core"\)/g, 'import("vue")')
+            .replace(/from '@vue\/runtime-core'/g, "from 'vue'");
+          await fs.writeFile(filepath, text, 'utf8');
           // eslint-disable-next-line no-console
           console.log(`Emitted ${filepath}`);
         })
