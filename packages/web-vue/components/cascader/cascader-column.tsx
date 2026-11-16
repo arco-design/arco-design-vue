@@ -63,7 +63,6 @@ export default defineComponent({
               {...props.virtualListProps}
               ref={virtualListRef}
               data={props.column}
-              itemKey="key"
               v-slots={{
                 item: ({ item }: { item: CascaderOptionInfo }) => {
                   return (
