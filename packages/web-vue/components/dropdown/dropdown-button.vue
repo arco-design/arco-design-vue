@@ -1,8 +1,8 @@
 <template>
   <ButtonGroup>
     <Button
-      :size="size"
-      :type="type"
+      :size="size as ButtonProps['size']"
+      :type="type as ButtonProps['type']"
       :disabled="disabled"
       v-bind="buttonProps"
       @click="handleClick"
@@ -18,7 +18,11 @@
       @select="handleSelect"
       @popup-visible-change="handlePopupVisibleChange"
     >
-      <Button :size="size" :type="type" :disabled="disabled">
+      <Button
+        :size="size as ButtonProps['size']"
+        :type="type as ButtonProps['type']"
+        :disabled="disabled"
+      >
         <template #icon>
           <slot name="icon" :popup-visible="computedPopupVisible">
             <IconMore />
@@ -107,16 +111,14 @@ export default defineComponent({
      * @en Button type
      */
     type: {
-      // 透传给 Button，取值与 Button 保持一致
-      type: String as PropType<ButtonProps['type']>,
+      type: String,
     },
     /**
      * @zh 按钮大小
      * @en Button size
      */
     size: {
-      // 透传给 Button，取值与 Button 保持一致
-      type: String as PropType<ButtonProps['size']>,
+      type: String,
     },
     /**
      * @zh 按钮属性
