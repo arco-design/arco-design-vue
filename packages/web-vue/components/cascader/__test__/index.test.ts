@@ -219,4 +219,56 @@ describe('Cascader', () => {
     await sleep(60);
     expect(panel.findAll('.arco-cascader-search-option')).toHaveLength(2001);
   });
+
+  test('search panel passes user virtualListProps.itemKey to inner VirtualList', async () => {
+    const wrapper = mount(Cascader, {
+      props: {
+        options,
+        allowSearch: true,
+        virtualListProps: { height: 200, itemKey: 'value' },
+      },
+    });
+
+    const input = wrapper.find('input');
+    await input.trigger('click');
+    await input.setValue('a');
+
+    const panel = wrapper.findComponent({ name: 'CascaderSearchPanel' });
+    const virtualList = panel.findComponent({ name: 'VirtualList' });
+    expect(virtualList.exists()).toBe(true);
+    // 用户配置的 itemKey 不能被组件内部覆盖
+    expect(virtualList.props('itemKey')).toBe('value');
+
+    // 虚拟行身份按 value 渲染（内部 key 是 beijing-chaoyang 这类路径）
+    const keys = panel
+      .findAllComponents({ name: 'VirtualListItem' })
+      .map((item) => (item.vm.$ as any).vnode.key);
+    expect(keys).toEqual(['chaoyang', 'haidian', 'huangpu']);
+  });
+
+  test('dropdown column passes user virtualListProps.itemKey to inner VirtualList', async () => {
+    const wrapper = mount(Cascader, {
+      props: {
+        options,
+        virtualListProps: { height: 200, itemKey: 'value' },
+      },
+    });
+
+    await wrapper.find('input').trigger('click');
+    const panel = wrapper.findComponent({ name: 'BaseCascaderPanel' });
+    // 展开第二列
+    await panel.find('.arco-cascader-option').trigger('click');
+    const columns = panel.findAllComponents({ name: 'CascaderColumn' });
+    expect(columns).toHaveLength(2);
+
+    const secondColumn = columns[1];
+    const virtualList = secondColumn.findComponent({ name: 'VirtualList' });
+    expect(virtualList.exists()).toBe(true);
+    expect(virtualList.props('itemKey')).toBe('value');
+
+    const keys = secondColumn
+      .findAllComponents({ name: 'VirtualListItem' })
+      .map((item) => (item.vm.$ as any).vnode.key);
+    expect(keys).toEqual(['chaoyang', 'haidian']);
+  });
 });
