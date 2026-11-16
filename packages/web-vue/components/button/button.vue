@@ -24,7 +24,7 @@
         cls,
         { [`${prefixCls}-only-icon`]: $slots.icon && !$slots.default },
       ]"
-      :type="htmlType"
+      :type="htmlType as NativeButtonType"
       :disabled="mergedDisabled"
       :autofocus="autofocus"
       @click="handleClick"
@@ -61,6 +61,9 @@ import { buttonGroupInjectionKey } from './context';
 import { configProviderInjectionKey } from '../config-provider/context';
 
 const regexTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
+
+// htmlType 的公开类型保持 string（兼容旧配置），只在模板绑定原生 button 的 type 时收窄
+type NativeButtonType = 'button' | 'reset' | 'submit';
 
 export default defineComponent({
   name: 'Button',
@@ -138,8 +141,7 @@ export default defineComponent({
      * @en Set the native `type` attribute of `button`, optional values refer to [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-type "_blank")
      */
     htmlType: {
-      // HTMLButtonElement['type'] 在 DOM lib 里是 string，这里收窄为原生允许的三个值
-      type: String as PropType<'button' | 'reset' | 'submit'>,
+      type: String as PropType<HTMLButtonElement['type']>,
       default: 'button',
     },
     /**
