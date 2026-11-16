@@ -1,13 +1,6 @@
 import path from 'path';
 import fs from 'fs-extra';
-import {
-  Diagnostic,
-  ModuleResolutionKind,
-  Project,
-  ScriptTarget,
-  SourceFile,
-  ts,
-} from 'ts-morph';
+import { Diagnostic, Project, SourceFile, ts } from 'ts-morph';
 import glob from 'glob';
 import { parse } from '@vue/compiler-sfc';
 
