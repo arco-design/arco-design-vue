@@ -6,20 +6,34 @@ on:
   issue_comment:
     types: [created, edited]
 
+# 原实现使用 actions-cool/issues-helper（GitHub ToS 封禁），改用 actions/github-script
 permissions:
   contents: read
 
 jobs:
   issue-remove-inactive:
+    runs-on: ubuntu-latest
+    if: |
+      github.repository_owner == 'arco-design' &&
+      github.event.issue.state == 'open' &&
+      github.actor == github.event.issue.user.login
     permissions:
       issues: write
-      pull-requests: write
-    runs-on: ubuntu-latest
     steps:
-      - name: remove inactive
-        if: github.event.issue.state == 'open' && github.actor == github.event.issue.user.login
-        uses: actions-cool/issues-helper@v3
+      - uses: actions/github-script@v7
         with:
-          actions: 'remove-labels'
-          issue-number: ${{ github.event.issue.number }}
-          labels: '💤 Inactive, 📄 Need more info'
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const issueNumber = context.payload.issue.number;
+            const labels = ['💤 Inactive', '📄 Need more info'];
+
+            for (const name of labels) {
+              try {
+                await github.rest.issues.removeLabel({ owner, repo, issue_number: issueNumber, name });
+                core.info(`removed "${name}" from #${issueNumber}`);
+              } catch (error) {
+                // 404 = 该 issue 上本来就没有这个标签
+                if (error.status !== 404) throw error;
+              }
+            }
