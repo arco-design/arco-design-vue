@@ -65,11 +65,19 @@ export default defineComponent({
       );
     };
 
+    // Tooltip 的根组件是 Trigger，attrs 会透传给 Trigger；
+    // Trigger 声明并触发了 resize 事件，所以这里挂 onResize 是有效监听
+    // （Tooltip 的公共 props 没有声明该监听，做局部断言）
+    const resizeListener = { onResize } as unknown as Record<string, any>;
+
     return () => {
       if (showTooltip.value) {
         return (
-          // Tooltip 不转发 resize 事件，之前挂上的 onResize 实际不会触发，这里移除
-          <Tooltip content={text.value} {...props.tooltipProps}>
+          <Tooltip
+            content={text.value}
+            {...resizeListener}
+            {...props.tooltipProps}
+          >
             {renderContent()}
           </Tooltip>
         );
