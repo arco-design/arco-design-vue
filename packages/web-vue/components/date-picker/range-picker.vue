@@ -10,7 +10,7 @@
     :unmount-on-close="unmountOnClose"
     :position="position"
     :disabled="triggerDisabled || readonly"
-    :popup-visible="panelVisible"
+    :popup-visible="panelVisible && !triggerDisabled"
     :popup-container="popupContainer"
     @popupVisibleChange="onPanelVisibleChange"
   >
@@ -626,6 +626,10 @@ export default defineComponent({
       }
     };
 
+    watch(triggerDisabled, (disabled) => {
+      if (disabled) setPanelVisible(false);
+    });
+
     // headerValue is used to generate the content displayed on the panel
     const {
       startHeaderValue,
@@ -810,6 +814,7 @@ export default defineComponent({
       emitOk?: boolean
     ) {
       if (
+        triggerDisabled.value ||
         isDisabledDate(value?.[0], 'start') ||
         isDisabledDate(value?.[1], 'end')
       ) {
@@ -860,6 +865,8 @@ export default defineComponent({
         updateHeader?: boolean;
       }
     ) {
+      if (triggerDisabled.value) return;
+
       const { emitSelect = false, updateHeader = false } = options || {};
 
       let newValue = [...value];
@@ -1008,6 +1015,7 @@ export default defineComponent({
       value: Array<Dayjs | undefined>,
       shortcut: ShortcutType
     ) {
+      if (triggerDisabled.value) return;
       emit('select-shortcut', shortcut);
       confirm(value, false);
     }
