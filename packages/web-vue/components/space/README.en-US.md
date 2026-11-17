@@ -44,3 +44,16 @@ description: Set the spacing between components.
 ```ts
 type SpaceSize = number | 'mini' | 'small' | 'medium' | 'large';
 ```
+
+
+## FAQ
+### On dynamic rendering of sub elements, nodes are not reused
+It can be solved by adding 'key' to the sub element of 'space'
+```vue
+<template>
+  <a-space>
+    <a-button type="primary" :key="1"> Item1</a-button>
+    <a-button type="primary" :key="2">Item2</a-button>
+  </a-space>
+</template>
+```
