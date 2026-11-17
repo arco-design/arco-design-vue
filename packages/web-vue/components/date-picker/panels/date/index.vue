@@ -33,10 +33,12 @@
         datePickerT('datePicker.selectTime')
       }}</header>
       <TimePanel
-        v-bind="{
-          ...timePickerProps,
-          ...disabledTimeProps,
-        }"
+        v-bind="
+          ({
+            ...timePickerProps,
+            ...disabledTimeProps,
+          } as any)
+        "
         hide-footer
         :value="value || isRange ? timePickerValue : undefined"
         :disabled="disabled"

@@ -83,7 +83,8 @@ export default defineComponent({
     onMounted(() => {
       target.value = isWindow
         ? document?.documentElement
-        : getContainer(props.targetContainer);
+        : // isWindow 为 false 时 targetContainer 一定有值
+          getContainer(props.targetContainer as string | HTMLElement);
       if (target.value) {
         on(isWindow ? window : target.value, 'scroll', scrollHandler);
         scrollHandler();

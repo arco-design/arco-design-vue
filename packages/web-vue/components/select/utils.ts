@@ -51,7 +51,7 @@ export const hasEmptyStringKey = (
 };
 
 export const createOptionInfo = (
-  option: string | number | SelectOptionData,
+  option: string | number | boolean | SelectOptionData,
   {
     valueKey,
     fieldNames,

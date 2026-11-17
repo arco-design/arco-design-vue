@@ -44,6 +44,7 @@
     "dtsgen:icon": "arco-vue-scripts dtsgen 'components/icon/**/*.{ts,tsx,vue}' -o 'components/icon/@types'",
     "test": "vitest run --coverage",
     "test:update": "vitest run --coverage -u",
+    "typecheck": "node scripts/typecheck.mjs",
     "test:screenshot": "arco-vue-scripts test:screenshot -o ./__screenshots__/",
     "changelog": "arco-vue-scripts changelog",
     "lint-staged": "npx lint-staged"
@@ -89,7 +90,8 @@
     "stylelint-order": "^4.1.0",
     "typescript": "^4.9.5",
     "vitest": "^0.34.6",
-    "vitest-canvas-mock": "^1.1.4"
+    "vitest-canvas-mock": "^1.1.4",
+    "vue-tsc": "~1.8.27"
   },
   "dependencies": {
     "@arco-design/color": "^0.4.0",

@@ -69,7 +69,8 @@ function getPxSize({
   defaultSize?: string;
   containerSize: number;
 }) {
-  const config = getSizeConfig(size ?? defaultSize);
+  // 两者都可能为空（此时沿用运行时原有的兜底分支）
+  const config = getSizeConfig((size ?? defaultSize) as number | string);
   if (config.isPx) {
     return config.size;
   }
@@ -222,7 +223,7 @@ export default defineComponent({
     async function getContainerSize() {
       const getSize = () => {
         return isHorizontal.value
-          ? wrapperRef.value?.clientWidth
+          ? wrapperRef.value?.clientWidth ?? 0
           : wrapperRef.value?.clientHeight || 0;
       };
 

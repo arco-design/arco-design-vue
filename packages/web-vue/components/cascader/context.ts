@@ -14,7 +14,7 @@ export interface CascaderContext {
   formatLabel?: (options: CascaderOption[]) => string;
   slots: Slots;
   valueMap: Map<string, UnionType | UnionType[]>;
-  expandTrigger: 'click' | 'hover';
+  expandTrigger: string;
 }
 
 export const cascaderInjectionKey: InjectionKey<CascaderContext> =

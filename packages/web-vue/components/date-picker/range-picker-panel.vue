@@ -226,7 +226,9 @@ export default defineComponent({
       default: () => ({}),
     },
     endHeaderProps: {
-      type: Object as PropType<Record<string, any>>,
+      // 与 startHeaderProps 同构（见 range-picker.vue 中的 reactive 定义）；
+      // 这里若用 Record<string, any>，展开后拿不到 headerValue 等已知字段
+      type: Object as PropType<StartHeaderProps>,
       default: () => ({}),
     },
     confirmBtnDisabled: {
@@ -309,7 +311,7 @@ export default defineComponent({
       },
     ]);
 
-    const currentDateView = ref('date');
+    const currentDateView = ref<'time' | 'date'>('date');
 
     watch(visible, (newVal, oldVal) => {
       if (newVal && !oldVal) {
@@ -385,8 +387,7 @@ export default defineComponent({
     function getDisabledTimeFunc(index: 0 | 1) {
       return isFunction(disabledTime?.value)
         ? (current: Date) =>
-            disabledTime?.value?.(current, index === 0 ? 'start' : 'end') ||
-            false
+            disabledTime?.value?.(current, index === 0 ? 'start' : 'end') || {}
         : undefined;
     }
 

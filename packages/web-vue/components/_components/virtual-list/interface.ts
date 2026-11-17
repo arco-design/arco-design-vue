@@ -34,7 +34,8 @@ export interface VirtualListProps {
   isStaticItemHeight?: boolean;
   estimatedItemHeight?: number;
   data?: unknown[];
-  itemKey?: string;
+  // 与 virtual-list-v2 保持一致：除了字符串字段名，也支持函数
+  itemKey?: string | ((item: unknown) => VirtualItemKey);
   component?: keyof HTMLElementTagNameMap;
 }
 

@@ -149,7 +149,8 @@ export default defineComponent({
     provide(
       radioGroupKey,
       reactive({
-        name: 'ArcoRadioGroup',
+        // reactive() 不会用 RadioGroupContext 做上下文推断，不加 as const 会宽化成 string
+        name: 'ArcoRadioGroup' as const,
         value: computedValue,
         size: mergedSize,
         type,

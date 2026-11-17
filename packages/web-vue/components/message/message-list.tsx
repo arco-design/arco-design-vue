@@ -25,10 +25,14 @@ export default defineComponent({
 
     return () => (
       <TransitionGroup
-        class={[prefixCls, `${prefixCls}-${props.position}`]}
+        // Vue 3.5 的 TransitionGroup 类型只声明了 $props，未合并
+        // AllowedComponentProps，class/style 需要绕过类型检查（运行期合法）
+        {...({
+          class: [prefixCls, `${prefixCls}-${props.position}`],
+          style: { zIndex: zIndex.value },
+        } as any)}
         name="fade-message"
         tag="ul"
-        style={{ zIndex: zIndex.value }}
         onAfterLeave={() => context.emit('afterClose')}
       >
         {props.messages.map((item) => {

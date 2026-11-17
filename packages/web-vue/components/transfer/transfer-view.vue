@@ -150,7 +150,11 @@ export default defineComponent({
         props.dataInfo.selected.length < props.dataInfo.allValidValues.length
     );
 
-    const handleSelectAllChange = (checked: boolean) => {
+    // Checkbox 的 change 事件参数是联合类型；这里是单个 checkbox，实际一定是 boolean
+    const handleSelectAllChange = (
+      value: boolean | (string | number | boolean)[]
+    ) => {
+      const checked = Array.isArray(value) ? value.length > 0 : value;
       if (checked) {
         transferCtx?.onSelect([
           ...props.selected,

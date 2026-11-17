@@ -22,7 +22,7 @@
             v-for="key of Object.keys(color)"
             :key="key"
             :offset="key"
-            :stop-color="color[key]"
+            :stop-color="(color as Record<string, string>)[key]"
           />
         </linearGradient>
       </defs>
@@ -45,7 +45,8 @@
         :r="radius"
         :stroke-width="mergedStrokeWidth"
         :style="{
-          stroke: isLinearGradient ? `url(#${linearGradientId})` : color,
+          // color 为渐变对象时走上面的 linearGradient，这里是纯色分支
+          stroke: isLinearGradient ? `url(#${linearGradientId})` : (color as string),
           strokeDasharray: perimeter,
           strokeDashoffset: (percent >= 1 ? 0 : 1 - percent) * perimeter,
         }"
@@ -103,7 +104,7 @@ export default defineComponent({
       type: String,
     },
     size: {
-      type: String as PropType<typeof SIZES[number]>,
+      type: String as PropType<(typeof SIZES)[number]>,
       default: 'medium',
     },
     strokeWidth: {

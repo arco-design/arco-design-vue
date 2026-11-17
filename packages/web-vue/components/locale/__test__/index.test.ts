@@ -3,9 +3,12 @@ import { defineComponent } from 'vue';
 import { mount } from '@vue/test-utils';
 import zhCN from '../lang/zh-cn';
 
-const modules = import.meta.glob<{ default: typeof zhCN }>('../lang/*.ts', {
+// 注意：仓库里同时存在 vite 2（arco-vue-scripts）与 vite 5（vitest）的 client 类型，
+// eager 只在 vite 5 的 GlobOptions 里存在，这里把参数断言为 any；
+// import.meta.glob 必须直接调用（不能被赋值/代理），否则 Vite 无法静态转换。
+const modules = import.meta.glob('../lang/*.ts', {
   eager: true,
-});
+} as any) as unknown as Record<string, { default: typeof zhCN }>;
 
 const langs = Object.entries(modules)
   .map(([fullPath, mod]) => ({

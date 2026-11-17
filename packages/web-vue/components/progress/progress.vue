@@ -37,7 +37,7 @@
       :type="type"
       :stroke-width="type === 'line' ? strokeWidth || 4 : strokeWidth"
       :path-stroke-width="type === 'line' ? strokeWidth || 4 : strokeWidth"
-      :width="width"
+      :width="width as number"
       :percent="percent"
       :color="color"
       :track-color="trackColor"
@@ -62,7 +62,7 @@ import { getPrefixCls } from '../_utils/global-config';
 import { useSize } from '../_hooks/use-size';
 
 const PROGRESS_TYPES = ['line', 'circle'] as const;
-type ProgressType = typeof PROGRESS_TYPES[number];
+type ProgressType = (typeof PROGRESS_TYPES)[number];
 
 export default defineComponent({
   name: 'Progress',

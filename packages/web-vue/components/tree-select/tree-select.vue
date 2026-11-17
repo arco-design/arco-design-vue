@@ -88,7 +88,6 @@
             size,
             checkable: isCheckable,
             selectable: isSelectable,
-            searchValue: searchValue,
           }"
           :tree-slots="pickSubCompSlots($slots, 'tree')"
           @change="onSelectChange"

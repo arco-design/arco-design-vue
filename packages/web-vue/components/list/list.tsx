@@ -8,6 +8,7 @@ import {
   ref,
   toRefs,
 } from 'vue';
+import type { CSSProperties } from 'vue';
 import { getPrefixCls } from '../_utils/global-config';
 import { configProviderInjectionKey } from '../config-provider/context';
 import Spin from '../spin';
@@ -301,6 +302,7 @@ export default defineComponent({
         <Pagination
           class={`${prefixCls}-pagination`}
           {...paginationProps}
+          total={paginationProps.total ?? 0}
           current={current.value}
           pageSize={pageSize.value}
           onChange={handlePageChange}
@@ -319,7 +321,7 @@ export default defineComponent({
       },
     ]);
 
-    const contentStyle = computed(() => {
+    const contentStyle = computed<CSSProperties | undefined>(() => {
       if (props.maxHeight) {
         const maxHeight = isNumber(props.maxHeight)
           ? `${props.maxHeight}px`
@@ -348,8 +350,12 @@ export default defineComponent({
               slots.item?.({ item, index }),
           }}
           class={contentCls.value}
-          data={currentPageItems}
-          {...props.virtualListProps}
+          // virtualListProps 的声明（VirtualListProps）与组件实际 props 的
+          // 可空性不完全一致（如 isStaticItemHeight），这里按组件 props 校验
+          {...(props.virtualListProps as any)}
+          // data 必须放在展开之后：virtualListProps 里也有可选的 data，
+          // 放在前面会被它覆盖成 unknown[]（运行期则会被用户的 data 顶掉）
+          data={currentPageItems as Record<string, any>[]}
           onScroll={handleScroll}
         />
       ) : (

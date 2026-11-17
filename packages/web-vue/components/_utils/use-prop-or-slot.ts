@@ -6,7 +6,9 @@ export default function usePropOrSlot<T = { [key: string]: any }>(
   propName: string
 ) {
   return computed(
-    () => props[propName] || (slots[propName] && slots[propName]!())
+    () =>
+      (props as Record<string, any>)[propName] ||
+      (slots[propName] && slots[propName]!())
   );
 }
 
@@ -15,5 +17,7 @@ export function hasPropOrSlot<T = { [key: string]: any }>(
   slots: Slots,
   propName: string
 ) {
-  return computed(() => Boolean(props[propName] || slots[propName]));
+  return computed(() =>
+    Boolean((props as Record<string, any>)[propName] || slots[propName])
+  );
 }

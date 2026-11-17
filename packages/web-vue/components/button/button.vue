@@ -24,7 +24,7 @@
         cls,
         { [`${prefixCls}-only-icon`]: $slots.icon && !$slots.default },
       ]"
-      :type="htmlType"
+      :type="htmlType as NativeButtonType"
       :disabled="mergedDisabled"
       :autofocus="autofocus"
       @click="handleClick"
@@ -61,6 +61,9 @@ import { buttonGroupInjectionKey } from './context';
 import { configProviderInjectionKey } from '../config-provider/context';
 
 const regexTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
+
+// htmlType 的公开类型保持 string（兼容旧配置），只在模板绑定原生 button 的 type 时收窄
+type NativeButtonType = 'button' | 'reset' | 'submit';
 
 export default defineComponent({
   name: 'Button',

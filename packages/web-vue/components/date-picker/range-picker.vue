@@ -28,7 +28,7 @@
         :allow-clear="allowClear && !readonly"
         :placeholder="computedPlaceholder"
         :input-props="inputProps"
-        :input-value="inputValue"
+        :input-value="(inputValue as string[] | undefined)"
         :value="panelValue"
         :format="computedFormat"
         @clear="onInputClear"
@@ -789,7 +789,13 @@ export default defineComponent({
         eventHandlers.value?.onChange?.();
       }
       if (emitOk) {
-        emit('ok', returnValue, dateValue, formattedValue);
+        // ok 只在完整区间被确认时触发，按运行时事实收窄回原有事件契约
+        emit(
+          'ok',
+          returnValue as CalendarValue[],
+          dateValue as Date[],
+          formattedValue as string[]
+        );
       }
     }
 
@@ -850,7 +856,13 @@ export default defineComponent({
         parseValueFormat.value
       );
       const dateValue = getDateValue(localValue);
-      emit('select', returnValue, dateValue, formattedValue);
+      // 入参一定是数组，返回值也一定是数组；仅辅助函数签名偏宽，这里收窄回原有事件契约
+      emit(
+        'select',
+        returnValue as (CalendarValue | undefined)[],
+        dateValue as (Date | undefined)[],
+        formattedValue as (string | undefined)[]
+      );
     }
 
     function select(

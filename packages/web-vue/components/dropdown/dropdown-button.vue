@@ -1,8 +1,8 @@
 <template>
   <ButtonGroup>
     <Button
-      :size="size"
-      :type="type"
+      :size="size as ButtonProps['size']"
+      :type="type as ButtonProps['type']"
       :disabled="disabled"
       v-bind="buttonProps"
       @click="handleClick"
@@ -18,7 +18,11 @@
       @select="handleSelect"
       @popup-visible-change="handlePopupVisibleChange"
     >
-      <Button :size="size" :type="type" :disabled="disabled">
+      <Button
+        :size="size as ButtonProps['size']"
+        :type="type as ButtonProps['type']"
+        :disabled="disabled"
+      >
         <template #icon>
           <slot name="icon" :popup-visible="computedPopupVisible">
             <IconMore />

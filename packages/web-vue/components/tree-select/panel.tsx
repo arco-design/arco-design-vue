@@ -2,8 +2,8 @@ import { computed, defineComponent, PropType, ref, toRefs, Slots } from 'vue';
 import Tree from '../tree';
 import { TreeProps, TreeNodeKey } from '../tree/interface';
 import { useScrollbar } from '../_hooks/use-scrollbar';
-import { ScrollbarProps } from '../scrollbar';
-import { Scrollbar } from '../index';
+// 直接引用 scrollbar，避免经由 components/index（barrel）形成 tree-select ↔ index 的循环依赖
+import Scrollbar, { ScrollbarProps } from '../scrollbar';
 import { getPrefixCls } from '../_utils/global-config';
 
 export default defineComponent({

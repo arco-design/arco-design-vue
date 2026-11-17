@@ -1,4 +1,3 @@
-// @ts-ignore
 import BTween from 'b-tween';
 import { isFunction } from '../_utils/is';
 

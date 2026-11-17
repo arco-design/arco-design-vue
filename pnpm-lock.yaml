@@ -396,7 +396,7 @@ importers:
         version: 2.2.0
       vue-docgen-api:
         specifier: 4.40.0
-        version: 4.40.0(vue@3.5.13(typescript@4.9.5))
+        version: 4.40.0(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5))
     devDependencies:
       '@babel/types':
         specifier: ^7.26.9
@@ -625,6 +625,9 @@ importers:
       vitest-canvas-mock:
         specifier: ^1.1.4
         version: 1.1.4(vitest@0.34.6(jsdom@16.7.0)(less@4.2.2)(sugarss@2.0.0)(terser@5.39.0))
+      vue-tsc:
+        specifier: ~1.8.27
+        version: 1.8.27(typescript@4.9.5)
 
   packages/web-vue-storybook:
     devDependencies:
@@ -633,13 +636,13 @@ importers:
         version: 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/addon-essentials':
         specifier: 6.3.0
-        version: 6.3.0(@babel/core@7.26.10)(@storybook/components@6.3.13(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(@storybook/core-events@6.3.13)(@storybook/theming@6.3.13(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(@storybook/vue3@6.3.0(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@vue/compiler-sfc@3.5.13)(babel-loader@8.4.1(@babel/core@7.26.10)(webpack@4.47.0))(encoding@0.1.13)(eslint@7.32.0)(typescript@4.9.5)(vue@3.5.13(typescript@4.9.5)))(babel-loader@8.4.1(@babel/core@7.26.10)(webpack@4.47.0))(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue@3.5.13(typescript@4.9.5))(webpack@4.47.0)
+        version: 6.3.0(@babel/core@7.26.10)(@storybook/components@6.3.13(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(@storybook/core-events@6.3.13)(@storybook/theming@6.3.13(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(@storybook/vue3@6.3.0(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@vue/compiler-sfc@3.5.13)(babel-loader@8.4.1(@babel/core@7.26.10)(webpack@4.47.0))(encoding@0.1.13)(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5)))(babel-loader@8.4.1(@babel/core@7.26.10)(webpack@4.47.0))(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5))(webpack@4.47.0)
       '@storybook/addon-links':
         specifier: 6.3.0
         version: 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/vue3':
         specifier: 6.3.0
-        version: 6.3.0(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@vue/compiler-sfc@3.5.13)(babel-loader@8.4.1(@babel/core@7.26.10)(webpack@4.47.0))(encoding@0.1.13)(eslint@7.32.0)(typescript@4.9.5)(vue@3.5.13(typescript@4.9.5))
+        version: 6.3.0(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@vue/compiler-sfc@3.5.13)(babel-loader@8.4.1(@babel/core@7.26.10)(webpack@4.47.0))(encoding@0.1.13)(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5))
       babel-loader:
         specifier: ^8.4.1
         version: 8.4.1(@babel/core@7.26.10)(webpack@4.47.0)
@@ -1951,66 +1954,79 @@ packages:
     resolution: {integrity: sha512-2QxQrM+KQ7DAW4o22j+XZ6RKdxjLD7BOWTP0Bv0tmjdyhXSsr2Ul1oJDQqh9Zf5qOwTuTc7Ek83mOFaKnodPjg==}
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm-musleabihf@4.60.2':
     resolution: {integrity: sha512-TbziEu2DVsTEOPif2mKWkMeDMLoYjx95oESa9fkQQK7r/Orta0gnkcDpzwufEcAO2BLBsD7mZkXGFqEdMRRwfw==}
     cpu: [arm]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-arm64-gnu@4.60.2':
     resolution: {integrity: sha512-bO/rVDiDUuM2YfuCUwZ1t1cP+/yqjqz+Xf2VtkdppefuOFS2OSeAfgafaHNkFn0t02hEyXngZkxtGqXcXwO8Rg==}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm64-musl@4.60.2':
     resolution: {integrity: sha512-hr26p7e93Rl0Za+JwW7EAnwAvKkehh12BU1Llm9Ykiibg4uIr2rbpxG9WCf56GuvidlTG9KiiQT/TXT1yAWxTA==}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-loong64-gnu@4.60.2':
     resolution: {integrity: sha512-pOjB/uSIyDt+ow3k/RcLvUAOGpysT2phDn7TTUB3n75SlIgZzM6NKAqlErPhoFU+npgY3/n+2HYIQVbF70P9/A==}
     cpu: [loong64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-loong64-musl@4.60.2':
     resolution: {integrity: sha512-2/w+q8jszv9Ww1c+6uJT3OwqhdmGP2/4T17cu8WuwyUuuaCDDJ2ojdyYwZzCxx0GcsZBhzi3HmH+J5pZNXnd+Q==}
     cpu: [loong64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-ppc64-gnu@4.60.2':
     resolution: {integrity: sha512-11+aL5vKheYgczxtPVVRhdptAM2H7fcDR5Gw4/bTcteuZBlH4oP9f5s9zYO9aGZvoGeBpqXI/9TZZihZ609wKw==}
     cpu: [ppc64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-ppc64-musl@4.60.2':
     resolution: {integrity: sha512-i16fokAGK46IVZuV8LIIwMdtqhin9hfYkCh8pf8iC3QU3LpwL+1FSFGej+O7l3E/AoknL6Dclh2oTdnRMpTzFQ==}
     cpu: [ppc64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-riscv64-gnu@4.60.2':
     resolution: {integrity: sha512-49FkKS6RGQoriDSK/6E2GkAsAuU5kETFCh7pG4yD/ylj9rKhTmO3elsnmBvRD4PgJPds5W2PkhC82aVwmUcJ7A==}
     cpu: [riscv64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-riscv64-musl@4.60.2':
     resolution: {integrity: sha512-mjYNkHPfGpUR00DuM1ZZIgs64Hpf4bWcz9Z41+4Q+pgDx73UwWdAYyf6EG/lRFldmdHHzgrYyge5akFUW0D3mQ==}
     cpu: [riscv64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-s390x-gnu@4.60.2':
     resolution: {integrity: sha512-ALyvJz965BQk8E9Al/JDKKDLH2kfKFLTGMlgkAbbYtZuJt9LU8DW3ZoDMCtQpXAltZxwBHevXz5u+gf0yA0YoA==}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-gnu@4.60.2':
     resolution: {integrity: sha512-UQjrkIdWrKI626Du8lCQ6MJp/6V1LAo2bOK9OTu4mSn8GGXIkPXk/Vsp4bLHCd9Z9Iz2OTEaokUE90VweJgIYQ==}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-musl@4.60.2':
     resolution: {integrity: sha512-bTsRGj6VlSdn/XD4CGyzMnzaBs9bsRxy79eTqTCBsA8TMIEky7qg48aPkvJvFe1HyzQ5oMZdg7AnVlWQSKLTnw==}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-openbsd-x64@4.60.2':
     resolution: {integrity: sha512-6d4Z3534xitaA1FcMWP7mQPq5zGwBmGbhphh2DwaA1aNIXUu3KTOfwrWpbwI4/Gr0uANo7NTtaykFyO2hPuFLg==}
@@ -2746,6 +2762,15 @@ packages:
   '@vitest/utils@0.34.6':
     resolution: {integrity: sha512-IG5aDD8S6zlvloDsnzHw0Ut5xczlF+kv2BOTo+iXfPr54Yhi5qbVOgGB1hZaVq4iJ4C/MZ2J0y15IlsV/ZcI0A==}
 
+  '@volar/language-core@1.11.1':
+    resolution: {integrity: sha512-dOcNn3i9GgZAcJt43wuaEykSluAuOkQgzni1cuxLxTV0nJKanQztp7FxyswdRILaKH+P2XZMPRp2S4MV/pElCw==}
+
+  '@volar/source-map@1.11.1':
+    resolution: {integrity: sha512-hJnOnwZ4+WT5iupLRnuzbULZ42L7BWWPMmruzwtLhJfpDVoZLjNBxHDi2sY2bgZXCKlpU5XcsMFoYrsQmPhfZg==}
+
+  '@volar/typescript@1.11.1':
+    resolution: {integrity: sha512-iU+t2mas/4lYierSnoFOeRFQUhAEMgsFuQxoxvwn5EdQopw43j+J27a4lt9LMInx1gLJBC6qL14WYGlgymaSMQ==}
+
   '@vue/babel-helper-vue-transform-on@1.4.0':
     resolution: {integrity: sha512-mCokbouEQ/ocRce/FpKCRItGo+013tHg7tixg3DUNS+6bmIchPt66012kBMm476vyEIJPafrvOf4E5OYj3shSw==}
 
@@ -2776,6 +2801,14 @@ packages:
 
   '@vue/devtools-api@6.6.4':
     resolution: {integrity: sha512-sGhTPMuXqZ1rVOk32RylztWkfXTRhuS7vgAKv0zjqk8gbsHkJ7xfFf+jbySxt7tWObEJwyKaHMikV/WGDiQm8g==}
+
+  '@vue/language-core@1.8.27':
+    resolution: {integrity: sha512-L8Kc27VdQserNaCUNiSFdDl9LWT24ly8Hpwf1ECy3aFb9m6bDhBGQYOujDm21N7EW3moKIOKEanQwe1q5BK+mA==}
+    peerDependencies:
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
 
   '@vue/reactivity@3.5.13':
     resolution: {integrity: sha512-NaCwtw8o48B9I6L1zl2p41OHo/2Z4wqYGGIK1Khu5T7yxrn+ATOixn/Udn2m+6kZKB/J7cuT9DbWWhRxqixACg==}
@@ -3785,6 +3818,9 @@ packages:
   compute-scroll-into-view@1.0.20:
     resolution: {integrity: sha512-UCB0ioiyj8CRjtrvaceBLqqhZCVP+1B8+NWQhmdsm0VXOJtobBCf1dBQmebCCo34qZmUwZfIH2MZLqNHazrfjg==}
 
+  computeds@0.0.1:
+    resolution: {integrity: sha512-7CEBgcMjVmitjYo5q8JTJVra6X5mQ20uTThdK+0kR7UEaDrAWEQcRiBtWJzga4eRpP6afNwwLsX2SET2JhVB1Q==}
+
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
@@ -4038,6 +4074,9 @@ packages:
 
   dayjs@1.11.13:
     resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
+
+  de-indent@1.0.2:
+    resolution: {integrity: sha512-e/1zu3xH5MQryN2zdVaF0OrdNLUbvWxzMbi+iNA6Bky7l1RoP8a2fIbRocyHclXt/arDrrR6lL3TqFD9pMQTsg==}
 
   debug@2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
@@ -5210,7 +5249,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
-    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+    deprecated: Glob versions prior to v9 are no longer supported
 
   global-dirs@0.1.1:
     resolution: {integrity: sha512-NknMLn7F2J7aflwFOlGdNIuCDpN3VGoSoB+aap3KABFWbHVn1TCgFC+np23J8W2BiZbjfEw3BFBycSMv1AFblg==}
@@ -6631,6 +6670,9 @@ packages:
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
+  muggle-string@0.3.1:
+    resolution: {integrity: sha512-ckmWDJjphvd/FvZawgygcUeQCxzvohjFO5RxTjj4eq8kw359gFF3E1brjfI+viLMxss5JrHTDRHZvu2/tuy0Qg==}
+
   mute-stream@0.0.7:
     resolution: {integrity: sha512-r65nCZhrbXXb6dXOACihYApHw2Q6pV0M3V0PSxd74N0+D8nzAdEAITq2oAjA1jVnKI+tGvEBUpqiMh0+rW6zDQ==}
 
@@ -7041,6 +7083,7 @@ packages:
 
   path-dirname@1.0.2:
     resolution: {integrity: sha512-ALzNPpyNq9AqXMBjeymIjFDAkAFH06mHJH/cSBHAgU0s4vfpBn6b2nf8tiRLvagKD8RbTpq2FKTBg7cl9l3c7Q==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   path-exists@3.0.0:
     resolution: {integrity: sha512-bpC7GYwiDYQ4wYLe+FA8lhRjhQCMcQGuSgGGqDkg/QerRWw9CmGRT0iSOVRSZJ29NMLZgIzqaljJ63oaL4NIJQ==}
@@ -9062,7 +9105,7 @@ packages:
 
   uuid@3.4.0:
     resolution: {integrity: sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==}
-    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
+    deprecated: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
     hasBin: true
 
   v8-compile-cache-lib@3.0.1:
@@ -9274,6 +9317,15 @@ packages:
     resolution: {integrity: sha512-HDuk+PuH5monfNuY+ct49mNmkCRK4xJAV9Ts4z9UFc4rzdDnxQLyCMGGc8pKhZhHTVzfanpNwB/lwqevcBwI4w==}
     peerDependencies:
       vue: ^3.2.0
+
+  vue-template-compiler@2.7.16:
+    resolution: {integrity: sha512-AYbUWAJHLGGQM7+cNTELw+KsOG9nl2CnSv467WobS5Cv9uk3wFcnr1Etsz2sEIHEZvw1U+o9mRlEO6QbZvUPGQ==}
+
+  vue-tsc@1.8.27:
+    resolution: {integrity: sha512-WesKCAZCRAbmmhuGl3+VrdWItEvfoFIPXOvUJkjULi+x+6G/Dy69yO3TBRJDr9eUlmsNAwVmxsNZxvHKzbkKdg==}
+    hasBin: true
+    peerDependencies:
+      typescript: '*'
 
   vue@3.5.13:
     resolution: {integrity: sha512-wmeiSMxkZCSc+PM2w2VRsOYAZC8GdipNFRTsLSfodVqI9mbejKeXEGr8SckuLnrQPGe3oJN5c3K0vpoU9q/wCQ==}
@@ -11353,7 +11405,7 @@ snapshots:
       - '@types/react'
       - supports-color
 
-  '@storybook/addon-docs@6.3.0(@storybook/vue3@6.3.0(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@vue/compiler-sfc@3.5.13)(babel-loader@8.4.1(@babel/core@7.26.10)(webpack@4.47.0))(encoding@0.1.13)(eslint@7.32.0)(typescript@4.9.5)(vue@3.5.13(typescript@4.9.5)))(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue@3.5.13(typescript@4.9.5))(webpack@4.47.0)':
+  '@storybook/addon-docs@6.3.0(@storybook/vue3@6.3.0(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@vue/compiler-sfc@3.5.13)(babel-loader@8.4.1(@babel/core@7.26.10)(webpack@4.47.0))(encoding@0.1.13)(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5)))(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5))(webpack@4.47.0)':
     dependencies:
       '@babel/core': 7.26.10
       '@babel/generator': 7.26.10
@@ -11366,11 +11418,11 @@ snapshots:
       '@mdx-js/react': 1.6.22(react@16.14.0)
       '@storybook/addons': 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/api': 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
-      '@storybook/builder-webpack4': 6.3.0(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)
+      '@storybook/builder-webpack4': 6.3.0(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)
       '@storybook/client-api': 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/client-logger': 6.3.0
       '@storybook/components': 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
-      '@storybook/core': 6.3.0(@babel/core@7.26.10)(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(webpack@4.47.0)
+      '@storybook/core': 6.3.0(@babel/core@7.26.10)(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(webpack@4.47.0)
       '@storybook/core-events': 6.3.0
       '@storybook/csf': 0.0.1
       '@storybook/csf-tools': 6.3.0(@babel/core@7.26.10)
@@ -11400,7 +11452,7 @@ snapshots:
       ts-dedent: 2.2.0
       util-deprecate: 1.0.2
     optionalDependencies:
-      '@storybook/vue3': 6.3.0(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@vue/compiler-sfc@3.5.13)(babel-loader@8.4.1(@babel/core@7.26.10)(webpack@4.47.0))(encoding@0.1.13)(eslint@7.32.0)(typescript@4.9.5)(vue@3.5.13(typescript@4.9.5))
+      '@storybook/vue3': 6.3.0(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@vue/compiler-sfc@3.5.13)(babel-loader@8.4.1(@babel/core@7.26.10)(webpack@4.47.0))(encoding@0.1.13)(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5))
       react: 16.14.0
       react-dom: 16.14.0(react@16.14.0)
       vue: 3.5.13(typescript@4.9.5)
@@ -11418,13 +11470,13 @@ snapshots:
       - webpack-cli
       - webpack-command
 
-  '@storybook/addon-essentials@6.3.0(@babel/core@7.26.10)(@storybook/components@6.3.13(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(@storybook/core-events@6.3.13)(@storybook/theming@6.3.13(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(@storybook/vue3@6.3.0(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@vue/compiler-sfc@3.5.13)(babel-loader@8.4.1(@babel/core@7.26.10)(webpack@4.47.0))(encoding@0.1.13)(eslint@7.32.0)(typescript@4.9.5)(vue@3.5.13(typescript@4.9.5)))(babel-loader@8.4.1(@babel/core@7.26.10)(webpack@4.47.0))(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue@3.5.13(typescript@4.9.5))(webpack@4.47.0)':
+  '@storybook/addon-essentials@6.3.0(@babel/core@7.26.10)(@storybook/components@6.3.13(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(@storybook/core-events@6.3.13)(@storybook/theming@6.3.13(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(@storybook/vue3@6.3.0(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@vue/compiler-sfc@3.5.13)(babel-loader@8.4.1(@babel/core@7.26.10)(webpack@4.47.0))(encoding@0.1.13)(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5)))(babel-loader@8.4.1(@babel/core@7.26.10)(webpack@4.47.0))(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5))(webpack@4.47.0)':
     dependencies:
       '@babel/core': 7.26.10
       '@storybook/addon-actions': 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/addon-backgrounds': 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/addon-controls': 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
-      '@storybook/addon-docs': 6.3.0(@storybook/vue3@6.3.0(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@vue/compiler-sfc@3.5.13)(babel-loader@8.4.1(@babel/core@7.26.10)(webpack@4.47.0))(encoding@0.1.13)(eslint@7.32.0)(typescript@4.9.5)(vue@3.5.13(typescript@4.9.5)))(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue@3.5.13(typescript@4.9.5))(webpack@4.47.0)
+      '@storybook/addon-docs': 6.3.0(@storybook/vue3@6.3.0(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@vue/compiler-sfc@3.5.13)(babel-loader@8.4.1(@babel/core@7.26.10)(webpack@4.47.0))(encoding@0.1.13)(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5)))(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5))(webpack@4.47.0)
       '@storybook/addon-measure': 1.3.1(@storybook/addons@6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(@storybook/api@6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(@storybook/components@6.3.13(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(@storybook/core-events@6.3.13)(@storybook/theming@6.3.13(react-dom@16.14.0(react@16.14.0))(react@16.14.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/addon-toolbars': 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/addon-viewport': 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
@@ -11572,7 +11624,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@storybook/builder-webpack4@6.3.0(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)':
+  '@storybook/builder-webpack4@6.3.0(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)':
     dependencies:
       '@babel/core': 7.26.10
       '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.26.10)
@@ -11602,7 +11654,7 @@ snapshots:
       '@storybook/client-api': 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/client-logger': 6.3.0
       '@storybook/components': 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
-      '@storybook/core-common': 6.3.0(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)
+      '@storybook/core-common': 6.3.0(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)
       '@storybook/core-events': 6.3.0
       '@storybook/node-logger': 6.3.0
       '@storybook/router': 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
@@ -11621,7 +11673,7 @@ snapshots:
       dotenv-webpack: 1.8.0(webpack@4.47.0)
       file-loader: 6.2.0(webpack@4.47.0)
       find-up: 5.0.0
-      fork-ts-checker-webpack-plugin: 4.1.6(eslint@7.32.0)(typescript@4.9.5)(webpack@4.47.0)
+      fork-ts-checker-webpack-plugin: 4.1.6(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(webpack@4.47.0)
       fs-extra: 9.1.0
       glob: 7.2.3
       glob-promise: 3.4.0(glob@7.2.3)
@@ -11633,7 +11685,7 @@ snapshots:
       postcss-loader: 4.3.0(postcss@7.0.39)(webpack@4.47.0)
       raw-loader: 4.0.2(webpack@4.47.0)
       react: 16.14.0
-      react-dev-utils: 11.0.4(eslint@7.32.0)(typescript@4.9.5)(webpack@4.47.0)
+      react-dev-utils: 11.0.4(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(webpack@4.47.0)
       react-dom: 16.14.0(react@16.14.0)
       stable: 0.1.8
       style-loader: 1.3.0(webpack@4.47.0)
@@ -11800,7 +11852,7 @@ snapshots:
       - '@types/react'
       - supports-color
 
-  '@storybook/core-common@6.3.0(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)':
+  '@storybook/core-common@6.3.0(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)':
     dependencies:
       '@babel/core': 7.26.10
       '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.26.10)
@@ -11837,7 +11889,7 @@ snapshots:
       express: 4.21.2
       file-system-cache: 1.1.0
       find-up: 5.0.0
-      fork-ts-checker-webpack-plugin: 6.5.3(eslint@7.32.0)(typescript@4.9.5)(webpack@4.47.0)
+      fork-ts-checker-webpack-plugin: 6.5.3(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(webpack@4.47.0)
       glob: 7.2.3
       glob-base: 0.3.0
       interpret: 2.2.0
@@ -11869,13 +11921,13 @@ snapshots:
     dependencies:
       core-js: 3.41.0
 
-  '@storybook/core-server@6.3.0(@babel/core@7.26.10)(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)':
+  '@storybook/core-server@6.3.0(@babel/core@7.26.10)(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)':
     dependencies:
-      '@storybook/builder-webpack4': 6.3.0(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)
+      '@storybook/builder-webpack4': 6.3.0(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)
       '@storybook/core-client': 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(webpack@4.47.0)
-      '@storybook/core-common': 6.3.0(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)
+      '@storybook/core-common': 6.3.0(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)
       '@storybook/csf-tools': 6.3.0(@babel/core@7.26.10)
-      '@storybook/manager-webpack4': 6.3.0(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)
+      '@storybook/manager-webpack4': 6.3.0(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)
       '@storybook/node-logger': 6.3.0
       '@storybook/semver': 7.3.2
       '@types/node': 14.18.63
@@ -11919,10 +11971,10 @@ snapshots:
       - webpack-cli
       - webpack-command
 
-  '@storybook/core@6.3.0(@babel/core@7.26.10)(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(webpack@4.47.0)':
+  '@storybook/core@6.3.0(@babel/core@7.26.10)(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(webpack@4.47.0)':
     dependencies:
       '@storybook/core-client': 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(webpack@4.47.0)
-      '@storybook/core-server': 6.3.0(@babel/core@7.26.10)(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)
+      '@storybook/core-server': 6.3.0(@babel/core@7.26.10)(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)
       react: 16.14.0
       react-dom: 16.14.0(react@16.14.0)
     optionalDependencies:
@@ -11964,14 +12016,14 @@ snapshots:
     dependencies:
       lodash: 4.17.21
 
-  '@storybook/manager-webpack4@6.3.0(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)':
+  '@storybook/manager-webpack4@6.3.0(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)':
     dependencies:
       '@babel/core': 7.26.10
       '@babel/plugin-transform-template-literals': 7.26.8(@babel/core@7.26.10)
       '@babel/preset-react': 7.26.3(@babel/core@7.26.10)
       '@storybook/addons': 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/core-client': 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(webpack@4.47.0)
-      '@storybook/core-common': 6.3.0(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)
+      '@storybook/core-common': 6.3.0(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)
       '@storybook/node-logger': 6.3.0
       '@storybook/theming': 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/ui': 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
@@ -12141,12 +12193,12 @@ snapshots:
       - '@types/react'
       - supports-color
 
-  '@storybook/vue3@6.3.0(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@vue/compiler-sfc@3.5.13)(babel-loader@8.4.1(@babel/core@7.26.10)(webpack@4.47.0))(encoding@0.1.13)(eslint@7.32.0)(typescript@4.9.5)(vue@3.5.13(typescript@4.9.5))':
+  '@storybook/vue3@6.3.0(@babel/core@7.26.10)(@babel/preset-env@7.26.9(@babel/core@7.26.10))(@vue/compiler-sfc@3.5.13)(babel-loader@8.4.1(@babel/core@7.26.10)(webpack@4.47.0))(encoding@0.1.13)(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5))':
     dependencies:
       '@babel/core': 7.26.10
       '@storybook/addons': 6.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
-      '@storybook/core': 6.3.0(@babel/core@7.26.10)(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(webpack@4.47.0)
-      '@storybook/core-common': 6.3.0(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)
+      '@storybook/core': 6.3.0(@babel/core@7.26.10)(encoding@0.1.13)(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(webpack@4.47.0)
+      '@storybook/core-common': 6.3.0(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)
       '@types/webpack-env': 1.18.8
       '@vue/compiler-sfc': 3.5.13
       babel-loader: 8.4.1(@babel/core@7.26.10)(webpack@4.47.0)
@@ -12159,8 +12211,8 @@ snapshots:
       ts-dedent: 2.2.0
       ts-loader: 8.4.0(typescript@4.9.5)(webpack@4.47.0)
       vue: 3.5.13(typescript@4.9.5)
-      vue-docgen-api: 4.40.0(vue@3.5.13(typescript@4.9.5))
-      vue-docgen-loader: 1.5.1(@babel/preset-env@7.26.9(@babel/core@7.26.10))(vue-docgen-api@4.40.0(vue@3.5.13(typescript@4.9.5)))(webpack@4.47.0)
+      vue-docgen-api: 4.40.0(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5))
+      vue-docgen-loader: 1.5.1(@babel/preset-env@7.26.9(@babel/core@7.26.10))(vue-docgen-api@4.40.0(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5)))(webpack@4.47.0)
       vue-loader: 16.8.3(@vue/compiler-sfc@3.5.13)(vue@3.5.13(typescript@4.9.5))(webpack@4.47.0)
       webpack: 4.47.0
     transitivePeerDependencies:
@@ -12604,6 +12656,19 @@ snapshots:
       loupe: 2.3.7
       pretty-format: 29.7.0
 
+  '@volar/language-core@1.11.1':
+    dependencies:
+      '@volar/source-map': 1.11.1
+
+  '@volar/source-map@1.11.1':
+    dependencies:
+      muggle-string: 0.3.1
+
+  '@volar/typescript@1.11.1':
+    dependencies:
+      '@volar/language-core': 1.11.1
+      path-browserify: 1.0.1
+
   '@vue/babel-helper-vue-transform-on@1.4.0': {}
 
   '@vue/babel-plugin-jsx@1.4.0(@babel/core@7.26.10)':
@@ -12664,6 +12729,20 @@ snapshots:
       '@vue/shared': 3.5.13
 
   '@vue/devtools-api@6.6.4': {}
+
+  '@vue/language-core@1.8.27(typescript@4.9.5)':
+    dependencies:
+      '@volar/language-core': 1.11.1
+      '@volar/source-map': 1.11.1
+      '@vue/compiler-dom': 3.5.13
+      '@vue/shared': 3.5.13
+      computeds: 0.0.1
+      minimatch: 9.0.5
+      muggle-string: 0.3.1
+      path-browserify: 1.0.1
+      vue-template-compiler: 2.7.16
+    optionalDependencies:
+      typescript: 4.9.5
 
   '@vue/reactivity@3.5.13':
     dependencies:
@@ -13934,6 +14013,8 @@ snapshots:
 
   compute-scroll-into-view@1.0.20: {}
 
+  computeds@0.0.1: {}
+
   concat-map@0.0.1: {}
 
   concat-stream@1.6.2:
@@ -14261,6 +14342,8 @@ snapshots:
       mimer: 1.1.0
 
   dayjs@1.11.13: {}
+
+  de-indent@1.0.2: {}
 
   debug@2.6.9:
     dependencies:
@@ -15338,7 +15421,7 @@ snapshots:
       cross-spawn: 7.0.6
       signal-exit: 4.1.0
 
-  fork-ts-checker-webpack-plugin@4.1.6(eslint@7.32.0)(typescript@4.9.5)(webpack@4.47.0):
+  fork-ts-checker-webpack-plugin@4.1.6(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(webpack@4.47.0):
     dependencies:
       '@babel/code-frame': 7.26.2
       chalk: 2.4.2
@@ -15351,10 +15434,11 @@ snapshots:
       worker-rpc: 0.1.1
     optionalDependencies:
       eslint: 7.32.0
+      vue-template-compiler: 2.7.16
     transitivePeerDependencies:
       - supports-color
 
-  fork-ts-checker-webpack-plugin@6.5.3(eslint@7.32.0)(typescript@4.9.5)(webpack@4.47.0):
+  fork-ts-checker-webpack-plugin@6.5.3(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(webpack@4.47.0):
     dependencies:
       '@babel/code-frame': 7.26.2
       '@types/json-schema': 7.0.15
@@ -15373,6 +15457,7 @@ snapshots:
       webpack: 4.47.0
     optionalDependencies:
       eslint: 7.32.0
+      vue-template-compiler: 2.7.16
 
   form-data@3.0.3:
     dependencies:
@@ -17229,6 +17314,8 @@ snapshots:
 
   ms@2.1.3: {}
 
+  muggle-string@0.3.1: {}
+
   mute-stream@0.0.7: {}
 
   mute-stream@0.0.8: {}
@@ -18269,7 +18356,7 @@ snapshots:
       react: 16.14.0
       react-dom: 16.14.0(react@16.14.0)
 
-  react-dev-utils@11.0.4(eslint@7.32.0)(typescript@4.9.5)(webpack@4.47.0):
+  react-dev-utils@11.0.4(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(webpack@4.47.0):
     dependencies:
       '@babel/code-frame': 7.10.4
       address: 1.1.2
@@ -18280,7 +18367,7 @@ snapshots:
       escape-string-regexp: 2.0.0
       filesize: 6.1.0
       find-up: 4.1.0
-      fork-ts-checker-webpack-plugin: 4.1.6(eslint@7.32.0)(typescript@4.9.5)(webpack@4.47.0)
+      fork-ts-checker-webpack-plugin: 4.1.6(eslint@7.32.0)(typescript@4.9.5)(vue-template-compiler@2.7.16)(webpack@4.47.0)
       global-modules: 2.0.0
       globby: 11.0.1
       gzip-size: 5.1.1
@@ -20386,7 +20473,7 @@ snapshots:
 
   vue-component-type-helpers@2.2.8: {}
 
-  vue-docgen-api@4.40.0(vue@3.5.13(typescript@4.9.5)):
+  vue-docgen-api@4.40.0(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5)):
     dependencies:
       '@babel/parser': 7.26.10
       '@babel/types': 7.26.10
@@ -20398,18 +20485,18 @@ snapshots:
       pug: 3.0.3
       recast: 0.20.4
       ts-map: 1.0.3
-      vue-inbrowser-compiler-utils: 4.72.4(@vue/compiler-sfc@3.5.13)(vue@3.5.13(typescript@4.9.5))
+      vue-inbrowser-compiler-utils: 4.72.4(@vue/compiler-sfc@3.5.13)(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5))
     transitivePeerDependencies:
       - vue
       - vue-template-compiler
 
-  vue-docgen-loader@1.5.1(@babel/preset-env@7.26.9(@babel/core@7.26.10))(vue-docgen-api@4.40.0(vue@3.5.13(typescript@4.9.5)))(webpack@4.47.0):
+  vue-docgen-loader@1.5.1(@babel/preset-env@7.26.9(@babel/core@7.26.10))(vue-docgen-api@4.40.0(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5)))(webpack@4.47.0):
     dependencies:
       clone: 2.1.2
       jscodeshift: 0.13.1(@babel/preset-env@7.26.9(@babel/core@7.26.10))
       loader-utils: 1.4.2
       querystring: 0.2.1
-      vue-docgen-api: 4.40.0(vue@3.5.13(typescript@4.9.5))
+      vue-docgen-api: 4.40.0(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5))
       webpack: 4.47.0
     transitivePeerDependencies:
       - '@babel/preset-env'
@@ -20435,21 +20522,22 @@ snapshots:
       '@vue/devtools-api': 6.6.4
       vue: 3.5.13(typescript@4.9.5)
 
-  vue-inbrowser-compiler-demi@4.71.1(@vue/compiler-sfc@3.5.13)(vue@3.5.13(typescript@4.9.5)):
+  vue-inbrowser-compiler-demi@4.71.1(@vue/compiler-sfc@3.5.13)(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5)):
     dependencies:
       vue: 3.5.13(typescript@4.9.5)
     optionalDependencies:
       '@vue/compiler-sfc': 3.5.13
+      vue-template-compiler: 2.7.16
 
   vue-inbrowser-compiler-independent-utils@4.71.1(vue@3.5.13(typescript@4.9.5)):
     dependencies:
       vue: 3.5.13(typescript@4.9.5)
 
-  vue-inbrowser-compiler-utils@4.72.4(@vue/compiler-sfc@3.5.13)(vue@3.5.13(typescript@4.9.5)):
+  vue-inbrowser-compiler-utils@4.72.4(@vue/compiler-sfc@3.5.13)(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5)):
     dependencies:
       camelcase: 5.3.1
       vue: 3.5.13(typescript@4.9.5)
-      vue-inbrowser-compiler-demi: 4.71.1(@vue/compiler-sfc@3.5.13)(vue@3.5.13(typescript@4.9.5))
+      vue-inbrowser-compiler-demi: 4.71.1(@vue/compiler-sfc@3.5.13)(vue-template-compiler@2.7.16)(vue@3.5.13(typescript@4.9.5))
       vue-inbrowser-compiler-independent-utils: 4.71.1(vue@3.5.13(typescript@4.9.5))
     transitivePeerDependencies:
       - '@vue/compiler-sfc'
@@ -20469,6 +20557,18 @@ snapshots:
     dependencies:
       '@vue/devtools-api': 6.6.4
       vue: 3.5.13(typescript@4.9.5)
+
+  vue-template-compiler@2.7.16:
+    dependencies:
+      de-indent: 1.0.2
+      he: 1.2.0
+
+  vue-tsc@1.8.27(typescript@4.9.5):
+    dependencies:
+      '@volar/typescript': 1.11.1
+      '@vue/language-core': 1.8.27(typescript@4.9.5)
+      semver: 7.7.1
+      typescript: 4.9.5
 
   vue@3.5.13(typescript@4.9.5):
     dependencies:

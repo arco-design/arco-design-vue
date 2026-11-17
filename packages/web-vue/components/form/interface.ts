@@ -1,5 +1,16 @@
 import { Ref } from 'vue';
+import type { Options as ScrollIntoViewOptions } from 'scroll-into-view-if-needed';
 import { Size } from '../_utils/constant';
+
+/**
+ * @zh `scrollToField` 的滚动配置，等价于 scroll-into-view-if-needed 的 Options
+ * @en Options for `scrollToField`, same as `Options` of scroll-into-view-if-needed
+ *
+ * 单独导出成具名类型：公共 API 直接引用第三方包的 Options 会让消费侧声明生成
+ * 报 TS2742（cannot be named without a reference to .../scroll-into-view-if-needed），
+ * 因为该包是传递依赖，使用方不一定能在自己的模块图里命名它。
+ */
+export type FormScrollToFieldOptions = ScrollIntoViewOptions;
 
 export const VALIDATE_STATUSES = [
   'success',
@@ -7,10 +18,10 @@ export const VALIDATE_STATUSES = [
   'error',
   'validating',
 ] as const;
-export type ValidateStatus = typeof VALIDATE_STATUSES[number];
+export type ValidateStatus = (typeof VALIDATE_STATUSES)[number];
 
 export const VALIDATE_TRIGGERS = ['change', 'input', 'focus', 'blur'] as const;
-export type ValidateTrigger = typeof VALIDATE_TRIGGERS[number];
+export type ValidateTrigger = (typeof VALIDATE_TRIGGERS)[number];
 
 export interface FieldRule<FieldValue = any> {
   /**

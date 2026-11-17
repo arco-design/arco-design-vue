@@ -31,6 +31,7 @@
 import { computed, defineComponent, nextTick, PropType, ref, watch } from 'vue';
 import { useI18n } from '../locale';
 import { getPrefixCls } from '../_utils/global-config';
+import type { Size } from '../_utils/constant';
 import InputNumber from '../input-number';
 
 export default defineComponent({
@@ -56,7 +57,8 @@ export default defineComponent({
       required: true,
     },
     size: {
-      type: String,
+      // 透传给 InputNumber
+      type: String as PropType<Size>,
     },
     onChange: {
       type: Function as PropType<(value: number) => void>,
@@ -68,12 +70,17 @@ export default defineComponent({
     const { t } = useI18n();
     const inputValue = ref(props.simple ? props.current : undefined);
 
-    const handleFormatter = (value: number) => {
+    // InputNumber 的 formatter 允许收到 undefined（清空时）
+    const handleFormatter = (value?: number) => {
+      if (value === undefined) {
+        return undefined;
+      }
       const parseIntVal = parseInt(value.toString(), 10);
       return Number.isNaN(parseIntVal) ? undefined : String(parseIntVal);
     };
 
-    const handleChange = (value: number) => {
+    // InputNumber 的 change 事件参数允许是 undefined（清空时）
+    const handleChange = (value?: number) => {
       emit('change', inputValue.value);
       nextTick(() => {
         if (!props.simple) {

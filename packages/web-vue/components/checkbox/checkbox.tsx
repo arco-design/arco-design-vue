@@ -111,7 +111,7 @@ export default defineComponent({
     const computedChecked = computed<boolean>(() => {
       return isArray(computedValue.value)
         ? computedValue.value.includes(props.value ?? true)
-        : computedValue.value;
+        : Boolean(computedValue.value);
     });
     const mergedDisabled = computed(
       () =>
@@ -192,11 +192,11 @@ export default defineComponent({
     });
 
     watch(computedValue, (value) => {
-      let checked;
+      let checked: boolean;
       if (isArray(value)) {
         checked = value.includes(props.value ?? true);
       } else {
-        checked = value;
+        checked = Boolean(value);
       }
       if (_checked.value !== checked) {
         _checked.value = checked;

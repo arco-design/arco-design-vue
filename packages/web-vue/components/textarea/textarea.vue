@@ -352,7 +352,8 @@ export default defineComponent({
       }
     };
 
-    const handleInput = (e: InputEvent) => {
+    // 原生 input/textarea 的 @input 事件参数是 Event
+    const handleInput = (e: Event) => {
       const { value } = e.target as HTMLInputElement;
 
       if (!isComposition.value) {
@@ -361,7 +362,7 @@ export default defineComponent({
           !maxLengthErrorOnly.value &&
           computedValue.value.length >= computedMaxLength.value &&
           getValueLength(value) > computedMaxLength.value &&
-          e.inputType === 'insertText'
+          (e as InputEvent).inputType === 'insertText'
         ) {
           keepControl();
           return;

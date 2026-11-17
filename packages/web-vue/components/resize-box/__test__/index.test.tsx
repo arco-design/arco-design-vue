@@ -90,7 +90,7 @@ describe('ResizeBox', () => {
     const result = wrapperElement.clientHeight - offset;
     trigger.trigger('mousedown', { pageX: 0, pageY: startPos });
     map.mousemove({ pageX: 0, pageY: endPos });
-    expect(wrapper.emitted('update:height')[0][0]).toEqual(result);
+    expect(wrapper.emitted('update:height')?.[0]?.[0]).toEqual(result);
     await wrapper.vm.$nextTick();
     expect(wrapper.element.getAttribute('style')).toContain(
       `height: ${result}px`
@@ -120,7 +120,7 @@ describe('ResizeBox', () => {
     const result = wrapperElement.clientWidth + offset;
     trigger.trigger('mousedown', { pageX: startPos, pageY: 0 });
     map.mousemove({ pageX: endPos, pageY: 0 });
-    expect(wrapper.emitted('update:width')[0][0]).toEqual(result);
+    expect(wrapper.emitted('update:width')?.[0]?.[0]).toEqual(result);
     await wrapper.vm.$nextTick();
     expect(wrapper.element.getAttribute('style')).toContain(
       `width: ${result}px`
@@ -150,7 +150,7 @@ describe('ResizeBox', () => {
     const result = wrapperElement.clientHeight + offset;
     trigger.trigger('mousedown', { pageX: 0, pageY: startPos });
     map.mousemove({ pageX: 0, pageY: endPos });
-    expect(wrapper.emitted('update:height')[0][0]).toEqual(result);
+    expect(wrapper.emitted('update:height')?.[0]?.[0]).toEqual(result);
     await wrapper.vm.$nextTick();
     expect(wrapper.element.getAttribute('style')).toContain(
       `height: ${result}px`
@@ -180,7 +180,7 @@ describe('ResizeBox', () => {
     const result = wrapperElement.clientWidth - offset;
     trigger.trigger('mousedown', { pageX: startPos, pageY: 0 });
     map.mousemove({ pageX: endPos, pageY: 0 });
-    expect(wrapper.emitted('update:width')[0][0]).toEqual(result);
+    expect(wrapper.emitted('update:width')?.[0]?.[0]).toEqual(result);
     await wrapper.vm.$nextTick();
     expect(wrapper.element.getAttribute('style')).toContain(
       `width: ${result}px`

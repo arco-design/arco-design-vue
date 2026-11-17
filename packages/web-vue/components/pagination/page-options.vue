@@ -15,7 +15,16 @@
 import { computed, defineComponent, PropType } from 'vue';
 import { useI18n } from '../locale';
 import { getPrefixCls } from '../_utils/global-config';
+import type { Size } from '../_utils/constant';
 import ArcoSelect from '../select';
+
+// Select 的 change 事件参数类型
+type SelectChangeValue =
+  | string
+  | number
+  | boolean
+  | Record<string, any>
+  | (string | number | boolean | Record<string, any>)[];
 
 export default defineComponent({
   name: 'PageOptions',
@@ -24,13 +33,13 @@ export default defineComponent({
   },
   props: {
     sizeOptions: {
-      type: Array,
+      type: Array as PropType<number[]>,
       required: true,
     },
     pageSize: Number,
     disabled: Boolean,
     size: {
-      type: String,
+      type: String as PropType<Size>,
     },
     onChange: {
       type: Function as PropType<(value: number) => void>,
@@ -50,7 +59,7 @@ export default defineComponent({
       }))
     );
 
-    const handleChange = (value: string) => {
+    const handleChange = (value: SelectChangeValue) => {
       emit('change', value);
     };
 

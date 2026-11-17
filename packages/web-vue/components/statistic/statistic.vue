@@ -48,11 +48,11 @@ import {
   onMounted,
   PropType,
   ref,
+  shallowRef,
   toRefs,
   watch,
 } from 'vue';
 import dayjs from 'dayjs';
-// @ts-ignore
 import BTween from 'b-tween';
 import NP from 'number-precision';
 import { getPrefixCls } from '../_utils/global-config';
@@ -186,7 +186,7 @@ export default defineComponent({
       return 0;
     });
     const innerValue = ref(props.valueFrom ?? props.value);
-    const tween = ref(null);
+    const tween = shallowRef<BTween | null>(null);
     const { value } = toRefs(props);
 
     const showPlaceholder = computed(() => isUndefined(props.value));

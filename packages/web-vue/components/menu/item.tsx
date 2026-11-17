@@ -153,8 +153,8 @@ export default defineComponent({
         tooltipProps?.class,
       ];
       return (
+        // Tooltip 只支持 hover 触发（内部固定 trigger="hover"），传 trigger 不会生效
         <Tooltip
-          trigger="hover"
           position="right"
           class={tooltipClassNames}
           {...omit(tooltipProps || {}, ['class'])}

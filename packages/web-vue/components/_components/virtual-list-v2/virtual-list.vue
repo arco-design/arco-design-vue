@@ -34,7 +34,7 @@
       >
         <VirtualListItem
           v-for="(item, index) of currentList"
-          :key="item[itemKey] ?? start + index"
+          :key="getItemKey(item, start + index)"
           :has-item-size="hasItemSize"
           :set-item-size="setItemSize"
         >
@@ -57,8 +57,8 @@ import {
 import { useSize } from './hooks/use-size';
 import VirtualListItem from './virtual-list-item';
 import { getPrefixCls } from '../../_utils/global-config';
-import { ScrollOptions } from './interface';
-import { isNumber, isObject } from '../../_utils/is';
+import { ScrollOptions, VirtualItemKey, VirtualListProps } from './interface';
+import { isFunction, isNumber, isObject, isString } from '../../_utils/is';
 
 export default defineComponent({
   name: 'VirtualList',
@@ -77,7 +77,8 @@ export default defineComponent({
       default: 0,
     },
     itemKey: {
-      type: String,
+      // 接口里声明了 string | ((item) => key)，这里同步支持函数形式
+      type: [String, Function] as PropType<VirtualListProps['itemKey']>,
       default: 'key',
     },
     fixedSize: {
@@ -115,6 +116,20 @@ export default defineComponent({
     const { data, itemKey, fixedSize, estimatedSize, buffer, height } =
       toRefs(props);
     const prefixCls = getPrefixCls('virtual-list');
+
+    const getItemKey = (
+      item: Record<string, any>,
+      fallbackIndex: number
+    ): VirtualItemKey => {
+      const _itemKey = itemKey.value;
+      if (isFunction(_itemKey)) {
+        return _itemKey(item);
+      }
+      if (isString(_itemKey)) {
+        return (item[_itemKey] ?? fallbackIndex) as VirtualItemKey;
+      }
+      return fallbackIndex;
+    };
     const mergedComponent = computed(() => {
       if (isObject(props.component)) {
         return {
@@ -142,9 +157,7 @@ export default defineComponent({
     });
 
     const dataKeys = computed(() =>
-      data.value.map((item: any, index) => {
-        return (item[itemKey.value] ?? index) as string | number;
-      })
+      data.value.map((item: any, index) => getItemKey(item, index))
     );
 
     const {
@@ -222,6 +235,7 @@ export default defineComponent({
       onScroll,
       setItemSize,
       hasItemSize,
+      getItemKey,
       start,
       scrollTo,
       style,

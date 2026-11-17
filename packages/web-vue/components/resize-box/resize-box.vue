@@ -14,12 +14,12 @@
       :class="`${prefixCls}-direction-${direction}`"
       :direction="isHorizontal(direction) ? 'horizontal' : 'vertical'"
       @mousedown="
-        (e) => {
+        (e: MouseEvent) => {
           onMoveStart(direction, e);
         }
       "
       @resize="
-        (entry) => {
+        (entry: ResizeObserverEntry) => {
           onTiggerResize(direction, entry);
         }
       "

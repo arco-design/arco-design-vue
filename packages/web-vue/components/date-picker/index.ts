@@ -1,5 +1,5 @@
 import type { App } from 'vue';
-import type { ArcoOptions } from '../_utils/types';
+import type { ArcoOptions, SFCWithInstall } from '../_utils/types';
 import { setGlobalConfig, getComponentPrefix } from '../_utils/global-config';
 import _DatePicker from './pickers/date-picker';
 import _WeekPicker from './pickers/week-picker';
@@ -10,7 +10,17 @@ import _RangePicker from './range-picker.vue';
 
 export type { ShortcutType } from './interface';
 
-const DatePicker = Object.assign(_DatePicker, {
+// 显式标注：推断类型会引用 dayjs 的内部路径，生成的 .d.ts 不可移植
+const DatePicker: SFCWithInstall<
+  typeof _DatePicker,
+  {
+    WeekPicker: typeof _WeekPicker;
+    MonthPicker: typeof _MonthPicker;
+    YearPicker: typeof _YearPicker;
+    QuarterPicker: typeof _QuarterPicker;
+    RangePicker: typeof _RangePicker;
+  }
+> = Object.assign(_DatePicker, {
   WeekPicker: _WeekPicker,
   MonthPicker: _MonthPicker,
   YearPicker: _YearPicker,

@@ -42,9 +42,9 @@ export const useSize = ({
   const isFixed = ref(fixedSize.value);
   const _estimatedSize = computed(() => {
     if (estimatedSize.value !== 30) {
-      return estimatedSize.value;
+      return estimatedSize.value ?? 30;
     }
-    return firstRangeAverageSize.value || estimatedSize.value;
+    return firstRangeAverageSize.value || estimatedSize.value || 30;
   });
 
   const setItemSize = (key: string | number, size: number) => {
