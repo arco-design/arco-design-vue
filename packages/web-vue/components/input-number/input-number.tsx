@@ -12,6 +12,7 @@ import { Size } from '../_utils/constant';
 import { useFormItem } from '../_hooks/use-form-item';
 import { useSize } from '../_hooks/use-size';
 import { getKeyDownHandler, KEYBOARD_KEY } from '../_utils/keyboard';
+import { toFixed, toSafeString } from './utils';
 
 type StepMethods = 'minus' | 'plus';
 
@@ -261,7 +262,7 @@ export default defineComponent({
 
       const numString = mergedPrecision.value
         ? number.toFixed(mergedPrecision.value)
-        : String(number);
+        : toSafeString(number);
       return props.formatter?.(numString) ?? numString;
     };
 
