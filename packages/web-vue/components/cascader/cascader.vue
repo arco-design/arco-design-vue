@@ -924,7 +924,13 @@ export default defineComponent({
                   ).checked;
                 }
                 setSelectedPath(activeOption.value.key);
-                handleClickOption(activeOption.value, checked);
+                if (
+                  props.multiple ||
+                  props.checkStrictly ||
+                  activeOption.value.isLeaf
+                ) {
+                  handleClickOption(activeOption.value, checked);
+                }
               }
             } else {
               handlePopupVisibleChange(true);
