@@ -70,6 +70,7 @@ export default defineComponent({
     const nextWidth = ref(0);
 
     const isStart = computed(() => props.from === 'start');
+    const TOLERANCE = 0.5;
 
     watch(total, (cur, pre) => {
       if (overflowNumber.value > 0) {
@@ -88,7 +89,7 @@ export default defineComponent({
       if (listRef.value && children.value && spacerRef.value) {
         const spacerWidth = spacerRef.value.offsetWidth;
         if (
-          spacerWidth > 1 &&
+          spacerWidth > 1 + TOLERANCE &&
           (overflowNumber.value === 0 || spacerWidth < nextWidth.value)
         ) {
           return;
@@ -111,7 +112,7 @@ export default defineComponent({
         let count = 0;
         for (let i = 0; i < _itemWidths.length; i++) {
           const itemWidth = _itemWidths[i] ?? 0;
-          if (itemWidth < remainingWidth - 1) {
+          if (itemWidth < remainingWidth - (1 + TOLERANCE)) {
             remainingWidth -= itemWidth;
             count += 1;
           } else {
