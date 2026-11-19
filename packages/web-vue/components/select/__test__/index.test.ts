@@ -89,4 +89,23 @@ describe('Select', () => {
 
     expect(wrapper.emitted('change')?.[0]).toEqual(['Xian']);
   });
+  test('ignores an open option after becoming disabled', async () => {
+    const wrapper = mount(Select, {
+      props: {
+        defaultValue: 'Apple',
+        options: ['Apple', 'Orange'],
+      },
+    });
+
+    await wrapper.find('input').trigger('click');
+    const dropdown = wrapper.findComponent({ name: 'SelectDropdown' });
+    const option = dropdown.findAll('.arco-select-option')[1];
+    await wrapper.setProps({ disabled: true });
+    await option.trigger('click');
+
+    expect(wrapper.emitted('update:modelValue')).toBeUndefined();
+    expect(wrapper.emitted('change')).toBeUndefined();
+    expect(wrapper.find('.arco-select-view').text()).toContain('Apple');
+    wrapper.unmount();
+  });
 });
