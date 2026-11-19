@@ -32,6 +32,32 @@ const options = [
 ];
 
 describe('Cascader', () => {
+  test('ignores option clicks after disabling the open cascader', async () => {
+    const wrapper = mount(Cascader, {
+      attachTo: document.body,
+      props: {
+        modelValue: 'apple',
+        options: [
+          { label: 'Apple', value: 'apple' },
+          { label: 'Orange', value: 'orange' },
+        ],
+        popupVisible: true,
+      },
+    });
+    try {
+      await sleep();
+      const option = Array.from(
+        document.querySelectorAll<HTMLElement>('.arco-cascader-option')
+      ).find((element) => element.textContent?.trim() === 'Orange');
+      expect(option).toBeDefined();
+      await wrapper.setProps({ disabled: true });
+      option?.click();
+      expect(wrapper.emitted('update:modelValue')).toBeUndefined();
+    } finally {
+      wrapper.unmount();
+    }
+  });
+
   test('should render panel', async () => {
     const wrapper = mount(Cascader, {
       props: {
