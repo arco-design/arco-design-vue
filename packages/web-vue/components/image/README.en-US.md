@@ -52,6 +52,7 @@ description: Used to show and preview pictures.
 |default-preview-visible|The default open state of the preview|`boolean`|`false`||
 |preview-props|Preview configuration items (all options are optional) [ImagePreviewProps](#image-preview%20Props)|`ImagePreviewProps`|`-`||
 |footer-class|The class name of the bottom display area|`string\|array\|object`|`-`|2.23.0|
+|img-class|The class name of the image|`string \| any[]`|`-`||
 ### `<image>` Events
 
 |Event Name|Description|Parameters|

@@ -2,7 +2,7 @@
   <div :class="wrapperClassNames" :style="wrapperStyles">
     <img
       ref="refImg"
-      :class="`${prefixCls}-img`"
+      :class="[`${prefixCls}-img`, imgClass]"
       v-bind="imgProps"
       :style="{ ...imgStyle, ...fitStyle }"
       :title="title"
@@ -124,6 +124,13 @@ export default defineComponent({
      */
     height: {
       type: [String, Number] as PropType<string | number>,
+    },
+    /**
+     * @zh 图片的类名
+     * @en The class name of the image
+     */
+    imgClass: {
+      type: [String, Array] as PropType<string | any[]>,
     },
     /**
      * @zh 标题
