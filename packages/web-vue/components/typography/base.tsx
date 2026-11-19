@@ -102,7 +102,7 @@ export default defineComponent({
   props: {
     component: {
       type: String as PropType<BaseInternalProps['component']>,
-      required: true,
+      default: 'div',
     },
     /**
      * @zh 文本类型
