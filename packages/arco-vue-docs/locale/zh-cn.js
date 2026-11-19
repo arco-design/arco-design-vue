@@ -8,6 +8,7 @@ export default {
     i18n: '国际化',
     faq: '常见问题',
     changelog: '更新日志',
+    overview: '组件索引',
   },
   group: {
     common: '通用',
