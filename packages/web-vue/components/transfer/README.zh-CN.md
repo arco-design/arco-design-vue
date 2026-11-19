@@ -21,6 +21,8 @@ description: 两栏布局的多选组件，将元素从一栏即时移到另一�
 
 @import ./__demo__/custom-header.md
 
+@import ./__demo__/order.md
+
 ## API
 
 
@@ -41,6 +43,7 @@ description: 两栏布局的多选组件，将元素从一栏即时移到另一�
 |title|源选择框和目标选择框的标题|`string[]`|`['Source', 'Target']`||
 |source-input-search-props|源选择框的搜索框配置|`object`|`-`|2.51.1|
 |target-input-search-props|目标选择框的搜索框配置|`object`|`-`|2.51.1|
+|target-order|右侧列表元素的排序策略，`original`保持与数据源相同的顺序，`push`插入到最后，`unshift`插入到最前面，或使用自定义排序方法|`'original'\| 'push'\| 'unshift'\| ((a: TransferItem, b: TransferItem) => number)`|`'original'`|2.57.1|
 ### `<transfer>` Events
 
 |事件名|描述|参数|
