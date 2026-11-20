@@ -3,7 +3,7 @@
     <progress-steps
       v-if="steps > 0"
       :stroke-width="strokeWidth"
-      :percent="percent"
+      :percent="displayPercent"
       :color="color"
       :track-color="trackColor"
       :width="width"
@@ -19,7 +19,7 @@
       v-else-if="type === 'line' && mergedSize !== 'mini'"
       :stroke-width="strokeWidth"
       :animation="animation"
-      :percent="percent"
+      :percent="displayPercent"
       :color="color"
       :track-color="trackColor"
       :size="mergedSize"
@@ -38,7 +38,7 @@
       :stroke-width="type === 'line' ? strokeWidth || 4 : strokeWidth"
       :path-stroke-width="type === 'line' ? strokeWidth || 4 : strokeWidth"
       :width="width"
-      :percent="percent"
+      :percent="displayPercent"
       :color="color"
       :track-color="trackColor"
       :size="mergedSize"
@@ -170,6 +170,7 @@ export default defineComponent({
     const prefixCls = getPrefixCls('progress');
     const { size } = toRefs(props);
     const type = computed(() => (props.steps > 0 ? 'steps' : props.type));
+    const displayPercent = computed(() => Math.max(0, props.percent));
     const computedStatus = computed(() => {
       return props.status || (props.percent >= 1 ? 'success' : 'normal');
     });
@@ -185,6 +186,7 @@ export default defineComponent({
     return {
       cls,
       computedStatus,
+      displayPercent,
       mergedSize,
     };
   },
