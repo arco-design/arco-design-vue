@@ -12,6 +12,20 @@ describe('InputNumber', () => {
     expect(wrapper.find('input').element.value).toBe('1');
   });
 
+  test('keeps the suffix when the input becomes read-only', async () => {
+    const wrapper = mount(InputNumber, {
+      slots: { suffix: 'kg' },
+    });
+
+    await wrapper.setProps({ readOnly: true });
+    expect(wrapper.text()).toContain('kg');
+    expect(wrapper.find('button').exists()).toBe(false);
+
+    await wrapper.setProps({ readOnly: false });
+    expect(wrapper.text()).toContain('kg');
+    expect(wrapper.findAll('button')).toHaveLength(2);
+  });
+
   test('should valid input', async () => {
     const wrapper = mount(InputNumber, {
       props: {

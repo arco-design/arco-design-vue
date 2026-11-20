@@ -470,9 +470,6 @@ export default defineComponent({
     );
 
     const renderSuffix = () => {
-      if (props.readOnly) {
-        return null;
-      }
       return (
         <>
           {slots.suffix && (
@@ -566,7 +563,10 @@ export default defineComponent({
           ? {
               prepend: slots.prepend,
               prefix: slots.prefix,
-              suffix: props.hideButton ? slots.suffix : renderSuffix,
+              suffix:
+                props.hideButton || props.readOnly
+                  ? slots.suffix
+                  : renderSuffix,
               append: slots.append,
             }
           : {
