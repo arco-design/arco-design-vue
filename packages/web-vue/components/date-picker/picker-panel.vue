@@ -82,6 +82,7 @@ import {
   reactive,
   toRefs,
   watch,
+  inject,
 } from 'vue';
 import { Dayjs } from 'dayjs';
 import { isFunction } from '../_utils/is';
@@ -105,6 +106,7 @@ import PanelFooter from './panels/footer.vue';
 import { TimePickerProps } from '../time-picker/interface';
 import RenderFunction, { RenderFunc } from '../_components/render-function';
 import useHeaderValue from './hooks/use-header-value';
+import { configProviderInjectionKey } from '../config-provider/context';
 
 export default defineComponent({
   name: 'DatePikerPanel',
@@ -265,6 +267,9 @@ export default defineComponent({
       () => showShortcuts.value && shortcutsPosition.value === 'bottom'
     );
 
+    const configCtx = inject(configProviderInjectionKey, undefined);
+    const rtl = computed(() => configCtx?.rtl ?? false);
+
     const classNames = computed(() => [
       `${prefixCls.value}-container`,
       {
@@ -273,6 +278,7 @@ export default defineComponent({
           showShortcutsInLeft.value,
         [`${prefixCls.value}-container-shortcuts-placement-right`]:
           showShortcutsInRight.value,
+        [`${prefixCls.value}-container-rtl`]: rtl.value,
       },
     ]);
 
