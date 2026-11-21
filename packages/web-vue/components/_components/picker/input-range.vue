@@ -56,7 +56,7 @@
 </template>
 <script lang="ts">
 import { Dayjs } from 'dayjs';
-import { computed, defineComponent, PropType, ref, toRefs } from 'vue';
+import { computed, defineComponent, PropType, ref, toRefs, inject } from 'vue';
 import { getPrefixCls } from '../../_utils/global-config';
 import FeedbackIcon from '../feedback-icon.vue';
 import {
@@ -70,6 +70,7 @@ import IconClose from '../../icon/icon-close';
 import IconHover from '../icon-hover.vue';
 import { useFormItem } from '../../_hooks/use-form-item';
 import { useSize } from '../../_hooks/use-size';
+import { configProviderInjectionKey } from '../../config-provider/context';
 
 export default defineComponent({
   name: 'DateInputRange',
@@ -148,6 +149,9 @@ export default defineComponent({
     } = useFormItem({ size, error });
     const { mergedSize } = useSize(_mergedSize);
 
+    const configCtx = inject(configProviderInjectionKey, undefined);
+    const rtl = computed(() => configCtx?.rtl ?? false);
+
     const refInput0 = ref<HTMLInputElement>();
     const refInput1 = ref<HTMLInputElement>();
 
@@ -171,6 +175,7 @@ export default defineComponent({
         [`${prefixCls}-disabled`]: disabled0.value && disabled1.value,
         [`${prefixCls}-error`]: mergedError.value,
         [`${prefixCls}-has-prefix`]: slots.prefix,
+        [`${prefixCls}-rtl`]: rtl.value,
       },
     ]);
 
